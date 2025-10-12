@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos - Backend Development</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2ecc71 0%, #3498db 50%, #9b59b6 100%);
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .breadcrumb {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            border-left: 4px solid #2ecc71;
+        }
+
+        .breadcrumb a {
+            color: #3498db;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .section {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section h2 {
+            color: #2ecc71;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-bottom: 2px solid #2a2a2a;
+            padding-bottom: 10px;
+        }
+
+        .section h3 {
+            color: #3498db;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .intro {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: #151515;
+            border-radius: 8px;
+            border-left: 4px solid #2ecc71;
+        }
+
+        .highlight-box {
+            background: #1f1f1f;
+            border: 2px solid #2ecc71;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .highlight-box h4 {
+            color: #2ecc71;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .concept-card {
+            background: #151515;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            transition: all 0.3s ease;
+        }
+
+        .concept-card:hover {
+            border-color: #2ecc71;
+            transform: translateX(10px);
+        }
+
+        .concept-card h4 {
+            color: #2ecc71;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .lang-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin: 5px 5px 10px 0;
+            font-weight: bold;
+        }
+
+        .lang-tag.nodejs { background: #68a063; color: #fff; }
+        .lang-tag.python { background: #3776ab; color: #fff; }
+        .lang-tag.php { background: #777bb4; color: #fff; }
+        .lang-tag.java { background: #f89820; color: #0f0f0f; }
+        .lang-tag.csharp { background: #239120; color: #fff; }
+        .lang-tag.go { background: #00add8; color: #fff; }
+        .lang-tag.ruby { background: #cc342d; color: #fff; }
+
+        .architecture-diagram {
+            background: #151515;
+            border: 2px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .architecture-diagram pre {
+            color: #e0e0e0;
+            line-height: 1.8;
+        }
+
+        .workflow-step {
+            background: #151515;
+            border-left: 4px solid #2ecc71;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .workflow-step::before {
+            content: attr(data-step);
+            position: absolute;
+            left: -15px;
+            top: 15px;
+            background: #2ecc71;
+            color: #0f0f0f;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .workflow-step h4 {
+            color: #3498db;
+            margin-bottom: 10px;
+            margin-left: 25px;
+        }
+
+        .workflow-step p, .workflow-step ul {
+            margin-left: 25px;
+        }
+
+        .code-example {
+            background: #0a0a0a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .code-example .code-header {
+            color: #3498db;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .code-example code {
+            color: #e0e0e0;
+            display: block;
+            line-height: 1.6;
+        }
+
+        .code-example .comment { color: #7f8c8d; }
+        .code-example .keyword { color: #f1c40f; }
+        .code-example .string { color: #2ecc71; }
+        .code-example .function { color: #9b59b6; }
+        .code-example .variable { color: #3498db; }
+        .code-example .number { color: #e67e22; }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .tip {
+            background: #1a1a0f;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .tip strong {
+            color: #f39c12;
+        }
+
+        .best-practice {
+            background: #0f1a0f;
+            border-left: 4px solid #2ecc71;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .best-practice strong {
+            color: #2ecc71;
+        }
+
+        .warning {
+            background: #1a0f0f;
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .warning strong {
+            color: #e74c3c;
+        }
+
+        .resources {
+            background: #0f1a1a;
+            border: 1px solid #2a3a3a;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        .resources h3 {
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+
+        .resources a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .resources a:hover {
+            text-decoration: underline;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: #2ecc71;
+            color: #0f0f0f;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .back-button:hover {
+            background: #27ae60;
+            transform: translateY(-2px);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-table {
+            background: #151515;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .comparison-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .comparison-table th {
+            background: #2ecc71;
+            color: #0f0f0f;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .comparison-table tr:hover {
+            background: #1a1a1a;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚙️ Fundamentos de Backend Development</h1>
+            <p class="subtitle">La lógica detrás de escena: El cerebro de tu aplicación</p>
+        </header>
+
+        <div class="breadcrumb">
+            <a href="../../index.html">← Inicio</a> /
+            <a href="../index.html">Fundamentos</a> /
+            <span>Backend</span>
+        </div>
+
+        <div class="section">
+            <h2>¿Qué es el Backend?</h2>
+
+            <div class="intro">
+                El <strong>Backend</strong> es toda la lógica, procesamiento y funcionalidad que ocurre en el <strong>servidor</strong>, invisible para el usuario. Es el cerebro que procesa datos, toma decisiones, maneja la seguridad, y se comunica con la base de datos.
+            </div>
+
+            <div class="highlight-box">
+                <h4>Definición Simple:</h4>
+                <p>Si NO puedes verlo pero hace que la aplicación funcione → Es <strong>Backend</strong></p>
+                <ul>
+                    <li>✅ Autenticación de usuarios (login, registro, sesiones)</li>
+                    <li>✅ Procesamiento de pagos y transacciones</li>
+                    <li>✅ Validación y lógica de negocio</li>
+                    <li>✅ APIs que envían/reciben datos</li>
+                    <li>✅ Conexión con bases de datos</li>
+                    <li>✅ Generación de reportes y cálculos complejos</li>
+                    <li>✅ Envío de emails y notificaciones</li>
+                </ul>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Analogía del Restaurante:</strong>
+                <br>• <strong>Frontend</strong> = El salón, menú, meseros - Lo que el cliente ve y con lo que interactúa
+                <br>• <strong>Backend</strong> = La cocina, chef, recetas, inventario - Donde se prepara todo pero el cliente no ve
+                <br>• <strong>Base de Datos</strong> = La despensa y refrigerador - Donde se almacenan los ingredientes
+                <br><br>El cliente (usuario) pide algo del menú (frontend), el mesero lleva la orden a la cocina (API request), el chef prepara el plato (backend procesa), obtiene ingredientes de la despensa (consulta DB), y el mesero regresa con la comida (API response).
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Frontend vs Backend: ¿Cuál es la diferencia?</h2>
+
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aspecto</th>
+                            <th>Frontend</th>
+                            <th>Backend</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Ubicación</strong></td>
+                            <td>Navegador del usuario (Client-side)</td>
+                            <td>Servidor remoto (Server-side)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Visibilidad</strong></td>
+                            <td>Visible para el usuario</td>
+                            <td>Invisible para el usuario</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tecnologías</strong></td>
+                            <td>HTML, CSS, JavaScript, React, Vue</td>
+                            <td>Node.js, Python, Java, PHP, Ruby, Go</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Responsabilidades</strong></td>
+                            <td>Presentación, UX, Interactividad</td>
+                            <td>Lógica, Seguridad, Procesamiento de datos</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Acceso a Datos</strong></td>
+                            <td>Solo lo que el backend permite</td>
+                            <td>Acceso completo a la base de datos</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Seguridad</strong></td>
+                            <td>TODO es visible/modificable por el usuario</td>
+                            <td>Protegido, el usuario no puede ver el código</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ejemplo</strong></td>
+                            <td>Formulario de login, botón "Iniciar Sesión"</td>
+                            <td>Verificar password, crear sesión, generar token</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Regla de Oro de Seguridad:</strong> NUNCA confíes en el frontend. Todo lo que sucede en el navegador puede ser manipulado por el usuario. SIEMPRE valida y verifica en el backend.
+                <br><br>Ejemplo: Si tienes un formulario que dice "precio: $10", un usuario puede abrir la consola del navegador y cambiar ese valor a $0 antes de enviar. El backend DEBE verificar el precio real desde la base de datos, no confiar en lo que envía el frontend.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Arquitectura Cliente-Servidor</h2>
+
+            <div class="architecture-diagram">
+                <pre>
+┌──────────────────────────────────────────────────────────────────┐
+│                    ARQUITECTURA COMPLETA                         │
+└──────────────────────────────────────────────────────────────────┘
+
+    CLIENTE (Navegador)              SERVIDOR                   BASE DE DATOS
+    ┌─────────────────┐              ┌─────────────────┐        ┌─────────────┐
+    │                 │   REQUEST    │                 │ QUERY  │             │
+    │    FRONTEND     │─────────────>│    BACKEND      │───────>│  DATABASE   │
+    │                 │              │                 │        │             │
+    │  HTML/CSS/JS    │   RESPONSE   │  Node.js/Python │ RESULT │  SQL/NoSQL  │
+    │  React/Vue      │<─────────────│  APIs/Logic     │<───────│  PostgreSQL │
+    │                 │              │  Autenticación  │        │  MongoDB    │
+    └─────────────────┘              └─────────────────┘        └─────────────┘
+
+         (Usuario)                    (Tu Código Backend)       (Almacenamiento)
+
+
+FLUJO TÍPICO: Crear un Post en Red Social
+
+1. Usuario escribe post en formulario (FRONTEND)
+   │
+2. Usuario presiona "Publicar" (FRONTEND - Evento)
+   │
+3. JavaScript envía HTTP POST request (FRONTEND → BACKEND)
+   │
+   └─> POST https://api.redso.com/posts
+       Body: { "texto": "Hola mundo!", "userId": 123 }
+       Headers: { "Authorization": "Bearer token..." }
+   │
+4. Backend recibe la petición (BACKEND - Express/Flask/etc)
+   │
+5. Backend valida el token de autenticación (BACKEND - Seguridad)
+   ├─> ❌ Token inválido? → Responde 401 Unauthorized
+   └─> ✅ Token válido? → Continúa
+   │
+6. Backend valida los datos (BACKEND - Validación)
+   ├─> ❌ Texto vacío? → Responde 400 Bad Request
+   ├─> ❌ Texto muy largo? → Responde 400 Bad Request
+   └─> ✅ Datos válidos? → Continúa
+   │
+7. Backend procesa la lógica (BACKEND - Business Logic)
+   ├─> Sanitiza el texto (previene XSS)
+   ├─> Genera ID único para el post
+   ├─> Agrega timestamp
+   └─> Verifica permisos del usuario
+   │
+8. Backend guarda en la base de datos (BACKEND → DATABASE)
+   │
+   └─> INSERT INTO posts (id, user_id, texto, created_at)
+       VALUES (456, 123, 'Hola mundo!', '2025-10-11 12:00:00')
+   │
+9. Base de datos confirma guardado (DATABASE → BACKEND)
+   │
+10. Backend responde al frontend (BACKEND → FRONTEND)
+    │
+    └─> HTTP 201 Created
+        Body: { "id": 456, "texto": "Hola mundo!", "createdAt": "..." }
+    │
+11. Frontend muestra el post nuevo (FRONTEND - UI Update)
+    ├─> Agrega el post a la lista en pantalla
+    ├─> Muestra notificación "Post publicado!"
+    └─> Limpia el formulario
+                </pre>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Punto Clave:</strong> El frontend y backend se comunican mediante <strong>HTTP requests/responses</strong>. El frontend hace peticiones (requests) y el backend responde (responses). Este intercambio usa principalmente formato JSON.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Responsabilidades del Backend</h2>
+
+            <div class="workflow-step" data-step="1">
+                <h4>Autenticación y Autorización</h4>
+                <p><strong>Autenticación:</strong> ¿Quién eres? (Login)</p>
+                <p><strong>Autorización:</strong> ¿Qué puedes hacer? (Permisos)</p>
+                <ul>
+                    <li>Registro de usuarios (hashear passwords con bcrypt/argon2)</li>
+                    <li>Login (verificar credenciales)</li>
+                    <li>Sesiones y tokens (JWT, OAuth, sessions)</li>
+                    <li>Roles y permisos (admin, usuario, moderador)</li>
+                    <li>Two-factor authentication (2FA)</li>
+                    <li>Password recovery (reset tokens)</li>
+                </ul>
+
+                <div class="code-example">
+                    <div class="code-header">Ejemplo: Login en Node.js (Express)</div>
+                    <code>
+<span class="comment">// POST /api/login</span>
+app.<span class="function">post</span>(<span class="string">'/api/login'</span>, <span class="keyword">async</span> (req, res) => {
+    <span class="keyword">const</span> { email, password } = req.body;
+
+    <span class="comment">// 1. Buscar usuario en la base de datos</span>
+    <span class="keyword">const</span> user = <span class="keyword">await</span> User.<span class="function">findOne</span>({ email });
+
+    <span class="keyword">if</span> (!user) {
+        <span class="keyword">return</span> res.<span class="function">status</span>(<span class="number">401</span>).<span class="function">json</span>({ <span class="variable">error</span>: <span class="string">'Credenciales inválidas'</span> });
+    }
+
+    <span class="comment">// 2. Verificar password (hasheado)</span>
+    <span class="keyword">const</span> validPassword = <span class="keyword">await</span> bcrypt.<span class="function">compare</span>(password, user.passwordHash);
+
+    <span class="keyword">if</span> (!validPassword) {
+        <span class="keyword">return</span> res.<span class="function">status</span>(<span class="number">401</span>).<span class="function">json</span>({ <span class="variable">error</span>: <span class="string">'Credenciales inválidas'</span> });
+    }
+
+    <span class="comment">// 3. Generar token JWT</span>
+    <span class="keyword">const</span> token = jwt.<span class="function">sign</span>(
+        { <span class="variable">userId</span>: user.id, <span class="variable">email</span>: user.email },
+        process.env.JWT_SECRET,
+        { <span class="variable">expiresIn</span>: <span class="string">'24h'</span> }
+    );
+
+    <span class="comment">// 4. Responder con token</span>
+    res.<span class="function">json</span>({
+        <span class="variable">message</span>: <span class="string">'Login exitoso'</span>,
+        <span class="variable">token</span>: token,
+        <span class="variable">user</span>: { <span class="variable">id</span>: user.id, <span class="variable">email</span>: user.email, <span class="variable">nombre</span>: user.nombre }
+    });
+});
+                    </code>
+                </div>
+            </div>
+
+            <div class="workflow-step" data-step="2">
+                <h4>APIs (Application Programming Interfaces)</h4>
+                <p>Endpoints que el frontend llama para obtener o enviar datos</p>
+                <ul>
+                    <li><strong>RESTful APIs:</strong> Estándar más común (GET, POST, PUT, DELETE)</li>
+                    <li><strong>GraphQL:</strong> Query language flexible</li>
+                    <li><strong>WebSockets:</strong> Comunicación en tiempo real</li>
+                </ul>
+
+                <div class="code-example">
+                    <div class="code-header">Ejemplo: CRUD de Posts (Express)</div>
+                    <code>
+<span class="comment">// GET /api/posts - Obtener todos los posts</span>
+app.<span class="function">get</span>(<span class="string">'/api/posts'</span>, <span class="keyword">async</span> (req, res) => {
+    <span class="keyword">const</span> posts = <span class="keyword">await</span> Post.<span class="function">find</span>().<span class="function">populate</span>(<span class="string">'author'</span>);
+    res.<span class="function">json</span>(posts);
+});
+
+<span class="comment">// GET /api/posts/:id - Obtener un post específico</span>
+app.<span class="function">get</span>(<span class="string">'/api/posts/:id'</span>, <span class="keyword">async</span> (req, res) => {
+    <span class="keyword">const</span> post = <span class="keyword">await</span> Post.<span class="function">findById</span>(req.params.id);
+    <span class="keyword">if</span> (!post) <span class="keyword">return</span> res.<span class="function">status</span>(<span class="number">404</span>).<span class="function">json</span>({ <span class="variable">error</span>: <span class="string">'Post no encontrado'</span> });
+    res.<span class="function">json</span>(post);
+});
+
+<span class="comment">// POST /api/posts - Crear nuevo post</span>
+app.<span class="function">post</span>(<span class="string">'/api/posts'</span>, authenticateToken, <span class="keyword">async</span> (req, res) => {
+    <span class="keyword">const</span> { titulo, contenido } = req.body;
+
+    <span class="comment">// Validación</span>
+    <span class="keyword">if</span> (!titulo || !contenido) {
+        <span class="keyword">return</span> res.<span class="function">status</span>(<span class="number">400</span>).<span class="function">json</span>({ <span class="variable">error</span>: <span class="string">'Título y contenido requeridos'</span> });
+    }
+
+    <span class="keyword">const</span> post = <span class="keyword">new</span> <span class="function">Post</span>({
+        titulo,
+        contenido,
+        <span class="variable">author</span>: req.user.userId <span class="comment">// Desde el token</span>
+    });
+
+    <span class="keyword">await</span> post.<span class="function">save</span>();
+    res.<span class="function">status</span>(<span class="number">201</span>).<span class="function">json</span>(post);
+});
+
+<span class="comment">// PUT /api/posts/:id - Actualizar post</span>
+app.<span class="function">put</span>(<span class="string">'/api/posts/:id'</span>, authenticateToken, <span class="keyword">async</span> (req, res) => {
+    <span class="keyword">const</span> post = <span class="keyword">await</span> Post.<span class="function">findById</span>(req.params.id);
+
+    <span class="comment">// Verificar ownership</span>
+    <span class="keyword">if</span> (post.author.<span class="function">toString</span>() !== req.user.userId) {
+        <span class="keyword">return</span> res.<span class="function">status</span>(<span class="number">403</span>).<span class="function">json</span>({ <span class="variable">error</span>: <span class="string">'No autorizado'</span> });
+    }
+
+    post.titulo = req.body.titulo || post.titulo;
+    post.contenido = req.body.contenido || post.contenido;
+    <span class="keyword">await</span> post.<span class="function">save</span>();
+
+    res.<span class="function">json</span>(post);
+});
+
+<span class="comment">// DELETE /api/posts/:id - Eliminar post</span>
+app.<span class="function">delete</span>(<span class="string">'/api/posts/:id'</span>, authenticateToken, <span class="keyword">async</span> (req, res) => {
+    <span class="keyword">const</span> post = <span class="keyword">await</span> Post.<span class="function">findById</span>(req.params.id);
+
+    <span class="keyword">if</span> (post.author.<span class="function">toString</span>() !== req.user.userId) {
+        <span class="keyword">return</span> res.<span class="function">status</span>(<span class="number">403</span>).<span class="function">json</span>({ <span class="variable">error</span>: <span class="string">'No autorizado'</span> });
+    }
+
+    <span class="keyword">await</span> post.<span class="function">remove</span>();
+    res.<span class="function">json</span>({ <span class="variable">message</span>: <span class="string">'Post eliminado'</span> });
+});
+                    </code>
+                </div>
+            </div>
+
+            <div class="workflow-step" data-step="3">
+                <h4>Validación de Datos</h4>
+                <p>NUNCA confiar en datos del cliente. Siempre validar en el servidor.</p>
+                <ul>
+                    <li>Tipos de datos correctos (string, number, email, etc.)</li>
+                    <li>Rangos válidos (edad entre 0-120, precio > 0)</li>
+                    <li>Formatos correctos (email, URL, fecha)</li>
+                    <li>Sanitización (prevenir SQL injection, XSS)</li>
+                    <li>Límites de tamaño (texto max 500 caracteres)</li>
+                </ul>
+
+                <div class="code-example">
+                    <div class="code-header">Ejemplo: Validación con Joi (Node.js)</div>
+                    <code>
+<span class="keyword">const</span> Joi = <span class="function">require</span>(<span class="string">'joi'</span>);
+
+<span class="comment">// Esquema de validación</span>
+<span class="keyword">const</span> userSchema = Joi.<span class="function">object</span>({
+    nombre: Joi.<span class="function">string</span>().<span class="function">min</span>(<span class="number">3</span>).<span class="function">max</span>(<span class="number">30</span>).<span class="function">required</span>(),
+    email: Joi.<span class="function">string</span>().<span class="function">email</span>().<span class="function">required</span>(),
+    password: Joi.<span class="function">string</span>().<span class="function">min</span>(<span class="number">8</span>).<span class="function">pattern</span>(<span class="keyword">new</span> <span class="function">RegExp</span>(<span class="string">'^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)'</span>)),
+    edad: Joi.<span class="function">number</span>().<span class="function">integer</span>().<span class="function">min</span>(<span class="number">0</span>).<span class="function">max</span>(<span class="number">120</span>)
+});
+
+app.<span class="function">post</span>(<span class="string">'/api/register'</span>, <span class="keyword">async</span> (req, res) => {
+    <span class="comment">// Validar datos</span>
+    <span class="keyword">const</span> { error, value } = userSchema.<span class="function">validate</span>(req.body);
+
+    <span class="keyword">if</span> (error) {
+        <span class="keyword">return</span> res.<span class="function">status</span>(<span class="number">400</span>).<span class="function">json</span>({
+            <span class="variable">error</span>: error.details[<span class="number">0</span>].message
+        });
+    }
+
+    <span class="comment">// Datos validados, proceder...</span>
+});
+                    </code>
+                </div>
+            </div>
+
+            <div class="workflow-step" data-step="4">
+                <h4>Lógica de Negocio (Business Logic)</h4>
+                <p>Las reglas específicas de tu aplicación</p>
+                <ul>
+                    <li>Cálculos complejos (impuestos, descuentos, puntos)</li>
+                    <li>Reglas de negocio (límites, restricciones, workflows)</li>
+                    <li>Procesamiento de pagos</li>
+                    <li>Generación de reportes</li>
+                    <li>Notificaciones y emails</li>
+                    <li>Integración con servicios externos (pagos, SMS, cloud storage)</li>
+                </ul>
+
+                <div class="code-example">
+                    <div class="code-header">Ejemplo: Cálculo de Precio con Descuentos</div>
+                    <code>
+<span class="keyword">function</span> <span class="function">calcularPrecioFinal</span>(producto, usuario) {
+    <span class="keyword">let</span> precio = producto.precio;
+
+    <span class="comment">// Descuento por membresía</span>
+    <span class="keyword">if</span> (usuario.tipo === <span class="string">'premium'</span>) {
+        precio *= <span class="number">0.90</span>; <span class="comment">// 10% descuento</span>
+    }
+
+    <span class="comment">// Descuento por código promocional</span>
+    <span class="keyword">if</span> (usuario.codigoPromo) {
+        <span class="keyword">const</span> promo = <span class="keyword">await</span> Promo.<span class="function">findOne</span>({ <span class="variable">codigo</span>: usuario.codigoPromo });
+        <span class="keyword">if</span> (promo && promo.<span class="function">estaActivo</span>()) {
+            precio -= promo.descuento;
+        }
+    }
+
+    <span class="comment">// Descuento por cantidad</span>
+    <span class="keyword">if</span> (usuario.cantidadComprada >= <span class="number">10</span>) {
+        precio *= <span class="number">0.95</span>; <span class="comment">// 5% descuento por volumen</span>
+    }
+
+    <span class="comment">// Agregar impuestos</span>
+    <span class="keyword">const</span> impuestos = precio * <span class="number">0.21</span>; <span class="comment">// 21% IVA</span>
+    precio += impuestos;
+
+    <span class="keyword">return</span> {
+        precioFinal: precio.<span class="function">toFixed</span>(<span class="number">2</span>),
+        impuestos: impuestos.<span class="function">toFixed</span>(<span class="number">2</span>)
+    };
+}
+                    </code>
+                </div>
+            </div>
+
+            <div class="workflow-step" data-step="5">
+                <h4>Comunicación con Base de Datos</h4>
+                <p>El backend es el ÚNICO que accede directamente a la base de datos</p>
+                <ul>
+                    <li>Consultas (SELECT, queries)</li>
+                    <li>Inserciones (INSERT, create)</li>
+                    <li>Actualizaciones (UPDATE, modify)</li>
+                    <li>Eliminaciones (DELETE, remove)</li>
+                    <li>Joins y relaciones</li>
+                    <li>Transacciones (múltiples operaciones atómicas)</li>
+                    <li>Optimización de consultas</li>
+                </ul>
+
+                <div class="tip">
+                    <strong>💡 Veremos esto en detalle</strong> en la sección de <strong>Base de Datos</strong>.
+                </div>
+            </div>
+
+            <div class="workflow-step" data-step="6">
+                <h4>Seguridad</h4>
+                <p>El backend es la última línea de defensa</p>
+                <ul>
+                    <li><strong>Encriptación:</strong> Passwords (bcrypt), datos sensibles</li>
+                    <li><strong>Tokens:</strong> JWT, OAuth para autenticación</li>
+                    <li><strong>HTTPS:</strong> Comunicación encriptada</li>
+                    <li><strong>CORS:</strong> Controlar qué dominios pueden acceder a tu API</li>
+                    <li><strong>Rate Limiting:</strong> Prevenir ataques de fuerza bruta</li>
+                    <li><strong>Input Sanitization:</strong> Prevenir SQL injection, XSS</li>
+                    <li><strong>Secrets Management:</strong> API keys, DB credentials en variables de entorno</li>
+                </ul>
+
+                <div class="warning">
+                    <strong>⚠️ Nunca, JAMÁS:</strong>
+                    <br>• Guardar passwords en texto plano
+                    <br>• Hardcodear API keys o secrets en el código
+                    <br>• Confiar en validación del frontend únicamente
+                    <br>• Exponer mensajes de error con información sensible
+                    <br>• Hacer consultas SQL con string concatenation (SQL injection)
+                </div>
+            </div>
+
+            <div class="workflow-step" data-step="7">
+                <h4>Manejo de Errores</h4>
+                <p>Responder apropiadamente cuando algo sale mal</p>
+                <ul>
+                    <li><strong>Códigos HTTP correctos:</strong> 200 OK, 201 Created, 400 Bad Request, 401 Unauthorized, 404 Not Found, 500 Internal Server Error</li>
+                    <li><strong>Mensajes claros:</strong> Útiles para el frontend pero no revelan info sensible</li>
+                    <li><strong>Logging:</strong> Registrar errores para debugging (no en producción al usuario)</li>
+                    <li><strong>Try-catch:</strong> Capturar excepciones</li>
+                </ul>
+
+                <div class="code-example">
+                    <div class="code-header">Ejemplo: Manejo de Errores (Express)</div>
+                    <code>
+<span class="comment">// Middleware de manejo de errores</span>
+app.<span class="function">use</span>((err, req, res, next) => {
+    <span class="comment">// Log del error (para developers)</span>
+    console.<span class="function">error</span>(err.stack);
+
+    <span class="comment">// Respuesta al cliente (sin detalles sensibles)</span>
+    res.<span class="function">status</span>(err.status || <span class="number">500</span>).<span class="function">json</span>({
+        <span class="variable">error</span>: {
+            <span class="variable">message</span>: err.message || <span class="string">'Error interno del servidor'</span>,
+            <span class="variable">status</span>: err.status || <span class="number">500</span>
+        }
+    });
+});
+
+<span class="comment">// En una ruta específica</span>
+app.<span class="function">get</span>(<span class="string">'/api/users/:id'</span>, <span class="keyword">async</span> (req, res, next) => {
+    <span class="keyword">try</span> {
+        <span class="keyword">const</span> user = <span class="keyword">await</span> User.<span class="function">findById</span>(req.params.id);
+
+        <span class="keyword">if</span> (!user) {
+            <span class="comment">// Error 404 con mensaje claro</span>
+            <span class="keyword">const</span> error = <span class="keyword">new</span> <span class="function">Error</span>(<span class="string">'Usuario no encontrado'</span>);
+            error.status = <span class="number">404</span>;
+            <span class="keyword">throw</span> error;
+        }
+
+        res.<span class="function">json</span>(user);
+    } <span class="keyword">catch</span> (error) {
+        <span class="function">next</span>(error); <span class="comment">// Pasa al middleware de errores</span>
+    }
+});
+                    </code>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Lenguajes y Frameworks Backend Populares</h2>
+
+            <div class="grid-2">
+                <div class="concept-card">
+                    <span class="lang-tag nodejs">Node.js</span>
+                    <h4>JavaScript en el Servidor</h4>
+                    <p><strong>Runtime:</strong> V8 Engine de Chrome</p>
+                    <p><strong>Frameworks:</strong> Express, Fastify, NestJS, Koa</p>
+                    <p><strong>Ventajas:</strong></p>
+                    <ul>
+                        <li>Mismo lenguaje en frontend y backend (JavaScript)</li>
+                        <li>Ecosistema npm enorme</li>
+                        <li>Excelente para aplicaciones en tiempo real</li>
+                        <li>Non-blocking I/O (async por naturaleza)</li>
+                        <li>JSON nativo</li>
+                    </ul>
+                    <p><strong>Ideal para:</strong> APIs RESTful, microservicios, real-time apps (chat, gaming), streaming</p>
+                </div>
+
+                <div class="concept-card">
+                    <span class="lang-tag python">Python</span>
+                    <h4>Simple, Poderoso, Versátil</h4>
+                    <p><strong>Frameworks:</strong> Django, Flask, FastAPI</p>
+                    <p><strong>Ventajas:</strong></p>
+                    <ul>
+                        <li>Sintaxis limpia y legible</li>
+                        <li>Django: "batteries included" (todo integrado)</li>
+                        <li>Excelente para ML, Data Science, AI</li>
+                        <li>Gran comunidad y librerías</li>
+                        <li>FastAPI: moderna, rápida, type hints</li>
+                    </ul>
+                    <p><strong>Ideal para:</strong> Data-heavy apps, machine learning backends, prototipado rápido, APIs científicas</p>
+                </div>
+
+                <div class="concept-card">
+                    <span class="lang-tag java">Java</span>
+                    <h4>Enterprise-Grade, Robusto</h4>
+                    <p><strong>Frameworks:</strong> Spring Boot, Jakarta EE</p>
+                    <p><strong>Ventajas:</strong></p>
+                    <ul>
+                        <li>Tipado fuerte, compilado</li>
+                        <li>Performance excelente</li>
+                        <li>Muy usado en empresas grandes</li>
+                        <li>Escalabilidad probada</li>
+                        <li>Ecosistema maduro</li>
+                    </ul>
+                    <p><strong>Ideal para:</strong> Aplicaciones enterprise, banking, sistemas críticos, alta concurrencia</p>
+                </div>
+
+                <div class="concept-card">
+                    <span class="lang-tag php">PHP</span>
+                    <h4>El Clásico de la Web</h4>
+                    <p><strong>Frameworks:</strong> Laravel, Symfony, CodeIgniter</p>
+                    <p><strong>Ventajas:</strong></p>
+                    <ul>
+                        <li>Fácil deployment (hosting barato)</li>
+                        <li>Laravel es muy elegante y moderno</li>
+                        <li>WordPress, Drupal están en PHP</li>
+                        <li>Comunidad gigante</li>
+                    </ul>
+                    <p><strong>Ideal para:</strong> CMS, e-commerce, blogs, sitios tradicionales</p>
+                </div>
+
+                <div class="concept-card">
+                    <span class="lang-tag go">Go (Golang)</span>
+                    <h4>Rápido, Concurrente, Moderno</h4>
+                    <p><strong>Frameworks:</strong> Gin, Echo, Fiber</p>
+                    <p><strong>Ventajas:</strong></p>
+                    <ul>
+                        <li>Performance cercana a C/C++</li>
+                        <li>Concurrencia built-in (goroutines)</li>
+                        <li>Compile a binario único (fácil deploy)</li>
+                        <li>Usado por Google, Uber, Docker</li>
+                    </ul>
+                    <p><strong>Ideal para:</strong> Microservicios, APIs de alta performance, sistemas distribuidos, DevOps tools</p>
+                </div>
+
+                <div class="concept-card">
+                    <span class="lang-tag csharp">C# / .NET</span>
+                    <h4>Ecosistema Microsoft</h4>
+                    <p><strong>Frameworks:</strong> ASP.NET Core</p>
+                    <p><strong>Ventajas:</strong></p>
+                    <ul>
+                        <li>Tipado fuerte, performance excelente</li>
+                        <li>Cross-platform (Windows, Linux, Mac)</li>
+                        <li>Integración perfecta con Azure</li>
+                        <li>Tooling excepcional (Visual Studio)</li>
+                    </ul>
+                    <p><strong>Ideal para:</strong> Enterprise apps, gaming backends (Unity), Windows apps, Azure cloud</p>
+                </div>
+
+                <div class="concept-card">
+                    <span class="lang-tag ruby">Ruby</span>
+                    <h4>Elegante y Productivo</h4>
+                    <p><strong>Frameworks:</strong> Ruby on Rails</p>
+                    <p><strong>Ventajas:</strong></p>
+                    <ul>
+                        <li>Sintaxis muy limpia y expresiva</li>
+                        <li>Rails: "Convention over Configuration"</li>
+                        <li>Prototipado ultra rápido</li>
+                        <li>Comunidad apasionada</li>
+                    </ul>
+                    <p><strong>Ideal para:</strong> MVPs, startups, e-commerce (Shopify usa Rails)</p>
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>💡 ¿Cuál aprender primero?</strong>
+                <br><br><strong>Opción 1 - Node.js:</strong> Si ya sabes JavaScript del frontend. Reutilizas conocimiento.
+                <br><strong>Opción 2 - Python:</strong> Si te gusta data science, ML, o quieres sintaxis simple.
+                <br><br>Ambas son excelentes opciones para principiantes. Node.js es el más natural si vienes del frontend.
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Conceptos Clave del Backend</h2>
+
+            <h3>1. HTTP y APIs RESTful</h3>
+
+            <div class="concept-card">
+                <h4>Métodos HTTP</h4>
+                <ul>
+                    <li><strong>GET:</strong> Obtener datos (SELECT en DB) - <code>GET /api/users/123</code></li>
+                    <li><strong>POST:</strong> Crear recurso (INSERT en DB) - <code>POST /api/users</code></li>
+                    <li><strong>PUT:</strong> Actualizar completo (UPDATE en DB) - <code>PUT /api/users/123</code></li>
+                    <li><strong>PATCH:</strong> Actualizar parcial - <code>PATCH /api/users/123</code></li>
+                    <li><strong>DELETE:</strong> Eliminar (DELETE en DB) - <code>DELETE /api/users/123</code></li>
+                </ul>
+            </div>
+
+            <div class="concept-card">
+                <h4>Códigos de Estado HTTP</h4>
+                <ul>
+                    <li><strong>2xx Éxito:</strong> 200 OK, 201 Created, 204 No Content</li>
+                    <li><strong>3xx Redirección:</strong> 301 Moved Permanently, 304 Not Modified</li>
+                    <li><strong>4xx Error del Cliente:</strong> 400 Bad Request, 401 Unauthorized, 403 Forbidden, 404 Not Found</li>
+                    <li><strong>5xx Error del Servidor:</strong> 500 Internal Server Error, 502 Bad Gateway, 503 Service Unavailable</li>
+                </ul>
+            </div>
+
+            <h3>2. Middleware</h3>
+
+            <div class="concept-card">
+                <h4>Funciones que se ejecutan ANTES de tu ruta principal</h4>
+
+                <div class="code-example">
+                    <code>
+<span class="comment">// Middleware de autenticación</span>
+<span class="keyword">function</span> <span class="function">authenticateToken</span>(req, res, next) {
+    <span class="keyword">const</span> token = req.headers[<span class="string">'authorization'</span>];
+
+    <span class="keyword">if</span> (!token) {
+        <span class="keyword">return</span> res.<span class="function">status</span>(<span class="number">401</span>).<span class="function">json</span>({ <span class="variable">error</span>: <span class="string">'Token requerido'</span> });
+    }
+
+    jwt.<span class="function">verify</span>(token, SECRET, (err, user) => {
+        <span class="keyword">if</span> (err) <span class="keyword">return</span> res.<span class="function">status</span>(<span class="number">403</span>).<span class="function">json</span>({ <span class="variable">error</span>: <span class="string">'Token inválido'</span> });
+
+        req.user = user; <span class="comment">// Agrega info del usuario al request</span>
+        <span class="function">next</span>(); <span class="comment">// Continúa a la siguiente función</span>
+    });
+}
+
+<span class="comment">// Usar el middleware</span>
+app.<span class="function">get</span>(<span class="string">'/api/profile'</span>, authenticateToken, (req, res) => {
+    <span class="comment">// Solo se ejecuta si el token es válido</span>
+    res.<span class="function">json</span>(req.user);
+});
+                    </code>
+                </div>
+
+                <p><strong>Usos comunes de middleware:</strong></p>
+                <ul>
+                    <li>Autenticación y autorización</li>
+                    <li>Logging de requests</li>
+                    <li>Parsing de body (JSON, form-data)</li>
+                    <li>CORS</li>
+                    <li>Rate limiting</li>
+                    <li>Compression (gzip)</li>
+                </ul>
+            </div>
+
+            <h3>3. Arquitectura MVC (Model-View-Controller)</h3>
+
+            <div class="architecture-diagram">
+                <pre>
+┌─────────────────────────────────────────────────────────┐
+│                    ARQUITECTURA MVC                     │
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────┐       ┌─────────────┐       ┌─────────────┐
+│  CONTROLLER │       │    MODEL    │       │    VIEW     │
+│             │       │             │       │             │
+│ Maneja      │──────>│ Lógica de   │<─────>│ Presentación│
+│ Requests    │       │ Negocio y   │       │ (API JSON / │
+│             │       │ Datos       │       │  HTML)      │
+│ Rutas/APIs  │       │             │       │             │
+└─────────────┘       └─────────────┘       └─────────────┘
+      │                     │                       │
+      │                     │                       │
+      └─────────────────────┴───────────────────────┘
+
+FLUJO:
+1. Request llega → CONTROLLER
+2. Controller llama → MODEL (consulta DB, aplica lógica)
+3. Model devuelve datos → CONTROLLER
+4. Controller envía datos → VIEW (formatea respuesta)
+5. View devuelve → Response al cliente
+                </pre>
+            </div>
+
+            <div class="concept-card">
+                <h4>Ejemplo: Estructura de Carpetas (Express)</h4>
+                <div class="code-example">
+                    <code>
+my-backend/
+├── controllers/        <span class="comment">← Rutas y lógica de endpoints</span>
+│   ├── userController.js
+│   └── postController.js
+├── models/            <span class="comment">← Schemas y lógica de datos</span>
+│   ├── User.js
+│   └── Post.js
+├── routes/            <span class="comment">← Definición de rutas</span>
+│   ├── users.js
+│   └── posts.js
+├── middleware/        <span class="comment">← Funciones middleware</span>
+│   ├── auth.js
+│   └── errorHandler.js
+├── config/            <span class="comment">← Configuración (DB, env)</span>
+│   └── database.js
+├── utils/             <span class="comment">← Funciones utilitarias</span>
+│   └── validators.js
+└── server.js          <span class="comment">← Punto de entrada</span>
+                    </code>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Backend en el Flujo Completo</h2>
+
+            <div class="architecture-diagram">
+                <pre>
+┌────────────┐      ┌────────────┐      ┌────────────┐      ┌────────────┐
+│  DISEÑO    │  →   │  FRONTEND  │  ←→  │  BACKEND   │  ←→  │  DATABASE  │
+└────────────┘      └────────────┘      └────────────┘      └────────────┘
+
+El BACKEND es el puente entre Frontend y Database:
+
+┌─────────────────────────────────────────────────────────────┐
+│ FRONTEND: "Quiero crear un usuario nuevo"                  │
+│    POST /api/users                                          │
+│    Body: { nombre: "Juan", email: "juan@example.com" }     │
+└────────────────────┬────────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────────┐
+│ BACKEND recibe:                                             │
+│ 1. Valida datos (¿email válido? ¿nombre > 3 chars?)        │
+│ 2. Verifica que email no exista ya                         │
+│ 3. Hashea el password                                       │
+│ 4. Genera ID único                                          │
+└────────────────────┬────────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────────┐
+│ BACKEND → DATABASE:                                         │
+│    INSERT INTO users (id, nombre, email, password_hash)    │
+│    VALUES ('uuid-123', 'Juan', 'juan@...', '$2b$...')      │
+└────────────────────┬────────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────────┐
+│ DATABASE responde: "OK, guardado"                          │
+└────────────────────┬────────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────────┐
+│ BACKEND responde al FRONTEND:                              │
+│    201 Created                                              │
+│    { id: 'uuid-123', nombre: 'Juan', email: 'juan@...' }   │
+└────────────────────┬────────────────────────────────────────┘
+                     │
+                     ▼
+┌─────────────────────────────────────────────────────────────┐
+│ FRONTEND muestra: "Usuario creado exitosamente"            │
+└─────────────────────────────────────────────────────────────┘
+                </pre>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Mejores Prácticas Backend</h2>
+
+            <div class="best-practice">
+                <strong>✅ Validación Robusta:</strong> Valida TODO en el servidor, NUNCA confíes en el cliente
+            </div>
+
+            <div class="best-practice">
+                <strong>✅ Seguridad First:</strong> Hashea passwords, usa HTTPS, tokens seguros, sanitiza inputs
+            </div>
+
+            <div class="best-practice">
+                <strong>✅ Manejo de Errores:</strong> Try-catch, códigos HTTP correctos, logging apropiado
+            </div>
+
+            <div class="best-practice">
+                <strong>✅ Código Limpio:</strong> Arquitectura MVC, separación de responsabilidades, DRY
+            </div>
+
+            <div class="best-practice">
+                <strong>✅ Variables de Entorno:</strong> Usa <code>.env</code> para secrets, NO hardcodees
+            </div>
+
+            <div class="best-practice">
+                <strong>✅ Rate Limiting:</strong> Previene ataques de fuerza bruta y abuso de APIs
+            </div>
+
+            <div class="best-practice">
+                <strong>✅ Testing:</strong> Unit tests, integration tests, tests de APIs
+            </div>
+
+            <div class="best-practice">
+                <strong>✅ Documentación:</strong> Documenta tus APIs (Swagger/OpenAPI)
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Evita:</strong> Passwords en texto plano, SQL injection, XSS, exponer errores con stack traces, hardcodear secrets, confiar en el frontend
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Próximos Pasos en tu Aprendizaje</h2>
+
+            <div class="highlight-box">
+                <h4>Ruta Recomendada:</h4>
+                <ol>
+                    <li><strong>Domina HTTP y APIs (1 mes):</strong>
+                        <ul>
+                            <li>Entiende requests/responses</li>
+                            <li>Códigos de estado</li>
+                            <li>Headers, body, query params</li>
+                            <li>Postman o Insomnia para testing</li>
+                        </ul>
+                    </li>
+                    <li><strong>Aprende un Lenguaje Backend (2-3 meses):</strong>
+                        <ul>
+                            <li>Node.js + Express (recomendado si sabes JS)</li>
+                            <li>Python + Flask o FastAPI</li>
+                            <li>Crea APIs RESTful básicas (CRUD)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Base de Datos (1-2 meses):</strong>
+                        <ul>
+                            <li>SQL (PostgreSQL o MySQL)</li>
+                            <li>ORM (Sequelize, Prisma, SQLAlchemy)</li>
+                            <li>NoSQL básico (MongoDB) - opcional</li>
+                        </ul>
+                    </li>
+                    <li><strong>Autenticación y Seguridad (2 semanas):</strong>
+                        <ul>
+                            <li>JWT tokens</li>
+                            <li>Password hashing (bcrypt)</li>
+                            <li>HTTPS, CORS</li>
+                        </ul>
+                    </li>
+                    <li><strong>Proyecto Full Stack (ongoing):</strong>
+                        <ul>
+                            <li>Conecta Frontend con tu Backend</li>
+                            <li>Sistema de login completo</li>
+                            <li>CRUD de recursos</li>
+                            <li>Deploy (Heroku, Railway, Render)</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="resources">
+            <h3>📚 Recursos Recomendados</h3>
+            <ul>
+                <li><strong>Node.js:</strong>
+                    <ul>
+                        <li><a href="https://nodejs.org/en/docs/" target="_blank">Node.js Official Docs</a></li>
+                        <li><a href="https://expressjs.com/" target="_blank">Express.js Docs</a></li>
+                        <li><a href="https://www.youtube.com/c/TraversyMedia" target="_blank">Traversy Media (YouTube)</a> - Tutoriales completos</li>
+                    </ul>
+                </li>
+                <li><strong>Python:</strong>
+                    <ul>
+                        <li><a href="https://flask.palletsprojects.com/" target="_blank">Flask Docs</a></li>
+                        <li><a href="https://fastapi.tiangolo.com/" target="_blank">FastAPI Docs</a></li>
+                        <li><a href="https://www.djangoproject.com/" target="_blank">Django Docs</a></li>
+                    </ul>
+                </li>
+                <li><strong>APIs y REST:</strong>
+                    <ul>
+                        <li><a href="https://restfulapi.net/" target="_blank">RESTful API Tutorial</a></li>
+                        <li><a href="https://www.postman.com/api-platform/api-testing/" target="_blank">Postman Learning Center</a></li>
+                    </ul>
+                </li>
+                <li><strong>Cursos:</strong>
+                    <ul>
+                        <li>freeCodeCamp - Backend Development Certification</li>
+                        <li>The Odin Project - NodeJS Path</li>
+                        <li>Udemy - Node.js, Express, MongoDB Bootcamp</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="tip" style="margin-top: 40px;">
+            <strong>💡 Siguiente etapa:</strong> Ahora que entiendes el Backend, aprenderás sobre <strong>Bases de Datos</strong> - donde se almacenan todos los datos de forma persistente y cómo el backend interactúa con ellas.
+        </div>
+
+        <a href="../index.html" class="back-button">← Volver a Fundamentos</a>
+    </div>
+</body>
+</html>

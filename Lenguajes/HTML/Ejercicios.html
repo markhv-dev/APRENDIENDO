@@ -250,6 +250,58 @@
             background: #4a4a4a;
         }
 
+        /* Level Navigation */
+        .level-nav {
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            background: #1a1a1a;
+            border-bottom: 1px solid #2a2a2a;
+            padding: 12px 0;
+            margin-bottom: 30px;
+        }
+
+        .level-nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .level-nav-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .level-nav-links a:hover {
+            transform: translateY(-2px);
+        }
+
+        .level-nav-links a.nav-basico:hover {
+            color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
+        }
+
+        .level-nav-links a.nav-intermedio:hover {
+            color: #FF9800;
+            background: rgba(255, 152, 0, 0.1);
+        }
+
+        .level-nav-links a.nav-avanzado:hover {
+            color: #e74c3c;
+            background: rgba(231, 76, 60, 0.1);
+        }
+
+        .level-nav-links a.nav-experto:hover {
+            color: #9C27B0;
+            background: rgba(156, 39, 176, 0.1);
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 2em;
@@ -261,6 +313,15 @@
                 left: 0;
                 display: block;
                 margin-bottom: 20px;
+            }
+
+            .level-nav-links {
+                gap: 10px;
+            }
+
+            .level-nav-links a {
+                font-size: 0.8em;
+                padding: 6px 12px;
             }
         }
     </style>
@@ -635,7 +696,7 @@
     <footer>
         <p><strong>💡 Consejo Final:</strong> La práctica hace al maestro. No hay atajos para aprender bien HTML.</p>
         <p>Tómate tu tiempo con cada ejercicio y no tengas miedo de experimentar.</p>
-        <p><a href="index.html">← Volver a HTML</a> | <a href="../index.html">Ir al Índice Principal</a></p>
+        <p><a href="index.html">← Volver a HTML</a> | <a href="../../index.html">Ir al Índice Principal</a></p>
         <p style="margin-top: 20px; color: #555;">¡Mucha suerte en tu aprendizaje! 🚀</p>
     </footer>
 </body>

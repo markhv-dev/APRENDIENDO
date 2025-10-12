@@ -218,6 +218,50 @@
             background: #4a4a4a;
         }
 
+        /* Category Navigation */
+        .category-nav {
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            background: #1a1a1a;
+            border-bottom: 1px solid #2a2a2a;
+            padding: 10px 0;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+
+        .category-nav::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .category-nav::-webkit-scrollbar-thumb {
+            background: #e74c3c;
+            border-radius: 3px;
+        }
+
+        .category-nav-links {
+            display: flex;
+            gap: 15px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .category-nav-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 0.85em;
+            transition: color 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+
+        .category-nav-links a:hover {
+            color: #e74c3c;
+            background: rgba(231, 76, 60, 0.1);
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 2em;
@@ -234,6 +278,16 @@
             header {
                 position: relative;
             }
+
+            .category-nav-links {
+                padding: 0 10px;
+                gap: 10px;
+            }
+
+            .category-nav-links a {
+                font-size: 0.8em;
+                padding: 6px 10px;
+            }
         }
     </style>
 </head>
@@ -245,9 +299,26 @@
         <input type="text" class="search-box" id="searchBox" placeholder="Buscar etiquetas, atributos, conceptos...">
     </header>
 
+    <!-- Category Navigation -->
+    <nav class="category-nav">
+        <div class="category-nav-links">
+            <a href="#estructura">🏗️ Estructura</a>
+            <a href="#metadatos">📋 Metadatos</a>
+            <a href="#texto">📝 Texto</a>
+            <a href="#enlaces">🔗 Enlaces</a>
+            <a href="#listas">📌 Listas</a>
+            <a href="#tablas">📊 Tablas</a>
+            <a href="#formularios">📝 Formularios</a>
+            <a href="#semanticos">🏷️ Semánticos</a>
+            <a href="#multimedia">🎬 Multimedia</a>
+            <a href="#contenedores">📦 Contenedores</a>
+            <a href="#otros">⚙️ Otros</a>
+        </div>
+    </nav>
+
     <div class="container" id="contentContainer">
         <!-- ESTRUCTURA BÁSICA -->
-        <div class="categoria">🏗️ Estructura Básica del Documento</div>
+        <div id="estructura" class="categoria">🏗️ Estructura Básica del Documento</div>
 
         <div class="termino" data-tags="doctype declaración documento html5">
             <span class="tag">&lt;!DOCTYPE html&gt;</span>
@@ -315,7 +386,7 @@
         </div>
 
         <!-- METADATOS -->
-        <div class="categoria">📋 Metadatos y SEO</div>
+        <div id="metadatos" class="categoria">📋 Metadatos y SEO</div>
 
         <div class="termino" data-tags="meta metadata charset viewport description">
             <span class="tag">&lt;meta&gt;</span>
@@ -351,7 +422,7 @@
         </div>
 
         <!-- TEXTO Y CONTENIDO -->
-        <div class="categoria">📝 Elementos de Texto y Formato</div>
+        <div id="texto" class="categoria">📝 Elementos de Texto y Formato</div>
 
         <div class="termino" data-tags="h1 h2 h3 h4 h5 h6 encabezado título heading">
             <span class="tag">&lt;h1&gt; - &lt;h6&gt;</span>
@@ -453,7 +524,7 @@
         </div>
 
         <!-- ENLACES E IMÁGENES -->
-        <div class="categoria">🔗 Enlaces, Imágenes y Multimedia</div>
+        <div id="enlaces" class="categoria">🔗 Enlaces, Imágenes y Multimedia</div>
 
         <div class="termino" data-tags="a anchor enlace link href">
             <span class="tag">&lt;a&gt;</span>
@@ -503,7 +574,7 @@
         </div>
 
         <!-- LISTAS -->
-        <div class="categoria">📌 Listas</div>
+        <div id="listas" class="categoria">📌 Listas</div>
 
         <div class="termino" data-tags="ul lista desordenada viñetas bullets">
             <span class="tag">&lt;ul&gt;</span>
@@ -551,7 +622,7 @@
         </div>
 
         <!-- TABLAS -->
-        <div class="categoria">📊 Tablas</div>
+        <div id="tablas" class="categoria">📊 Tablas</div>
 
         <div class="termino" data-tags="table tabla datos">
             <span class="tag">&lt;table&gt;</span>
@@ -619,7 +690,7 @@
         </div>
 
         <!-- FORMULARIOS -->
-        <div class="categoria">📝 Formularios e Inputs</div>
+        <div id="formularios" class="categoria">📝 Formularios e Inputs</div>
 
         <div class="termino" data-tags="form formulario input datos">
             <span class="tag">&lt;form&gt;</span>
@@ -746,7 +817,7 @@
         </div>
 
         <!-- ELEMENTOS SEMÁNTICOS -->
-        <div class="categoria">🏷️ Elementos Semánticos HTML5</div>
+        <div id="semanticos" class="categoria">🏷️ Elementos Semánticos HTML5</div>
 
         <div class="termino" data-tags="header encabezado cabecera">
             <span class="tag">&lt;header&gt;</span>
@@ -837,7 +908,7 @@
         </div>
 
         <!-- MULTIMEDIA -->
-        <div class="categoria">🎬 Multimedia Avanzada</div>
+        <div id="multimedia" class="categoria">🎬 Multimedia Avanzada</div>
 
         <div class="termino" data-tags="video reproducir mp4 webm">
             <span class="tag">&lt;video&gt;</span>
@@ -894,7 +965,7 @@
         </div>
 
         <!-- CONTENEDORES -->
-        <div class="categoria">📦 Contenedores y Agrupación</div>
+        <div id="contenedores" class="categoria">📦 Contenedores y Agrupación</div>
 
         <div class="termino" data-tags="div división contenedor bloque">
             <span class="tag">&lt;div&gt;</span>
@@ -913,7 +984,7 @@
         </div>
 
         <!-- OTROS ELEMENTOS IMPORTANTES -->
-        <div class="categoria">⚙️ Scripts, Estilos y Otros</div>
+        <div id="otros" class="categoria">⚙️ Scripts, Estilos y Otros</div>
 
         <div class="termino" data-tags="script javascript js">
             <span class="tag">&lt;script&gt;</span>
@@ -1057,7 +1128,7 @@
     <footer>
         <p><strong>💡 Consejo:</strong> Usa Ctrl+F (Cmd+F en Mac) para buscar términos específicos rápidamente.</p>
         <p>Consulta este glosario cada vez que encuentres una etiqueta nueva.</p>
-        <p><a href="index.html">← Volver a HTML</a> | <a href="../index.html">Ir al Índice Principal</a></p>
+        <p><a href="index.html">← Volver a HTML</a> | <a href="../../index.html">Ir al Índice Principal</a></p>
         <p style="margin-top: 20px; color: #555;">¡Guarda esta página como referencia para tu aprendizaje!</p>
     </footer>
 

@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios - Git & GitHub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #f05032 0%, #ff6b47 100%);
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .breadcrumb {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            border-left: 4px solid #f05032;
+        }
+
+        .breadcrumb a {
+            color: #f05032;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .ejercicio {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .nivel {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .nivel.basico {
+            background: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+            border: 2px solid #2ecc71;
+        }
+
+        .nivel.intermedio {
+            background: rgba(52, 152, 219, 0.2);
+            color: #3498db;
+            border: 2px solid #3498db;
+        }
+
+        .nivel.avanzado {
+            background: rgba(241, 196, 15, 0.2);
+            color: #f1c40f;
+            border: 2px solid #f1c40f;
+        }
+
+        .nivel.experto {
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+            border: 2px solid #e74c3c;
+        }
+
+        .ejercicio h2 {
+            color: #f05032;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .objetivo {
+            background: #151515;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .objetivo strong {
+            color: #3498db;
+        }
+
+        .instrucciones {
+            margin: 20px 0;
+        }
+
+        .instrucciones strong {
+            color: #f05032;
+            font-size: 1.1em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .instrucciones ul, .instrucciones ol {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+
+        .instrucciones li {
+            margin: 12px 0;
+            line-height: 1.8;
+        }
+
+        .instrucciones code {
+            background: #0a0a0a;
+            padding: 3px 8px;
+            border-radius: 4px;
+            color: #2ecc71;
+            font-family: 'Courier New', monospace;
+        }
+
+        .tip {
+            background: #1a1a0f;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .tip strong {
+            color: #f39c12;
+        }
+
+        .solucion {
+            background: #0a0a0a;
+            border: 2px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .solucion-toggle {
+            background: #2a2a2a;
+            color: #e0e0e0;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .solucion-toggle:hover {
+            background: #f05032;
+        }
+
+        .solucion-content {
+            display: none;
+            margin-top: 15px;
+        }
+
+        .solucion-content.active {
+            display: block;
+        }
+
+        .solucion-content pre {
+            background: #000;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            color: #2ecc71;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+        }
+
+        .comando-ejemplo {
+            background: #0a0a0a;
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            padding: 12px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            color: #2ecc71;
+        }
+
+        .comando-ejemplo::before {
+            content: '$ ';
+            color: #f05032;
+            font-weight: bold;
+        }
+
+        .warning {
+            background: #1a0f0f;
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .warning strong {
+            color: #e74c3c;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: #f05032;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 30px 0;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #d64527;
+            transform: translateY(-2px);
+        }
+
+        .checklist {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .checklist li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .checklist li::before {
+            content: '☐';
+            position: absolute;
+            left: 0;
+            color: #f05032;
+            font-size: 1.3em;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Ejercicios Prácticos - Git & GitHub</h1>
+            <p class="subtitle">Aprende Git haciendo: proyectos progresivos del nivel básico al experto</p>
+        </header>
+
+        <div class="breadcrumb">
+            <a href="../../index.html">← Inicio</a> /
+            <a href="../index.html">Comandos</a> /
+            <a href="index.html">Git & GitHub</a> /
+            <span>Ejercicios</span>
+        </div>
+
+        <!-- EJERCICIO 1: BÁSICO -->
+        <div class="ejercicio">
+            <span class="nivel basico">Básico</span>
+            <h2>Ejercicio 1: Tu Primer Repositorio Local</h2>
+
+            <p class="objetivo">
+                <strong>Objetivo:</strong> Inicializar un repositorio Git, crear archivos, y hacer tus primeros commits.
+            </p>
+
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ol>
+                    <li>Crea una carpeta llamada <code>mi-primer-repo</code></li>
+                    <li>Inicializa un repositorio Git dentro de ella</li>
+                    <li>Crea un archivo <code>README.md</code> con una breve descripción</li>
+                    <li>Agrega el archivo al staging area</li>
+                    <li>Haz tu primer commit con el mensaje "Initial commit"</li>
+                    <li>Crea un archivo <code>index.html</code> con estructura HTML básica</li>
+                    <li>Haz un segundo commit</li>
+                    <li>Verifica la historia de commits</li>
+                </ol>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Tip:</strong> Usa <code>git status</code> constantemente para ver el estado de tus archivos.
+            </div>
+
+            <div class="solucion">
+                <button class="solucion-toggle" onclick="toggleSolution(this)">Ver Solución 📖</button>
+                <div class="solucion-content">
+                    <pre>
+# 1. Crear carpeta y entrar
+mkdir mi-primer-repo
+cd mi-primer-repo
+
+# 2. Inicializar Git
+git init
+
+# 3. Crear README.md
+echo "# Mi Primer Repositorio" > README.md
+echo "Este es mi primer proyecto con Git" >> README.md
+
+# 4. Agregar al staging
+git add README.md
+
+# 5. Primer commit
+git commit -m "Initial commit"
+
+# 6. Crear index.html
+cat > index.html << EOF
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mi Página</title>
+</head>
+<body>
+    <h1>Hola Mundo</h1>
+</body>
+</html>
+EOF
+
+# 7. Segundo commit
+git add index.html
+git commit -m "Add index.html with basic structure"
+
+# 8. Ver historia
+git log
+git log --oneline  # Formato compacto
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- EJERCICIO 2: BÁSICO -->
+        <div class="ejercicio">
+            <span class="nivel basico">Básico</span>
+            <h2>Ejercicio 2: Trabajando con GitHub</h2>
+
+            <p class="objetivo">
+                <strong>Objetivo:</strong> Conectar tu repositorio local con GitHub y subir tus cambios.
+            </p>
+
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ol>
+                    <li>Crea un repositorio NUEVO en GitHub (sin inicializar con README)</li>
+                    <li>Conecta tu repositorio local del Ejercicio 1 con GitHub</li>
+                    <li>Sube tus commits al repositorio remoto</li>
+                    <li>Verifica en GitHub que tus archivos estén ahí</li>
+                    <li>Modifica <code>README.md</code> directamente en GitHub (desde la web)</li>
+                    <li>Descarga los cambios a tu repositorio local</li>
+                    <li>Verifica que el archivo local tenga los cambios</li>
+                </ol>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Importante:</strong> NO inicialices el repo de GitHub con README, LICENSE o .gitignore - ya tienes archivos locales.
+            </div>
+
+            <div class="solucion">
+                <button class="solucion-toggle" onclick="toggleSolution(this)">Ver Solución 📖</button>
+                <div class="solucion-content">
+                    <pre>
+# Asumiendo que ya creaste el repo en GitHub
+
+# 2. Conectar con remoto
+git remote add origin https://github.com/TU-USUARIO/mi-primer-repo.git
+
+# Verificar remoto
+git remote -v
+
+# 3. Subir commits (primera vez con -u)
+git push -u origin main
+# O si tu rama se llama "master":
+# git push -u origin master
+
+# 5. Después de editar README.md en GitHub
+
+# 6. Descargar cambios
+git pull origin main
+
+# 7. Verificar
+cat README.md
+git log --oneline
+                    </pre>
+                    <p style="margin-top: 15px; color: #b0b0b0;">
+                        <strong>Nota:</strong> Si git push falla, puede que tu rama se llame "master" en lugar de "main". Usa <code>git branch</code> para verificar.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- EJERCICIO 3: BÁSICO -->
+        <div class="ejercicio">
+            <span class="nivel basico">Básico</span>
+            <h2>Ejercicio 3: Clonando un Repositorio Existente</h2>
+
+            <p class="objetivo">
+                <strong>Objetivo:</strong> Aprender a clonar repositorios de GitHub y trabajar en proyectos existentes.
+            </p>
+
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ol>
+                    <li>Clona un repositorio público de GitHub (ej: un proyecto de tutorial)</li>
+                    <li>Explora la estructura del proyecto</li>
+                    <li>Ve la historia de commits</li>
+                    <li>Identifica quién hizo el último commit</li>
+                    <li>Crea una nueva rama para experimentar</li>
+                    <li>Haz algunos cambios en tu rama</li>
+                    <li>Haz commit de tus cambios</li>
+                    <li>Vuelve a la rama principal sin perder tus cambios</li>
+                </ol>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Repositorio sugerido:</strong> Puedes clonar cualquier proyecto pequeño de GitHub, o incluso tu propio <code>mi-primer-repo</code> desde otra carpeta para practicar.
+            </div>
+
+            <div class="solucion">
+                <button class="solucion-toggle" onclick="toggleSolution(this)">Ver Solución 📖</button>
+                <div class="solucion-content">
+                    <pre>
+# 1. Clonar repositorio
+git clone https://github.com/usuario/proyecto.git
+cd proyecto
+
+# 2. Explorar estructura
+ls -la
+tree  # Si tienes tree instalado
+
+# 3. Ver historia
+git log --oneline --graph --all
+
+# 4. Ver último commit con autor
+git log -1
+git show HEAD
+
+# 5. Crear nueva rama
+git switch -c experimental
+# O con checkout:
+# git checkout -b experimental
+
+# 6-7. Hacer cambios y commit
+echo "# Experimento" >> NOTES.md
+git add NOTES.md
+git commit -m "Add experimental notes"
+
+# 8. Volver a rama principal
+git switch main
+# Tus cambios siguen en la rama 'experimental'
+
+# Verificar que estás en main
+git branch
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- EJERCICIO 4: INTERMEDIO -->
+        <div class="ejercicio">
+            <span class="nivel intermedio">Intermedio</span>
+            <h2>Ejercicio 4: Trabajando con Ramas (Branching)</h2>
+
+            <p class="objetivo">
+                <strong>Objetivo:</strong> Dominar el trabajo con múltiples ramas, merge y resolución de conflictos básicos.
+            </p>
+
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ol>
+                    <li>Crea un nuevo proyecto con Git</li>
+                    <li>Crea un archivo <code>app.js</code> con una función simple</li>
+                    <li>Haz commit en la rama <code>main</code></li>
+                    <li>Crea una rama <code>feature/add-logging</code></li>
+                    <li>En esta rama, agrega console.log dentro de la función</li>
+                    <li>Haz commit en la rama de feature</li>
+                    <li>Vuelve a <code>main</code> y crea otra rama <code>feature/add-validation</code></li>
+                    <li>En esta nueva rama, agrega validación de parámetros</li>
+                    <li>Fusiona <code>feature/add-logging</code> en <code>main</code></li>
+                    <li>Fusiona <code>feature/add-validation</code> en <code>main</code></li>
+                    <li>Verifica el resultado final con el grafo de commits</li>
+                </ol>
+            </div>
+
+            <div class="solucion">
+                <button class="solucion-toggle" onclick="toggleSolution(this)">Ver Solución 📖</button>
+                <div class="solucion-content">
+                    <pre>
+# 1-2. Crear proyecto
+mkdir proyecto-ramas && cd proyecto-ramas
+git init
+
+cat > app.js << EOF
+function saludar(nombre) {
+    return "Hola " + nombre;
+}
+EOF
+
+# 3. Commit inicial
+git add app.js
+git commit -m "Add saludar function"
+
+# 4-5. Rama de logging
+git switch -c feature/add-logging
+
+cat > app.js << EOF
+function saludar(nombre) {
+    console.log("Función saludar llamada");
+    return "Hola " + nombre;
+}
+EOF
+
+# 6. Commit de logging
+git add app.js
+git commit -m "Add logging to saludar function"
+
+# 7-8. Rama de validación
+git switch main
+git switch -c feature/add-validation
+
+cat > app.js << EOF
+function saludar(nombre) {
+    if (!nombre) {
+        throw new Error("Nombre es requerido");
+    }
+    return "Hola " + nombre;
+}
+EOF
+
+git add app.js
+git commit -m "Add validation to saludar function"
+
+# 9. Merge logging
+git switch main
+git merge feature/add-logging
+
+# 10. Merge validation (habrá conflicto!)
+git merge feature/add-validation
+
+# Git mostrará conflicto - debes editarlo manualmente
+# El archivo tendrá marcadores <<<<<<< ======= >>>>>>>
+# Edita app.js para combinar ambas features:
+
+cat > app.js << EOF
+function saludar(nombre) {
+    if (!nombre) {
+        throw new Error("Nombre es requerido");
+    }
+    console.log("Función saludar llamada");
+    return "Hola " + nombre;
+}
+EOF
+
+git add app.js
+git commit -m "Merge validation feature"
+
+# 11. Ver resultado
+git log --oneline --graph --all
+                    </pre>
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Conflictos:</strong> Cuando dos ramas modifican las mismas líneas, Git no sabe cuál elegir. Debes resolver manualmente editando el archivo.
+            </div>
+        </div>
+
+        <!-- EJERCICIO 5: INTERMEDIO -->
+        <div class="ejercicio">
+            <span class="nivel intermedio">Intermedio</span>
+            <h2>Ejercicio 5: Stash - Guardar Trabajo Temporal</h2>
+
+            <p class="objetivo">
+                <strong>Objetivo:</strong> Aprender a usar git stash para guardar trabajo temporal y cambiar de contexto rápidamente.
+            </p>
+
+            <div class="instrucciones">
+                <strong>Escenario:</strong>
+                <p>Estás trabajando en una feature pero necesitas urgentemente hacer un bugfix en otra rama.</p>
+
+                <strong>Tareas:</strong>
+                <ol>
+                    <li>Crea un proyecto y haz algunos commits</li>
+                    <li>Empieza a trabajar en <code>feature.js</code> pero NO hagas commit</li>
+                    <li>Verifica con <code>git status</code> que tienes cambios sin commit</li>
+                    <li>Guarda esos cambios en stash</li>
+                    <li>Verifica que tu working directory está limpio</li>
+                    <li>Crea una nueva rama <code>hotfix/bug-123</code></li>
+                    <li>Haz el "bugfix" y commit</li>
+                    <li>Vuelve a tu rama original</li>
+                    <li>Recupera tus cambios del stash</li>
+                    <li>Continúa trabajando y haz commit final</li>
+                </ol>
+            </div>
+
+            <div class="solucion">
+                <button class="solucion-toggle" onclick="toggleSolution(this)">Ver Solución 📖</button>
+                <div class="solucion-content">
+                    <pre>
+# 1. Proyecto inicial
+mkdir proyecto-stash && cd proyecto-stash
+git init
+
+echo "console.log('App iniciada');" > app.js
+git add app.js
+git commit -m "Initial app"
+
+# 2. Empezar feature (sin commit)
+echo "function nuevaFeature() {" > feature.js
+echo "  // trabajo en progreso..." >> feature.js
+echo "}" >> feature.js
+
+# 3. Ver cambios
+git status  # Verás feature.js como untracked
+
+git add feature.js
+git status  # Ahora está en staging pero no commiteado
+
+# 4. Guardar en stash
+git stash save "WIP: nueva feature en progreso"
+
+# 5. Verificar limpio
+git status  # Should be clean
+
+# 6. Hotfix
+git switch -c hotfix/bug-123
+
+echo "// Bugfix aplicado" >> app.js
+git add app.js
+git commit -m "Fix: resolve bug 123"
+
+# 7. Volver a rama anterior
+git switch main
+
+# 8. Recuperar stash
+git stash list  # Ver stashes disponibles
+git stash pop   # Aplica y elimina el stash
+
+# 9. Verificar y continuar
+git status  # feature.js debe estar de vuelta
+cat feature.js
+
+# Completar feature
+echo "  return 'Feature completa';" >> feature.js
+git add feature.js
+git commit -m "Add nueva feature"
+
+# Ver stashes (debe estar vacío)
+git stash list
+                    </pre>
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Diferencia:</strong> <code>git stash pop</code> aplica Y elimina el stash. <code>git stash apply</code> solo aplica pero lo mantiene por si quieres usarlo nuevamente.
+            </div>
+        </div>
+
+        <!-- EJERCICIO 6: INTERMEDIO -->
+        <div class="ejercicio">
+            <span class="nivel intermedio">Intermedio</span>
+            <h2>Ejercicio 6: Deshacer Cambios (Reset y Revert)</h2>
+
+            <p class="objetivo">
+                <strong>Objetivo:</strong> Aprender las diferentes formas de deshacer commits y cambios en Git.
+            </p>
+
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ol>
+                    <li>Crea un proyecto con varios commits (mínimo 5)</li>
+                    <li>Usa <code>git reset --soft HEAD~1</code> para deshacer el último commit (cambios quedan en staging)</li>
+                    <li>Vuelve a hacer commit</li>
+                    <li>Usa <code>git reset --mixed HEAD~1</code> para deshacer commit (cambios sin staging)</li>
+                    <li>Vuelve a hacer commit</li>
+                    <li>Crea un commit "malo" que quieras deshacer</li>
+                    <li>Usa <code>git revert HEAD</code> para revertirlo (crea nuevo commit)</li>
+                    <li>Ve el log y compara <code>reset</code> vs <code>revert</code></li>
+                </ol>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ CUIDADO:</strong> NUNCA uses <code>git reset --hard</code> en commits que ya pusheaste. Usa <code>git revert</code> para historia compartida.
+            </div>
+
+            <div class="solucion">
+                <button class="solucion-toggle" onclick="toggleSolution(this)">Ver Solución 📖</button>
+                <div class="solucion-content">
+                    <pre>
+# 1. Crear proyecto con commits
+mkdir proyecto-undo && cd proyecto-undo
+git init
+
+for i in {1..5}; do
+  echo "Versión $i" > file$i.txt
+  git add file$i.txt
+  git commit -m "Add file $i"
+done
+
+git log --oneline  # Ver los 5 commits
+
+# 2. Reset soft (deshace commit, cambios en staging)
+echo "Extra content" >> file5.txt
+git add file5.txt
+git commit -m "Update file5"
+
+git log --oneline
+git reset --soft HEAD~1
+
+git status  # file5.txt modificado y en staging
+git log --oneline  # Commit desaparecido
+
+# 3. Volver a commit
+git commit -m "Update file5 (re-committed)"
+
+# 4. Reset mixed (deshace commit, cambios SIN staging)
+echo "More content" >> file5.txt
+git add file5.txt
+git commit -m "Update file5 again"
+
+git reset --mixed HEAD~1  # o simplemente: git reset HEAD~1
+
+git status  # file5.txt modificado pero NO en staging
+
+# 5. Volver a commit
+git add file5.txt
+git commit -m "Update file5 (re-committed again)"
+
+# 6. Commit "malo"
+echo "BUG INTRODUCIDO" > bug.txt
+git add bug.txt
+git commit -m "Add bug (OOPS)"
+
+# 7. Revertir de forma segura
+git revert HEAD
+# Se abrirá editor para mensaje de commit
+# Guarda y cierra
+
+# 8. Ver diferencia
+git log --oneline
+# Verás que revert CREÓ un nuevo commit
+# El commit malo sigue en la historia
+
+# Comparar:
+echo "RESET: Reescribe historia (peligroso si ya se pusheó)"
+echo "REVERT: Crea nuevo commit que deshace cambios (seguro)"
+                    </pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- EJERCICIO 7: AVANZADO -->
+        <div class="ejercicio">
+            <span class="nivel avanzado">Avanzado</span>
+            <h2>Ejercicio 7: Rebase Interactivo - Limpiando Historia</h2>
+
+            <p class="objetivo">
+                <strong>Objetivo:</strong> Usar rebase interactivo para limpiar, reorganizar y combinar commits antes de push.
+            </p>
+
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ol>
+                    <li>Crea un proyecto y haz 5 commits "sucios" (con typos en mensajes, pequeños cambios)</li>
+                    <li>Usa <code>git rebase -i HEAD~5</code> para entrar en modo interactivo</li>
+                    <li>Reordena algunos commits</li>
+                    <li>Combina (squash) 2-3 commits en uno solo</li>
+                    <li>Edita el mensaje de un commit (reword)</li>
+                    <li>Verifica la historia limpia final</li>
+                </ol>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ IMPORTANTE:</strong> Solo usa rebase interactivo en commits que NO has pusheado. NUNCA reescribas historia pública.
+            </div>
+
+            <div class="solucion">
+                <button class="solucion-toggle" onclick="toggleSolution(this)">Ver Solución 📖</button>
+                <div class="solucion-content">
+                    <pre>
+# 1. Crear commits "sucios"
+mkdir proyecto-rebase && cd proyecto-rebase
+git init
+
+echo "Feature parte 1" > feature.js
+git add feature.js
+git commit -m "add feture"  # Typo intencional
+
+echo "Feature parte 2" >> feature.js
+git add feature.js
+git commit -m "continuar feature"
+
+echo "Feature parte 3" >> feature.js
+git add feature.js
+git commit -m "mas trabajo en feature"
+
+echo "// fix typo" >> feature.js
+git add feature.js
+git commit -m "fix"
+
+echo "Feature completa" >> feature.js
+git add feature.js
+git commit -m "feature terminada"
+
+git log --oneline  # Ver los 5 commits sucios
+
+# 2. Rebase interactivo
+git rebase -i HEAD~5
+
+# Se abrirá tu editor con algo como:
+# pick abc1234 add feture
+# pick def5678 continuar feature
+# pick ghi9012 mas trabajo en feature
+# pick jkl3456 fix
+# pick mno7890 feature terminada
+
+# 3-4-5. Edita para:
+# pick abc1234 add feture
+# reword abc1234  # Cambiar a "reword" para editar mensaje
+# squash def5678 continuar feature  # Cambiar a "squash" para combinar
+# squash ghi9012 mas trabajo en feature  # Cambiar a "squash"
+# squash jkl3456 fix  # Cambiar a "squash"
+# pick mno7890 feature terminada
+
+# O reorganizar:
+# pick abc1234 add feture
+# pick mno7890 feature terminada
+# squash def5678 continuar feature
+# squash ghi9012 mas trabajo en feature
+# squash jkl3456 fix
+
+# Guarda y cierra el editor
+# Se abrirá otro editor para editar el mensaje del commit combinado
+# Escribe un mensaje limpio: "Add complete feature"
+
+# 6. Verificar resultado
+git log --oneline
+# Deberías tener solo 2 commits limpios en vez de 5 sucios
+
+# Ver detalles
+git log
+                    </pre>
+                    <p style="margin-top: 15px; color: #b0b0b0;">
+                        <strong>Comandos de rebase interactivo:</strong><br>
+                        - <code>pick</code>: Usar el commit tal cual<br>
+                        - <code>reword</code>: Cambiar el mensaje del commit<br>
+                        - <code>edit</code>: Editar el commit (cambiar archivos)<br>
+                        - <code>squash</code>: Combinar con el commit anterior<br>
+                        - <code>fixup</code>: Como squash pero descarta el mensaje<br>
+                        - <code>drop</code>: Eliminar el commit
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- EJERCICIO 8: AVANZADO -->
+        <div class="ejercicio">
+            <span class="nivel avanzado">Avanzado</span>
+            <h2>Ejercicio 8: Cherry-Pick - Selección Específica de Commits</h2>
+
+            <p class="objetivo">
+                <strong>Objetivo:</strong> Aprender a aplicar commits específicos de una rama a otra sin hacer merge completo.
+            </p>
+
+            <div class="instrucciones">
+                <strong>Escenario:</strong>
+                <p>Tienes una rama <code>develop</code> con varios commits, pero solo quieres uno específico en <code>main</code>.</p>
+
+                <strong>Tareas:</strong>
+                <ol>
+                    <li>Crea un proyecto con rama <code>main</code></li>
+                    <li>Crea rama <code>develop</code> con 5 commits diferentes</li>
+                    <li>Identifica el hash de un commit específico que quieres en <code>main</code></li>
+                    <li>Vuelve a <code>main</code></li>
+                    <li>Usa <code>git cherry-pick</code> para traer ese commit</li>
+                    <li>Verifica que solo ese commit se aplicó</li>
+                </ol>
+            </div>
+
+            <div class="solucion">
+                <button class="solucion-toggle" onclick="toggleSolution(this)">Ver Solución 📖</button>
+                <div class="solucion-content">
+                    <pre>
+# 1-2. Crear proyecto y rama develop
+mkdir proyecto-cherry && cd proyecto-cherry
+git init
+
+echo "Initial" > main.txt
+git add main.txt
+git commit -m "Initial commit in main"
+
+git switch -c develop
+
+# Crear 5 commits en develop
+echo "Feature A" > featureA.txt
+git add featureA.txt
+git commit -m "Add feature A"
+
+echo "Feature B" > featureB.txt
+git add featureB.txt
+git commit -m "Add feature B"
+
+echo "Bugfix importante" > bugfix.txt
+git add bugfix.txt
+git commit -m "Fix critical bug"  # Este queremos en main
+
+echo "Feature C" > featureC.txt
+git add featureC.txt
+git commit -m "Add feature C"
+
+echo "Experimental" > experimental.txt
+git add experimental.txt
+git commit -m "Add experimental feature"
+
+# 3. Ver historia y copiar hash del bugfix
+git log --oneline
+# Ejemplo output:
+# abc1234 Add experimental feature
+# def5678 Add feature C
+# ghi9012 Fix critical bug  ← Este queremos
+# jkl3456 Add feature B
+# mno7890 Add feature A
+
+# 4. Volver a main
+git switch main
+
+# Ver estado actual de main
+ls  # Solo debe tener main.txt
+
+# 5. Cherry-pick del bugfix (usa el hash real)
+git cherry-pick ghi9012
+
+# 6. Verificar
+ls  # Ahora debe tener main.txt Y bugfix.txt
+git log --oneline  # Debe mostrar el commit del bugfix
+
+# Verificar que NO tiene feature A, B, C, ni experimental
+ls -la
+# Solo debe haber: main.txt y bugfix.txt
+
+# Ver diferencia entre las ramas
+git log --oneline --graph --all
+                    </pre>
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Uso común:</strong> Cherry-pick es útil cuando quieres un bugfix específico de una rama de desarrollo sin traer todas las features incompletas.
+            </div>
+        </div>
+
+        <!-- EJERCICIO 9: EXPERTO -->
+        <div class="ejercicio">
+            <span class="nivel experto">Experto</span>
+            <h2>Ejercicio 9: Proyecto Completo con GitHub Flow</h2>
+
+            <p class="objetivo">
+                <strong>Objetivo:</strong> Simular un flujo de trabajo profesional completo: feature branches, pull requests, code review, merge.
+            </p>
+
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ol>
+                    <li>Crea un repositorio en GitHub llamado <code>practica-workflow</code></li>
+                    <li>Clona el repo y crea estructura básica (README, src/, docs/)</li>
+                    <li>Haz push del commit inicial</li>
+                    <li>Crea rama <code>feature/user-authentication</code></li>
+                    <li>Implementa la "feature" (puedes simular con archivos de texto)</li>
+                    <li>Haz varios commits con mensajes descriptivos</li>
+                    <li>Push de tu feature branch a GitHub</li>
+                    <li>Crea un Pull Request desde GitHub</li>
+                    <li>Simula "code review" agregando comentarios</li>
+                    <li>Haz cambios basados en el review</li>
+                    <li>Merge el PR desde GitHub</li>
+                    <li>Sincroniza tu main local</li>
+                    <li>Elimina la rama local y remota</li>
+                </ol>
+            </div>
+
+            <div class="tip">
+                <strong>💡 GitHub Flow:</strong> Este es el workflow usado por millones de desarrolladores: main siempre estable, features en ramas, PRs para code review, merge solo después de aprobación.
+            </div>
+
+            <div class="solucion">
+                <button class="solucion-toggle" onclick="toggleSolution(this)">Ver Solución 📖</button>
+                <div class="solucion-content">
+                    <pre>
+# 1-2. Crear repo en GitHub (hazlo desde la web)
+# Luego clona:
+git clone https://github.com/TU-USUARIO/practica-workflow.git
+cd practica-workflow
+
+# Crear estructura
+mkdir src docs
+echo "# Practica Workflow" > README.md
+echo "Proyecto para practicar Git y GitHub" >> README.md
+
+echo "// Main app" > src/app.js
+echo "# Documentation" > docs/README.md
+
+# 3. Push inicial
+git add .
+git commit -m "Initial project structure"
+git push origin main
+
+# 4. Crear feature branch
+git switch -c feature/user-authentication
+
+# 5-6. Implementar feature
+echo "// User authentication module" > src/auth.js
+echo "function login(username, password) {" >> src/auth.js
+echo "  // Implementation here" >> src/auth.js
+echo "}" >> src/auth.js
+
+git add src/auth.js
+git commit -m "Add auth module skeleton"
+
+echo "function validateCredentials(user, pass) {" >> src/auth.js
+echo "  return user && pass;" >> src/auth.js
+echo "}" >> src/auth.js
+
+git add src/auth.js
+git commit -m "Add credential validation"
+
+echo "# Authentication" > docs/auth.md
+echo "How to use the auth module" >> docs/auth.md
+
+git add docs/auth.md
+git commit -m "Add authentication documentation"
+
+# 7. Push feature branch
+git push -u origin feature/user-authentication
+
+# 8-9. Crear PR en GitHub:
+# Opción 1: Desde la web de GitHub, click en "Compare & pull request"
+# Opción 2: Usar GitHub CLI:
+gh pr create --title "Add user authentication" --body "Implements basic user authentication with validation"
+
+# 10. Hacer cambios basados en review
+echo "// Add error handling" >> src/auth.js
+git add src/auth.js
+git commit -m "Add error handling per code review"
+git push
+
+# 11. Merge PR desde GitHub (botón "Merge pull request")
+# O con CLI:
+gh pr merge --squash
+
+# 12. Sincronizar main local
+git switch main
+git pull origin main
+
+# 13. Eliminar ramas
+git branch -d feature/user-authentication  # Local
+git push origin --delete feature/user-authentication  # Remota
+
+# Verificar limpieza
+git branch -a  # Solo debe aparecer main
+                    </pre>
+                </div>
+            </div>
+
+            <div class="warning">
+                <strong>✅ Checklist de buenas prácticas:</strong>
+                <ul class="checklist">
+                    <li>Mensajes de commit descriptivos y en presente</li>
+                    <li>Commits atómicos (un cambio lógico por commit)</li>
+                    <li>Feature branches con nombres descriptivos</li>
+                    <li>Pull Requests con descripción clara</li>
+                    <li>Code review antes de merge</li>
+                    <li>Tests pasan antes de merge (en proyectos reales)</li>
+                    <li>Main siempre en estado deployable</li>
+                    <li>Eliminar branches después de merge</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- EJERCICIO 10: EXPERTO -->
+        <div class="ejercicio">
+            <span class="nivel experto">Experto</span>
+            <h2>Ejercicio 10: Rescate de Emergencia - Recuperando Commits Perdidos</h2>
+
+            <p class="objetivo">
+                <strong>Objetivo:</strong> Aprender a recuperar trabajo "perdido" usando reflog y técnicas avanzadas de Git.
+            </p>
+
+            <div class="instrucciones">
+                <strong>Escenario del desastre:</strong>
+                <p>Hiciste un <code>git reset --hard</code> por error y "perdiste" commits importantes. ¡Pánico!</p>
+
+                <strong>Tareas:</strong>
+                <ol>
+                    <li>Crea un proyecto con varios commits valiosos</li>
+                    <li>Haz un <code>git reset --hard HEAD~3</code> (simular desastre)</li>
+                    <li>Verifica con <code>git log</code> que "perdiste" commits</li>
+                    <li>Usa <code>git reflog</code> para encontrar los commits perdidos</li>
+                    <li>Recupera los commits usando <code>git reset</code> al hash correcto</li>
+                    <li>Verifica que todo está recuperado</li>
+                    <li>BONUS: Crea un branch desde un commit "perdido"</li>
+                </ol>
+            </div>
+
+            <div class="solucion">
+                <button class="solucion-toggle" onclick="toggleSolution(this)">Ver Solución 📖</button>
+                <div class="solucion-content">
+                    <pre>
+# 1. Crear proyecto con commits valiosos
+mkdir proyecto-rescate && cd proyecto-rescate
+git init
+
+for i in {1..5}; do
+  echo "Trabajo importante $i" > file$i.txt
+  git add file$i.txt
+  git commit -m "Commit valioso $i"
+done
+
+git log --oneline
+# abc1234 Commit valioso 5
+# def5678 Commit valioso 4
+# ghi9012 Commit valioso 3
+# jkl3456 Commit valioso 2
+# mno7890 Commit valioso 1
+
+# 2. DESASTRE: Reset hard borrando 3 commits
+git reset --hard HEAD~3
+
+# 3. Ver el desastre
+git log --oneline
+# jkl3456 Commit valioso 2
+# mno7890 Commit valioso 1
+# ¡Perdimos los commits 3, 4 y 5!
+
+ls  # Solo file1.txt y file2.txt
+
+# 4. RESCATE: Usar reflog
+git reflog
+# Verás TODOS los movimientos de HEAD:
+# jkl3456 HEAD@{0}: reset: moving to HEAD~3
+# abc1234 HEAD@{1}: commit: Commit valioso 5
+# def5678 HEAD@{2}: commit: Commit valioso 4
+# ghi9012 HEAD@{3}: commit: Commit valioso 3
+# ...
+
+# Identificar el hash del commit que queremos recuperar
+# En este caso: abc1234 (Commit valioso 5)
+
+# 5. Recuperar
+git reset --hard abc1234
+# O usando la referencia de reflog:
+# git reset --hard HEAD@{1}
+
+# 6. Verificar recuperación
+git log --oneline  # ¡Todos los commits de vuelta!
+ls  # Todos los archivos de vuelta
+
+# 7. BONUS: Crear branch desde commit "perdido"
+# Incluso si no haces reset, puedes crear branch:
+git branch rescatado HEAD@{1}
+git switch rescatado
+
+# Ver que estamos en el lugar correcto
+git log --oneline
+                    </pre>
+                </div>
+            </div>
+
+            <div class="tip">
+                <strong>💡 Salvavidas de Git:</strong> Git casi NUNCA pierde datos realmente. Los commits "perdidos" siguen en el repositorio por ~30 días. Reflog es tu salvavidas para recuperarlos.
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Limitación:</strong> Reflog solo funciona para commits que hiciste localmente. Si borraste algo antes de hacer commit, no hay forma de recuperarlo.
+            </div>
+        </div>
+
+        <a href="index.html" class="back-button">← Volver a Git & GitHub</a>
+    </div>
+
+    <script>
+        function toggleSolution(button) {
+            const content = button.nextElementSibling;
+            content.classList.toggle('active');
+
+            if (content.classList.contains('active')) {
+                button.textContent = 'Ocultar Solución 🙈';
+            } else {
+                button.textContent = 'Ver Solución 📖';
+            }
+        }
+    </script>
+</body>
+</html>

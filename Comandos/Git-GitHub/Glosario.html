@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glosario - Git & GitHub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #f05032 0%, #ff6b47 100%);
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .breadcrumb {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            border-left: 4px solid #f05032;
+        }
+
+        .breadcrumb a {
+            color: #f05032;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 15px 20px;
+            background: #1a1a1a;
+            border: 2px solid #2a2a2a;
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #f05032;
+        }
+
+        .category-section {
+            margin-bottom: 50px;
+        }
+
+        .category-title {
+            font-size: 1.8em;
+            color: #f05032;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2a2a2a;
+        }
+
+        .termino {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-left: 4px solid #f05032;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .termino:hover {
+            border-left-width: 8px;
+            transform: translateX(5px);
+            box-shadow: 0 4px 20px rgba(240, 80, 50, 0.2);
+        }
+
+        .comando {
+            font-family: 'Courier New', monospace;
+            font-size: 1.3em;
+            color: #f05032;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .descripcion {
+            color: #b0b0b0;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+
+        .ejemplo {
+            background: #0a0a0a;
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            color: #2ecc71;
+            overflow-x: auto;
+        }
+
+        .ejemplo::before {
+            content: '$ ';
+            color: #f05032;
+            font-weight: bold;
+        }
+
+        .nota {
+            background: #1a1a0f;
+            border-left: 3px solid #f39c12;
+            padding: 12px 15px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .nota strong {
+            color: #f39c12;
+        }
+
+        .categoria-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-right: 8px;
+            font-weight: 600;
+        }
+
+        .badge-basico { background: #2ecc71; color: #0f0f0f; }
+        .badge-ramas { background: #3498db; color: #fff; }
+        .badge-remoto { background: #9b59b6; color: #fff; }
+        .badge-avanzado { background: #e74c3c; color: #fff; }
+        .badge-inspeccion { background: #f39c12; color: #0f0f0f; }
+        .badge-github { background: #24292e; color: #fff; border: 1px solid #f05032; }
+        .badge-mantenimiento { background: #34495e; color: #fff; }
+
+        .opciones {
+            background: #151515;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 6px;
+            border: 1px solid #2a2a2a;
+        }
+
+        .opciones h4 {
+            color: #f05032;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .opciones ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .opciones li {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .opciones li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #f05032;
+        }
+
+        .opciones code {
+            background: #0a0a0a;
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #2ecc71;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: #f05032;
+            color: #fff;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin: 30px 0;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #d64527;
+            transform: translateY(-2px);
+        }
+
+        /* Category Navigation */
+        .category-nav {
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            background: #1a1a1a;
+            border-bottom: 1px solid #2a2a2a;
+            padding: 10px 0;
+            overflow-x: auto;
+            white-space: nowrap;
+            margin-bottom: 30px;
+        }
+
+        .category-nav::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .category-nav::-webkit-scrollbar-thumb {
+            background: #f05032;
+            border-radius: 3px;
+        }
+
+        .category-nav-links {
+            display: flex;
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .category-nav-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 0.85em;
+            transition: color 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 6px;
+            white-space: nowrap;
+        }
+
+        .category-nav-links a:hover {
+            color: #f05032;
+            background: rgba(240, 80, 50, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .category-nav-links {
+                padding: 0 10px;
+                gap: 10px;
+            }
+
+            .category-nav-links a {
+                font-size: 0.8em;
+                padding: 6px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📦 Glosario de Git & GitHub</h1>
+            <p class="subtitle">45 comandos esenciales para control de versiones y colaboración</p>
+        </header>
+
+        <div class="breadcrumb">
+            <a href="../../index.html">← Inicio</a> /
+            <a href="../index.html">Comandos</a> /
+            <a href="index.html">Git & GitHub</a> /
+            <span>Glosario</span>
+        </div>
+
+        <div class="search-container">
+            <input
+                type="text"
+                class="search-box"
+                id="searchBox"
+                placeholder="Buscar comando (ej: commit, branch, push)..."
+            >
+        </div>
+
+        <!-- Category Navigation -->
+        <nav class="category-nav">
+            <div class="category-nav-links">
+                <a href="#basicos">📦 Básicos</a>
+                <a href="#ramas">🌿 Ramas</a>
+                <a href="#remotos">🌐 Remotos</a>
+                <a href="#avanzados">⚡ Avanzados</a>
+                <a href="#inspeccion">🔍 Inspección</a>
+                <a href="#mantenimiento">🧹 Mantenimiento</a>
+                <a href="#github">🐙 GitHub CLI</a>
+            </div>
+        </nav>
+
+        <div id="terminos">
+            <!-- COMANDOS BÁSICOS -->
+            <div id="basicos" class="category-section">
+                <h2 class="category-title">Comandos Básicos</h2>
+
+                <div class="termino" data-tags="init inicializar repositorio nuevo crear">
+                    <span class="categoria-badge badge-basico">Básico</span>
+                    <div class="comando">git init</div>
+                    <p class="descripcion">
+                        Inicializa un nuevo repositorio Git en el directorio actual. Crea la carpeta oculta <code>.git</code> que contiene toda la historia y configuración del repositorio.
+                    </p>
+                    <div class="ejemplo">git init</div>
+                    <div class="ejemplo">git init mi-proyecto</div>
+                    <div class="nota">
+                        <strong>💡 Tip:</strong> Usa <code>git init</code> solo UNA VEZ al empezar un proyecto nuevo. Si clonas un repo existente, NO necesitas init.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="clone clonar descargar repositorio remoto copiar">
+                    <span class="categoria-badge badge-basico">Básico</span>
+                    <div class="comando">git clone &lt;url&gt;</div>
+                    <p class="descripcion">
+                        Descarga una copia completa de un repositorio remoto (GitHub, GitLab, etc.) a tu máquina local, incluyendo toda la historia de commits.
+                    </p>
+                    <div class="ejemplo">git clone https://github.com/usuario/repo.git</div>
+                    <div class="ejemplo">git clone https://github.com/usuario/repo.git mi-carpeta</div>
+                    <div class="nota">
+                        <strong>💡 Tip:</strong> Clona con HTTPS si eres principiante, o con SSH si ya configuraste tus claves SSH.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="status estado ver cambios archivos modificados">
+                    <span class="categoria-badge badge-basico">Básico</span>
+                    <div class="comando">git status</div>
+                    <p class="descripcion">
+                        Muestra el estado actual del repositorio: archivos modificados, archivos en staging area, archivos sin seguimiento (untracked), y rama actual.
+                    </p>
+                    <div class="ejemplo">git status</div>
+                    <div class="ejemplo">git status -s  # Formato corto/compacto</div>
+                    <div class="nota">
+                        <strong>💡 Tip:</strong> Ejecuta <code>git status</code> CONSTANTEMENTE. Es el comando más usado - te dice exactamente qué está pasando.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="add agregar staging area preparar commit">
+                    <span class="categoria-badge badge-basico">Básico</span>
+                    <div class="comando">git add &lt;archivo&gt;</div>
+                    <p class="descripcion">
+                        Agrega archivos al staging area (área de preparación) para ser incluidos en el próximo commit.
+                    </p>
+                    <div class="ejemplo">git add archivo.txt</div>
+                    <div class="ejemplo">git add .</div>
+                    <div class="ejemplo">git add src/</div>
+                    <div class="opciones">
+                        <h4>Opciones comunes:</h4>
+                        <ul>
+                            <li><code>git add .</code> - Agrega TODOS los archivos del directorio actual</li>
+                            <li><code>git add -A</code> - Agrega todos los archivos del repositorio completo</li>
+                            <li><code>git add *.js</code> - Agrega todos los archivos JavaScript</li>
+                            <li><code>git add -p</code> - Modo interactivo (agrega cambios parciales)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="commit guardar snapshot cambios mensaje history">
+                    <span class="categoria-badge badge-basico">Básico</span>
+                    <div class="comando">git commit -m "&lt;mensaje&gt;"</div>
+                    <p class="descripcion">
+                        Guarda permanentemente los cambios del staging area en la historia del repositorio con un mensaje descriptivo.
+                    </p>
+                    <div class="ejemplo">git commit -m "Add login functionality"</div>
+                    <div class="ejemplo">git commit -m "Fix: resolve authentication bug"</div>
+                    <div class="opciones">
+                        <h4>Opciones importantes:</h4>
+                        <ul>
+                            <li><code>git commit -a -m "..."</code> - Add + Commit (solo archivos ya rastreados)</li>
+                            <li><code>git commit --amend</code> - Modificar el último commit</li>
+                            <li><code>git commit -m "Título" -m "Descripción"</code> - Commit con cuerpo</li>
+                        </ul>
+                    </div>
+                    <div class="nota">
+                        <strong>💡 Buenas prácticas:</strong> Escribe mensajes claros en presente: "Add feature" no "Added feature". Usa prefijos: "feat:", "fix:", "docs:", "refactor:".
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="pull traer descargar cambios remotos sincronizar actualizar">
+                    <span class="categoria-badge badge-basico">Básico</span>
+                    <div class="comando">git pull</div>
+                    <p class="descripcion">
+                        Descarga cambios del repositorio remoto y los fusiona automáticamente con tu rama local actual. Es equivalente a <code>git fetch + git merge</code>.
+                    </p>
+                    <div class="ejemplo">git pull</div>
+                    <div class="ejemplo">git pull origin main</div>
+                    <div class="ejemplo">git pull --rebase  # Rebase en lugar de merge</div>
+                    <div class="nota">
+                        <strong>⚠️ Advertencia:</strong> Ejecuta <code>git pull</code> ANTES de empezar a trabajar cada día para obtener los cambios más recientes del equipo.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="push subir enviar publicar cambios remoto github">
+                    <span class="categoria-badge badge-basico">Básico</span>
+                    <div class="comando">git push</div>
+                    <p class="descripcion">
+                        Envía tus commits locales al repositorio remoto (GitHub, GitLab, etc.), compartiendo tus cambios con el equipo.
+                    </p>
+                    <div class="ejemplo">git push</div>
+                    <div class="ejemplo">git push origin main</div>
+                    <div class="ejemplo">git push -u origin nueva-rama  # Primera vez, establece tracking</div>
+                    <div class="opciones">
+                        <h4>Opciones importantes:</h4>
+                        <ul>
+                            <li><code>git push -u origin rama</code> - Establece upstream (solo primera vez)</li>
+                            <li><code>git push --force</code> - ⚠️ Sobrescribe historia remota (PELIGROSO)</li>
+                            <li><code>git push --tags</code> - Sube todos los tags</li>
+                        </ul>
+                    </div>
+                    <div class="nota">
+                        <strong>⚠️ NUNCA uses --force en main/master compartida.</strong> Solo en tus ramas personales si es absolutamente necesario.
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMANDOS DE RAMAS -->
+            <div id="ramas" class="category-section">
+                <h2 class="category-title">Gestión de Ramas (Branches)</h2>
+
+                <div class="termino" data-tags="branch rama crear listar ver branches">
+                    <span class="categoria-badge badge-ramas">Ramas</span>
+                    <div class="comando">git branch</div>
+                    <p class="descripcion">
+                        Lista todas las ramas locales. Con argumentos, crea o elimina ramas. Las ramas permiten trabajar en features aisladas sin afectar la rama principal.
+                    </p>
+                    <div class="ejemplo">git branch  # Listar ramas</div>
+                    <div class="ejemplo">git branch nueva-feature  # Crear rama</div>
+                    <div class="ejemplo">git branch -d nombre-rama  # Eliminar rama</div>
+                    <div class="opciones">
+                        <h4>Opciones útiles:</h4>
+                        <ul>
+                            <li><code>git branch -a</code> - Ver TODAS las ramas (locales + remotas)</li>
+                            <li><code>git branch -m nuevo-nombre</code> - Renombrar rama actual</li>
+                            <li><code>git branch -D rama</code> - Forzar eliminación (aunque no esté merged)</li>
+                            <li><code>git branch -v</code> - Ver último commit de cada rama</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="switch cambiar rama checkout moverse">
+                    <span class="categoria-badge badge-ramas">Ramas</span>
+                    <div class="comando">git switch &lt;rama&gt;</div>
+                    <p class="descripcion">
+                        Cambia a otra rama existente. Es el comando moderno para cambiar de rama (antes se usaba <code>git checkout</code>).
+                    </p>
+                    <div class="ejemplo">git switch main</div>
+                    <div class="ejemplo">git switch -c nueva-feature  # Crear Y cambiar</div>
+                    <div class="ejemplo">git switch -  # Volver a rama anterior</div>
+                    <div class="nota">
+                        <strong>💡 Tip:</strong> <code>git switch</code> es más claro y seguro que <code>git checkout</code>. Úsalo siempre que puedas.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="checkout cambiar rama crear archivo restaurar">
+                    <span class="categoria-badge badge-ramas">Ramas</span>
+                    <div class="comando">git checkout &lt;rama&gt;</div>
+                    <p class="descripcion">
+                        Comando clásico multiuso: cambia de rama, crea ramas, o restaura archivos. Actualmente se recomienda <code>git switch</code> para ramas y <code>git restore</code> para archivos.
+                    </p>
+                    <div class="ejemplo">git checkout main</div>
+                    <div class="ejemplo">git checkout -b nueva-rama  # Crear Y cambiar</div>
+                    <div class="ejemplo">git checkout -- archivo.txt  # Descartar cambios locales</div>
+                    <div class="nota">
+                        <strong>💡 Modernización:</strong> <code>git switch</code> (ramas) + <code>git restore</code> (archivos) reemplazan funciones de checkout.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="merge fusionar integrar combinar ramas feature">
+                    <span class="categoria-badge badge-ramas">Ramas</span>
+                    <div class="comando">git merge &lt;rama&gt;</div>
+                    <p class="descripcion">
+                        Fusiona los cambios de otra rama en la rama actual. Integra el trabajo de features/fixes en la rama principal.
+                    </p>
+                    <div class="ejemplo">git switch main</div>
+                    <div class="ejemplo">git merge feature-login  # Fusiona feature-login en main</div>
+                    <div class="opciones">
+                        <h4>Opciones:</h4>
+                        <ul>
+                            <li><code>git merge --no-ff rama</code> - Siempre crear commit de merge</li>
+                            <li><code>git merge --squash rama</code> - Combinar todos los commits en uno</li>
+                            <li><code>git merge --abort</code> - Cancelar merge con conflictos</li>
+                        </ul>
+                    </div>
+                    <div class="nota">
+                        <strong>⚠️ Conflictos:</strong> Si hay conflictos, Git marca los archivos. Edítalos, haz <code>git add</code>, luego <code>git commit</code>.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="rebase reorganizar limpiar historia commits lineal">
+                    <span class="categoria-badge badge-avanzado">Avanzado</span>
+                    <div class="comando">git rebase &lt;rama&gt;</div>
+                    <p class="descripcion">
+                        Reaplica tus commits sobre otra rama, creando una historia lineal y limpia. Alternativa a <code>merge</code> que produce historia más clara.
+                    </p>
+                    <div class="ejemplo">git switch feature</div>
+                    <div class="ejemplo">git rebase main  # Reaplica feature sobre main actualizado</div>
+                    <div class="opciones">
+                        <h4>Opciones importantes:</h4>
+                        <ul>
+                            <li><code>git rebase -i HEAD~3</code> - Rebase interactivo (editar últimos 3 commits)</li>
+                            <li><code>git rebase --continue</code> - Continuar después de resolver conflictos</li>
+                            <li><code>git rebase --abort</code> - Cancelar rebase</li>
+                        </ul>
+                    </div>
+                    <div class="nota">
+                        <strong>⚠️ NUNCA rebases commits ya pusheados a ramas compartidas.</strong> Solo en tus ramas locales/personales.
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMANDOS REMOTOS -->
+            <div id="remotos" class="category-section">
+                <h2 class="category-title">Repositorios Remotos</h2>
+
+                <div class="termino" data-tags="fetch traer descargar cambios remotos sin merge actualizar">
+                    <span class="categoria-badge badge-remoto">Remoto</span>
+                    <div class="comando">git fetch</div>
+                    <p class="descripcion">
+                        Descarga cambios del repositorio remoto PERO NO los fusiona. Te permite revisar cambios antes de integrarlos.
+                    </p>
+                    <div class="ejemplo">git fetch</div>
+                    <div class="ejemplo">git fetch origin</div>
+                    <div class="ejemplo">git fetch --all  # De todos los remotos</div>
+                    <div class="nota">
+                        <strong>💡 Diferencia:</strong> <code>fetch</code> solo descarga, <code>pull</code> = fetch + merge automático.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="remote remoto ver agregar configurar github origin url">
+                    <span class="categoria-badge badge-remoto">Remoto</span>
+                    <div class="comando">git remote</div>
+                    <p class="descripcion">
+                        Gestiona conexiones a repositorios remotos (GitHub, GitLab). Lista, agrega, elimina o modifica remotos.
+                    </p>
+                    <div class="ejemplo">git remote  # Listar remotos</div>
+                    <div class="ejemplo">git remote -v  # Ver URLs</div>
+                    <div class="ejemplo">git remote add origin https://github.com/user/repo.git</div>
+                    <div class="ejemplo">git remote remove origin</div>
+                    <div class="nota">
+                        <strong>💡 Tip:</strong> <code>origin</code> es el nombre convencional del remoto principal. Puedes tener múltiples remotos.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="push subir force forzar sobrescribir historia reescribir">
+                    <span class="categoria-badge badge-remoto">Remoto</span>
+                    <div class="comando">git push --force</div>
+                    <p class="descripcion">
+                        Fuerza la subida de commits sobrescribiendo la historia remota. <strong>EXTREMADAMENTE PELIGROSO</strong> en ramas compartidas.
+                    </p>
+                    <div class="ejemplo">git push --force</div>
+                    <div class="ejemplo">git push --force-with-lease  # Más seguro</div>
+                    <div class="nota">
+                        <strong>⚠️ PELIGRO:</strong> NUNCA uses <code>--force</code> en main/master. Solo en tus ramas personales después de rebase/amend.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="pull rebase traer descargar sin merge lineal historia">
+                    <span class="categoria-badge badge-remoto">Remoto</span>
+                    <div class="comando">git pull --rebase</div>
+                    <p class="descripcion">
+                        Descarga cambios remotos y reaplica tus commits locales sobre ellos (en vez de hacer merge), manteniendo historia lineal.
+                    </p>
+                    <div class="ejemplo">git pull --rebase</div>
+                    <div class="ejemplo">git pull --rebase origin main</div>
+                    <div class="nota">
+                        <strong>💡 Tip:</strong> Prefiere <code>--rebase</code> para mantener historia limpia, especialmente si trabajas solo en la rama.
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMANDOS AVANZADOS -->
+            <div id="avanzados" class="category-section">
+                <h2 class="category-title">Comandos Avanzados</h2>
+
+                <div class="termino" data-tags="stash guardar temporal cambios wip work progress ocultar">
+                    <span class="categoria-badge badge-avanzado">Avanzado</span>
+                    <div class="comando">git stash</div>
+                    <p class="descripcion">
+                        Guarda temporalmente cambios no commiteados en un "stash" (escondite), dejando el directorio limpio. Útil para cambiar de rama rápidamente sin hacer commit.
+                    </p>
+                    <div class="ejemplo">git stash  # Guardar cambios</div>
+                    <div class="ejemplo">git stash list  # Ver stashes guardados</div>
+                    <div class="ejemplo">git stash pop  # Aplicar y eliminar último stash</div>
+                    <div class="ejemplo">git stash apply  # Aplicar sin eliminar</div>
+                    <div class="opciones">
+                        <h4>Opciones útiles:</h4>
+                        <ul>
+                            <li><code>git stash save "mensaje"</code> - Guardar con descripción</li>
+                            <li><code>git stash drop</code> - Eliminar último stash</li>
+                            <li><code>git stash clear</code> - Eliminar TODOS los stashes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="reset deshacer revertir commits head historia cambiar">
+                    <span class="categoria-badge badge-avanzado">Avanzado</span>
+                    <div class="comando">git reset</div>
+                    <p class="descripcion">
+                        Deshace commits moviendo el puntero HEAD. Tiene 3 modos: <code>--soft</code> (mantiene cambios en staging), <code>--mixed</code> (mantiene cambios sin staging), <code>--hard</code> (elimina TODO).
+                    </p>
+                    <div class="ejemplo">git reset HEAD~1  # Deshacer último commit (mantener cambios)</div>
+                    <div class="ejemplo">git reset --soft HEAD~1  # Commit vuelve a staging</div>
+                    <div class="ejemplo">git reset --hard HEAD~1  # ⚠️ Elimina commit Y cambios</div>
+                    <div class="nota">
+                        <strong>⚠️ CUIDADO:</strong> <code>--hard</code> ELIMINA cambios permanentemente. Úsalo solo si estás 100% seguro.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="restore restaurar descartar cambios archivo recuperar">
+                    <span class="categoria-badge badge-avanzado">Avanzado</span>
+                    <div class="comando">git restore &lt;archivo&gt;</div>
+                    <p class="descripcion">
+                        Descarta cambios en archivos específicos, restaurándolos al estado del último commit. Comando moderno que reemplaza <code>git checkout -- archivo</code>.
+                    </p>
+                    <div class="ejemplo">git restore archivo.txt  # Descartar cambios locales</div>
+                    <div class="ejemplo">git restore .  # Descartar TODOS los cambios</div>
+                    <div class="ejemplo">git restore --staged archivo.txt  # Quitar de staging</div>
+                    <div class="nota">
+                        <strong>⚠️ Advertencia:</strong> Los cambios descartados se pierden permanentemente. NO hay deshacer.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="tag etiqueta version release marcar commit versionar">
+                    <span class="categoria-badge badge-avanzado">Avanzado</span>
+                    <div class="comando">git tag &lt;nombre&gt;</div>
+                    <p class="descripcion">
+                        Crea etiquetas (tags) para marcar commits importantes, típicamente releases/versiones (v1.0, v2.0). Los tags son referencias permanentes.
+                    </p>
+                    <div class="ejemplo">git tag v1.0.0</div>
+                    <div class="ejemplo">git tag -a v1.0.0 -m "Release 1.0"  # Tag anotado</div>
+                    <div class="ejemplo">git push origin v1.0.0  # Subir tag</div>
+                    <div class="ejemplo">git push --tags  # Subir todos los tags</div>
+                    <div class="nota">
+                        <strong>💡 Tip:</strong> Usa semantic versioning: <code>v{MAJOR}.{MINOR}.{PATCH}</code> (ej: v2.3.1).
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="cherry-pick elegir commit copiar aplicar específico">
+                    <span class="categoria-badge badge-avanzado">Avanzado</span>
+                    <div class="comando">git cherry-pick &lt;commit&gt;</div>
+                    <p class="descripcion">
+                        Aplica un commit específico de otra rama a la rama actual, copiando ese cambio exacto.
+                    </p>
+                    <div class="ejemplo">git cherry-pick abc123  # Aplica commit abc123</div>
+                    <div class="ejemplo">git cherry-pick abc123 def456  # Múltiples commits</div>
+                    <div class="nota">
+                        <strong>💡 Uso común:</strong> Aplicar un bugfix de otra rama sin hacer merge completo.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="bisect buscar bug error commit encontrar binaria búsqueda">
+                    <span class="categoria-badge badge-avanzado">Avanzado</span>
+                    <div class="comando">git bisect</div>
+                    <p class="descripcion">
+                        Usa búsqueda binaria para encontrar qué commit introdujo un bug. Git divide la historia por mitades hasta encontrar el commit problemático.
+                    </p>
+                    <div class="ejemplo">git bisect start</div>
+                    <div class="ejemplo">git bisect bad  # Commit actual tiene bug</div>
+                    <div class="ejemplo">git bisect good abc123  # Commit abc123 estaba bien</div>
+                    <div class="ejemplo">git bisect reset  # Terminar bisect</div>
+                    <div class="nota">
+                        <strong>💡 Tip:</strong> Git irá commit por commit. Tú pruebas y dices "good" o "bad" hasta encontrar el culpable.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="revert deshacer commit seguro reversión crear nuevo">
+                    <span class="categoria-badge badge-avanzado">Avanzado</span>
+                    <div class="comando">git revert &lt;commit&gt;</div>
+                    <p class="descripcion">
+                        Deshace un commit creando un NUEVO commit que revierte los cambios. Es seguro para historia compartida (no reescribe historia).
+                    </p>
+                    <div class="ejemplo">git revert abc123  # Revierte commit abc123</div>
+                    <div class="ejemplo">git revert HEAD  # Revierte último commit</div>
+                    <div class="nota">
+                        <strong>💡 Diferencia:</strong> <code>revert</code> crea nuevo commit (seguro), <code>reset</code> reescribe historia (peligroso en remoto).
+                    </div>
+                </div>
+            </div>
+
+            <!-- COMANDOS DE INSPECCIÓN -->
+            <div id="inspeccion" class="category-section">
+                <h2 class="category-title">Inspección e Historia</h2>
+
+                <div class="termino" data-tags="log historia commits ver listar historial grafo">
+                    <span class="categoria-badge badge-inspeccion">Inspección</span>
+                    <div class="comando">git log</div>
+                    <p class="descripcion">
+                        Muestra la historia de commits del repositorio con detalles (autor, fecha, mensaje, hash).
+                    </p>
+                    <div class="ejemplo">git log</div>
+                    <div class="ejemplo">git log --oneline  # Formato compacto</div>
+                    <div class="ejemplo">git log --graph --all  # Grafo visual de todas las ramas</div>
+                    <div class="ejemplo">git log -n 5  # Últimos 5 commits</div>
+                    <div class="opciones">
+                        <h4>Opciones útiles:</h4>
+                        <ul>
+                            <li><code>git log --author="Juan"</code> - Commits de un autor</li>
+                            <li><code>git log --since="2 weeks ago"</code> - Commits recientes</li>
+                            <li><code>git log --stat</code> - Con estadísticas de cambios</li>
+                            <li><code>git log -p</code> - Con diff completo</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="diff diferencias cambios comparar ver modificaciones">
+                    <span class="categoria-badge badge-inspeccion">Inspección</span>
+                    <div class="comando">git diff</div>
+                    <p class="descripcion">
+                        Muestra diferencias entre versiones: working directory vs staging, staging vs último commit, entre commits, etc.
+                    </p>
+                    <div class="ejemplo">git diff  # Cambios no staged</div>
+                    <div class="ejemplo">git diff --staged  # Cambios en staging</div>
+                    <div class="ejemplo">git diff main feature  # Entre ramas</div>
+                    <div class="ejemplo">git diff HEAD~2 HEAD  # Últimos 2 commits</div>
+                </div>
+
+                <div class="termino" data-tags="show mostrar commit detalles ver específico información">
+                    <span class="categoria-badge badge-inspeccion">Inspección</span>
+                    <div class="comando">git show &lt;commit&gt;</div>
+                    <p class="descripcion">
+                        Muestra información detallada de un commit específico: autor, fecha, mensaje, y cambios (diff).
+                    </p>
+                    <div class="ejemplo">git show abc123  # Ver commit abc123</div>
+                    <div class="ejemplo">git show HEAD  # Ver último commit</div>
+                    <div class="ejemplo">git show v1.0.0  # Ver tag</div>
+                </div>
+
+                <div class="termino" data-tags="blame culpable autor línea ver quién modificó cuando">
+                    <span class="categoria-badge badge-inspeccion">Inspección</span>
+                    <div class="comando">git blame &lt;archivo&gt;</div>
+                    <p class="descripcion">
+                        Muestra quién modificó cada línea de un archivo y en qué commit. Útil para encontrar el origen de bugs o preguntar al autor.
+                    </p>
+                    <div class="ejemplo">git blame archivo.js</div>
+                    <div class="ejemplo">git blame -L 10,20 archivo.js  # Solo líneas 10-20</div>
+                    <div class="nota">
+                        <strong>💡 Tip:</strong> No es para "culpar" sino para entender contexto. Útil en código legacy.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="reflog historial movimientos head recuperar commits perdidos">
+                    <span class="categoria-badge badge-inspeccion">Inspección</span>
+                    <div class="comando">git reflog</div>
+                    <p class="descripcion">
+                        Muestra el historial de TODOS los movimientos de HEAD (commits, resets, checkouts, etc.). Útil para recuperar commits "perdidos".
+                    </p>
+                    <div class="ejemplo">git reflog</div>
+                    <div class="ejemplo">git reflog show rama</div>
+                    <div class="nota">
+                        <strong>💡 Salvavidas:</strong> Si hiciste <code>reset --hard</code> por error, reflog te permite recuperar el commit perdido.
+                    </div>
+                </div>
+            </div>
+
+            <!-- MANTENIMIENTO -->
+            <div id="mantenimiento" class="category-section">
+                <h2 class="category-title">Mantenimiento y Limpieza</h2>
+
+                <div class="termino" data-tags="clean limpiar eliminar archivos untracked borrar sin seguimiento">
+                    <span class="categoria-badge badge-mantenimiento">Mantenimiento</span>
+                    <div class="comando">git clean</div>
+                    <p class="descripcion">
+                        Elimina archivos sin seguimiento (untracked) del working directory. Útil para limpiar archivos generados o temporales.
+                    </p>
+                    <div class="ejemplo">git clean -n  # Ver qué se eliminaría (dry-run)</div>
+                    <div class="ejemplo">git clean -f  # Eliminar archivos</div>
+                    <div class="ejemplo">git clean -fd  # Eliminar archivos Y directorios</div>
+                    <div class="nota">
+                        <strong>⚠️ Advertencia:</strong> <code>clean -f</code> elimina permanentemente. Siempre usa <code>-n</code> primero para ver qué se eliminará.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="gc garbage collection optimizar comprimir basura limpiar">
+                    <span class="categoria-badge badge-mantenimiento">Mantenimiento</span>
+                    <div class="comando">git gc</div>
+                    <p class="descripcion">
+                        Ejecuta garbage collection: limpia objetos inalcanzables, comprime archivos, optimiza el repositorio. Git lo hace automáticamente, raramente necesitas ejecutarlo manualmente.
+                    </p>
+                    <div class="ejemplo">git gc</div>
+                    <div class="ejemplo">git gc --aggressive  # Optimización profunda (lenta)</div>
+                </div>
+
+                <div class="termino" data-tags="fsck verificar integridad corrupción check validar repositorio">
+                    <span class="categoria-badge badge-mantenimiento">Mantenimiento</span>
+                    <div class="comando">git fsck</div>
+                    <p class="descripcion">
+                        Verifica la integridad del repositorio, buscando objetos corruptos o inconsistencias. Útil si sospechas problemas.
+                    </p>
+                    <div class="ejemplo">git fsck</div>
+                    <div class="ejemplo">git fsck --full  # Verificación completa</div>
+                </div>
+
+                <div class="termino" data-tags="archive comprimir exportar zip tar backup respaldar">
+                    <span class="categoria-badge badge-mantenimiento">Mantenimiento</span>
+                    <div class="comando">git archive</div>
+                    <p class="descripcion">
+                        Crea un archivo comprimido (zip, tar) del código de un commit/rama específico, sin la carpeta .git. Útil para entregas/releases.
+                    </p>
+                    <div class="ejemplo">git archive --format=zip --output=proyecto.zip main</div>
+                    <div class="ejemplo">git archive --format=tar HEAD | gzip > proyecto.tar.gz</div>
+                </div>
+            </div>
+
+            <!-- GITHUB CLI -->
+            <div id="github" class="category-section">
+                <h2 class="category-title">GitHub CLI (gh)</h2>
+
+                <div class="termino" data-tags="gh auth login autenticación github cli token">
+                    <span class="categoria-badge badge-github">GitHub CLI</span>
+                    <div class="comando">gh auth login</div>
+                    <p class="descripcion">
+                        Autentica la GitHub CLI con tu cuenta de GitHub. Permite usar comandos <code>gh</code> para interactuar con GitHub desde terminal.
+                    </p>
+                    <div class="ejemplo">gh auth login</div>
+                    <div class="ejemplo">gh auth status  # Ver estado de autenticación</div>
+                    <div class="nota">
+                        <strong>💡 Tip:</strong> GitHub CLI (<code>gh</code>) se instala por separado. Facilita crear PRs, issues, releases desde terminal.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="gh repo create crear repositorio github nuevo cli">
+                    <span class="categoria-badge badge-github">GitHub CLI</span>
+                    <div class="comando">gh repo create</div>
+                    <p class="descripcion">
+                        Crea un nuevo repositorio en GitHub directamente desde la terminal.
+                    </p>
+                    <div class="ejemplo">gh repo create mi-proyecto --public</div>
+                    <div class="ejemplo">gh repo create mi-proyecto --private</div>
+                    <div class="ejemplo">gh repo create --source=. --push  # Desde proyecto actual</div>
+                </div>
+
+                <div class="termino" data-tags="gh pr create pull request crear github cli merge">
+                    <span class="categoria-badge badge-github">GitHub CLI</span>
+                    <div class="comando">gh pr create</div>
+                    <p class="descripcion">
+                        Crea un Pull Request desde la rama actual hacia la rama base, directamente desde terminal.
+                    </p>
+                    <div class="ejemplo">gh pr create</div>
+                    <div class="ejemplo">gh pr create --title "Add feature" --body "Description"</div>
+                    <div class="ejemplo">gh pr create --draft  # PR en borrador</div>
+                </div>
+
+                <div class="termino" data-tags="gh pr list listar pull requests ver github cli">
+                    <span class="categoria-badge badge-github">GitHub CLI</span>
+                    <div class="comando">gh pr list</div>
+                    <p class="descripcion">
+                        Lista todos los Pull Requests del repositorio actual.
+                    </p>
+                    <div class="ejemplo">gh pr list</div>
+                    <div class="ejemplo">gh pr list --state open  # Solo abiertos</div>
+                    <div class="ejemplo">gh pr list --author @me  # Tus PRs</div>
+                </div>
+
+                <div class="termino" data-tags="gh pr merge fusionar pull request github cli aprobar">
+                    <span class="categoria-badge badge-github">GitHub CLI</span>
+                    <div class="comando">gh pr merge</div>
+                    <p class="descripcion">
+                        Fusiona (merge) un Pull Request desde la terminal.
+                    </p>
+                    <div class="ejemplo">gh pr merge 123</div>
+                    <div class="ejemplo">gh pr merge --squash  # Squash merge</div>
+                    <div class="ejemplo">gh pr merge --rebase  # Rebase merge</div>
+                </div>
+
+                <div class="termino" data-tags="gh issue create crear issue problema github cli bug">
+                    <span class="categoria-badge badge-github">GitHub CLI</span>
+                    <div class="comando">gh issue create</div>
+                    <p class="descripcion">
+                        Crea un nuevo Issue (problema/tarea) en el repositorio de GitHub.
+                    </p>
+                    <div class="ejemplo">gh issue create</div>
+                    <div class="ejemplo">gh issue create --title "Bug en login" --body "Descripción"</div>
+                    <div class="ejemplo">gh issue create --label bug</div>
+                </div>
+
+                <div class="termino" data-tags="gh issue list listar issues ver github cli problemas">
+                    <span class="categoria-badge badge-github">GitHub CLI</span>
+                    <div class="comando">gh issue list</div>
+                    <p class="descripcion">
+                        Lista todos los Issues del repositorio actual.
+                    </p>
+                    <div class="ejemplo">gh issue list</div>
+                    <div class="ejemplo">gh issue list --state open</div>
+                    <div class="ejemplo">gh issue list --assignee @me  # Asignados a ti</div>
+                </div>
+
+                <div class="termino" data-tags="gh release create crear release versión github cli tag publicar">
+                    <span class="categoria-badge badge-github">GitHub CLI</span>
+                    <div class="comando">gh release create</div>
+                    <p class="descripcion">
+                        Crea una nueva Release (versión publicada) en GitHub, típicamente asociada a un tag.
+                    </p>
+                    <div class="ejemplo">gh release create v1.0.0</div>
+                    <div class="ejemplo">gh release create v1.0.0 --notes "Release notes"</div>
+                    <div class="ejemplo">gh release create v1.0.0 archivo.zip  # Con archivos adjuntos</div>
+                </div>
+
+                <div class="termino" data-tags="gh gist create crear compartir código snippet github cli">
+                    <span class="categoria-badge badge-github">GitHub CLI</span>
+                    <div class="comando">gh gist create</div>
+                    <p class="descripcion">
+                        Crea un Gist (snippet de código compartible) en GitHub desde archivos locales.
+                    </p>
+                    <div class="ejemplo">gh gist create archivo.js</div>
+                    <div class="ejemplo">gh gist create archivo.js --public</div>
+                    <div class="ejemplo">gh gist create archivo.js -d "Descripción"</div>
+                </div>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-button">← Volver a Git & GitHub</a>
+    </div>
+
+    <script>
+        // Búsqueda en tiempo real
+        const searchBox = document.getElementById('searchBox');
+        const terminos = document.querySelectorAll('.termino');
+
+        searchBox.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+
+            terminos.forEach(termino => {
+                const comando = termino.querySelector('.comando').textContent.toLowerCase();
+                const descripcion = termino.querySelector('.descripcion').textContent.toLowerCase();
+                const tags = termino.getAttribute('data-tags').toLowerCase();
+
+                if (comando.includes(searchTerm) || descripcion.includes(searchTerm) || tags.includes(searchTerm)) {
+                    termino.style.display = 'block';
+                } else {
+                    termino.style.display = 'none';
+                }
+            });
+
+            // Ocultar categorías vacías
+            document.querySelectorAll('.category-section').forEach(section => {
+                const visibleTerminos = section.querySelectorAll('.termino[style="display: block;"], .termino:not([style])');
+                section.style.display = visibleTerminos.length > 0 ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

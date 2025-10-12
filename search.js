@@ -8,208 +8,444 @@ const searchData = {
             term: "DOCTYPE",
             description: "Declaración de tipo de documento HTML5",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "html",
             description: "Elemento raíz del documento HTML",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "head",
             description: "Cabecera del documento con metadatos",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "body",
             description: "Cuerpo del documento con contenido visible",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "title",
             description: "Título de la página",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "meta",
             description: "Metainformación del documento",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "h1, h2, h3, h4, h5, h6",
             description: "Encabezados de diferentes niveles",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "p",
             description: "Párrafo de texto",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "a",
             description: "Ancla o enlace (anchor)",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "img",
             description: "Imagen",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "div",
             description: "Contenedor de división genérico",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "span",
             description: "Contenedor en línea",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "ul",
             description: "Lista no ordenada",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "ol",
             description: "Lista ordenada",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "li",
             description: "Elemento de lista",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "table",
             description: "Tabla",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "tr",
             description: "Fila de tabla",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "td",
             description: "Celda de datos de tabla",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "th",
             description: "Encabezado de tabla",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "form",
             description: "Formulario",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "input",
             description: "Campo de entrada",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "button",
             description: "Botón",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "select",
             description: "Lista desplegable",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "textarea",
             description: "Área de texto multilínea",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "header",
             description: "Encabezado de sección (HTML5)",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "nav",
             description: "Navegación (HTML5)",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "main",
             description: "Contenido principal (HTML5)",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "article",
             description: "Artículo (HTML5)",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "section",
             description: "Sección (HTML5)",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "aside",
             description: "Contenido lateral (HTML5)",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "footer",
             description: "Pie de página (HTML5)",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "video",
             description: "Video (HTML5)",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "audio",
             description: "Audio (HTML5)",
             category: "HTML",
-            url: "HTML/Glosario.html"
+            url: "Lenguajes/HTML/Glosario.html"
         },
         {
             term: "Ejercicios HTML",
             description: "Ejercicios prácticos progresivos de HTML",
             category: "HTML",
-            url: "HTML/Ejercicios.html"
+            url: "Lenguajes/HTML/Ejercicios.html"
         }
     ],
     // Add more categories as content is created
+    git: [
+        {
+            term: "git init",
+            description: "Inicializa un nuevo repositorio Git",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git clone",
+            description: "Descarga una copia completa de un repositorio remoto",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git status",
+            description: "Muestra el estado actual del repositorio",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git add",
+            description: "Agrega archivos al staging area",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git commit",
+            description: "Guarda cambios en la historia del repositorio",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git pull",
+            description: "Descarga y fusiona cambios del repositorio remoto",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git push",
+            description: "Envía commits locales al repositorio remoto",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git branch",
+            description: "Crea, lista o elimina ramas",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git switch",
+            description: "Cambia entre ramas",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git checkout",
+            description: "Cambia de rama o restaura archivos",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git merge",
+            description: "Fusiona ramas en la rama actual",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git remote",
+            description: "Gestiona conexiones a repositorios remotos",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git fetch",
+            description: "Descarga cambios remotos sin fusionar",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git diff",
+            description: "Muestra diferencias entre commits, ramas o archivos",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git stash",
+            description: "Guarda cambios temporalmente sin commit",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git rebase",
+            description: "Reorganiza historial de commits",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git reset",
+            description: "Deshace cambios moviendo HEAD",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git revert",
+            description: "Crea commit que deshace cambios anteriores",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git cherry-pick",
+            description: "Aplica commit específico a rama actual",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git tag",
+            description: "Crea marcadores en puntos específicos del historial",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git log",
+            description: "Muestra historial de commits",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git show",
+            description: "Muestra información detallada de un commit",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git blame",
+            description: "Muestra quién modificó cada línea de código",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git reflog",
+            description: "Muestra historial completo de referencias",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git bisect",
+            description: "Encuentra commit que introdujo un bug",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git clean",
+            description: "Elimina archivos sin seguimiento",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git gc",
+            description: "Optimiza repositorio eliminando objetos innecesarios",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git fsck",
+            description: "Verifica integridad del repositorio",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "git prune",
+            description: "Elimina objetos inalcanzables",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "gh auth login",
+            description: "Autentica GitHub CLI",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "gh repo create",
+            description: "Crea nuevo repositorio en GitHub",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "gh repo clone",
+            description: "Clona repositorio de GitHub",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "gh pr create",
+            description: "Crea nuevo pull request",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "gh pr list",
+            description: "Lista pull requests",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "gh pr checkout",
+            description: "Cambia a rama de un pull request",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "gh issue create",
+            description: "Crea nuevo issue en GitHub",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "gh issue list",
+            description: "Lista issues del repositorio",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "gh workflow run",
+            description: "Ejecuta workflow de GitHub Actions",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        },
+        {
+            term: "gh release create",
+            description: "Crea nueva release en GitHub",
+            category: "Git",
+            url: "Comandos/Git-GitHub/Glosario.html"
+        }
+    ],
     css: [],
     javascript: [],
     python: [],
@@ -218,7 +454,6 @@ const searchData = {
     angular: [],
     nodejs: [],
     typescript: [],
-    git: [],
     docker: [],
     sql: []
 };
