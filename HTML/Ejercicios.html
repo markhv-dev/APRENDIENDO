@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de HTML - Práctica Progresiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-bottom: 2px solid #e74c3c;
+            margin-bottom: 40px;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #e74c3c;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 1.1em;
+            font-weight: 300;
+        }
+
+        .intro {
+            background: #1a1a1a;
+            border-left: 4px solid #e74c3c;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 6px;
+        }
+
+        .intro strong {
+            color: #e74c3c;
+        }
+
+        .ejercicio {
+            background: #1a1a1a;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            border: 1px solid #2a2a2a;
+            transition: all 0.3s ease;
+        }
+
+        .ejercicio:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.2);
+            border-color: #e74c3c;
+        }
+
+        .nivel {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .basico {
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            border: 1px solid #4CAF50;
+        }
+
+        .intermedio {
+            background: rgba(255, 152, 0, 0.2);
+            color: #FF9800;
+            border: 1px solid #FF9800;
+        }
+
+        .avanzado {
+            background: rgba(231, 76, 60, 0.2);
+            color: #e74c3c;
+            border: 1px solid #e74c3c;
+        }
+
+        .experto {
+            background: rgba(156, 39, 176, 0.2);
+            color: #9C27B0;
+            border: 1px solid #9C27B0;
+        }
+
+        h2 {
+            color: #e74c3c;
+            margin-bottom: 12px;
+            font-weight: 400;
+            font-size: 1.6em;
+        }
+
+        .objetivo {
+            color: #64a8f0;
+            font-weight: 500;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        pre {
+            background: #0a0a0a;
+            padding: 15px;
+            border-left: 4px solid #e74c3c;
+            overflow-x: auto;
+            border-radius: 6px;
+            margin: 15px 0;
+            border: 1px solid #2a2a2a;
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+            color: #f8f8f2;
+            font-size: 0.9em;
+        }
+
+        .instrucciones {
+            background: rgba(74, 144, 226, 0.1);
+            padding: 20px;
+            border-radius: 6px;
+            margin-top: 15px;
+            border-left: 4px solid #4a90e2;
+        }
+
+        .instrucciones strong {
+            color: #4a90e2;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.05em;
+        }
+
+        .instrucciones ul {
+            padding-left: 25px;
+            margin-top: 10px;
+        }
+
+        .instrucciones li {
+            margin-bottom: 8px;
+            color: #b0b0b0;
+            line-height: 1.7;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            border: 1px solid #2a2a2a;
+        }
+
+        footer p {
+            margin: 10px 0;
+            color: #888;
+        }
+
+        footer strong {
+            color: #e74c3c;
+        }
+
+        footer a {
+            color: #e74c3c;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #ff6b5a;
+        }
+
+        .section-separator {
+            margin: 50px 0 30px 0;
+            padding: 15px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.3em;
+            font-weight: 400;
+            color: white;
+            letter-spacing: 1px;
+        }
+
+        .tip {
+            background: rgba(241, 196, 15, 0.1);
+            border-left: 4px solid #f1c40f;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 6px;
+            color: #d4d4d4;
+        }
+
+        .tip strong {
+            color: #f1c40f;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f0f0f;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3a3a3a;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a4a4a;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .back-link {
+                position: relative;
+                top: 0;
+                left: 0;
+                display: block;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="back-link">← Volver</a>
+        <h1>🎯 Ejercicios Progresivos de HTML</h1>
+        <p class="subtitle">Aprende practicando desde lo básico hasta nivel experto</p>
+    </header>
+
+    <div class="container">
+        <div class="intro">
+            <p><strong>Instrucciones:</strong> Completa cada ejercicio en orden. Crea archivos HTML separados para cada uno y pruébalos en tu navegador. La práctica constante es la clave para dominar HTML.</p>
+        </div>
+
+        <!-- EJERCICIOS BÁSICOS -->
+        <div class="section-separator">📚 NIVEL BÁSICO</div>
+
+        <div class="ejercicio">
+            <span class="nivel basico">Básico</span>
+            <h2>Ejercicio 1: Mi Primera Página</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Crear la estructura básica de una página HTML válida.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea un archivo llamado <code>ejercicio1.html</code></li>
+                    <li>Incluye la declaración <code>&lt;!DOCTYPE html&gt;</code></li>
+                    <li>Agrega las etiquetas <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code> y <code>&lt;body&gt;</code></li>
+                    <li>En el head, añade <code>&lt;meta charset="UTF-8"&gt;</code> y un título: "Mi Primera Página Web"</li>
+                    <li>En el body, escribe un <code>&lt;h1&gt;</code> con tu nombre</li>
+                    <li>Agrega un párrafo describiendo tu ciudad favorita</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Tip:</strong> Asegúrate de cerrar todas las etiquetas correctamente. Usa la indentación para mantener tu código organizado y legible.
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel basico">Básico</span>
+            <h2>Ejercicio 2: Jerarquía de Encabezados</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Practicar el uso correcto de diferentes niveles de encabezados.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea un documento sobre tu película, libro o serie favorita</li>
+                    <li>Usa <code>&lt;h1&gt;</code> para el título principal</li>
+                    <li>Usa <code>&lt;h2&gt;</code> para las secciones: "Sinopsis", "Personajes Principales", "Mi Opinión"</li>
+                    <li>Usa <code>&lt;h3&gt;</code> para subsecciones dentro de "Personajes Principales"</li>
+                    <li>Añade al menos 3 párrafos con contenido relevante en cada sección</li>
+                    <li>Asegúrate de no saltar niveles de encabezados (no uses h4 después de h2)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel basico">Básico</span>
+            <h2>Ejercicio 3: Listas y Organización</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Dominar listas ordenadas, no ordenadas y anidadas.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea una página "Mi Rutina Diaria"</li>
+                    <li>Usa una lista ordenada (<code>&lt;ol&gt;</code>) para tus actividades matutinas en orden cronológico</li>
+                    <li>Usa una lista no ordenada (<code>&lt;ul&gt;</code>) para tus hobbies o intereses</li>
+                    <li>Crea una lista anidada: comidas del día (lista ordenada) con ingredientes de cada una (listas no ordenadas anidadas)</li>
+                    <li>Agrega una lista de definiciones (<code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code>, <code>&lt;dd&gt;</code>) con 5 términos relacionados con tu hobby favorito</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Tip:</strong> Las listas anidadas deben ir dentro de elementos <code>&lt;li&gt;</code>, no directamente dentro de <code>&lt;ul&gt;</code> u <code>&lt;ol&gt;</code>.
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel basico">Básico</span>
+            <h2>Ejercicio 4: Enlaces e Imágenes</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Trabajar con hipervínculos e imágenes.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea una página "Mis Recursos Favoritos"</li>
+                    <li>Agrega al menos 5 enlaces a sitios web útiles (usa <code>target="_blank"</code> para que abran en nueva pestaña)</li>
+                    <li>Incluye al menos 3 imágenes relacionadas (pueden ser desde URLs públicas o locales)</li>
+                    <li>Agrega texto alternativo descriptivo (<code>alt</code>) a cada imagen</li>
+                    <li>Haz que al menos una imagen sea también un enlace clicable</li>
+                    <li>Crea un enlace a tu correo electrónico usando <code>mailto:</code></li>
+                    <li>Agrega un enlace que lleve a una sección específica de la misma página (ancla interna)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel basico">Básico</span>
+            <h2>Ejercicio 5: Formato de Texto</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Usar etiquetas de formato semántico de texto.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Escribe un artículo corto (3-4 párrafos) sobre un tema de tu interés</li>
+                    <li>Usa <code>&lt;strong&gt;</code> para resaltar al menos 3 términos importantes</li>
+                    <li>Usa <code>&lt;em&gt;</code> para dar énfasis a algunas palabras</li>
+                    <li>Incluye una cita usando <code>&lt;blockquote&gt;</code> con su autor en el footer</li>
+                    <li>Usa <code>&lt;mark&gt;</code> para resaltar texto relevante</li>
+                    <li>Incluye al menos un fragmento de código usando <code>&lt;code&gt;</code></li>
+                    <li>Agrega una abreviación con <code>&lt;abbr&gt;</code> y su atributo <code>title</code></li>
+                    <li>Usa <code>&lt;hr&gt;</code> para separar secciones temáticas</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- EJERCICIOS INTERMEDIOS -->
+        <div class="section-separator">🔥 NIVEL INTERMEDIO</div>
+
+        <div class="ejercicio">
+            <span class="nivel intermedio">Intermedio</span>
+            <h2>Ejercicio 6: Tablas de Datos</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Crear y estructurar tablas HTML correctamente.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea una tabla de tu horario semanal o de comparación de productos</li>
+                    <li>Usa <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> y <code>&lt;tfoot&gt;</code> correctamente</li>
+                    <li>Incluye encabezados de columna usando <code>&lt;th&gt;</code> con el atributo <code>scope</code></li>
+                    <li>Usa <code>colspan</code> en al menos una celda para fusionar columnas</li>
+                    <li>Usa <code>rowspan</code> en al menos una celda para fusionar filas</li>
+                    <li>Añade un <code>&lt;caption&gt;</code> descriptivo a la tabla</li>
+                    <li>Asegúrate de que todas las filas tengan el mismo número de celdas (contando colspan/rowspan)</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Tip:</strong> Las tablas deben usarse solo para datos tabulares, no para diseñar el layout de la página.
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel intermedio">Intermedio</span>
+            <h2>Ejercicio 7: Formulario de Registro</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Crear un formulario completo con diferentes tipos de inputs.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea un formulario de registro de usuario</li>
+                    <li>Incluye: nombre (text), email, password</li>
+                    <li>Agrega un campo de fecha de nacimiento (<code>type="date"</code>)</li>
+                    <li>Incluye un <code>&lt;select&gt;</code> con opciones de país (mínimo 5 países)</li>
+                    <li>Agrega radio buttons para género (mínimo 3 opciones incluyendo "Prefiero no decir")</li>
+                    <li>Incluye checkboxes para intereses/hobbies (mínimo 5 opciones)</li>
+                    <li>Añade un <code>&lt;textarea&gt;</code> para "Cuéntanos sobre ti"</li>
+                    <li>Usa <code>&lt;label&gt;</code> correctamente asociados a cada input con el atributo <code>for</code></li>
+                    <li>Agrupa campos relacionados con <code>&lt;fieldset&gt;</code> y <code>&lt;legend&gt;</code></li>
+                    <li>Añade un botón de submit y otro de reset</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel intermedio">Intermedio</span>
+            <h2>Ejercicio 8: Estructura Semántica</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Usar correctamente las etiquetas semánticas HTML5.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea una página de blog usando elementos semánticos</li>
+                    <li>Estructura completa: <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code></li>
+                    <li>En el <code>&lt;header&gt;</code>: título del sitio y subtítulo</li>
+                    <li>En el <code>&lt;nav&gt;</code>: menú con al menos 5 enlaces internos</li>
+                    <li>En <code>&lt;main&gt;</code>: al menos 2 elementos <code>&lt;article&gt;</code> completos</li>
+                    <li>Cada <code>&lt;article&gt;</code> debe tener su propio <code>&lt;header&gt;</code>, contenido y <code>&lt;footer&gt;</code></li>
+                    <li>Divide el contenido de cada artículo en <code>&lt;section&gt;</code> apropiadas</li>
+                    <li>En <code>&lt;aside&gt;</code>: "Artículos relacionados" o "Sobre el autor"</li>
+                    <li>En <code>&lt;footer&gt;</code>: información de copyright, redes sociales, enlaces adicionales</li>
+                    <li>Usa <code>&lt;time&gt;</code> con el atributo <code>datetime</code> para las fechas</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel intermedio">Intermedio</span>
+            <h2>Ejercicio 9: Multimedia</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Integrar elementos multimedia en una página.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea una "Galería Multimedia" o página de portfolio</li>
+                    <li>Inserta un video local usando <code>&lt;video&gt;</code> con controles y múltiples formatos (<code>&lt;source&gt;</code>)</li>
+                    <li>Inserta audio usando <code>&lt;audio&gt;</code> con controles</li>
+                    <li>Usa <code>&lt;figure&gt;</code> y <code>&lt;figcaption&gt;</code> para al menos 3 imágenes con descripciones</li>
+                    <li>Agrega un iframe con un video embebido de YouTube</li>
+                    <li>Usa <code>&lt;picture&gt;</code> con múltiples <code>&lt;source&gt;</code> para una imagen responsive</li>
+                    <li>Incluye un gráfico SVG simple inline (puede ser un círculo o rectángulo con color)</li>
+                    <li>Añade atributos <code>poster</code> para el video y <code>loading="lazy"</code> para las imágenes</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- EJERCICIOS AVANZADOS -->
+        <div class="section-separator">⚡ NIVEL AVANZADO</div>
+
+        <div class="ejercicio">
+            <span class="nivel avanzado">Avanzado</span>
+            <h2>Ejercicio 10: Formulario Avanzado con Validación</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Trabajar con validación HTML5 y tipos de input avanzados.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea un formulario de reserva de eventos o registro de conferencia</li>
+                    <li>Usa <code>type="date"</code> para la fecha del evento con restricciones <code>min</code> y <code>max</code></li>
+                    <li>Usa <code>type="time"</code> para la hora de inicio</li>
+                    <li>Usa <code>type="number"</code> con <code>min</code>, <code>max</code> y <code>step</code> para número de asistentes</li>
+                    <li>Usa <code>type="url"</code> para sitio web de la empresa</li>
+                    <li>Usa <code>type="tel"</code> para teléfono con atributo <code>pattern</code> para validar formato</li>
+                    <li>Usa <code>type="email"</code> con <code>multiple</code> para permitir varios emails</li>
+                    <li>Usa <code>type="range"</code> para calificación o presupuesto</li>
+                    <li>Usa <code>type="color"</code> para seleccionar color preferido</li>
+                    <li>Agrega el atributo <code>required</code> a campos obligatorios</li>
+                    <li>Usa <code>minlength</code> y <code>maxlength</code> en campos de texto</li>
+                    <li>Usa <code>placeholder</code> descriptivo en todos los inputs</li>
+                    <li>Agrupa campos relacionados con <code>&lt;fieldset&gt;</code> y <code>&lt;legend&gt;</code></li>
+                    <li>Incluye un campo <code>type="file"</code> con <code>accept</code> para subir documentos</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Tip:</strong> Prueba el formulario sin llenar campos requeridos para ver la validación HTML5 en acción.
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel avanzado">Avanzado</span>
+            <h2>Ejercicio 11: Metadatos y SEO</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Optimizar el head del documento para SEO y redes sociales.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea una página "landing" para un producto o servicio</li>
+                    <li>Incluye <code>&lt;meta name="description"&gt;</code> descriptivo (150-160 caracteres)</li>
+                    <li>Incluye <code>&lt;meta name="keywords"&gt;</code> con palabras clave relevantes</li>
+                    <li>Incluye <code>&lt;meta name="author"&gt;</code></li>
+                    <li>Agrega Open Graph tags para redes sociales:
+                        <ul>
+                            <li><code>og:title</code></li>
+                            <li><code>og:description</code></li>
+                            <li><code>og:image</code></li>
+                            <li><code>og:url</code></li>
+                            <li><code>og:type</code></li>
+                        </ul>
+                    </li>
+                    <li>Agrega Twitter Card meta tags (<code>twitter:card</code>, <code>twitter:title</code>, etc.)</li>
+                    <li>Incluye <code>&lt;link rel="canonical"&gt;</code></li>
+                    <li>Incluye favicon usando <code>&lt;link rel="icon"&gt;</code> en múltiples tamaños</li>
+                    <li>Usa <code>&lt;meta name="viewport"&gt;</code> correctamente para responsive design</li>
+                    <li>Agrega <code>&lt;meta name="robots"&gt;</code> con <code>content="index, follow"</code></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel avanzado">Avanzado</span>
+            <h2>Ejercicio 12: Componentes Interactivos</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Usar elementos HTML interactivos sin JavaScript.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea una página de FAQ (Preguntas Frecuentes)</li>
+                    <li>Usa al menos 8 elementos <code>&lt;details&gt;</code> y <code>&lt;summary&gt;</code> para las preguntas/respuestas</li>
+                    <li>Incluye un <code>&lt;progress&gt;</code> mostrando el progreso de un objetivo o meta</li>
+                    <li>Incluye al menos 3 elementos <code>&lt;meter&gt;</code> mostrando diferentes métricas (temperatura, satisfacción, etc.)</li>
+                    <li>Usa el atributo <code>open</code> en uno de los <code>&lt;details&gt;</code> para que esté abierto por defecto</li>
+                    <li>Agrega contenido rico dentro de los <code>&lt;details&gt;</code>: imágenes, listas, enlaces</li>
+                    <li>Crea una estructura de acordeón usando <code>&lt;details&gt;</code> anidados</li>
+                    <li>Incluye diálogos <code>&lt;dialog&gt;</code> si tu navegador los soporta</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- PROYECTO FINAL EXPERTO -->
+        <div class="section-separator">🏆 PROYECTO FINAL - NIVEL EXPERTO</div>
+
+        <div class="ejercicio">
+            <span class="nivel experto">Experto</span>
+            <h2>Ejercicio 13: Portfolio Personal Completo</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Demostrar dominio completo de HTML creando un sitio web multipágina profesional.</p>
+            <div class="instrucciones">
+                <strong>Crea un sitio web de portfolio personal con mínimo 5 páginas:</strong>
+
+                <h3 style="color: #e74c3c; margin-top: 20px; margin-bottom: 10px;">📄 index.html (Página Principal)</h3>
+                <ul>
+                    <li>Estructura semántica completa (header, nav, main, footer)</li>
+                    <li>Sección hero con tu nombre, título profesional y foto</li>
+                    <li>Sección "Sobre mí" con imagen, descripción y habilidades (usa progress o meter)</li>
+                    <li>Sección de servicios/habilidades (usa listas semánticas y icons si quieres)</li>
+                    <li>Llamado a la acción con enlace a página de contacto</li>
+                    <li>Estadísticas o logros (usa figure con números destacados)</li>
+                </ul>
+
+                <h3 style="color: #e74c3c; margin-top: 20px; margin-bottom: 10px;">💼 proyectos.html (Portfolio)</h3>
+                <ul>
+                    <li>Galería de al menos 6 proyectos usando una estructura de grid con divs o sections</li>
+                    <li>Cada proyecto con: imagen, título, descripción, tecnologías usadas, enlace al proyecto</li>
+                    <li>Usa <code>&lt;figure&gt;</code> y <code>&lt;figcaption&gt;</code> para las imágenes</li>
+                    <li>Incluye video de demostración de al menos un proyecto</li>
+                    <li>Usa <code>&lt;details&gt;</code> para mostrar/ocultar detalles técnicos de cada proyecto</li>
+                    <li>Filtros o categorías de proyectos (web, móvil, diseño, etc.)</li>
+                </ul>
+
+                <h3 style="color: #e74c3c; margin-top: 20px; margin-bottom: 10px;">📝 blog.html (Blog)</h3>
+                <ul>
+                    <li>Mínimo 3 artículos completos usando <code>&lt;article&gt;</code></li>
+                    <li>Cada artículo con: header (título, fecha con <code>&lt;time&gt;</code>, autor), contenido con múltiples secciones, footer (tags, compartir)</li>
+                    <li>Sidebar (<code>&lt;aside&gt;</code>) con artículos recientes, categorías y búsqueda</li>
+                    <li>Usa <code>&lt;blockquote&gt;</code> para citas dentro de los artículos</li>
+                    <li>Imágenes con <code>&lt;figure&gt;</code> y <code>&lt;figcaption&gt;</code></li>
+                    <li>Sistema de paginación (enlaces a página 1, 2, 3...)</li>
+                </ul>
+
+                <h3 style="color: #e74c3c; margin-top: 20px; margin-bottom: 10px;">📬 contacto.html (Contacto)</h3>
+                <ul>
+                    <li>Formulario completo de contacto con validación HTML5</li>
+                    <li>Campos: nombre, email, teléfono, asunto (select), mensaje (textarea), todos con validación apropiada</li>
+                    <li>Tabla con información de contacto (email, teléfono, ubicación) y horarios de atención</li>
+                    <li>Iframe con mapa embebido (Google Maps o similar)</li>
+                    <li>Enlaces a redes sociales con iconos (puedes usar emojis o texto)</li>
+                    <li>Información adicional en <code>&lt;aside&gt;</code> (FAQ de contacto)</li>
+                </ul>
+
+                <h3 style="color: #e74c3c; margin-top: 20px; margin-bottom: 10px;">ℹ️ sobre.html (Sobre mí - Detallado)</h3>
+                <ul>
+                    <li>Biografía completa dividida en secciones (educación, experiencia, habilidades)</li>
+                    <li>Timeline de experiencia laboral o educativa (usa listas descriptivas <code>&lt;dl&gt;</code>)</li>
+                    <li>Sección de habilidades con barras de progreso (<code>&lt;progress&gt;</code> o <code>&lt;meter&gt;</code>)</li>
+                    <li>Sección de certificaciones/logros con imágenes</li>
+                    <li>Testimonios de clientes o colegas (usa <code>&lt;blockquote&gt;</code>)</li>
+                    <li>Botón de descarga de CV (enlace a PDF)</li>
+                </ul>
+
+                <h3 style="color: #e74c3c; margin-top: 20px; margin-bottom: 10px;">✅ Requisitos Generales (Todas las páginas)</h3>
+                <ul>
+                    <li>Navegación consistente y accesible en todas las páginas</li>
+                    <li>Footer idéntico en todas las páginas con información relevante</li>
+                    <li>Metadatos completos y optimizados para SEO en cada página (title único, description, keywords)</li>
+                    <li>Favicon visible en la pestaña del navegador</li>
+                    <li>Uso correcto de jerarquía de headings (h1-h6) en cada página</li>
+                    <li>Atributos <code>alt</code> descriptivos en TODAS las imágenes</li>
+                    <li>HTML válido y bien indentado (usa validador W3C)</li>
+                    <li>Al menos 30 elementos HTML diferentes usados en total</li>
+                    <li>Uso de <code>&lt;noscript&gt;</code> con mensaje alternativo</li>
+                    <li>Comentarios HTML documentando secciones principales</li>
+                    <li>Uso apropiado de atributos ARIA básicos donde sea necesario</li>
+                    <li>Enlaces de navegación con estados (active, visited) claramente marcados</li>
+                </ul>
+
+                <p style="margin-top: 20px; padding: 15px; background: rgba(46, 204, 113, 0.1); border-left: 4px solid #2ecc71; border-radius: 6px; color: #2ecc71;">
+                    <strong>🎓 Al completar este proyecto final, habrás demostrado dominio profesional de HTML!</strong><br>
+                    Este proyecto puede servir como base real para tu portfolio personal.
+                </p>
+            </div>
+            <div class="tip">
+                <strong>💡 Tips Finales:</strong>
+                <ul>
+                    <li>Usa comentarios para documentar tu código</li>
+                    <li>Mantén una indentación consistente (2 o 4 espacios)</li>
+                    <li>Valida tu HTML en <a href="https://validator.w3.org/" target="_blank" style="color: #f1c40f;">validator.w3.org</a></li>
+                    <li>Piensa en la accesibilidad: usa labels, alt text, estructura semántica</li>
+                    <li>Este sitio NO necesita CSS todavía, enfócate en la estructura HTML correcta</li>
+                    <li>Prueba tu sitio en diferentes navegadores</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p><strong>💡 Consejo Final:</strong> La práctica hace al maestro. No hay atajos para aprender bien HTML.</p>
+        <p>Tómate tu tiempo con cada ejercicio y no tengas miedo de experimentar.</p>
+        <p><a href="index.html">← Volver a HTML</a> | <a href="../index.html">Ir al Índice Principal</a></p>
+        <p style="margin-top: 20px; color: #555;">¡Mucha suerte en tu aprendizaje! 🚀</p>
+    </footer>
+</body>
+</html>

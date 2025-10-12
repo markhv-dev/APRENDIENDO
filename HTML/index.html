@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML - Sistema de Aprendizaje</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-bottom: 2px solid #e74c3c;
+            margin-bottom: 40px;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #e74c3c;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #888;
+            font-weight: 300;
+        }
+
+        .intro {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-left: 4px solid #e74c3c;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+
+        .intro h2 {
+            color: #e74c3c;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .intro p {
+            color: #b0b0b0;
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .resources {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .resource-card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .resource-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #e74c3c, transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            border-color: #e74c3c;
+            box-shadow: 0 8px 30px rgba(231, 76, 60, 0.3);
+        }
+
+        .resource-card:hover::before {
+            opacity: 1;
+        }
+
+        .resource-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .resource-title {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .resource-description {
+            color: #888;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .resource-meta {
+            color: #666;
+            font-size: 0.85em;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        .topics {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+
+        .topics h2 {
+            color: #e74c3c;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .topic-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .topic-item {
+            background: #222;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 3px solid #e74c3c;
+            transition: all 0.3s ease;
+        }
+
+        .topic-item:hover {
+            background: #2a2a2a;
+            transform: translateX(5px);
+        }
+
+        .topic-item h3 {
+            color: #fff;
+            font-size: 1em;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .topic-item p {
+            color: #888;
+            font-size: 0.85em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 1px solid #2a2a2a;
+            color: #666;
+        }
+
+        footer a {
+            color: #e74c3c;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #ff6b5a;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .resources {
+                grid-template-columns: 1fr;
+            }
+
+            .back-link {
+                position: relative;
+                top: 0;
+                left: 0;
+                display: inline-block;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver al Inicio</a>
+        <span class="icon">🌐</span>
+        <h1>HTML</h1>
+        <p class="subtitle">HyperText Markup Language</p>
+    </header>
+
+    <div class="container">
+        <div class="intro">
+            <h2>¿Qué es HTML?</h2>
+            <p>
+                HTML (HyperText Markup Language) es el lenguaje de marcado estándar para crear páginas web.
+                Define la estructura y el contenido de una página mediante un sistema de etiquetas.
+            </p>
+            <p>
+                HTML no es un lenguaje de programación, sino un lenguaje de marcado que indica a los navegadores
+                cómo estructurar el contenido que ves en la web. Desde texto simple hasta elementos multimedia complejos,
+                HTML es la base de toda la web moderna.
+            </p>
+            <p>
+                <strong>Versión actual:</strong> HTML5 (introducido en 2014 y en constante evolución)
+            </p>
+        </div>
+
+        <h2 style="color: #e74c3c; margin-bottom: 20px; font-weight: 400;">Recursos de Aprendizaje</h2>
+        <div class="resources">
+            <div class="resource-card" onclick="window.location.href='Glosario.html'">
+                <span class="resource-icon">📚</span>
+                <h3 class="resource-title">Glosario Completo</h3>
+                <p class="resource-description">
+                    Referencia detallada de todas las etiquetas y elementos HTML esenciales.
+                    Incluye explicaciones, ejemplos de código y atributos importantes.
+                </p>
+                <div class="resource-meta">
+                    ✓ Más de 40 términos documentados<br>
+                    ✓ Ejemplos de código para cada elemento<br>
+                    ✓ Organizado por categorías
+                </div>
+            </div>
+
+            <div class="resource-card" onclick="window.location.href='Ejercicios.html'">
+                <span class="resource-icon">🎯</span>
+                <h3 class="resource-title">Ejercicios Prácticos</h3>
+                <p class="resource-description">
+                    Sistema de ejercicios progresivos desde nivel básico hasta experto.
+                    Aprende practicando con desafíos reales y proyectos completos.
+                </p>
+                <div class="resource-meta">
+                    ✓ 12 ejercicios progresivos<br>
+                    ✓ Niveles: Básico, Intermedio, Avanzado, Experto<br>
+                    ✓ Proyecto final de portfolio
+                </div>
+            </div>
+        </div>
+
+        <div class="topics">
+            <h2>Temas Cubiertos</h2>
+            <div class="topic-list">
+                <div class="topic-item">
+                    <h3>Estructura Básica</h3>
+                    <p>DOCTYPE, html, head, body, title</p>
+                </div>
+                <div class="topic-item">
+                    <h3>Metadatos</h3>
+                    <p>meta, link, viewport, SEO</p>
+                </div>
+                <div class="topic-item">
+                    <h3>Texto y Formato</h3>
+                    <p>Encabezados, párrafos, strong, em</p>
+                </div>
+                <div class="topic-item">
+                    <h3>Enlaces e Imágenes</h3>
+                    <p>a, img, figure, atributos</p>
+                </div>
+                <div class="topic-item">
+                    <h3>Listas</h3>
+                    <p>ul, ol, li, listas anidadas</p>
+                </div>
+                <div class="topic-item">
+                    <h3>Tablas</h3>
+                    <p>table, tr, td, th, thead, tbody</p>
+                </div>
+                <div class="topic-item">
+                    <h3>Formularios</h3>
+                    <p>form, input, textarea, select, validación</p>
+                </div>
+                <div class="topic-item">
+                    <h3>HTML5 Semántico</h3>
+                    <p>header, nav, main, article, section, aside, footer</p>
+                </div>
+                <div class="topic-item">
+                    <h3>Multimedia</h3>
+                    <p>video, audio, iframe, controles</p>
+                </div>
+                <div class="topic-item">
+                    <h3>Contenedores</h3>
+                    <p>div, span, agrupación de elementos</p>
+                </div>
+                <div class="topic-item">
+                    <h3>Accesibilidad</h3>
+                    <p>alt, aria, roles, estructura semántica</p>
+                </div>
+                <div class="topic-item">
+                    <h3>Buenas Prácticas</h3>
+                    <p>Indentación, validación, SEO</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>HTML - Sistema de Aprendizaje | <a href="../index.html">Volver al Índice Principal</a></p>
+    </footer>
+</body>
+</html>
