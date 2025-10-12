@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Aprendizaje - Programación</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f0f0f;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            border-bottom: 2px solid #3a3a3a;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #888;
+            font-weight: 300;
+        }
+
+        .search-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 18px 24px;
+            background: #1a1a1a;
+            border: 2px solid #3a3a3a;
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: #4a90e2;
+            box-shadow: 0 0 20px rgba(74, 144, 226, 0.3);
+        }
+
+        .search-box::placeholder {
+            color: #666;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .category-card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .category-card:hover::before {
+            opacity: 1;
+        }
+
+        .category-card.language {
+            --accent-color: #e74c3c;
+        }
+
+        .category-card.library {
+            --accent-color: #3498db;
+        }
+
+        .category-card.framework {
+            --accent-color: #9b59b6;
+        }
+
+        .category-card.tool {
+            --accent-color: #2ecc71;
+        }
+
+        .category-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .category-title {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .category-description {
+            color: #888;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+        }
+
+        .category-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        .status-active {
+            background: rgba(46, 204, 113, 0.2);
+            color: #2ecc71;
+            border: 1px solid #2ecc71;
+        }
+
+        .status-pending {
+            background: rgba(241, 196, 15, 0.2);
+            color: #f1c40f;
+            border: 1px solid #f1c40f;
+        }
+
+        .category-type {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 0.75em;
+            color: var(--accent-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            color: #ffffff;
+            margin: 60px 0 30px 0;
+            font-weight: 300;
+            border-bottom: 1px solid #2a2a2a;
+            padding-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 1px solid #2a2a2a;
+            color: #666;
+        }
+
+        footer a {
+            color: #4a90e2;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #64a8f0;
+        }
+
+        .search-results {
+            display: none;
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .search-results.active {
+            display: block;
+        }
+
+        .search-result-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #2a2a2a;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .search-result-item:hover {
+            background: #222;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-title {
+            color: #4a90e2;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .result-description {
+            color: #888;
+            font-size: 0.9em;
+        }
+
+        .no-results {
+            padding: 30px;
+            text-align: center;
+            color: #666;
+        }
+
+        /* Scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3a3a3a;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4a4a4a;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #2a2a2a;
+            padding: 15px 0;
+        }
+
+        .navbar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #4a90e2;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            color: #64a8f0;
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .navbar-links a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 0.95em;
+            transition: color 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 6px;
+        }
+
+        .navbar-links a:hover {
+            color: #4a90e2;
+            background: rgba(74, 144, 226, 0.1);
+        }
+
+        .navbar-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #e0e0e0;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(15, 15, 15, 0.98);
+                flex-direction: column;
+                gap: 0;
+                padding: 20px;
+                border-bottom: 1px solid #2a2a2a;
+            }
+
+            .navbar-links.active {
+                display: flex;
+            }
+
+            .navbar-links a {
+                width: 100%;
+                padding: 15px;
+                border-bottom: 1px solid #2a2a2a;
+            }
+
+            .navbar-toggle {
+                display: block;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .back-link {
+                position: relative;
+                display: block;
+                margin-bottom: 20px;
+            }
+
+            .categories {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="#" class="navbar-brand">📚 Sistema de Aprendizaje</a>
+            <button class="navbar-toggle" onclick="toggleMobileMenu()">☰</button>
+            <div class="navbar-links" id="navbarLinks">
+                <a href="#fundamentos">Fundamentos</a>
+                <a href="#lenguajes">Lenguajes</a>
+                <a href="#frameworks">Frameworks</a>
+                <a href="#comandos">Comandos</a>
+                <a href="#docs">Docs</a>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <h1>SISTEMA DE APRENDIZAJE</h1>
+        <p class="subtitle">Tu plataforma personal para dominar el desarrollo web</p>
+    </header>
+
+    <div class="container">
+        <div class="search-container">
+            <input
+                type="text"
+                class="search-box"
+                id="globalSearch"
+                placeholder="Buscar términos, conceptos, etiquetas..."
+            >
+            <div class="search-results" id="searchResults"></div>
+        </div>
+
+        <h2 id="fundamentos" class="section-title" style="color: #8e44ad; font-size: 2.2em; margin-top: 40px;">🎓 Empieza Aquí: Fundamentos del Desarrollo Web</h2>
+        <div class="categories">
+            <div class="category-card tool" onclick="window.location.href='Fundamentos/index.html'" style="--accent-color: #8e44ad; grid-column: 1 / -1; background: linear-gradient(135deg, #1a1a1a 0%, #2a1a2a 100%); border: 2px solid #8e44ad;">
+                <span class="category-type" style="color: #8e44ad;">Esencial</span>
+                <span class="category-icon">📚</span>
+                <h3 class="category-title" style="font-size: 1.8em; color: #8e44ad;">Fundamentos Completos</h3>
+                <p class="category-description" style="font-size: 1.05em; line-height: 1.8; margin-bottom: 20px;">
+                    <strong style="color: #e0e0e0;">Aprende las 4 etapas esenciales del desarrollo web:</strong><br>
+                    🎨 <strong>Diseño UI/UX</strong> - Planificación visual y experiencia de usuario<br>
+                    ⚡ <strong>Frontend</strong> - HTML, CSS, JavaScript - Lo que el usuario ve<br>
+                    ⚙️ <strong>Backend</strong> - Node.js, Python - La lógica del servidor<br>
+                    💾 <strong>Bases de Datos</strong> - SQL, MongoDB - Almacenamiento permanente
+                </p>
+                <p class="category-description" style="color: #f39c12; margin-top: 15px; font-style: italic;">
+                    💡 <strong>Recomendación:</strong> Si estás empezando, comienza aquí. Estos fundamentos son la base de TODA tu carrera como desarrollador.
+                </p>
+                <span class="category-status status-active" style="font-size: 1em; padding: 8px 16px;">✨ Contenido Completo Disponible</span>
+            </div>
+        </div>
+
+        <h2 id="lenguajes" class="section-title">Lenguajes de Programación</h2>
+        <div class="categories">
+            <div class="category-card language" onclick="window.location.href='Lenguajes/HTML/index.html'">
+                <span class="category-type">Lenguaje</span>
+                <span class="category-icon">🌐</span>
+                <h3 class="category-title">HTML</h3>
+                <p class="category-description">HyperText Markup Language - Estructura de páginas web<br>
+                📚 62 términos | 🎯 13 ejercicios</p>
+                <span class="category-status status-active">Contenido Disponible</span>
+            </div>
+
+            <div class="category-card language">
+                <span class="category-type">Lenguaje</span>
+                <span class="category-icon">🎨</span>
+                <h3 class="category-title">CSS</h3>
+                <p class="category-description">Cascading Style Sheets - Diseño y presentación visual</p>
+                <span class="category-status status-pending">Próximamente</span>
+            </div>
+
+            <div class="category-card language">
+                <span class="category-type">Lenguaje</span>
+                <span class="category-icon">⚡</span>
+                <h3 class="category-title">JavaScript</h3>
+                <p class="category-description">Lenguaje de programación para interactividad web</p>
+                <span class="category-status status-pending">Próximamente</span>
+            </div>
+
+            <div class="category-card language">
+                <span class="category-type">Lenguaje</span>
+                <span class="category-icon">🔷</span>
+                <h3 class="category-title">TypeScript</h3>
+                <p class="category-description">JavaScript con tipado estático</p>
+                <span class="category-status status-pending">Próximamente</span>
+            </div>
+
+            <div class="category-card language">
+                <span class="category-type">Lenguaje</span>
+                <span class="category-icon">🐍</span>
+                <h3 class="category-title">Python</h3>
+                <p class="category-description">Lenguaje versátil para desarrollo backend y data science</p>
+                <span class="category-status status-pending">Próximamente</span>
+            </div>
+
+            <div class="category-card language">
+                <span class="category-type">Lenguaje</span>
+                <span class="category-icon">🗃️</span>
+                <h3 class="category-title">SQL</h3>
+                <p class="category-description">Structured Query Language - Gestión de bases de datos</p>
+                <span class="category-status status-pending">Próximamente</span>
+            </div>
+        </div>
+
+        <h2 id="frameworks" class="section-title">Frameworks & Librerías</h2>
+        <div class="categories">
+            <div class="category-card library">
+                <span class="category-type">Librería</span>
+                <span class="category-icon">⚛️</span>
+                <h3 class="category-title">React</h3>
+                <p class="category-description">Librería para construir interfaces de usuario</p>
+                <span class="category-status status-pending">Próximamente</span>
+            </div>
+
+            <div class="category-card framework">
+                <span class="category-type">Framework</span>
+                <span class="category-icon">💚</span>
+                <h3 class="category-title">Vue.js</h3>
+                <p class="category-description">Framework progresivo para interfaces de usuario</p>
+                <span class="category-status status-pending">Próximamente</span>
+            </div>
+
+            <div class="category-card framework">
+                <span class="category-type">Framework</span>
+                <span class="category-icon">🅰️</span>
+                <h3 class="category-title">Angular</h3>
+                <p class="category-description">Framework completo para aplicaciones web</p>
+                <span class="category-status status-pending">Próximamente</span>
+            </div>
+
+            <div class="category-card framework">
+                <span class="category-type">Framework</span>
+                <span class="category-icon">🟢</span>
+                <h3 class="category-title">Node.js</h3>
+                <p class="category-description">Entorno de ejecución JavaScript del lado del servidor</p>
+                <span class="category-status status-pending">Próximamente</span>
+            </div>
+        </div>
+
+        <h2 id="comandos" class="section-title" style="color: #f05032;">Comandos Esenciales</h2>
+        <div class="categories">
+            <div class="category-card tool" onclick="window.location.href='Comandos/Git-GitHub/index.html'" style="--accent-color: #f05032; grid-column: 1 / -1; background: linear-gradient(135deg, #1a1a1a 0%, #2a1a1a 100%); border: 2px solid #f05032;">
+                <span class="category-type" style="color: #f05032;">Esencial</span>
+                <span class="category-icon">📦</span>
+                <h3 class="category-title" style="font-size: 1.8em; color: #f05032;">Git & GitHub</h3>
+                <p class="category-description" style="font-size: 1.05em; line-height: 1.8; margin-bottom: 20px;">
+                    <strong style="color: #e0e0e0;">Control de versiones profesional y colaboración en equipo</strong><br>
+                    📚 <strong>39 comandos Git + 9 GitHub CLI</strong> documentados con ejemplos y explicaciones detalladas<br>
+                    🎯 <strong>10 ejercicios</strong> progresivos del nivel básico al experto<br>
+                    ⚡ <strong>GitHub CLI</strong> incluido (gh commands completo)<br>
+                    💡 <strong>Workflow profesional</strong> completo: branches, PRs, code review
+                </p>
+                <p class="category-description" style="color: #f39c12; margin-top: 15px; font-style: italic;">
+                    💡 <strong>Fundamental:</strong> Git es usado por el 99% de empresas tech. Es una habilidad obligatoria para cualquier desarrollador.
+                </p>
+                <span class="category-status status-active" style="font-size: 1em; padding: 8px 16px;">✨ Contenido Completo Disponible</span>
+            </div>
+        </div>
+
+        <h2 class="section-title">Herramientas de Desarrollo</h2>
+        <div class="categories">
+            <div class="category-card tool">
+                <span class="category-type">Herramienta</span>
+                <span class="category-icon">🐳</span>
+                <h3 class="category-title">Docker</h3>
+                <p class="category-description">Plataforma de contenedores para desarrollo</p>
+                <span class="category-status status-pending">Próximamente</span>
+            </div>
+        </div>
+    </div>
+
+    <footer id="docs">
+        <p>Sistema de Aprendizaje Personal | Creado con Claude Code</p>
+        <p>Consulta el <a href="README.md">README</a> para más información sobre cómo usar y actualizar este sistema</p>
+        <p style="margin-top: 15px;">
+            📚 Documentación:
+            <a href="docs/GUIA_COMPLETA.md">Guía Completa</a> |
+            <a href="docs/INSTRUCCIONES_CLAUDE.md">Para Claude</a> |
+            <a href="docs/ARQUITECTURA.md">Arquitectura</a> |
+            <a href="docs/ROADMAP.md">Roadmap</a>
+        </p>
+    </footer>
+
+    <script src="search.js"></script>
+    <script>
+        // Toggle mobile menu
+        function toggleMobileMenu() {
+            const navbarLinks = document.getElementById('navbarLinks');
+            navbarLinks.classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.navbar-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navbarLinks').classList.remove('active');
+            });
+        });
+
+        // Smooth scroll to sections
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+/* Table of Contents (TOC) Styles - Para navegación interna en páginas largas */
+
+/* Contenedor principal con TOC */
+.content-with-toc {
+    display: grid;
+    grid-template-columns: 1fr 250px;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+}
+
+/* Contenido principal */
+.main-content {
+    min-width: 0; /* Permite que el contenido se reduzca correctamente */
+}
+
+/* TOC Sidebar derecho */
+.toc-sidebar {
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+/* Scrollbar del TOC */
+.toc-sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.toc-sidebar::-webkit-scrollbar-track {
+    background: #0f0f0f;
+}
+
+.toc-sidebar::-webkit-scrollbar-thumb {
+    background: #3a3a3a;
+    border-radius: 2px;
+}
+
+.toc-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #4a4a4a;
+}
+
+/* Header del TOC */
+.toc-header {
+    font-size: 0.75em;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #666;
+    font-weight: 700;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+/* Lista del TOC */
+.toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toc-item {
+    margin-bottom: 8px;
+}
+
+.toc-link {
+    display: block;
+    color: #888;
+    text-decoration: none;
+    font-size: 0.85em;
+    padding: 6px 12px;
+    border-left: 2px solid transparent;
+    transition: all 0.2s ease;
+    line-height: 1.4;
+}
+
+.toc-link:hover {
+    color: #4a90e2;
+    background: rgba(74, 144, 226, 0.05);
+    border-left-color: #4a90e2;
+    transform: translateX(3px);
+}
+
+.toc-link.active {
+    color: #4a90e2;
+    background: rgba(74, 144, 226, 0.1);
+    border-left-color: #4a90e2;
+    font-weight: 600;
+}
+
+/* Niveles anidados del TOC */
+.toc-item.level-2 .toc-link {
+    padding-left: 20px;
+    font-size: 0.8em;
+}
+
+.toc-item.level-3 .toc-link {
+    padding-left: 32px;
+    font-size: 0.75em;
+    color: #777;
+}
+
+/* Indicador de progreso en el TOC */
+.toc-progress {
+    height: 3px;
+    background: #2a2a2a;
+    border-radius: 2px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+
+.toc-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #4a90e2 0%, #357abd 100%);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* Botón para toggle TOC en móvil */
+.toc-toggle {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    background: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 1.5em;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.4);
+    transition: all 0.3s ease;
+}
+
+.toc-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(74, 144, 226, 0.6);
+}
+
+/* Responsive: Tablets y menores */
+@media (max-width: 1200px) {
+    .content-with-toc {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .toc-sidebar {
+        display: none;
+        position: fixed;
+        top: 80px;
+        right: 20px;
+        width: 280px;
+        max-height: calc(100vh - 100px);
+        z-index: 998;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    .toc-sidebar.active {
+        display: block;
+    }
+
+    .toc-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Mobile pequeño */
+@media (max-width: 768px) {
+    .toc-sidebar {
+        right: 10px;
+        width: calc(100vw - 20px);
+        max-width: 320px;
+    }
+
+    .toc-toggle {
+        width: 48px;
+        height: 48px;
+        font-size: 1.2em;
+        bottom: 16px;
+        right: 16px;
+    }
+}
+
+/* Scroll suave para anclas */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Offset para headers fijos */
+}
+
+/* Estilos para las secciones con IDs */
+section[id],
+.section[id],
+h2[id],
+h3[id] {
+    scroll-margin-top: 80px; /* Offset para que no queden ocultas bajo headers fijos */
+}
+
+/* Animación de entrada del TOC */
+@keyframes slideInFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.toc-sidebar {
+    animation: slideInFromRight 0.4s ease-out;
+}
+
+/* Estilo para cuando el usuario está en la parte superior */
+.toc-sidebar.at-top {
+    opacity: 0.7;
+}
+
+.toc-sidebar:hover {
+    opacity: 1;
+}

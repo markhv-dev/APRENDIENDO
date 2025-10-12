@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML - Sistema de Aprendizaje</title>
+
+    <!-- Sidebar Styles -->
+    <link rel="stylesheet" href="/sidebar-styles.css">
+
     <style>
         * {
             margin: 0;
@@ -16,6 +20,7 @@
             background: #0f0f0f;
             color: #e0e0e0;
             line-height: 1.6;
+            margin-left: 280px;
         }
 
         .container {
@@ -219,6 +224,10 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                margin-left: 0;
+            }
+
             h1 {
                 font-size: 2em;
             }
@@ -351,5 +360,8 @@
     <footer>
         <p>HTML - Sistema de Aprendizaje | <a href="../../index.html">Volver al Índice Principal</a></p>
     </footer>
+
+    <!-- Sidebar Component -->
+    <script src="/sidebar-component.js"></script>
 </body>
 </html>

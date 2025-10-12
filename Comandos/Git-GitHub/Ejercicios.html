@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicios - Git & GitHub</title>
+
+    <!-- Sidebar Styles -->
+    <link rel="stylesheet" href="/sidebar-styles.css">
+
     <style>
         * {
             margin: 0;
@@ -17,6 +21,7 @@
             color: #e0e0e0;
             line-height: 1.6;
             padding: 20px;
+            margin-left: 280px;
         }
 
         .container {
@@ -267,9 +272,74 @@
             font-size: 1.3em;
         }
 
+        /* Level Navigation */
+        .level-nav {
+            position: sticky;
+            top: 0;
+            z-index: 99;
+            background: #1a1a1a;
+            border-bottom: 1px solid #2a2a2a;
+            padding: 12px 0;
+            margin-bottom: 30px;
+        }
+
+        .level-nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .level-nav-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        .level-nav-links a:hover {
+            transform: translateY(-2px);
+        }
+
+        .level-nav-links a.nav-basico:hover {
+            color: #2ecc71;
+            background: rgba(46, 204, 113, 0.1);
+        }
+
+        .level-nav-links a.nav-intermedio:hover {
+            color: #3498db;
+            background: rgba(52, 152, 219, 0.1);
+        }
+
+        .level-nav-links a.nav-avanzado:hover {
+            color: #f1c40f;
+            background: rgba(241, 196, 15, 0.1);
+        }
+
+        .level-nav-links a.nav-experto:hover {
+            color: #e74c3c;
+            background: rgba(231, 76, 60, 0.1);
+        }
+
         @media (max-width: 768px) {
+            body {
+                margin-left: 0;
+            }
+
             header h1 {
                 font-size: 1.8em;
+            }
+
+            .level-nav-links {
+                gap: 10px;
+            }
+
+            .level-nav-links a {
+                font-size: 0.8em;
+                padding: 6px 12px;
             }
         }
     </style>
@@ -288,7 +358,18 @@
             <span>Ejercicios</span>
         </div>
 
+        <!-- Level Navigation -->
+        <nav class="level-nav">
+            <div class="level-nav-links">
+                <a href="#basico" class="nav-basico">📦 Básico</a>
+                <a href="#intermedio" class="nav-intermedio">🔥 Intermedio</a>
+                <a href="#avanzado" class="nav-avanzado">⚡ Avanzado</a>
+                <a href="#experto" class="nav-experto">🏆 Experto</a>
+            </div>
+        </nav>
+
         <!-- EJERCICIO 1: BÁSICO -->
+        <div id="basico"></div>
         <div class="ejercicio">
             <span class="nivel basico">Básico</span>
             <h2>Ejercicio 1: Tu Primer Repositorio Local</h2>
@@ -488,6 +569,7 @@ git branch
         </div>
 
         <!-- EJERCICIO 4: INTERMEDIO -->
+        <div id="intermedio"></div>
         <div class="ejercicio">
             <span class="nivel intermedio">Intermedio</span>
             <h2>Ejercicio 4: Trabajando con Ramas (Branching)</h2>
@@ -781,6 +863,7 @@ echo "REVERT: Crea nuevo commit que deshace cambios (seguro)"
         </div>
 
         <!-- EJERCICIO 7: AVANZADO -->
+        <div id="avanzado"></div>
         <div class="ejercicio">
             <span class="nivel avanzado">Avanzado</span>
             <h2>Ejercicio 7: Rebase Interactivo - Limpiando Historia</h2>
@@ -981,6 +1064,7 @@ git log --oneline --graph --all
         </div>
 
         <!-- EJERCICIO 9: EXPERTO -->
+        <div id="experto"></div>
         <div class="ejercicio">
             <span class="nivel experto">Experto</span>
             <h2>Ejercicio 9: Proyecto Completo con GitHub Flow</h2>
@@ -1219,5 +1303,8 @@ git log --oneline
             }
         }
     </script>
+
+    <!-- Sidebar Component -->
+    <script src="/sidebar-component.js"></script>
 </body>
 </html>

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicios de HTML - Práctica Progresiva</title>
+
+    <!-- Sidebar Styles -->
+    <link rel="stylesheet" href="/sidebar-styles.css">
+
     <style>
         * {
             margin: 0;
@@ -16,6 +20,7 @@
             background: #0f0f0f;
             color: #e0e0e0;
             line-height: 1.6;
+            margin-left: 280px;
         }
 
         .container {
@@ -303,6 +308,10 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                margin-left: 0;
+            }
+
             h1 {
                 font-size: 2em;
             }
@@ -333,13 +342,23 @@
         <p class="subtitle">Aprende practicando desde lo básico hasta nivel experto</p>
     </header>
 
+    <!-- Level Navigation -->
+    <nav class="level-nav">
+        <div class="level-nav-links">
+            <a href="#basico" class="nav-basico">📚 Básico</a>
+            <a href="#intermedio" class="nav-intermedio">🔥 Intermedio</a>
+            <a href="#avanzado" class="nav-avanzado">⚡ Avanzado</a>
+            <a href="#experto" class="nav-experto">🏆 Experto</a>
+        </div>
+    </nav>
+
     <div class="container">
         <div class="intro">
             <p><strong>Instrucciones:</strong> Completa cada ejercicio en orden. Crea archivos HTML separados para cada uno y pruébalos en tu navegador. La práctica constante es la clave para dominar HTML.</p>
         </div>
 
         <!-- EJERCICIOS BÁSICOS -->
-        <div class="section-separator">📚 NIVEL BÁSICO</div>
+        <div id="basico" class="section-separator">📚 NIVEL BÁSICO</div>
 
         <div class="ejercicio">
             <span class="nivel basico">Básico</span>
@@ -435,7 +454,7 @@
         </div>
 
         <!-- EJERCICIOS INTERMEDIOS -->
-        <div class="section-separator">🔥 NIVEL INTERMEDIO</div>
+        <div id="intermedio" class="section-separator">🔥 NIVEL INTERMEDIO</div>
 
         <div class="ejercicio">
             <span class="nivel intermedio">Intermedio</span>
@@ -520,7 +539,7 @@
         </div>
 
         <!-- EJERCICIOS AVANZADOS -->
-        <div class="section-separator">⚡ NIVEL AVANZADO</div>
+        <div id="avanzado" class="section-separator">⚡ NIVEL AVANZADO</div>
 
         <div class="ejercicio">
             <span class="nivel avanzado">Avanzado</span>
@@ -599,7 +618,7 @@
         </div>
 
         <!-- PROYECTO FINAL EXPERTO -->
-        <div class="section-separator">🏆 PROYECTO FINAL - NIVEL EXPERTO</div>
+        <div id="experto" class="section-separator">🏆 PROYECTO FINAL - NIVEL EXPERTO</div>
 
         <div class="ejercicio">
             <span class="nivel experto">Experto</span>
@@ -699,5 +718,8 @@
         <p><a href="index.html">← Volver a HTML</a> | <a href="../../index.html">Ir al Índice Principal</a></p>
         <p style="margin-top: 20px; color: #555;">¡Mucha suerte en tu aprendizaje! 🚀</p>
     </footer>
+
+    <!-- Sidebar Component -->
+    <script src="/sidebar-component.js"></script>
 </body>
 </html>

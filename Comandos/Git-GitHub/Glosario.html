@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Glosario - Git & GitHub</title>
+
+    <!-- Sidebar Styles -->
+    <link rel="stylesheet" href="/sidebar-styles.css">
+
     <style>
         * {
             margin: 0;
@@ -17,6 +21,7 @@
             color: #e0e0e0;
             line-height: 1.6;
             padding: 20px;
+            margin-left: 280px;
         }
 
         .container {
@@ -271,6 +276,10 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                margin-left: 0;
+            }
+
             header h1 {
                 font-size: 1.8em;
             }
@@ -970,5 +979,8 @@
             });
         });
     </script>
+
+    <!-- Sidebar Component -->
+    <script src="/sidebar-component.js"></script>
 </body>
 </html>

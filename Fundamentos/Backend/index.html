@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fundamentos - Backend Development</title>
+
+    <!-- Sidebar Styles -->
+    <link rel="stylesheet" href="/sidebar-styles.css">
+    
+    <!-- TOC (Table of Contents) Styles -->
+    <link rel="stylesheet" href="/toc-styles.css">
+
     <style>
         * {
             margin: 0;
@@ -17,6 +24,7 @@
             color: #e0e0e0;
             line-height: 1.6;
             padding: 20px;
+            margin-left: 280px;
         }
 
         .container {
@@ -346,6 +354,10 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                margin-left: 0;
+            }
+
             header h1 {
                 font-size: 1.8em;
             }
@@ -1259,5 +1271,10 @@ El BACKEND es el puente entre Frontend y Database:
 
         <a href="../index.html" class="back-button">← Volver a Fundamentos</a>
     </div>
+
+    <!-- Sidebar Component -->
+    <script src="/sidebar-component.js"></script>
+    <!-- TOC Component -->
+    <script src="/toc-component.js"></script>
 </body>
 </html>

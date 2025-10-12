@@ -1,0 +1,253 @@
+/* Global Sidebar Styles - Optimizado para uso en computadora */
+
+/* Sidebar Container */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 280px;
+    height: 100vh;
+    background: #1a1a1a;
+    border-right: 1px solid #2a2a2a;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+/* Scrollbar personalizado para el sidebar */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #0f0f0f;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #3a3a3a;
+    border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #4a4a4a;
+}
+
+/* Header del sidebar */
+.sidebar-header {
+    padding: 25px 20px;
+    border-bottom: 1px solid #2a2a2a;
+    background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
+}
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: #e0e0e0;
+    font-weight: 600;
+    font-size: 1.15em;
+    transition: color 0.2s ease;
+}
+
+.sidebar-logo:hover {
+    color: #4a90e2;
+}
+
+.logo-icon {
+    font-size: 1.8em;
+}
+
+/* Menú del sidebar */
+.sidebar-menu {
+    flex: 1;
+    padding: 15px 0;
+}
+
+.menu-section {
+    margin-bottom: 10px;
+}
+
+.section-title {
+    padding: 15px 20px 8px 20px;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #666;
+    font-weight: 700;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s ease;
+}
+
+.section-title:hover {
+    color: #888;
+}
+
+.toggle-icon {
+    font-size: 0.8em;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.menu-section.collapsed .toggle-icon {
+    transform: rotate(0deg);
+}
+
+.section-items {
+    max-height: 500px;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+}
+
+.menu-section.collapsed .section-items {
+    max-height: 0;
+    opacity: 0;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    color: #b0b0b0;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+    position: relative;
+}
+
+.menu-item:hover:not(.disabled) {
+    background: rgba(74, 144, 226, 0.08);
+    color: #4a90e2;
+    border-left-color: #4a90e2;
+}
+
+.menu-item.active {
+    background: rgba(74, 144, 226, 0.12);
+    color: #4a90e2;
+    border-left-color: #4a90e2;
+    font-weight: 500;
+}
+
+.menu-item.disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.item-icon {
+    font-size: 1.3em;
+    min-width: 28px;
+    text-align: center;
+}
+
+.item-text {
+    font-size: 0.95em;
+    flex: 1;
+}
+
+.badge-soon {
+    font-size: 0.6em;
+    background: rgba(255, 152, 0, 0.15);
+    color: #ff9800;
+    padding: 3px 7px;
+    border-radius: 4px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Footer del sidebar */
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid #2a2a2a;
+    background: #151515;
+}
+
+.progress-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.progress-label {
+    font-size: 0.75em;
+    color: #888;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #2a2a2a;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #4a90e2 0%, #357abd 100%);
+    transition: width 0.5s ease;
+    border-radius: 4px;
+}
+
+.progress-text {
+    font-size: 0.75em;
+    color: #4a90e2;
+    text-align: right;
+    font-weight: 600;
+}
+
+/* Ajuste automático del contenido principal */
+body.has-sidebar {
+    margin-left: 280px;
+}
+
+body.has-sidebar .container,
+body.has-sidebar .main-content {
+    margin-left: 0;
+}
+
+/* Mobile responsive (solo por si acaso) */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    body.has-sidebar {
+        margin-left: 0;
+    }
+
+    .sidebar-toggle {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 999;
+        background: #1a1a1a;
+        border: 1px solid #2a2a2a;
+        color: #e0e0e0;
+        padding: 12px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1.3em;
+        display: block;
+    }
+}
+
+/* En desktop ocultar el botón toggle */
+@media (min-width: 769px) {
+    .sidebar-toggle {
+        display: none;
+    }
+}

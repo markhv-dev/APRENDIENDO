@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Glosario de HTML - Términos Esenciales</title>
+
+    <!-- Sidebar Styles -->
+    <link rel="stylesheet" href="/sidebar-styles.css">
+
+    <!-- TOC (Table of Contents) Styles -->
+    <link rel="stylesheet" href="/toc-styles.css">
+
     <style>
         * {
             margin: 0;
@@ -16,6 +23,7 @@
             background: #0f0f0f;
             color: #e0e0e0;
             line-height: 1.6;
+            margin-left: 280px;
         }
 
         .container {
@@ -263,6 +271,10 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                margin-left: 0;
+            }
+
             h1 {
                 font-size: 2em;
             }
@@ -1193,5 +1205,11 @@
             }
         });
     </script>
+
+    <!-- Sidebar Component -->
+    <script src="/sidebar-component.js"></script>
+
+    <!-- TOC Component -->
+    <script src="/toc-component.js"></script>
 </body>
 </html>
