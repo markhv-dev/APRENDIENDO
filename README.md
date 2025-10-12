@@ -4,7 +4,7 @@ Sistema personal organizado para aprender desarrollo web y programación de form
 
 ---
 
-## 🌟 ¿Qué es esto?
+## 🌟¿Qué es esto?
 
 Un sistema de aprendizaje local completo con glosarios detallados, ejercicios progresivos y búsqueda integrada para dominar tecnologías de desarrollo web. Sin dependencias externas, solo abre `index.html` en tu navegador y comienza a aprender.
 
