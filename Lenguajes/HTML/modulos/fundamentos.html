@@ -16,238 +16,173 @@
         <p class="subtitle">Estructura básica, elementos, etiquetas y atributos</p>
     </header>
 
-    <div class="container">
-        <main class="content">
-            <section id="estructura-basica" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> Estructura Básica de HTML</h2>
-                <p>Todo documento HTML debe tener una estructura básica que incluye la declaración del tipo de documento y los elementos fundamentales que organizan el contenido.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-    &lt;head&gt;
-        &lt;title&gt;Document&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-
-    &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                </div>
-
-                <div class="info-box">
-                    <h3>Elementos de la estructura básica:</h3>
-                    <ul>
-                        <li><strong>&lt;!DOCTYPE html&gt;</strong> - Declara que el documento es HTML5</li>
-                        <li><strong>&lt;html&gt;</strong> - Elemento raíz que contiene todo el documento</li>
-                        <li><strong>&lt;head&gt;</strong> - Contiene metadatos y recursos (no visible)</li>
-                        <li><strong>&lt;body&gt;</strong> - Contiene el contenido visible de la página</li>
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(231, 76, 60, 0.1) 0%, rgba(231, 76, 60, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #e74c3c; margin-bottom: 40px;">
+                <h2 style="color: #e74c3c; margin-bottom: 15px; font-size: 1.8em;">
+                    <span class="unsa-tag" style="background: #e74c3c; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.5em; margin-right: 10px;">[U]</span>
+                    📚 Fundamentos de HTML
+                </h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    Este módulo cubre los conceptos fundamentales de HTML: estructura del documento, elementos, etiquetas, atributos y comentarios.
+                    Cada término está explicado en detalle con ejemplos prácticos para facilitar tu aprendizaje.
+                </p>
+                <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 8px; border: 1px solid rgba(231, 76, 60, 0.3);">
+                    <h3 style="color: #e74c3c; margin-bottom: 12px; font-size: 1.1em;">📋 Contenido del módulo:</h3>
+                    <ul style="list-style: none; padding-left: 0; line-height: 2;">
+                        <li style="color: #b0b0b0;">✓ Estructura básica y completa de documentos HTML</li>
+                        <li style="color: #b0b0b0;">✓ Diferencia entre elementos, etiquetas y atributos</li>
+                        <li style="color: #b0b0b0;">✓ Elementos contenedores y vacíos</li>
+                        <li style="color: #b0b0b0;">✓ Elementos estructurales fundamentales</li>
+                        <li style="color: #b0b0b0;">✓ Uso correcto de comentarios</li>
                     </ul>
                 </div>
             </section>
 
-            <section id="estructura-completa" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> Estructura Más Completa</h2>
-                <p>Una estructura HTML más completa incluye metadatos importantes para el navegador y motores de búsqueda:</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="es"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Document&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                </div>
-
-                <div class="example-box">
-                    <h4>Atributos importantes:</h4>
-                    <ul>
-                        <li><code>lang="es"</code> - Define el idioma del documento</li>
-                        <li><code>charset="UTF-8"</code> - Codificación de caracteres (soporta acentos, ñ, etc.)</li>
-                        <li><code>viewport</code> - Configuración para dispositivos móviles</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="elementos-etiquetas" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> Elementos y Etiquetas HTML</h2>
-
-                <div class="concept-box">
-                    <h3>¿Qué es un Elemento?</h3>
-                    <p>Un <strong>elemento</strong> es un bloque que forma parte de la estructura de una página web. Está compuesto por etiquetas y contenido.</p>
-                </div>
-
-                <div class="concept-box">
-                    <h3>¿Qué son las Etiquetas?</h3>
-                    <p>Las <strong>etiquetas</strong> o <em>tags</em> están delimitadas por &lt; &gt; y forman parte del elemento. Por regla general toda etiqueta es un juego de pares: una abre &lt; &gt; y otra cierra &lt; / &gt;</p>
-                </div>
-
-                <div class="code-block">
-                    <pre><code>&lt;p&gt;Este es un ejemplo&lt;/p&gt;
-↑              ↑              ↑
-Etiqueta de    Contenido      Etiqueta de
-apertura                      cierre
-
-              ELEMENTO</code></pre>
-                </div>
-            </section>
-
-            <section id="elementos-contenedores" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> Elementos Contenedores</h2>
-                <p>Son elementos que pueden tener contenido dentro: texto, otros elementos HTML, o ambos. Tienen una etiqueta de apertura y otra de cierre.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;p&gt;Este es un párrafo&lt;/p&gt;
-&lt;h1&gt;Este es un título&lt;/h1&gt;
-&lt;div&gt;Este es un contenedor&lt;/div&gt;</code></pre>
-                </div>
-
-                <div class="example-box">
-                    <h4>Ejemplos de elementos contenedores:</h4>
-                    <ul>
-                        <li><code>&lt;p&gt;</code> - Párrafo</li>
-                        <li><code>&lt;h1&gt; - &lt;h6&gt;</code> - Encabezados</li>
-                        <li><code>&lt;div&gt;</code> - Contenedor de bloque</li>
-                        <li><code>&lt;span&gt;</code> - Contenedor en línea</li>
-                        <li><code>&lt;a&gt;</code> - Enlace</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="elementos-vacios" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> Elementos Vacíos o Autocontenidos</h2>
-                <p>No tienen contenido. Sólo tienen etiqueta de apertura, no llevan una etiqueta de cierre.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;meta charset="UTF-8"&gt;
-&lt;img src="imagen.jpg" alt="Descripción"&gt;
-&lt;br&gt;
-&lt;hr&gt;</code></pre>
-                </div>
-
-                <div class="example-box">
-                    <h4>Ejemplos de elementos vacíos:</h4>
-                    <ul>
-                        <li><code>&lt;meta&gt;</code> - Metadatos</li>
-                        <li><code>&lt;img&gt;</code> - Imagen</li>
-                        <li><code>&lt;br&gt;</code> - Salto de línea</li>
-                        <li><code>&lt;hr&gt;</code> - Línea horizontal</li>
-                        <li><code>&lt;input&gt;</code> - Campo de entrada</li>
-                    </ul>
-                </div>
-
-                <div class="practice-exercise">
-                    <h4>Ejercicio Práctico</h4>
-                    <p>Identifica cuáles de estos elementos son contenedores y cuáles son vacíos:</p>
-                    <div class="code-block">
-                        <pre><code>&lt;html lang="es"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;Document&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                    </div>
-                    <details>
-                        <summary>Ver respuesta</summary>
-                        <ul>
-                            <li><strong>Contenedores:</strong> html, head, title, body</li>
-                            <li><strong>Vacíos:</strong> meta</li>
-                        </ul>
-                    </details>
-                </div>
-            </section>
-
-            <section id="atributos" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> Atributos de Elementos</h2>
-                <p>Característica adicional que le da información o funcionalidad extra al elemento. Se coloca en la etiqueta de apertura y modifica la presentación o el comportamiento del elemento.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;html lang="es"&gt;
-      ↑    ↑    ↑
-Etiqueta  Atributo  Valor</code></pre>
-                </div>
-
-                <div class="example-box">
-                    <h4>Ejemplos de atributos comunes:</h4>
-                    <div class="code-block">
-                        <pre><code>&lt;html lang="es"&gt;
-&lt;meta charset="UTF-8"&gt;
-&lt;meta name="viewport" content="width=device-width"&gt;
-&lt;img src="logo.png" alt="Logo"&gt;
-&lt;a href="https://google.com"&gt;Ir a Google&lt;/a&gt;</code></pre>
-                    </div>
-                </div>
-
-                <div class="practice-exercise">
-                    <h4>Ejercicio: Ubicar atributos</h4>
-                    <p>Identifica todos los atributos en este código:</p>
-                    <div class="code-block">
-                        <pre><code>&lt;html lang="es"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width"&gt;
-&lt;/head&gt;</code></pre>
-                    </div>
-                    <details>
-                        <summary>Ver respuesta</summary>
-                        <ul>
-                            <li><code>lang="es"</code> en html</li>
-                            <li><code>charset="UTF-8"</code> en meta</li>
-                            <li><code>name="viewport"</code> en meta</li>
-                            <li><code>content="width=device-width"</code> en meta</li>
-                        </ul>
-                    </details>
-                </div>
-            </section>
-
-            <section id="comentarios" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> Comentarios en HTML</h2>
-                <p>Los comentarios son notas en el código que no serán visibles en el navegador ni afectarán el diseño o funcionalidad de la página.</p>
-
-                <div class="info-box">
-                    <h3>Usos de los comentarios:</h3>
-                    <ul>
-                        <li>Explicar secciones del código</li>
-                        <li>Desactivar temporalmente elementos</li>
-                        <li>Dejar recordatorios para desarrollo futuro</li>
-                        <li>Documentar decisiones de diseño</li>
-                    </ul>
-                </div>
-
-                <div class="code-block">
-                    <pre><code>&lt;!-- Este es un comentario --&gt;
-
-&lt;body&gt;
-    &lt;!-- Encabezado principal de la página --&gt;
-    &lt;h1&gt;Bienvenido a mi sitio web&lt;/h1&gt;
-
-    &lt;!-- Párrafo en HTML --&gt;
-    &lt;p&gt;Este es mi primer párrafo en HTML&lt;/p&gt;
-
-    &lt;!-- &lt;p&gt;Este párrafo está comentado&lt;/p&gt; --&gt;
-
-    &lt;!-- TODO: Agregar enlaces al pie de página --&gt;
-&lt;/body&gt;</code></pre>
-                </div>
-            </section>
-
-            <section id="glosario-modulo" class="topic-section">
-                <h2>📚 Glosario del Módulo</h2>
-                <p>Términos y elementos HTML relacionados con los fundamentos:</p>
-
-                <div class="search-container">
-                    <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar término...">
-                </div>
-
+            <section id="terminos" class="topic-section">
                 <div id="terminosContainer">
-                    <div class="termino" data-tags="doctype declaración documento html5">
+                    <div class="termino" id="estructura-basica" data-tags="estructura basica documento plantilla">
+                        <span class="tag">📋 Estructura Básica</span>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Plantilla mínima de un documento HTML</p>
+                        <p class="descripcion">
+                            Todo documento HTML debe tener una estructura básica que incluye la declaración del tipo de documento y los elementos fundamentales que organizan el contenido.
+                            Esta estructura mínima es el punto de partida para cualquier página web.
+                        </p>
+                        <div class="ejemplo">&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>&nbsp;&nbsp;&lt;head&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Document&lt;/title&gt;<br>&nbsp;&nbsp;&lt;/head&gt;<br>&nbsp;&nbsp;&lt;body&gt;<br><br>&nbsp;&nbsp;&lt;/body&gt;<br>&lt;/html&gt;</div>
+                        <div class="nota">
+                            <strong>Componentes esenciales:</strong><br>
+                            • &lt;!DOCTYPE html&gt; - Declara HTML5<br>
+                            • &lt;html&gt; - Elemento raíz<br>
+                            • &lt;head&gt; - Metadatos<br>
+                            • &lt;body&gt; - Contenido visible
+                        </div>
+                    </div>
+
+                    <div class="termino" id="estructura-completa" data-tags="estructura completa metadata lang viewport charset">
+                        <span class="tag">📋 Estructura Completa</span>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Plantilla completa con metadatos esenciales</p>
+                        <p class="descripcion">
+                            Una estructura HTML profesional incluye metadatos importantes para el navegador, motores de búsqueda y dispositivos móviles.
+                            Estos metadatos mejoran la accesibilidad, SEO y compatibilidad.
+                        </p>
+                        <div class="ejemplo">&lt;!DOCTYPE html&gt;<br>&lt;html lang="es"&gt;<br>&lt;head&gt;<br>&nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>&nbsp;&nbsp;&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br>&nbsp;&nbsp;&lt;title&gt;Mi Página&lt;/title&gt;<br>&lt;/head&gt;<br>&lt;body&gt;<br><br>&lt;/body&gt;<br>&lt;/html&gt;</div>
+                        <div class="nota">
+                            <strong>Metadatos importantes:</strong><br>
+                            • <span class="atributo">lang="es"</span> - Define el idioma<br>
+                            • <span class="atributo">charset="UTF-8"</span> - Soporte para acentos y ñ<br>
+                            • <span class="atributo">viewport</span> - Configuración móvil
+                        </div>
+                    </div>
+
+                    <div class="termino" id="elemento" data-tags="elemento concepto tag etiqueta contenido">
+                        <span class="tag">💡 ¿Qué es un Elemento?</span>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Bloque fundamental de HTML</p>
+                        <p class="descripcion">
+                            Un <strong>elemento</strong> es un bloque que forma parte de la estructura de una página web.
+                            Está compuesto por etiquetas de apertura, contenido, y etiquetas de cierre (en la mayoría de casos).
+                            Los elementos definen el significado y estructura del contenido.
+                        </p>
+                        <div class="ejemplo">&lt;p&gt;Este es un ejemplo&lt;/p&gt;<br>↑ Etiqueta apertura<br>&nbsp;&nbsp;&nbsp;&nbsp;↑ Contenido<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↑ Etiqueta cierre<br><br>Todo junto = ELEMENTO</div>
+                    </div>
+
+                    <div class="termino" id="etiquetas" data-tags="etiqueta tag apertura cierre sintaxis">
+                        <span class="tag">💡 ¿Qué son las Etiquetas?</span>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Marcadores que definen elementos</p>
+                        <p class="descripcion">
+                            Las <strong>etiquetas</strong> o <em>tags</em> están delimitadas por &lt; &gt; y forman parte del elemento.
+                            Por regla general toda etiqueta es un juego de pares: una abre &lt; &gt; y otra cierra &lt;/&gt;.
+                            Las etiquetas indican al navegador cómo interpretar y mostrar el contenido.
+                        </p>
+                        <div class="ejemplo">&lt;h1&gt;Título&lt;/h1&gt;<br><br>&lt;h1&gt; = Etiqueta de apertura<br>&lt;/h1&gt; = Etiqueta de cierre</div>
+                    </div>
+
+                    <div class="termino" id="contenedores" data-tags="contenedor elemento apertura cierre hijo">
+                        <span class="tag">📦 Elementos Contenedores</span>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Elementos que pueden tener contenido interno</p>
+                        <p class="descripcion">
+                            Son elementos que pueden tener contenido dentro: texto, otros elementos HTML, o ambos.
+                            Tienen una etiqueta de apertura y otra de cierre.
+                            Pueden anidarse unos dentro de otros para crear estructuras complejas.
+                        </p>
+                        <div class="ejemplo">&lt;p&gt;Este es un párrafo&lt;/p&gt;<br>&lt;h1&gt;Este es un título&lt;/h1&gt;<br>&lt;div&gt;Este es un contenedor&lt;/div&gt;<br><br>&lt;div&gt;<br>&nbsp;&nbsp;&lt;p&gt;Párrafo dentro de div&lt;/p&gt;<br>&lt;/div&gt;</div>
+                        <div class="nota">
+                            <strong>Ejemplos comunes:</strong> &lt;p&gt;, &lt;h1-h6&gt;, &lt;div&gt;, &lt;span&gt;, &lt;a&gt;, &lt;section&gt;, &lt;article&gt;
+                        </div>
+                    </div>
+
+                    <div class="termino" id="vacios" data-tags="vacio autocontenido self-closing sin cierre">
+                        <span class="tag">📦 Elementos Vacíos</span>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Elementos autocontenidos sin etiqueta de cierre</p>
+                        <p class="descripcion">
+                            No tienen contenido interno. Sólo tienen etiqueta de apertura, no llevan una etiqueta de cierre.
+                            También llamados elementos de autocierre o self-closing tags.
+                            Se usan para insertar recursos o funcionalidades específicas.
+                        </p>
+                        <div class="ejemplo">&lt;meta charset="UTF-8"&gt;<br>&lt;img src="imagen.jpg" alt="Descripción"&gt;<br>&lt;br&gt;<br>&lt;hr&gt;<br>&lt;input type="text"&gt;</div>
+                        <div class="nota">
+                            <strong>Ejemplos comunes:</strong> &lt;meta&gt;, &lt;img&gt;, &lt;br&gt;, &lt;hr&gt;, &lt;input&gt;, &lt;link&gt;
+                        </div>
+                        <div class="practice-exercise">
+                            <details>
+                                <summary>🎯 Ejercicio: Identifica contenedores vs vacíos</summary>
+                                <p><strong>Código:</strong></p>
+                                <pre>&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;img src="logo.png"&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+                                <p><strong>Respuesta:</strong></p>
+                                <ul>
+                                    <li><strong>Contenedores:</strong> html, head, title, body</li>
+                                    <li><strong>Vacíos:</strong> meta, img</li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="atributos" data-tags="atributo propiedad valor configuracion">
+                        <span class="tag">⚙️ Atributos</span>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Propiedades que modifican elementos</p>
+                        <p class="descripcion">
+                            Característica adicional que le da información o funcionalidad extra al elemento.
+                            Se coloca en la etiqueta de apertura y modifica la presentación o el comportamiento del elemento.
+                            Formato: <code>nombre="valor"</code>
+                        </p>
+                        <div class="ejemplo">&lt;html lang="es"&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;↑&nbsp;&nbsp;&nbsp;&nbsp;↑&nbsp;&nbsp;&nbsp;&nbsp;↑<br>Etiqueta Atributo Valor<br><br>&lt;img src="foto.jpg" alt="Descripción" width="300"&gt;<br>&lt;a href="https://google.com" target="_blank"&gt;Link&lt;/a&gt;</div>
+                        <div class="nota">
+                            <strong>Atributos comunes:</strong><br>
+                            • <span class="atributo">id</span> - Identificador único<br>
+                            • <span class="atributo">class</span> - Clase CSS<br>
+                            • <span class="atributo">src</span> - Fuente de recurso<br>
+                            • <span class="atributo">href</span> - Destino de enlace<br>
+                            • <span class="atributo">alt</span> - Texto alternativo<br>
+                            • <span class="atributo">style</span> - Estilos inline
+                        </div>
+                        <div class="practice-exercise">
+                            <details>
+                                <summary>🎯 Ejercicio: Identifica los atributos</summary>
+                                <p><strong>Código:</strong></p>
+                                <pre>&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width"&gt;
+&lt;/head&gt;</pre>
+                                <p><strong>Respuesta:</strong></p>
+                                <ul>
+                                    <li><code>lang="es"</code> en html</li>
+                                    <li><code>charset="UTF-8"</code> en meta</li>
+                                    <li><code>name="viewport"</code> en meta</li>
+                                    <li><code>content="width=device-width"</code> en meta</li>
+                                </ul>
+                            </details>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="doctype" data-tags="doctype declaración documento html5">
                         <span class="tag">&lt;!DOCTYPE html&gt;</span>
                         <p class="significado">Significado: Declaración de tipo de documento</p>
                         <p class="descripcion">
@@ -262,7 +197,7 @@ Etiqueta  Atributo  Valor</code></pre>
                         </div>
                     </div>
 
-                    <div class="termino" data-tags="html raíz root lang idioma">
+                    <div class="termino" id="html" data-tags="html raíz root lang idioma">
                         <span class="tag">&lt;html&gt;</span>
                         <p class="significado">Significado: Raíz del documento HTML</p>
                         <p class="descripcion">
@@ -276,7 +211,7 @@ Etiqueta  Atributo  Valor</code></pre>
                         </div>
                     </div>
 
-                    <div class="termino" data-tags="head cabecera metadata metadatos seo">
+                    <div class="termino" id="head" data-tags="head cabecera metadata metadatos seo">
                         <span class="tag">&lt;head&gt;</span>
                         <p class="significado">Significado: Cabecera del documento</p>
                         <p class="descripcion">
@@ -287,7 +222,7 @@ Etiqueta  Atributo  Valor</code></pre>
                         <div class="ejemplo">&lt;head&gt;<br>&nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>&nbsp;&nbsp;&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br>&nbsp;&nbsp;&lt;title&gt;Mi Página&lt;/title&gt;<br>&nbsp;&nbsp;&lt;link rel="stylesheet" href="styles.css"&gt;<br>&lt;/head&gt;</div>
                     </div>
 
-                    <div class="termino" data-tags="body cuerpo contenido visible">
+                    <div class="termino" id="body" data-tags="body cuerpo contenido visible">
                         <span class="tag">&lt;body&gt;</span>
                         <p class="significado">Significado: Cuerpo del documento</p>
                         <p class="descripcion">
@@ -298,7 +233,7 @@ Etiqueta  Atributo  Valor</code></pre>
                         <div class="ejemplo">&lt;body&gt;<br>&nbsp;&nbsp;&lt;header&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Bienvenido&lt;/h1&gt;<br>&nbsp;&nbsp;&lt;/header&gt;<br>&nbsp;&nbsp;&lt;main&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Este es mi sitio web&lt;/p&gt;<br>&nbsp;&nbsp;&lt;/main&gt;<br>&lt;/body&gt;</div>
                     </div>
 
-                    <div class="termino" data-tags="title título pestaña seo">
+                    <div class="termino" id="title" data-tags="title título pestaña seo">
                         <span class="tag">&lt;title&gt;</span>
                         <p class="significado">Significado: Título de la página</p>
                         <p class="descripcion">
@@ -311,7 +246,7 @@ Etiqueta  Atributo  Valor</code></pre>
                         </div>
                     </div>
 
-                    <div class="termino" data-tags="meta metadata charset viewport description">
+                    <div class="termino" id="meta" data-tags="meta metadata charset viewport description">
                         <span class="tag">&lt;meta&gt;</span>
                         <p class="significado">Significado: Metainformación</p>
                         <p class="descripcion">
@@ -327,7 +262,7 @@ Etiqueta  Atributo  Valor</code></pre>
                         </div>
                     </div>
 
-                    <div class="termino" data-tags="link enlace stylesheet css favicon icon">
+                    <div class="termino" id="link" data-tags="link enlace stylesheet css favicon icon">
                         <span class="tag">&lt;link&gt;</span>
                         <p class="significado">Significado: Enlace a recursos externos</p>
                         <p class="descripcion">
@@ -341,7 +276,7 @@ Etiqueta  Atributo  Valor</code></pre>
                         </div>
                     </div>
 
-                    <div class="termino" data-tags="comentario comment documentación">
+                    <div class="termino" id="comentarios" data-tags="comentario comment documentación">
                         <span class="tag">&lt;!-- --&gt;</span>
                         <p class="significado">Significado: Comentario HTML</p>
                         <p class="descripcion">
@@ -361,18 +296,53 @@ Etiqueta  Atributo  Valor</code></pre>
             </section>
         </main>
 
-        <aside class="toc">
-            <h3>Contenido</h3>
-            <ul>
-                <li><a href="#estructura-basica">Estructura Básica</a></li>
-                <li><a href="#estructura-completa">Estructura Completa</a></li>
-                <li><a href="#elementos-etiquetas">Elementos y Etiquetas</a></li>
-                <li><a href="#elementos-contenedores">Elementos Contenedores</a></li>
-                <li><a href="#elementos-vacios">Elementos Vacíos</a></li>
-                <li><a href="#atributos">Atributos</a></li>
-                <li><a href="#comentarios">Comentarios</a></li>
-                <li><a href="#glosario-modulo">Glosario del Módulo</a></li>
-            </ul>
+        <aside class="toc-sidebar">
+            <div class="toc-header">📚 Fundamentos de HTML</div>
+
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-group">
+                        <div class="toc-group-header" onclick="toggleTOCGroup('conceptos')">
+                            <span class="toggle-icon">▼</span>
+                            💡 Conceptos Fundamentales
+                        </div>
+                        <ul class="toc-group-items" id="toc-group-conceptos">
+                            <li class="toc-item level-2"><a href="#estructura-basica" class="toc-link">Estructura Básica</a></li>
+                            <li class="toc-item level-2"><a href="#estructura-completa" class="toc-link">Estructura Completa</a></li>
+                            <li class="toc-item level-2"><a href="#elemento" class="toc-link">¿Qué es un Elemento?</a></li>
+                            <li class="toc-item level-2"><a href="#etiquetas" class="toc-link">¿Qué son las Etiquetas?</a></li>
+                            <li class="toc-item level-2"><a href="#contenedores" class="toc-link">Elementos Contenedores</a></li>
+                            <li class="toc-item level-2"><a href="#vacios" class="toc-link">Elementos Vacíos</a></li>
+                            <li class="toc-item level-2"><a href="#atributos" class="toc-link">Atributos</a></li>
+                        </ul>
+                    </li>
+                    <li class="toc-group">
+                        <div class="toc-group-header" onclick="toggleTOCGroup('estructurales')">
+                            <span class="toggle-icon">▼</span>
+                            🏗️ Elementos Estructurales
+                        </div>
+                        <ul class="toc-group-items" id="toc-group-estructurales">
+                            <li class="toc-item level-2"><a href="#doctype" class="toc-link">&lt;!DOCTYPE html&gt;</a></li>
+                            <li class="toc-item level-2"><a href="#html" class="toc-link">&lt;html&gt;</a></li>
+                            <li class="toc-item level-2"><a href="#head" class="toc-link">&lt;head&gt;</a></li>
+                            <li class="toc-item level-2"><a href="#body" class="toc-link">&lt;body&gt;</a></li>
+                            <li class="toc-item level-2"><a href="#title" class="toc-link">&lt;title&gt;</a></li>
+                            <li class="toc-item level-2"><a href="#meta" class="toc-link">&lt;meta&gt;</a></li>
+                            <li class="toc-item level-2"><a href="#link" class="toc-link">&lt;link&gt;</a></li>
+                        </ul>
+                    </li>
+                    <li class="toc-item"><a href="#comentarios" class="toc-link">💬 Comentarios</a></li>
+                </ul>
+            </nav>
+
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
         </aside>
     </div>
 
@@ -382,22 +352,85 @@ Etiqueta  Atributo  Valor</code></pre>
 
     <script src="/assets/js/sidebar-component.js"></script>
     <script>
-        // Funcionalidad de búsqueda en el glosario
+        // Funcionalidad de búsqueda en el glosario con normalización y resaltado
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('searchInput');
             const terminosContainer = document.getElementById('terminosContainer');
             const noResults = document.getElementById('noResults');
             const terminos = terminosContainer.querySelectorAll('.termino');
 
+            // Normalizar texto: eliminar tildes y convertir a minúsculas
+            function normalizeText(text) {
+                return text
+                    .toLowerCase()
+                    .normalize('NFD')
+                    .replace(/[\u0300-\u036f]/g, '');
+            }
+
+            // Resaltar texto encontrado
+            function highlightText(element, query) {
+                removeHighlights(element);
+
+                const walker = document.createTreeWalker(
+                    element,
+                    NodeFilter.SHOW_TEXT,
+                    null,
+                    false
+                );
+
+                const nodesToReplace = [];
+                let node;
+
+                while (node = walker.nextNode()) {
+                    if (normalizeText(node.nodeValue).includes(query)) {
+                        nodesToReplace.push(node);
+                    }
+                }
+
+                nodesToReplace.forEach(node => {
+                    const text = node.nodeValue;
+                    const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+                    // Crear regex que ignore tildes
+                    const accentsMap = {
+                        'a': '[aáàäâã]', 'e': '[eéèëê]', 'i': '[iíìïî]',
+                        'o': '[oóòöôõ]', 'u': '[uúùüû]', 'n': '[nñ]'
+                    };
+
+                    let regexPattern = '';
+                    for (let char of escapedQuery) {
+                        regexPattern += accentsMap[char] || char;
+                    }
+
+                    const regex = new RegExp(`(${regexPattern})`, 'gi');
+                    const span = document.createElement('span');
+                    span.innerHTML = text.replace(regex, '<mark style="background: #f1c40f; color: #000; padding: 2px 4px; border-radius: 3px; font-weight: 500;">$1</mark>');
+                    node.parentNode.replaceChild(span, node);
+                });
+            }
+
+            // Eliminar resaltados previos
+            function removeHighlights(element) {
+                const marks = element.querySelectorAll('mark');
+                marks.forEach(mark => {
+                    const parent = mark.parentNode;
+                    if (parent) {
+                        const textNode = document.createTextNode(mark.textContent);
+                        parent.replaceChild(textNode, mark);
+                        parent.normalize();
+                    }
+                });
+            }
+
             searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase().trim();
+                const searchTerm = normalizeText(this.value.trim());
                 let visibleCount = 0;
 
                 terminos.forEach(termino => {
-                    const tag = termino.querySelector('.tag').textContent.toLowerCase();
-                    const significado = termino.querySelector('.significado').textContent.toLowerCase();
-                    const descripcion = termino.querySelector('.descripcion').textContent.toLowerCase();
-                    const tags = termino.getAttribute('data-tags').toLowerCase();
+                    const tag = normalizeText(termino.querySelector('.tag').textContent);
+                    const significado = normalizeText(termino.querySelector('.significado').textContent);
+                    const descripcion = normalizeText(termino.querySelector('.descripcion').textContent);
+                    const tags = normalizeText(termino.getAttribute('data-tags'));
 
                     const matches = tag.includes(searchTerm) ||
                                   significado.includes(searchTerm) ||
@@ -407,8 +440,16 @@ Etiqueta  Atributo  Valor</code></pre>
                     if (matches || searchTerm === '') {
                         termino.style.display = 'block';
                         visibleCount++;
+
+                        // Resaltar solo si hay término de búsqueda
+                        if (searchTerm !== '') {
+                            highlightText(termino, searchTerm);
+                        } else {
+                            removeHighlights(termino);
+                        }
                     } else {
                         termino.style.display = 'none';
+                        removeHighlights(termino);
                     }
                 });
 
@@ -418,6 +459,65 @@ Etiqueta  Atributo  Valor</code></pre>
                 } else {
                     noResults.style.display = 'none';
                 }
+            });
+
+            // Barra de progreso de scroll
+            const progressBar = document.getElementById('tocProgressBar');
+            if (progressBar) {
+                window.addEventListener('scroll', () => {
+                    const windowHeight = window.innerHeight;
+                    const documentHeight = document.documentElement.scrollHeight - windowHeight;
+                    const scrolled = window.scrollY;
+                    const progress = (scrolled / documentHeight) * 100;
+                    progressBar.style.width = `${Math.min(progress, 100)}%`;
+                });
+            }
+
+            // Función para toggle de grupos
+            window.toggleTOCGroup = function(groupId) {
+                const group = document.getElementById(`toc-group-${groupId}`);
+                const icon = event.currentTarget.querySelector('.toggle-icon');
+
+                if (!group) return;
+
+                if (group.style.display === 'none') {
+                    group.style.display = 'block';
+                    icon.textContent = '▼';
+                } else {
+                    group.style.display = 'none';
+                    icon.textContent = '▶';
+                }
+            };
+
+            // Resaltar término al hacer clic en TOC
+            const tocLinks = document.querySelectorAll('.toc-link');
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href').substring(1);
+
+                    setTimeout(() => {
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            // Remover resaltados anteriores
+                            document.querySelectorAll('.termino').forEach(t => {
+                                t.style.outline = '';
+                                t.style.boxShadow = '';
+                            });
+
+                            // Resaltar el elemento seleccionado
+                            if (targetElement.classList.contains('termino')) {
+                                targetElement.style.outline = '3px solid #e74c3c';
+                                targetElement.style.boxShadow = '0 0 20px rgba(231, 76, 60, 0.5)';
+
+                                // Quitar resaltado después de 3 segundos
+                                setTimeout(() => {
+                                    targetElement.style.outline = '';
+                                    targetElement.style.boxShadow = '';
+                                }, 3000);
+                            }
+                        }
+                    }, 100);
+                });
             });
         });
     </script>

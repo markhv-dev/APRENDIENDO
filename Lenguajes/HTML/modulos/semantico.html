@@ -417,6 +417,152 @@
                     </ul>
                 </div>
             </section>
+
+            <section id="glosario-modulo" class="topic-section">
+                <h2>📚 Glosario del Módulo</h2>
+                <p>Referencia completa de elementos semánticos HTML5:</p>
+
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar término...">
+                </div>
+
+                <div id="terminosContainer">
+                    <div class="termino" data-tags="header encabezado cabecera">
+                        <span class="tag">&lt;header&gt;</span>
+                        <p class="significado">Significado: Encabezado de página o sección</p>
+                        <p class="descripcion">
+                            Representa el encabezado de una página o sección. Generalmente contiene logo, título principal, navegación principal.
+                            Puede haber múltiples headers en una página (uno principal y otros para secciones/artículos).
+                            Mejora la estructura semántica y accesibilidad del documento.
+                        </p>
+                        <div class="ejemplo">&lt;header&gt;<br>&nbsp;&nbsp;&lt;img src="logo.png" alt="Logo"&gt;<br>&nbsp;&nbsp;&lt;h1&gt;Mi Sitio Web&lt;/h1&gt;<br>&nbsp;&nbsp;&lt;nav&gt;...&lt;/nav&gt;<br>&lt;/header&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="nav navegación menú links">
+                        <span class="tag">&lt;nav&gt;</span>
+                        <p class="significado">Significado: Navegación</p>
+                        <p class="descripcion">
+                            Define una sección de navegación. Contiene enlaces de navegación principales del sitio.
+                            No todos los grupos de enlaces deben estar en nav, solo los bloques de navegación principales.
+                            Ayuda a lectores de pantalla a identificar y saltar secciones de navegación.
+                        </p>
+                        <div class="ejemplo">&lt;nav&gt;<br>&nbsp;&nbsp;&lt;ul&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="/"&gt;Inicio&lt;/a&gt;&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="/sobre"&gt;Sobre Nosotros&lt;/a&gt;&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="/contacto"&gt;Contacto&lt;/a&gt;&lt;/li&gt;<br>&nbsp;&nbsp;&lt;/ul&gt;<br>&lt;/nav&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="main principal contenido">
+                        <span class="tag">&lt;main&gt;</span>
+                        <p class="significado">Significado: Contenido principal</p>
+                        <p class="descripcion">
+                            Especifica el contenido principal dominante del documento. Solo debe haber un elemento main visible por página.
+                            No debe incluir contenido repetido como sidebars, navegación, footers, logos.
+                            El contenido dentro debe ser único a esa página. Importante para accesibilidad y SEO.
+                        </p>
+                        <div class="ejemplo">&lt;main&gt;<br>&nbsp;&nbsp;&lt;article&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Título del Artículo&lt;/h1&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Contenido principal...&lt;/p&gt;<br>&nbsp;&nbsp;&lt;/article&gt;<br>&lt;/main&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="article artículo post blog contenido">
+                        <span class="tag">&lt;article&gt;</span>
+                        <p class="significado">Significado: Artículo independiente</p>
+                        <p class="descripcion">
+                            Representa contenido independiente y auto-contenido que podría distribuirse de forma independiente.
+                            Ejemplos: post de blog, artículo de periódico, comentario de usuario, widget interactivo.
+                            Debe tener sentido por sí mismo y poder ser reutilizado/distribuido.
+                        </p>
+                        <div class="ejemplo">&lt;article&gt;<br>&nbsp;&nbsp;&lt;header&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;Título del Post&lt;/h2&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Por Juan Pérez - 15 de marzo 2024&lt;/p&gt;<br>&nbsp;&nbsp;&lt;/header&gt;<br>&nbsp;&nbsp;&lt;p&gt;Contenido del artículo...&lt;/p&gt;<br>&nbsp;&nbsp;&lt;footer&gt;Etiquetas: HTML, Tutorial&lt;/footer&gt;<br>&lt;/article&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="section sección grupo temático">
+                        <span class="tag">&lt;section&gt;</span>
+                        <p class="significado">Significado: Sección temática</p>
+                        <p class="descripcion">
+                            Define una sección temática del documento. Agrupa contenido relacionado bajo un tema común.
+                            Generalmente incluye un encabezado. Útil para dividir el contenido en partes lógicas.
+                            Diferente de article: section es parte de un todo, article es completo por sí mismo.
+                        </p>
+                        <div class="ejemplo">&lt;section&gt;<br>&nbsp;&nbsp;&lt;h2&gt;Nuestros Servicios&lt;/h2&gt;<br>&nbsp;&nbsp;&lt;p&gt;Ofrecemos los siguientes servicios...&lt;/p&gt;<br>&lt;/section&gt;<br><br>&lt;section&gt;<br>&nbsp;&nbsp;&lt;h2&gt;Testimonios&lt;/h2&gt;<br>&nbsp;&nbsp;&lt;p&gt;Lo que dicen nuestros clientes...&lt;/p&gt;<br>&lt;/section&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="aside sidebar barra lateral complementario">
+                        <span class="tag">&lt;aside&gt;</span>
+                        <p class="significado">Significado: Contenido complementario</p>
+                        <p class="descripcion">
+                            Representa contenido relacionado indirectamente con el contenido principal.
+                            Típicamente usado para barras laterales, cajas de información adicional, publicidad, enlaces relacionados.
+                            El contenido debe ser "removible" sin afectar la comprensión del contenido principal.
+                        </p>
+                        <div class="ejemplo">&lt;aside&gt;<br>&nbsp;&nbsp;&lt;h3&gt;Artículos Relacionados&lt;/h3&gt;<br>&nbsp;&nbsp;&lt;ul&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="..."&gt;Artículo 1&lt;/a&gt;&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="..."&gt;Artículo 2&lt;/a&gt;&lt;/li&gt;<br>&nbsp;&nbsp;&lt;/ul&gt;<br>&lt;/aside&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="footer pie página copyright">
+                        <span class="tag">&lt;footer&gt;</span>
+                        <p class="significado">Significado: Pie de página o sección</p>
+                        <p class="descripcion">
+                            Representa el pie de una página o sección. Generalmente contiene información de copyright, enlaces adicionales,
+                            información de contacto, mapa del sitio, botones de redes sociales.
+                            Puede haber múltiples footers (uno principal y otros para artículos/secciones).
+                        </p>
+                        <div class="ejemplo">&lt;footer&gt;<br>&nbsp;&nbsp;&lt;p&gt;&copy; 2024 Mi Empresa. Todos los derechos reservados.&lt;/p&gt;<br>&nbsp;&nbsp;&lt;nav&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href="/privacidad"&gt;Privacidad&lt;/a&gt; |<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href="/terminos"&gt;Términos&lt;/a&gt;<br>&nbsp;&nbsp;&lt;/nav&gt;<br>&lt;/footer&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="figure imagen diagrama figcaption">
+                        <span class="tag">&lt;figure&gt; y &lt;figcaption&gt;</span>
+                        <p class="significado">Significado: Figura con descripción</p>
+                        <p class="descripcion">
+                            figure especifica contenido auto-contenido como imágenes, diagramas, ilustraciones, código, citas.
+                            figcaption define la descripción o leyenda de la figura. Mejora significativamente la accesibilidad y semántica.
+                            La figura debe poder moverse a un apéndice sin afectar el flujo del documento.
+                        </p>
+                        <div class="ejemplo">&lt;figure&gt;<br>&nbsp;&nbsp;&lt;img src="grafico.png" alt="Gráfico de ventas 2024"&gt;<br>&nbsp;&nbsp;&lt;figcaption&gt;Figura 1: Crecimiento de ventas durante 2024&lt;/figcaption&gt;<br>&lt;/figure&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="time fecha hora datetime">
+                        <span class="tag">&lt;time&gt;</span>
+                        <p class="significado">Significado: Fecha/hora legible por máquina</p>
+                        <p class="descripcion">
+                            Representa una fecha, hora o duración específica en formato legible por máquina.
+                            Mejora la semántica y permite a navegadores/buscadores entender fechas correctamente.
+                            Útil para eventos, publicaciones, fechas de actualización.
+                        </p>
+                        <div class="ejemplo">&lt;p&gt;Publicado el &lt;time datetime="2024-03-15"&gt;15 de marzo de 2024&lt;/time&gt;&lt;/p&gt;<br>&lt;time datetime="2024-03-15T14:30:00"&gt;15 de marzo, 2:30 PM&lt;/time&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="mark destacar resaltar highlight">
+                        <span class="tag">&lt;mark&gt;</span>
+                        <p class="significado">Significado: Texto marcado o resaltado</p>
+                        <p class="descripcion">
+                            Representa texto marcado o resaltado por su relevancia en un contexto particular.
+                            Por defecto se muestra con fondo amarillo. Útil para resultados de búsqueda o destacar información importante.
+                        </p>
+                        <div class="ejemplo">&lt;p&gt;El término &lt;mark&gt;HTML&lt;/mark&gt; apareció en tu búsqueda.&lt;/p&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="details summary acordeón collapsible">
+                        <span class="tag">&lt;details&gt; y &lt;summary&gt;</span>
+                        <p class="significado">Significado: Widget de divulgación</p>
+                        <p class="descripcion">
+                            details crea un widget interactivo que el usuario puede abrir/cerrar para ver más información.
+                            summary define el título visible (siempre visible). El resto del contenido se puede ocultar/mostrar.
+                            Útil para FAQs, acordeones, información adicional opcional. No requiere JavaScript.
+                        </p>
+                        <div class="ejemplo">&lt;details&gt;<br>&nbsp;&nbsp;&lt;summary&gt;¿Qué es HTML?&lt;/summary&gt;<br>&nbsp;&nbsp;&lt;p&gt;HTML es el lenguaje de marcado para crear páginas web...&lt;/p&gt;<br>&lt;/details&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="address contacto dirección autor">
+                        <span class="tag">&lt;address&gt;</span>
+                        <p class="significado">Significado: Información de contacto</p>
+                        <p class="descripcion">
+                            Define información de contacto del autor o propietario de un documento o artículo.
+                            Puede incluir dirección física, email, teléfono, redes sociales.
+                            Generalmente va dentro de un footer o article.
+                        </p>
+                        <div class="ejemplo">&lt;address&gt;<br>&nbsp;&nbsp;Contacto: &lt;a href="mailto:info@ejemplo.com"&gt;info@ejemplo.com&lt;/a&gt;<br>&nbsp;&nbsp;Teléfono: +1 234 567 890<br>&lt;/address&gt;</div>
+                    </div>
+                </div>
+
+                <div id="noResults" class="no-results" style="display: none;">
+                    No se encontraron términos que coincidan con tu búsqueda.
+                </div>
+            </section>
         </main>
 
         <aside class="toc">
@@ -435,6 +581,7 @@
                 <li><a href="#otros-elementos">Otros Elementos</a></li>
                 <li><a href="#ejemplo-completo">Ejemplo Completo</a></li>
                 <li><a href="#buenas-practicas">Buenas Prácticas</a></li>
+                <li><a href="#glosario-modulo">Glosario del Módulo</a></li>
             </ul>
         </aside>
     </div>
@@ -444,5 +591,45 @@
     </footer>
 
     <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        // Funcionalidad de búsqueda en el glosario
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                let visibleCount = 0;
+
+                terminos.forEach(termino => {
+                    const tag = termino.querySelector('.tag').textContent.toLowerCase();
+                    const significado = termino.querySelector('.significado').textContent.toLowerCase();
+                    const descripcion = termino.querySelector('.descripcion').textContent.toLowerCase();
+                    const tags = termino.getAttribute('data-tags').toLowerCase();
+
+                    const matches = tag.includes(searchTerm) ||
+                                  significado.includes(searchTerm) ||
+                                  descripcion.includes(searchTerm) ||
+                                  tags.includes(searchTerm);
+
+                    if (matches || searchTerm === '') {
+                        termino.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+
+                // Mostrar mensaje si no hay resultados
+                if (visibleCount === 0 && searchTerm !== '') {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
