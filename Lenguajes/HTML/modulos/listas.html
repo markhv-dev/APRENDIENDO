@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listas - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a HTML</a>
+        <span class="icon">📋</span>
+        <h1>Módulo 3: Listas</h1>
+        <p class="subtitle">Listas ordenadas, no ordenadas y de definición</p>
+    </header>
+
+    <div class="container">
+        <main class="content">
+            <section id="introduccion" class="topic-section">
+                <h2><span class="unsa-tag">[U]</span> Introducción a las Listas</h2>
+                <p>Las listas son estructuras fundamentales para representar conjuntos de elementos relacionados en HTML.</p>
+
+                <div class="info-box">
+                    <h3>Casos de uso comunes:</h3>
+                    <ul>
+                        <li>Paso a paso de un procedimiento</li>
+                        <li>Características de un producto o servicio</li>
+                        <li>Menú de navegación de una página web</li>
+                        <li>Índices y tablas de contenido</li>
+                        <li>Listados de elementos relacionados</li>
+                    </ul>
+                </div>
+
+                <div class="concept-box">
+                    <h3>Tipos de listas en HTML:</h3>
+                    <ul>
+                        <li><strong>Listas no ordenadas</strong> (<code>&lt;ul&gt;</code>) - Cuando el orden no es relevante</li>
+                        <li><strong>Listas ordenadas</strong> (<code>&lt;ol&gt;</code>) - Cuando el orden es importante</li>
+                        <li><strong>Listas de definición</strong> (<code>&lt;dl&gt;</code>) - Para términos y descripciones</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="listas-no-ordenadas" class="topic-section">
+                <h2><span class="unsa-tag">[U]</span> Listas No Ordenadas (&lt;ul&gt;)</h2>
+                <p>Se usan cuando el orden de los elementos no es relevante. Se renderizan con viñetas (bullets) por defecto.</p>
+
+                <div class="code-block">
+                    <pre><code>&lt;ul&gt;
+    &lt;li&gt;HTML&lt;/li&gt;
+    &lt;li&gt;CSS&lt;/li&gt;
+    &lt;li&gt;JavaScript&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <h4>Ejemplo visual:</h4>
+                    <div class="demo-box">
+                        <ul>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h3>Características:</h3>
+                    <ul>
+                        <li><code>&lt;ul&gt;</code> - Elemento contenedor de la lista</li>
+                        <li><code>&lt;li&gt;</code> - Cada elemento individual de la lista</li>
+                        <li>Renderizado con viñetas por defecto</li>
+                        <li>Claramente identificadas como grupos de elementos relacionados</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="listas-ordenadas" class="topic-section">
+                <h2><span class="unsa-tag">[U]</span> Listas Ordenadas (&lt;ol&gt;)</h2>
+                <p>Se usan cuando el orden es importante o jerárquico. Se renderizan numeradas (1, 2, 3...) o con letras, números romanos, etc.</p>
+
+                <div class="code-block">
+                    <pre><code>&lt;ol&gt;
+    &lt;li&gt;Entender el problema&lt;/li&gt;
+    &lt;li&gt;Plantear la lógica&lt;/li&gt;
+    &lt;li&gt;Escribir el programa&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <h4>Ejemplo visual:</h4>
+                    <div class="demo-box">
+                        <ol>
+                            <li>Entender el problema</li>
+                            <li>Plantear la lógica</li>
+                            <li>Escribir el programa</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h3>Atributos útiles:</h3>
+                    <ul>
+                        <li><code>type</code> - Define el tipo de numeración (1, A, a, I, i)</li>
+                        <li><code>start</code> - Define el número inicial</li>
+                        <li><code>reversed</code> - Invierte el orden de la numeración</li>
+                    </ul>
+                </div>
+
+                <div class="example-box">
+                    <h4>Ejemplos con atributos:</h4>
+                    <div class="code-block">
+                        <pre><code>&lt;ol type="A"&gt;
+    &lt;li&gt;Primera opción&lt;/li&gt;
+    &lt;li&gt;Segunda opción&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;ol start="5"&gt;
+    &lt;li&gt;Inicia en 5&lt;/li&gt;
+    &lt;li&gt;Este es el 6&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                    </div>
+                    <div class="demo-box">
+                        <ol type="A">
+                            <li>Primera opción</li>
+                            <li>Segunda opción</li>
+                        </ol>
+                        <ol start="5">
+                            <li>Inicia en 5</li>
+                            <li>Este es el 6</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+
+            <section id="listas-anidadas" class="topic-section">
+                <h2><span class="unsa-tag">[U]</span> Listas Anidadas</h2>
+                <p>Puedes crear listas dentro de otras listas para representar jerarquías o estructuras más complejas.</p>
+
+                <div class="code-block">
+                    <pre><code>&lt;ol&gt;
+    &lt;li&gt;Frontend
+        &lt;ul&gt;
+            &lt;li&gt;HTML&lt;/li&gt;
+            &lt;li&gt;CSS&lt;/li&gt;
+            &lt;li&gt;JavaScript&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Backend
+        &lt;ul&gt;
+            &lt;li&gt;Python&lt;/li&gt;
+            &lt;li&gt;Node.js&lt;/li&gt;
+            &lt;li&gt;Java&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <h4>Ejemplo visual:</h4>
+                    <div class="demo-box">
+                        <ol>
+                            <li>Frontend
+                                <ul>
+                                    <li>HTML</li>
+                                    <li>CSS</li>
+                                    <li>JavaScript</li>
+                                </ul>
+                            </li>
+                            <li>Backend
+                                <ul>
+                                    <li>Python</li>
+                                    <li>Node.js</li>
+                                    <li>Java</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h3>Importante:</h3>
+                    <p>La lista anidada debe estar dentro de un elemento <code>&lt;li&gt;</code> de la lista padre, no directamente dentro del <code>&lt;ul&gt;</code> o <code>&lt;ol&gt;</code>.</p>
+                </div>
+            </section>
+
+            <section id="listas-definicion" class="topic-section">
+                <h2><span class="unsa-tag">[U]</span> Listas de Definición (&lt;dl&gt;)</h2>
+                <p>Se usan para representar pares de término-descripción. Son perfectas para glosarios, fichas técnicas o FAQs.</p>
+
+                <div class="code-block">
+                    <pre><code>&lt;dl&gt;
+    &lt;dt&gt;HTTP&lt;/dt&gt;
+    &lt;dd&gt;Protocolo de Transferencia de Hipertexto.&lt;/dd&gt;
+
+    &lt;dt&gt;API&lt;/dt&gt;
+    &lt;dd&gt;Interfaz de programación de aplicaciones.&lt;/dd&gt;
+
+    &lt;dt&gt;UI&lt;/dt&gt;
+    &lt;dd&gt;Interfaz de usuario.&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <h4>Ejemplo visual:</h4>
+                    <div class="demo-box">
+                        <dl>
+                            <dt><strong>HTTP</strong></dt>
+                            <dd>Protocolo de Transferencia de Hipertexto.</dd>
+
+                            <dt><strong>API</strong></dt>
+                            <dd>Interfaz de programación de aplicaciones.</dd>
+
+                            <dt><strong>UI</strong></dt>
+                            <dd>Interfaz de usuario.</dd>
+                        </dl>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <h3>Elementos:</h3>
+                    <ul>
+                        <li><code>&lt;dl&gt;</code> - Contenedor de la lista de definiciones</li>
+                        <li><code>&lt;dt&gt;</code> - Definition Term (término a definir)</li>
+                        <li><code>&lt;dd&gt;</code> - Definition Description (descripción del término)</li>
+                    </ul>
+                </div>
+
+                <div class="concept-box">
+                    <h3>Características:</h3>
+                    <ul>
+                        <li>No se renderizan con viñetas ni números</li>
+                        <li>Formato semántico especial</li>
+                        <li>La descripción (<code>&lt;dd&gt;</code>) suele mostrarse con sangría</li>
+                        <li>Un término puede tener múltiples descripciones</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="ejercicio-practico" class="topic-section">
+                <h2>Ejercicio Práctico</h2>
+                <div class="practice-exercise">
+                    <h4>Crea una lista de tu rutina matutina</h4>
+                    <p>Usa una lista ordenada para los pasos secuenciales y listas no ordenadas para las opciones dentro de cada paso.</p>
+
+                    <details>
+                        <summary>Ver ejemplo de solución</summary>
+                        <div class="code-block">
+                            <pre><code>&lt;h2&gt;Mi Rutina Matutina&lt;/h2&gt;
+&lt;ol&gt;
+    &lt;li&gt;Despertarse
+        &lt;ul&gt;
+            &lt;li&gt;Apagar alarma&lt;/li&gt;
+            &lt;li&gt;Estiramientos&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Desayunar
+        &lt;ul&gt;
+            &lt;li&gt;Café&lt;/li&gt;
+            &lt;li&gt;Pan tostado&lt;/li&gt;
+            &lt;li&gt;Fruta&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Prepararse
+        &lt;ul&gt;
+            &lt;li&gt;Ducharse&lt;/li&gt;
+            &lt;li&gt;Vestirse&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                        </div>
+                    </details>
+                </div>
+            </section>
+
+            <section id="glosario-modulo" class="topic-section">
+                <h2>📚 Glosario del Módulo</h2>
+                <p>Términos y elementos HTML relacionados con listas:</p>
+
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar término...">
+                </div>
+
+                <div id="terminosContainer">
+                    <div class="termino" data-tags="ul lista desordenada viñetas bullets">
+                        <span class="tag">&lt;ul&gt;</span>
+                        <p class="significado">Significado: Lista no ordenada (Unordered List)</p>
+                        <p class="descripcion">
+                            Crea una lista con viñetas (bullets). Los elementos no tienen un orden específico o secuencial.
+                            Útil para listas donde el orden no importa: características, ingredientes, opciones del menú.
+                        </p>
+                        <div class="ejemplo">&lt;ul&gt;<br>&nbsp;&nbsp;&lt;li&gt;Primer elemento&lt;/li&gt;<br>&nbsp;&nbsp;&lt;li&gt;Segundo elemento&lt;/li&gt;<br>&nbsp;&nbsp;&lt;li&gt;Tercer elemento&lt;/li&gt;<br>&lt;/ul&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="ol lista ordenada numerada numbers">
+                        <span class="tag">&lt;ol&gt;</span>
+                        <p class="significado">Significado: Lista ordenada (Ordered List)</p>
+                        <p class="descripcion">
+                            Crea una lista numerada. Los elementos tienen un orden específico y se numeran automáticamente.
+                            Útil para pasos de instrucciones, rankings, secuencias temporales, o cualquier lista donde el orden importa.
+                        </p>
+                        <div class="ejemplo">&lt;ol&gt;<br>&nbsp;&nbsp;&lt;li&gt;Primer paso&lt;/li&gt;<br>&nbsp;&nbsp;&lt;li&gt;Segundo paso&lt;/li&gt;<br>&nbsp;&nbsp;&lt;li&gt;Tercer paso&lt;/li&gt;<br>&lt;/ol&gt;</div>
+                        <div class="nota">
+                            <strong>Atributos útiles:</strong> <span class="atributo">type</span> - Tipo de numeración ("1", "A", "a", "I", "i"),
+                            <span class="atributo">start</span> - Número inicial, <span class="atributo">reversed</span> - Orden inverso
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="li elemento lista item">
+                        <span class="tag">&lt;li&gt;</span>
+                        <p class="significado">Significado: Elemento de lista (List Item)</p>
+                        <p class="descripcion">
+                            Define un elemento individual dentro de una lista (ul, ol o menu).
+                            Solo puede ser hijo directo de ul, ol o menu. Puede contener cualquier contenido, incluso otras listas.
+                        </p>
+                        <div class="ejemplo">&lt;li&gt;Este es un elemento de lista&lt;/li&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="dl dt dd lista definición descripción">
+                        <span class="tag">&lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;</span>
+                        <p class="significado">Significado: Lista de descripciones</p>
+                        <p class="descripcion">
+                            dl (Description List) crea una lista de términos y descripciones.
+                            dt (Description Term) define el término, dd (Description Details) define la descripción.
+                            Útil para glosarios, metadatos, pares clave-valor.
+                        </p>
+                        <div class="ejemplo">&lt;dl&gt;<br>&nbsp;&nbsp;&lt;dt&gt;HTML&lt;/dt&gt;<br>&nbsp;&nbsp;&lt;dd&gt;Lenguaje de marcado para páginas web&lt;/dd&gt;<br>&nbsp;&nbsp;&lt;dt&gt;CSS&lt;/dt&gt;<br>&nbsp;&nbsp;&lt;dd&gt;Lenguaje para estilos visuales&lt;/dd&gt;<br>&lt;/dl&gt;</div>
+                    </div>
+                </div>
+
+                <div id="noResults" class="no-results" style="display: none;">
+                    No se encontraron términos que coincidan con tu búsqueda.
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc">
+            <h3>Contenido</h3>
+            <ul>
+                <li><a href="#introduccion">Introducción</a></li>
+                <li><a href="#listas-no-ordenadas">Listas No Ordenadas</a></li>
+                <li><a href="#listas-ordenadas">Listas Ordenadas</a></li>
+                <li><a href="#listas-anidadas">Listas Anidadas</a></li>
+                <li><a href="#listas-definicion">Listas de Definición</a></li>
+                <li><a href="#ejercicio-practico">Ejercicio Práctico</a></li>
+                <li><a href="#glosario-modulo">Glosario del Módulo</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer>
+        <p>Módulo 3: Listas | <a href="../index.html">Volver a HTML</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        // Funcionalidad de búsqueda en el glosario
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                let visibleCount = 0;
+
+                terminos.forEach(termino => {
+                    const tag = termino.querySelector('.tag').textContent.toLowerCase();
+                    const significado = termino.querySelector('.significado').textContent.toLowerCase();
+                    const descripcion = termino.querySelector('.descripcion').textContent.toLowerCase();
+                    const tags = termino.getAttribute('data-tags').toLowerCase();
+
+                    const matches = tag.includes(searchTerm) ||
+                                  significado.includes(searchTerm) ||
+                                  descripcion.includes(searchTerm) ||
+                                  tags.includes(searchTerm);
+
+                    if (matches || searchTerm === '') {
+                        termino.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+
+                if (visibleCount === 0 && searchTerm !== '') {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

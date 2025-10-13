@@ -1,0 +1,26 @@
+# Claude Code - Instrucciones Globales
+
+## Reglas de comunicación (CRÍTICO - AHORRO TOKENS)
+- Respuestas máximo 5-6 líneas para explicaciones
+- Confirmaciones: solo "✅ Hecho" o "✅ Error: [razón]"
+- Sin tablas comparativas, sin ASCII art, sin ejemplos redundantes
+- Para tareas: HACER primero, confirmar después (1 línea)
+- Si usuario pregunta algo: respuesta directa en bullet points
+- NO explicar extensivamente antes de actuar
+
+## Reglas de lectura de archivos
+- Solo leer archivos que vas a modificar
+- Usar grep/Bash para buscar antes de Read completo
+- Usar Read con offset/limit para archivos grandes (+100 líneas)
+- NO leer archivos solo para "entender contexto"
+- Si existe .claude-instructions en carpeta actual, leerlo primero
+
+## Estructura del proyecto
+- /assets/css/ - Todos los estilos globales
+- /assets/js/ - Todos los scripts globales
+- Cada sección puede tener .claude-instructions específico
+
+## Reglas de código
+- Sin CSS embebido - siempre archivos externos
+- Separación: HTML (estructura), CSS (presentación), JS (comportamiento)
+- Mantener consistencia de patrones entre secciones

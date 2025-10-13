@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imágenes - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a HTML</a>
+        <span class="icon">🖼️</span>
+        <h1>Módulo 5: Imágenes</h1>
+        <p class="subtitle">Elemento img, rutas y atributos</p>
+    </header>
+
+    <div class="container">
+        <main class="content">
+            <section id="elemento-img" class="topic-section">
+                <h2><span class="unsa-tag">[U]</span> El Elemento &lt;img&gt;</h2>
+                <p>El elemento <code>&lt;img&gt;</code> se usa para insertar imágenes en una página web. Es un elemento vacío, no contiene contenido interno.</p>
+
+                <div class="code-block">
+                    <pre><code>&lt;img src="ruta/imagen.jpg" alt="Descripción de la imagen"&gt;</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <h3>Atributos obligatorios:</h3>
+                    <ul>
+                        <li><code>src</code> - Source (fuente), especifica la ruta de la imagen</li>
+                        <li><code>alt</code> - Texto alternativo, descripción de la imagen</li>
+                    </ul>
+                </div>
+
+                <div class="concept-box">
+                    <h3>¿Por qué es importante el atributo alt?</h3>
+                    <ul>
+                        <li><strong>Accesibilidad:</strong> Los lectores de pantalla lo leen para usuarios con discapacidad visual</li>
+                        <li><strong>SEO:</strong> Los motores de búsqueda lo usan para entender el contenido</li>
+                        <li><strong>Fallback:</strong> Se muestra si la imagen no carga</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="rutas" class="topic-section">
+                <h2>Rutas de Imágenes</h2>
+
+                <h3>Rutas Relativas</h3>
+                <div class="code-block">
+                    <pre><code>&lt;!-- Misma carpeta --&gt;
+&lt;img src="logo.png" alt="Logo"&gt;
+
+&lt;!-- Subcarpeta --&gt;
+&lt;img src="imagenes/foto.jpg" alt="Foto"&gt;
+&lt;img src="./assets/banner.png" alt="Banner"&gt;
+
+&lt;!-- Carpeta padre --&gt;
+&lt;img src="../imagen.jpg" alt="Imagen"&gt;</code></pre>
+                </div>
+
+                <h3>Rutas Absolutas (URLs externas)</h3>
+                <div class="code-block">
+                    <pre><code>&lt;img src="https://ejemplo.com/imagen.jpg" alt="Imagen externa"&gt;
+&lt;img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png"
+     alt="Logo de JavaScript"&gt;</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <h4>Estructura de carpetas típica:</h4>
+                    <div class="code-block">
+                        <pre><code>proyecto/
+├── index.html
+├── images/
+│   ├── logo.png
+│   └── banner.jpg
+└── pages/
+    └── about.html
+
+Desde index.html:
+&lt;img src="images/logo.png" alt="Logo"&gt;
+
+Desde pages/about.html:
+&lt;img src="../images/logo.png" alt="Logo"&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <section id="atributos" class="topic-section">
+                <h2>Atributos Adicionales</h2>
+
+                <table class="reference-table">
+                    <thead>
+                        <tr>
+                            <th>Atributo</th>
+                            <th>Descripción</th>
+                            <th>Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>width</code></td>
+                            <td>Ancho de la imagen (en píxeles)</td>
+                            <td><code>width="300"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>height</code></td>
+                            <td>Alto de la imagen (en píxeles)</td>
+                            <td><code>height="200"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>loading</code></td>
+                            <td>Carga diferida (lazy loading)</td>
+                            <td><code>loading="lazy"</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>title</code></td>
+                            <td>Tooltip al pasar el mouse</td>
+                            <td><code>title="Más información"</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="code-block">
+                    <pre><code>&lt;img src="foto.jpg"
+     alt="Foto de perfil"
+     width="200"
+     height="200"
+     loading="lazy"
+     title="Mi foto de perfil"&gt;</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <h3>Nota sobre dimensiones:</h3>
+                    <p>Es recomendable especificar width y height para evitar el "salto" de contenido mientras carga la imagen. Usa CSS para hacer la imagen responsive.</p>
+                </div>
+            </section>
+
+            <section id="figure-figcaption" class="topic-section">
+                <h2>Figure y Figcaption</h2>
+                <p>HTML5 introduce elementos semánticos para agrupar imágenes con sus descripciones:</p>
+
+                <div class="code-block">
+                    <pre><code>&lt;figure&gt;
+    &lt;img src="grafico.png" alt="Gráfico de ventas 2024"&gt;
+    &lt;figcaption&gt;Figura 1: Ventas del primer trimestre 2024&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <h4>Resultado visual:</h4>
+                    <div class="demo-box">
+                        <figure style="text-align: center; margin: 20px 0;">
+                            <div style="background: #2a2a2a; padding: 40px; border-radius: 8px; color: #888;">
+                                [Imagen de gráfico]
+                            </div>
+                            <figcaption style="margin-top: 10px; font-style: italic; color: #888;">
+                                Figura 1: Ventas del primer trimestre 2024
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+
+                <div class="concept-box">
+                    <h3>Beneficios de usar &lt;figure&gt;:</h3>
+                    <ul>
+                        <li>Semántica clara: indica que el contenido es una unidad ilustrativa</li>
+                        <li>Mejor accesibilidad</li>
+                        <li>Fácil de estilizar con CSS como grupo</li>
+                        <li>Puede contener código, diagramas, fotos, etc.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="formatos" class="topic-section">
+                <h2>Formatos de Imagen Comunes</h2>
+
+                <table class="reference-table">
+                    <thead>
+                        <tr>
+                            <th>Formato</th>
+                            <th>Extensión</th>
+                            <th>Uso recomendado</th>
+                            <th>Transparencia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>JPEG/JPG</td>
+                            <td>.jpg, .jpeg</td>
+                            <td>Fotografías, imágenes complejas</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>PNG</td>
+                            <td>.png</td>
+                            <td>Logos, iconos, gráficos</td>
+                            <td>Sí</td>
+                        </tr>
+                        <tr>
+                            <td>GIF</td>
+                            <td>.gif</td>
+                            <td>Animaciones simples</td>
+                            <td>Sí</td>
+                        </tr>
+                        <tr>
+                            <td>SVG</td>
+                            <td>.svg</td>
+                            <td>Gráficos vectoriales, iconos</td>
+                            <td>Sí</td>
+                        </tr>
+                        <tr>
+                            <td>WebP</td>
+                            <td>.webp</td>
+                            <td>Formato moderno, mejor compresión</td>
+                            <td>Sí</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="responsive" class="topic-section">
+                <h2>Imágenes Responsive</h2>
+
+                <h3>Método 1: CSS</h3>
+                <div class="code-block">
+                    <pre><code>&lt;style&gt;
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+&lt;/style&gt;
+
+&lt;img src="foto.jpg" alt="Foto responsive"&gt;</code></pre>
+                </div>
+
+                <h3>Método 2: Atributo srcset</h3>
+                <div class="code-block">
+                    <pre><code>&lt;img src="imagen-small.jpg"
+     srcset="imagen-small.jpg 400w,
+             imagen-medium.jpg 800w,
+             imagen-large.jpg 1200w"
+     sizes="(max-width: 600px) 400px,
+            (max-width: 1000px) 800px,
+            1200px"
+     alt="Imagen responsive"&gt;</code></pre>
+                </div>
+            </section>
+
+            <section id="buenas-practicas" class="topic-section">
+                <h2>Buenas Prácticas</h2>
+
+                <div class="info-box">
+                    <h3>✓ Hacer:</h3>
+                    <ul>
+                        <li>Siempre incluir el atributo <code>alt</code></li>
+                        <li>Optimizar imágenes antes de subirlas (reducir tamaño)</li>
+                        <li>Usar formatos apropiados (JPEG para fotos, PNG para logos)</li>
+                        <li>Nombrar archivos descriptivamente: <code>logo-empresa.png</code> no <code>img001.png</code></li>
+                        <li>Usar <code>loading="lazy"</code> para imágenes fuera de la vista inicial</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>✗ Evitar:</h3>
+                    <ul>
+                        <li>Imágenes sin atributo <code>alt</code></li>
+                        <li>Imágenes demasiado grandes (varios MB)</li>
+                        <li>Redimensionar con HTML/CSS imágenes muy grandes</li>
+                        <li>Hotlinking (usar imágenes de otros sitios sin permiso)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="glosario-modulo" class="topic-section">
+                <h2>📚 Glosario del Módulo</h2>
+                <p>Términos y elementos HTML relacionados con imágenes:</p>
+
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar término...">
+                </div>
+
+                <div id="terminosContainer">
+                    <div class="termino" data-tags="img imagen image src alt">
+                        <span class="tag">&lt;img&gt;</span>
+                        <p class="significado">Significado: Imagen (Image)</p>
+                        <p class="descripcion">
+                            Inserta una imagen en el documento. Es una etiqueta de autocierre.
+                            Siempre debe incluir el atributo alt para accesibilidad (describe la imagen para usuarios con lectores de pantalla).
+                            Soporta formatos: JPG, PNG, GIF, SVG, WebP, entre otros.
+                        </p>
+                        <div class="ejemplo">&lt;img src="foto.jpg" alt="Descripción detallada de la foto"&gt;<br>&lt;img src="logo.png" alt="Logo de la empresa" width="200" height="100"&gt;</div>
+                        <div class="nota">
+                            <strong>Atributos importantes:</strong><br>
+                            <span class="atributo">src</span> - Ruta de la imagen (obligatorio)<br>
+                            <span class="atributo">alt</span> - Texto alternativo (obligatorio para accesibilidad y SEO)<br>
+                            <span class="atributo">width/height</span> - Dimensiones en píxeles<br>
+                            <span class="atributo">loading</span> - "lazy" para carga diferida
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="picture responsive imagen adaptativa">
+                        <span class="tag">&lt;picture&gt;</span>
+                        <p class="significado">Significado: Imagen adaptativa</p>
+                        <p class="descripcion">
+                            Contenedor para múltiples fuentes de imagen, permitiendo imágenes responsive adaptativas.
+                            El navegador elige la imagen más apropiada según el tamaño de pantalla, resolución, o formato soportado.
+                            Siempre debe incluir un &lt;img&gt; como fallback.
+                        </p>
+                        <div class="ejemplo">&lt;picture&gt;<br>&nbsp;&nbsp;&lt;source media="(min-width: 800px)" srcset="imagen-grande.jpg"&gt;<br>&nbsp;&nbsp;&lt;img src="imagen-pequeña.jpg" alt="Descripción"&gt;<br>&lt;/picture&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="figure imagen diagrama figcaption">
+                        <span class="tag">&lt;figure&gt; y &lt;figcaption&gt;</span>
+                        <p class="significado">Significado: Figura con descripción</p>
+                        <p class="descripcion">
+                            figure especifica contenido auto-contenido como imágenes, diagramas, ilustraciones, código, citas.
+                            figcaption define la descripción o leyenda de la figura. Mejora significativamente la accesibilidad y semántica.
+                        </p>
+                        <div class="ejemplo">&lt;figure&gt;<br>&nbsp;&nbsp;&lt;img src="grafico.png" alt="Gráfico de ventas 2024"&gt;<br>&nbsp;&nbsp;&lt;figcaption&gt;Figura 1: Crecimiento de ventas durante 2024&lt;/figcaption&gt;<br>&lt;/figure&gt;</div>
+                    </div>
+                </div>
+
+                <div id="noResults" class="no-results" style="display: none;">
+                    No se encontraron términos que coincidan con tu búsqueda.
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc">
+            <h3>Contenido</h3>
+            <ul>
+                <li><a href="#elemento-img">El Elemento img</a></li>
+                <li><a href="#rutas">Rutas de Imágenes</a></li>
+                <li><a href="#atributos">Atributos Adicionales</a></li>
+                <li><a href="#figure-figcaption">Figure y Figcaption</a></li>
+                <li><a href="#formatos">Formatos de Imagen</a></li>
+                <li><a href="#responsive">Imágenes Responsive</a></li>
+                <li><a href="#buenas-practicas">Buenas Prácticas</a></li>
+                <li><a href="#glosario-modulo">Glosario del Módulo</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer>
+        <p>Módulo 5: Imágenes | <a href="../index.html">Volver a HTML</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                let visibleCount = 0;
+
+                terminos.forEach(termino => {
+                    const tag = termino.querySelector('.tag').textContent.toLowerCase();
+                    const significado = termino.querySelector('.significado').textContent.toLowerCase();
+                    const descripcion = termino.querySelector('.descripcion').textContent.toLowerCase();
+                    const tags = termino.getAttribute('data-tags').toLowerCase();
+
+                    const matches = tag.includes(searchTerm) || significado.includes(searchTerm) || descripcion.includes(searchTerm) || tags.includes(searchTerm);
+
+                    if (matches || searchTerm === '') {
+                        termino.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+
+                if (visibleCount === 0 && searchTerm !== '') {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

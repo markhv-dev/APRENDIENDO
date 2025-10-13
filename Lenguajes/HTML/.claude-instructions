@@ -1,0 +1,39 @@
+# HTML Section - Claude Instructions
+
+## Estructura de archivos
+- index.html → usa pages.css + sidebar.css
+- Glosario.html → usa glosario.css + toc.css + sidebar.css
+- Ejercicios.html → usa ejercicios.css + toc.css + sidebar.css
+
+## CSS ubicado en /assets/css/
+- glosario.css (estilos para glosarios)
+- ejercicios.css (estilos para ejercicios)
+- toc.css (TOC navegación derecha)
+- sidebar.css (sidebar navegación izquierda)
+- pages.css (páginas index/landing)
+
+## Reglas de estilo
+- h1: 2em, font-weight 400, letter-spacing 1px
+- Colores principales: #e74c3c (rojo accent), #4a90e2 (azul TOC)
+- Background: #0f0f0f, texto: #e0e0e0
+- Sin CSS embebido - siempre usar archivos externos
+
+## Patrones de navegación
+- TOC derecho: siempre visible (sticky), scroll spy activo
+- Sidebar izquierdo: secciones colapsables con iconos ▼/▶
+- Ejercicios: agrupados por nivel (BÁSICO/INTERMEDIO/AVANZADO/EXPERTO) en TOC colapsable
+- Glosario: categorías planas en TOC derecho + búsqueda en vivo
+
+## Instrucciones de trabajo
+- Solo leer archivos que vas a modificar
+- Usar grep para buscar patrones antes de leer archivos completos
+- Usar Read con offset/limit para archivos grandes
+- Respuestas directas: confirmar → implementar → resultado
+- No leer archivos solo para "entender contexto"
+
+## Reglas de comunicación (AHORRO DE TOKENS)
+- Respuestas máximo 5-6 líneas para explicaciones
+- Confirmaciones: solo "✅ Hecho" o "✅ Error: [razón]"
+- Sin tablas comparativas, sin ASCII art, sin ejemplos redundantes
+- Para tareas: HACER primero, confirmar después (1 línea)
+- Si preguntas algo: respuesta directa en bullet points
