@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos de HTML - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a HTML</a>
+        <span class="icon">🏗️</span>
+        <h1>Módulo 1: Fundamentos de HTML</h1>
+        <p class="subtitle">Estructura básica, elementos, etiquetas y atributos</p>
+    </header>
+
+    <div class="container">
+        <main class="content">
+            <section id="estructura-basica" class="topic-section">
+                <h2><span class="unsa-tag">[U]</span> Estructura Básica de HTML</h2>
+                <p>Todo documento HTML debe tener una estructura básica que incluye la declaración del tipo de documento y los elementos fundamentales que organizan el contenido.</p>
+
+                <div class="code-block">
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Document&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <h3>Elementos de la estructura básica:</h3>
+                    <ul>
+                        <li><strong>&lt;!DOCTYPE html&gt;</strong> - Declara que el documento es HTML5</li>
+                        <li><strong>&lt;html&gt;</strong> - Elemento raíz que contiene todo el documento</li>
+                        <li><strong>&lt;head&gt;</strong> - Contiene metadatos y recursos (no visible)</li>
+                        <li><strong>&lt;body&gt;</strong> - Contiene el contenido visible de la página</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="estructura-completa" class="topic-section">
+                <h2><span class="unsa-tag">[U]</span> Estructura Más Completa</h2>
+                <p>Una estructura HTML más completa incluye metadatos importantes para el navegador y motores de búsqueda:</p>
+
+                <div class="code-block">
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <h4>Atributos importantes:</h4>
+                    <ul>
+                        <li><code>lang="es"</code> - Define el idioma del documento</li>
+                        <li><code>charset="UTF-8"</code> - Codificación de caracteres (soporta acentos, ñ, etc.)</li>
+                        <li><code>viewport</code> - Configuración para dispositivos móviles</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="elementos-etiquetas" class="topic-section">
+                <h2><span class="unsa-tag">[U]</span> Elementos y Etiquetas HTML</h2>
+
+                <div class="concept-box">
+                    <h3>¿Qué es un Elemento?</h3>
+                    <p>Un <strong>elemento</strong> es un bloque que forma parte de la estructura de una página web. Está compuesto por etiquetas y contenido.</p>
+                </div>
+
+                <div class="concept-box">
+                    <h3>¿Qué son las Etiquetas?</h3>
+                    <p>Las <strong>etiquetas</strong> o <em>tags</em> están delimitadas por &lt; &gt; y forman parte del elemento. Por regla general toda etiqueta es un juego de pares: una abre &lt; &gt; y otra cierra &lt; / &gt;</p>
+                </div>
+
+                <div class="code-block">
+                    <pre><code>&lt;p&gt;Este es un ejemplo&lt;/p&gt;
+↑              ↑              ↑
+Etiqueta de    Contenido      Etiqueta de
+apertura                      cierre
+
+              ELEMENTO</code></pre>
+                </div>
+            </section>
+
+            <section id="elementos-contenedores" class="topic-section">
+                <h2><span class="unsa-tag">[U]</span> Elementos Contenedores</h2>
+                <p>Son elementos que pueden tener contenido dentro: texto, otros elementos HTML, o ambos. Tienen una etiqueta de apertura y otra de cierre.</p>
+
+                <div class="code-block">
+                    <pre><code>&lt;p&gt;Este es un párrafo&lt;/p&gt;
+&lt;h1&gt;Este es un título&lt;/h1&gt;
+&lt;div&gt;Este es un contenedor&lt;/div&gt;</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <h4>Ejemplos de elementos contenedores:</h4>
+                    <ul>
+                        <li><code>&lt;p&gt;</code> - Párrafo</li>
+                        <li><code>&lt;h1&gt; - &lt;h6&gt;</code> - Encabezados</li>
+                        <li><code>&lt;div&gt;</code> - Contenedor de bloque</li>
+                        <li><code>&lt;span&gt;</code> - Contenedor en línea</li>
+                        <li><code>&lt;a&gt;</code> - Enlace</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="elementos-vacios" class="topic-section">
+                <h2><span class="unsa-tag">[U]</span> Elementos Vacíos o Autocontenidos</h2>
+                <p>No tienen contenido. Sólo tienen etiqueta de apertura, no llevan una etiqueta de cierre.</p>
+
+                <div class="code-block">
+                    <pre><code>&lt;meta charset="UTF-8"&gt;
+&lt;img src="imagen.jpg" alt="Descripción"&gt;
+&lt;br&gt;
+&lt;hr&gt;</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <h4>Ejemplos de elementos vacíos:</h4>
+                    <ul>
+                        <li><code>&lt;meta&gt;</code> - Metadatos</li>
+                        <li><code>&lt;img&gt;</code> - Imagen</li>
+                        <li><code>&lt;br&gt;</code> - Salto de línea</li>
+                        <li><code>&lt;hr&gt;</code> - Línea horizontal</li>
+                        <li><code>&lt;input&gt;</code> - Campo de entrada</li>
+                    </ul>
+                </div>
+
+                <div class="practice-exercise">
+                    <h4>Ejercicio Práctico</h4>
+                    <p>Identifica cuáles de estos elementos son contenedores y cuáles son vacíos:</p>
+                    <div class="code-block">
+                        <pre><code>&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    </div>
+                    <details>
+                        <summary>Ver respuesta</summary>
+                        <ul>
+                            <li><strong>Contenedores:</strong> html, head, title, body</li>
+                            <li><strong>Vacíos:</strong> meta</li>
+                        </ul>
+                    </details>
+                </div>
+            </section>
+
+            <section id="atributos" class="topic-section">
+                <h2><span class="unsa-tag">[U]</span> Atributos de Elementos</h2>
+                <p>Característica adicional que le da información o funcionalidad extra al elemento. Se coloca en la etiqueta de apertura y modifica la presentación o el comportamiento del elemento.</p>
+
+                <div class="code-block">
+                    <pre><code>&lt;html lang="es"&gt;
+      ↑    ↑    ↑
+Etiqueta  Atributo  Valor</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <h4>Ejemplos de atributos comunes:</h4>
+                    <div class="code-block">
+                        <pre><code>&lt;html lang="es"&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width"&gt;
+&lt;img src="logo.png" alt="Logo"&gt;
+&lt;a href="https://google.com"&gt;Ir a Google&lt;/a&gt;</code></pre>
+                    </div>
+                </div>
+
+                <div class="practice-exercise">
+                    <h4>Ejercicio: Ubicar atributos</h4>
+                    <p>Identifica todos los atributos en este código:</p>
+                    <div class="code-block">
+                        <pre><code>&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width"&gt;
+&lt;/head&gt;</code></pre>
+                    </div>
+                    <details>
+                        <summary>Ver respuesta</summary>
+                        <ul>
+                            <li><code>lang="es"</code> en html</li>
+                            <li><code>charset="UTF-8"</code> en meta</li>
+                            <li><code>name="viewport"</code> en meta</li>
+                            <li><code>content="width=device-width"</code> en meta</li>
+                        </ul>
+                    </details>
+                </div>
+            </section>
+
+            <section id="comentarios" class="topic-section">
+                <h2><span class="unsa-tag">[U]</span> Comentarios en HTML</h2>
+                <p>Los comentarios son notas en el código que no serán visibles en el navegador ni afectarán el diseño o funcionalidad de la página.</p>
+
+                <div class="info-box">
+                    <h3>Usos de los comentarios:</h3>
+                    <ul>
+                        <li>Explicar secciones del código</li>
+                        <li>Desactivar temporalmente elementos</li>
+                        <li>Dejar recordatorios para desarrollo futuro</li>
+                        <li>Documentar decisiones de diseño</li>
+                    </ul>
+                </div>
+
+                <div class="code-block">
+                    <pre><code>&lt;!-- Este es un comentario --&gt;
+
+&lt;body&gt;
+    &lt;!-- Encabezado principal de la página --&gt;
+    &lt;h1&gt;Bienvenido a mi sitio web&lt;/h1&gt;
+
+    &lt;!-- Párrafo en HTML --&gt;
+    &lt;p&gt;Este es mi primer párrafo en HTML&lt;/p&gt;
+
+    &lt;!-- &lt;p&gt;Este párrafo está comentado&lt;/p&gt; --&gt;
+
+    &lt;!-- TODO: Agregar enlaces al pie de página --&gt;
+&lt;/body&gt;</code></pre>
+                </div>
+            </section>
+
+            <section id="glosario-modulo" class="topic-section">
+                <h2>📚 Glosario del Módulo</h2>
+                <p>Términos y elementos HTML relacionados con los fundamentos:</p>
+
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar término...">
+                </div>
+
+                <div id="terminosContainer">
+                    <div class="termino" data-tags="doctype declaración documento html5">
+                        <span class="tag">&lt;!DOCTYPE html&gt;</span>
+                        <p class="significado">Significado: Declaración de tipo de documento</p>
+                        <p class="descripcion">
+                            Define que este documento es HTML5. Debe ser la primera línea de todo documento HTML.
+                            Le indica al navegador qué versión de HTML usar para interpretar la página correctamente.
+                            Sin DOCTYPE, el navegador entra en "modo quirks" que puede causar comportamientos inconsistentes.
+                        </p>
+                        <div class="ejemplo">&lt;!DOCTYPE html&gt;</div>
+                        <div class="nota">
+                            <strong>Nota:</strong> En versiones anteriores de HTML (HTML 4 y XHTML), la declaración DOCTYPE era muy larga y compleja.
+                            HTML5 la simplificó a esta versión corta y fácil de recordar.
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="html raíz root lang idioma">
+                        <span class="tag">&lt;html&gt;</span>
+                        <p class="significado">Significado: Raíz del documento HTML</p>
+                        <p class="descripcion">
+                            Es el elemento raíz que contiene todo el contenido de la página web.
+                            Todo el código HTML debe estar dentro de esta etiqueta. Representa el documento completo.
+                        </p>
+                        <div class="ejemplo">&lt;html lang="es"&gt;<br>&nbsp;&nbsp;&lt;head&gt;...&lt;/head&gt;<br>&nbsp;&nbsp;&lt;body&gt;...&lt;/body&gt;<br>&lt;/html&gt;</div>
+                        <div class="nota">
+                            <strong>Atributo importante:</strong> <span class="atributo">lang</span> - Define el idioma del contenido (ej: "es" para español, "en" para inglés).
+                            Es importante para accesibilidad, SEO y herramientas de traducción.
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="head cabecera metadata metadatos seo">
+                        <span class="tag">&lt;head&gt;</span>
+                        <p class="significado">Significado: Cabecera del documento</p>
+                        <p class="descripcion">
+                            Contiene metadatos sobre el documento (información que no se muestra directamente al usuario).
+                            Incluye el título, enlaces a hojas de estilo, scripts, metadatos SEO, y otra información importante
+                            para navegadores y motores de búsqueda. El contenido del head no es visible en la página.
+                        </p>
+                        <div class="ejemplo">&lt;head&gt;<br>&nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>&nbsp;&nbsp;&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;<br>&nbsp;&nbsp;&lt;title&gt;Mi Página&lt;/title&gt;<br>&nbsp;&nbsp;&lt;link rel="stylesheet" href="styles.css"&gt;<br>&lt;/head&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="body cuerpo contenido visible">
+                        <span class="tag">&lt;body&gt;</span>
+                        <p class="significado">Significado: Cuerpo del documento</p>
+                        <p class="descripcion">
+                            Es el cuerpo de la página donde va todo el contenido que se muestra al usuario.
+                            Todo lo visible en la página (textos, imágenes, videos, enlaces, formularios, etc.) va dentro del body.
+                            Solo puede haber un elemento body por documento HTML.
+                        </p>
+                        <div class="ejemplo">&lt;body&gt;<br>&nbsp;&nbsp;&lt;header&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Bienvenido&lt;/h1&gt;<br>&nbsp;&nbsp;&lt;/header&gt;<br>&nbsp;&nbsp;&lt;main&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Este es mi sitio web&lt;/p&gt;<br>&nbsp;&nbsp;&lt;/main&gt;<br>&lt;/body&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="title título pestaña seo">
+                        <span class="tag">&lt;title&gt;</span>
+                        <p class="significado">Significado: Título de la página</p>
+                        <p class="descripcion">
+                            Define el título que aparece en la pestaña del navegador y en los resultados de búsqueda.
+                            Es muy importante para SEO (optimización en motores de búsqueda). Debe ser descriptivo y único para cada página.
+                        </p>
+                        <div class="ejemplo">&lt;title&gt;Mi Primera Página Web - Aprendiendo HTML&lt;/title&gt;</div>
+                        <div class="nota">
+                            <strong>Buena práctica:</strong> El título debe tener entre 50-60 caracteres para mostrarse correctamente en los resultados de búsqueda.
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="meta metadata charset viewport description">
+                        <span class="tag">&lt;meta&gt;</span>
+                        <p class="significado">Significado: Metainformación</p>
+                        <p class="descripcion">
+                            Proporciona información adicional sobre el documento HTML. Es una etiqueta de autocierre (no tiene etiqueta de cierre).
+                            Se usa para definir charset, viewport, descripción, palabras clave, autor, y más metadatos importantes.
+                        </p>
+                        <div class="ejemplo">&lt;meta charset="UTF-8"&gt;<br>&lt;meta name="description" content="Aprende HTML desde cero"&gt;<br>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</div>
+                        <div class="nota">
+                            <strong>Atributos importantes:</strong><br>
+                            <span class="atributo">charset</span> - Codificación de caracteres (UTF-8 es el estándar universal)<br>
+                            <span class="atributo">name</span> - Tipo de metadata<br>
+                            <span class="atributo">content</span> - Valor de la metadata
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="link enlace stylesheet css favicon icon">
+                        <span class="tag">&lt;link&gt;</span>
+                        <p class="significado">Significado: Enlace a recursos externos</p>
+                        <p class="descripcion">
+                            Vincula el documento HTML con recursos externos, principalmente hojas de estilo CSS.
+                            También se usa para favicons, fuentes externas, y otras relaciones con recursos.
+                            Es una etiqueta de autocierre que solo va en el head.
+                        </p>
+                        <div class="ejemplo">&lt;link rel="stylesheet" href="estilos.css"&gt;<br>&lt;link rel="icon" href="favicon.ico"&gt;</div>
+                        <div class="nota">
+                            <strong>Valores comunes de rel:</strong> stylesheet (CSS), icon (favicon), preconnect (optimización), canonical (SEO)
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="comentario comment documentación">
+                        <span class="tag">&lt;!-- --&gt;</span>
+                        <p class="significado">Significado: Comentario HTML</p>
+                        <p class="descripcion">
+                            Permite agregar comentarios en el código que no se muestran al usuario.
+                            Útil para documentar el código, dejar notas para otros desarrolladores, o desactivar temporalmente partes del HTML.
+                        </p>
+                        <div class="ejemplo">&lt;!-- Este es un comentario --&gt;</div>
+                        <div class="nota">
+                            <strong>Precaución:</strong> No pongas información sensible en comentarios HTML, son visibles en el código fuente.
+                        </div>
+                    </div>
+                </div>
+
+                <div id="noResults" class="no-results" style="display: none;">
+                    No se encontraron términos que coincidan con tu búsqueda.
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc">
+            <h3>Contenido</h3>
+            <ul>
+                <li><a href="#estructura-basica">Estructura Básica</a></li>
+                <li><a href="#estructura-completa">Estructura Completa</a></li>
+                <li><a href="#elementos-etiquetas">Elementos y Etiquetas</a></li>
+                <li><a href="#elementos-contenedores">Elementos Contenedores</a></li>
+                <li><a href="#elementos-vacios">Elementos Vacíos</a></li>
+                <li><a href="#atributos">Atributos</a></li>
+                <li><a href="#comentarios">Comentarios</a></li>
+                <li><a href="#glosario-modulo">Glosario del Módulo</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer>
+        <p>Módulo 1: Fundamentos de HTML | <a href="../index.html">Volver a HTML</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        // Funcionalidad de búsqueda en el glosario
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                let visibleCount = 0;
+
+                terminos.forEach(termino => {
+                    const tag = termino.querySelector('.tag').textContent.toLowerCase();
+                    const significado = termino.querySelector('.significado').textContent.toLowerCase();
+                    const descripcion = termino.querySelector('.descripcion').textContent.toLowerCase();
+                    const tags = termino.getAttribute('data-tags').toLowerCase();
+
+                    const matches = tag.includes(searchTerm) ||
+                                  significado.includes(searchTerm) ||
+                                  descripcion.includes(searchTerm) ||
+                                  tags.includes(searchTerm);
+
+                    if (matches || searchTerm === '') {
+                        termino.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+
+                // Mostrar mensaje si no hay resultados
+                if (visibleCount === 0 && searchTerm !== '') {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

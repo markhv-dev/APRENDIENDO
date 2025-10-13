@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tablas - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a HTML</a>
+        <span class="icon">📊</span>
+        <h1>Módulo 6: Tablas</h1>
+        <p class="subtitle">Organización de datos en filas y columnas</p>
+    </header>
+
+    <div class="container">
+        <main class="content">
+            <section id="introduccion" class="topic-section">
+                <h2><span class="unsa-tag">[U]</span> Introducción a las Tablas</h2>
+                <p>Las tablas organizan datos en filas y columnas, similar a una hoja de cálculo. Se usan para mostrar información tabular como horarios, precios, listados, etc.</p>
+
+                <div class="info-box">
+                    <h3>Casos de uso:</h3>
+                    <ul>
+                        <li>Horarios de clases</li>
+                        <li>Tablas de precios</li>
+                        <li>Inventarios</li>
+                        <li>Comparativas de productos</li>
+                        <li>Datos estadísticos</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="estructura-basica" class="topic-section">
+                <h2><span class="unsa-tag">[U]</span> Estructura Básica</h2>
+
+                <table class="reference-table">
+                    <thead>
+                        <tr>
+                            <th>Elemento</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&lt;table&gt;</code></td>
+                            <td>Contenedor principal de la tabla</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;tr&gt;</code></td>
+                            <td>Table Row - Define una fila</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;td&gt;</code></td>
+                            <td>Table Data - Define una celda de datos</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;th&gt;</code></td>
+                            <td>Table Header - Define una celda de encabezado</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="code-block">
+                    <pre><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Nombre&lt;/th&gt;
+        &lt;th&gt;Apellido&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Juan&lt;/td&gt;
+        &lt;td&gt;Perez&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Carla&lt;/td&gt;
+        &lt;td&gt;Gomez&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <h4>Resultado visual:</h4>
+                    <div class="demo-box">
+                        <table style="border-collapse: collapse; width: 100%;">
+                            <tr>
+                                <th style="border: 1px solid #444; padding: 8px; background: #2a2a2a;">Nombre</th>
+                                <th style="border: 1px solid #444; padding: 8px; background: #2a2a2a;">Apellido</th>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #444; padding: 8px;">Juan</td>
+                                <td style="border: 1px solid #444; padding: 8px;">Perez</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #444; padding: 8px;">Carla</td>
+                                <td style="border: 1px solid #444; padding: 8px;">Gomez</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="ejemplo-horario" class="topic-section">
+                <h2><span class="unsa-tag">[U]</span> Ejemplo: Horario de Clases</h2>
+                <p>Este ejemplo muestra un horario típico de secundaria con datos organizados en filas y columnas.</p>
+
+                <div class="code-block">
+                    <pre><code>&lt;table border="1"&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Hora&lt;/th&gt;
+        &lt;th&gt;Lunes&lt;/th&gt;
+        &lt;th&gt;Martes&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;8:00 - 9:00&lt;/td&gt;
+        &lt;td&gt;Matemática&lt;/td&gt;
+        &lt;td&gt;Comunicación&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;9:00 - 10:00&lt;/td&gt;
+        &lt;td&gt;Historia&lt;/td&gt;
+        &lt;td&gt;Inglés&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <h4>Resultado:</h4>
+                    <div class="demo-box">
+                        <table style="border-collapse: collapse; width: 100%;">
+                            <tr>
+                                <th style="border: 1px solid #444; padding: 8px; background: #2a2a2a;">Hora</th>
+                                <th style="border: 1px solid #444; padding: 8px; background: #2a2a2a;">Lunes</th>
+                                <th style="border: 1px solid #444; padding: 8px; background: #2a2a2a;">Martes</th>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #444; padding: 8px;">8:00 - 9:00</td>
+                                <td style="border: 1px solid #444; padding: 8px;">Matemática</td>
+                                <td style="border: 1px solid #444; padding: 8px;">Comunicación</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #444; padding: 8px;">9:00 - 10:00</td>
+                                <td style="border: 1px solid #444; padding: 8px;">Historia</td>
+                                <td style="border: 1px solid #444; padding: 8px;">Inglés</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="colspan-rowspan" class="topic-section">
+                <h2><span class="unsa-tag">[U]</span> Colspan y Rowspan</h2>
+                <p>Estos atributos permiten que una celda se expanda horizontal o verticalmente.</p>
+
+                <div class="concept-box">
+                    <h3>Atributos:</h3>
+                    <ul>
+                        <li><code>colspan</code> - Número de columnas que ocupa la celda</li>
+                        <li><code>rowspan</code> - Número de filas que ocupa la celda</li>
+                    </ul>
+                </div>
+
+                <h3>Ejemplo con rowspan y colspan:</h3>
+                <div class="code-block">
+                    <pre><code>&lt;table&gt;
+    &lt;caption&gt;Horario de Clases - Secundaria&lt;/caption&gt;
+    &lt;tr&gt;
+        &lt;th&gt;Hora&lt;/th&gt;
+        &lt;th&gt;Lunes&lt;/th&gt;
+        &lt;th&gt;Martes&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;8:00 - 9:00&lt;/td&gt;
+        &lt;td&gt;Matemática&lt;/td&gt;
+        &lt;td rowspan="2"&gt;Comunicación&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;9:00 - 10:00&lt;/td&gt;
+        &lt;td&gt;Ciencia&lt;/td&gt;
+        &lt;!-- Comunicación ya ocupa esta celda con rowspan --&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;10:00 - 10:30&lt;/td&gt;
+        &lt;td colspan="2"&gt;Recreo&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <h4>Resultado:</h4>
+                    <div class="demo-box">
+                        <table style="border-collapse: collapse; width: 100%; text-align: center;">
+                            <caption style="margin-bottom: 10px; font-weight: bold;">Horario de Clases - Secundaria</caption>
+                            <tr>
+                                <th style="border: 1px solid #444; padding: 8px; background: #2a2a2a;">Hora</th>
+                                <th style="border: 1px solid #444; padding: 8px; background: #2a2a2a;">Lunes</th>
+                                <th style="border: 1px solid #444; padding: 8px; background: #2a2a2a;">Martes</th>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #444; padding: 8px;">8:00 - 9:00</td>
+                                <td style="border: 1px solid #444; padding: 8px;">Matemática</td>
+                                <td rowspan="2" style="border: 1px solid #444; padding: 8px; vertical-align: middle;">Comunicación</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #444; padding: 8px;">9:00 - 10:00</td>
+                                <td style="border: 1px solid #444; padding: 8px;">Ciencia</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #444; padding: 8px;">10:00 - 10:30</td>
+                                <td colspan="2" style="border: 1px solid #444; padding: 8px;">Recreo</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tablas-semanticas" class="topic-section">
+                <h2><span class="unsa-tag">[U]</span> Tablas Semánticas</h2>
+                <p>HTML5 introduce elementos semánticos para estructurar mejor las tablas:</p>
+
+                <table class="reference-table">
+                    <thead>
+                        <tr>
+                            <th>Elemento</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>&lt;caption&gt;</code></td>
+                            <td>Título descriptivo de la tabla</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;thead&gt;</code></td>
+                            <td>Agrupa las filas de encabezado</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;tbody&gt;</code></td>
+                            <td>Agrupa las filas de contenido/datos</td>
+                        </tr>
+                        <tr>
+                            <td><code>&lt;tfoot&gt;</code></td>
+                            <td>Agrupa las filas de pie (totales, resúmenes)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Ejemplo: Inventario</h3>
+                <div class="code-block">
+                    <pre><code>&lt;table border="1"&gt;
+    &lt;caption&gt;Inventario&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Producto&lt;/th&gt;
+            &lt;th&gt;Precio&lt;/th&gt;
+            &lt;th&gt;Cantidad&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Manzanas&lt;/td&gt;
+            &lt;td&gt;$2&lt;/td&gt;
+            &lt;td&gt;10&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Peras&lt;/td&gt;
+            &lt;td&gt;$3&lt;/td&gt;
+            &lt;td&gt;5&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;tfoot&gt;
+        &lt;tr&gt;
+            &lt;td colspan="2"&gt;Total&lt;/td&gt;
+            &lt;td&gt;15&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tfoot&gt;
+&lt;/table&gt;</code></pre>
+                </div>
+
+                <div class="example-box">
+                    <h4>Resultado:</h4>
+                    <div class="demo-box">
+                        <table style="border-collapse: collapse; width: 100%;">
+                            <caption style="margin-bottom: 10px; font-weight: bold;">Inventario</caption>
+                            <thead>
+                                <tr>
+                                    <th style="border: 1px solid #444; padding: 8px; background: #2a2a2a;">Producto</th>
+                                    <th style="border: 1px solid #444; padding: 8px; background: #2a2a2a;">Precio</th>
+                                    <th style="border: 1px solid #444; padding: 8px; background: #2a2a2a;">Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="border: 1px solid #444; padding: 8px;">Manzanas</td>
+                                    <td style="border: 1px solid #444; padding: 8px;">$2</td>
+                                    <td style="border: 1px solid #444; padding: 8px;">10</td>
+                                </tr>
+                                <tr>
+                                    <td style="border: 1px solid #444; padding: 8px;">Peras</td>
+                                    <td style="border: 1px solid #444; padding: 8px;">$3</td>
+                                    <td style="border: 1px solid #444; padding: 8px;">5</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2" style="border: 1px solid #444; padding: 8px; font-weight: bold;">Total</td>
+                                    <td style="border: 1px solid #444; padding: 8px; font-weight: bold;">15</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="atributos" class="topic-section">
+                <h2>Atributos de Tablas</h2>
+
+                <table class="reference-table">
+                    <thead>
+                        <tr>
+                            <th>Atributo</th>
+                            <th>Elemento</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>border</code></td>
+                            <td>&lt;table&gt;</td>
+                            <td>Define el grosor del borde (mejor usar CSS)</td>
+                        </tr>
+                        <tr>
+                            <td><code>colspan</code></td>
+                            <td>&lt;td&gt;, &lt;th&gt;</td>
+                            <td>Número de columnas que abarca la celda</td>
+                        </tr>
+                        <tr>
+                            <td><code>rowspan</code></td>
+                            <td>&lt;td&gt;, &lt;th&gt;</td>
+                            <td>Número de filas que abarca la celda</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box">
+                    <h3>Nota sobre estilos:</h3>
+                    <p>El atributo <code>border</code> está obsoleto en HTML5. Es preferible usar CSS para estilizar tablas con propiedades como <code>border</code>, <code>border-collapse</code>, <code>padding</code>, etc.</p>
+                </div>
+            </section>
+
+            <section id="buenas-practicas" class="topic-section">
+                <h2>Buenas Prácticas</h2>
+
+                <div class="info-box">
+                    <h3>✓ Hacer:</h3>
+                    <ul>
+                        <li>Usar tablas solo para datos tabulares, no para maquetación</li>
+                        <li>Incluir <code>&lt;caption&gt;</code> para describir la tabla</li>
+                        <li>Usar <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code> y <code>&lt;tfoot&gt;</code> para mejor semántica</li>
+                        <li>Usar <code>&lt;th&gt;</code> para encabezados, <code>&lt;td&gt;</code> para datos</li>
+                        <li>Estilizar con CSS en lugar de atributos HTML</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>✗ Evitar:</h3>
+                    <ul>
+                        <li>Usar tablas para diseño de páginas (usar CSS Grid o Flexbox)</li>
+                        <li>Tablas sin encabezados (<code>&lt;th&gt;</code>)</li>
+                        <li>Abusar de colspan/rowspan innecesariamente</li>
+                        <li>Tablas muy anchas que no son responsive</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="glosario-modulo" class="topic-section">
+                <h2>📚 Glosario del Módulo</h2>
+                <p>Términos y elementos HTML relacionados con tablas:</p>
+
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar término...">
+                </div>
+
+                <div id="terminosContainer">
+                    <div class="termino" data-tags="table tabla datos">
+                        <span class="tag">&lt;table&gt;</span>
+                        <p class="significado">Significado: Tabla</p>
+                        <p class="descripcion">
+                            Define una tabla de datos. Contiene filas (tr) que a su vez contienen celdas (td o th).
+                            Las tablas deben usarse solo para datos tabulares, no para layout de página (usa CSS Grid o Flexbox para eso).
+                        </p>
+                        <div class="ejemplo">&lt;table&gt;<br>&nbsp;&nbsp;&lt;tr&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Nombre&lt;/th&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Juan&lt;/td&gt;<br>&nbsp;&nbsp;&lt;/tr&gt;<br>&lt;/table&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="tr fila table row">
+                        <span class="tag">&lt;tr&gt;</span>
+                        <p class="significado">Significado: Fila de tabla (Table Row)</p>
+                        <p class="descripcion">
+                            Define una fila horizontal en una tabla. Contiene celdas (td o th).
+                            Cada fila debe tener el mismo número de celdas para mantener la estructura de la tabla.
+                        </p>
+                    </div>
+
+                    <div class="termino" data-tags="th encabezado tabla header">
+                        <span class="tag">&lt;th&gt;</span>
+                        <p class="significado">Significado: Encabezado de tabla (Table Header)</p>
+                        <p class="descripcion">
+                            Define una celda de encabezado en una tabla. Por defecto se muestra en negrita y centrado.
+                            Tiene significado semántico importante para accesibilidad.
+                        </p>
+                        <div class="nota">
+                            <strong>Atributo importante:</strong> <span class="atributo">scope</span> - Define si el encabezado es para columna ("col") o fila ("row")
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="td celda tabla data">
+                        <span class="tag">&lt;td&gt;</span>
+                        <p class="significado">Significado: Celda de datos (Table Data)</p>
+                        <p class="descripcion">
+                            Define una celda de datos estándar en una tabla. Contiene el contenido de la tabla.
+                        </p>
+                        <div class="nota">
+                            <strong>Atributos útiles:</strong> <span class="atributo">colspan</span> - Fusionar columnas,
+                            <span class="atributo">rowspan</span> - Fusionar filas
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="thead tbody tfoot secciones tabla">
+                        <span class="tag">&lt;thead&gt;, &lt;tbody&gt;, &lt;tfoot&gt;</span>
+                        <p class="significado">Significado: Secciones de tabla</p>
+                        <p class="descripcion">
+                            Agrupan las filas de una tabla en secciones lógicas:
+                            thead (Table Head) - Encabezado, tbody (Table Body) - Cuerpo de datos, tfoot (Table Foot) - Pie con totales o resúmenes.
+                            Mejoran la accesibilidad y permiten mejor control con CSS.
+                        </p>
+                    </div>
+
+                    <div class="termino" data-tags="caption título tabla">
+                        <span class="tag">&lt;caption&gt;</span>
+                        <p class="significado">Significado: Título de tabla</p>
+                        <p class="descripcion">
+                            Define un título o descripción para la tabla. Debe ser el primer hijo del elemento table.
+                            Importante para accesibilidad, ayuda a entender el propósito de la tabla.
+                        </p>
+                        <div class="ejemplo">&lt;table&gt;<br>&nbsp;&nbsp;&lt;caption&gt;Ventas Mensuales 2024&lt;/caption&gt;<br>&nbsp;&nbsp;...<br>&lt;/table&gt;</div>
+                    </div>
+                </div>
+
+                <div id="noResults" class="no-results" style="display: none;">
+                    No se encontraron términos que coincidan con tu búsqueda.
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc">
+            <h3>Contenido</h3>
+            <ul>
+                <li><a href="#introduccion">Introducción</a></li>
+                <li><a href="#estructura-basica">Estructura Básica</a></li>
+                <li><a href="#ejemplo-horario">Ejemplo: Horario</a></li>
+                <li><a href="#colspan-rowspan">Colspan y Rowspan</a></li>
+                <li><a href="#tablas-semanticas">Tablas Semánticas</a></li>
+                <li><a href="#atributos">Atributos</a></li>
+                <li><a href="#buenas-practicas">Buenas Prácticas</a></li>
+                <li><a href="#glosario-modulo">Glosario del Módulo</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer>
+        <p>Módulo 6: Tablas | <a href="../index.html">Volver a HTML</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                let visibleCount = 0;
+
+                terminos.forEach(termino => {
+                    const tag = termino.querySelector('.tag') ? termino.querySelector('.tag').textContent.toLowerCase() : '';
+                    const significado = termino.querySelector('.significado') ? termino.querySelector('.significado').textContent.toLowerCase() : '';
+                    const descripcion = termino.querySelector('.descripcion') ? termino.querySelector('.descripcion').textContent.toLowerCase() : '';
+                    const tags = termino.getAttribute('data-tags') ? termino.getAttribute('data-tags').toLowerCase() : '';
+
+                    const matches = tag.includes(searchTerm) || significado.includes(searchTerm) || descripcion.includes(searchTerm) || tags.includes(searchTerm);
+
+                    if (matches || searchTerm === '') {
+                        termino.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+
+                if (visibleCount === 0 && searchTerm !== '') {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

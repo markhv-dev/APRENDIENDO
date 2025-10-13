@@ -59,6 +59,67 @@
     border-bottom: 1px solid #2a2a2a;
 }
 
+/* Búsqueda en TOC (Glosario) */
+.toc-search-container {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.toc-search-box {
+    width: 100%;
+    padding: 8px 12px;
+    background: #0f0f0f;
+    border: 1px solid #3a3a3a;
+    border-radius: 6px;
+    color: #e0e0e0;
+    font-size: 0.85em;
+    transition: all 0.3s ease;
+}
+
+.toc-search-box:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 8px rgba(74, 144, 226, 0.3);
+}
+
+.toc-search-box::placeholder {
+    color: #555;
+}
+
+.toc-search-suggestions {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #1a1a1a;
+    border: 1px solid #4a90e2;
+    border-radius: 6px;
+    margin-top: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.toc-suggestion-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    color: #b0b0b0;
+    font-size: 0.85em;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.toc-suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.toc-suggestion-item:hover {
+    background: rgba(74, 144, 226, 0.1);
+    color: #4a90e2;
+}
+
 /* Lista del TOC */
 .toc-list {
     list-style: none;
@@ -93,6 +154,40 @@
     background: rgba(74, 144, 226, 0.1);
     border-left-color: #4a90e2;
     font-weight: 600;
+}
+
+/* Grupos colapsables (para ejercicios) */
+.toc-group {
+    margin-bottom: 4px;
+}
+
+.toc-group-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    cursor: pointer;
+    color: #b0b0b0;
+    font-weight: 600;
+    font-size: 0.85em;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.toc-group-header:hover {
+    background: rgba(74, 144, 226, 0.1);
+    color: #4a90e2;
+}
+
+.toc-group-header .toggle-icon {
+    font-size: 0.7em;
+    transition: transform 0.2s ease;
+}
+
+.toc-group-items {
+    padding-left: 12px;
+    margin-top: 4px;
 }
 
 /* Niveles anidados del TOC */

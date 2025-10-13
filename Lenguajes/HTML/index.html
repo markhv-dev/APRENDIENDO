@@ -6,245 +6,10 @@
     <title>HTML - Sistema de Aprendizaje</title>
 
     <!-- Sidebar Styles -->
-    <link rel="stylesheet" href="/sidebar-styles.css">
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #0f0f0f;
-            color: #e0e0e0;
-            line-height: 1.6;
-            margin-left: 280px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-            border-bottom: 2px solid #e74c3c;
-            margin-bottom: 40px;
-        }
-
-        .back-link {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            color: #e74c3c;
-            text-decoration: none;
-            font-size: 1.2em;
-            transition: transform 0.3s ease;
-        }
-
-        .back-link:hover {
-            transform: translateX(-5px);
-        }
-
-        h1 {
-            font-size: 3em;
-            color: #ffffff;
-            margin-bottom: 10px;
-            font-weight: 300;
-            letter-spacing: 2px;
-        }
-
-        .icon {
-            font-size: 4em;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .subtitle {
-            font-size: 1.2em;
-            color: #888;
-            font-weight: 300;
-        }
-
-        .intro {
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-left: 4px solid #e74c3c;
-            padding: 30px;
-            border-radius: 8px;
-            margin-bottom: 40px;
-        }
-
-        .intro h2 {
-            color: #e74c3c;
-            margin-bottom: 15px;
-            font-weight: 400;
-        }
-
-        .intro p {
-            color: #b0b0b0;
-            line-height: 1.8;
-            margin-bottom: 10px;
-        }
-
-        .resources {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin-top: 40px;
-        }
-
-        .resource-card {
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 12px;
-            padding: 30px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .resource-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, #e74c3c, transparent);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .resource-card:hover {
-            transform: translateY(-5px);
-            border-color: #e74c3c;
-            box-shadow: 0 8px 30px rgba(231, 76, 60, 0.3);
-        }
-
-        .resource-card:hover::before {
-            opacity: 1;
-        }
-
-        .resource-icon {
-            font-size: 2.5em;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .resource-title {
-            font-size: 1.5em;
-            color: #ffffff;
-            margin-bottom: 10px;
-            font-weight: 400;
-        }
-
-        .resource-description {
-            color: #888;
-            font-size: 0.95em;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-
-        .resource-meta {
-            color: #666;
-            font-size: 0.85em;
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #2a2a2a;
-        }
-
-        .topics {
-            background: #1a1a1a;
-            border: 1px solid #2a2a2a;
-            border-radius: 8px;
-            padding: 30px;
-            margin-top: 40px;
-        }
-
-        .topics h2 {
-            color: #e74c3c;
-            margin-bottom: 20px;
-            font-weight: 400;
-        }
-
-        .topic-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-
-        .topic-item {
-            background: #222;
-            padding: 15px;
-            border-radius: 6px;
-            border-left: 3px solid #e74c3c;
-            transition: all 0.3s ease;
-        }
-
-        .topic-item:hover {
-            background: #2a2a2a;
-            transform: translateX(5px);
-        }
-
-        .topic-item h3 {
-            color: #fff;
-            font-size: 1em;
-            font-weight: 500;
-            margin-bottom: 5px;
-        }
-
-        .topic-item p {
-            color: #888;
-            font-size: 0.85em;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 60px;
-            border-top: 1px solid #2a2a2a;
-            color: #666;
-        }
-
-        footer a {
-            color: #e74c3c;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        footer a:hover {
-            color: #ff6b5a;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                margin-left: 0;
-            }
-
-            h1 {
-                font-size: 2em;
-            }
-
-            .resources {
-                grid-template-columns: 1fr;
-            }
-
-            .back-link {
-                position: relative;
-                top: 0;
-                left: 0;
-                display: inline-block;
-                margin-bottom: 20px;
-            }
-        }
-    </style>
+    <!-- Pages Styles -->
+    <link rel="stylesheet" href="/assets/css/pages.css">
 </head>
 <body>
     <header>
@@ -302,56 +67,143 @@
             </div>
         </div>
 
-        <div class="topics">
-            <h2>Temas Cubiertos</h2>
-            <div class="topic-list">
-                <div class="topic-item">
-                    <h3>Estructura Básica</h3>
-                    <p>DOCTYPE, html, head, body, title</p>
+        <h2 style="color: #e74c3c; margin-bottom: 20px; font-weight: 400;">Módulos de Aprendizaje</h2>
+        <div class="resources">
+            <div class="resource-card" onclick="window.location.href='modulos/fundamentos.html'">
+                <span class="resource-icon">🏗️</span>
+                <div class="unsa-badge">[U]</div>
+                <h3 class="resource-title">Módulo 1: Fundamentos de HTML</h3>
+                <p class="resource-description">
+                    Estructura básica, elementos, etiquetas y atributos. Aprende los conceptos fundamentales del lenguaje HTML.
+                </p>
+                <div class="resource-meta">
+                    ✓ Estructura DOCTYPE, html, head, body<br>
+                    ✓ Elementos contenedores y vacíos<br>
+                    ✓ Atributos y comentarios
                 </div>
-                <div class="topic-item">
-                    <h3>Metadatos</h3>
-                    <p>meta, link, viewport, SEO</p>
+            </div>
+
+            <div class="resource-card" onclick="window.location.href='modulos/texto-formato.html'">
+                <span class="resource-icon">📝</span>
+                <div class="unsa-badge">[U]</div>
+                <h3 class="resource-title">Módulo 2: Texto y Formato</h3>
+                <p class="resource-description">
+                    Párrafos, encabezados y elementos de formato. Domina la presentación de contenido textual.
+                </p>
+                <div class="resource-meta">
+                    ✓ Encabezados h1-h6 jerárquicos<br>
+                    ✓ Elementos strong, em, mark, code<br>
+                    ✓ Saltos de línea y líneas horizontales
                 </div>
-                <div class="topic-item">
-                    <h3>Texto y Formato</h3>
-                    <p>Encabezados, párrafos, strong, em</p>
+            </div>
+
+            <div class="resource-card" onclick="window.location.href='modulos/listas.html'">
+                <span class="resource-icon">📋</span>
+                <div class="unsa-badge">[U]</div>
+                <h3 class="resource-title">Módulo 3: Listas</h3>
+                <p class="resource-description">
+                    Listas ordenadas, no ordenadas y de definición. Organiza información de forma estructurada.
+                </p>
+                <div class="resource-meta">
+                    ✓ Listas no ordenadas (ul)<br>
+                    ✓ Listas ordenadas (ol)<br>
+                    ✓ Listas de definición (dl) y anidadas
                 </div>
-                <div class="topic-item">
-                    <h3>Enlaces e Imágenes</h3>
-                    <p>a, img, figure, atributos</p>
+            </div>
+
+            <div class="resource-card" onclick="window.location.href='modulos/hipervinculos.html'">
+                <span class="resource-icon">🔗</span>
+                <div class="unsa-badge">[U]</div>
+                <h3 class="resource-title">Módulo 4: Hipervínculos</h3>
+                <p class="resource-description">
+                    Enlaces absolutos, relativos e internos. Conecta páginas y recursos de forma efectiva.
+                </p>
+                <div class="resource-meta">
+                    ✓ Hipervínculos absolutos y relativos<br>
+                    ✓ Navegación interna con anclas<br>
+                    ✓ Atributos href y target
                 </div>
-                <div class="topic-item">
-                    <h3>Listas</h3>
-                    <p>ul, ol, li, listas anidadas</p>
+            </div>
+
+            <div class="resource-card" onclick="window.location.href='modulos/imagenes.html'">
+                <span class="resource-icon">🖼️</span>
+                <div class="unsa-badge">[U]</div>
+                <h3 class="resource-title">Módulo 5: Imágenes</h3>
+                <p class="resource-description">
+                    Elemento img, rutas y atributos. Incorpora contenido visual en tus páginas web.
+                </p>
+                <div class="resource-meta">
+                    ✓ Elemento img y atributo src<br>
+                    ✓ Texto alternativo (alt)<br>
+                    ✓ Figure y figcaption
                 </div>
-                <div class="topic-item">
-                    <h3>Tablas</h3>
-                    <p>table, tr, td, th, thead, tbody</p>
+            </div>
+
+            <div class="resource-card" onclick="window.location.href='modulos/tablas.html'">
+                <span class="resource-icon">📊</span>
+                <div class="unsa-badge">[U]</div>
+                <h3 class="resource-title">Módulo 6: Tablas</h3>
+                <p class="resource-description">
+                    Estructura de tablas, filas, columnas y atributos. Presenta datos tabulares de forma semántica.
+                </p>
+                <div class="resource-meta">
+                    ✓ Elementos table, tr, td, th<br>
+                    ✓ Secciones thead, tbody, tfoot<br>
+                    ✓ Atributos colspan y rowspan
                 </div>
-                <div class="topic-item">
-                    <h3>Formularios</h3>
-                    <p>form, input, textarea, select, validación</p>
+            </div>
+
+            <div class="resource-card" onclick="window.location.href='modulos/bloque-inline.html'">
+                <span class="resource-icon">📦</span>
+                <div class="unsa-badge">[U]</div>
+                <h3 class="resource-title">Módulo 7: Elementos de Bloque e Inline</h3>
+                <p class="resource-description">
+                    Diferencias entre elementos de bloque y en línea. Contenedores div y span.
+                </p>
+                <div class="resource-meta">
+                    ✓ Elementos de bloque vs inline<br>
+                    ✓ Contenedores div y span<br>
+                    ✓ Atributos id y class
                 </div>
-                <div class="topic-item">
-                    <h3>HTML5 Semántico</h3>
-                    <p>header, nav, main, article, section, aside, footer</p>
+            </div>
+
+            <div class="resource-card" onclick="window.location.href='modulos/semantico.html'">
+                <span class="resource-icon">🏛️</span>
+                <div class="unsa-badge">[U]</div>
+                <h3 class="resource-title">Módulo 8: HTML Semántico</h3>
+                <p class="resource-description">
+                    Elementos semánticos de HTML5. Estructura significativa para mejor SEO y accesibilidad.
+                </p>
+                <div class="resource-meta">
+                    ✓ header, nav, main, footer<br>
+                    ✓ article, section, aside<br>
+                    ✓ figure, time, mark, details
                 </div>
-                <div class="topic-item">
-                    <h3>Multimedia</h3>
-                    <p>video, audio, iframe, controles</p>
+            </div>
+
+            <div class="resource-card" onclick="window.location.href='modulos/formularios.html'">
+                <span class="resource-icon">📋</span>
+                <h3 class="resource-title">Módulo 9: Formularios</h3>
+                <p class="resource-description">
+                    Elementos de formulario, validación y envío. Crea interfaces interactivas para capturar datos.
+                </p>
+                <div class="resource-meta">
+                    ✓ Elementos form, input, textarea<br>
+                    ✓ Select, radio, checkbox<br>
+                    ✓ Validación HTML5
                 </div>
-                <div class="topic-item">
-                    <h3>Contenedores</h3>
-                    <p>div, span, agrupación de elementos</p>
-                </div>
-                <div class="topic-item">
-                    <h3>Accesibilidad</h3>
-                    <p>alt, aria, roles, estructura semántica</p>
-                </div>
-                <div class="topic-item">
-                    <h3>Buenas Prácticas</h3>
-                    <p>Indentación, validación, SEO</p>
+            </div>
+
+            <div class="resource-card" onclick="window.location.href='modulos/multimedia.html'">
+                <span class="resource-icon">🎬</span>
+                <h3 class="resource-title">Módulo 10: Multimedia</h3>
+                <p class="resource-description">
+                    Audio, video e iframes. Integra contenido multimedia rico en tus páginas.
+                </p>
+                <div class="resource-meta">
+                    ✓ Elementos video y audio<br>
+                    ✓ Atributos controls, autoplay<br>
+                    ✓ Iframes para contenido externo
                 </div>
             </div>
         </div>
@@ -362,6 +214,6 @@
     </footer>
 
     <!-- Sidebar Component -->
-    <script src="/sidebar-component.js"></script>
+    <script src="/assets/js/sidebar-component.js"></script>
 </body>
 </html>
