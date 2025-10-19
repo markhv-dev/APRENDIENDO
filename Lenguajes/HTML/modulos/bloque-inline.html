@@ -310,6 +310,130 @@
                     </details>
                 </div>
             </section>
+
+            <section id="glosario-modulo" class="topic-section">
+                <h2>📚 Glosario del Módulo</h2>
+                <p>Referencia de elementos HTML relacionados con bloque e inline:</p>
+
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar término...">
+                </div>
+
+                <div id="terminosContainer">
+                    <div class="termino" data-tags="div división contenedor bloque">
+                        <span class="tag">&lt;div&gt;</span>
+                        <p class="significado">Significado: División genérica</p>
+                        <p class="descripcion">
+                            Es un contenedor genérico de bloque. No tiene significado semántico.
+                            Se usa para agrupar elementos y aplicar estilos CSS o manipular con JavaScript.
+                            Es uno de los elementos más usados en HTML. Crea un salto de línea antes y después.
+                            Úsalo cuando no haya un elemento semántico más apropiado.
+                        </p>
+                        <div class="ejemplo">&lt;div class="contenedor"&gt;<br>&nbsp;&nbsp;&lt;h2&gt;Título&lt;/h2&gt;<br>&nbsp;&nbsp;&lt;p&gt;Contenido agrupado...&lt;/p&gt;<br>&lt;/div&gt;</div>
+                        <div class="nota">
+                            <strong>Cuándo usar div:</strong> Cuando necesites agrupar elementos pero no hay un elemento semántico apropiado
+                            (como section, article, aside). Prefiere elementos semánticos cuando sea posible.
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="span contenedor inline línea">
+                        <span class="tag">&lt;span&gt;</span>
+                        <p class="significado">Significado: Contenedor en línea</p>
+                        <p class="descripcion">
+                            Es un contenedor genérico en línea (inline). No tiene significado semántico y no afecta el diseño por sí mismo.
+                            Se usa principalmente para aplicar estilos CSS o manipular con JavaScript a partes específicas del texto.
+                            No crea saltos de línea.
+                        </p>
+                        <div class="ejemplo">&lt;p&gt;Texto con &lt;span style="color: red;"&gt;color rojo&lt;/span&gt; en el medio.&lt;/p&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="p párrafo paragraph texto bloque">
+                        <span class="tag">&lt;p&gt;</span>
+                        <p class="significado">Significado: Párrafo (Paragraph)</p>
+                        <p class="descripcion">
+                            Define un párrafo de texto. El navegador automáticamente agrega espacio antes y después de cada párrafo.
+                            Es el elemento más común para contenido de texto. Separa conceptos o ideas diferentes en bloques lógicos.
+                            Es un elemento de bloque.
+                        </p>
+                        <div class="ejemplo">&lt;p&gt;Este es un párrafo de texto con información importante.&lt;/p&gt;<br>&lt;p&gt;Este es otro párrafo completamente diferente.&lt;/p&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="h1 h2 h3 h4 h5 h6 encabezado título heading bloque">
+                        <span class="tag">&lt;h1&gt; - &lt;h6&gt;</span>
+                        <p class="significado">Significado: Encabezados (Headings)</p>
+                        <p class="descripcion">
+                            Define encabezados de diferentes niveles jerárquicos. h1 es el más importante (título principal) y h6 el menos importante.
+                            Solo debe haber un h1 por página. Los encabezados ayudan a estructurar el contenido de forma lógica y son cruciales para SEO
+                            y accesibilidad. Los lectores de pantalla los usan para navegar por la página. Son elementos de bloque.
+                        </p>
+                        <div class="ejemplo">&lt;h1&gt;Título Principal&lt;/h1&gt;<br>&lt;h2&gt;Subtítulo de Sección&lt;/h2&gt;<br>&lt;h3&gt;Sub-subtítulo&lt;/h3&gt;</div>
+                        <div class="nota">
+                            <strong>Buena práctica:</strong> No saltes niveles (ej: no uses h4 después de h2). Mantén una jerarquía lógica.
+                            Los encabezados no deben usarse solo para hacer texto grande; usa CSS para eso.
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="strong importante negrita bold inline">
+                        <span class="tag">&lt;strong&gt;</span>
+                        <p class="significado">Significado: Texto importante/fuerte</p>
+                        <p class="descripcion">
+                            Indica que el texto es importante o tiene gran importancia. Por defecto se muestra en negrita.
+                            Tiene significado semántico (le dice a los navegadores, buscadores y lectores de pantalla que el texto es importante).
+                            Diferente de &lt;b&gt; que solo hace el texto negrita sin significado semántico. Es un elemento inline.
+                        </p>
+                        <div class="ejemplo">&lt;p&gt;Esto es &lt;strong&gt;muy importante&lt;/strong&gt; de recordar.&lt;/p&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="em énfasis cursiva italic inline">
+                        <span class="tag">&lt;em&gt;</span>
+                        <p class="significado">Significado: Énfasis (Emphasis)</p>
+                        <p class="descripcion">
+                            Indica énfasis en el texto. Por defecto se muestra en cursiva.
+                            También tiene significado semántico. Diferente de &lt;i&gt; que solo hace el texto cursiva sin significado.
+                            Útil para enfatizar palabras clave o cambiar el tono de la oración. Es un elemento inline.
+                        </p>
+                        <div class="ejemplo">&lt;p&gt;Esto es &lt;em&gt;realmente&lt;/em&gt; increíble.&lt;/p&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="a anchor enlace link href inline">
+                        <span class="tag">&lt;a&gt;</span>
+                        <p class="significado">Significado: Ancla/Enlace (Anchor)</p>
+                        <p class="descripcion">
+                            Crea hipervínculos a otras páginas, archivos, ubicaciones en la misma página, direcciones de correo, o cualquier URL.
+                            Es el elemento fundamental de la web, permitiendo la navegación entre páginas y recursos.
+                            Puede contener texto, imágenes, o casi cualquier otro contenido. Es un elemento inline.
+                        </p>
+                        <div class="ejemplo">&lt;a href="https://www.ejemplo.com"&gt;Visitar Ejemplo&lt;/a&gt;<br>&lt;a href="contacto.html"&gt;Ir a Contacto&lt;/a&gt;<br>&lt;a href="#seccion1"&gt;Ir a Sección 1&lt;/a&gt;</div>
+                        <div class="nota">
+                            <strong>Atributos importantes:</strong><br>
+                            <span class="atributo">href</span> - URL de destino (obligatorio para enlaces funcionales)<br>
+                            <span class="atributo">target</span> - Dónde abrir el enlace ("_blank" = nueva pestaña, "_self" = misma pestaña)<br>
+                            <span class="atributo">title</span> - Texto tooltip que aparece al pasar el mouse
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="img imagen image src alt inline">
+                        <span class="tag">&lt;img&gt;</span>
+                        <p class="significado">Significado: Imagen (Image)</p>
+                        <p class="descripcion">
+                            Inserta una imagen en el documento. Es una etiqueta de autocierre y un elemento inline.
+                            Siempre debe incluir el atributo alt para accesibilidad (describe la imagen para usuarios con lectores de pantalla).
+                            Soporta formatos: JPG, PNG, GIF, SVG, WebP, entre otros.
+                        </p>
+                        <div class="ejemplo">&lt;img src="foto.jpg" alt="Descripción detallada de la foto"&gt;<br>&lt;img src="logo.png" alt="Logo de la empresa" width="200" height="100"&gt;</div>
+                        <div class="nota">
+                            <strong>Atributos importantes:</strong><br>
+                            <span class="atributo">src</span> - Ruta de la imagen (obligatorio)<br>
+                            <span class="atributo">alt</span> - Texto alternativo (obligatorio para accesibilidad y SEO)<br>
+                            <span class="atributo">width/height</span> - Dimensiones en píxeles
+                        </div>
+                    </div>
+                </div>
+
+                <div id="noResults" class="no-results" style="display: none;">
+                    No se encontraron términos que coincidan con tu búsqueda.
+                </div>
+            </section>
         </main>
 
         <aside class="toc">
@@ -322,6 +446,7 @@
                 <li><a href="#div-span">div y span</a></li>
                 <li><a href="#id-class">id y class</a></li>
                 <li><a href="#ejercicio">Ejercicio Práctico</a></li>
+                <li><a href="#glosario-modulo">Glosario del Módulo</a></li>
             </ul>
         </aside>
     </div>
@@ -331,5 +456,45 @@
     </footer>
 
     <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        // Funcionalidad de búsqueda en el glosario
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                let visibleCount = 0;
+
+                terminos.forEach(termino => {
+                    const tag = termino.querySelector('.tag').textContent.toLowerCase();
+                    const significado = termino.querySelector('.significado').textContent.toLowerCase();
+                    const descripcion = termino.querySelector('.descripcion').textContent.toLowerCase();
+                    const tags = termino.getAttribute('data-tags').toLowerCase();
+
+                    const matches = tag.includes(searchTerm) ||
+                                  significado.includes(searchTerm) ||
+                                  descripcion.includes(searchTerm) ||
+                                  tags.includes(searchTerm);
+
+                    if (matches || searchTerm === '') {
+                        termino.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+
+                // Mostrar mensaje si no hay resultados
+                if (visibleCount === 0 && searchTerm !== '') {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

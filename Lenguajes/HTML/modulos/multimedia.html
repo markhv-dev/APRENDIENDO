@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimedia HTML - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a HTML</a>
+        <span class="icon">🎬</span>
+        <h1>Módulo 10: Multimedia en HTML</h1>
+        <p class="subtitle">Audio, video e iframes para contenido rico</p>
+    </header>
+
+    <div class="container">
+        <main class="content">
+            <section id="introduccion" class="topic-section">
+                <h2>Introducción a Multimedia</h2>
+                <p>HTML5 introdujo elementos nativos para reproducir contenido multimedia sin necesidad de plugins externos como Flash. Ahora podemos integrar audio y video directamente en nuestras páginas web de forma estándar y accesible.</p>
+
+                <div class="info-box">
+                    <h3>Ventajas de multimedia HTML5:</h3>
+                    <ul>
+                        <li>No requiere plugins externos</li>
+                        <li>Funciona en todos los navegadores modernos</li>
+                        <li>Controles nativos del navegador</li>
+                        <li>Compatible con dispositivos móviles</li>
+                        <li>Accesible y semántico</li>
+                        <li>Controlable con JavaScript</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="video" class="topic-section">
+                <h2>El Elemento &lt;video&gt;</h2>
+                <p>Permite insertar y reproducir videos directamente en la página web.</p>
+
+                <h3>Sintaxis básica:</h3>
+                <div class="code-block">
+                    <pre><code>&lt;video controls&gt;
+    &lt;source src="video.mp4" type="video/mp4"&gt;
+    &lt;source src="video.webm" type="video/webm"&gt;
+    Tu navegador no soporta video HTML5.
+&lt;/video&gt;</code></pre>
+                </div>
+
+                <h3>Atributos principales:</h3>
+                <div class="info-box">
+                    <ul>
+                        <li><strong>controls</strong> - Muestra controles de reproducción (play, pausa, volumen, etc.)</li>
+                        <li><strong>autoplay</strong> - Reproduce automáticamente al cargar (úsalo con cuidado)</li>
+                        <li><strong>loop</strong> - Repite el video indefinidamente</li>
+                        <li><strong>muted</strong> - Silencia el audio (necesario para autoplay en muchos navegadores)</li>
+                        <li><strong>poster</strong> - Imagen de portada antes de reproducir</li>
+                        <li><strong>width / height</strong> - Dimensiones del reproductor</li>
+                        <li><strong>preload</strong> - Cómo precargar el video (auto, metadata, none)</li>
+                    </ul>
+                </div>
+
+                <h3>Ejemplo completo:</h3>
+                <div class="code-block">
+                    <pre><code>&lt;video width="640" height="360" controls poster="portada.jpg" preload="metadata"&gt;
+    &lt;source src="video.mp4" type="video/mp4"&gt;
+    &lt;source src="video.webm" type="video/webm"&gt;
+    &lt;source src="video.ogv" type="video/ogg"&gt;
+    &lt;p&gt;Tu navegador no soporta video HTML5.
+       &lt;a href="video.mp4"&gt;Descargar el video&lt;/a&gt;.&lt;/p&gt;
+&lt;/video&gt;</code></pre>
+                </div>
+
+                <h3>Formatos de video:</h3>
+                <table class="reference-table">
+                    <thead>
+                        <tr>
+                            <th>Formato</th>
+                            <th>MIME Type</th>
+                            <th>Compatibilidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>MP4 (H.264)</td>
+                            <td>video/mp4</td>
+                            <td>Todos los navegadores modernos</td>
+                        </tr>
+                        <tr>
+                            <td>WebM</td>
+                            <td>video/webm</td>
+                            <td>Chrome, Firefox, Opera</td>
+                        </tr>
+                        <tr>
+                            <td>Ogg</td>
+                            <td>video/ogg</td>
+                            <td>Firefox, Chrome, Opera</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="concept-box">
+                    <h3>Buena práctica:</h3>
+                    <p>Proporciona múltiples formatos con <code>&lt;source&gt;</code> para máxima compatibilidad. El navegador usará el primero que soporte.</p>
+                </div>
+
+                <h3>Video responsive:</h3>
+                <div class="code-block">
+                    <pre><code>&lt;style&gt;
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Aspecto 16:9 */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+&lt;/style&gt;
+
+&lt;div class="video-container"&gt;
+    &lt;video controls&gt;
+        &lt;source src="video.mp4" type="video/mp4"&gt;
+    &lt;/video&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </section>
+
+            <section id="audio" class="topic-section">
+                <h2>El Elemento &lt;audio&gt;</h2>
+                <p>Permite reproducir archivos de audio en la página web.</p>
+
+                <h3>Sintaxis básica:</h3>
+                <div class="code-block">
+                    <pre><code>&lt;audio controls&gt;
+    &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+    &lt;source src="audio.ogg" type="audio/ogg"&gt;
+    Tu navegador no soporta audio HTML5.
+&lt;/audio&gt;</code></pre>
+                </div>
+
+                <h3>Atributos:</h3>
+                <div class="info-box">
+                    <ul>
+                        <li><strong>controls</strong> - Muestra controles de reproducción</li>
+                        <li><strong>autoplay</strong> - Reproduce automáticamente (evitar por UX)</li>
+                        <li><strong>loop</strong> - Repite el audio indefinidamente</li>
+                        <li><strong>muted</strong> - Silencia el audio inicialmente</li>
+                        <li><strong>preload</strong> - Cómo precargar (auto, metadata, none)</li>
+                    </ul>
+                </div>
+
+                <h3>Ejemplo con múltiples formatos:</h3>
+                <div class="code-block">
+                    <pre><code>&lt;audio controls preload="metadata"&gt;
+    &lt;source src="musica.mp3" type="audio/mpeg"&gt;
+    &lt;source src="musica.wav" type="audio/wav"&gt;
+    &lt;source src="musica.ogg" type="audio/ogg"&gt;
+    &lt;p&gt;Tu navegador no soporta audio HTML5.&lt;/p&gt;
+&lt;/audio&gt;</code></pre>
+                </div>
+
+                <h3>Formatos de audio:</h3>
+                <table class="reference-table">
+                    <thead>
+                        <tr>
+                            <th>Formato</th>
+                            <th>MIME Type</th>
+                            <th>Compatibilidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>MP3</td>
+                            <td>audio/mpeg</td>
+                            <td>Todos los navegadores modernos</td>
+                        </tr>
+                        <tr>
+                            <td>WAV</td>
+                            <td>audio/wav</td>
+                            <td>Todos los navegadores modernos</td>
+                        </tr>
+                        <tr>
+                            <td>Ogg Vorbis</td>
+                            <td>audio/ogg</td>
+                            <td>Firefox, Chrome, Opera</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Audio como música de fondo (con precaución):</h3>
+                <div class="code-block">
+                    <pre><code>&lt;!-- NO RECOMENDADO sin control del usuario --&gt;
+&lt;audio autoplay loop muted&gt;
+    &lt;source src="fondo.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;
+
+&lt;!-- MEJOR: Dar control al usuario --&gt;
+&lt;button onclick="document.getElementById('bgMusic').play()"&gt;▶ Música&lt;/button&gt;
+&lt;audio id="bgMusic" loop&gt;
+    &lt;source src="fondo.mp3" type="audio/mpeg"&gt;
+&lt;/audio&gt;</code></pre>
+                </div>
+            </section>
+
+            <section id="iframe" class="topic-section">
+                <h2>El Elemento &lt;iframe&gt;</h2>
+                <p>Permite insertar una página web completa dentro de otra página. Comúnmente usado para embeber videos de YouTube, mapas de Google, widgets externos, etc.</p>
+
+                <h3>Sintaxis básica:</h3>
+                <div class="code-block">
+                    <pre><code>&lt;iframe src="https://www.ejemplo.com"
+        width="800" height="600"
+        title="Descripción del contenido"&gt;
+&lt;/iframe&gt;</code></pre>
+                </div>
+
+                <h3>Atributos importantes:</h3>
+                <div class="info-box">
+                    <ul>
+                        <li><strong>src</strong> - URL de la página a insertar</li>
+                        <li><strong>width / height</strong> - Dimensiones del iframe</li>
+                        <li><strong>title</strong> - Descripción para accesibilidad (obligatorio)</li>
+                        <li><strong>frameborder</strong> - Borde del frame (0 = sin borde, deprecado en HTML5)</li>
+                        <li><strong>allowfullscreen</strong> - Permite pantalla completa</li>
+                        <li><strong>sandbox</strong> - Restricciones de seguridad</li>
+                        <li><strong>loading</strong> - Carga diferida (lazy)</li>
+                    </ul>
+                </div>
+
+                <h3>Ejemplo: Embeber video de YouTube</h3>
+                <div class="code-block">
+                    <pre><code>&lt;iframe width="560" height="315"
+        src="https://www.youtube.com/embed/VIDEO_ID"
+        title="Video de YouTube"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen&gt;
+&lt;/iframe&gt;</code></pre>
+                </div>
+
+                <h3>Ejemplo: Embeber mapa de Google</h3>
+                <div class="code-block">
+                    <pre><code>&lt;iframe src="https://www.google.com/maps/embed?pb=..."
+        width="600" height="450"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        title="Mapa de ubicación"&gt;
+&lt;/iframe&gt;</code></pre>
+                </div>
+
+                <h3>Iframe responsive:</h3>
+                <div class="code-block">
+                    <pre><code>&lt;style&gt;
+.iframe-container {
+    position: relative;
+    padding-bottom: 56.25%; /* Aspecto 16:9 */
+    height: 0;
+    overflow: hidden;
+}
+
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+&lt;/style&gt;
+
+&lt;div class="iframe-container"&gt;
+    &lt;iframe src="https://www.youtube.com/embed/VIDEO_ID"
+            title="Video" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <h3>Seguridad con sandbox:</h3>
+                <div class="code-block">
+                    <pre><code>&lt;!-- Iframe con restricciones de seguridad --&gt;
+&lt;iframe src="contenido-externo.html"
+        sandbox="allow-scripts allow-same-origin"
+        title="Contenido externo"&gt;
+&lt;/iframe&gt;</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <h3>Valores de sandbox:</h3>
+                    <ul>
+                        <li><strong>allow-scripts</strong> - Permitir JavaScript</li>
+                        <li><strong>allow-forms</strong> - Permitir formularios</li>
+                        <li><strong>allow-same-origin</strong> - Permitir mismo origen</li>
+                        <li><strong>allow-popups</strong> - Permitir ventanas emergentes</li>
+                        <li><strong>allow-top-navigation</strong> - Permitir navegación superior</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="picture" class="topic-section">
+                <h2>El Elemento &lt;picture&gt; (Imágenes Responsive)</h2>
+                <p>Permite servir diferentes versiones de una imagen según el tamaño de pantalla o características del dispositivo.</p>
+
+                <div class="code-block">
+                    <pre><code>&lt;picture&gt;
+    &lt;source media="(min-width: 1200px)" srcset="imagen-grande.jpg"&gt;
+    &lt;source media="(min-width: 768px)" srcset="imagen-mediana.jpg"&gt;
+    &lt;source media="(min-width: 480px)" srcset="imagen-pequena.jpg"&gt;
+    &lt;img src="imagen-default.jpg" alt="Descripción de la imagen"&gt;
+&lt;/picture&gt;</code></pre>
+                </div>
+
+                <h3>Formatos modernos con fallback:</h3>
+                <div class="code-block">
+                    <pre><code>&lt;picture&gt;
+    &lt;source srcset="imagen.avif" type="image/avif"&gt;
+    &lt;source srcset="imagen.webp" type="image/webp"&gt;
+    &lt;img src="imagen.jpg" alt="Descripción"&gt;
+&lt;/picture&gt;</code></pre>
+                </div>
+                <p class="note">El navegador usa el primer formato que soporte. Siempre incluir <code>&lt;img&gt;</code> como fallback.</p>
+            </section>
+
+            <section id="svg" class="topic-section">
+                <h2>SVG - Gráficos Vectoriales</h2>
+                <p>SVG (Scalable Vector Graphics) permite crear gráficos vectoriales que se escalan perfectamente sin perder calidad.</p>
+
+                <h3>SVG inline:</h3>
+                <div class="code-block">
+                    <pre><code>&lt;svg width="200" height="200" xmlns="http://www.w3.org/2000/svg"&gt;
+    &lt;circle cx="100" cy="100" r="80" fill="blue" /&gt;
+    &lt;text x="100" y="110" text-anchor="middle" fill="white" font-size="20"&gt;
+        HTML5
+    &lt;/text&gt;
+&lt;/svg&gt;</code></pre>
+                </div>
+
+                <h3>SVG como imagen:</h3>
+                <div class="code-block">
+                    <pre><code>&lt;img src="logo.svg" alt="Logo" width="200"&gt;</code></pre>
+                </div>
+
+                <h3>Ventajas de SVG:</h3>
+                <div class="info-box">
+                    <ul>
+                        <li>Escalable sin perder calidad</li>
+                        <li>Tamaño de archivo pequeño</li>
+                        <li>Manipulable con CSS y JavaScript</li>
+                        <li>Accesible y semántico</li>
+                        <li>Ideal para logos, iconos, gráficos</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="canvas" class="topic-section">
+                <h2>Canvas - Lienzo de Dibujo</h2>
+                <p>Elemento que proporciona un lienzo donde puedes dibujar gráficos mediante JavaScript.</p>
+
+                <div class="code-block">
+                    <pre><code>&lt;canvas id="miCanvas" width="400" height="300"&gt;
+    Tu navegador no soporta canvas.
+&lt;/canvas&gt;
+
+&lt;script&gt;
+const canvas = document.getElementById('miCanvas');
+const ctx = canvas.getContext('2d');
+
+// Dibujar un rectángulo
+ctx.fillStyle = 'blue';
+ctx.fillRect(50, 50, 100, 100);
+
+// Dibujar un círculo
+ctx.beginPath();
+ctx.arc(250, 100, 50, 0, 2 * Math.PI);
+ctx.fillStyle = 'red';
+ctx.fill();
+&lt;/script&gt;</code></pre>
+                </div>
+
+                <h3>Usos de Canvas:</h3>
+                <div class="info-box">
+                    <ul>
+                        <li>Juegos en 2D</li>
+                        <li>Visualizaciones de datos</li>
+                        <li>Edición de imágenes</li>
+                        <li>Animaciones complejas</li>
+                        <li>Gráficos dinámicos</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="buenas-practicas" class="topic-section">
+                <h2>Buenas Prácticas</h2>
+
+                <div class="info-box">
+                    <h3>✓ Video y Audio:</h3>
+                    <ul>
+                        <li>Siempre proporcionar múltiples formatos</li>
+                        <li>Incluir controles (controls)</li>
+                        <li>Agregar texto alternativo para navegadores sin soporte</li>
+                        <li>Usar poster para videos</li>
+                        <li>Evitar autoplay (mala experiencia de usuario)</li>
+                        <li>Si usas autoplay, incluir muted</li>
+                        <li>Optimizar tamaño de archivos multimedia</li>
+                        <li>Usar preload="metadata" para carga eficiente</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>✓ Iframes:</h3>
+                    <ul>
+                        <li>Siempre incluir atributo title</li>
+                        <li>Usar loading="lazy" para carga diferida</li>
+                        <li>Considerar sandbox para seguridad</li>
+                        <li>Hacer responsive con CSS</li>
+                        <li>No abusar de iframes (afecta rendimiento)</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>✗ Evitar:</h3>
+                    <ul>
+                        <li>Autoplay sin muted (molesto para usuarios)</li>
+                        <li>Videos o audio sin controles</li>
+                        <li>Archivos multimedia sin optimizar (muy pesados)</li>
+                        <li>Iframes sin atributo title (accesibilidad)</li>
+                        <li>Usar Flash u otros plugins obsoletos</li>
+                        <li>Dimensiones fijas que no se adaptan a móviles</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="glosario-modulo" class="topic-section">
+                <h2>📚 Glosario del Módulo</h2>
+                <p>Referencia de elementos multimedia HTML:</p>
+
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar término...">
+                </div>
+
+                <div id="terminosContainer">
+                    <div class="termino" data-tags="video reproducir mp4 webm">
+                        <span class="tag">&lt;video&gt;</span>
+                        <p class="significado">Significado: Video embebido</p>
+                        <p class="descripcion">
+                            Inserta un reproductor de video nativo en la página. Soporta múltiples formatos (MP4, WebM, Ogg).
+                            Incluye controles nativos del navegador. Mucho mejor que usar plugins externos como Flash.
+                            Proporciona funcionalidad de pausa, reproducción, volumen, pantalla completa.
+                        </p>
+                        <div class="ejemplo">&lt;video width="640" height="360" controls poster="portada.jpg"&gt;<br>&nbsp;&nbsp;&lt;source src="video.mp4" type="video/mp4"&gt;<br>&nbsp;&nbsp;&lt;source src="video.webm" type="video/webm"&gt;<br>&nbsp;&nbsp;Tu navegador no soporta video HTML5.<br>&lt;/video&gt;</div>
+                        <div class="nota">
+                            <strong>Atributos importantes:</strong><br>
+                            <span class="atributo">controls</span> - Muestra controles de reproducción<br>
+                            <span class="atributo">autoplay</span> - Reproduce automáticamente (úsalo con precaución)<br>
+                            <span class="atributo">loop</span> - Repite el video indefinidamente<br>
+                            <span class="atributo">muted</span> - Silenciar audio (necesario para autoplay en muchos navegadores)<br>
+                            <span class="atributo">poster</span> - Imagen de portada antes de reproducir
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="audio sonido música mp3">
+                        <span class="tag">&lt;audio&gt;</span>
+                        <p class="significado">Significado: Audio embebido</p>
+                        <p class="descripcion">
+                            Inserta un reproductor de audio en la página. Funciona similar a video pero solo para audio.
+                            Soporta MP3, WAV, Ogg. Proporciona controles de reproducción nativos.
+                        </p>
+                        <div class="ejemplo">&lt;audio controls&gt;<br>&nbsp;&nbsp;&lt;source src="audio.mp3" type="audio/mpeg"&gt;<br>&nbsp;&nbsp;&lt;source src="audio.ogg" type="audio/ogg"&gt;<br>&nbsp;&nbsp;Tu navegador no soporta audio HTML5.<br>&lt;/audio&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="iframe marco youtube maps embed">
+                        <span class="tag">&lt;iframe&gt;</span>
+                        <p class="significado">Significado: Marco en línea (Inline Frame)</p>
+                        <p class="descripcion">
+                            Inserta otra página HTML completa dentro del documento actual.
+                            Comúnmente usado para embeber videos de YouTube, mapas de Google, widgets externos, contenido de terceros.
+                            Crea un contexto de navegación completamente separado.
+                        </p>
+                        <div class="ejemplo">&lt;iframe src="https://www.youtube.com/embed/VIDEO_ID" <br>&nbsp;&nbsp;width="560" height="315"<br>&nbsp;&nbsp;title="Video de YouTube"<br>&nbsp;&nbsp;frameborder="0"<br>&nbsp;&nbsp;allow="accelerometer; autoplay; encrypted-media"<br>&nbsp;&nbsp;allowfullscreen&gt;<br>&lt;/iframe&gt;</div>
+                        <div class="nota">
+                            <strong>Consideraciones de seguridad:</strong> Usa el atributo <span class="atributo">sandbox</span> para restringir capacidades.
+                            Ten cuidado con el contenido de terceros por seguridad.
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="picture responsive imagen adaptativa">
+                        <span class="tag">&lt;picture&gt;</span>
+                        <p class="significado">Significado: Imagen adaptativa</p>
+                        <p class="descripcion">
+                            Contenedor para múltiples fuentes de imagen, permitiendo imágenes responsive adaptativas.
+                            El navegador elige la imagen más apropiada según el tamaño de pantalla, resolución, o formato soportado.
+                            Siempre debe incluir un &lt;img&gt; como fallback.
+                        </p>
+                        <div class="ejemplo">&lt;picture&gt;<br>&nbsp;&nbsp;&lt;source media="(min-width: 800px)" srcset="imagen-grande.jpg"&gt;<br>&nbsp;&nbsp;&lt;source media="(min-width: 400px)" srcset="imagen-mediana.jpg"&gt;<br>&nbsp;&nbsp;&lt;img src="imagen-pequeña.jpg" alt="Descripción"&gt;<br>&lt;/picture&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="svg gráfico vectorial">
+                        <span class="tag">&lt;svg&gt;</span>
+                        <p class="significado">Significado: Gráficos vectoriales escalables</p>
+                        <p class="descripcion">
+                            Contenedor para gráficos vectoriales SVG. Los gráficos vectoriales se escalan perfectamente sin perder calidad.
+                            Útil para iconos, logos, gráficos, animaciones. Se puede manipular con CSS y JavaScript.
+                        </p>
+                        <div class="ejemplo">&lt;svg width="100" height="100"&gt;<br>&nbsp;&nbsp;&lt;circle cx="50" cy="50" r="40" fill="red" /&gt;<br>&lt;/svg&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="canvas gráficos dibujo">
+                        <span class="tag">&lt;canvas&gt;</span>
+                        <p class="significado">Significado: Lienzo de gráficos</p>
+                        <p class="descripcion">
+                            Proporciona un lienzo donde puedes dibujar gráficos mediante JavaScript.
+                            Usado para juegos, visualizaciones de datos, edición de fotos, animaciones.
+                            Requiere JavaScript para dibujar; por sí solo solo crea un área vacía.
+                        </p>
+                        <div class="ejemplo">&lt;canvas id="miCanvas" width="400" height="200"&gt;<br>&nbsp;&nbsp;Tu navegador no soporta canvas.<br>&lt;/canvas&gt;<br>&lt;script&gt;<br>&nbsp;&nbsp;const ctx = document.getElementById('miCanvas').getContext('2d');<br>&nbsp;&nbsp;ctx.fillStyle = 'blue';<br>&nbsp;&nbsp;ctx.fillRect(10, 10, 100, 100);<br>&lt;/script&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="source formato multimedia">
+                        <span class="tag">&lt;source&gt;</span>
+                        <p class="significado">Significado: Fuente multimedia</p>
+                        <p class="descripcion">
+                            Especifica múltiples fuentes de medios para elementos video, audio o picture.
+                            El navegador elige la primera fuente que pueda reproducir.
+                            Permite proporcionar múltiples formatos para máxima compatibilidad.
+                        </p>
+                        <div class="ejemplo">&lt;video controls&gt;<br>&nbsp;&nbsp;&lt;source src="video.mp4" type="video/mp4"&gt;<br>&nbsp;&nbsp;&lt;source src="video.webm" type="video/webm"&gt;<br>&lt;/video&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="track subtítulos captions">
+                        <span class="tag">&lt;track&gt;</span>
+                        <p class="significado">Significado: Pista de texto temporizado</p>
+                        <p class="descripcion">
+                            Especifica pistas de texto para elementos de video o audio (subtítulos, captions, descripciones).
+                            Mejora la accesibilidad y permite subtítulos en múltiples idiomas.
+                        </p>
+                        <div class="ejemplo">&lt;video controls&gt;<br>&nbsp;&nbsp;&lt;source src="video.mp4" type="video/mp4"&gt;<br>&nbsp;&nbsp;&lt;track src="subtitulos-es.vtt" kind="subtitles" srclang="es" label="Español"&gt;<br>&nbsp;&nbsp;&lt;track src="subtitulos-en.vtt" kind="subtitles" srclang="en" label="English"&gt;<br>&lt;/video&gt;</div>
+                    </div>
+                </div>
+
+                <div id="noResults" class="no-results" style="display: none;">
+                    No se encontraron términos que coincidan con tu búsqueda.
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc">
+            <h3>Contenido</h3>
+            <ul>
+                <li><a href="#introduccion">Introducción</a></li>
+                <li><a href="#video">Video</a></li>
+                <li><a href="#audio">Audio</a></li>
+                <li><a href="#iframe">Iframe</a></li>
+                <li><a href="#picture">Picture</a></li>
+                <li><a href="#svg">SVG</a></li>
+                <li><a href="#canvas">Canvas</a></li>
+                <li><a href="#buenas-practicas">Buenas Prácticas</a></li>
+                <li><a href="#glosario-modulo">Glosario del Módulo</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer>
+        <p>Módulo 10: Multimedia HTML | <a href="../index.html">Volver a HTML</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        // Funcionalidad de búsqueda en el glosario
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                let visibleCount = 0;
+
+                terminos.forEach(termino => {
+                    const tag = termino.querySelector('.tag').textContent.toLowerCase();
+                    const significado = termino.querySelector('.significado').textContent.toLowerCase();
+                    const descripcion = termino.querySelector('.descripcion').textContent.toLowerCase();
+                    const tags = termino.getAttribute('data-tags').toLowerCase();
+
+                    const matches = tag.includes(searchTerm) ||
+                                  significado.includes(searchTerm) ||
+                                  descripcion.includes(searchTerm) ||
+                                  tags.includes(searchTerm);
+
+                    if (matches || searchTerm === '') {
+                        termino.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+
+                if (visibleCount === 0 && searchTerm !== '') {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

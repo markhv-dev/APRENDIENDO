@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios HTML - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a HTML</a>
+        <span class="icon">📋</span>
+        <h1>Módulo 9: Formularios HTML</h1>
+        <p class="subtitle">Captura de datos e interacción con el usuario</p>
+    </header>
+
+    <div class="container">
+        <main class="content">
+            <section id="introduccion" class="topic-section">
+                <h2>¿Qué son los Formularios?</h2>
+                <p>Los formularios son elementos interactivos que permiten a los usuarios enviar información a un servidor web. Son esenciales para:</p>
+
+                <div class="info-box">
+                    <ul>
+                        <li>Registros e inicios de sesión</li>
+                        <li>Búsquedas en sitios web</li>
+                        <li>Compras en línea</li>
+                        <li>Comentarios y reseñas</li>
+                        <li>Encuestas y cuestionarios</li>
+                        <li>Contacto y soporte</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="elemento-form" class="topic-section">
+                <h2>El Elemento &lt;form&gt;</h2>
+                <p>El elemento <code>&lt;form&gt;</code> es el contenedor principal de todos los campos de entrada. Define cómo y dónde se enviarán los datos.</p>
+
+                <div class="code-block">
+                    <pre><code>&lt;form action="/procesar" method="post"&gt;
+    &lt;!-- Campos del formulario aquí --&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <h3>Atributos principales:</h3>
+                    <ul>
+                        <li><strong>action</strong> - URL donde se envían los datos</li>
+                        <li><strong>method</strong> - Método HTTP (GET o POST)</li>
+                        <li><strong>enctype</strong> - Tipo de codificación (necesario para archivos)</li>
+                        <li><strong>autocomplete</strong> - Habilitar/deshabilitar autocompletado</li>
+                        <li><strong>novalidate</strong> - Desactivar validación HTML5</li>
+                    </ul>
+                </div>
+
+                <div class="concept-box">
+                    <h3>GET vs POST:</h3>
+                    <p><strong>GET:</strong> Los datos se envían en la URL (visible). Usar para búsquedas, filtros.</p>
+                    <p><strong>POST:</strong> Los datos se envían en el cuerpo (ocultos). Usar para datos sensibles, registros, login.</p>
+                </div>
+            </section>
+
+            <section id="input" class="topic-section">
+                <h2>El Elemento &lt;input&gt;</h2>
+                <p>El elemento más versátil para capturar datos. Su comportamiento cambia según el atributo <code>type</code>.</p>
+
+                <h3>Tipos de Input más Comunes:</h3>
+
+                <h4>1. text - Texto simple</h4>
+                <div class="code-block">
+                    <pre><code>&lt;label for="nombre"&gt;Nombre:&lt;/label&gt;
+&lt;input type="text" id="nombre" name="nombre" placeholder="Juan Pérez" required&gt;</code></pre>
+                </div>
+
+                <h4>2. email - Correo electrónico</h4>
+                <div class="code-block">
+                    <pre><code>&lt;label for="email"&gt;Email:&lt;/label&gt;
+&lt;input type="email" id="email" name="email" placeholder="usuario@ejemplo.com" required&gt;</code></pre>
+                </div>
+                <p class="note">Valida automáticamente el formato de email.</p>
+
+                <h4>3. password - Contraseña</h4>
+                <div class="code-block">
+                    <pre><code>&lt;label for="pass"&gt;Contraseña:&lt;/label&gt;
+&lt;input type="password" id="pass" name="password" minlength="8" required&gt;</code></pre>
+                </div>
+                <p class="note">Oculta los caracteres escritos.</p>
+
+                <h4>4. number - Números</h4>
+                <div class="code-block">
+                    <pre><code>&lt;label for="edad"&gt;Edad:&lt;/label&gt;
+&lt;input type="number" id="edad" name="edad" min="18" max="99" step="1"&gt;</code></pre>
+                </div>
+
+                <h4>5. date - Fecha</h4>
+                <div class="code-block">
+                    <pre><code>&lt;label for="fecha"&gt;Fecha de nacimiento:&lt;/label&gt;
+&lt;input type="date" id="fecha" name="fecha_nacimiento" min="1900-01-01" max="2025-12-31"&gt;</code></pre>
+                </div>
+
+                <h4>6. checkbox - Casilla de verificación</h4>
+                <div class="code-block">
+                    <pre><code>&lt;input type="checkbox" id="acepto" name="terminos" value="si" required&gt;
+&lt;label for="acepto"&gt;Acepto los términos y condiciones&lt;/label&gt;</code></pre>
+                </div>
+
+                <h4>7. radio - Botón de opción</h4>
+                <div class="code-block">
+                    <pre><code>&lt;p&gt;Género:&lt;/p&gt;
+&lt;input type="radio" id="masculino" name="genero" value="m"&gt;
+&lt;label for="masculino"&gt;Masculino&lt;/label&gt;
+
+&lt;input type="radio" id="femenino" name="genero" value="f"&gt;
+&lt;label for="femenino"&gt;Femenino&lt;/label&gt;
+
+&lt;input type="radio" id="otro" name="genero" value="otro"&gt;
+&lt;label for="otro"&gt;Otro&lt;/label&gt;</code></pre>
+                </div>
+                <p class="note">Solo uno puede estar seleccionado por grupo (mismo <code>name</code>).</p>
+
+                <h4>8. file - Subir archivos</h4>
+                <div class="code-block">
+                    <pre><code>&lt;label for="archivo"&gt;Subir documento:&lt;/label&gt;
+&lt;input type="file" id="archivo" name="documento" accept=".pdf,.doc,.docx"&gt;</code></pre>
+                </div>
+                <p class="note">Requiere <code>enctype="multipart/form-data"</code> en el form.</p>
+
+                <h4>Otros tipos útiles:</h4>
+                <div class="code-block">
+                    <pre><code>&lt;input type="tel" placeholder="Teléfono"&gt;
+&lt;input type="url" placeholder="https://ejemplo.com"&gt;
+&lt;input type="search" placeholder="Buscar..."&gt;
+&lt;input type="color" value="#ff0000"&gt;
+&lt;input type="range" min="0" max="100" value="50"&gt;
+&lt;input type="time"&gt;
+&lt;input type="datetime-local"&gt;</code></pre>
+                </div>
+            </section>
+
+            <section id="label" class="topic-section">
+                <h2>El Elemento &lt;label&gt;</h2>
+                <p>Etiqueta descriptiva para campos de formulario. Mejora la accesibilidad y usabilidad.</p>
+
+                <div class="code-block">
+                    <pre><code>&lt;!-- Forma 1: usando for --&gt;
+&lt;label for="usuario"&gt;Usuario:&lt;/label&gt;
+&lt;input type="text" id="usuario" name="usuario"&gt;
+
+&lt;!-- Forma 2: envolvente --&gt;
+&lt;label&gt;
+    Usuario:
+    &lt;input type="text" name="usuario"&gt;
+&lt;/label&gt;</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <h3>Beneficios:</h3>
+                    <ul>
+                        <li>Hacer clic en el label activa el input</li>
+                        <li>Mejora accesibilidad para lectores de pantalla</li>
+                        <li>Área de clic más grande (especialmente útil para checkboxes)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="textarea" class="topic-section">
+                <h2>El Elemento &lt;textarea&gt;</h2>
+                <p>Campo de texto multilínea para comentarios, mensajes largos o descripciones.</p>
+
+                <div class="code-block">
+                    <pre><code>&lt;label for="comentario"&gt;Comentario:&lt;/label&gt;
+&lt;textarea id="comentario" name="comentario" rows="5" cols="50"
+          placeholder="Escribe tu comentario aquí..." maxlength="500"&gt;&lt;/textarea&gt;</code></pre>
+                </div>
+
+                <div class="info-box">
+                    <h3>Atributos importantes:</h3>
+                    <ul>
+                        <li><strong>rows</strong> - Número de líneas visibles</li>
+                        <li><strong>cols</strong> - Ancho en caracteres</li>
+                        <li><strong>maxlength</strong> - Límite de caracteres</li>
+                        <li><strong>wrap</strong> - Cómo se envuelve el texto (soft, hard)</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="select" class="topic-section">
+                <h2>El Elemento &lt;select&gt;</h2>
+                <p>Lista desplegable para seleccionar una o varias opciones de un conjunto predefinido.</p>
+
+                <div class="code-block">
+                    <pre><code>&lt;label for="pais"&gt;País:&lt;/label&gt;
+&lt;select id="pais" name="pais" required&gt;
+    &lt;option value=""&gt;-- Selecciona un país --&lt;/option&gt;
+    &lt;option value="ar"&gt;Argentina&lt;/option&gt;
+    &lt;option value="mx"&gt;México&lt;/option&gt;
+    &lt;option value="es" selected&gt;España&lt;/option&gt;
+    &lt;option value="pe"&gt;Perú&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                </div>
+
+                <h3>Agrupación con &lt;optgroup&gt;:</h3>
+                <div class="code-block">
+                    <pre><code>&lt;select name="ciudad"&gt;
+    &lt;optgroup label="España"&gt;
+        &lt;option value="mad"&gt;Madrid&lt;/option&gt;
+        &lt;option value="bcn"&gt;Barcelona&lt;/option&gt;
+    &lt;/optgroup&gt;
+    &lt;optgroup label="México"&gt;
+        &lt;option value="cdmx"&gt;Ciudad de México&lt;/option&gt;
+        &lt;option value="gdl"&gt;Guadalajara&lt;/option&gt;
+    &lt;/optgroup&gt;
+&lt;/select&gt;</code></pre>
+                </div>
+
+                <h3>Selección múltiple:</h3>
+                <div class="code-block">
+                    <pre><code>&lt;select name="idiomas" multiple size="4"&gt;
+    &lt;option value="es"&gt;Español&lt;/option&gt;
+    &lt;option value="en"&gt;Inglés&lt;/option&gt;
+    &lt;option value="fr"&gt;Francés&lt;/option&gt;
+    &lt;option value="de"&gt;Alemán&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                </div>
+            </section>
+
+            <section id="button" class="topic-section">
+                <h2>Botones de Formulario</h2>
+
+                <h3>1. Button type="submit"</h3>
+                <div class="code-block">
+                    <pre><code>&lt;button type="submit"&gt;Enviar Formulario&lt;/button&gt;</code></pre>
+                </div>
+                <p>Envía el formulario al servidor.</p>
+
+                <h3>2. Button type="reset"</h3>
+                <div class="code-block">
+                    <pre><code>&lt;button type="reset"&gt;Limpiar Formulario&lt;/button&gt;</code></pre>
+                </div>
+                <p>Restaura todos los campos a sus valores iniciales.</p>
+
+                <h3>3. Button type="button"</h3>
+                <div class="code-block">
+                    <pre><code>&lt;button type="button" onclick="validar()"&gt;Validar&lt;/button&gt;</code></pre>
+                </div>
+                <p>Sin comportamiento por defecto. Usar con JavaScript.</p>
+
+                <div class="concept-box">
+                    <h3>&lt;button&gt; vs &lt;input type="submit"&gt;</h3>
+                    <p><strong>&lt;button&gt;</strong> puede contener HTML (texto, iconos, imágenes).</p>
+                    <p><strong>&lt;input&gt;</strong> solo puede tener texto en el atributo value.</p>
+                </div>
+            </section>
+
+            <section id="fieldset" class="topic-section">
+                <h2>Agrupación con &lt;fieldset&gt; y &lt;legend&gt;</h2>
+                <p>Agrupa campos relacionados y mejora la organización visual y semántica.</p>
+
+                <div class="code-block">
+                    <pre><code>&lt;form&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Información Personal&lt;/legend&gt;
+        &lt;label for="nombre"&gt;Nombre:&lt;/label&gt;
+        &lt;input type="text" id="nombre" name="nombre"&gt;
+
+        &lt;label for="email"&gt;Email:&lt;/label&gt;
+        &lt;input type="email" id="email" name="email"&gt;
+    &lt;/fieldset&gt;
+
+    &lt;fieldset&gt;
+        &lt;legend&gt;Dirección&lt;/legend&gt;
+        &lt;label for="calle"&gt;Calle:&lt;/label&gt;
+        &lt;input type="text" id="calle" name="calle"&gt;
+
+        &lt;label for="ciudad"&gt;Ciudad:&lt;/label&gt;
+        &lt;input type="text" id="ciudad" name="ciudad"&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+
+                <p class="note">Crea un borde visual alrededor del grupo y mejora la accesibilidad.</p>
+            </section>
+
+            <section id="validacion" class="topic-section">
+                <h2>Validación HTML5</h2>
+                <p>HTML5 proporciona validación nativa sin necesidad de JavaScript.</p>
+
+                <h3>Atributos de validación:</h3>
+                <div class="info-box">
+                    <ul>
+                        <li><strong>required</strong> - Campo obligatorio</li>
+                        <li><strong>minlength / maxlength</strong> - Longitud mínima/máxima</li>
+                        <li><strong>min / max</strong> - Valor mínimo/máximo (números, fechas)</li>
+                        <li><strong>pattern</strong> - Expresión regular personalizada</li>
+                        <li><strong>type</strong> - Validación automática por tipo (email, url, etc.)</li>
+                    </ul>
+                </div>
+
+                <h3>Ejemplos:</h3>
+                <div class="code-block">
+                    <pre><code>&lt;!-- Campo obligatorio --&gt;
+&lt;input type="text" name="nombre" required&gt;
+
+&lt;!-- Longitud mínima --&gt;
+&lt;input type="password" name="pass" minlength="8" required&gt;
+
+&lt;!-- Rango de números --&gt;
+&lt;input type="number" name="edad" min="18" max="99"&gt;
+
+&lt;!-- Patrón personalizado (solo letras) --&gt;
+&lt;input type="text" name="nombre" pattern="[A-Za-z]+"
+       title="Solo letras permitidas"&gt;
+
+&lt;!-- Patrón para teléfono --&gt;
+&lt;input type="tel" name="telefono" pattern="[0-9]{9}"
+       placeholder="123456789" title="9 dígitos"&gt;</code></pre>
+                </div>
+
+                <h3>Mensajes de validación personalizados:</h3>
+                <div class="code-block">
+                    <pre><code>&lt;input type="email" name="email" required
+       oninvalid="this.setCustomValidity('Por favor ingresa un email válido')"
+       oninput="this.setCustomValidity('')"&gt;</code></pre>
+                </div>
+            </section>
+
+            <section id="ejemplo-completo" class="topic-section">
+                <h2>Ejemplo Completo: Formulario de Registro</h2>
+                <div class="code-block">
+                    <pre><code>&lt;form action="/registro" method="post"&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Datos de Usuario&lt;/legend&gt;
+
+        &lt;label for="usuario"&gt;Usuario:&lt;/label&gt;
+        &lt;input type="text" id="usuario" name="usuario"
+               minlength="4" maxlength="20" required&gt;
+
+        &lt;label for="email"&gt;Email:&lt;/label&gt;
+        &lt;input type="email" id="email" name="email" required&gt;
+
+        &lt;label for="password"&gt;Contraseña:&lt;/label&gt;
+        &lt;input type="password" id="password" name="password"
+               minlength="8" required&gt;
+    &lt;/fieldset&gt;
+
+    &lt;fieldset&gt;
+        &lt;legend&gt;Información Personal&lt;/legend&gt;
+
+        &lt;label for="nombre"&gt;Nombre completo:&lt;/label&gt;
+        &lt;input type="text" id="nombre" name="nombre" required&gt;
+
+        &lt;label for="fecha"&gt;Fecha de nacimiento:&lt;/label&gt;
+        &lt;input type="date" id="fecha" name="fecha_nacimiento"&gt;
+
+        &lt;label for="pais"&gt;País:&lt;/label&gt;
+        &lt;select id="pais" name="pais" required&gt;
+            &lt;option value=""&gt;-- Selecciona --&lt;/option&gt;
+            &lt;option value="ar"&gt;Argentina&lt;/option&gt;
+            &lt;option value="mx"&gt;México&lt;/option&gt;
+            &lt;option value="es"&gt;España&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/fieldset&gt;
+
+    &lt;fieldset&gt;
+        &lt;legend&gt;Preferencias&lt;/legend&gt;
+
+        &lt;label&gt;
+            &lt;input type="checkbox" name="newsletter" value="si"&gt;
+            Recibir boletín informativo
+        &lt;/label&gt;
+
+        &lt;label for="bio"&gt;Biografía (opcional):&lt;/label&gt;
+        &lt;textarea id="bio" name="biografia" rows="4"
+                  maxlength="500"&gt;&lt;/textarea&gt;
+    &lt;/fieldset&gt;
+
+    &lt;input type="checkbox" id="terminos" name="terminos" required&gt;
+    &lt;label for="terminos"&gt;Acepto los términos y condiciones&lt;/label&gt;
+
+    &lt;button type="submit"&gt;Registrarse&lt;/button&gt;
+    &lt;button type="reset"&gt;Limpiar&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </section>
+
+            <section id="buenas-practicas" class="topic-section">
+                <h2>Buenas Prácticas</h2>
+
+                <div class="info-box">
+                    <h3>✓ Hacer:</h3>
+                    <ul>
+                        <li>Siempre usar <code>&lt;label&gt;</code> para cada campo</li>
+                        <li>Usar placeholders como ejemplos, no como labels</li>
+                        <li>Agrupar campos relacionados con <code>&lt;fieldset&gt;</code></li>
+                        <li>Proporcionar validación clara y mensajes de error útiles</li>
+                        <li>Usar el tipo de input correcto (email, tel, number, etc.)</li>
+                        <li>Incluir atributos <code>autocomplete</code> apropiados</li>
+                        <li>Hacer formularios accesibles (navegación por teclado)</li>
+                    </ul>
+                </div>
+
+                <div class="info-box">
+                    <h3>✗ Evitar:</h3>
+                    <ul>
+                        <li>Campos sin <code>&lt;label&gt;</code></li>
+                        <li>Demasiados campos obligatorios</li>
+                        <li>Usar <code>type="text"</code> para todo</li>
+                        <li>Validación solo del lado del cliente (usar también servidor)</li>
+                        <li>Formularios muy largos sin agrupar</li>
+                        <li>Mensajes de error genéricos o confusos</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="glosario-modulo" class="topic-section">
+                <h2>📚 Glosario del Módulo</h2>
+                <p>Referencia de elementos HTML para formularios:</p>
+
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar término...">
+                </div>
+
+                <div id="terminosContainer">
+                    <div class="termino" data-tags="form formulario input datos">
+                        <span class="tag">&lt;form&gt;</span>
+                        <p class="significado">Significado: Formulario</p>
+                        <p class="descripcion">
+                            Crea un formulario para recopilar datos del usuario. Puede contener inputs, textareas, selects, buttons, y otros elementos de formulario.
+                            Los formularios son esenciales para la interacción del usuario: login, registro, búsquedas, comentarios, etc.
+                        </p>
+                        <div class="ejemplo">&lt;form action="/enviar" method="post"&gt;<br>&nbsp;&nbsp;&lt;label for="nombre"&gt;Nombre:&lt;/label&gt;<br>&nbsp;&nbsp;&lt;input type="text" id="nombre" name="nombre"&gt;<br>&nbsp;&nbsp;&lt;button type="submit"&gt;Enviar&lt;/button&gt;<br>&lt;/form&gt;</div>
+                        <div class="nota">
+                            <strong>Atributos importantes:</strong><br>
+                            <span class="atributo">action</span> - URL donde se envían los datos del formulario<br>
+                            <span class="atributo">method</span> - Método HTTP (get o post). POST para datos sensibles<br>
+                            <span class="atributo">enctype</span> - Tipo de codificación (necesario "multipart/form-data" para subir archivos)<br>
+                            <span class="atributo">novalidate</span> - Desactiva validación HTML5
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="input campo entrada texto email password">
+                        <span class="tag">&lt;input&gt;</span>
+                        <p class="significado">Significado: Campo de entrada</p>
+                        <p class="descripcion">
+                            Crea diferentes tipos de campos de entrada según el atributo type. Es una etiqueta de autocierre.
+                            Es el elemento más versátil de los formularios, con muchos tipos diferentes para distintos propósitos.
+                            HTML5 agregó muchos tipos nuevos con validación incorporada.
+                        </p>
+                        <div class="ejemplo">&lt;input type="text" name="nombre" placeholder="Tu nombre"&gt;<br>&lt;input type="email" name="correo" required&gt;<br>&lt;input type="password" name="clave" minlength="8"&gt;<br>&lt;input type="number" name="edad" min="18" max="99"&gt;<br>&lt;input type="date" name="fecha"&gt;<br>&lt;input type="checkbox" name="acepto" id="acepto"&gt;<br>&lt;input type="radio" name="genero" value="m"&gt;<br>&lt;input type="file" name="archivo" accept="image/*"&gt;</div>
+                        <div class="nota">
+                            <strong>Tipos comunes de input:</strong><br>
+                            • text - Texto simple<br>
+                            • email - Correo electrónico (con validación)<br>
+                            • password - Contraseña (oculta caracteres)<br>
+                            • number - Números (con controles +/-)<br>
+                            • date, time, datetime-local - Fechas y horas<br>
+                            • checkbox - Casilla de verificación<br>
+                            • radio - Botón de opción (solo una selección por grupo)<br>
+                            • file - Subir archivos<br>
+                            • tel - Teléfono<br>
+                            • url - URL<br>
+                            • search - Búsqueda<br>
+                            • color - Selector de color<br>
+                            • range - Control deslizante
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="label etiqueta input for">
+                        <span class="tag">&lt;label&gt;</span>
+                        <p class="significado">Significado: Etiqueta de formulario</p>
+                        <p class="descripcion">
+                            Define una etiqueta para un elemento de formulario. Mejora significativamente la accesibilidad y usabilidad.
+                            Al hacer clic en el label, se activa el input asociado (muy útil para checkboxes y radios pequeños).
+                            La asociación se hace con el atributo for que debe coincidir con el id del input.
+                        </p>
+                        <div class="ejemplo">&lt;label for="nombre"&gt;Nombre completo:&lt;/label&gt;<br>&lt;input type="text" id="nombre" name="nombre"&gt;<br><br>&lt;!-- Forma alternativa: label envolvente --&gt;<br>&lt;label&gt;<br>&nbsp;&nbsp;&lt;input type="checkbox" name="acepto"&gt;<br>&nbsp;&nbsp;Acepto los términos<br>&lt;/label&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="textarea área texto multilínea">
+                        <span class="tag">&lt;textarea&gt;</span>
+                        <p class="significado">Significado: Área de texto multilínea</p>
+                        <p class="descripcion">
+                            Crea un campo de texto de múltiples líneas. Útil para comentarios, mensajes largos, descripciones.
+                            A diferencia de input, textarea tiene etiqueta de cierre y el contenido va entre las etiquetas.
+                            El usuario puede redimensionarla en la mayoría de los navegadores (controlable con CSS).
+                        </p>
+                        <div class="ejemplo">&lt;textarea name="comentario" rows="5" cols="50" placeholder="Escribe tu comentario aquí..."&gt;&lt;/textarea&gt;</div>
+                        <div class="nota">
+                            <strong>Atributos:</strong> <span class="atributo">rows</span> - Filas visibles,
+                            <span class="atributo">cols</span> - Columnas (caracteres de ancho),
+                            <span class="atributo">maxlength</span> - Límite de caracteres
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="select dropdown lista desplegable option">
+                        <span class="tag">&lt;select&gt;</span>
+                        <p class="significado">Significado: Lista desplegable</p>
+                        <p class="descripcion">
+                            Crea un menú desplegable (dropdown). Contiene elementos option que son las opciones seleccionables.
+                            Útil cuando tienes muchas opciones y quieres ahorrar espacio, o cuando quieres limitar las opciones disponibles.
+                        </p>
+                        <div class="ejemplo">&lt;select name="pais" required&gt;<br>&nbsp;&nbsp;&lt;option value=""&gt;-- Selecciona un país --&lt;/option&gt;<br>&nbsp;&nbsp;&lt;option value="mx"&gt;México&lt;/option&gt;<br>&nbsp;&nbsp;&lt;option value="es" selected&gt;España&lt;/option&gt;<br>&nbsp;&nbsp;&lt;option value="ar"&gt;Argentina&lt;/option&gt;<br>&lt;/select&gt;</div>
+                        <div class="nota">
+                            <strong>Atributos útiles:</strong> <span class="atributo">multiple</span> - Permite selección múltiple,
+                            <span class="atributo">size</span> - Número de opciones visibles
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="option opción select">
+                        <span class="tag">&lt;option&gt;</span>
+                        <p class="significado">Significado: Opción de lista</p>
+                        <p class="descripcion">
+                            Define una opción dentro de un select. El atributo value es lo que se envía al servidor.
+                            El texto entre las etiquetas es lo que ve el usuario.
+                        </p>
+                        <div class="nota">
+                            <strong>Atributo:</strong> <span class="atributo">selected</span> - Opción preseleccionada,
+                            <span class="atributo">disabled</span> - Opción deshabilitada
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="button botón submit reset">
+                        <span class="tag">&lt;button&gt;</span>
+                        <p class="significado">Significado: Botón</p>
+                        <p class="descripcion">
+                            Crea un botón clicable. Más versátil que input type="button" porque puede contener HTML completo (texto, imágenes, iconos).
+                            Puede tener diferentes comportamientos según el atributo type.
+                        </p>
+                        <div class="ejemplo">&lt;button type="submit"&gt;Enviar Formulario&lt;/button&gt;<br>&lt;button type="reset"&gt;Limpiar Formulario&lt;/button&gt;<br>&lt;button type="button"&gt;Botón Personalizado&lt;/button&gt;</div>
+                        <div class="nota">
+                            <strong>Tipos de button:</strong><br>
+                            • submit - Envía el formulario (por defecto)<br>
+                            • reset - Restaura valores iniciales del formulario<br>
+                            • button - Sin comportamiento por defecto (para usar con JavaScript)
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="fieldset legend grupo formulario">
+                        <span class="tag">&lt;fieldset&gt; y &lt;legend&gt;</span>
+                        <p class="significado">Significado: Agrupación de campos</p>
+                        <p class="descripcion">
+                            fieldset agrupa campos relacionados en un formulario. legend define el título del grupo.
+                            Mejora la organización visual y la accesibilidad. Crea un borde visual alrededor del grupo.
+                        </p>
+                        <div class="ejemplo">&lt;fieldset&gt;<br>&nbsp;&nbsp;&lt;legend&gt;Información Personal&lt;/legend&gt;<br>&nbsp;&nbsp;&lt;label for="nombre"&gt;Nombre:&lt;/label&gt;<br>&nbsp;&nbsp;&lt;input type="text" id="nombre"&gt;<br>&nbsp;&nbsp;&lt;label for="email"&gt;Email:&lt;/label&gt;<br>&nbsp;&nbsp;&lt;input type="email" id="email"&gt;<br>&lt;/fieldset&gt;</div>
+                    </div>
+                </div>
+
+                <div id="noResults" class="no-results" style="display: none;">
+                    No se encontraron términos que coincidan con tu búsqueda.
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc">
+            <h3>Contenido</h3>
+            <ul>
+                <li><a href="#introduccion">Introducción</a></li>
+                <li><a href="#elemento-form">El Elemento form</a></li>
+                <li><a href="#input">El Elemento input</a></li>
+                <li><a href="#label">El Elemento label</a></li>
+                <li><a href="#textarea">El Elemento textarea</a></li>
+                <li><a href="#select">El Elemento select</a></li>
+                <li><a href="#button">Botones</a></li>
+                <li><a href="#fieldset">fieldset y legend</a></li>
+                <li><a href="#validacion">Validación HTML5</a></li>
+                <li><a href="#ejemplo-completo">Ejemplo Completo</a></li>
+                <li><a href="#buenas-practicas">Buenas Prácticas</a></li>
+                <li><a href="#glosario-modulo">Glosario del Módulo</a></li>
+            </ul>
+        </aside>
+    </div>
+
+    <footer>
+        <p>Módulo 9: Formularios HTML | <a href="../index.html">Volver a HTML</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        // Funcionalidad de búsqueda en el glosario
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                let visibleCount = 0;
+
+                terminos.forEach(termino => {
+                    const tag = termino.querySelector('.tag').textContent.toLowerCase();
+                    const significado = termino.querySelector('.significado').textContent.toLowerCase();
+                    const descripcion = termino.querySelector('.descripcion').textContent.toLowerCase();
+                    const tags = termino.getAttribute('data-tags').toLowerCase();
+
+                    const matches = tag.includes(searchTerm) ||
+                                  significado.includes(searchTerm) ||
+                                  descripcion.includes(searchTerm) ||
+                                  tags.includes(searchTerm);
+
+                    if (matches || searchTerm === '') {
+                        termino.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+
+                if (visibleCount === 0 && searchTerm !== '') {
+                    noResults.style.display = 'block';
+                } else {
+                    noResults.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
