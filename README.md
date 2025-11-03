@@ -1,10 +1,10 @@
-# 🎓 SISTEMA DE APRENDIZAJE DE PROGRAMACIÓN
+#  SISTEMA DE APRENDIZAJE DE PROGRAMACIÓN
 
 Sistema personal organizado para aprender desarrollo web y programación de forma estructurada y progresiva.
 
 ---
 
-## 🌟¿Qué es esto?
+## ¿Qué es esto?
 
 Un sistema de aprendizaje local completo con glosarios detallados, ejercicios progresivos y búsqueda integrada para dominar tecnologías de desarrollo web. Sin dependencias externas, solo abre `index.html` en tu navegador y comienza a aprender.
 
@@ -19,7 +19,7 @@ Un sistema de aprendizaje local completo con glosarios detallados, ejercicios pr
 
 ---
 
-## 📁 Estructura Actual
+## Estructura Actual
 
 ```
 APRENDIENDO/
@@ -54,7 +54,7 @@ APRENDIENDO/
 
 ---
 
-## 🚀 Inicio Rápido
+## Inicio Rápido
 
 ### Para Usuarios
 
