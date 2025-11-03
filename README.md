@@ -1,10 +1,10 @@
-# 🎓 SISTEMA DE APRENDIZAJE DE PROGRAMACIÓN
+#  SISTEMA DE APRENDIZAJE DE PROGRAMACIÓN
 
 Sistema personal organizado para aprender desarrollo web y programación de forma estructurada y progresiva.
 
 ---
 
-## 🌟¿Qué es esto?
+## ¿Qué es esto?
 
 Un sistema de aprendizaje local completo con glosarios detallados, ejercicios progresivos y búsqueda integrada para dominar tecnologías de desarrollo web. Sin dependencias externas, solo abre `index.html` en tu navegador y comienza a aprender.
 
@@ -19,7 +19,7 @@ Un sistema de aprendizaje local completo con glosarios detallados, ejercicios pr
 
 ---
 
-## 📁 Estructura Actual
+## Estructura Actual
 
 ```
 APRENDIENDO/
@@ -54,7 +54,7 @@ APRENDIENDO/
 
 ---
 
-## 🚀 Inicio Rápido
+## Inicio Rápido
 
 ### Para Usuarios
 
@@ -110,7 +110,7 @@ Para información detallada, consulta la carpeta `/docs/`:
 
 ---
 
-## 💡 Estado del Proyecto
+## Estado del Proyecto
 
 **Versión:** 2.2.0
 **Última Actualización:** 2025-01-03
@@ -134,7 +134,7 @@ Para información detallada, consulta la carpeta `/docs/`:
 
 ---
 
-## 📧 Información
+## Información
 
 **Asistente AI:** Claude Code (Anthropic)
 **Propósito:** Aprendizaje personal estructurado
@@ -142,6 +142,6 @@ Para información detallada, consulta la carpeta `/docs/`:
 
 ---
 
-**¡Feliz aprendizaje! 🚀**
+**¡Feliz aprendizaje! **
 
 Para preguntas técnicas o detalles de implementación, consulta `/docs/GUIA_COMPLETA.md`
