@@ -110,7 +110,7 @@ Para información detallada, consulta la carpeta `/docs/`:
 
 ---
 
-## 💡 Estado del Proyecto
+## Estado del Proyecto
 
 **Versión:** 2.0.0
 **Última Actualización:** 2025-10-12
@@ -125,14 +125,14 @@ Para información detallada, consulta la carpeta `/docs/`:
 - Documentación técnica completa (4 archivos MD)
 - Búsqueda global funcional (73 términos)
 
-### Próximo Contenido ⏳
+### Próximo Contenido 
 - CSS, JavaScript, TypeScript
 - React, Vue, Angular
 - Node.js, Docker, SQL
 
 ---
 
-## 📧 Información
+## Información
 
 **Asistente AI:** Claude Code (Anthropic)
 **Propósito:** Aprendizaje personal estructurado
@@ -140,6 +140,6 @@ Para información detallada, consulta la carpeta `/docs/`:
 
 ---
 
-**¡Feliz aprendizaje! 🚀**
+**¡Feliz aprendizaje! **
 
 Para preguntas técnicas o detalles de implementación, consulta `/docs/GUIA_COMPLETA.md`
