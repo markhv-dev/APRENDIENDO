@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glosario - JavaScript</title>
+
+    <!-- Sidebar Styles -->
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+
+    <!-- TOC (Table of Contents) Styles -->
+    <link rel="stylesheet" href="/assets/css/toc.css">
+
+    <!-- Glosario Styles -->
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚡ Glosario de JavaScript</h1>
+            <p class="subtitle">60+ conceptos esenciales para programación web</p>
+        </header>
+
+        <div class="breadcrumb">
+            <a href="../../index.html">← Inicio</a> /
+            <a href="index.html">JavaScript</a> /
+            <span>Glosario</span>
+        </div>
+
+        <div class="search-container">
+            <input
+                type="text"
+                class="search-box"
+                id="searchBox"
+                placeholder="Buscar concepto (ej: function, array, class)..."
+            >
+        </div>
+
+        <!-- Category Navigation -->
+        <nav class="category-nav">
+            <div class="category-nav-links">
+                <a href="#fundamentos">📦 Fundamentos</a>
+                <a href="#strings">📝 Strings</a>
+                <a href="#control">🔀 Control</a>
+                <a href="#loops">🔄 Loops</a>
+                <a href="#funciones">⚙️ Funciones</a>
+                <a href="#arrays">📋 Arrays</a>
+                <a href="#estructuras">🗂️ Estructuras</a>
+                <a href="#objetos">🎯 Objetos</a>
+                <a href="#clases">🏛️ Clases</a>
+                <a href="#math">🔢 Math</a>
+                <a href="#dom">🌐 DOM</a>
+            </div>
+        </nav>
+
+        <div id="terminos">
+            <!-- FUNDAMENTOS -->
+            <div id="fundamentos" class="category-section">
+                <h2 class="category-title">Fundamentos de JavaScript</h2>
+
+                <div class="termino" data-tags="variable let const var declaracion">
+                    <span class="categoria-badge badge-basico">Fundamento</span>
+                    <div class="comando">Variables: let, const, var</div>
+                    <p class="descripcion">
+                        Contenedores para almacenar valores. <code>let</code> es reasignable con scope de bloque,
+                        <code>const</code> es inmutable con scope de bloque, <code>var</code> tiene scope de función (evitar).
+                    </p>
+                    <div class="ejemplo">let edad = 25;</div>
+                    <div class="ejemplo">const PI = 3.1416;</div>
+                    <div class="ejemplo">var nombre = "Ana"; // Evitar</div>
+                    <div class="nota">
+                        <strong>💡 Tip:</strong> Usa <code>const</code> por defecto. Solo usa <code>let</code> si necesitas reasignar.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="tipos datos primitivos string number boolean null undefined">
+                    <span class="categoria-badge badge-basico">Fundamento</span>
+                    <div class="comando">Tipos de Datos Primitivos</div>
+                    <p class="descripcion">
+                        JavaScript tiene 7 tipos primitivos: <code>string</code>, <code>number</code>, <code>boolean</code>,
+                        <code>null</code>, <code>undefined</code>, <code>symbol</code>, <code>bigint</code>.
+                    </p>
+                    <div class="ejemplo">let nombre = "Juan";        // string</div>
+                    <div class="ejemplo">let edad = 30;              // number</div>
+                    <div class="ejemplo">let activo = true;          // boolean</div>
+                    <div class="ejemplo">let vacio = null;           // null</div>
+                    <div class="ejemplo">let sinDefinir;             // undefined</div>
+                </div>
+
+                <div class="termino" data-tags="operadores aritmeticos suma resta multiplicacion">
+                    <span class="categoria-badge badge-basico">Fundamento</span>
+                    <div class="comando">Operadores Aritméticos</div>
+                    <p class="descripcion">
+                        Operadores para realizar cálculos matemáticos: <code>+</code> (suma), <code>-</code> (resta),
+                        <code>*</code> (multiplicación), <code>/</code> (división), <code>%</code> (módulo), <code>**</code> (potencia).
+                    </p>
+                    <div class="ejemplo">let suma = 5 + 3;           // 8</div>
+                    <div class="ejemplo">let modulo = 10 % 3;        // 1</div>
+                    <div class="ejemplo">let potencia = 2 ** 3;      // 8</div>
+                </div>
+
+                <div class="termino" data-tags="operadores comparacion igualdad estricta">
+                    <span class="categoria-badge badge-basico">Fundamento</span>
+                    <div class="comando">Operadores de Comparación</div>
+                    <p class="descripcion">
+                        Comparan valores y retornan <code>true</code> o <code>false</code>.
+                        <code>==</code> compara valores (convierte tipos), <code>===</code> compara valor Y tipo (estricta).
+                    </p>
+                    <div class="ejemplo">5 == "5"                    // true (convierte)</div>
+                    <div class="ejemplo">5 === "5"                   // false (tipos diferentes)</div>
+                    <div class="ejemplo">10 > 5                      // true</div>
+                    <div class="nota">
+                        <strong>💡 Tip:</strong> Usa SIEMPRE <code>===</code> y <code>!==</code> para evitar bugs por conversión de tipos.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="operadores logicos and or not">
+                    <span class="categoria-badge badge-basico">Fundamento</span>
+                    <div class="comando">Operadores Lógicos</div>
+                    <p class="descripcion">
+                        Combinan expresiones booleanas: <code>&&</code> (AND - y), <code>||</code> (OR - o), <code>!</code> (NOT - negación).
+                    </p>
+                    <div class="ejemplo">let resultado = (edad >= 18) && (tieneID === true);</div>
+                    <div class="ejemplo">let acceso = esAdmin || esModerador;</div>
+                    <div class="ejemplo">let noEsValido = !esValido;</div>
+                </div>
+
+                <div class="termino" data-tags="convenciones nombres camelcase">
+                    <span class="categoria-badge badge-basico">Fundamento</span>
+                    <div class="comando">Convenciones de Nombres</div>
+                    <p class="descripcion">
+                        Estándares para nombrar variables, funciones y clases en JavaScript.
+                    </p>
+                    <div class="ejemplo">let nombreUsuario = "Ana";      // camelCase para variables</div>
+                    <div class="ejemplo">const MAX_INTENTOS = 3;         // UPPER_SNAKE_CASE para constantes</div>
+                    <div class="ejemplo">class PersonaUsuario {}         // PascalCase para clases</div>
+                    <div class="nota">
+                        <strong>💡 Reglas:</strong> No usar palabras reservadas, no empezar con números, usar nombres descriptivos.
+                    </div>
+                </div>
+            </div>
+
+            <!-- STRINGS -->
+            <div id="strings" class="category-section">
+                <h2 class="category-title">Strings y Manipulación de Texto</h2>
+
+                <div class="termino" data-tags="string cadena texto template literals">
+                    <span class="categoria-badge badge-intermedio">Strings</span>
+                    <div class="comando">Template Literals</div>
+                    <p class="descripcion">
+                        Plantillas de texto con comillas invertidas que permiten interpolación de variables y expresiones.
+                    </p>
+                    <div class="ejemplo">let nombre = "Juan";</div>
+                    <div class="ejemplo">let mensaje = `Hola, ${nombre}`;  // "Hola, Juan"</div>
+                    <div class="ejemplo">let calculo = `Resultado: ${5 + 3}`;  // "Resultado: 8"</div>
+                </div>
+
+                <div class="termino" data-tags="string metodos length touppercase tolowercase">
+                    <span class="categoria-badge badge-intermedio">Strings</span>
+                    <div class="comando">Métodos de String</div>
+                    <p class="descripcion">
+                        Funciones integradas para manipular y analizar strings.
+                    </p>
+                    <div class="ejemplo">let texto = "JavaScript";</div>
+                    <div class="ejemplo">texto.length                    // 10</div>
+                    <div class="ejemplo">texto.toUpperCase()             // "JAVASCRIPT"</div>
+                    <div class="ejemplo">texto.toLowerCase()             // "javascript"</div>
+                    <div class="ejemplo">texto.charAt(0)                 // "J"</div>
+                    <div class="ejemplo">texto.slice(0, 4)               // "Java"</div>
+                    <div class="ejemplo">texto.includes("Script")        // true</div>
+                    <div class="ejemplo">texto.indexOf("S")              // 4</div>
+                    <div class="ejemplo">texto.replace("Java", "Type")   // "TypeScript"</div>
+                </div>
+            </div>
+
+            <!-- CONTROL DE FLUJO -->
+            <div id="control" class="category-section">
+                <h2 class="category-title">Estructuras de Control</h2>
+
+                <div class="termino" data-tags="if else condicional decision">
+                    <span class="categoria-badge badge-basico">Control</span>
+                    <div class="comando">if / else / else if</div>
+                    <p class="descripcion">
+                        Ejecuta código basado en condiciones. Permite tomar decisiones en el programa.
+                    </p>
+                    <div class="ejemplo">if (edad >= 18) {
+    console.log("Mayor de edad");
+} else if (edad >= 13) {
+    console.log("Adolescente");
+} else {
+    console.log("Niño");
+}</div>
+                </div>
+
+                <div class="termino" data-tags="operador ternario condicional inline">
+                    <span class="categoria-badge badge-intermedio">Control</span>
+                    <div class="comando">Operador Ternario</div>
+                    <p class="descripcion">
+                        Forma compacta de escribir un if/else en una sola línea: <code>condición ? valorSiTrue : valorSiFalse</code>.
+                    </p>
+                    <div class="ejemplo">let estado = (edad >= 18) ? "Mayor" : "Menor";</div>
+                    <div class="ejemplo">let precio = esEstudiante ? 50 : 100;</div>
+                </div>
+
+                <div class="termino" data-tags="switch case break default">
+                    <span class="categoria-badge badge-intermedio">Control</span>
+                    <div class="comando">switch</div>
+                    <p class="descripcion">
+                        Evalúa una expresión y ejecuta código según diferentes casos. Alternativa a múltiples if/else if.
+                    </p>
+                    <div class="ejemplo">switch (dia) {
+    case 1:
+        console.log("Lunes");
+        break;
+    case 2:
+        console.log("Martes");
+        break;
+    default:
+        console.log("Otro día");
+}</div>
+                    <div class="nota">
+                        <strong>⚠️ Importante:</strong> No olvides el <code>break</code> en cada caso para evitar "fall-through".
+                    </div>
+                </div>
+            </div>
+
+            <!-- LOOPS -->
+            <div id="loops" class="category-section">
+                <h2 class="category-title">Loops y Ciclos</h2>
+
+                <div class="termino" data-tags="for loop ciclo iteracion">
+                    <span class="categoria-badge badge-basico">Loop</span>
+                    <div class="comando">for</div>
+                    <p class="descripcion">
+                        Loop con contador. Ideal cuando sabes cuántas veces iterar.
+                    </p>
+                    <div class="ejemplo">for (let i = 0; i < 5; i++) {
+    console.log(i);  // 0, 1, 2, 3, 4
+}</div>
+                </div>
+
+                <div class="termino" data-tags="while loop ciclo condicion">
+                    <span class="categoria-badge badge-basico">Loop</span>
+                    <div class="comando">while</div>
+                    <p class="descripcion">
+                        Loop que se ejecuta mientras la condición sea verdadera. Verifica la condición ANTES de ejecutar.
+                    </p>
+                    <div class="ejemplo">let i = 0;
+while (i < 5) {
+    console.log(i);
+    i++;
+}</div>
+                </div>
+
+                <div class="termino" data-tags="do while loop ciclo">
+                    <span class="categoria-badge badge-basico">Loop</span>
+                    <div class="comando">do...while</div>
+                    <p class="descripcion">
+                        Loop que ejecuta el código al menos UNA VEZ y luego verifica la condición.
+                    </p>
+                    <div class="ejemplo">let i = 0;
+do {
+    console.log(i);
+    i++;
+} while (i < 5);</div>
+                </div>
+
+                <div class="termino" data-tags="for of loop array iterable valores">
+                    <span class="categoria-badge badge-intermedio">Loop</span>
+                    <div class="comando">for...of</div>
+                    <p class="descripcion">
+                        Itera sobre los VALORES de un iterable (arrays, strings, sets, maps).
+                    </p>
+                    <div class="ejemplo">let palabra = "JavaScript";
+for (let letra of palabra) {
+    console.log(letra);  // J, a, v, a, S, c, r, i, p, t
+}</div>
+                    <div class="ejemplo">let numeros = [10, 20, 30];
+for (let num of numeros) {
+    console.log(num);  // 10, 20, 30
+}</div>
+                </div>
+
+                <div class="termino" data-tags="for in loop objeto claves propiedades">
+                    <span class="categoria-badge badge-intermedio">Loop</span>
+                    <div class="comando">for...in</div>
+                    <p class="descripcion">
+                        Itera sobre las CLAVES/PROPIEDADES de un objeto.
+                    </p>
+                    <div class="ejemplo">let persona = { nombre: "Ana", edad: 25 };
+for (let clave in persona) {
+    console.log(clave, persona[clave]);
+    // "nombre" "Ana"
+    // "edad" 25
+}</div>
+                </div>
+
+                <div class="termino" data-tags="break continue salir loop">
+                    <span class="categoria-badge badge-intermedio">Loop</span>
+                    <div class="comando">break y continue</div>
+                    <p class="descripcion">
+                        <code>break</code> sale del loop completamente. <code>continue</code> salta a la siguiente iteración.
+                    </p>
+                    <div class="ejemplo">for (let i = 0; i < 10; i++) {
+    if (i === 5) break;        // Sale del loop en 5
+    if (i % 2 === 0) continue; // Salta números pares
+    console.log(i);            // 1, 3
+}</div>
+                </div>
+            </div>
+
+            <!-- FUNCIONES -->
+            <div id="funciones" class="category-section">
+                <h2 class="category-title">Funciones</h2>
+
+                <div class="termino" data-tags="function declarada hoisting">
+                    <span class="categoria-badge badge-basico">Función</span>
+                    <div class="comando">Función Declarada</div>
+                    <p class="descripcion">
+                        Función tradicional con palabra clave <code>function</code>. Tiene hoisting (se eleva al inicio).
+                    </p>
+                    <div class="ejemplo">function sumar(a, b) {
+    return a + b;
+}
+
+sumar(5, 3);  // 8</div>
+                    <div class="nota">
+                        <strong>💡 Hoisting:</strong> Puedes llamar a la función ANTES de declararla en el código.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="function expresada expresion const">
+                    <span class="categoria-badge badge-intermedio">Función</span>
+                    <div class="comando">Función Expresada</div>
+                    <p class="descripcion">
+                        Función asignada a una variable. NO tiene hoisting.
+                    </p>
+                    <div class="ejemplo">const sumar = function(a, b) {
+    return a + b;
+};
+
+sumar(5, 3);  // 8</div>
+                </div>
+
+                <div class="termino" data-tags="arrow function flecha =>">
+                    <span class="categoria-badge badge-intermedio">Función</span>
+                    <div class="comando">Arrow Function (Flecha)</div>
+                    <p class="descripcion">
+                        Sintaxis compacta para funciones introducida en ES6. Dos formas: con bloque o simplificada.
+                    </p>
+                    <div class="ejemplo">// Con bloque
+const sumar = (a, b) => {
+    return a + b;
+};
+
+// Simplificada (return implícito)
+const multiplicar = (a, b) => a * b;
+
+sumar(5, 3);       // 8
+multiplicar(4, 2); // 8</div>
+                </div>
+
+                <div class="termino" data-tags="scope alcance global local bloque">
+                    <span class="categoria-badge badge-intermedio">Función</span>
+                    <div class="comando">Scope (Alcance)</div>
+                    <p class="descripcion">
+                        Define dónde una variable es accesible. Hay 3 tipos: global, local (función) y bloque.
+                    </p>
+                    <div class="ejemplo">let global = "soy global";     // Global
+
+function ejemplo() {
+    let local = "soy local";   // Local (función)
+
+    if (true) {
+        let bloque = "bloque"; // Bloque (solo en el if)
+    }
+}</div>
+                    <div class="nota">
+                        <strong>💡 Regla:</strong> <code>var</code> tiene scope de función, <code>let</code> y <code>const</code> tienen scope de bloque.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="closure clausura funcion anidada">
+                    <span class="categoria-badge badge-avanzado">Función</span>
+                    <div class="comando">Closures (Clausuras)</div>
+                    <p class="descripcion">
+                        Función que "recuerda" las variables de su scope externo, incluso después de que la función externa haya terminado.
+                    </p>
+                    <div class="ejemplo">function contador() {
+    let cuenta = 0;  // Variable "recordada"
+
+    function incrementar() {
+        cuenta++;
+        return cuenta;
+    }
+
+    return incrementar;
+}
+
+const miContador = contador();
+miContador();  // 1
+miContador();  // 2
+miContador();  // 3</div>
+                </div>
+
+                <div class="termino" data-tags="callback funcion parametro higher order">
+                    <span class="categoria-badge badge-avanzado">Función</span>
+                    <div class="comando">Callbacks</div>
+                    <p class="descripcion">
+                        Función pasada como argumento a otra función. Muy común en JavaScript asíncrono.
+                    </p>
+                    <div class="ejemplo">function aplicarOperacion(a, b, operacion) {
+    return operacion(a, b);
+}
+
+aplicarOperacion(5, 3, (x, y) => x + y);  // 8
+aplicarOperacion(5, 3, (x, y) => x * y);  // 15</div>
+                </div>
+
+                <div class="termino" data-tags="rest operator parametros variables ...">
+                    <span class="categoria-badge badge-intermedio">Función</span>
+                    <div class="comando">Rest Operator (...)</div>
+                    <p class="descripcion">
+                        Permite recibir un número variable de argumentos como un array.
+                    </p>
+                    <div class="ejemplo">function sumar(...numeros) {
+    let total = 0;
+    for (let num of numeros) {
+        total += num;
+    }
+    return total;
+}
+
+sumar(1, 2, 3);        // 6
+sumar(1, 2, 3, 4, 5);  // 15</div>
+                </div>
+
+                <div class="termino" data-tags="parametros defecto default valores">
+                    <span class="categoria-badge badge-intermedio">Función</span>
+                    <div class="comando">Parámetros por Defecto</div>
+                    <p class="descripcion">
+                        Valores predeterminados para parámetros si no se proporcionan al llamar la función.
+                    </p>
+                    <div class="ejemplo">function saludar(nombre = "Usuario") {
+    return `Hola, ${nombre}`;
+}
+
+saludar();        // "Hola, Usuario"
+saludar("Ana");   // "Hola, Ana"</div>
+                </div>
+            </div>
+
+            <!-- ARRAYS -->
+            <div id="arrays" class="category-section">
+                <h2 class="category-title">Arrays</h2>
+
+                <div class="termino" data-tags="array arreglo lista []">
+                    <span class="categoria-badge badge-basico">Array</span>
+                    <div class="comando">Crear Arrays</div>
+                    <p class="descripcion">
+                        Lista ordenada de elementos accesibles por índice (empezando en 0).
+                    </p>
+                    <div class="ejemplo">let numeros = [10, 20, 30];
+let mixto = [1, "dos", true, null];</div>
+                </div>
+
+                <div class="termino" data-tags="array push pop shift unshift metodos">
+                    <span class="categoria-badge badge-basico">Array</span>
+                    <div class="comando">Métodos de Array</div>
+                    <p class="descripcion">
+                        Funciones integradas para manipular arrays.
+                    </p>
+                    <div class="ejemplo">let arr = [10, 20, 30];
+
+arr.push(40);       // [10, 20, 30, 40] - agrega al final
+arr.pop();          // [10, 20, 30] - elimina el último
+arr.shift();        // [20, 30] - elimina el primero
+arr.unshift(5);     // [5, 20, 30] - agrega al inicio
+arr.length;         // 3 - longitud del array</div>
+                </div>
+
+                <div class="termino" data-tags="array foreach iterar recorrer">
+                    <span class="categoria-badge badge-intermedio">Array</span>
+                    <div class="comando">forEach()</div>
+                    <p class="descripcion">
+                        Ejecuta una función para cada elemento del array.
+                    </p>
+                    <div class="ejemplo">let numeros = [1, 2, 3];
+
+numeros.forEach((numero, indice) => {
+    console.log(`${indice}: ${numero}`);
+});
+// 0: 1
+// 1: 2
+// 2: 3</div>
+                </div>
+
+                <div class="termino" data-tags="array multidimensional matriz">
+                    <span class="categoria-badge badge-intermedio">Array</span>
+                    <div class="comando">Arrays Multidimensionales</div>
+                    <p class="descripcion">
+                        Arrays que contienen otros arrays (matrices).
+                    </p>
+                    <div class="ejemplo">let matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+
+console.log(matriz[1][2]);  // 6</div>
+                </div>
+            </div>
+
+            <!-- ESTRUCTURAS DE DATOS -->
+            <div id="estructuras" class="category-section">
+                <h2 class="category-title">Estructuras de Datos: Set y Map</h2>
+
+                <div class="termino" data-tags="set conjunto valores unicos">
+                    <span class="categoria-badge badge-intermedio">Estructura</span>
+                    <div class="comando">Set</div>
+                    <p class="descripcion">
+                        Colección de valores ÚNICOS (sin duplicados). Introducido en ES6.
+                    </p>
+                    <div class="ejemplo">const letras = new Set(["a", "b", "c", "a"]);
+console.log(letras);  // Set { 'a', 'b', 'c' }
+
+letras.add("d");      // Agregar
+letras.has("a");      // true (verificar)
+letras.delete("b");   // Eliminar
+letras.size;          // 3 (tamaño)
+letras.clear();       // Vaciar todo</div>
+                </div>
+
+                <div class="termino" data-tags="map mapa clave valor diccionario">
+                    <span class="categoria-badge badge-intermedio">Estructura</span>
+                    <div class="comando">Map</div>
+                    <p class="descripcion">
+                        Colección de pares clave-valor. Las claves pueden ser de cualquier tipo. Mantiene orden de inserción.
+                    </p>
+                    <div class="ejemplo">const miMapa = new Map();
+
+miMapa.set("nombre", "Juan");  // Agregar/actualizar
+miMapa.get("nombre");          // "Juan" (obtener)
+miMapa.has("nombre");          // true (verificar)
+miMapa.delete("nombre");       // Eliminar
+miMapa.size;                   // 0 (tamaño)
+miMapa.clear();                // Vaciar todo</div>
+                </div>
+
+                <div class="termino" data-tags="map iterar foreach keys values">
+                    <span class="categoria-badge badge-intermedio">Estructura</span>
+                    <div class="comando">Iterar Map</div>
+                    <p class="descripcion">
+                        Diferentes formas de recorrer un Map.
+                    </p>
+                    <div class="ejemplo">const capitales = new Map([
+    ["Perú", "Lima"],
+    ["Chile", "Santiago"]
+]);
+
+// for...of con desestructuración
+for (const [pais, capital] of capitales) {
+    console.log(`${pais} → ${capital}`);
+}
+
+// forEach
+capitales.forEach((valor, clave) => {
+    console.log(`${clave}: ${valor}`);
+});</div>
+                </div>
+            </div>
+
+            <!-- OBJETOS -->
+            <div id="objetos" class="category-section">
+                <h2 class="category-title">Objetos</h2>
+
+                <div class="termino" data-tags="objeto object propiedades {}">
+                    <span class="categoria-badge badge-basico">Objeto</span>
+                    <div class="comando">Crear Objetos</div>
+                    <p class="descripcion">
+                        Colección de pares clave-valor. La clave siempre es string, el valor puede ser cualquier tipo.
+                    </p>
+                    <div class="ejemplo">const persona = {
+    nombre: "Juancito",
+    edad: 30,
+    casado: false
+};</div>
+                </div>
+
+                <div class="termino" data-tags="objeto acceder propiedades dot bracket">
+                    <span class="categoria-badge badge-basico">Objeto</span>
+                    <div class="comando">Acceder a Propiedades</div>
+                    <p class="descripcion">
+                        Dos formas: notación de punto y notación de corchetes.
+                    </p>
+                    <div class="ejemplo">persona.nombre;        // "Juancito"
+persona["edad"];       // 30</div>
+                </div>
+
+                <div class="termino" data-tags="objeto modificar agregar eliminar delete">
+                    <span class="categoria-badge badge-basico">Objeto</span>
+                    <div class="comando">Modificar Objetos</div>
+                    <p class="descripcion">
+                        Cambiar, agregar o eliminar propiedades de un objeto.
+                    </p>
+                    <div class="ejemplo">persona.edad = 31;                  // Modificar
+persona.profesion = "Ingeniero";    // Agregar nueva
+delete persona.edad;                // Eliminar</div>
+                </div>
+
+                <div class="termino" data-tags="object keys values entries metodos">
+                    <span class="categoria-badge badge-intermedio">Objeto</span>
+                    <div class="comando">Object.keys(), values(), entries()</div>
+                    <p class="descripcion">
+                        Métodos para obtener las claves, valores o pares clave-valor de un objeto.
+                    </p>
+                    <div class="ejemplo">const persona = { nombre: "Juan", edad: 30 };
+
+Object.keys(persona);     // ["nombre", "edad"]
+Object.values(persona);   // ["Juan", 30]
+Object.entries(persona);  // [["nombre", "Juan"], ["edad", 30]]</div>
+                </div>
+
+                <div class="termino" data-tags="clonar objeto shallow deep copy spread">
+                    <span class="categoria-badge badge-avanzado">Objeto</span>
+                    <div class="comando">Clonación de Objetos</div>
+                    <p class="descripcion">
+                        Crear copias de objetos. Shallow copy (superficial) vs Deep copy (profunda).
+                    </p>
+                    <div class="ejemplo">// Shallow copy (solo nivel superficial)
+const copia = { ...persona };
+
+// Deep copy (copia profunda)
+const copiaCompleta = structuredClone(persona);</div>
+                    <div class="nota">
+                        <strong>⚠️ Cuidado:</strong> Shallow copy no clona objetos anidados, solo copia referencias.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="desestructuracion destructuring {}">
+                    <span class="categoria-badge badge-intermedio">Objeto</span>
+                    <div class="comando">Desestructuración</div>
+                    <p class="descripcion">
+                        Extraer valores de objetos o arrays de forma compacta.
+                    </p>
+                    <div class="ejemplo">const usuario = { nombre: "Ana", edad: 25, ciudad: "Lima" };
+
+// Desestructuración de objeto
+const { nombre, edad } = usuario;
+console.log(nombre);  // "Ana"
+
+// Con alias y valores por defecto
+const { nombre: n, pais = "Perú" } = usuario;
+
+// Desestructuración de array
+const numeros = [10, 20, 30];
+const [a, b] = numeros;  // a=10, b=20</div>
+                </div>
+            </div>
+
+            <!-- CLASES -->
+            <div id="clases" class="category-section">
+                <h2 class="category-title">Programación Orientada a Objetos</h2>
+
+                <div class="termino" data-tags="class clase constructor new">
+                    <span class="categoria-badge badge-intermedio">Clase</span>
+                    <div class="comando">Clases ES6</div>
+                    <p class="descripcion">
+                        Plantillas para crear objetos con propiedades y métodos. Introducidas en ES6 (2015).
+                    </p>
+                    <div class="ejemplo">class Persona {
+    constructor(nombre, edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    saludar() {
+        return `Hola, soy ${this.nombre}`;
+    }
+}
+
+const p1 = new Persona("Juan", 23);
+p1.saludar();  // "Hola, soy Juan"</div>
+                </div>
+
+                <div class="termino" data-tags="propiedades privadas # private">
+                    <span class="categoria-badge badge-avanzado">Clase</span>
+                    <div class="comando">Propiedades Privadas</div>
+                    <p class="descripcion">
+                        Propiedades que solo pueden ser accedidas dentro de la clase, usando el prefijo <code>#</code>.
+                    </p>
+                    <div class="ejemplo">class Cuenta {
+    #saldo = 0;  // privada
+
+    depositar(monto) {
+        this.#saldo += monto;
+    }
+
+    verSaldo() {
+        return this.#saldo;
+    }
+}
+
+const cuenta = new Cuenta();
+// cuenta.#saldo  → Error: privada</div>
+                </div>
+
+                <div class="termino" data-tags="getters setters get set">
+                    <span class="categoria-badge badge-avanzado">Clase</span>
+                    <div class="comando">Getters y Setters</div>
+                    <p class="descripcion">
+                        Métodos especiales para obtener (get) y establecer (set) valores con validación.
+                    </p>
+                    <div class="ejemplo">class Persona {
+    #nombre;
+
+    get nombre() {
+        return this.#nombre;
+    }
+
+    set nombre(nuevoNombre) {
+        if (nuevoNombre.trim() === "") {
+            console.log("Nombre no puede estar vacío");
+            return;
+        }
+        this.#nombre = nuevoNombre;
+    }
+}
+
+let p1 = new Persona();
+p1.nombre = "Carlos";  // Usa el setter
+console.log(p1.nombre);  // Usa el getter</div>
+                </div>
+
+                <div class="termino" data-tags="static metodo estatico clase">
+                    <span class="categoria-badge badge-intermedio">Clase</span>
+                    <div class="comando">Métodos Estáticos</div>
+                    <p class="descripcion">
+                        Métodos que pertenecen a la clase, no a las instancias. Se llaman sin crear un objeto.
+                    </p>
+                    <div class="ejemplo">class Utilidades {
+    static sumar(a, b) {
+        return a + b;
+    }
+}
+
+// Llamar sin crear instancia
+Utilidades.sumar(5, 3);  // 8</div>
+                </div>
+
+                <div class="termino" data-tags="herencia extends super inheritance">
+                    <span class="categoria-badge badge-avanzado">Clase</span>
+                    <div class="comando">Herencia (extends, super)</div>
+                    <p class="descripcion">
+                        Una clase puede heredar propiedades y métodos de otra clase usando <code>extends</code>.
+                        <code>super()</code> llama al constructor de la clase padre.
+                    </p>
+                    <div class="ejemplo">class Animal {
+    hablar() {
+        return "El animal hace un sonido";
+    }
+}
+
+class Perro extends Animal {
+    hablar() {
+        return "Guau Guau";
+    }
+}
+
+const perro = new Perro();
+perro.hablar();  // "Guau Guau"</div>
+                </div>
+
+                <div class="termino" data-tags="polimorfismo override sobreescribir">
+                    <span class="categoria-badge badge-avanzado">Clase</span>
+                    <div class="comando">Polimorfismo</div>
+                    <p class="descripcion">
+                        Capacidad de objetos de diferentes clases de responder al mismo método de forma diferente.
+                    </p>
+                    <div class="ejemplo">class Figura {
+    area() { return 0; }
+}
+
+class Cuadrado extends Figura {
+    constructor(lado) {
+        super();
+        this.lado = lado;
+    }
+    area() {
+        return this.lado * this.lado;
+    }
+}
+
+class Circulo extends Figura {
+    constructor(radio) {
+        super();
+        this.radio = radio;
+    }
+    area() {
+        return Math.PI * this.radio ** 2;
+    }
+}
+
+const figuras = [new Cuadrado(4), new Circulo(3)];
+figuras.forEach(f => console.log(f.area()));  // Cada uno diferente</div>
+                </div>
+
+                <div class="termino" data-tags="prototype prototipo funcion constructora">
+                    <span class="categoria-badge badge-avanzado">Clase</span>
+                    <div class="comando">Prototipos (forma antigua)</div>
+                    <p class="descripcion">
+                        Forma anterior a ES6 de crear "clases" usando funciones constructoras y prototipos.
+                    </p>
+                    <div class="ejemplo">// Función constructora
+function Persona(nombre) {
+    this.nombre = nombre;
+}
+
+// Método asociado al prototipo
+Persona.prototype.saludar = function() {
+    return `Hola, soy ${this.nombre}`;
+};
+
+let p1 = new Persona("Ana");
+p1.saludar();  // "Hola, soy Ana"</div>
+                </div>
+            </div>
+
+            <!-- MATH -->
+            <div id="math" class="category-section">
+                <h2 class="category-title">Objeto Math</h2>
+
+                <div class="termino" data-tags="math constantes pi e">
+                    <span class="categoria-badge badge-basico">Math</span>
+                    <div class="comando">Constantes Math</div>
+                    <p class="descripcion">
+                        Valores matemáticos constantes disponibles en el objeto Math.
+                    </p>
+                    <div class="ejemplo">Math.PI          // 3.14159...
+Math.E           // 2.718 (base logaritmo natural)
+Math.SQRT2       // √2 ≈ 1.414</div>
+                </div>
+
+                <div class="termino" data-tags="math round floor ceil redondeo">
+                    <span class="categoria-badge badge-basico">Math</span>
+                    <div class="comando">Redondeo</div>
+                    <p class="descripcion">
+                        Funciones para redondear números de diferentes formas.
+                    </p>
+                    <div class="ejemplo">Math.round(4.6)   // 5 (al más cercano)
+Math.floor(4.9)   // 4 (hacia abajo)
+Math.ceil(4.1)    // 5 (hacia arriba)
+Math.trunc(4.9)   // 4 (elimina decimales)</div>
+                </div>
+
+                <div class="termino" data-tags="math max min abs">
+                    <span class="categoria-badge badge-basico">Math</span>
+                    <div class="comando">Máximo, Mínimo, Absoluto</div>
+                    <p class="descripcion">
+                        Encontrar el valor máximo, mínimo o valor absoluto.
+                    </p>
+                    <div class="ejemplo">Math.max(2, 8, 5)   // 8
+Math.min(2, 8, 5)   // 2
+Math.abs(-7)        // 7</div>
+                </div>
+
+                <div class="termino" data-tags="math pow sqrt potencia raiz">
+                    <span class="categoria-badge badge-basico">Math</span>
+                    <div class="comando">Potencias y Raíces</div>
+                    <p class="descripcion">
+                        Calcular potencias y raíces de números.
+                    </p>
+                    <div class="ejemplo">Math.pow(2, 3)    // 8 (2³)
+Math.sqrt(25)     // 5 (√25)
+Math.cbrt(27)     // 3 (∛27)
+Math.hypot(3, 4)  // 5 (√(3² + 4²))</div>
+                </div>
+
+                <div class="termino" data-tags="math random aleatorio">
+                    <span class="categoria-badge badge-intermedio">Math</span>
+                    <div class="comando">Números Aleatorios</div>
+                    <p class="descripcion">
+                        Generar números aleatorios entre 0 y 1 (no incluye 1).
+                    </p>
+                    <div class="ejemplo">Math.random()  // Ej: 0.3847562
+
+// Número aleatorio entre 1 y 10
+Math.floor(Math.random() * 10) + 1;</div>
+                </div>
+            </div>
+
+            <!-- DOM -->
+            <div id="dom" class="category-section">
+                <h2 class="category-title">Manipulación del DOM</h2>
+
+                <div class="termino" data-tags="dom document object model">
+                    <span class="categoria-badge badge-basico">DOM</span>
+                    <div class="comando">¿Qué es el DOM?</div>
+                    <p class="descripcion">
+                        Document Object Model - Representación estructurada del HTML en forma de árbol de nodos
+                        que JavaScript puede manipular.
+                    </p>
+                </div>
+
+                <div class="termino" data-tags="dom seleccionar getelementbyid queryselector">
+                    <span class="categoria-badge badge-basico">DOM</span>
+                    <div class="comando">Seleccionar Elementos</div>
+                    <p class="descripcion">
+                        Métodos para encontrar y acceder a elementos HTML.
+                    </p>
+                    <div class="ejemplo">// Por ID (devuelve un elemento)
+document.getElementById("titulo");
+
+// Por clase (devuelve HTMLCollection)
+document.getElementsByClassName("texto");
+
+// Por etiqueta (devuelve HTMLCollection)
+document.getElementsByTagName("p");
+
+// querySelector (devuelve el primero que coincida)
+document.querySelector(".texto");
+
+// querySelectorAll (devuelve NodeList)
+document.querySelectorAll("div p");</div>
+                </div>
+
+                <div class="termino" data-tags="dom leer textcontent innerhtml value">
+                    <span class="categoria-badge badge-basico">DOM</span>
+                    <div class="comando">Leer Contenido</div>
+                    <p class="descripcion">
+                        Obtener el contenido de elementos HTML.
+                    </p>
+                    <div class="ejemplo">// Texto visible
+document.getElementById("titulo").textContent;
+
+// HTML interno
+document.getElementById("parrafo").innerHTML;
+
+// Valor de input
+document.getElementById("nombre").value;
+
+// Atributo
+document.getElementById("link").getAttribute("href");</div>
+                </div>
+
+                <div class="termino" data-tags="dom modificar textcontent innerhtml">
+                    <span class="categoria-badge badge-intermedio">DOM</span>
+                    <div class="comando">Modificar Contenido</div>
+                    <p class="descripcion">
+                        Cambiar el contenido de elementos HTML.
+                    </p>
+                    <div class="ejemplo">// Cambiar texto
+document.getElementById("titulo").textContent = "Nuevo título";
+
+// Cambiar HTML
+document.getElementById("parrafo").innerHTML = "Este es un <b>nuevo</b> párrafo.";
+
+// Cambiar valor de input
+document.getElementById("nombre").value = "Ana";
+
+// Cambiar atributo
+document.getElementById("link").setAttribute("href", "https://www.unsa.edu.pe");</div>
+                </div>
+
+                <div class="termino" data-tags="dom estilos style css classlist">
+                    <span class="categoria-badge badge-intermedio">DOM</span>
+                    <div class="comando">Modificar Estilos</div>
+                    <p class="descripcion">
+                        Cambiar estilos CSS y clases de elementos.
+                    </p>
+                    <div class="ejemplo">// Estilos en línea
+document.getElementById("caja").style.backgroundColor = "lightblue";
+
+// Manipular clases
+document.getElementById("caja").classList.add("resaltado");
+document.getElementById("caja").classList.remove("resaltado");
+document.getElementById("caja").classList.toggle("resaltado");</div>
+                </div>
+
+                <div class="termino" data-tags="dom crear createelement appendchild">
+                    <span class="categoria-badge badge-intermedio">DOM</span>
+                    <div class="comando">Crear y Agregar Elementos</div>
+                    <p class="descripcion">
+                        Crear nuevos elementos HTML dinámicamente y agregarlos al documento.
+                    </p>
+                    <div class="ejemplo">// Crear elemento
+const nuevoP = document.createElement("p");
+nuevoP.textContent = "Soy un párrafo creado con JS";
+
+// Agregar al DOM
+document.body.appendChild(nuevoP);</div>
+                </div>
+
+                <div class="termino" data-tags="dom eliminar remove removechild">
+                    <span class="categoria-badge badge-intermedio">DOM</span>
+                    <div class="comando">Eliminar Elementos</div>
+                    <p class="descripcion">
+                        Eliminar elementos del DOM.
+                    </p>
+                    <div class="ejemplo">// Eliminar directamente
+document.getElementById("parrafo").remove();
+
+// Eliminar hijo
+const contenedor = document.getElementById("contenedor");
+const hijo = document.getElementById("parrafo");
+contenedor.removeChild(hijo);</div>
+                </div>
+
+                <div class="termino" data-tags="dom navegar parentnode children">
+                    <span class="categoria-badge badge-avanzado">DOM</span>
+                    <div class="comando">Navegar por el DOM</div>
+                    <p class="descripcion">
+                        Acceder a elementos relacionados (padre, hijos, hermanos).
+                    </p>
+                    <div class="ejemplo">elemento.parentNode;        // Padre
+elemento.firstChild;        // Primer hijo
+elemento.lastChild;         // Último hijo
+elemento.childNodes;        // Todos los nodos hijos
+elemento.children;          // Solo elementos hijos
+elemento.nextSibling;       // Hermano siguiente
+elemento.previousSibling;   // Hermano anterior</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Script -->
+        <script>
+            const searchBox = document.getElementById('searchBox');
+            const terminos = document.querySelectorAll('.termino');
+
+            searchBox.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+
+                terminos.forEach(termino => {
+                    const comando = termino.querySelector('.comando').textContent.toLowerCase();
+                    const descripcion = termino.querySelector('.descripcion').textContent.toLowerCase();
+                    const tags = termino.getAttribute('data-tags') || '';
+
+                    if (comando.includes(searchTerm) ||
+                        descripcion.includes(searchTerm) ||
+                        tags.includes(searchTerm)) {
+                        termino.style.display = 'block';
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+            });
+        </script>
+
+        <!-- Category Navigation Smooth Scroll -->
+        <script>
+            document.querySelectorAll('.category-nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        </script>
+    </div>
+
+    <!-- Sidebar Component -->
+    <script src="/assets/js/sidebar-component.js"></script>
+
+    <!-- TOC Component -->
+    <script src="/assets/js/toc-component.js"></script>
+</body>
+</html>

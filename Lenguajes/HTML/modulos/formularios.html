@@ -16,411 +16,32 @@
         <p class="subtitle">Captura de datos e interacción con el usuario</p>
     </header>
 
-    <div class="container">
-        <main class="content">
-            <section id="introduccion" class="topic-section">
-                <h2>¿Qué son los Formularios?</h2>
-                <p>Los formularios son elementos interactivos que permiten a los usuarios enviar información a un servidor web. Son esenciales para:</p>
-
-                <div class="info-box">
-                    <ul>
-                        <li>Registros e inicios de sesión</li>
-                        <li>Búsquedas en sitios web</li>
-                        <li>Compras en línea</li>
-                        <li>Comentarios y reseñas</li>
-                        <li>Encuestas y cuestionarios</li>
-                        <li>Contacto y soporte</li>
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(231, 76, 60, 0.1) 0%, rgba(231, 76, 60, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #e74c3c; margin-bottom: 40px;">
+                <h2 style="color: #e74c3c; margin-bottom: 15px; font-size: 1.8em;">
+                    <span class="unsa-tag" style="background: #e74c3c; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.5em; margin-right: 10px;">[U]</span>
+                    📝 Formularios en HTML
+                </h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    Los formularios son elementos interactivos esenciales que permiten a los usuarios enviar información al servidor. Aprende a crear formularios completos con campos de entrada, validación y buenas prácticas de accesibilidad.
+                </p>
+                <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 8px; border: 1px solid rgba(231, 76, 60, 0.3);">
+                    <h3 style="color: #e74c3c; margin-bottom: 12px; font-size: 1.1em;">📋 Contenido del módulo:</h3>
+                    <ul style="list-style: none; padding-left: 0; line-height: 2;">
+                        <li style="color: #b0b0b0;">✓ Elemento form y sus atributos (action, method)</li>
+                        <li style="color: #b0b0b0;">✓ Tipos de input (text, email, password, number, checkbox, radio)</li>
+                        <li style="color: #b0b0b0;">✓ Elementos textarea, select y button</li>
+                        <li style="color: #b0b0b0;">✓ Validación HTML5 nativa</li>
+                        <li style="color: #b0b0b0;">✓ Agrupación con fieldset y legend</li>
+                        <li style="color: #b0b0b0;">✓ Buenas prácticas de accesibilidad y usabilidad</li>
                     </ul>
                 </div>
             </section>
 
-            <section id="elemento-form" class="topic-section">
-                <h2>El Elemento &lt;form&gt;</h2>
-                <p>El elemento <code>&lt;form&gt;</code> es el contenedor principal de todos los campos de entrada. Define cómo y dónde se enviarán los datos.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;form action="/procesar" method="post"&gt;
-    &lt;!-- Campos del formulario aquí --&gt;
-&lt;/form&gt;</code></pre>
-                </div>
-
-                <div class="info-box">
-                    <h3>Atributos principales:</h3>
-                    <ul>
-                        <li><strong>action</strong> - URL donde se envían los datos</li>
-                        <li><strong>method</strong> - Método HTTP (GET o POST)</li>
-                        <li><strong>enctype</strong> - Tipo de codificación (necesario para archivos)</li>
-                        <li><strong>autocomplete</strong> - Habilitar/deshabilitar autocompletado</li>
-                        <li><strong>novalidate</strong> - Desactivar validación HTML5</li>
-                    </ul>
-                </div>
-
-                <div class="concept-box">
-                    <h3>GET vs POST:</h3>
-                    <p><strong>GET:</strong> Los datos se envían en la URL (visible). Usar para búsquedas, filtros.</p>
-                    <p><strong>POST:</strong> Los datos se envían en el cuerpo (ocultos). Usar para datos sensibles, registros, login.</p>
-                </div>
-            </section>
-
-            <section id="input" class="topic-section">
-                <h2>El Elemento &lt;input&gt;</h2>
-                <p>El elemento más versátil para capturar datos. Su comportamiento cambia según el atributo <code>type</code>.</p>
-
-                <h3>Tipos de Input más Comunes:</h3>
-
-                <h4>1. text - Texto simple</h4>
-                <div class="code-block">
-                    <pre><code>&lt;label for="nombre"&gt;Nombre:&lt;/label&gt;
-&lt;input type="text" id="nombre" name="nombre" placeholder="Juan Pérez" required&gt;</code></pre>
-                </div>
-
-                <h4>2. email - Correo electrónico</h4>
-                <div class="code-block">
-                    <pre><code>&lt;label for="email"&gt;Email:&lt;/label&gt;
-&lt;input type="email" id="email" name="email" placeholder="usuario@ejemplo.com" required&gt;</code></pre>
-                </div>
-                <p class="note">Valida automáticamente el formato de email.</p>
-
-                <h4>3. password - Contraseña</h4>
-                <div class="code-block">
-                    <pre><code>&lt;label for="pass"&gt;Contraseña:&lt;/label&gt;
-&lt;input type="password" id="pass" name="password" minlength="8" required&gt;</code></pre>
-                </div>
-                <p class="note">Oculta los caracteres escritos.</p>
-
-                <h4>4. number - Números</h4>
-                <div class="code-block">
-                    <pre><code>&lt;label for="edad"&gt;Edad:&lt;/label&gt;
-&lt;input type="number" id="edad" name="edad" min="18" max="99" step="1"&gt;</code></pre>
-                </div>
-
-                <h4>5. date - Fecha</h4>
-                <div class="code-block">
-                    <pre><code>&lt;label for="fecha"&gt;Fecha de nacimiento:&lt;/label&gt;
-&lt;input type="date" id="fecha" name="fecha_nacimiento" min="1900-01-01" max="2025-12-31"&gt;</code></pre>
-                </div>
-
-                <h4>6. checkbox - Casilla de verificación</h4>
-                <div class="code-block">
-                    <pre><code>&lt;input type="checkbox" id="acepto" name="terminos" value="si" required&gt;
-&lt;label for="acepto"&gt;Acepto los términos y condiciones&lt;/label&gt;</code></pre>
-                </div>
-
-                <h4>7. radio - Botón de opción</h4>
-                <div class="code-block">
-                    <pre><code>&lt;p&gt;Género:&lt;/p&gt;
-&lt;input type="radio" id="masculino" name="genero" value="m"&gt;
-&lt;label for="masculino"&gt;Masculino&lt;/label&gt;
-
-&lt;input type="radio" id="femenino" name="genero" value="f"&gt;
-&lt;label for="femenino"&gt;Femenino&lt;/label&gt;
-
-&lt;input type="radio" id="otro" name="genero" value="otro"&gt;
-&lt;label for="otro"&gt;Otro&lt;/label&gt;</code></pre>
-                </div>
-                <p class="note">Solo uno puede estar seleccionado por grupo (mismo <code>name</code>).</p>
-
-                <h4>8. file - Subir archivos</h4>
-                <div class="code-block">
-                    <pre><code>&lt;label for="archivo"&gt;Subir documento:&lt;/label&gt;
-&lt;input type="file" id="archivo" name="documento" accept=".pdf,.doc,.docx"&gt;</code></pre>
-                </div>
-                <p class="note">Requiere <code>enctype="multipart/form-data"</code> en el form.</p>
-
-                <h4>Otros tipos útiles:</h4>
-                <div class="code-block">
-                    <pre><code>&lt;input type="tel" placeholder="Teléfono"&gt;
-&lt;input type="url" placeholder="https://ejemplo.com"&gt;
-&lt;input type="search" placeholder="Buscar..."&gt;
-&lt;input type="color" value="#ff0000"&gt;
-&lt;input type="range" min="0" max="100" value="50"&gt;
-&lt;input type="time"&gt;
-&lt;input type="datetime-local"&gt;</code></pre>
-                </div>
-            </section>
-
-            <section id="label" class="topic-section">
-                <h2>El Elemento &lt;label&gt;</h2>
-                <p>Etiqueta descriptiva para campos de formulario. Mejora la accesibilidad y usabilidad.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;!-- Forma 1: usando for --&gt;
-&lt;label for="usuario"&gt;Usuario:&lt;/label&gt;
-&lt;input type="text" id="usuario" name="usuario"&gt;
-
-&lt;!-- Forma 2: envolvente --&gt;
-&lt;label&gt;
-    Usuario:
-    &lt;input type="text" name="usuario"&gt;
-&lt;/label&gt;</code></pre>
-                </div>
-
-                <div class="info-box">
-                    <h3>Beneficios:</h3>
-                    <ul>
-                        <li>Hacer clic en el label activa el input</li>
-                        <li>Mejora accesibilidad para lectores de pantalla</li>
-                        <li>Área de clic más grande (especialmente útil para checkboxes)</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="textarea" class="topic-section">
-                <h2>El Elemento &lt;textarea&gt;</h2>
-                <p>Campo de texto multilínea para comentarios, mensajes largos o descripciones.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;label for="comentario"&gt;Comentario:&lt;/label&gt;
-&lt;textarea id="comentario" name="comentario" rows="5" cols="50"
-          placeholder="Escribe tu comentario aquí..." maxlength="500"&gt;&lt;/textarea&gt;</code></pre>
-                </div>
-
-                <div class="info-box">
-                    <h3>Atributos importantes:</h3>
-                    <ul>
-                        <li><strong>rows</strong> - Número de líneas visibles</li>
-                        <li><strong>cols</strong> - Ancho en caracteres</li>
-                        <li><strong>maxlength</strong> - Límite de caracteres</li>
-                        <li><strong>wrap</strong> - Cómo se envuelve el texto (soft, hard)</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="select" class="topic-section">
-                <h2>El Elemento &lt;select&gt;</h2>
-                <p>Lista desplegable para seleccionar una o varias opciones de un conjunto predefinido.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;label for="pais"&gt;País:&lt;/label&gt;
-&lt;select id="pais" name="pais" required&gt;
-    &lt;option value=""&gt;-- Selecciona un país --&lt;/option&gt;
-    &lt;option value="ar"&gt;Argentina&lt;/option&gt;
-    &lt;option value="mx"&gt;México&lt;/option&gt;
-    &lt;option value="es" selected&gt;España&lt;/option&gt;
-    &lt;option value="pe"&gt;Perú&lt;/option&gt;
-&lt;/select&gt;</code></pre>
-                </div>
-
-                <h3>Agrupación con &lt;optgroup&gt;:</h3>
-                <div class="code-block">
-                    <pre><code>&lt;select name="ciudad"&gt;
-    &lt;optgroup label="España"&gt;
-        &lt;option value="mad"&gt;Madrid&lt;/option&gt;
-        &lt;option value="bcn"&gt;Barcelona&lt;/option&gt;
-    &lt;/optgroup&gt;
-    &lt;optgroup label="México"&gt;
-        &lt;option value="cdmx"&gt;Ciudad de México&lt;/option&gt;
-        &lt;option value="gdl"&gt;Guadalajara&lt;/option&gt;
-    &lt;/optgroup&gt;
-&lt;/select&gt;</code></pre>
-                </div>
-
-                <h3>Selección múltiple:</h3>
-                <div class="code-block">
-                    <pre><code>&lt;select name="idiomas" multiple size="4"&gt;
-    &lt;option value="es"&gt;Español&lt;/option&gt;
-    &lt;option value="en"&gt;Inglés&lt;/option&gt;
-    &lt;option value="fr"&gt;Francés&lt;/option&gt;
-    &lt;option value="de"&gt;Alemán&lt;/option&gt;
-&lt;/select&gt;</code></pre>
-                </div>
-            </section>
-
-            <section id="button" class="topic-section">
-                <h2>Botones de Formulario</h2>
-
-                <h3>1. Button type="submit"</h3>
-                <div class="code-block">
-                    <pre><code>&lt;button type="submit"&gt;Enviar Formulario&lt;/button&gt;</code></pre>
-                </div>
-                <p>Envía el formulario al servidor.</p>
-
-                <h3>2. Button type="reset"</h3>
-                <div class="code-block">
-                    <pre><code>&lt;button type="reset"&gt;Limpiar Formulario&lt;/button&gt;</code></pre>
-                </div>
-                <p>Restaura todos los campos a sus valores iniciales.</p>
-
-                <h3>3. Button type="button"</h3>
-                <div class="code-block">
-                    <pre><code>&lt;button type="button" onclick="validar()"&gt;Validar&lt;/button&gt;</code></pre>
-                </div>
-                <p>Sin comportamiento por defecto. Usar con JavaScript.</p>
-
-                <div class="concept-box">
-                    <h3>&lt;button&gt; vs &lt;input type="submit"&gt;</h3>
-                    <p><strong>&lt;button&gt;</strong> puede contener HTML (texto, iconos, imágenes).</p>
-                    <p><strong>&lt;input&gt;</strong> solo puede tener texto en el atributo value.</p>
-                </div>
-            </section>
-
-            <section id="fieldset" class="topic-section">
-                <h2>Agrupación con &lt;fieldset&gt; y &lt;legend&gt;</h2>
-                <p>Agrupa campos relacionados y mejora la organización visual y semántica.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;form&gt;
-    &lt;fieldset&gt;
-        &lt;legend&gt;Información Personal&lt;/legend&gt;
-        &lt;label for="nombre"&gt;Nombre:&lt;/label&gt;
-        &lt;input type="text" id="nombre" name="nombre"&gt;
-
-        &lt;label for="email"&gt;Email:&lt;/label&gt;
-        &lt;input type="email" id="email" name="email"&gt;
-    &lt;/fieldset&gt;
-
-    &lt;fieldset&gt;
-        &lt;legend&gt;Dirección&lt;/legend&gt;
-        &lt;label for="calle"&gt;Calle:&lt;/label&gt;
-        &lt;input type="text" id="calle" name="calle"&gt;
-
-        &lt;label for="ciudad"&gt;Ciudad:&lt;/label&gt;
-        &lt;input type="text" id="ciudad" name="ciudad"&gt;
-    &lt;/fieldset&gt;
-&lt;/form&gt;</code></pre>
-                </div>
-
-                <p class="note">Crea un borde visual alrededor del grupo y mejora la accesibilidad.</p>
-            </section>
-
-            <section id="validacion" class="topic-section">
-                <h2>Validación HTML5</h2>
-                <p>HTML5 proporciona validación nativa sin necesidad de JavaScript.</p>
-
-                <h3>Atributos de validación:</h3>
-                <div class="info-box">
-                    <ul>
-                        <li><strong>required</strong> - Campo obligatorio</li>
-                        <li><strong>minlength / maxlength</strong> - Longitud mínima/máxima</li>
-                        <li><strong>min / max</strong> - Valor mínimo/máximo (números, fechas)</li>
-                        <li><strong>pattern</strong> - Expresión regular personalizada</li>
-                        <li><strong>type</strong> - Validación automática por tipo (email, url, etc.)</li>
-                    </ul>
-                </div>
-
-                <h3>Ejemplos:</h3>
-                <div class="code-block">
-                    <pre><code>&lt;!-- Campo obligatorio --&gt;
-&lt;input type="text" name="nombre" required&gt;
-
-&lt;!-- Longitud mínima --&gt;
-&lt;input type="password" name="pass" minlength="8" required&gt;
-
-&lt;!-- Rango de números --&gt;
-&lt;input type="number" name="edad" min="18" max="99"&gt;
-
-&lt;!-- Patrón personalizado (solo letras) --&gt;
-&lt;input type="text" name="nombre" pattern="[A-Za-z]+"
-       title="Solo letras permitidas"&gt;
-
-&lt;!-- Patrón para teléfono --&gt;
-&lt;input type="tel" name="telefono" pattern="[0-9]{9}"
-       placeholder="123456789" title="9 dígitos"&gt;</code></pre>
-                </div>
-
-                <h3>Mensajes de validación personalizados:</h3>
-                <div class="code-block">
-                    <pre><code>&lt;input type="email" name="email" required
-       oninvalid="this.setCustomValidity('Por favor ingresa un email válido')"
-       oninput="this.setCustomValidity('')"&gt;</code></pre>
-                </div>
-            </section>
-
-            <section id="ejemplo-completo" class="topic-section">
-                <h2>Ejemplo Completo: Formulario de Registro</h2>
-                <div class="code-block">
-                    <pre><code>&lt;form action="/registro" method="post"&gt;
-    &lt;fieldset&gt;
-        &lt;legend&gt;Datos de Usuario&lt;/legend&gt;
-
-        &lt;label for="usuario"&gt;Usuario:&lt;/label&gt;
-        &lt;input type="text" id="usuario" name="usuario"
-               minlength="4" maxlength="20" required&gt;
-
-        &lt;label for="email"&gt;Email:&lt;/label&gt;
-        &lt;input type="email" id="email" name="email" required&gt;
-
-        &lt;label for="password"&gt;Contraseña:&lt;/label&gt;
-        &lt;input type="password" id="password" name="password"
-               minlength="8" required&gt;
-    &lt;/fieldset&gt;
-
-    &lt;fieldset&gt;
-        &lt;legend&gt;Información Personal&lt;/legend&gt;
-
-        &lt;label for="nombre"&gt;Nombre completo:&lt;/label&gt;
-        &lt;input type="text" id="nombre" name="nombre" required&gt;
-
-        &lt;label for="fecha"&gt;Fecha de nacimiento:&lt;/label&gt;
-        &lt;input type="date" id="fecha" name="fecha_nacimiento"&gt;
-
-        &lt;label for="pais"&gt;País:&lt;/label&gt;
-        &lt;select id="pais" name="pais" required&gt;
-            &lt;option value=""&gt;-- Selecciona --&lt;/option&gt;
-            &lt;option value="ar"&gt;Argentina&lt;/option&gt;
-            &lt;option value="mx"&gt;México&lt;/option&gt;
-            &lt;option value="es"&gt;España&lt;/option&gt;
-        &lt;/select&gt;
-    &lt;/fieldset&gt;
-
-    &lt;fieldset&gt;
-        &lt;legend&gt;Preferencias&lt;/legend&gt;
-
-        &lt;label&gt;
-            &lt;input type="checkbox" name="newsletter" value="si"&gt;
-            Recibir boletín informativo
-        &lt;/label&gt;
-
-        &lt;label for="bio"&gt;Biografía (opcional):&lt;/label&gt;
-        &lt;textarea id="bio" name="biografia" rows="4"
-                  maxlength="500"&gt;&lt;/textarea&gt;
-    &lt;/fieldset&gt;
-
-    &lt;input type="checkbox" id="terminos" name="terminos" required&gt;
-    &lt;label for="terminos"&gt;Acepto los términos y condiciones&lt;/label&gt;
-
-    &lt;button type="submit"&gt;Registrarse&lt;/button&gt;
-    &lt;button type="reset"&gt;Limpiar&lt;/button&gt;
-&lt;/form&gt;</code></pre>
-                </div>
-            </section>
-
-            <section id="buenas-practicas" class="topic-section">
-                <h2>Buenas Prácticas</h2>
-
-                <div class="info-box">
-                    <h3>✓ Hacer:</h3>
-                    <ul>
-                        <li>Siempre usar <code>&lt;label&gt;</code> para cada campo</li>
-                        <li>Usar placeholders como ejemplos, no como labels</li>
-                        <li>Agrupar campos relacionados con <code>&lt;fieldset&gt;</code></li>
-                        <li>Proporcionar validación clara y mensajes de error útiles</li>
-                        <li>Usar el tipo de input correcto (email, tel, number, etc.)</li>
-                        <li>Incluir atributos <code>autocomplete</code> apropiados</li>
-                        <li>Hacer formularios accesibles (navegación por teclado)</li>
-                    </ul>
-                </div>
-
-                <div class="info-box">
-                    <h3>✗ Evitar:</h3>
-                    <ul>
-                        <li>Campos sin <code>&lt;label&gt;</code></li>
-                        <li>Demasiados campos obligatorios</li>
-                        <li>Usar <code>type="text"</code> para todo</li>
-                        <li>Validación solo del lado del cliente (usar también servidor)</li>
-                        <li>Formularios muy largos sin agrupar</li>
-                        <li>Mensajes de error genéricos o confusos</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="glosario-modulo" class="topic-section">
+            <section id="terminos" class="topic-section">
                 <h2>📚 Glosario del Módulo</h2>
                 <p>Referencia de elementos HTML para formularios:</p>
-
-                <div class="search-container">
-                    <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar término...">
-                </div>
 
                 <div id="terminosContainer">
                     <div class="termino" data-tags="form formulario input datos">
@@ -554,22 +175,23 @@
             </section>
         </main>
 
-        <aside class="toc">
-            <h3>Contenido</h3>
-            <ul>
-                <li><a href="#introduccion">Introducción</a></li>
-                <li><a href="#elemento-form">El Elemento form</a></li>
-                <li><a href="#input">El Elemento input</a></li>
-                <li><a href="#label">El Elemento label</a></li>
-                <li><a href="#textarea">El Elemento textarea</a></li>
-                <li><a href="#select">El Elemento select</a></li>
-                <li><a href="#button">Botones</a></li>
-                <li><a href="#fieldset">fieldset y legend</a></li>
-                <li><a href="#validacion">Validación HTML5</a></li>
-                <li><a href="#ejemplo-completo">Ejemplo Completo</a></li>
-                <li><a href="#buenas-practicas">Buenas Prácticas</a></li>
-                <li><a href="#glosario-modulo">Glosario del Módulo</a></li>
-            </ul>
+        <aside class="toc-sidebar">
+            <div class="toc-header">📝 Formularios HTML</div>
+
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#terminos" class="toc-link">📚 Glosario del Módulo</a></li>
+                </ul>
+            </nav>
+
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
         </aside>
     </div>
 
@@ -579,22 +201,85 @@
 
     <script src="/assets/js/sidebar-component.js"></script>
     <script>
-        // Funcionalidad de búsqueda en el glosario
+        // Funcionalidad de búsqueda en el glosario con normalización y resaltado
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('searchInput');
             const terminosContainer = document.getElementById('terminosContainer');
             const noResults = document.getElementById('noResults');
             const terminos = terminosContainer.querySelectorAll('.termino');
 
+            // Normalizar texto: eliminar tildes y convertir a minúsculas
+            function normalizeText(text) {
+                return text
+                    .toLowerCase()
+                    .normalize('NFD')
+                    .replace(/[\u0300-\u036f]/g, '');
+            }
+
+            // Resaltar texto encontrado
+            function highlightText(element, query) {
+                removeHighlights(element);
+
+                const walker = document.createTreeWalker(
+                    element,
+                    NodeFilter.SHOW_TEXT,
+                    null,
+                    false
+                );
+
+                const nodesToReplace = [];
+                let node;
+
+                while (node = walker.nextNode()) {
+                    if (normalizeText(node.nodeValue).includes(query)) {
+                        nodesToReplace.push(node);
+                    }
+                }
+
+                nodesToReplace.forEach(node => {
+                    const text = node.nodeValue;
+                    const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+                    // Crear regex que ignore tildes
+                    const accentsMap = {
+                        'a': '[aáàäâã]', 'e': '[eéèëê]', 'i': '[iíìïî]',
+                        'o': '[oóòöôõ]', 'u': '[uúùüû]', 'n': '[nñ]'
+                    };
+
+                    let regexPattern = '';
+                    for (let char of escapedQuery) {
+                        regexPattern += accentsMap[char] || char;
+                    }
+
+                    const regex = new RegExp(`(${regexPattern})`, 'gi');
+                    const span = document.createElement('span');
+                    span.innerHTML = text.replace(regex, '<mark style="background: #f1c40f; color: #000; padding: 2px 4px; border-radius: 3px; font-weight: 500;">$1</mark>');
+                    node.parentNode.replaceChild(span, node);
+                });
+            }
+
+            // Eliminar resaltados previos
+            function removeHighlights(element) {
+                const marks = element.querySelectorAll('mark');
+                marks.forEach(mark => {
+                    const parent = mark.parentNode;
+                    if (parent) {
+                        const textNode = document.createTextNode(mark.textContent);
+                        parent.replaceChild(textNode, mark);
+                        parent.normalize();
+                    }
+                });
+            }
+
             searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase().trim();
+                const searchTerm = normalizeText(this.value.trim());
                 let visibleCount = 0;
 
                 terminos.forEach(termino => {
-                    const tag = termino.querySelector('.tag').textContent.toLowerCase();
-                    const significado = termino.querySelector('.significado').textContent.toLowerCase();
-                    const descripcion = termino.querySelector('.descripcion').textContent.toLowerCase();
-                    const tags = termino.getAttribute('data-tags').toLowerCase();
+                    const tag = normalizeText(termino.querySelector('.tag').textContent);
+                    const significado = normalizeText(termino.querySelector('.significado').textContent);
+                    const descripcion = normalizeText(termino.querySelector('.descripcion').textContent);
+                    const tags = normalizeText(termino.getAttribute('data-tags'));
 
                     const matches = tag.includes(searchTerm) ||
                                   significado.includes(searchTerm) ||
@@ -604,16 +289,84 @@
                     if (matches || searchTerm === '') {
                         termino.style.display = 'block';
                         visibleCount++;
+
+                        // Resaltar solo si hay término de búsqueda
+                        if (searchTerm !== '') {
+                            highlightText(termino, searchTerm);
+                        } else {
+                            removeHighlights(termino);
+                        }
                     } else {
                         termino.style.display = 'none';
+                        removeHighlights(termino);
                     }
                 });
 
+                // Mostrar mensaje si no hay resultados
                 if (visibleCount === 0 && searchTerm !== '') {
                     noResults.style.display = 'block';
                 } else {
                     noResults.style.display = 'none';
                 }
+            });
+
+            // Barra de progreso de scroll
+            const progressBar = document.getElementById('tocProgressBar');
+            if (progressBar) {
+                window.addEventListener('scroll', () => {
+                    const windowHeight = window.innerHeight;
+                    const documentHeight = document.documentElement.scrollHeight - windowHeight;
+                    const scrolled = window.scrollY;
+                    const progress = (scrolled / documentHeight) * 100;
+                    progressBar.style.width = `${Math.min(progress, 100)}%`;
+                });
+            }
+
+            // Función para toggle de grupos
+            window.toggleTOCGroup = function(groupId) {
+                const group = document.getElementById(`toc-group-${groupId}`);
+                const icon = event.currentTarget.querySelector('.toggle-icon');
+
+                if (!group) return;
+
+                if (group.style.display === 'none') {
+                    group.style.display = 'block';
+                    icon.textContent = '▼';
+                } else {
+                    group.style.display = 'none';
+                    icon.textContent = '▶';
+                }
+            };
+
+            // Resaltar término al hacer clic en TOC
+            const tocLinks = document.querySelectorAll('.toc-link');
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href').substring(1);
+
+                    setTimeout(() => {
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            // Remover resaltados anteriores
+                            document.querySelectorAll('.termino').forEach(t => {
+                                t.style.outline = '';
+                                t.style.boxShadow = '';
+                            });
+
+                            // Resaltar el elemento seleccionado
+                            if (targetElement.classList.contains('termino')) {
+                                targetElement.style.outline = '3px solid #e74c3c';
+                                targetElement.style.boxShadow = '0 0 20px rgba(231, 76, 60, 0.5)';
+
+                                // Quitar resaltado después de 3 segundos
+                                setTimeout(() => {
+                                    targetElement.style.outline = '';
+                                    targetElement.style.boxShadow = '';
+                                }, 3000);
+                            }
+                        }
+                    }, 100);
+                });
             });
         });
     </script>

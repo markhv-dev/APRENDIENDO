@@ -33,9 +33,9 @@ APRENDIENDO/
 │   └── Git-GitHub/          ✅ Completo (45 comandos + 10 ejercicios)
 │
 ├── Lenguajes/
-│   ├── HTML/                ✅ Completo (50+ términos + 13 ejercicios)
-│   ├── CSS/                 ⏳ Pendiente
-│   ├── JavaScript/          ⏳ Pendiente
+│   ├── HTML/                ✅ Completo (62 términos + 12 ejercicios)
+│   ├── JavaScript/          ✅ Completo (60+ términos + 12 ejercicios + examen)
+│   ├── CSS/                 ✅ Completo (70+ términos + 12 ejercicios + examen)
 │   ├── Python/              ⏳ Pendiente
 │   ├── TypeScript/          ⏳ Pendiente
 │   └── SQL/                 ⏳ Pendiente
@@ -112,23 +112,25 @@ Para información detallada, consulta la carpeta `/docs/`:
 
 ## 💡 Estado del Proyecto
 
-**Versión:** 2.0.0
-**Última Actualización:** 2025-10-12
-**Progreso General:** 100% (5 de 5 fases completadas) ✅
+**Versión:** 2.2.0
+**Última Actualización:** 2025-01-03
+**Progreso General:** 33% (4 secciones completadas: HTML, JavaScript, CSS, Git/GitHub) ✅
 
 ### Completado ✅
 - **Sistema Base**: 100% completo y funcional
 - Fundamentos completos (Diseño, Frontend, Backend, Base de Datos)
-- Git/GitHub (39 comandos Git + 9 GitHub CLI + 10 ejercicios)
-- HTML (62 términos + 13 ejercicios)
+- Git/GitHub (45 comandos + 10 ejercicios)
+- HTML (62 términos + 12 ejercicios)
+- JavaScript (60+ términos + 12 ejercicios + examen de 20 preguntas)
+- CSS (70+ términos + 12 ejercicios + examen de 20 preguntas)
 - Estructura profesional reorganizada
 - Documentación técnica completa (4 archivos MD)
-- Búsqueda global funcional (73 términos)
+- Búsqueda integrada en glosarios
 
 ### Próximo Contenido ⏳
-- CSS, JavaScript, TypeScript
+- Python, TypeScript, SQL
 - React, Vue, Angular
-- Node.js, Docker, SQL
+- Node.js, Docker
 
 ---
 

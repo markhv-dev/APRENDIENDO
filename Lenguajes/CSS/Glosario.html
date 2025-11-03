@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glosario - CSS</title>
+
+    <!-- Sidebar Styles -->
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+
+    <!-- TOC (Table of Contents) Styles -->
+    <link rel="stylesheet" href="/assets/css/toc.css">
+
+    <!-- Glosario Styles -->
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Glosario de CSS</h1>
+            <p class="subtitle">70+ conceptos esenciales para diseño web</p>
+        </header>
+
+        <div class="breadcrumb">
+            <a href="../../index.html">← Inicio</a> /
+            <a href="index.html">CSS</a> /
+            <span>Glosario</span>
+        </div>
+
+        <div class="search-container">
+            <input
+                type="text"
+                class="search-box"
+                id="searchBox"
+                placeholder="Buscar concepto (ej: flexbox, grid, selector)..."
+            >
+        </div>
+
+        <!-- Category Navigation -->
+        <nav class="category-nav">
+            <div class="category-nav-links">
+                <a href="#fundamentos">📦 Fundamentos</a>
+                <a href="#selectores">🎯 Selectores</a>
+                <a href="#unidades">📏 Unidades</a>
+                <a href="#colores">🌈 Colores</a>
+                <a href="#texto">📝 Texto</a>
+                <a href="#boxmodel">📦 Box Model</a>
+                <a href="#display">🖼️ Display</a>
+                <a href="#flexbox">🔀 Flexbox</a>
+                <a href="#grid">⊞ Grid</a>
+                <a href="#position">📍 Position</a>
+                <a href="#pseudoclases">✨ Pseudoclases</a>
+                <a href="#pseudoelementos">🔮 Pseudoelementos</a>
+                <a href="#animaciones">🎬 Animaciones</a>
+                <a href="#frameworks">🛠️ Frameworks</a>
+            </div>
+        </nav>
+
+        <div id="terminos">
+            <!-- FUNDAMENTOS -->
+            <div id="fundamentos" class="category-section">
+                <h2 class="category-title">Fundamentos de CSS</h2>
+
+                <div class="termino" data-tags="css cascading style sheets hojas estilo">
+                    <span class="categoria-badge badge-basico">Fundamento</span>
+                    <div class="comando">CSS (Cascading Style Sheets)</div>
+                    <p class="descripcion">
+                        Lenguaje de hojas de estilo para describir la presentación de documentos HTML.
+                        Separa el contenido (HTML) de la presentación visual.
+                    </p>
+                    <div class="ejemplo">/* Archivo: styles.css */</div>
+                    <div class="ejemplo">body {</div>
+                    <div class="ejemplo">    background-color: #f0f0f0;</div>
+                    <div class="ejemplo">    font-family: Arial, sans-serif;</div>
+                    <div class="ejemplo">}</div>
+                </div>
+
+                <div class="termino" data-tags="sintaxis selector propiedad valor">
+                    <span class="categoria-badge badge-basico">Fundamento</span>
+                    <div class="comando">Sintaxis Básica</div>
+                    <p class="descripcion">
+                        Estructura fundamental: <code>selector { propiedad: valor; }</code>
+                    </p>
+                    <div class="ejemplo">h1 {</div>
+                    <div class="ejemplo">    color: blue;</div>
+                    <div class="ejemplo">    font-size: 24px;</div>
+                    <div class="ejemplo">}</div>
+                    <div class="nota">
+                        <strong>💡 Partes:</strong> Selector (qué elementos), Propiedad (qué cambiar), Valor (cómo cambiar).
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="inline interno externo incluir css">
+                    <span class="categoria-badge badge-basico">Fundamento</span>
+                    <div class="comando">Formas de Incluir CSS</div>
+                    <p class="descripcion">
+                        Tres métodos: Inline (atributo style), Interno (etiqueta &lt;style&gt;), Externo (archivo .css).
+                    </p>
+                    <div class="ejemplo">&lt;!-- 1. Inline (NO recomendado) --&gt;</div>
+                    <div class="ejemplo">&lt;p style="color: red;"&gt;Texto&lt;/p&gt;</div>
+                    <div class="ejemplo"></div>
+                    <div class="ejemplo">&lt;!-- 2. Interno --&gt;</div>
+                    <div class="ejemplo">&lt;style&gt; p { color: blue; } &lt;/style&gt;</div>
+                    <div class="ejemplo"></div>
+                    <div class="ejemplo">&lt;!-- 3. Externo (RECOMENDADO) --&gt;</div>
+                    <div class="ejemplo">&lt;link rel="stylesheet" href="styles.css"&gt;</div>
+                    <div class="nota">
+                        <strong>💡 Best Practice:</strong> Siempre usa CSS externo para mantener separación y reutilización.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="especificidad prioridad importante precedencia">
+                    <span class="categoria-badge badge-intermedio">Fundamento</span>
+                    <div class="comando">Especificidad y Precedencia</div>
+                    <p class="descripcion">
+                        Sistema de puntos para determinar qué regla CSS se aplica cuando hay conflictos.
+                        Elemento=1, Clase/Atributo=10, ID=100, Inline=1000, !important=máximo.
+                    </p>
+                    <div class="ejemplo">p { color: black; }              /* Especificidad: 1 */</div>
+                    <div class="ejemplo">.texto { color: blue; }         /* Especificidad: 10 */</div>
+                    <div class="ejemplo">#principal { color: green; }    /* Especificidad: 100 */</div>
+                    <div class="ejemplo">p { color: red !important; }    /* Prioridad máxima */</div>
+                    <div class="nota">
+                        <strong>⚠️ Advertencia:</strong> Evita !important. Indica mal diseño de CSS.
+                    </div>
+                </div>
+            </div>
+
+            <!-- SELECTORES -->
+            <div id="selectores" class="category-section">
+                <h2 class="category-title">Selectores de CSS</h2>
+
+                <div class="termino" data-tags="selector elemento tipo">
+                    <span class="categoria-badge badge-basico">Selector</span>
+                    <div class="comando">Selector de Elemento</div>
+                    <p class="descripcion">
+                        Selecciona todos los elementos de un tipo específico.
+                    </p>
+                    <div class="ejemplo">p {</div>
+                    <div class="ejemplo">    color: gray;</div>
+                    <div class="ejemplo">}</div>
+                    <div class="ejemplo">/* Aplica a todos los &lt;p&gt; */</div>
+                </div>
+
+                <div class="termino" data-tags="selector clase class punto">
+                    <span class="categoria-badge badge-basico">Selector</span>
+                    <div class="comando">Selector de Clase (.)</div>
+                    <p class="descripcion">
+                        Selecciona elementos con un atributo class específico. Usa punto (.) antes del nombre.
+                    </p>
+                    <div class="ejemplo">.destacado {</div>
+                    <div class="ejemplo">    font-weight: bold;</div>
+                    <div class="ejemplo">}</div>
+                    <div class="ejemplo">/* &lt;p class="destacado"&gt; */</div>
+                    <div class="nota">
+                        <strong>💡 Tip:</strong> Las clases son reutilizables. Un elemento puede tener múltiples clases.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="selector id identificador numeral">
+                    <span class="categoria-badge badge-basico">Selector</span>
+                    <div class="comando">Selector de ID (#)</div>
+                    <p class="descripcion">
+                        Selecciona UN elemento único con un id específico. Usa # antes del nombre.
+                    </p>
+                    <div class="ejemplo">#header {</div>
+                    <div class="ejemplo">    background: navy;</div>
+                    <div class="ejemplo">}</div>
+                    <div class="ejemplo">/* &lt;header id="header"&gt; */</div>
+                    <div class="nota">
+                        <strong>⚠️ Importante:</strong> Los IDs deben ser únicos en la página.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="selector agrupacion multiples coma">
+                    <span class="categoria-badge badge-basico">Selector</span>
+                    <div class="comando">Selector de Agrupación (,)</div>
+                    <p class="descripcion">
+                        Aplica los mismos estilos a múltiples selectores separados por coma.
+                    </p>
+                    <div class="ejemplo">h1, h2, h3 {</div>
+                    <div class="ejemplo">    font-family: 'Georgia', serif;</div>
+                    <div class="ejemplo">    color: #333;</div>
+                    <div class="ejemplo">}</div>
+                </div>
+
+                <div class="termino" data-tags="selector descendiente espacio hijo">
+                    <span class="categoria-badge badge-intermedio">Selector</span>
+                    <div class="comando">Selector Descendiente (espacio)</div>
+                    <p class="descripcion">
+                        Selecciona elementos que son descendientes (hijos, nietos, etc.) de otro elemento.
+                    </p>
+                    <div class="ejemplo">article p {</div>
+                    <div class="ejemplo">    line-height: 1.6;</div>
+                    <div class="ejemplo">}</div>
+                    <div class="ejemplo">/* Todos los &lt;p&gt; dentro de &lt;article&gt; */</div>
+                </div>
+
+                <div class="termino" data-tags="selector hijo directo mayor">
+                    <span class="categoria-badge badge-intermedio">Selector</span>
+                    <div class="comando">Selector de Hijo Directo (>)</div>
+                    <p class="descripcion">
+                        Selecciona solo hijos directos, no descendientes más profundos.
+                    </p>
+                    <div class="ejemplo">ul > li {</div>
+                    <div class="ejemplo">    margin-left: 20px;</div>
+                    <div class="ejemplo">}</div>
+                    <div class="ejemplo">/* Solo &lt;li&gt; hijos directos de &lt;ul&gt; */</div>
+                </div>
+
+                <div class="termino" data-tags="selector hermano adyacente mas">
+                    <span class="categoria-badge badge-intermedio">Selector</span>
+                    <div class="comando">Selector de Hermano Adyacente (+)</div>
+                    <p class="descripcion">
+                        Selecciona el elemento que es hermano inmediato siguiente.
+                    </p>
+                    <div class="ejemplo">h2 + p {</div>
+                    <div class="ejemplo">    font-weight: bold;</div>
+                    <div class="ejemplo">}</div>
+                    <div class="ejemplo">/* Primer &lt;p&gt; después de &lt;h2&gt; */</div>
+                </div>
+
+                <div class="termino" data-tags="selector atributo corchetes">
+                    <span class="categoria-badge badge-avanzado">Selector</span>
+                    <div class="comando">Selectores de Atributo</div>
+                    <p class="descripcion">
+                        Seleccionan elementos basados en atributos y sus valores.
+                    </p>
+                    <div class="ejemplo">[disabled] { opacity: 0.5; }           /* Tiene atributo */</div>
+                    <div class="ejemplo">[type="text"] { border: 1px solid; }  /* Valor exacto */</div>
+                    <div class="ejemplo">[href^="https"] { color: green; }     /* Empieza con */</div>
+                    <div class="ejemplo">[href$=".pdf"] { color: red; }        /* Termina con */</div>
+                    <div class="ejemplo">[class*="btn"] { padding: 10px; }     /* Contiene */</div>
+                    <div class="nota">
+                        <strong>💡 Símbolos:</strong> ^= empieza, $= termina, *= contiene, ~= palabra exacta, |= prefijo.
+                    </div>
+                </div>
+            </div>
+
+            <!-- UNIDADES -->
+            <div id="unidades" class="category-section">
+                <h2 class="category-title">Unidades de Medida</h2>
+
+                <div class="termino" data-tags="unidades absolutas px cm mm in pt pc">
+                    <span class="categoria-badge badge-basico">Unidades</span>
+                    <div class="comando">Unidades Absolutas</div>
+                    <p class="descripcion">
+                        Tamaños fijos independientes del contexto: px, cm, mm, in, pt, pc.
+                    </p>
+                    <div class="ejemplo">width: 300px;    /* Píxeles (más común) */</div>
+                    <div class="ejemplo">width: 10cm;     /* Centímetros */</div>
+                    <div class="ejemplo">width: 2in;      /* Pulgadas */</div>
+                    <div class="nota">
+                        <strong>💡 Best Practice:</strong> Usa px para web. cm/mm/in son para impresión.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="unidades relativas em rem porcentaje vw vh">
+                    <span class="categoria-badge badge-intermedio">Unidades</span>
+                    <div class="comando">Unidades Relativas</div>
+                    <p class="descripcion">
+                        Tamaños relativos al contexto: em, rem, %, vw, vh, ex.
+                    </p>
+                    <div class="ejemplo">font-size: 2em;      /* Relativo al padre */</div>
+                    <div class="ejemplo">font-size: 1.5rem;   /* Relativo al root (html) */</div>
+                    <div class="ejemplo">width: 50%;          /* 50% del contenedor */</div>
+                    <div class="ejemplo">width: 100vw;        /* 100% del viewport width */</div>
+                    <div class="ejemplo">height: 100vh;       /* 100% del viewport height */</div>
+                    <div class="nota">
+                        <strong>💡 Tip:</strong> rem es mejor que em para evitar problemas de cascada.
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLORES -->
+            <div id="colores" class="category-section">
+                <h2 class="category-title">Colores en CSS</h2>
+
+                <div class="termino" data-tags="colores nombre keyword">
+                    <span class="categoria-badge badge-basico">Colores</span>
+                    <div class="comando">Colores por Nombre</div>
+                    <p class="descripcion">
+                        CSS define 140+ nombres de colores predefinidos.
+                    </p>
+                    <div class="ejemplo">color: red;</div>
+                    <div class="ejemplo">background-color: lightblue;</div>
+                    <div class="ejemplo">border-color: darkgreen;</div>
+                </div>
+
+                <div class="termino" data-tags="colores hexadecimal hex">
+                    <span class="categoria-badge badge-basico">Colores</span>
+                    <div class="comando">Colores Hexadecimales</div>
+                    <p class="descripcion">
+                        Formato #RRGGBB donde RR=rojo, GG=verde, BB=azul (00-FF).
+                    </p>
+                    <div class="ejemplo">color: #ff0000;      /* Rojo */</div>
+                    <div class="ejemplo">color: #00ff00;      /* Verde */</div>
+                    <div class="ejemplo">color: #0000ff;      /* Azul */</div>
+                    <div class="ejemplo">color: #f00;         /* Forma corta de #ff0000 */</div>
+                </div>
+
+                <div class="termino" data-tags="colores rgb rgba transparencia alpha">
+                    <span class="categoria-badge badge-intermedio">Colores</span>
+                    <div class="comando">RGB y RGBA</div>
+                    <p class="descripcion">
+                        RGB(rojo, verde, azul) valores 0-255. RGBA agrega alpha (transparencia) 0.0-1.0.
+                    </p>
+                    <div class="ejemplo">color: rgb(255, 0, 0);           /* Rojo */</div>
+                    <div class="ejemplo">background: rgba(0, 0, 255, 0.5); /* Azul 50% transparente */</div>
+                </div>
+
+                <div class="termino" data-tags="colores hsl hsla tono saturacion luminosidad">
+                    <span class="categoria-badge badge-intermedio">Colores</span>
+                    <div class="comando">HSL y HSLA</div>
+                    <p class="descripcion">
+                        HSL(tono, saturación%, luminosidad%). Tono 0-360°, Saturación 0-100%, Luminosidad 0-100%.
+                    </p>
+                    <div class="ejemplo">color: hsl(0, 100%, 50%);          /* Rojo */</div>
+                    <div class="ejemplo">background: hsla(120, 50%, 50%, 0.3); /* Verde semi-transparente */</div>
+                </div>
+
+                <div class="termino" data-tags="gradiente linear radial degradado">
+                    <span class="categoria-badge badge-avanzado">Colores</span>
+                    <div class="comando">Gradientes</div>
+                    <p class="descripcion">
+                        Transiciones suaves entre dos o más colores.
+                    </p>
+                    <div class="ejemplo">/* Gradiente lineal */</div>
+                    <div class="ejemplo">background: linear-gradient(to right, red, blue);</div>
+                    <div class="ejemplo"></div>
+                    <div class="ejemplo">/* Gradiente radial */</div>
+                    <div class="ejemplo">background: radial-gradient(circle, yellow, orange);</div>
+                </div>
+            </div>
+
+            <!-- TEXTO Y FUENTE -->
+            <div id="texto" class="category-section">
+                <h2 class="category-title">Propiedades de Texto y Fuente</h2>
+
+                <div class="termino" data-tags="color texto">
+                    <span class="categoria-badge badge-basico">Texto</span>
+                    <div class="comando">color</div>
+                    <p class="descripcion">
+                        Define el color del texto.
+                    </p>
+                    <div class="ejemplo">color: #333;</div>
+                    <div class="ejemplo">color: rgb(50, 50, 50);</div>
+                </div>
+
+                <div class="termino" data-tags="font-family fuente tipografia">
+                    <span class="categoria-badge badge-basico">Texto</span>
+                    <div class="comando">font-family</div>
+                    <p class="descripcion">
+                        Define la familia de fuentes. Lista de prioridad con fallback.
+                    </p>
+                    <div class="ejemplo">font-family: 'Arial', 'Helvetica', sans-serif;</div>
+                    <div class="ejemplo">font-family: 'Georgia', serif;</div>
+                    <div class="ejemplo">font-family: 'Courier New', monospace;</div>
+                </div>
+
+                <div class="termino" data-tags="font-size tamaño fuente">
+                    <span class="categoria-badge badge-basico">Texto</span>
+                    <div class="comando">font-size</div>
+                    <p class="descripcion">
+                        Tamaño de la fuente.
+                    </p>
+                    <div class="ejemplo">font-size: 16px;</div>
+                    <div class="ejemplo">font-size: 1.2rem;</div>
+                    <div class="ejemplo">font-size: 120%;</div>
+                </div>
+
+                <div class="termino" data-tags="font-weight negrita peso">
+                    <span class="categoria-badge badge-basico">Texto</span>
+                    <div class="comando">font-weight</div>
+                    <p class="descripcion">
+                        Grosor de la fuente. Valores: normal (400), bold (700), 100-900.
+                    </p>
+                    <div class="ejemplo">font-weight: normal;   /* 400 */</div>
+                    <div class="ejemplo">font-weight: bold;     /* 700 */</div>
+                    <div class="ejemplo">font-weight: 300;      /* Light */</div>
+                </div>
+
+                <div class="termino" data-tags="text-align alineacion">
+                    <span class="categoria-badge badge-basico">Texto</span>
+                    <div class="comando">text-align</div>
+                    <p class="descripcion">
+                        Alineación horizontal del texto: left, right, center, justify.
+                    </p>
+                    <div class="ejemplo">text-align: left;</div>
+                    <div class="ejemplo">text-align: center;</div>
+                    <div class="ejemplo">text-align: justify;</div>
+                </div>
+
+                <div class="termino" data-tags="text-decoration subrayado linea">
+                    <span class="categoria-badge badge-basico">Texto</span>
+                    <div class="comando">text-decoration</div>
+                    <p class="descripcion">
+                        Decoración del texto: none, underline, overline, line-through.
+                    </p>
+                    <div class="ejemplo">text-decoration: underline;</div>
+                    <div class="ejemplo">text-decoration: line-through;</div>
+                    <div class="ejemplo">a { text-decoration: none; }  /* Quitar subrayado links */</div>
+                </div>
+
+                <div class="termino" data-tags="background fondo">
+                    <span class="categoria-badge badge-intermedio">Texto</span>
+                    <div class="comando">background (shorthand)</div>
+                    <p class="descripcion">
+                        Propiedad abreviada para todas las propiedades de fondo.
+                        Sintaxis: color image repeat position / size.
+                    </p>
+                    <div class="ejemplo">background: #f0f0f0;</div>
+                    <div class="ejemplo">background: url('image.jpg') no-repeat center/cover;</div>
+                    <div class="ejemplo">background: linear-gradient(45deg, red, blue);</div>
+                </div>
+            </div>
+
+            <!-- BOX MODEL -->
+            <div id="boxmodel" class="category-section">
+                <h2 class="category-title">Box Model</h2>
+
+                <div class="termino" data-tags="box model caja modelo">
+                    <span class="categoria-badge badge-basico">Box Model</span>
+                    <div class="comando">Modelo de Caja</div>
+                    <p class="descripcion">
+                        Todo elemento HTML es una caja rectangular con 4 capas: content, padding, border, margin.
+                    </p>
+                    <div class="ejemplo">/* De adentro hacia afuera: */</div>
+                    <div class="ejemplo">/* 1. Content (contenido) */</div>
+                    <div class="ejemplo">/* 2. Padding (relleno interno) */</div>
+                    <div class="ejemplo">/* 3. Border (borde) */</div>
+                    <div class="ejemplo">/* 4. Margin (margen externo) */</div>
+                </div>
+
+                <div class="termino" data-tags="width ancho">
+                    <span class="categoria-badge badge-basico">Box Model</span>
+                    <div class="comando">width</div>
+                    <p class="descripcion">
+                        Ancho del contenido del elemento.
+                    </p>
+                    <div class="ejemplo">width: 300px;</div>
+                    <div class="ejemplo">width: 50%;</div>
+                    <div class="ejemplo">width: 100vw;</div>
+                </div>
+
+                <div class="termino" data-tags="height altura">
+                    <span class="categoria-badge badge-basico">Box Model</span>
+                    <div class="comando">height</div>
+                    <p class="descripcion">
+                        Altura del contenido del elemento.
+                    </p>
+                    <div class="ejemplo">height: 200px;</div>
+                    <div class="ejemplo">height: 100vh;</div>
+                    <div class="ejemplo">height: auto;  /* Por defecto */</div>
+                </div>
+
+                <div class="termino" data-tags="padding relleno interno">
+                    <span class="categoria-badge badge-basico">Box Model</span>
+                    <div class="comando">padding</div>
+                    <p class="descripcion">
+                        Espacio interno entre el contenido y el borde.
+                    </p>
+                    <div class="ejemplo">padding: 20px;                    /* Todos los lados */</div>
+                    <div class="ejemplo">padding: 10px 20px;               /* Vertical Horizontal */</div>
+                    <div class="ejemplo">padding: 10px 15px 20px 25px;     /* Top Right Bottom Left */</div>
+                    <div class="ejemplo">padding-top: 10px;                /* Individual */</div>
+                </div>
+
+                <div class="termino" data-tags="margin margen externo">
+                    <span class="categoria-badge badge-basico">Box Model</span>
+                    <div class="comando">margin</div>
+                    <p class="descripcion">
+                        Espacio externo alrededor del elemento. Separa elementos entre sí.
+                    </p>
+                    <div class="ejemplo">margin: 20px;                     /* Todos los lados */</div>
+                    <div class="ejemplo">margin: 10px 20px;                /* Vertical Horizontal */</div>
+                    <div class="ejemplo">margin: 0 auto;                   /* Centrar horizontalmente */</div>
+                    <div class="ejemplo">margin-bottom: 15px;              /* Individual */</div>
+                </div>
+
+                <div class="termino" data-tags="border borde">
+                    <span class="categoria-badge badge-basico">Box Model</span>
+                    <div class="comando">border</div>
+                    <p class="descripcion">
+                        Línea alrededor del elemento. Sintaxis: ancho estilo color.
+                    </p>
+                    <div class="ejemplo">border: 1px solid black;</div>
+                    <div class="ejemplo">border: 2px dashed red;</div>
+                    <div class="ejemplo">border-bottom: 3px solid blue;    /* Individual */</div>
+                </div>
+
+                <div class="termino" data-tags="border-radius esquinas redondeadas">
+                    <span class="categoria-badge badge-basico">Box Model</span>
+                    <div class="comando">border-radius</div>
+                    <p class="descripcion">
+                        Redondea las esquinas del elemento.
+                    </p>
+                    <div class="ejemplo">border-radius: 5px;               /* Todas las esquinas */</div>
+                    <div class="ejemplo">border-radius: 50%;               /* Círculo perfecto */</div>
+                    <div class="ejemplo">border-radius: 10px 20px 30px 40px; /* Cada esquina */</div>
+                </div>
+
+                <div class="termino" data-tags="box-sizing tamaño caja">
+                    <span class="categoria-badge badge-intermedio">Box Model</span>
+                    <div class="comando">box-sizing</div>
+                    <p class="descripcion">
+                        Define cómo se calcula el tamaño total: content-box (default) o border-box.
+                    </p>
+                    <div class="ejemplo">box-sizing: content-box;  /* width = solo content */</div>
+                    <div class="ejemplo">box-sizing: border-box;   /* width = content + padding + border */</div>
+                    <div class="nota">
+                        <strong>💡 Best Practice:</strong> Usa border-box para cálculos más intuitivos.
+                    </div>
+                </div>
+            </div>
+
+            <!-- DISPLAY -->
+            <div id="display" class="category-section">
+                <h2 class="category-title">Display</h2>
+
+                <div class="termino" data-tags="display bloque">
+                    <span class="categoria-badge badge-basico">Display</span>
+                    <div class="comando">display: block</div>
+                    <p class="descripcion">
+                        Elemento de bloque. Ocupa todo el ancho disponible, empieza en nueva línea.
+                    </p>
+                    <div class="ejemplo">div, p, h1 { display: block; }  /* Por defecto */</div>
+                    <div class="nota">
+                        <strong>💡 Características:</strong> Acepta width/height, aplica margenes verticales.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="display linea">
+                    <span class="categoria-badge badge-basico">Display</span>
+                    <div class="comando">display: inline</div>
+                    <p class="descripcion">
+                        Elemento en línea. Ocupa solo el espacio necesario, no rompe línea.
+                    </p>
+                    <div class="ejemplo">span, a, strong { display: inline; }  /* Por defecto */</div>
+                    <div class="nota">
+                        <strong>⚠️ Limitación:</strong> NO acepta width/height, ni margenes verticales.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="display inline-block hibrido">
+                    <span class="categoria-badge badge-intermedio">Display</span>
+                    <div class="comando">display: inline-block</div>
+                    <p class="descripcion">
+                        Híbrido: en línea (no rompe) pero acepta width/height como bloque.
+                    </p>
+                    <div class="ejemplo">.boton {</div>
+                    <div class="ejemplo">    display: inline-block;</div>
+                    <div class="ejemplo">    width: 150px;</div>
+                    <div class="ejemplo">    padding: 10px;</div>
+                    <div class="ejemplo">}</div>
+                </div>
+
+                <div class="termino" data-tags="display none ocultar">
+                    <span class="categoria-badge badge-basico">Display</span>
+                    <div class="comando">display: none</div>
+                    <p class="descripcion">
+                        Oculta el elemento completamente. No ocupa espacio en el layout.
+                    </p>
+                    <div class="ejemplo">.oculto { display: none; }</div>
+                    <div class="nota">
+                        <strong>💡 Alternativa:</strong> visibility: hidden (oculta pero mantiene espacio).
+                    </div>
+                </div>
+            </div>
+
+            <!-- FLEXBOX -->
+            <div id="flexbox" class="category-section">
+                <h2 class="category-title">Flexbox</h2>
+
+                <div class="termino" data-tags="flexbox flex contenedor flexible">
+                    <span class="categoria-badge badge-intermedio">Flexbox</span>
+                    <div class="comando">display: flex</div>
+                    <p class="descripcion">
+                        Activa el sistema de layout flexible unidimensional (fila o columna).
+                    </p>
+                    <div class="ejemplo">.contenedor {</div>
+                    <div class="ejemplo">    display: flex;</div>
+                    <div class="ejemplo">}</div>
+                    <div class="nota">
+                        <strong>💡 Conceptos:</strong> Contenedor flex con items flex. Eje principal y eje cruzado.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="flex-direction direccion fila columna">
+                    <span class="categoria-badge badge-intermedio">Flexbox</span>
+                    <div class="comando">flex-direction</div>
+                    <p class="descripcion">
+                        Define la dirección del eje principal: row, column, row-reverse, column-reverse.
+                    </p>
+                    <div class="ejemplo">flex-direction: row;            /* Horizontal (default) */</div>
+                    <div class="ejemplo">flex-direction: column;         /* Vertical */</div>
+                    <div class="ejemplo">flex-direction: row-reverse;    /* Horizontal invertido */</div>
+                </div>
+
+                <div class="termino" data-tags="justify-content alinear horizontal principal">
+                    <span class="categoria-badge badge-intermedio">Flexbox</span>
+                    <div class="comando">justify-content</div>
+                    <p class="descripcion">
+                        Alinea items en el eje principal: flex-start, center, flex-end, space-between, space-around, space-evenly.
+                    </p>
+                    <div class="ejemplo">justify-content: center;        /* Centrar */</div>
+                    <div class="ejemplo">justify-content: space-between; /* Espaciado entre */</div>
+                    <div class="ejemplo">justify-content: space-evenly;  /* Espaciado uniforme */</div>
+                </div>
+
+                <div class="termino" data-tags="align-items alinear vertical cruzado">
+                    <span class="categoria-badge badge-intermedio">Flexbox</span>
+                    <div class="comando">align-items</div>
+                    <p class="descripcion">
+                        Alinea items en el eje cruzado: flex-start, center, flex-end, stretch, baseline.
+                    </p>
+                    <div class="ejemplo">align-items: center;            /* Centrar verticalmente */</div>
+                    <div class="ejemplo">align-items: stretch;           /* Estirar (default) */</div>
+                </div>
+
+                <div class="termino" data-tags="flex-wrap envolver multiples lineas">
+                    <span class="categoria-badge badge-intermedio">Flexbox</span>
+                    <div class="comando">flex-wrap</div>
+                    <p class="descripcion">
+                        Permite que los items pasen a la siguiente línea: nowrap, wrap, wrap-reverse.
+                    </p>
+                    <div class="ejemplo">flex-wrap: nowrap;              /* Una línea (default) */</div>
+                    <div class="ejemplo">flex-wrap: wrap;                /* Múltiples líneas */</div>
+                </div>
+
+                <div class="termino" data-tags="gap espacio separacion">
+                    <span class="categoria-badge badge-intermedio">Flexbox</span>
+                    <div class="comando">gap</div>
+                    <p class="descripcion">
+                        Espacio entre items flex. Reemplaza márgenes complejos.
+                    </p>
+                    <div class="ejemplo">gap: 20px;                      /* Espacio uniforme */</div>
+                    <div class="ejemplo">gap: 10px 20px;                 /* Fila Columna */</div>
+                </div>
+
+                <div class="termino" data-tags="flex-grow crecer expandir">
+                    <span class="categoria-badge badge-avanzado">Flexbox</span>
+                    <div class="comando">flex-grow (item)</div>
+                    <p class="descripcion">
+                        Factor de crecimiento. Cuánto espacio extra puede tomar el item.
+                    </p>
+                    <div class="ejemplo">flex-grow: 0;   /* No crece (default) */</div>
+                    <div class="ejemplo">flex-grow: 1;   /* Crece proporcionalmente */</div>
+                    <div class="ejemplo">flex-grow: 2;   /* Crece el doble que flex-grow: 1 */</div>
+                </div>
+
+                <div class="termino" data-tags="flex-shrink encoger reducir">
+                    <span class="categoria-badge badge-avanzado">Flexbox</span>
+                    <div class="comando">flex-shrink (item)</div>
+                    <p class="descripcion">
+                        Factor de encogimiento cuando falta espacio.
+                    </p>
+                    <div class="ejemplo">flex-shrink: 1;  /* Se encoge (default) */</div>
+                    <div class="ejemplo">flex-shrink: 0;  /* No se encoge */</div>
+                </div>
+
+                <div class="termino" data-tags="flex-basis tamaño base inicial">
+                    <span class="categoria-badge badge-avanzado">Flexbox</span>
+                    <div class="comando">flex-basis (item)</div>
+                    <p class="descripcion">
+                        Tamaño inicial del item antes de distribuir espacio.
+                    </p>
+                    <div class="ejemplo">flex-basis: auto;    /* Basado en contenido (default) */</div>
+                    <div class="ejemplo">flex-basis: 200px;   /* Tamaño fijo inicial */</div>
+                    <div class="ejemplo">flex-basis: 0;       /* Para distribución uniforme */</div>
+                </div>
+            </div>
+
+            <!-- GRID -->
+            <div id="grid" class="category-section">
+                <h2 class="category-title">Grid</h2>
+
+                <div class="termino" data-tags="grid cuadricula bidimensional">
+                    <span class="categoria-badge badge-intermedio">Grid</span>
+                    <div class="comando">display: grid</div>
+                    <p class="descripcion">
+                        Activa el sistema de layout en cuadrícula bidimensional (filas y columnas).
+                    </p>
+                    <div class="ejemplo">.contenedor {</div>
+                    <div class="ejemplo">    display: grid;</div>
+                    <div class="ejemplo">}</div>
+                    <div class="nota">
+                        <strong>💡 Ventaja:</strong> Control total sobre filas Y columnas simultáneamente.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="grid-template-columns columnas plantilla">
+                    <span class="categoria-badge badge-intermedio">Grid</span>
+                    <div class="comando">grid-template-columns</div>
+                    <p class="descripcion">
+                        Define el número y tamaño de columnas.
+                    </p>
+                    <div class="ejemplo">grid-template-columns: 200px 200px 200px;  /* 3 columnas fijas */</div>
+                    <div class="ejemplo">grid-template-columns: 1fr 1fr 1fr;        /* 3 columnas iguales */</div>
+                    <div class="ejemplo">grid-template-columns: repeat(3, 1fr);     /* Igual con repeat() */</div>
+                    <div class="ejemplo">grid-template-columns: 200px 1fr 2fr;      /* Mixto */</div>
+                </div>
+
+                <div class="termino" data-tags="grid-template-rows filas plantilla">
+                    <span class="categoria-badge badge-intermedio">Grid</span>
+                    <div class="comando">grid-template-rows</div>
+                    <p class="descripcion">
+                        Define el número y tamaño de filas.
+                    </p>
+                    <div class="ejemplo">grid-template-rows: 100px auto 100px;  /* Header, Content, Footer */</div>
+                    <div class="ejemplo">grid-template-rows: repeat(4, 1fr);    /* 4 filas iguales */</div>
+                </div>
+
+                <div class="termino" data-tags="fr fraccion unidad">
+                    <span class="categoria-badge badge-intermedio">Grid</span>
+                    <div class="comando">Unidad fr (fracción)</div>
+                    <p class="descripcion">
+                        Unidad flexible que representa una fracción del espacio disponible.
+                    </p>
+                    <div class="ejemplo">grid-template-columns: 1fr 2fr 1fr;  /* Columna central es el doble */</div>
+                    <div class="nota">
+                        <strong>💡 Tip:</strong> 1fr es similar a flex-grow: 1.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="grid-column columna item posicion">
+                    <span class="categoria-badge badge-intermedio">Grid</span>
+                    <div class="comando">grid-column (item)</div>
+                    <p class="descripcion">
+                        Define qué columnas ocupa el item. Sintaxis: inicio / fin.
+                    </p>
+                    <div class="ejemplo">grid-column: 1 / 3;      /* Columnas 1 y 2 */</div>
+                    <div class="ejemplo">grid-column: 1 / -1;     /* Todas las columnas */</div>
+                    <div class="ejemplo">grid-column: span 2;     /* Ocupa 2 columnas */</div>
+                </div>
+
+                <div class="termino" data-tags="grid-row fila item posicion">
+                    <span class="categoria-badge badge-intermedio">Grid</span>
+                    <div class="comando">grid-row (item)</div>
+                    <p class="descripcion">
+                        Define qué filas ocupa el item. Sintaxis: inicio / fin.
+                    </p>
+                    <div class="ejemplo">grid-row: 1 / 3;         /* Filas 1 y 2 */</div>
+                    <div class="ejemplo">grid-row: span 3;        /* Ocupa 3 filas */</div>
+                </div>
+
+                <div class="termino" data-tags="grid-template-areas areas plantilla layout">
+                    <span class="categoria-badge badge-avanzado">Grid</span>
+                    <div class="comando">grid-template-areas</div>
+                    <p class="descripcion">
+                        Define áreas nombradas del grid de forma visual.
+                    </p>
+                    <div class="ejemplo">grid-template-areas:</div>
+                    <div class="ejemplo">    "header header header"</div>
+                    <div class="ejemplo">    "sidebar main main"</div>
+                    <div class="ejemplo">    "footer footer footer";</div>
+                    <div class="ejemplo"></div>
+                    <div class="ejemplo">.header { grid-area: header; }</div>
+                </div>
+
+                <div class="termino" data-tags="repeat funcion repetir">
+                    <span class="categoria-badge badge-intermedio">Grid</span>
+                    <div class="comando">repeat()</div>
+                    <p class="descripcion">
+                        Función para repetir patrones de columnas/filas.
+                    </p>
+                    <div class="ejemplo">grid-template-columns: repeat(3, 1fr);       /* 3 columnas iguales */</div>
+                    <div class="ejemplo">grid-template-columns: repeat(4, 100px);     /* 4 columnas de 100px */</div>
+                    <div class="ejemplo">grid-template-columns: repeat(2, 1fr 2fr);   /* Patrón repetido */</div>
+                </div>
+            </div>
+
+            <!-- POSITION -->
+            <div id="position" class="category-section">
+                <h2 class="category-title">Position</h2>
+
+                <div class="termino" data-tags="position static estatico default">
+                    <span class="categoria-badge badge-basico">Position</span>
+                    <div class="comando">position: static</div>
+                    <p class="descripcion">
+                        Posicionamiento normal del flujo del documento (default).
+                    </p>
+                    <div class="ejemplo">position: static;  /* Valor por defecto */</div>
+                    <div class="nota">
+                        <strong>💡 Nota:</strong> top, right, bottom, left NO tienen efecto en static.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="position relative relativo">
+                    <span class="categoria-badge badge-intermedio">Position</span>
+                    <div class="comando">position: relative</div>
+                    <p class="descripcion">
+                        Posicionamiento relativo a su posición original. Mantiene su espacio en el flujo.
+                    </p>
+                    <div class="ejemplo">position: relative;</div>
+                    <div class="ejemplo">top: 10px;           /* 10px abajo de su posición original */</div>
+                    <div class="ejemplo">left: 20px;          /* 20px a la derecha */</div>
+                </div>
+
+                <div class="termino" data-tags="position absolute absoluto">
+                    <span class="categoria-badge badge-intermedio">Position</span>
+                    <div class="comando">position: absolute</div>
+                    <p class="descripcion">
+                        Posicionamiento relativo al ancestro posicionado más cercano. Sale del flujo normal.
+                    </p>
+                    <div class="ejemplo">position: absolute;</div>
+                    <div class="ejemplo">top: 0;</div>
+                    <div class="ejemplo">right: 0;            /* Esquina superior derecha del contenedor */</div>
+                    <div class="nota">
+                        <strong>💡 Tip:</strong> Requiere un ancestro con position: relative/absolute/fixed.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="position fixed fijo viewport">
+                    <span class="categoria-badge badge-intermedio">Position</span>
+                    <div class="comando">position: fixed</div>
+                    <p class="descripcion">
+                        Posicionamiento relativo al viewport. Permanece fijo al hacer scroll.
+                    </p>
+                    <div class="ejemplo">position: fixed;</div>
+                    <div class="ejemplo">top: 0;</div>
+                    <div class="ejemplo">width: 100%;         /* Header fijo típico */</div>
+                </div>
+
+                <div class="termino" data-tags="position sticky pegajoso hibrido">
+                    <span class="categoria-badge badge-avanzado">Position</span>
+                    <div class="comando">position: sticky</div>
+                    <p class="descripcion">
+                        Híbrido entre relative y fixed. Se comporta como relative hasta que alcanza un umbral, luego se fija.
+                    </p>
+                    <div class="ejemplo">position: sticky;</div>
+                    <div class="ejemplo">top: 0;              /* Se pega cuando llega al top */</div>
+                    <div class="nota">
+                        <strong>💡 Uso común:</strong> Headers que se pegan al hacer scroll.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="top right bottom left coordenadas">
+                    <span class="categoria-badge badge-intermedio">Position</span>
+                    <div class="comando">top, right, bottom, left</div>
+                    <p class="descripcion">
+                        Propiedades de posicionamiento. Funcionan con position: relative, absolute, fixed, sticky.
+                    </p>
+                    <div class="ejemplo">top: 10px;           /* Distancia desde arriba */</div>
+                    <div class="ejemplo">right: 20px;         /* Distancia desde derecha */</div>
+                    <div class="ejemplo">bottom: 0;           /* Pega al fondo */</div>
+                    <div class="ejemplo">left: 50%;           /* Centro (con transform) */</div>
+                </div>
+            </div>
+
+            <!-- PSEUDOCLASES -->
+            <div id="pseudoclases" class="category-section">
+                <h2 class="category-title">Pseudoclases</h2>
+
+                <div class="termino" data-tags="hover mouse sobre encima">
+                    <span class="categoria-badge badge-basico">Pseudoclase</span>
+                    <div class="comando">:hover</div>
+                    <p class="descripcion">
+                        Se aplica cuando el mouse está sobre el elemento.
+                    </p>
+                    <div class="ejemplo">a:hover {</div>
+                    <div class="ejemplo">    color: red;</div>
+                    <div class="ejemplo">    text-decoration: underline;</div>
+                    <div class="ejemplo">}</div>
+                </div>
+
+                <div class="termino" data-tags="active activo click">
+                    <span class="categoria-badge badge-basico">Pseudoclase</span>
+                    <div class="comando">:active</div>
+                    <p class="descripcion">
+                        Se aplica mientras el elemento está siendo clickeado.
+                    </p>
+                    <div class="ejemplo">button:active {</div>
+                    <div class="ejemplo">    transform: scale(0.95);</div>
+                    <div class="ejemplo">}</div>
+                </div>
+
+                <div class="termino" data-tags="focus foco input">
+                    <span class="categoria-badge badge-basico">Pseudoclase</span>
+                    <div class="comando">:focus</div>
+                    <p class="descripcion">
+                        Se aplica cuando el elemento tiene el foco (inputs, botones).
+                    </p>
+                    <div class="ejemplo">input:focus {</div>
+                    <div class="ejemplo">    border-color: blue;</div>
+                    <div class="ejemplo">    outline: 2px solid blue;</div>
+                    <div class="ejemplo">}</div>
+                </div>
+
+                <div class="termino" data-tags="visited visitado link">
+                    <span class="categoria-badge badge-basico">Pseudoclase</span>
+                    <div class="comando">:visited</div>
+                    <p class="descripcion">
+                        Se aplica a links que ya han sido visitados.
+                    </p>
+                    <div class="ejemplo">a:visited {</div>
+                    <div class="ejemplo">    color: purple;</div>
+                    <div class="ejemplo">}</div>
+                </div>
+
+                <div class="termino" data-tags="first-child primero hijo">
+                    <span class="categoria-badge badge-intermedio">Pseudoclase</span>
+                    <div class="comando">:first-child</div>
+                    <p class="descripcion">
+                        Selecciona el primer hijo de su padre.
+                    </p>
+                    <div class="ejemplo">li:first-child {</div>
+                    <div class="ejemplo">    font-weight: bold;</div>
+                    <div class="ejemplo">}</div>
+                </div>
+
+                <div class="termino" data-tags="last-child ultimo hijo">
+                    <span class="categoria-badge badge-intermedio">Pseudoclase</span>
+                    <div class="comando">:last-child</div>
+                    <p class="descripcion">
+                        Selecciona el último hijo de su padre.
+                    </p>
+                    <div class="ejemplo">li:last-child {</div>
+                    <div class="ejemplo">    border-bottom: none;</div>
+                    <div class="ejemplo">}</div>
+                </div>
+
+                <div class="termino" data-tags="nth-child enésimo hijo par impar">
+                    <span class="categoria-badge badge-avanzado">Pseudoclase</span>
+                    <div class="comando">:nth-child(n)</div>
+                    <p class="descripcion">
+                        Selecciona hijos según fórmula o palabra clave (odd, even).
+                    </p>
+                    <div class="ejemplo">tr:nth-child(odd) { background: #f0f0f0; }  /* Impares */</div>
+                    <div class="ejemplo">tr:nth-child(even) { background: white; }   /* Pares */</div>
+                    <div class="ejemplo">li:nth-child(3) { color: red; }             /* Tercer elemento */</div>
+                    <div class="ejemplo">li:nth-child(3n) { font-weight: bold; }     /* Cada 3 elementos */</div>
+                </div>
+
+                <div class="termino" data-tags="first-of-type primero tipo">
+                    <span class="categoria-badge badge-avanzado">Pseudoclase</span>
+                    <div class="comando">:first-of-type</div>
+                    <p class="descripcion">
+                        Selecciona el primer elemento de su tipo entre sus hermanos.
+                    </p>
+                    <div class="ejemplo">p:first-of-type {</div>
+                    <div class="ejemplo">    font-size: 1.2em;</div>
+                    <div class="ejemplo">}</div>
+                </div>
+
+                <div class="termino" data-tags="only-child unico hijo">
+                    <span class="categoria-badge badge-avanzado">Pseudoclase</span>
+                    <div class="comando">:only-child</div>
+                    <p class="descripcion">
+                        Selecciona elementos que son el único hijo de su padre.
+                    </p>
+                    <div class="ejemplo">li:only-child {</div>
+                    <div class="ejemplo">    list-style: none;</div>
+                    <div class="ejemplo">}</div>
+                </div>
+            </div>
+
+            <!-- PSEUDOELEMENTOS -->
+            <div id="pseudoelementos" class="category-section">
+                <h2 class="category-title">Pseudoelementos</h2>
+
+                <div class="termino" data-tags="before antes contenido generado">
+                    <span class="categoria-badge badge-intermedio">Pseudoelemento</span>
+                    <div class="comando">::before</div>
+                    <p class="descripcion">
+                        Inserta contenido generado ANTES del contenido del elemento.
+                    </p>
+                    <div class="ejemplo">.nota::before {</div>
+                    <div class="ejemplo">    content: "📌 ";</div>
+                    <div class="ejemplo">    font-weight: bold;</div>
+                    <div class="ejemplo">}</div>
+                    <div class="nota">
+                        <strong>💡 Importante:</strong> Requiere la propiedad content (aunque sea vacía).
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="after despues contenido generado">
+                    <span class="categoria-badge badge-intermedio">Pseudoelemento</span>
+                    <div class="comando">::after</div>
+                    <p class="descripcion">
+                        Inserta contenido generado DESPUÉS del contenido del elemento.
+                    </p>
+                    <div class="ejemplo">.link-externo::after {</div>
+                    <div class="ejemplo">    content: " ↗";</div>
+                    <div class="ejemplo">    color: blue;</div>
+                    <div class="ejemplo">}</div>
+                </div>
+
+                <div class="termino" data-tags="first-line primera linea">
+                    <span class="categoria-badge badge-intermedio">Pseudoelemento</span>
+                    <div class="comando">::first-line</div>
+                    <p class="descripcion">
+                        Aplica estilos solo a la primera línea de un elemento de bloque.
+                    </p>
+                    <div class="ejemplo">p::first-line {</div>
+                    <div class="ejemplo">    font-weight: bold;</div>
+                    <div class="ejemplo">    font-size: 1.2em;</div>
+                    <div class="ejemplo">}</div>
+                </div>
+
+                <div class="termino" data-tags="first-letter primera letra capital">
+                    <span class="categoria-badge badge-intermedio">Pseudoelemento</span>
+                    <div class="comando">::first-letter</div>
+                    <p class="descripcion">
+                        Aplica estilos solo a la primera letra de un elemento de bloque.
+                    </p>
+                    <div class="ejemplo">p::first-letter {</div>
+                    <div class="ejemplo">    font-size: 2em;</div>
+                    <div class="ejemplo">    color: red;</div>
+                    <div class="ejemplo">    float: left;</div>
+                    <div class="ejemplo">}</div>
+                </div>
+
+                <div class="termino" data-tags="selection seleccion texto resaltado">
+                    <span class="categoria-badge badge-intermedio">Pseudoelemento</span>
+                    <div class="comando">::selection</div>
+                    <p class="descripcion">
+                        Aplica estilos al texto seleccionado por el usuario.
+                    </p>
+                    <div class="ejemplo">::selection {</div>
+                    <div class="ejemplo">    background: yellow;</div>
+                    <div class="ejemplo">    color: black;</div>
+                    <div class="ejemplo">}</div>
+                </div>
+
+                <div class="termino" data-tags="placeholder marcador posicion input">
+                    <span class="categoria-badge badge-intermedio">Pseudoelemento</span>
+                    <div class="comando">::placeholder</div>
+                    <p class="descripcion">
+                        Aplica estilos al texto placeholder de inputs y textareas.
+                    </p>
+                    <div class="ejemplo">input::placeholder {</div>
+                    <div class="ejemplo">    color: #999;</div>
+                    <div class="ejemplo">    font-style: italic;</div>
+                    <div class="ejemplo">}</div>
+                </div>
+
+                <div class="termino" data-tags="marker marcador lista">
+                    <span class="categoria-badge badge-avanzado">Pseudoelemento</span>
+                    <div class="comando">::marker</div>
+                    <p class="descripcion">
+                        Aplica estilos al marcador de listas (bullets, números).
+                    </p>
+                    <div class="ejemplo">li::marker {</div>
+                    <div class="ejemplo">    color: red;</div>
+                    <div class="ejemplo">    font-size: 1.5em;</div>
+                    <div class="ejemplo">}</div>
+                </div>
+            </div>
+
+            <!-- ANIMACIONES -->
+            <div id="animaciones" class="category-section">
+                <h2 class="category-title">Transiciones y Transformaciones</h2>
+
+                <div class="termino" data-tags="transition transicion animacion suave">
+                    <span class="categoria-badge badge-intermedio">Animación</span>
+                    <div class="comando">transition</div>
+                    <p class="descripcion">
+                        Crea transiciones suaves entre estados. Sintaxis: propiedad duración función retraso.
+                    </p>
+                    <div class="ejemplo">transition: all 0.3s ease;                /* Todo, 0.3s, suave */</div>
+                    <div class="ejemplo">transition: background-color 0.5s linear;  /* Solo background */</div>
+                    <div class="ejemplo">transition: transform 0.2s ease-in-out 0.1s; /* Con delay */</div>
+                    <div class="nota">
+                        <strong>💡 Funciones:</strong> ease, linear, ease-in, ease-out, ease-in-out, cubic-bezier().
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="transform transformacion mover rotar escalar">
+                    <span class="categoria-badge badge-intermedio">Animación</span>
+                    <div class="comando">transform</div>
+                    <p class="descripcion">
+                        Aplica transformaciones 2D/3D: translate, rotate, scale, skew.
+                    </p>
+                    <div class="ejemplo">transform: translateX(100px);        /* Mover horizontal */</div>
+                    <div class="ejemplo">transform: translateY(50px);         /* Mover vertical */</div>
+                    <div class="ejemplo">transform: translate(100px, 50px);   /* Mover X e Y */</div>
+                </div>
+
+                <div class="termino" data-tags="rotate rotar girar">
+                    <span class="categoria-badge badge-intermedio">Animación</span>
+                    <div class="comando">transform: rotate()</div>
+                    <p class="descripcion">
+                        Rota el elemento en grados (deg) o radianes (rad).
+                    </p>
+                    <div class="ejemplo">transform: rotate(45deg);            /* Rotar 45 grados */</div>
+                    <div class="ejemplo">transform: rotate(-90deg);           /* Rotar -90 grados */</div>
+                </div>
+
+                <div class="termino" data-tags="scale escalar agrandar reducir">
+                    <span class="categoria-badge badge-intermedio">Animación</span>
+                    <div class="comando">transform: scale()</div>
+                    <p class="descripcion">
+                        Escala el elemento. 1 = tamaño original, >1 agranda, <1 reduce.
+                    </p>
+                    <div class="ejemplo">transform: scale(1.5);               /* 150% del tamaño */</div>
+                    <div class="ejemplo">transform: scale(0.8);               /* 80% del tamaño */</div>
+                    <div class="ejemplo">transform: scale(2, 1);              /* X doble, Y normal */</div>
+                </div>
+
+                <div class="termino" data-tags="skew sesgar inclinar">
+                    <span class="categoria-badge badge-avanzado">Animación</span>
+                    <div class="comando">transform: skew()</div>
+                    <p class="descripcion">
+                        Inclina el elemento en los ejes X e Y.
+                    </p>
+                    <div class="ejemplo">transform: skewX(20deg);             /* Inclinar horizontal */</div>
+                    <div class="ejemplo">transform: skewY(10deg);             /* Inclinar vertical */</div>
+                    <div class="ejemplo">transform: skew(20deg, 10deg);       /* Ambos ejes */</div>
+                </div>
+
+                <div class="termino" data-tags="transform multiple combinar">
+                    <span class="categoria-badge badge-avanzado">Animación</span>
+                    <div class="comando">Transformaciones Múltiples</div>
+                    <p class="descripcion">
+                        Combina varias transformaciones en una sola declaración.
+                    </p>
+                    <div class="ejemplo">transform: translate(50px, 100px) rotate(45deg) scale(1.2);</div>
+                    <div class="nota">
+                        <strong>⚠️ Orden importa:</strong> El orden de transformaciones afecta el resultado.
+                    </div>
+                </div>
+            </div>
+
+            <!-- FRAMEWORKS -->
+            <div id="frameworks" class="category-section">
+                <h2 class="category-title">Frameworks CSS</h2>
+
+                <div class="termino" data-tags="bootstrap framework componentes">
+                    <span class="categoria-badge badge-basico">Framework</span>
+                    <div class="comando">Bootstrap</div>
+                    <p class="descripcion">
+                        Framework CSS más popular. Componentes prefabricados, sistema de grid, utilidades.
+                    </p>
+                    <div class="ejemplo">&lt;!-- CDN --&gt;</div>
+                    <div class="ejemplo">&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"&gt;</div>
+                    <div class="ejemplo"></div>
+                    <div class="ejemplo">&lt;div class="container"&gt;</div>
+                    <div class="ejemplo">    &lt;div class="row"&gt;</div>
+                    <div class="ejemplo">        &lt;div class="col-md-6"&gt;Columna&lt;/div&gt;</div>
+                    <div class="ejemplo">    &lt;/div&gt;</div>
+                    <div class="ejemplo">&lt;/div&gt;</div>
+                    <div class="nota">
+                        <strong>✅ Ventajas:</strong> Rápido, componentes listos, gran comunidad.
+                        <strong>❌ Desventajas:</strong> Sitios similares, código extra, menos personalización.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="tailwind utility clases utilitarias">
+                    <span class="categoria-badge badge-intermedio">Framework</span>
+                    <div class="comando">Tailwind CSS</div>
+                    <p class="descripcion">
+                        Framework de clases utilitarias. Altamente personalizable, utility-first approach.
+                    </p>
+                    <div class="ejemplo">&lt;div class="flex items-center justify-between p-4 bg-blue-500 text-white rounded-lg"&gt;</div>
+                    <div class="ejemplo">    Contenido</div>
+                    <div class="ejemplo">&lt;/div&gt;</div>
+                    <div class="nota">
+                        <strong>✅ Ventajas:</strong> Muy personalizable, diseños únicos, purge CSS.
+                        <strong>❌ Desventajas:</strong> HTML verboso, curva de aprendizaje, nombres largos.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="border-collapse tabla">
+                    <span class="categoria-badge badge-basico">Tablas</span>
+                    <div class="comando">Estilos para Tablas</div>
+                    <p class="descripcion">
+                        Técnicas comunes para estilizar tablas HTML con CSS.
+                    </p>
+                    <div class="ejemplo">table {</div>
+                    <div class="ejemplo">    border-collapse: collapse;  /* Bordes unidos */</div>
+                    <div class="ejemplo">    width: 100%;</div>
+                    <div class="ejemplo">}</div>
+                    <div class="ejemplo">th, td {</div>
+                    <div class="ejemplo">    padding: 12px;</div>
+                    <div class="ejemplo">    border: 1px solid #ddd;</div>
+                    <div class="ejemplo">}</div>
+                    <div class="ejemplo">tr:nth-child(even) {</div>
+                    <div class="ejemplo">    background-color: #f2f2f2;  /* Filas alternas */</div>
+                    <div class="ejemplo">}</div>
+                    <div class="ejemplo">tr:hover {</div>
+                    <div class="ejemplo">    background-color: #ddd;     /* Hover en filas */</div>
+                    <div class="ejemplo">}</div>
+                </div>
+
+                <div class="termino" data-tags="formulario input estilos">
+                    <span class="categoria-badge badge-intermedio">Formularios</span>
+                    <div class="comando">Estilos para Formularios</div>
+                    <p class="descripcion">
+                        Técnicas para estilizar formularios y controles.
+                    </p>
+                    <div class="ejemplo">input, select, textarea {</div>
+                    <div class="ejemplo">    width: 100%;</div>
+                    <div class="ejemplo">    padding: 12px;</div>
+                    <div class="ejemplo">    border: 1px solid #ccc;</div>
+                    <div class="ejemplo">    border-radius: 4px;</div>
+                    <div class="ejemplo">    box-sizing: border-box;</div>
+                    <div class="ejemplo">}</div>
+                    <div class="ejemplo">input:focus {</div>
+                    <div class="ejemplo">    border-color: #4CAF50;</div>
+                    <div class="ejemplo">    outline: none;</div>
+                    <div class="ejemplo">}</div>
+                    <div class="ejemplo">button {</div>
+                    <div class="ejemplo">    background-color: #4CAF50;</div>
+                    <div class="ejemplo">    color: white;</div>
+                    <div class="ejemplo">    padding: 12px 20px;</div>
+                    <div class="ejemplo">    border: none;</div>
+                    <div class="ejemplo">    cursor: pointer;</div>
+                    <div class="ejemplo">}</div>
+                    <div class="ejemplo">button:hover {</div>
+                    <div class="ejemplo">    background-color: #45a049;</div>
+                    <div class="ejemplo">}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Component -->
+    <script src="/assets/js/sidebar-component.js"></script>
+
+    <!-- Search Script -->
+    <script>
+        const searchBox = document.getElementById('searchBox');
+        const terminos = document.querySelectorAll('.termino');
+
+        searchBox.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+
+            terminos.forEach(termino => {
+                const comando = termino.querySelector('.comando').textContent.toLowerCase();
+                const descripcion = termino.querySelector('.descripcion').textContent.toLowerCase();
+                const tags = termino.getAttribute('data-tags') || '';
+                const ejemplos = Array.from(termino.querySelectorAll('.ejemplo'))
+                    .map(ej => ej.textContent.toLowerCase())
+                    .join(' ');
+
+                const match = comando.includes(searchTerm) ||
+                             descripcion.includes(searchTerm) ||
+                             tags.includes(searchTerm) ||
+                             ejemplos.includes(searchTerm);
+
+                if (match) {
+                    termino.style.display = 'block';
+                    // Highlight effect
+                    termino.style.backgroundColor = searchTerm ? 'rgba(241, 196, 15, 0.1)' : '';
+                } else {
+                    termino.style.display = 'none';
+                }
+            });
+
+            // Show/hide category sections based on visible terms
+            document.querySelectorAll('.category-section').forEach(section => {
+                const visibleTerms = section.querySelectorAll('.termino[style*="display: block"]');
+                section.style.display = visibleTerms.length > 0 || searchTerm === '' ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

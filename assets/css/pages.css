@@ -33,17 +33,28 @@ header {
 }
 
 .back-link {
-    position: absolute;
+    position: fixed;
     top: 20px;
-    left: 20px;
-    color: #e74c3c;
+    left: 300px;
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: #ffffff;
     text-decoration: none;
-    font-size: 1.2em;
-    transition: transform 0.3s ease;
+    font-size: 0.95em;
+    font-weight: 600;
+    padding: 12px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .back-link:hover {
-    transform: translateX(-5px);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.5);
+    background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
 }
 
 h1 {
@@ -438,10 +449,11 @@ footer a:hover {
     }
 
     .back-link {
-        position: relative;
-        top: 0;
-        left: 0;
-        display: inline-block;
-        margin-bottom: 20px;
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        padding: 10px 16px;
+        font-size: 0.85em;
+        z-index: 9999;
     }
 }

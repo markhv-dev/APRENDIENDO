@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de JavaScript - Práctica Progresiva</title>
+
+    <!-- Sidebar Styles -->
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+
+    <!-- TOC (Table of Contents) Styles -->
+    <link rel="stylesheet" href="/assets/css/toc.css">
+
+    <!-- Ejercicios Styles -->
+    <link rel="stylesheet" href="/assets/css/ejercicios.css">
+
+    <style>
+        /* Estilos para el examen */
+        .examen-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+            color: white;
+        }
+
+        .pregunta-examen {
+            background: white;
+            color: #2c3e50;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .pregunta-examen h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .opciones-examen {
+            list-style: none;
+            padding: 0;
+        }
+
+        .opciones-examen li {
+            padding: 10px 15px;
+            margin: 8px 0;
+            background: #f8f9fa;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+
+        .opciones-examen li:hover {
+            background: #e9ecef;
+            border-left-color: #667eea;
+        }
+
+        .opciones-examen li.correcta {
+            background: #d4edda;
+            border-left-color: #28a745;
+        }
+
+        .opciones-examen li.incorrecta {
+            background: #f8d7da;
+            border-left-color: #dc3545;
+        }
+
+        .btn-verificar {
+            background: #28a745;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .btn-verificar:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .resultado-examen {
+            background: white;
+            color: #2c3e50;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .resultado-examen.show {
+            display: block;
+        }
+
+        .badge-examen {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .aprobado {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .reprobado {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="back-link">← Volver</a>
+        <h1>🎯 Ejercicios de JavaScript</h1>
+        <p class="subtitle">Práctica de Map, Objetos, Clases y DOM + Examen Final</p>
+    </header>
+
+    <!-- Level Navigation -->
+    <nav class="level-nav">
+        <div class="level-nav-links">
+            <a href="#poo">🏛️ POO (Ejercicios 1-8)</a>
+            <a href="#dom">🌐 DOM (Ejercicios 9-12)</a>
+            <a href="#examen">📝 Examen Final</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="intro">
+            <p><strong>Instrucciones:</strong> Completa cada ejercicio en orden. Crea archivos JavaScript separados (.js) para cada ejercicio y pruébalos en la consola del navegador o en Node.js. Los ejercicios están basados en el material del Ing. Marco Aedo López (UNSA 2025).</p>
+        </div>
+
+        <!-- EJERCICIOS DE POO -->
+        <div id="poo" class="section-separator">🏛️ PROGRAMACIÓN ORIENTADA A OBJETOS</div>
+
+        <div class="ejercicio">
+            <span class="nivel basico">Ejercicio 1</span>
+            <h2>Map: Arrays a Map</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Crear una función que convierta dos arrays (claves y valores) en un Map.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea una función <code>arraysTMap(claves, valores)</code></li>
+                    <li>Recibe dos arrays: uno de claves y otro de valores</li>
+                    <li>Retorna un Map con los pares clave-valor correspondientes</li>
+                    <li>Maneja el caso donde los arrays tienen diferente longitud</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Ejemplo:</strong>
+                <pre>const claves = ["nombre", "edad", "ciudad"];
+const valores = ["Ana", 25, "Lima"];
+const mapa = arraysAMap(claves, valores);
+// Map { 'nombre' => 'Ana', 'edad' => 25, 'ciudad' => 'Lima' }</pre>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel basico">Ejercicio 2</span>
+            <h2>Map: Contador de Frecuencias</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Usar un Map para contar cuántas veces aparece cada número en un array.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea una función <code>contarFrecuencias(numeros)</code></li>
+                    <li>Recibe un array de números (pueden estar repetidos)</li>
+                    <li>Retorna un Map donde cada clave es un número y su valor es la cantidad de veces que aparece</li>
+                    <li>Usa <code>map.set()</code> y <code>map.has()</code></li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Ejemplo:</strong>
+                <pre>contarFrecuencias([1, 2, 2, 3, 3, 3]);
+// Map { 1 => 1, 2 => 2, 3 => 3 }</pre>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel intermedio">Ejercicio 3</span>
+            <h2>Map: Invertir Claves y Valores</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Crear una función que reciba un Map y devuelva otro Map con claves y valores intercambiados.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea una función <code>invertirMap(mapa)</code></li>
+                    <li>Itera sobre el Map original usando <code>for...of</code> con desestructuración</li>
+                    <li>Crea un nuevo Map donde los valores originales sean las claves y viceversa</li>
+                    <li>Retorna el nuevo Map invertido</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Ejemplo:</strong>
+                <pre>const original = new Map([["a", 1], ["b", 2]]);
+invertirMap(original);
+// Map { 1 => 'a', 2 => 'b' }</pre>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel basico">Ejercicio 4</span>
+            <h2>Objetos: Modificar Propiedad</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Crear una función que modifique una propiedad específica de un objeto.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea una función <code>cambiarCiudad(persona, nuevaCiudad)</code></li>
+                    <li>Recibe un objeto <code>persona</code> con propiedades: nombre, edad, ciudadResidencia</li>
+                    <li>Cambia el valor de <code>ciudadResidencia</code> al nuevo valor proporcionado</li>
+                    <li>Retorna el objeto modificado</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Ejemplo:</strong>
+                <pre>const persona = { nombre: "Juan", edad: 30, ciudadResidencia: "Lima" };
+cambiarCiudad(persona, "Arequipa");
+// { nombre: "Juan", edad: 30, ciudadResidencia: "Arequipa" }</pre>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel intermedio">Ejercicio 5</span>
+            <h2>Objetos: Contar Propiedades</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Recorrer un objeto y contar cuántas propiedades tiene.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea una función <code>analizarObjeto(obj)</code></li>
+                    <li>Usa <code>for...in</code> para recorrer todas las propiedades del objeto</li>
+                    <li>Muestra en consola cada propiedad y su valor</li>
+                    <li>Retorna el número total de propiedades usando <code>Object.keys()</code></li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Ejemplo:</strong>
+                <pre>const usuario = { nombre: "Ana", edad: 25, email: "ana@mail.com" };
+analizarObjeto(usuario);
+// Console: nombre: Ana, edad: 25, email: ana@mail.com
+// Return: 3</pre>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel basico">Ejercicio 6</span>
+            <h2>Clases: Equipo de Fútbol</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Crear una clase para representar un equipo de fútbol.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea la clase <code>EquipoFutbol</code> con propiedades: nombre, ciudad</li>
+                    <li>Implementa el constructor para inicializar estas propiedades</li>
+                    <li>Crea un método <code>saludar()</code> que retorne "Hola, somos [nombre] de [ciudad]"</li>
+                    <li>Crea al menos 2 instancias y prueba el método</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Ejemplo:</strong>
+                <pre>const equipo = new EquipoFutbol("FBC Melgar", "Arequipa");
+equipo.saludar();  // "Hola, somos FBC Melgar de Arequipa"</pre>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel intermedio">Ejercicio 7</span>
+            <h2>Clases: Cuenta Bancaria</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Crear una clase CuentaBancaria con métodos para depositar y retirar dinero.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea la clase <code>CuentaBancaria</code> con propiedades: titular, saldo (privada con #)</li>
+                    <li>Implementa el constructor que inicialice el titular y el saldo en 0</li>
+                    <li>Crea método <code>depositar(monto)</code> que agregue dinero al saldo</li>
+                    <li>Crea método <code>retirar(monto)</code> que verifique que hay saldo suficiente antes de retirar</li>
+                    <li>Crea método <code>verSaldo()</code> que retorne el saldo actual</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Ejemplo:</strong>
+                <pre>const cuenta = new CuentaBancaria("Juan");
+cuenta.depositar(1000);
+cuenta.retirar(300);
+cuenta.verSaldo();  // 700</pre>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel avanzado">Ejercicio 8</span>
+            <h2>Clases: Herencia y Polimorfismo</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Implementar herencia con una clase base y dos clases hijas.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea la clase base <code>Persona</code> con: nombre, edad, documento</li>
+                    <li>Crea la clase hija <code>Estudiante</code> que extienda Persona y agregue: carrera, universidad</li>
+                    <li>Crea la clase hija <code>Profesor</code> que extienda Persona y agregue: especialidad, añosExperiencia</li>
+                    <li>Ambas clases hijas deben tener al menos 2 métodos propios diferentes</li>
+                    <li>Implementa <code>toString()</code> en cada clase para mostrar su información</li>
+                    <li>Crea un array con un objeto de cada clase y usa un loop para mostrar su información usando polimorfismo</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Tip:</strong> Usa <code>super()</code> en el constructor de las clases hijas para llamar al constructor de la clase padre. Implementa métodos como <code>estudiar()</code> en Estudiante y <code>enseñar()</code> en Profesor.
+            </div>
+        </div>
+
+        <!-- EJERCICIOS DE DOM -->
+        <div id="dom" class="section-separator">🌐 MANIPULACIÓN DEL DOM</div>
+
+        <div class="ejercicio">
+            <span class="nivel basico">Ejercicio 9</span>
+            <h2>DOM: Seleccionar Elementos</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Practicar los diferentes métodos para seleccionar elementos del DOM.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea un documento HTML con 3 párrafos: uno con id="parrafo1", los otros dos con class="parrafoEspecial"</li>
+                    <li>En JavaScript, usa <code>getElementById</code> para seleccionar el primer párrafo</li>
+                    <li>Usa <code>getElementsByClassName</code> para seleccionar todos los párrafos con clase "parrafoEspecial"</li>
+                    <li>Usa <code>getElementsByTagName</code> para seleccionar todos los párrafos</li>
+                    <li>Usa <code>querySelector</code> y <code>querySelectorAll</code> con selectores CSS</li>
+                    <li>Muestra cada selección en la consola</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Tip:</strong> Recuerda que <code>getElementsByClassName</code> retorna una HTMLCollection (viva), mientras que <code>querySelectorAll</code> retorna una NodeList (estática).
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel intermedio">Ejercicio 10</span>
+            <h2>DOM: Modificar Contenido y Estilos</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Cambiar el contenido y apariencia de elementos usando JavaScript.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Selecciona un elemento <code>&lt;h1&gt;</code> y cambia su texto a "DOM modificado con JavaScript"</li>
+                    <li>Cambia su color a azul y tamaño de fuente a 36px usando <code>style</code></li>
+                    <li>Selecciona un párrafo y cambia su <code>innerHTML</code> para incluir texto con etiquetas HTML</li>
+                    <li>Cambia el valor de un <code>&lt;input&gt;</code></li>
+                    <li>Modifica el atributo <code>href</code> de un enlace <code>&lt;a&gt;</code></li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Ejemplo de modificación:</strong>
+                <pre>document.getElementById("titulo").textContent = "Nuevo título";
+document.getElementById("titulo").style.color = "blue";</pre>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel intermedio">Ejercicio 11</span>
+            <h2>DOM: Crear y Agregar Elementos</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Crear elementos HTML dinámicamente y agregarlos al documento.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Usa JavaScript para crear una lista <code>&lt;ul&gt;</code> con 3 elementos <code>&lt;li&gt;</code></li>
+                    <li>Usa <code>document.createElement()</code> para crear cada elemento</li>
+                    <li>Asigna texto a cada <code>&lt;li&gt;</code> usando <code>textContent</code></li>
+                    <li>Usa <code>appendChild()</code> para agregar los <code>&lt;li&gt;</code> al <code>&lt;ul&gt;</code></li>
+                    <li>Usa <code>appendChild()</code> para agregar el <code>&lt;ul&gt;</code> al <code>&lt;body&gt;</code></li>
+                    <li>Luego, agrega un cuarto elemento dinámicamente</li>
+                    <li>Finalmente, elimina el segundo elemento usando <code>removeChild()</code></li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Ejemplo:</strong>
+                <pre>const lista = document.createElement("ul");
+const item = document.createElement("li");
+item.textContent = "Primer item";
+lista.appendChild(item);
+document.body.appendChild(lista);</pre>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel avanzado">Ejercicio 12</span>
+            <h2>DOM: Navegación por el Árbol del DOM</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Entender cómo navegar por la estructura del DOM usando propiedades de nodos.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea un HTML con un <code>&lt;div id="contenedor"&gt;</code> que tenga varios elementos hijos</li>
+                    <li>Selecciona el contenedor con JavaScript</li>
+                    <li>Usa <code>.parentNode</code> para acceder a su elemento padre</li>
+                    <li>Usa <code>.firstChild</code> para acceder a su primer hijo</li>
+                    <li>Usa <code>.lastChild</code> para acceder a su último hijo</li>
+                    <li>Usa <code>.childNodes</code> para obtener todos sus nodos hijos</li>
+                    <li>Usa <code>.children</code> para obtener solo los elementos hijos (sin nodos de texto)</li>
+                    <li>Muestra cada resultado en la consola con una etiqueta descriptiva</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Diferencia importante:</strong> <code>childNodes</code> incluye TODOS los nodos (elementos, texto, comentarios), mientras que <code>children</code> solo incluye elementos HTML.
+            </div>
+        </div>
+
+        <!-- EXAMEN FINAL -->
+        <div id="examen" class="section-separator">📝 EXAMEN FINAL - JAVASCRIPT</div>
+
+        <div class="examen-container">
+            <h2 style="text-align: center; margin-bottom: 30px; font-size: 32px;">🎓 Examen Final de JavaScript</h2>
+            <p style="text-align: center; font-size: 18px; margin-bottom: 40px;">
+                20 preguntas de opción múltiple que cubren todo el contenido del curso<br>
+                <strong>Nota mínima para aprobar: 13/20 (65%)</strong>
+            </p>
+
+            <div id="preguntas-container">
+                <!-- Pregunta 1 -->
+                <div class="pregunta-examen" data-respuesta="b">
+                    <h4>1. ¿Cuál es la diferencia principal entre let y const?</h4>
+                    <ul class="opciones-examen">
+                        <li data-opcion="a">a) let es global y const es local</li>
+                        <li data-opcion="b">b) let es reasignable y const no</li>
+                        <li data-opcion="c">c) const es más rápido que let</li>
+                        <li data-opcion="d">d) No hay diferencia</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 2 -->
+                <div class="pregunta-examen" data-respuesta="c">
+                    <h4>2. ¿Qué operador compara valor Y tipo en JavaScript?</h4>
+                    <ul class="opciones-examen">
+                        <li data-opcion="a">a) ==</li>
+                        <li data-opcion="b">b) =</li>
+                        <li data-opcion="c">c) ===</li>
+                        <li data-opcion="d">d) !=</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 3 -->
+                <div class="pregunta-examen" data-respuesta="a">
+                    <h4>3. ¿Cuál es el resultado de: `Hola ${5 + 3}`?</h4>
+                    <ul class="opciones-examen">
+                        <li data-opcion="a">a) "Hola 8"</li>
+                        <li data-opcion="b">b) "Hola ${5 + 3}"</li>
+                        <li data-opcion="c">c) "Hola 53"</li>
+                        <li data-opcion="d">d) Error de sintaxis</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 4 -->
+                <div class="pregunta-examen" data-respuesta="d">
+                    <h4>4. ¿Qué tipo de función tiene hoisting?</h4>
+                    <ul class="opciones-examen">
+                        <li data-opcion="a">a) Arrow function</li>
+                        <li data-opcion="b">b) Función expresada</li>
+                        <li data-opcion="c">c) Todas las funciones</li>
+                        <li data-opcion="d">d) Función declarada</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 5 -->
+                <div class="pregunta-examen" data-respuesta="b">
+                    <h4>5. ¿Qué método agrega un elemento al FINAL de un array?</h4>
+                    <ul class="opciones-examen">
+                        <li data-opcion="a">a) unshift()</li>
+                        <li data-opcion="b">b) push()</li>
+                        <li data-opcion="c">c) shift()</li>
+                        <li data-opcion="d">d) pop()</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 6 -->
+                <div class="pregunta-examen" data-respuesta="c">
+                    <h4>6. Un Set en JavaScript:</h4>
+                    <ul class="opciones-examen">
+                        <li data-opcion="a">a) Permite valores duplicados</li>
+                        <li data-opcion="b">b) Solo acepta números</li>
+                        <li data-opcion="c">c) Solo almacena valores únicos</li>
+                        <li data-opcion="d">d) Es lo mismo que un array</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 7 -->
+                <div class="pregunta-examen" data-respuesta="a">
+                    <h4>7. ¿Qué estructura de datos usa pares clave-valor y las claves pueden ser de cualquier tipo?</h4>
+                    <ul class="opciones-examen">
+                        <li data-opcion="a">a) Map</li>
+                        <li data-opcion="b">b) Set</li>
+                        <li data-opcion="c">c) Array</li>
+                        <li data-opcion="d">d) Object</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 8 -->
+                <div class="pregunta-examen" data-respuesta="b">
+                    <h4>8. ¿Cómo se define una propiedad privada en una clase ES6?</h4>
+                    <ul class="opciones-examen">
+                        <li data-opcion="a">a) private nombre</li>
+                        <li data-opcion="b">b) #nombre</li>
+                        <li data-opcion="c">c) _nombre</li>
+                        <li data-opcion="d">d) $nombre</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 9 -->
+                <div class="pregunta-examen" data-respuesta="d">
+                    <h4>9. ¿Qué palabra clave se usa para heredar de una clase padre?</h4>
+                    <ul class="opciones-examen">
+                        <li data-opcion="a">a) inherits</li>
+                        <li data-opcion="b">b) inherit</li>
+                        <li data-opcion="c">c) super</li>
+                        <li data-opcion="d">d) extends</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 10 -->
+                <div class="pregunta-examen" data-respuesta="c">
+                    <h4>10. ¿Cuál es el resultado de Math.floor(4.9)?</h4>
+                    <ul class="opciones-examen">
+                        <li data-opcion="a">a) 5</li>
+                        <li data-opcion="b">b) 4.9</li>
+                        <li data-opcion="c">c) 4</li>
+                        <li data-opcion="d">d) Error</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 11 -->
+                <div class="pregunta-examen" data-respuesta="a">
+                    <h4>11. ¿Qué es un closure en JavaScript?</h4>
+                    <ul class="opciones-examen">
+                        <li data-opcion="a">a) Una función que recuerda variables de su scope externo</li>
+                        <li data-opcion="b">b) Una forma de cerrar un programa</li>
+                        <li data-opcion="c">c) Un tipo de loop</li>
+                        <li data-opcion="d">d) Una clase especial</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 12 -->
+                <div class="pregunta-examen" data-respuesta="b">
+                    <h4>12. ¿Qué significa DOM?</h4>
+                    <ul class="opciones-examen">
+                        <li data-opcion="a">a) Data Object Model</li>
+                        <li data-opcion="b">b) Document Object Model</li>
+                        <li data-opcion="c">c) Dynamic Object Model</li>
+                        <li data-opcion="d">d) Document Oriented Method</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 13 -->
+                <div class="pregunta-examen" data-respuesta="c">
+                    <h4>13. ¿Qué método se usa para seleccionar UN elemento por su ID?</h4>
+                    <ul class="opciones-examen">
+                        <li data-opcion="a">a) querySelector()</li>
+                        <li data-opcion="b">b) getElement()</li>
+                        <li data-opcion="c">c) getElementById()</li>
+                        <li data-opcion="d">d) selectById()</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 14 -->
+                <div class="pregunta-examen" data-respuesta="d">
+                    <h4>14. ¿Cuál es la diferencia entre textContent e innerHTML?</h4>
+                    <ul class="opciones-examen">
+                        <li data-opcion="a">a) No hay diferencia</li>
+                        <li data-opcion="b">b) innerHTML es más rápido</li>
+                        <li data-opcion="c">c) textContent es obsoleto</li>
+                        <li data-opcion="d">d) innerHTML interpreta etiquetas HTML, textContent no</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 15 -->
+                <div class="pregunta-examen" data-respuesta="a">
+                    <h4>15. ¿Qué método se usa para crear un nuevo elemento HTML?</h4>
+                    <ul class="opciones-examen">
+                        <li data-opcion="a">a) document.createElement()</li>
+                        <li data-opcion="b">b) document.createNode()</li>
+                        <li data-opcion="c">c) document.newElement()</li>
+                        <li data-opcion="d">d) document.makeElement()</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 16 -->
+                <div class="pregunta-examen" data-respuesta="b">
+                    <h4>16. ¿Cuál de estos NO es un loop en JavaScript?</h4>
+                    <ul class="opciones-examen">
+                        <li data-opcion="a">a) for...of</li>
+                        <li data-opcion="b">b) for...each</li>
+                        <li data-opcion="c">c) while</li>
+                        <li data-opcion="d">d) do...while</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 17 -->
+                <div class="pregunta-examen" data-respuesta="c">
+                    <h4>17. ¿Qué hace el operador spread (...) con un array?</h4>
+                    <ul class="opciones-examen">
+                        <li data-opcion="a">a) Lo elimina</li>
+                        <li data-opcion="b">b) Lo ordena</li>
+                        <li data-opcion="c">c) Expande sus elementos</li>
+                        <li data-opcion="d">d) Lo convierte en string</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 18 -->
+                <div class="pregunta-examen" data-respuesta="d">
+                    <h4>18. ¿Cuál es la forma correcta de definir una arrow function que retorna un valor sin usar llaves?</h4>
+                    <ul class="opciones-examen">
+                        <li data-opcion="a">a) const suma = (a, b) { return a + b }</li>
+                        <li data-opcion="b">b) const suma = (a, b) -> a + b</li>
+                        <li data-opcion="c">c) const suma = (a, b) return => a + b</li>
+                        <li data-opcion="d">d) const suma = (a, b) => a + b</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 19 -->
+                <div class="pregunta-examen" data-respuesta="a">
+                    <h4>19. ¿Qué retorna Object.keys(objeto)?</h4>
+                    <ul class="opciones-examen">
+                        <li data-opcion="a">a) Un array con las claves del objeto</li>
+                        <li data-opcion="b">b) Un array con los valores del objeto</li>
+                        <li data-opcion="c">c) Un Map con las claves</li>
+                        <li data-opcion="d">d) Un string con las claves</li>
+                    </ul>
+                </div>
+
+                <!-- Pregunta 20 -->
+                <div class="pregunta-examen" data-respuesta="b">
+                    <h4>20. ¿Cuál es la diferencia entre == y ===?</h4>
+                    <ul class="opciones-examen">
+                        <li data-opcion="a">a) No hay diferencia</li>
+                        <li data-opcion="b">b) === compara valor y tipo, == solo valor</li>
+                        <li data-opcion="c">c) == es más estricto que ===</li>
+                        <li data-opcion="d">d) === solo funciona con números</li>
+                    </ul>
+                </div>
+            </div>
+
+            <button class="btn-verificar" onclick="verificarExamen()">🎯 Verificar Respuestas</button>
+
+            <div id="resultado" class="resultado-examen"></div>
+        </div>
+
+        <div class="intro" style="margin-top: 40px;">
+            <h3>🎉 ¡Felicidades por completar los ejercicios!</h3>
+            <p>Has practicado conceptos fundamentales de JavaScript incluyendo Map, Set, Objetos, Clases, Herencia, Polimorfismo y Manipulación del DOM. Estos son los pilares del desarrollo web moderno.</p>
+            <p><strong>Próximos pasos:</strong></p>
+            <ul>
+                <li>Repasa los conceptos del <a href="Glosario.html">Glosario</a></li>
+                <li>Practica creando proyectos personales</li>
+                <li>Experimenta combinando DOM con clases para crear componentes reutilizables</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Script del Examen -->
+    <script>
+        function verificarExamen() {
+            const preguntas = document.querySelectorAll('.pregunta-examen');
+            let correctas = 0;
+            let total = preguntas.length;
+
+            preguntas.forEach(pregunta => {
+                const respuestaCorrecta = pregunta.getAttribute('data-respuesta');
+                const opciones = pregunta.querySelectorAll('.opciones-examen li');
+
+                opciones.forEach(opcion => {
+                    const opcionLetra = opcion.getAttribute('data-opcion');
+
+                    // Remover clases anteriores
+                    opcion.classList.remove('correcta', 'incorrecta');
+
+                    // Marcar la respuesta correcta
+                    if (opcionLetra === respuestaCorrecta) {
+                        opcion.classList.add('correcta');
+                    }
+                });
+
+                // Verificar si el usuario seleccionó alguna respuesta
+                const seleccionada = Array.from(opciones).find(opt =>
+                    opt.style.backgroundColor === 'rgb(220, 237, 200)' ||
+                    opt.style.backgroundColor === '#dcedc8'
+                );
+
+                if (seleccionada) {
+                    const opcionSeleccionada = seleccionada.getAttribute('data-opcion');
+                    if (opcionSeleccionada === respuestaCorrecta) {
+                        correctas++;
+                    } else {
+                        seleccionada.classList.add('incorrecta');
+                    }
+                }
+            });
+
+            // Mostrar resultado
+            const porcentaje = Math.round((correctas / total) * 100);
+            const resultado = document.getElementById('resultado');
+            const aprobado = correctas >= 13; // 65% para aprobar
+
+            resultado.innerHTML = `
+                <h3>Resultado del Examen</h3>
+                <p style="font-size: 48px; margin: 20px 0;">${correctas}/${total}</p>
+                <p style="font-size: 20px;">Porcentaje: ${porcentaje}%</p>
+                <span class="badge-examen ${aprobado ? 'aprobado' : 'reprobado'}">
+                    ${aprobado ? '✅ APROBADO' : '❌ REPROBADO'}
+                </span>
+                <p style="margin-top: 20px; font-size: 16px;">
+                    ${aprobado ?
+                        '¡Excelente trabajo! Has dominado los conceptos de JavaScript.' :
+                        'Sigue estudiando. Repasa el glosario y vuelve a intentar.'}
+                </p>
+            `;
+            resultado.classList.add('show');
+
+            // Scroll al resultado
+            resultado.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // Permitir seleccionar opciones
+        document.addEventListener('DOMContentLoaded', function() {
+            const opciones = document.querySelectorAll('.opciones-examen li');
+
+            opciones.forEach(opcion => {
+                opcion.addEventListener('click', function() {
+                    // Deseleccionar otras opciones en la misma pregunta
+                    const pregunta = this.closest('.pregunta-examen');
+                    const todasOpciones = pregunta.querySelectorAll('.opciones-examen li');
+
+                    todasOpciones.forEach(opt => {
+                        opt.style.backgroundColor = '';
+                        opt.style.fontWeight = '';
+                    });
+
+                    // Seleccionar esta opción
+                    this.style.backgroundColor = '#dcedc8';
+                    this.style.fontWeight = 'bold';
+                });
+            });
+        });
+    </script>
+
+    <!-- Sidebar Component -->
+    <script src="/assets/js/sidebar-component.js"></script>
+
+    <!-- TOC Component -->
+    <script src="/assets/js/toc-component.js"></script>
+</body>
+</html>

@@ -16,400 +16,215 @@
         <p class="subtitle">Párrafos, encabezados y elementos de formato</p>
     </header>
 
-    <div class="container">
-        <main class="content">
-            <section id="parrafos" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> Párrafos</h2>
-                <p>El elemento <code>&lt;p&gt;</code> se usa para representar un párrafo o bloque de texto.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;p&gt;Este es un párrafo en HTML&lt;/p&gt;</code></pre>
-                </div>
-
-                <div class="example-box">
-                    <h4>Ejemplo visual:</h4>
-                    <div class="demo-box">
-                        <p>Este es un párrafo en HTML</p>
-                    </div>
-                </div>
-
-                <div class="info-box">
-                    <h3>Características:</h3>
-                    <ul>
-                        <li>Es un elemento de bloque</li>
-                        <li>El navegador añade automáticamente espacio antes y después</li>
-                        <li>Los espacios múltiples y saltos de línea en el código se colapsan a uno solo</li>
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(231, 76, 60, 0.1) 0%, rgba(231, 76, 60, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #e74c3c; margin-bottom: 40px;">
+                <h2 style="color: #e74c3c; margin-bottom: 15px; font-size: 1.8em;">
+                    <span class="unsa-tag" style="background: #e74c3c; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.5em; margin-right: 10px;">[U]</span>
+                    📝 Texto y Formato en HTML
+                </h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    Este módulo cubre los elementos HTML para texto y formato: párrafos, encabezados, y elementos que dan estilo y énfasis al contenido.
+                    Aprenderás a estructurar y dar formato al texto de manera semántica y accesible.
+                </p>
+                <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 8px; border: 1px solid rgba(231, 76, 60, 0.3);">
+                    <h3 style="color: #e74c3c; margin-bottom: 12px; font-size: 1.1em;">📋 Contenido del módulo:</h3>
+                    <ul style="list-style: none; padding-left: 0; line-height: 2;">
+                        <li style="color: #b0b0b0;">✓ Párrafos y encabezados jerárquicos</li>
+                        <li style="color: #b0b0b0;">✓ Elementos de formato semántico</li>
+                        <li style="color: #b0b0b0;">✓ Saltos de línea y separadores</li>
+                        <li style="color: #b0b0b0;">✓ Énfasis y destacado de texto</li>
+                        <li style="color: #b0b0b0;">✓ Elementos especializados (código, abreviaturas)</li>
                     </ul>
                 </div>
             </section>
 
-            <section id="encabezados" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> Encabezados</h2>
-                <p>Los encabezados representan títulos o subtítulos jerárquicos del contenido. HTML tiene 6 niveles de encabezados, de <code>&lt;h1&gt;</code> (más importante) a <code>&lt;h6&gt;</code> (menos importante).</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;h1&gt;Título Principal&lt;/h1&gt;
-&lt;h2&gt;Subtítulo&lt;/h2&gt;
-&lt;h3&gt;Sección&lt;/h3&gt;
-&lt;h4&gt;Subsección&lt;/h4&gt;
-&lt;h5&gt;Nivel 5&lt;/h5&gt;
-&lt;h6&gt;Nivel 6&lt;/h6&gt;</code></pre>
-                </div>
-
-                <div class="example-box">
-                    <h4>Ejemplo visual:</h4>
-                    <div class="demo-box">
-                        <h1 style="font-size: 2em; margin: 10px 0;">Título Principal (h1)</h1>
-                        <h2 style="font-size: 1.5em; margin: 10px 0;">Subtítulo (h2)</h2>
-                        <h3 style="font-size: 1.17em; margin: 10px 0;">Sección (h3)</h3>
-                        <h4 style="font-size: 1em; margin: 10px 0;">Subsección (h4)</h4>
-                        <h5 style="font-size: 0.83em; margin: 10px 0;">Nivel 5 (h5)</h5>
-                        <h6 style="font-size: 0.67em; margin: 10px 0;">Nivel 6 (h6)</h6>
-                    </div>
-                </div>
-
-                <table class="reference-table">
-                    <thead>
-                        <tr>
-                            <th>Etiqueta</th>
-                            <th>Nivel</th>
-                            <th>Uso recomendado</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>&lt;h1&gt;</code></td>
-                            <td>Nivel 1 (más importante)</td>
-                            <td>Título principal del documento o sección</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;h2&gt;</code></td>
-                            <td>Nivel 2</td>
-                            <td>Subtítulos dentro del &lt;h1&gt;</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;h3&gt;</code></td>
-                            <td>Nivel 3</td>
-                            <td>Subtítulos dentro del &lt;h2&gt;</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;h4&gt;</code></td>
-                            <td>Nivel 4</td>
-                            <td>Más específico</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;h5&gt;</code></td>
-                            <td>Nivel 5</td>
-                            <td>Más específico aún</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;h6&gt;</code></td>
-                            <td>Nivel 6 (menos importante)</td>
-                            <td>Nivel más bajo</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <section id="formato-texto" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> Elementos de Formato</h2>
-                <p>Permiten dar estilo o énfasis al texto, principalmente sin cambiar su estructura, pero en muchos casos aportando significado semántico.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;strong&gt;este texto estará en negrita&lt;/strong&gt;</code></pre>
-                </div>
-
-                <div class="example-box">
-                    <h4>Ejemplo en contexto:</h4>
-                    <div class="demo-box">
-                        <p>En un <strong>proyecto de desarrollo web</strong> es muy importante seguir <strong><em>buenas prácticas</em></strong> y también es <em>fundamental</em> escribir un código limpio.</p>
-                    </div>
-                    <div class="code-block">
-                        <pre><code>&lt;p&gt;
-    En un &lt;strong&gt;proyecto de desarrollo web&lt;/strong&gt;
-    es muy importante seguir
-    &lt;strong&gt;&lt;em&gt;buenas prácticas&lt;/em&gt;&lt;/strong&gt;
-    y también es &lt;em&gt;fundamental&lt;/em&gt; escribir un código limpio.
-&lt;/p&gt;</code></pre>
-                    </div>
-                </div>
-
-                <table class="reference-table">
-                    <thead>
-                        <tr>
-                            <th>Elemento</th>
-                            <th>Uso principal</th>
-                            <th>Visual por defecto</th>
-                            <th>¿Semántico?</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>&lt;strong&gt;</code></td>
-                            <td>Resalta <strong>importancia</strong> del texto</td>
-                            <td>Negrita</td>
-                            <td>Sí</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;em&gt;</code></td>
-                            <td>Da <em>énfasis</em> al texto</td>
-                            <td>Cursiva</td>
-                            <td>Sí</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;b&gt;</code></td>
-                            <td>Pone el texto en <b>negrita</b> (solo visual)</td>
-                            <td>Negrita</td>
-                            <td>No</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;i&gt;</code></td>
-                            <td>Pone el texto en <i>cursiva</i> (solo visual)</td>
-                            <td>Cursiva</td>
-                            <td>No</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;mark&gt;</code></td>
-                            <td>Resalta texto como con un <mark>marcador</mark></td>
-                            <td>Fondo amarillo</td>
-                            <td>Sí</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;small&gt;</code></td>
-                            <td>Muestra el texto en tamaño <small>más pequeño</small></td>
-                            <td>Letra más pequeña</td>
-                            <td>Sí</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;sub&gt;</code></td>
-                            <td>Texto en subíndice (H<sub>2</sub>O)</td>
-                            <td>Debajo y pequeño</td>
-                            <td>Sí</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;sup&gt;</code></td>
-                            <td>Texto en superíndice (x<sup>2</sup>)</td>
-                            <td>Arriba y pequeño</td>
-                            <td>Sí</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;code&gt;</code></td>
-                            <td>Representa <code>código fuente</code> en línea</td>
-                            <td>Monoespaciado</td>
-                            <td>Sí</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;abbr&gt;</code></td>
-                            <td>Abreviatura con explicación</td>
-                            <td>Subrayado punteado</td>
-                            <td>Sí</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <div class="example-box">
-                    <h4>Ejemplos de uso:</h4>
-                    <div class="demo-box">
-                        <p><strong>Texto en negrita importante</strong></p>
-                        <p><em>Texto con énfasis en cursiva</em></p>
-                        <p>Fórmula química: H<sub>2</sub>O</p>
-                        <p>Expresión matemática: E = mc<sup>2</sup></p>
-                        <p>Este es un <mark>texto resaltado</mark> en la página</p>
-                        <p>Código en línea: <code>console.log("Hola");</code></p>
-                        <p><abbr title="HyperText Markup Language">HTML</abbr> es el lenguaje de marcado web</p>
-                    </div>
-                </div>
-            </section>
-
-            <section id="salto-linea" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> Salto de Línea</h2>
-                <p>El elemento <code>&lt;br&gt;</code> se usa para insertar un salto de línea manual dentro de un texto, sin iniciar un nuevo párrafo.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;p&gt;Primera línea&lt;br&gt;Segunda línea&lt;br&gt;Tercera línea&lt;/p&gt;</code></pre>
-                </div>
-
-                <div class="example-box">
-                    <h4>Ejemplo visual:</h4>
-                    <div class="demo-box">
-                        <p>Primera línea<br>Segunda línea<br>Tercera línea</p>
-                    </div>
-                </div>
-
-                <div class="info-box">
-                    <h3>Nota importante:</h3>
-                    <p><code>&lt;br&gt;</code> es un elemento vacío (no tiene etiqueta de cierre). Úsalo con moderación, solo cuando necesites saltos de línea dentro del mismo contexto (como en poemas o direcciones).</p>
-                </div>
-            </section>
-
-            <section id="linea-horizontal" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> Línea Horizontal</h2>
-                <p>El elemento <code>&lt;hr&gt;</code> se usa para insertar una línea horizontal que sirve como separador visual entre secciones de contenido.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;p&gt;Primera sección&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Segunda sección&lt;/p&gt;</code></pre>
-                </div>
-
-                <div class="example-box">
-                    <h4>Ejemplo visual:</h4>
-                    <div class="demo-box">
-                        <p>Primera sección</p>
-                        <hr>
-                        <p>Segunda sección</p>
-                    </div>
-                </div>
-
-                <div class="info-box">
-                    <h3>Nota:</h3>
-                    <p><code>&lt;hr&gt;</code> también es un elemento vacío. Representa una ruptura temática entre secciones de contenido.</p>
-                </div>
-            </section>
-
-            <section id="glosario-modulo" class="topic-section">
-                <h2>📚 Glosario del Módulo</h2>
-                <p>Términos y elementos HTML relacionados con texto y formato:</p>
-
-                <div class="search-container">
-                    <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar término...">
-                </div>
-
+            <section id="terminos" class="topic-section">
                 <div id="terminosContainer">
-                    <div class="termino" data-tags="h1 h2 h3 h4 h5 h6 encabezado título heading">
-                        <span class="tag">&lt;h1&gt; - &lt;h6&gt;</span>
-                        <p class="significado">Significado: Encabezados (Headings)</p>
+                    <div class="termino" id="parrafos" data-tags="p párrafo paragraph texto bloque">
+                        <span class="tag">&lt;p&gt;</span>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Párrafo de texto</p>
                         <p class="descripcion">
+                            El elemento &lt;p&gt; se usa para representar un párrafo o bloque de texto. Define un párrafo de texto. El navegador automáticamente agrega espacio antes y después de cada párrafo.
+                            Es el elemento más común para contenido de texto. Separa conceptos o ideas diferentes en bloques lógicos.
+                        </p>
+                        <div class="ejemplo">&lt;p&gt;Este es un párrafo en HTML&lt;/p&gt;</div>
+                        <div class="nota">
+                            <strong>Características:</strong><br>
+                            • Es un elemento de bloque<br>
+                            • El navegador añade automáticamente espacio antes y después<br>
+                            • Los espacios múltiples y saltos de línea en el código se colapsan a uno solo
+                        </div>
+                    </div>
+
+                    <div class="termino" id="encabezados" data-tags="h1 h2 h3 h4 h5 h6 encabezado título heading jerarquia">
+                        <span class="tag">&lt;h1&gt; - &lt;h6&gt;</span>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Encabezados jerárquicos</p>
+                        <p class="descripcion">
+                            Los encabezados representan títulos o subtítulos jerárquicos del contenido. HTML tiene 6 niveles de encabezados, de &lt;h1&gt; (más importante) a &lt;h6&gt; (menos importante).
                             Define encabezados de diferentes niveles jerárquicos. h1 es el más importante (título principal) y h6 el menos importante.
                             Solo debe haber un h1 por página. Los encabezados ayudan a estructurar el contenido de forma lógica y son cruciales para SEO
                             y accesibilidad. Los lectores de pantalla los usan para navegar por la página.
                         </p>
-                        <div class="ejemplo">&lt;h1&gt;Título Principal&lt;/h1&gt;<br>&lt;h2&gt;Subtítulo de Sección&lt;/h2&gt;<br>&lt;h3&gt;Sub-subtítulo&lt;/h3&gt;</div>
+                        <div class="ejemplo">&lt;h1&gt;Título Principal&lt;/h1&gt;<br>&lt;h2&gt;Subtítulo&lt;/h2&gt;<br>&lt;h3&gt;Sección&lt;/h3&gt;<br>&lt;h4&gt;Subsección&lt;/h4&gt;<br>&lt;h5&gt;Nivel 5&lt;/h5&gt;<br>&lt;h6&gt;Nivel 6&lt;/h6&gt;</div>
                         <div class="nota">
+                            <strong>Jerarquía de encabezados:</strong><br>
+                            • &lt;h1&gt; - Nivel 1 (más importante): Título principal del documento o sección<br>
+                            • &lt;h2&gt; - Nivel 2: Subtítulos dentro del &lt;h1&gt;<br>
+                            • &lt;h3&gt; - Nivel 3: Subtítulos dentro del &lt;h2&gt;<br>
+                            • &lt;h4&gt; - Nivel 4: Más específico<br>
+                            • &lt;h5&gt; - Nivel 5: Más específico aún<br>
+                            • &lt;h6&gt; - Nivel 6 (menos importante): Nivel más bajo<br><br>
                             <strong>Buena práctica:</strong> No saltes niveles (ej: no uses h4 después de h2). Mantén una jerarquía lógica.
                             Los encabezados no deben usarse solo para hacer texto grande; usa CSS para eso.
                         </div>
                     </div>
 
-                    <div class="termino" data-tags="p párrafo paragraph texto">
-                        <span class="tag">&lt;p&gt;</span>
-                        <p class="significado">Significado: Párrafo (Paragraph)</p>
+                    <div class="termino" id="formato-texto" data-tags="formato estilo semantico strong em b i mark">
+                        <span class="tag">✨ Elementos de Formato</span>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Elementos que dan formato al texto</p>
                         <p class="descripcion">
-                            Define un párrafo de texto. El navegador automáticamente agrega espacio antes y después de cada párrafo.
-                            Es el elemento más común para contenido de texto. Separa conceptos o ideas diferentes en bloques lógicos.
+                            Permiten dar estilo o énfasis al texto, principalmente sin cambiar su estructura, pero en muchos casos aportando significado semántico.
+                            Los elementos semánticos (&lt;strong&gt;, &lt;em&gt;) son preferidos sobre los visuales (&lt;b&gt;, &lt;i&gt;) porque comunican significado además de apariencia.
                         </p>
-                        <div class="ejemplo">&lt;p&gt;Este es un párrafo de texto con información importante.&lt;/p&gt;</div>
+                        <div class="ejemplo">&lt;p&gt;En un &lt;strong&gt;proyecto de desarrollo web&lt;/strong&gt; es muy importante seguir &lt;strong&gt;&lt;em&gt;buenas prácticas&lt;/em&gt;&lt;/strong&gt; y también es &lt;em&gt;fundamental&lt;/em&gt; escribir un código limpio.&lt;/p&gt;</div>
+                        <div class="nota">
+                            <strong>Comparación de elementos:</strong><br>
+                            • &lt;strong&gt; - Resalta importancia del texto (Negrita, Semántico: Sí)<br>
+                            • &lt;em&gt; - Da énfasis al texto (Cursiva, Semántico: Sí)<br>
+                            • &lt;b&gt; - Pone el texto en negrita (Negrita, Semántico: No - solo visual)<br>
+                            • &lt;i&gt; - Pone el texto en cursiva (Cursiva, Semántico: No - solo visual)<br>
+                            • &lt;mark&gt; - Resalta texto como con un marcador (Fondo amarillo, Semántico: Sí)<br>
+                            • &lt;small&gt; - Muestra el texto en tamaño más pequeño (Letra más pequeña, Semántico: Sí)<br>
+                            • &lt;sub&gt; - Texto en subíndice H₂O (Debajo y pequeño, Semántico: Sí)<br>
+                            • &lt;sup&gt; - Texto en superíndice x² (Arriba y pequeño, Semántico: Sí)<br>
+                            • &lt;code&gt; - Representa código fuente en línea (Monoespaciado, Semántico: Sí)<br>
+                            • &lt;abbr&gt; - Abreviatura con explicación (Subrayado punteado, Semántico: Sí)
+                        </div>
                     </div>
 
-                    <div class="termino" data-tags="br salto línea break">
+                    <div class="termino" id="salto-linea" data-tags="br salto línea break vacio">
                         <span class="tag">&lt;br&gt;</span>
-                        <p class="significado">Significado: Salto de línea (Break)</p>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Salto de línea</p>
                         <p class="descripcion">
-                            Inserta un salto de línea simple. Es una etiqueta de autocierre.
+                            El elemento &lt;br&gt; se usa para insertar un salto de línea manual dentro de un texto, sin iniciar un nuevo párrafo.
+                            Inserta un salto de línea simple. Es una etiqueta de autocierre (elemento vacío, no tiene etiqueta de cierre).
                             Úsala con moderación; generalmente es mejor usar párrafos separados o CSS para espaciado.
                             Útil para direcciones, poesía, o cuando necesitas un salto de línea dentro del mismo contexto.
                         </p>
-                        <div class="ejemplo">Primera línea de texto&lt;br&gt;<br>Segunda línea de texto</div>
+                        <div class="ejemplo">&lt;p&gt;Primera línea&lt;br&gt;Segunda línea&lt;br&gt;Tercera línea&lt;/p&gt;</div>
+                        <div class="nota">
+                            <strong>Nota importante:</strong> &lt;br&gt; es un elemento vacío. Úsalo con moderación, solo cuando necesites saltos de línea dentro del mismo contexto (como en poemas o direcciones).
+                        </div>
                     </div>
 
-                    <div class="termino" data-tags="strong importante negrita bold">
+                    <div class="termino" id="linea-horizontal" data-tags="hr línea horizontal separador ruptura vacio">
+                        <span class="tag">&lt;hr&gt;</span>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Línea horizontal / Separador temático</p>
+                        <p class="descripcion">
+                            El elemento &lt;hr&gt; se usa para insertar una línea horizontal que sirve como separador visual entre secciones de contenido.
+                            Representa una ruptura temática entre párrafos. Tradicionalmente se muestra como una línea horizontal.
+                            Útil para separar secciones de contenido. Es un elemento de autocierre (elemento vacío).
+                        </p>
+                        <div class="ejemplo">&lt;p&gt;Primera sección&lt;/p&gt;<br>&lt;hr&gt;<br>&lt;p&gt;Segunda sección&lt;/p&gt;</div>
+                        <div class="nota">
+                            <strong>Nota:</strong> &lt;hr&gt; también es un elemento vacío. Representa una ruptura temática entre secciones de contenido.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="strong" data-tags="strong importante negrita bold semantico enfasis">
                         <span class="tag">&lt;strong&gt;</span>
-                        <p class="significado">Significado: Texto importante/fuerte</p>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Texto importante/fuerte</p>
                         <p class="descripcion">
                             Indica que el texto es importante o tiene gran importancia. Por defecto se muestra en negrita.
                             Tiene significado semántico (le dice a los navegadores, buscadores y lectores de pantalla que el texto es importante).
                             Diferente de &lt;b&gt; que solo hace el texto negrita sin significado semántico.
                         </p>
-                        <div class="ejemplo">&lt;p&gt;Esto es &lt;strong&gt;muy importante&lt;/strong&gt; de recordar.&lt;/p&gt;</div>
+                        <div class="ejemplo">&lt;p&gt;Esto es &lt;strong&gt;muy importante&lt;/strong&gt; de recordar.&lt;/p&gt;<br><br>&lt;p&gt;En un &lt;strong&gt;proyecto de desarrollo web&lt;/strong&gt; es muy importante seguir &lt;strong&gt;&lt;em&gt;buenas prácticas&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;</div>
                     </div>
 
-                    <div class="termino" data-tags="em énfasis cursiva italic">
+                    <div class="termino" id="em" data-tags="em énfasis cursiva italic semantico">
                         <span class="tag">&lt;em&gt;</span>
-                        <p class="significado">Significado: Énfasis (Emphasis)</p>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Énfasis</p>
                         <p class="descripcion">
                             Indica énfasis en el texto. Por defecto se muestra en cursiva.
                             También tiene significado semántico. Diferente de &lt;i&gt; que solo hace el texto cursiva sin significado.
                             Útil para enfatizar palabras clave o cambiar el tono de la oración.
                         </p>
-                        <div class="ejemplo">&lt;p&gt;Esto es &lt;em&gt;realmente&lt;/em&gt; increíble.&lt;/p&gt;</div>
+                        <div class="ejemplo">&lt;p&gt;Esto es &lt;em&gt;realmente&lt;/em&gt; increíble.&lt;/p&gt;<br><br>&lt;p&gt;También es &lt;em&gt;fundamental&lt;/em&gt; escribir un código limpio.&lt;/p&gt;</div>
                     </div>
 
-                    <div class="termino" data-tags="mark destacar resaltar highlight">
+                    <div class="termino" id="mark" data-tags="mark destacar resaltar highlight semantico">
                         <span class="tag">&lt;mark&gt;</span>
-                        <p class="significado">Significado: Texto marcado o resaltado</p>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Texto marcado o resaltado</p>
                         <p class="descripcion">
                             Representa texto marcado o resaltado por su relevancia en un contexto particular.
                             Por defecto se muestra con fondo amarillo. Útil para resultados de búsqueda o destacar información importante.
+                            Este es un elemento semántico que comunica relevancia contextual.
                         </p>
-                        <div class="ejemplo">&lt;p&gt;El término &lt;mark&gt;HTML&lt;/mark&gt; apareció en tu búsqueda.&lt;/p&gt;</div>
+                        <div class="ejemplo">&lt;p&gt;El término &lt;mark&gt;HTML&lt;/mark&gt; apareció en tu búsqueda.&lt;/p&gt;<br><br>&lt;p&gt;Este es un &lt;mark&gt;texto resaltado&lt;/mark&gt; en la página&lt;/p&gt;</div>
                     </div>
 
-                    <div class="termino" data-tags="code código programación">
+                    <div class="termino" id="code" data-tags="code código programación monospace semantico">
                         <span class="tag">&lt;code&gt;</span>
-                        <p class="significado">Significado: Código de computadora</p>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Código de computadora</p>
                         <p class="descripcion">
                             Representa un fragmento de código de computadora. Por defecto se muestra en fuente monoespaciada.
-                            Útil para mostrar código inline. Para bloques de código, combínalo con &lt;pre&gt;.
+                            Útil para mostrar código inline (en línea). Para bloques de código, combínalo con &lt;pre&gt;.
+                            Es un elemento semántico que indica contenido técnico.
                         </p>
-                        <div class="ejemplo">&lt;p&gt;Usa la función &lt;code&gt;console.log()&lt;/code&gt; para imprimir en consola.&lt;/p&gt;</div>
+                        <div class="ejemplo">&lt;p&gt;Usa la función &lt;code&gt;console.log()&lt;/code&gt; para imprimir en consola.&lt;/p&gt;<br><br>&lt;p&gt;Código en línea: &lt;code&gt;console.log("Hola");&lt;/code&gt;&lt;/p&gt;</div>
                     </div>
 
-                    <div class="termino" data-tags="pre preformateado formato espacios">
+                    <div class="termino" id="pre" data-tags="pre preformateado formato espacios monospace bloque">
                         <span class="tag">&lt;pre&gt;</span>
-                        <p class="significado">Significado: Texto preformateado</p>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Texto preformateado</p>
                         <p class="descripcion">
                             El texto dentro mantiene espacios en blanco y saltos de línea exactamente como están escritos.
                             Útil para mostrar código, ASCII art, o cualquier contenido donde el formato es importante.
+                            Se combina frecuentemente con &lt;code&gt; para bloques de código con formato preservado.
                         </p>
                         <div class="ejemplo">&lt;pre&gt;<br>function saludar() {<br>&nbsp;&nbsp;&nbsp;&nbsp;console.log("Hola");<br>}<br>&lt;/pre&gt;</div>
                     </div>
 
-                    <div class="termino" data-tags="small pequeño texto">
+                    <div class="termino" id="small" data-tags="small pequeño texto semantico">
                         <span class="tag">&lt;small&gt;</span>
-                        <p class="significado">Significado: Texto pequeño</p>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Texto pequeño</p>
                         <p class="descripcion">
                             Representa texto con menor importancia o anotaciones. Por defecto se muestra en tamaño más pequeño.
-                            Útil para texto legal, advertencias, o comentarios secundarios.
+                            Útil para texto legal, advertencias, comentarios secundarios, o información complementaria de menor relevancia.
                         </p>
                         <div class="ejemplo">&lt;p&gt;Precio: $100 &lt;small&gt;(IVA incluido)&lt;/small&gt;&lt;/p&gt;</div>
                     </div>
 
-                    <div class="termino" data-tags="sub subíndice subscript">
+                    <div class="termino" id="sub" data-tags="sub subíndice subscript quimica matematica">
                         <span class="tag">&lt;sub&gt;</span>
-                        <p class="significado">Significado: Subíndice</p>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Subíndice</p>
                         <p class="descripcion">
-                            Define texto en subíndice (más bajo y pequeño). Usado en fórmulas químicas, matemáticas, notas al pie.
+                            Define texto en subíndice (más bajo y pequeño).
+                            Usado principalmente en fórmulas químicas, notación matemática, y notas al pie.
                         </p>
-                        <div class="ejemplo">&lt;p&gt;Fórmula del agua: H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;</div>
+                        <div class="ejemplo">&lt;p&gt;Fórmula del agua: H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;<br><br>&lt;p&gt;Fórmula química: H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;</div>
                     </div>
 
-                    <div class="termino" data-tags="sup superíndice superscript">
+                    <div class="termino" id="sup" data-tags="sup superíndice superscript exponente matematica">
                         <span class="tag">&lt;sup&gt;</span>
-                        <p class="significado">Significado: Superíndice</p>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Superíndice</p>
                         <p class="descripcion">
-                            Define texto en superíndice (más alto y pequeño). Usado en exponentes matemáticos, ordinales, notas al pie.
+                            Define texto en superíndice (más alto y pequeño).
+                            Usado en exponentes matemáticos, ordinales (1º, 2º), referencias de notas al pie, y potencias.
                         </p>
-                        <div class="ejemplo">&lt;p&gt;E = mc&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;</div>
+                        <div class="ejemplo">&lt;p&gt;E = mc&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;<br><br>&lt;p&gt;Expresión matemática: E = mc&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;</div>
                     </div>
 
-                    <div class="termino" data-tags="hr línea horizontal separador">
-                        <span class="tag">&lt;hr&gt;</span>
-                        <p class="significado">Significado: Separador temático (Horizontal Rule)</p>
-                        <p class="descripcion">
-                            Representa una ruptura temática entre párrafos. Tradicionalmente se muestra como una línea horizontal.
-                            Útil para separar secciones de contenido. Es un elemento de autocierre.
-                        </p>
-                        <div class="ejemplo">&lt;p&gt;Sección uno...&lt;/p&gt;<br>&lt;hr&gt;<br>&lt;p&gt;Sección dos...&lt;/p&gt;</div>
-                    </div>
-
-                    <div class="termino" data-tags="abbr abreviación acronym">
+                    <div class="termino" id="abbr" data-tags="abbr abreviación acronym title accesibilidad">
                         <span class="tag">&lt;abbr&gt;</span>
-                        <p class="significado">Significado: Abreviación o acrónimo</p>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Abreviación o acrónimo</p>
                         <p class="descripcion">
-                            Marca una abreviación o acrónimo. El atributo title proporciona la descripción completa.
-                            Mejora la accesibilidad (lectores de pantalla pueden leer la forma completa).
+                            Marca una abreviación o acrónimo. El atributo title proporciona la descripción completa o expansión del término.
+                            Mejora la accesibilidad (lectores de pantalla pueden leer la forma completa). Por defecto se muestra con subrayado punteado.
                         </p>
-                        <div class="ejemplo">&lt;p&gt;&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt; es genial.&lt;/p&gt;</div>
+                        <div class="ejemplo">&lt;p&gt;&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt; es genial.&lt;/p&gt;<br><br>&lt;p&gt;&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt; es el lenguaje de marcado web&lt;/p&gt;</div>
                     </div>
                 </div>
 
@@ -419,16 +234,52 @@
             </section>
         </main>
 
-        <aside class="toc">
-            <h3>Contenido</h3>
-            <ul>
-                <li><a href="#parrafos">Párrafos</a></li>
-                <li><a href="#encabezados">Encabezados</a></li>
-                <li><a href="#formato-texto">Elementos de Formato</a></li>
-                <li><a href="#salto-linea">Salto de Línea</a></li>
-                <li><a href="#linea-horizontal">Línea Horizontal</a></li>
-                <li><a href="#glosario-modulo">Glosario del Módulo</a></li>
-            </ul>
+        <aside class="toc-sidebar">
+            <div class="toc-header">📝 Texto y Formato</div>
+
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-group">
+                        <div class="toc-group-header" onclick="toggleTOCGroup('conceptos')">
+                            <span class="toggle-icon">▼</span>
+                            📄 Elementos de Texto
+                        </div>
+                        <ul class="toc-group-items" id="toc-group-conceptos">
+                            <li class="toc-item level-2"><a href="#parrafos" class="toc-link">&lt;p&gt; - Párrafos</a></li>
+                            <li class="toc-item level-2"><a href="#encabezados" class="toc-link">&lt;h1&gt;-&lt;h6&gt; - Encabezados</a></li>
+                            <li class="toc-item level-2"><a href="#salto-linea" class="toc-link">&lt;br&gt; - Salto de Línea</a></li>
+                            <li class="toc-item level-2"><a href="#linea-horizontal" class="toc-link">&lt;hr&gt; - Línea Horizontal</a></li>
+                        </ul>
+                    </li>
+                    <li class="toc-group">
+                        <div class="toc-group-header" onclick="toggleTOCGroup('formato')">
+                            <span class="toggle-icon">▼</span>
+                            ✨ Elementos de Formato
+                        </div>
+                        <ul class="toc-group-items" id="toc-group-formato">
+                            <li class="toc-item level-2"><a href="#formato-texto" class="toc-link">Resumen de Formato</a></li>
+                            <li class="toc-item level-2"><a href="#strong" class="toc-link">&lt;strong&gt; - Importante</a></li>
+                            <li class="toc-item level-2"><a href="#em" class="toc-link">&lt;em&gt; - Énfasis</a></li>
+                            <li class="toc-item level-2"><a href="#mark" class="toc-link">&lt;mark&gt; - Resaltado</a></li>
+                            <li class="toc-item level-2"><a href="#code" class="toc-link">&lt;code&gt; - Código</a></li>
+                            <li class="toc-item level-2"><a href="#pre" class="toc-link">&lt;pre&gt; - Preformateado</a></li>
+                            <li class="toc-item level-2"><a href="#small" class="toc-link">&lt;small&gt; - Texto Pequeño</a></li>
+                            <li class="toc-item level-2"><a href="#sub" class="toc-link">&lt;sub&gt; - Subíndice</a></li>
+                            <li class="toc-item level-2"><a href="#sup" class="toc-link">&lt;sup&gt; - Superíndice</a></li>
+                            <li class="toc-item level-2"><a href="#abbr" class="toc-link">&lt;abbr&gt; - Abreviación</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
         </aside>
     </div>
 
@@ -438,22 +289,85 @@
 
     <script src="/assets/js/sidebar-component.js"></script>
     <script>
-        // Funcionalidad de búsqueda en el glosario
+        // Funcionalidad de búsqueda en el glosario con normalización y resaltado
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('searchInput');
             const terminosContainer = document.getElementById('terminosContainer');
             const noResults = document.getElementById('noResults');
             const terminos = terminosContainer.querySelectorAll('.termino');
 
+            // Normalizar texto: eliminar tildes y convertir a minúsculas
+            function normalizeText(text) {
+                return text
+                    .toLowerCase()
+                    .normalize('NFD')
+                    .replace(/[\u0300-\u036f]/g, '');
+            }
+
+            // Resaltar texto encontrado
+            function highlightText(element, query) {
+                removeHighlights(element);
+
+                const walker = document.createTreeWalker(
+                    element,
+                    NodeFilter.SHOW_TEXT,
+                    null,
+                    false
+                );
+
+                const nodesToReplace = [];
+                let node;
+
+                while (node = walker.nextNode()) {
+                    if (normalizeText(node.nodeValue).includes(query)) {
+                        nodesToReplace.push(node);
+                    }
+                }
+
+                nodesToReplace.forEach(node => {
+                    const text = node.nodeValue;
+                    const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+                    // Crear regex que ignore tildes
+                    const accentsMap = {
+                        'a': '[aáàäâã]', 'e': '[eéèëê]', 'i': '[iíìïî]',
+                        'o': '[oóòöôõ]', 'u': '[uúùüû]', 'n': '[nñ]'
+                    };
+
+                    let regexPattern = '';
+                    for (let char of escapedQuery) {
+                        regexPattern += accentsMap[char] || char;
+                    }
+
+                    const regex = new RegExp(`(${regexPattern})`, 'gi');
+                    const span = document.createElement('span');
+                    span.innerHTML = text.replace(regex, '<mark style="background: #f1c40f; color: #000; padding: 2px 4px; border-radius: 3px; font-weight: 500;">$1</mark>');
+                    node.parentNode.replaceChild(span, node);
+                });
+            }
+
+            // Eliminar resaltados previos
+            function removeHighlights(element) {
+                const marks = element.querySelectorAll('mark');
+                marks.forEach(mark => {
+                    const parent = mark.parentNode;
+                    if (parent) {
+                        const textNode = document.createTextNode(mark.textContent);
+                        parent.replaceChild(textNode, mark);
+                        parent.normalize();
+                    }
+                });
+            }
+
             searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase().trim();
+                const searchTerm = normalizeText(this.value.trim());
                 let visibleCount = 0;
 
                 terminos.forEach(termino => {
-                    const tag = termino.querySelector('.tag').textContent.toLowerCase();
-                    const significado = termino.querySelector('.significado').textContent.toLowerCase();
-                    const descripcion = termino.querySelector('.descripcion').textContent.toLowerCase();
-                    const tags = termino.getAttribute('data-tags').toLowerCase();
+                    const tag = normalizeText(termino.querySelector('.tag').textContent);
+                    const significado = normalizeText(termino.querySelector('.significado').textContent);
+                    const descripcion = normalizeText(termino.querySelector('.descripcion').textContent);
+                    const tags = normalizeText(termino.getAttribute('data-tags'));
 
                     const matches = tag.includes(searchTerm) ||
                                   significado.includes(searchTerm) ||
@@ -463,8 +377,16 @@
                     if (matches || searchTerm === '') {
                         termino.style.display = 'block';
                         visibleCount++;
+
+                        // Resaltar solo si hay término de búsqueda
+                        if (searchTerm !== '') {
+                            highlightText(termino, searchTerm);
+                        } else {
+                            removeHighlights(termino);
+                        }
                     } else {
                         termino.style.display = 'none';
+                        removeHighlights(termino);
                     }
                 });
 
@@ -474,6 +396,65 @@
                 } else {
                     noResults.style.display = 'none';
                 }
+            });
+
+            // Barra de progreso de scroll
+            const progressBar = document.getElementById('tocProgressBar');
+            if (progressBar) {
+                window.addEventListener('scroll', () => {
+                    const windowHeight = window.innerHeight;
+                    const documentHeight = document.documentElement.scrollHeight - windowHeight;
+                    const scrolled = window.scrollY;
+                    const progress = (scrolled / documentHeight) * 100;
+                    progressBar.style.width = `${Math.min(progress, 100)}%`;
+                });
+            }
+
+            // Función para toggle de grupos
+            window.toggleTOCGroup = function(groupId) {
+                const group = document.getElementById(`toc-group-${groupId}`);
+                const icon = event.currentTarget.querySelector('.toggle-icon');
+
+                if (!group) return;
+
+                if (group.style.display === 'none') {
+                    group.style.display = 'block';
+                    icon.textContent = '▼';
+                } else {
+                    group.style.display = 'none';
+                    icon.textContent = '▶';
+                }
+            };
+
+            // Resaltar término al hacer clic en TOC
+            const tocLinks = document.querySelectorAll('.toc-link');
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href').substring(1);
+
+                    setTimeout(() => {
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            // Remover resaltados anteriores
+                            document.querySelectorAll('.termino, .topic-section').forEach(t => {
+                                t.style.outline = '';
+                                t.style.boxShadow = '';
+                            });
+
+                            // Resaltar el elemento seleccionado
+                            if (targetElement.classList.contains('termino') || targetElement.classList.contains('topic-section')) {
+                                targetElement.style.outline = '3px solid #e74c3c';
+                                targetElement.style.boxShadow = '0 0 20px rgba(231, 76, 60, 0.5)';
+
+                                // Quitar resaltado después de 3 segundos
+                                setTimeout(() => {
+                                    targetElement.style.outline = '';
+                                    targetElement.style.boxShadow = '';
+                                }, 3000);
+                            }
+                        }
+                    }, 100);
+                });
             });
         });
     </script>

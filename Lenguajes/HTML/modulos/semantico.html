@@ -16,415 +16,32 @@
         <p class="subtitle">Elementos HTML5 con significado</p>
     </header>
 
-    <div class="container">
-        <main class="content">
-            <section id="introduccion" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> ¿Qué es HTML Semántico?</h2>
-                <p>HTML Semántico es una de las mejoras más importantes de HTML5. Su propósito es dar <strong>significado (semántica)</strong> al contenido de una página web, en lugar de solo estructurarlo visualmente.</p>
-
-                <div class="concept-box">
-                    <h3>¿Por qué es importante?</h3>
-                    <p>Antes de HTML5, todo se hacía con el elemento <code>&lt;div&gt;</code>. Los elementos semánticos describen claramente el propósito del contenido a:</p>
-                    <ul>
-                        <li><strong>Desarrolladores:</strong> Código más legible y mantenible</li>
-                        <li><strong>Navegadores:</strong> Estructura clara del documento</li>
-                        <li><strong>Motores de búsqueda:</strong> Mejor SEO y indexación</li>
-                        <li><strong>Lectores de pantalla:</strong> Mejor accesibilidad</li>
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(231, 76, 60, 0.1) 0%, rgba(231, 76, 60, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #e74c3c; margin-bottom: 40px;">
+                <h2 style="color: #e74c3c; margin-bottom: 15px; font-size: 1.8em;">
+                    <span class="unsa-tag" style="background: #e74c3c; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.5em; margin-right: 10px;">[U]</span>
+                    🏛️ HTML Semántico
+                </h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    HTML Semántico es una de las mejoras más importantes de HTML5. Aprende a dar significado real al contenido usando elementos que describen claramente su propósito, mejorando accesibilidad, SEO y mantenibilidad del código.
+                </p>
+                <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 8px; border: 1px solid rgba(231, 76, 60, 0.3);">
+                    <h3 style="color: #e74c3c; margin-bottom: 12px; font-size: 1.1em;">📋 Contenido del módulo:</h3>
+                    <ul style="list-style: none; padding-left: 0; line-height: 2;">
+                        <li style="color: #b0b0b0;">✓ Concepto de HTML semántico y su importancia</li>
+                        <li style="color: #b0b0b0;">✓ Elementos estructurales (header, nav, main, footer)</li>
+                        <li style="color: #b0b0b0;">✓ Elementos de contenido (article, section, aside)</li>
+                        <li style="color: #b0b0b0;">✓ Otros elementos semánticos (figure, time, mark, details)</li>
+                        <li style="color: #b0b0b0;">✓ Comparación entre código semántico y no semántico</li>
+                        <li style="color: #b0b0b0;">✓ Beneficios para SEO y accesibilidad</li>
                     </ul>
                 </div>
             </section>
 
-            <section id="antes-despues" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> Antes vs Después de HTML5</h2>
-
-                <h3>HTML no semántico (antes):</h3>
-                <div class="code-block">
-                    <pre><code>&lt;div id="header"&gt;
-    &lt;h1&gt;Mi sitio web&lt;/h1&gt;
-&lt;/div&gt;
-
-&lt;div id="nav"&gt;
-    &lt;a href="#"&gt;Inicio&lt;/a&gt; | &lt;a href="#"&gt;Blog&lt;/a&gt; | &lt;a href="#"&gt;Contacto&lt;/a&gt;
-&lt;/div&gt;
-
-&lt;div id="main"&gt;
-    &lt;div class="section"&gt;
-        &lt;h2&gt;Artículo 1&lt;/h2&gt;
-        &lt;p&gt;Contenido del primer artículo.&lt;/p&gt;
-    &lt;/div&gt;
-&lt;/div&gt;
-
-&lt;div id="footer"&gt;
-    &lt;p&gt;© 2025 Mi sitio web&lt;/p&gt;
-&lt;/div&gt;</code></pre>
-                </div>
-
-                <h3>HTML semántico (después):</h3>
-                <div class="code-block">
-                    <pre><code>&lt;header&gt;
-    &lt;h1&gt;Mi sitio web&lt;/h1&gt;
-&lt;/header&gt;
-
-&lt;nav&gt;
-    &lt;a href="#"&gt;Inicio&lt;/a&gt; | &lt;a href="#"&gt;Blog&lt;/a&gt; | &lt;a href="#"&gt;Contacto&lt;/a&gt;
-&lt;/nav&gt;
-
-&lt;main&gt;
-    &lt;section&gt;
-        &lt;article&gt;
-            &lt;h2&gt;Artículo 1&lt;/h2&gt;
-            &lt;p&gt;Contenido del primer artículo.&lt;/p&gt;
-        &lt;/article&gt;
-    &lt;/section&gt;
-&lt;/main&gt;
-
-&lt;footer&gt;
-    &lt;p&gt;© 2025 Mi sitio web&lt;/p&gt;
-&lt;/footer&gt;</code></pre>
-                </div>
-
-                <div class="info-box">
-                    <h3>Ventajas del HTML semántico:</h3>
-                    <ul>
-                        <li>Más fácil de leer y entender</li>
-                        <li>Mejor para SEO</li>
-                        <li>Mayor accesibilidad</li>
-                        <li>Código más profesional y mantenible</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="elementos-principales" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> Elementos Semánticos Principales</h2>
-
-                <table class="reference-table">
-                    <thead>
-                        <tr>
-                            <th>Elemento</th>
-                            <th>Descripción</th>
-                            <th>Uso principal</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>&lt;header&gt;</code></td>
-                            <td>Encabezado de una página o sección</td>
-                            <td>Logo, título, navegación, introducción</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;nav&gt;</code></td>
-                            <td>Sección de navegación</td>
-                            <td>Menús, enlaces internos principales</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;main&gt;</code></td>
-                            <td>Contenido principal del documento</td>
-                            <td>Artículos, secciones importantes (único por página)</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;article&gt;</code></td>
-                            <td>Contenido independiente y autocontenible</td>
-                            <td>Publicaciones, noticias, blogs, comentarios</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;section&gt;</code></td>
-                            <td>Agrupación temática de contenido</td>
-                            <td>Partes de un artículo, temas relacionados</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;aside&gt;</code></td>
-                            <td>Contenido relacionado o complementario</td>
-                            <td>Barras laterales, recomendaciones, widgets</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;footer&gt;</code></td>
-                            <td>Pie de página o sección</td>
-                            <td>Créditos, info legal, enlaces, contacto</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <section id="header" class="topic-section">
-                <h2>&lt;header&gt;</h2>
-                <p>Representa el encabezado de una página o de una sección. Puede contener logos, títulos, navegación o información introductoria.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;header&gt;
-    &lt;h1&gt;Mi Blog&lt;/h1&gt;
-    &lt;p&gt;Bienvenido a mi espacio personal&lt;/p&gt;
-&lt;/header&gt;</code></pre>
-                </div>
-
-                <div class="info-box">
-                    <h3>Nota importante:</h3>
-                    <p>Puede haber múltiples <code>&lt;header&gt;</code> en una página (uno general y otros dentro de <code>&lt;article&gt;</code> o <code>&lt;section&gt;</code>).</p>
-                </div>
-            </section>
-
-            <section id="nav" class="topic-section">
-                <h2>&lt;nav&gt;</h2>
-                <p>Define una sección con enlaces de navegación principales. No todos los grupos de enlaces deben estar en <code>&lt;nav&gt;</code>, solo los menús importantes.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;nav&gt;
-    &lt;a href="#"&gt;Inicio&lt;/a&gt;
-    &lt;a href="#"&gt;Artículos&lt;/a&gt;
-    &lt;a href="#"&gt;Contacto&lt;/a&gt;
-&lt;/nav&gt;</code></pre>
-                </div>
-            </section>
-
-            <section id="main" class="topic-section">
-                <h2>&lt;main&gt;</h2>
-                <p>Contiene el contenido principal del documento. Solo debe haber <strong>un elemento main</strong> por página.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;main&gt;
-    &lt;article&gt;
-        &lt;h2&gt;Cómo aprender HTML5&lt;/h2&gt;
-        &lt;p&gt;HTML5 incluye muchas etiquetas nuevas...&lt;/p&gt;
-    &lt;/article&gt;
-&lt;/main&gt;</code></pre>
-                </div>
-
-                <div class="info-box">
-                    <h3>Restricción importante:</h3>
-                    <p><code>&lt;main&gt;</code> no debe ser descendiente de <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;header&gt;</code> o <code>&lt;nav&gt;</code>.</p>
-                </div>
-            </section>
-
-            <section id="article" class="topic-section">
-                <h2>&lt;article&gt;</h2>
-                <p>Representa contenido independiente y autocontenible que podría distribuirse o reutilizarse por separado.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;article&gt;
-    &lt;h2&gt;Cómo aprender HTML5&lt;/h2&gt;
-    &lt;section&gt;
-        &lt;h3&gt;Introducción a HTML5&lt;/h3&gt;
-        &lt;p&gt;HTML5 incluye muchas etiquetas nuevas...&lt;/p&gt;
-    &lt;/section&gt;
-    &lt;section&gt;
-        &lt;h3&gt;Ejercicios&lt;/h3&gt;
-        &lt;p&gt;Ejercicios HTML5...&lt;/p&gt;
-    &lt;/section&gt;
-&lt;/article&gt;</code></pre>
-                </div>
-
-                <div class="concept-box">
-                    <h3>¿Cuándo usar &lt;article&gt;?</h3>
-                    <p>Pregúntate: ¿Este contenido tendría sentido por sí solo fuera del contexto de la página? Si la respuesta es sí, usa <code>&lt;article&gt;</code>.</p>
-                </div>
-            </section>
-
-            <section id="section" class="topic-section">
-                <h2>&lt;section&gt;</h2>
-                <p>Agrupa contenido relacionado temáticamente. Generalmente incluye un encabezado. Se usa para dividir el contenido en partes lógicas.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;section&gt;
-    &lt;h2&gt;Capítulo 1: Introducción&lt;/h2&gt;
-    &lt;p&gt;Contenido del capítulo...&lt;/p&gt;
-&lt;/section&gt;
-
-&lt;section&gt;
-    &lt;h2&gt;Capítulo 2: Desarrollo&lt;/h2&gt;
-    &lt;p&gt;Más contenido...&lt;/p&gt;
-&lt;/section&gt;</code></pre>
-                </div>
-            </section>
-
-            <section id="aside" class="topic-section">
-                <h2>&lt;aside&gt;</h2>
-                <p>Contenido relacionado o complementario al contenido principal, como barras laterales, citas, publicidad o enlaces relacionados.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;aside&gt;
-    &lt;h3&gt;Artículos relacionados&lt;/h3&gt;
-    &lt;ul&gt;
-        &lt;li&gt;&lt;a href="#"&gt;CSS básico&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#"&gt;Diseño responsivo&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/aside&gt;</code></pre>
-                </div>
-            </section>
-
-            <section id="footer" class="topic-section">
-                <h2>&lt;footer&gt;</h2>
-                <p>Pie de página de un documento o sección. Típicamente contiene información sobre el autor, copyright, enlaces relacionados o información de contacto.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;footer&gt;
-    &lt;p&gt;© 2025 Mi Blog&lt;/p&gt;
-    &lt;address&gt;
-        Contacto: &lt;a href="mailto:info@ejemplo.com"&gt;info@ejemplo.com&lt;/a&gt;
-    &lt;/address&gt;
-&lt;/footer&gt;</code></pre>
-                </div>
-            </section>
-
-            <section id="otros-elementos" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> Otros Elementos Semánticos</h2>
-
-                <table class="reference-table">
-                    <thead>
-                        <tr>
-                            <th>Elemento</th>
-                            <th>Descripción</th>
-                            <th>Ejemplo de uso</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>&lt;figure&gt;</code></td>
-                            <td>Contenedor para medios (imagen, gráfico, código)</td>
-                            <td>Agrupar imágenes con su descripción</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;figcaption&gt;</code></td>
-                            <td>Título o descripción de &lt;figure&gt;</td>
-                            <td>Explicación del contenido del &lt;figure&gt;</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;time&gt;</code></td>
-                            <td>Fecha y/u hora legible por humanos y máquinas</td>
-                            <td>Fechas de artículos, eventos</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;mark&gt;</code></td>
-                            <td>Texto resaltado o destacado</td>
-                            <td>Subrayar información relevante</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;address&gt;</code></td>
-                            <td>Información de contacto</td>
-                            <td>Dirección física, email, autor</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;details&gt;</code></td>
-                            <td>Contenedor expandible/colapsable</td>
-                            <td>FAQs, menús desplegables</td>
-                        </tr>
-                        <tr>
-                            <td><code>&lt;summary&gt;</code></td>
-                            <td>Título visible para &lt;details&gt;</td>
-                            <td>Opciones principales de menú</td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <h3>Ejemplo de &lt;details&gt; y &lt;summary&gt;:</h3>
-                <div class="code-block">
-                    <pre><code>&lt;details&gt;
-    &lt;summary&gt;¿Qué es HTML?&lt;/summary&gt;
-    &lt;p&gt;HTML es un lenguaje de marcado para estructurar páginas web.&lt;/p&gt;
-&lt;/details&gt;</code></pre>
-                </div>
-
-                <div class="example-box">
-                    <h4>Resultado interactivo:</h4>
-                    <div class="demo-box">
-                        <details>
-                            <summary style="cursor: pointer; font-weight: bold;">¿Qué es HTML?</summary>
-                            <p style="margin-top: 10px;">HTML es un lenguaje de marcado para estructurar páginas web.</p>
-                        </details>
-                    </div>
-                </div>
-            </section>
-
-            <section id="ejemplo-completo" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> Ejemplo Completo</h2>
-                <p>Estructura completa de una página con HTML semántico:</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="es"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;title&gt;Mi Blog&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;header&gt;
-        &lt;h1&gt;Mi Blog&lt;/h1&gt;
-    &lt;/header&gt;
-
-    &lt;nav&gt;
-        &lt;a href="#"&gt;Inicio&lt;/a&gt;
-        &lt;a href="#"&gt;Artículos&lt;/a&gt;
-    &lt;/nav&gt;
-
-    &lt;main&gt;
-        &lt;article&gt;
-            &lt;header&gt;
-                &lt;h2&gt;Cómo aprender HTML5&lt;/h2&gt;
-                &lt;time datetime="2025-01-15"&gt;15 de enero, 2025&lt;/time&gt;
-            &lt;/header&gt;
-
-            &lt;section&gt;
-                &lt;h3&gt;Introducción a HTML5&lt;/h3&gt;
-                &lt;p&gt;HTML5 incluye muchas etiquetas nuevas...&lt;/p&gt;
-            &lt;/section&gt;
-
-            &lt;section&gt;
-                &lt;h3&gt;Ejercicios&lt;/h3&gt;
-                &lt;p&gt;Ejercicios HTML5...&lt;/p&gt;
-            &lt;/section&gt;
-
-            &lt;footer&gt;
-                &lt;p&gt;Autor: Juan Pérez&lt;/p&gt;
-            &lt;/footer&gt;
-        &lt;/article&gt;
-
-        &lt;aside&gt;
-            &lt;h3&gt;Artículos relacionados&lt;/h3&gt;
-            &lt;ul&gt;
-                &lt;li&gt;&lt;a href="#"&gt;CSS básico&lt;/a&gt;&lt;/li&gt;
-                &lt;li&gt;&lt;a href="#"&gt;Diseño responsivo&lt;/a&gt;&lt;/li&gt;
-            &lt;/ul&gt;
-        &lt;/aside&gt;
-    &lt;/main&gt;
-
-    &lt;footer&gt;
-        &lt;p&gt;© 2025 Mi Blog&lt;/p&gt;
-    &lt;/footer&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                </div>
-            </section>
-
-            <section id="buenas-practicas" class="topic-section">
-                <h2>Buenas Prácticas</h2>
-
-                <div class="info-box">
-                    <h3>✓ Hacer:</h3>
-                    <ul>
-                        <li>Usar elementos semánticos siempre que sea posible</li>
-                        <li>Un solo <code>&lt;main&gt;</code> por página</li>
-                        <li>Usar <code>&lt;article&gt;</code> para contenido independiente</li>
-                        <li>Usar <code>&lt;section&gt;</code> para agrupar contenido relacionado</li>
-                        <li>Incluir encabezados en <code>&lt;section&gt;</code> y <code>&lt;article&gt;</code></li>
-                    </ul>
-                </div>
-
-                <div class="info-box">
-                    <h3>✗ Evitar:</h3>
-                    <ul>
-                        <li>Usar <code>&lt;div&gt;</code> cuando existe un elemento semántico apropiado</li>
-                        <li>Múltiples elementos <code>&lt;main&gt;</code> en la misma página</li>
-                        <li>Usar elementos semánticos solo por su estilo visual</li>
-                        <li><code>&lt;section&gt;</code> sin encabezado</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="glosario-modulo" class="topic-section">
+            <section id="terminos" class="topic-section">
                 <h2>📚 Glosario del Módulo</h2>
                 <p>Referencia completa de elementos semánticos HTML5:</p>
-
-                <div class="search-container">
-                    <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar término...">
-                </div>
 
                 <div id="terminosContainer">
                     <div class="termino" data-tags="header encabezado cabecera">
@@ -565,24 +182,23 @@
             </section>
         </main>
 
-        <aside class="toc">
-            <h3>Contenido</h3>
-            <ul>
-                <li><a href="#introduccion">Introducción</a></li>
-                <li><a href="#antes-despues">Antes vs Después</a></li>
-                <li><a href="#elementos-principales">Elementos Principales</a></li>
-                <li><a href="#header">header</a></li>
-                <li><a href="#nav">nav</a></li>
-                <li><a href="#main">main</a></li>
-                <li><a href="#article">article</a></li>
-                <li><a href="#section">section</a></li>
-                <li><a href="#aside">aside</a></li>
-                <li><a href="#footer">footer</a></li>
-                <li><a href="#otros-elementos">Otros Elementos</a></li>
-                <li><a href="#ejemplo-completo">Ejemplo Completo</a></li>
-                <li><a href="#buenas-practicas">Buenas Prácticas</a></li>
-                <li><a href="#glosario-modulo">Glosario del Módulo</a></li>
-            </ul>
+        <aside class="toc-sidebar">
+            <div class="toc-header">🏛️ HTML Semántico</div>
+
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#terminos" class="toc-link">📚 Glosario del Módulo</a></li>
+                </ul>
+            </nav>
+
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
         </aside>
     </div>
 
@@ -592,22 +208,85 @@
 
     <script src="/assets/js/sidebar-component.js"></script>
     <script>
-        // Funcionalidad de búsqueda en el glosario
+        // Funcionalidad de búsqueda en el glosario con normalización y resaltado
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('searchInput');
             const terminosContainer = document.getElementById('terminosContainer');
             const noResults = document.getElementById('noResults');
             const terminos = terminosContainer.querySelectorAll('.termino');
 
+            // Normalizar texto: eliminar tildes y convertir a minúsculas
+            function normalizeText(text) {
+                return text
+                    .toLowerCase()
+                    .normalize('NFD')
+                    .replace(/[\u0300-\u036f]/g, '');
+            }
+
+            // Resaltar texto encontrado
+            function highlightText(element, query) {
+                removeHighlights(element);
+
+                const walker = document.createTreeWalker(
+                    element,
+                    NodeFilter.SHOW_TEXT,
+                    null,
+                    false
+                );
+
+                const nodesToReplace = [];
+                let node;
+
+                while (node = walker.nextNode()) {
+                    if (normalizeText(node.nodeValue).includes(query)) {
+                        nodesToReplace.push(node);
+                    }
+                }
+
+                nodesToReplace.forEach(node => {
+                    const text = node.nodeValue;
+                    const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+                    // Crear regex que ignore tildes
+                    const accentsMap = {
+                        'a': '[aáàäâã]', 'e': '[eéèëê]', 'i': '[iíìïî]',
+                        'o': '[oóòöôõ]', 'u': '[uúùüû]', 'n': '[nñ]'
+                    };
+
+                    let regexPattern = '';
+                    for (let char of escapedQuery) {
+                        regexPattern += accentsMap[char] || char;
+                    }
+
+                    const regex = new RegExp(`(${regexPattern})`, 'gi');
+                    const span = document.createElement('span');
+                    span.innerHTML = text.replace(regex, '<mark style="background: #f1c40f; color: #000; padding: 2px 4px; border-radius: 3px; font-weight: 500;">$1</mark>');
+                    node.parentNode.replaceChild(span, node);
+                });
+            }
+
+            // Eliminar resaltados previos
+            function removeHighlights(element) {
+                const marks = element.querySelectorAll('mark');
+                marks.forEach(mark => {
+                    const parent = mark.parentNode;
+                    if (parent) {
+                        const textNode = document.createTextNode(mark.textContent);
+                        parent.replaceChild(textNode, mark);
+                        parent.normalize();
+                    }
+                });
+            }
+
             searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase().trim();
+                const searchTerm = normalizeText(this.value.trim());
                 let visibleCount = 0;
 
                 terminos.forEach(termino => {
-                    const tag = termino.querySelector('.tag').textContent.toLowerCase();
-                    const significado = termino.querySelector('.significado').textContent.toLowerCase();
-                    const descripcion = termino.querySelector('.descripcion').textContent.toLowerCase();
-                    const tags = termino.getAttribute('data-tags').toLowerCase();
+                    const tag = normalizeText(termino.querySelector('.tag').textContent);
+                    const significado = normalizeText(termino.querySelector('.significado').textContent);
+                    const descripcion = normalizeText(termino.querySelector('.descripcion').textContent);
+                    const tags = normalizeText(termino.getAttribute('data-tags'));
 
                     const matches = tag.includes(searchTerm) ||
                                   significado.includes(searchTerm) ||
@@ -617,8 +296,16 @@
                     if (matches || searchTerm === '') {
                         termino.style.display = 'block';
                         visibleCount++;
+
+                        // Resaltar solo si hay término de búsqueda
+                        if (searchTerm !== '') {
+                            highlightText(termino, searchTerm);
+                        } else {
+                            removeHighlights(termino);
+                        }
                     } else {
                         termino.style.display = 'none';
+                        removeHighlights(termino);
                     }
                 });
 
@@ -628,6 +315,65 @@
                 } else {
                     noResults.style.display = 'none';
                 }
+            });
+
+            // Barra de progreso de scroll
+            const progressBar = document.getElementById('tocProgressBar');
+            if (progressBar) {
+                window.addEventListener('scroll', () => {
+                    const windowHeight = window.innerHeight;
+                    const documentHeight = document.documentElement.scrollHeight - windowHeight;
+                    const scrolled = window.scrollY;
+                    const progress = (scrolled / documentHeight) * 100;
+                    progressBar.style.width = `${Math.min(progress, 100)}%`;
+                });
+            }
+
+            // Función para toggle de grupos
+            window.toggleTOCGroup = function(groupId) {
+                const group = document.getElementById(`toc-group-${groupId}`);
+                const icon = event.currentTarget.querySelector('.toggle-icon');
+
+                if (!group) return;
+
+                if (group.style.display === 'none') {
+                    group.style.display = 'block';
+                    icon.textContent = '▼';
+                } else {
+                    group.style.display = 'none';
+                    icon.textContent = '▶';
+                }
+            };
+
+            // Resaltar término al hacer clic en TOC
+            const tocLinks = document.querySelectorAll('.toc-link');
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href').substring(1);
+
+                    setTimeout(() => {
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            // Remover resaltados anteriores
+                            document.querySelectorAll('.termino').forEach(t => {
+                                t.style.outline = '';
+                                t.style.boxShadow = '';
+                            });
+
+                            // Resaltar el elemento seleccionado
+                            if (targetElement.classList.contains('termino')) {
+                                targetElement.style.outline = '3px solid #e74c3c';
+                                targetElement.style.boxShadow = '0 0 20px rgba(231, 76, 60, 0.5)';
+
+                                // Quitar resaltado después de 3 segundos
+                                setTimeout(() => {
+                                    targetElement.style.outline = '';
+                                    targetElement.style.boxShadow = '';
+                                }, 3000);
+                            }
+                        }
+                    }, 100);
+                });
             });
         });
     </script>

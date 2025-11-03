@@ -16,239 +16,205 @@
         <p class="subtitle">Listas ordenadas, no ordenadas y de definición</p>
     </header>
 
-    <div class="container">
-        <main class="content">
-            <section id="introduccion" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> Introducción a las Listas</h2>
-                <p>Las listas son estructuras fundamentales para representar conjuntos de elementos relacionados en HTML.</p>
-
-                <div class="info-box">
-                    <h3>Casos de uso comunes:</h3>
-                    <ul>
-                        <li>Paso a paso de un procedimiento</li>
-                        <li>Características de un producto o servicio</li>
-                        <li>Menú de navegación de una página web</li>
-                        <li>Índices y tablas de contenido</li>
-                        <li>Listados de elementos relacionados</li>
-                    </ul>
-                </div>
-
-                <div class="concept-box">
-                    <h3>Tipos de listas en HTML:</h3>
-                    <ul>
-                        <li><strong>Listas no ordenadas</strong> (<code>&lt;ul&gt;</code>) - Cuando el orden no es relevante</li>
-                        <li><strong>Listas ordenadas</strong> (<code>&lt;ol&gt;</code>) - Cuando el orden es importante</li>
-                        <li><strong>Listas de definición</strong> (<code>&lt;dl&gt;</code>) - Para términos y descripciones</li>
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(231, 76, 60, 0.1) 0%, rgba(231, 76, 60, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #e74c3c; margin-bottom: 40px;">
+                <h2 style="color: #e74c3c; margin-bottom: 15px; font-size: 1.8em;">
+                    <span class="unsa-tag" style="background: #e74c3c; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.5em; margin-right: 10px;">[U]</span>
+                    📋 Listas en HTML
+                </h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    Las listas son estructuras fundamentales para representar conjuntos de elementos relacionados en HTML.
+                    Aprenderás a crear listas ordenadas, no ordenadas y de definición para organizar información de manera efectiva.
+                </p>
+                <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 8px; border: 1px solid rgba(231, 76, 60, 0.3);">
+                    <h3 style="color: #e74c3c; margin-bottom: 12px; font-size: 1.1em;">📋 Contenido del módulo:</h3>
+                    <ul style="list-style: none; padding-left: 0; line-height: 2;">
+                        <li style="color: #b0b0b0;">✓ Listas no ordenadas con viñetas</li>
+                        <li style="color: #b0b0b0;">✓ Listas ordenadas con numeración</li>
+                        <li style="color: #b0b0b0;">✓ Listas anidadas y jerarquías</li>
+                        <li style="color: #b0b0b0;">✓ Listas de definición (términos y descripciones)</li>
+                        <li style="color: #b0b0b0;">✓ Ejercicio práctico interactivo</li>
                     </ul>
                 </div>
             </section>
 
-            <section id="listas-no-ordenadas" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> Listas No Ordenadas (&lt;ul&gt;)</h2>
-                <p>Se usan cuando el orden de los elementos no es relevante. Se renderizan con viñetas (bullets) por defecto.</p>
+            <section id="terminos" class="topic-section">
+                <h2>📚 Términos del Módulo</h2>
+                <p>Elementos HTML para crear diferentes tipos de listas:</p>
 
-                <div class="code-block">
-                    <pre><code>&lt;ul&gt;
-    &lt;li&gt;HTML&lt;/li&gt;
-    &lt;li&gt;CSS&lt;/li&gt;
-    &lt;li&gt;JavaScript&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-                </div>
-
-                <div class="example-box">
-                    <h4>Ejemplo visual:</h4>
-                    <div class="demo-box">
-                        <ul>
-                            <li>HTML</li>
-                            <li>CSS</li>
-                            <li>JavaScript</li>
-                        </ul>
+                <div id="terminosContainer">
+                    <div class="termino" id="ul" data-tags="ul lista desordenada viñetas bullets unordered">
+                        <span class="tag">&lt;ul&gt;</span>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Lista no ordenada (Unordered List)</p>
+                        <p class="descripcion">
+                            Crea una lista con viñetas (bullets). Se usa cuando el orden de los elementos no es relevante.
+                            Los elementos no tienen un orden específico o secuencial. Útil para listas donde el orden no importa:
+                            características, ingredientes, opciones de menú, colecciones de elementos relacionados.
+                        </p>
+                        <div class="ejemplo">
+                            <strong>Sintaxis básica:</strong><br>
+                            &lt;ul&gt;<br>
+                            &nbsp;&nbsp;&lt;li&gt;HTML&lt;/li&gt;<br>
+                            &nbsp;&nbsp;&lt;li&gt;CSS&lt;/li&gt;<br>
+                            &nbsp;&nbsp;&lt;li&gt;JavaScript&lt;/li&gt;<br>
+                            &lt;/ul&gt;
+                        </div>
+                        <div class="nota">
+                            <strong>Características:</strong><br>
+                            • &lt;ul&gt; es el elemento contenedor de la lista<br>
+                            • &lt;li&gt; representa cada elemento individual de la lista<br>
+                            • Se renderiza con viñetas por defecto<br>
+                            • Claramente identificadas como grupos de elementos relacionados<br>
+                            • El estilo de viñeta puede modificarse con CSS (disc, circle, square, none)
+                        </div>
                     </div>
-                </div>
 
-                <div class="info-box">
-                    <h3>Características:</h3>
-                    <ul>
-                        <li><code>&lt;ul&gt;</code> - Elemento contenedor de la lista</li>
-                        <li><code>&lt;li&gt;</code> - Cada elemento individual de la lista</li>
-                        <li>Renderizado con viñetas por defecto</li>
-                        <li>Claramente identificadas como grupos de elementos relacionados</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="listas-ordenadas" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> Listas Ordenadas (&lt;ol&gt;)</h2>
-                <p>Se usan cuando el orden es importante o jerárquico. Se renderizan numeradas (1, 2, 3...) o con letras, números romanos, etc.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;ol&gt;
-    &lt;li&gt;Entender el problema&lt;/li&gt;
-    &lt;li&gt;Plantear la lógica&lt;/li&gt;
-    &lt;li&gt;Escribir el programa&lt;/li&gt;
-&lt;/ol&gt;</code></pre>
-                </div>
-
-                <div class="example-box">
-                    <h4>Ejemplo visual:</h4>
-                    <div class="demo-box">
-                        <ol>
-                            <li>Entender el problema</li>
-                            <li>Plantear la lógica</li>
-                            <li>Escribir el programa</li>
-                        </ol>
+                    <div class="termino" id="ol" data-tags="ol lista ordenada numerada numbers ordered">
+                        <span class="tag">&lt;ol&gt;</span>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Lista ordenada (Ordered List)</p>
+                        <p class="descripcion">
+                            Crea una lista numerada. Se usa cuando el orden es importante o jerárquico. Los elementos se numeran
+                            automáticamente (1, 2, 3...) o pueden usar letras, números romanos, etc. Útil para pasos de instrucciones,
+                            rankings, secuencias temporales, procedimientos, o cualquier lista donde el orden importa.
+                        </p>
+                        <div class="ejemplo">
+                            <strong>Sintaxis básica:</strong><br>
+                            &lt;ol&gt;<br>
+                            &nbsp;&nbsp;&lt;li&gt;Entender el problema&lt;/li&gt;<br>
+                            &nbsp;&nbsp;&lt;li&gt;Plantear la lógica&lt;/li&gt;<br>
+                            &nbsp;&nbsp;&lt;li&gt;Escribir el programa&lt;/li&gt;<br>
+                            &lt;/ol&gt;<br><br>
+                            <strong>Con atributos:</strong><br>
+                            &lt;ol type="A"&gt;<br>
+                            &nbsp;&nbsp;&lt;li&gt;Primera opción&lt;/li&gt;<br>
+                            &nbsp;&nbsp;&lt;li&gt;Segunda opción&lt;/li&gt;<br>
+                            &lt;/ol&gt;<br><br>
+                            &lt;ol start="5"&gt;<br>
+                            &nbsp;&nbsp;&lt;li&gt;Inicia en 5&lt;/li&gt;<br>
+                            &nbsp;&nbsp;&lt;li&gt;Este es el 6&lt;/li&gt;<br>
+                            &lt;/ol&gt;
+                        </div>
+                        <div class="nota">
+                            <strong>Atributos útiles:</strong><br>
+                            • <code>type</code> - Define el tipo de numeración:<br>
+                            &nbsp;&nbsp;· "1" = números (por defecto): 1, 2, 3...<br>
+                            &nbsp;&nbsp;· "A" = letras mayúsculas: A, B, C...<br>
+                            &nbsp;&nbsp;· "a" = letras minúsculas: a, b, c...<br>
+                            &nbsp;&nbsp;· "I" = números romanos mayúsculas: I, II, III...<br>
+                            &nbsp;&nbsp;· "i" = números romanos minúsculas: i, ii, iii...<br>
+                            • <code>start</code> - Define el número inicial (ej: start="5")<br>
+                            • <code>reversed</code> - Invierte el orden de la numeración (de mayor a menor)
+                        </div>
                     </div>
-                </div>
 
-                <div class="info-box">
-                    <h3>Atributos útiles:</h3>
-                    <ul>
-                        <li><code>type</code> - Define el tipo de numeración (1, A, a, I, i)</li>
-                        <li><code>start</code> - Define el número inicial</li>
-                        <li><code>reversed</code> - Invierte el orden de la numeración</li>
-                    </ul>
-                </div>
-
-                <div class="example-box">
-                    <h4>Ejemplos con atributos:</h4>
-                    <div class="code-block">
-                        <pre><code>&lt;ol type="A"&gt;
-    &lt;li&gt;Primera opción&lt;/li&gt;
-    &lt;li&gt;Segunda opción&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ol start="5"&gt;
-    &lt;li&gt;Inicia en 5&lt;/li&gt;
-    &lt;li&gt;Este es el 6&lt;/li&gt;
-&lt;/ol&gt;</code></pre>
+                    <div class="termino" id="li" data-tags="li elemento lista item list">
+                        <span class="tag">&lt;li&gt;</span>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Elemento de lista (List Item)</p>
+                        <p class="descripcion">
+                            Define un elemento individual dentro de una lista. Solo puede ser hijo directo de &lt;ul&gt;, &lt;ol&gt; o &lt;menu&gt;.
+                            Puede contener cualquier tipo de contenido: texto, imágenes, enlaces, e incluso otras listas para crear jerarquías anidadas.
+                        </p>
+                        <div class="ejemplo">
+                            &lt;ul&gt;<br>
+                            &nbsp;&nbsp;&lt;li&gt;Este es un elemento de lista&lt;/li&gt;<br>
+                            &nbsp;&nbsp;&lt;li&gt;Otro elemento con &lt;a href="#"&gt;enlace&lt;/a&gt;&lt;/li&gt;<br>
+                            &nbsp;&nbsp;&lt;li&gt;Elemento con &lt;strong&gt;texto resaltado&lt;/strong&gt;&lt;/li&gt;<br>
+                            &lt;/ul&gt;
+                        </div>
+                        <div class="nota">
+                            <strong>Importante:</strong> El elemento &lt;li&gt; es obligatorio para cada ítem en una lista.
+                            No puedes colocar contenido directamente dentro de &lt;ul&gt; o &lt;ol&gt; sin envolverlo en &lt;li&gt;.
+                        </div>
                     </div>
-                    <div class="demo-box">
-                        <ol type="A">
-                            <li>Primera opción</li>
-                            <li>Segunda opción</li>
-                        </ol>
-                        <ol start="5">
-                            <li>Inicia en 5</li>
-                            <li>Este es el 6</li>
-                        </ol>
+
+                    <div class="termino" id="listas-anidadas" data-tags="listas anidadas jerarquia nested sublistas hierarchy">
+                        <span class="tag">🔗 Listas Anidadas</span>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Listas dentro de otras listas</p>
+                        <p class="descripcion">
+                            Las listas anidadas permiten crear jerarquías o estructuras más complejas. Puedes colocar una lista
+                            completa (&lt;ul&gt; o &lt;ol&gt;) dentro de un elemento &lt;li&gt; de otra lista. Esto es útil para
+                            representar estructuras jerárquicas, menús de navegación multinivel, índices con subniveles, o cualquier
+                            contenido que requiera múltiples niveles de organización.
+                        </p>
+                        <div class="ejemplo">
+                            <strong>Lista anidada mixta:</strong><br>
+                            &lt;ol&gt;<br>
+                            &nbsp;&nbsp;&lt;li&gt;Frontend<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;HTML&lt;/li&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;CSS&lt;/li&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;JavaScript&lt;/li&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>
+                            &nbsp;&nbsp;&lt;/li&gt;<br>
+                            &nbsp;&nbsp;&lt;li&gt;Backend<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Python&lt;/li&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Node.js&lt;/li&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Java&lt;/li&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>
+                            &nbsp;&nbsp;&lt;/li&gt;<br>
+                            &lt;/ol&gt;
+                        </div>
+                        <div class="nota">
+                            <strong>Regla importante:</strong><br>
+                            La lista anidada debe estar dentro de un elemento &lt;li&gt; de la lista padre, NO directamente
+                            dentro del &lt;ul&gt; o &lt;ol&gt;. Esto mantiene la estructura semántica correcta del HTML.<br><br>
+                            <strong>Correcto:</strong> &lt;li&gt;Elemento&lt;ul&gt;...&lt;/ul&gt;&lt;/li&gt;<br>
+                            <strong>Incorrecto:</strong> &lt;ul&gt;&lt;ul&gt;...&lt;/ul&gt;&lt;/ul&gt;
+                        </div>
                     </div>
-                </div>
-            </section>
 
-            <section id="listas-anidadas" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> Listas Anidadas</h2>
-                <p>Puedes crear listas dentro de otras listas para representar jerarquías o estructuras más complejas.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;ol&gt;
-    &lt;li&gt;Frontend
-        &lt;ul&gt;
-            &lt;li&gt;HTML&lt;/li&gt;
-            &lt;li&gt;CSS&lt;/li&gt;
-            &lt;li&gt;JavaScript&lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/li&gt;
-    &lt;li&gt;Backend
-        &lt;ul&gt;
-            &lt;li&gt;Python&lt;/li&gt;
-            &lt;li&gt;Node.js&lt;/li&gt;
-            &lt;li&gt;Java&lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/li&gt;
-&lt;/ol&gt;</code></pre>
-                </div>
-
-                <div class="example-box">
-                    <h4>Ejemplo visual:</h4>
-                    <div class="demo-box">
-                        <ol>
-                            <li>Frontend
-                                <ul>
-                                    <li>HTML</li>
-                                    <li>CSS</li>
-                                    <li>JavaScript</li>
-                                </ul>
-                            </li>
-                            <li>Backend
-                                <ul>
-                                    <li>Python</li>
-                                    <li>Node.js</li>
-                                    <li>Java</li>
-                                </ul>
-                            </li>
-                        </ol>
+                    <div class="termino" id="dl" data-tags="dl dt dd lista definición descripción description definition">
+                        <span class="tag">&lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;</span>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Lista de descripciones (Description List)</p>
+                        <p class="descripcion">
+                            Se usa para representar pares de término-descripción. &lt;dl&gt; (Description List) crea el contenedor,
+                            &lt;dt&gt; (Description Term) define el término, y &lt;dd&gt; (Description Details) define la descripción.
+                            Son perfectas para glosarios, fichas técnicas, FAQs, metadatos, pares clave-valor, o cualquier contenido
+                            que relacione términos con sus definiciones o descripciones.
+                        </p>
+                        <div class="ejemplo">
+                            <strong>Ejemplo de glosario técnico:</strong><br>
+                            &lt;dl&gt;<br>
+                            &nbsp;&nbsp;&lt;dt&gt;HTTP&lt;/dt&gt;<br>
+                            &nbsp;&nbsp;&lt;dd&gt;Protocolo de Transferencia de Hipertexto.&lt;/dd&gt;<br><br>
+                            &nbsp;&nbsp;&lt;dt&gt;API&lt;/dt&gt;<br>
+                            &nbsp;&nbsp;&lt;dd&gt;Interfaz de programación de aplicaciones.&lt;/dd&gt;<br><br>
+                            &nbsp;&nbsp;&lt;dt&gt;UI&lt;/dt&gt;<br>
+                            &nbsp;&nbsp;&lt;dd&gt;Interfaz de usuario.&lt;/dd&gt;<br>
+                            &lt;/dl&gt;
+                        </div>
+                        <div class="nota">
+                            <strong>Elementos:</strong><br>
+                            • &lt;dl&gt; - Contenedor de la lista de definiciones<br>
+                            • &lt;dt&gt; - Definition Term (término a definir)<br>
+                            • &lt;dd&gt; - Definition Description (descripción del término)<br><br>
+                            <strong>Características:</strong><br>
+                            • No se renderizan con viñetas ni números<br>
+                            • Formato semántico especial para pares término-descripción<br>
+                            • La descripción (&lt;dd&gt;) suele mostrarse con sangría<br>
+                            • Un término puede tener múltiples descripciones<br>
+                            • Una descripción puede tener múltiples términos asociados
+                        </div>
                     </div>
-                </div>
 
-                <div class="info-box">
-                    <h3>Importante:</h3>
-                    <p>La lista anidada debe estar dentro de un elemento <code>&lt;li&gt;</code> de la lista padre, no directamente dentro del <code>&lt;ul&gt;</code> o <code>&lt;ol&gt;</code>.</p>
-                </div>
-            </section>
+                    <div class="termino" id="ejercicio-practico" data-tags="ejercicio practica rutina">
+                        <span class="tag">🎯 Ejercicio Práctico</span>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Práctica con listas anidadas</p>
+                        <p class="descripcion">
+                            Ejercicio para practicar la creación de listas ordenadas y no ordenadas anidadas.
+                            Crea una lista de tu rutina matutina usando listas ordenadas para pasos secuenciales
+                            y listas no ordenadas para opciones dentro de cada paso.
+                        </p>
+                        <div class="practice-exercise">
+                            <h4>Tarea: Crea una lista de tu rutina matutina</h4>
+                            <p>Usa &lt;ol&gt; para los pasos principales y &lt;ul&gt; para las opciones dentro de cada paso.</p>
 
-            <section id="listas-definicion" class="topic-section">
-                <h2><span class="unsa-tag">[U]</span> Listas de Definición (&lt;dl&gt;)</h2>
-                <p>Se usan para representar pares de término-descripción. Son perfectas para glosarios, fichas técnicas o FAQs.</p>
-
-                <div class="code-block">
-                    <pre><code>&lt;dl&gt;
-    &lt;dt&gt;HTTP&lt;/dt&gt;
-    &lt;dd&gt;Protocolo de Transferencia de Hipertexto.&lt;/dd&gt;
-
-    &lt;dt&gt;API&lt;/dt&gt;
-    &lt;dd&gt;Interfaz de programación de aplicaciones.&lt;/dd&gt;
-
-    &lt;dt&gt;UI&lt;/dt&gt;
-    &lt;dd&gt;Interfaz de usuario.&lt;/dd&gt;
-&lt;/dl&gt;</code></pre>
-                </div>
-
-                <div class="example-box">
-                    <h4>Ejemplo visual:</h4>
-                    <div class="demo-box">
-                        <dl>
-                            <dt><strong>HTTP</strong></dt>
-                            <dd>Protocolo de Transferencia de Hipertexto.</dd>
-
-                            <dt><strong>API</strong></dt>
-                            <dd>Interfaz de programación de aplicaciones.</dd>
-
-                            <dt><strong>UI</strong></dt>
-                            <dd>Interfaz de usuario.</dd>
-                        </dl>
-                    </div>
-                </div>
-
-                <div class="info-box">
-                    <h3>Elementos:</h3>
-                    <ul>
-                        <li><code>&lt;dl&gt;</code> - Contenedor de la lista de definiciones</li>
-                        <li><code>&lt;dt&gt;</code> - Definition Term (término a definir)</li>
-                        <li><code>&lt;dd&gt;</code> - Definition Description (descripción del término)</li>
-                    </ul>
-                </div>
-
-                <div class="concept-box">
-                    <h3>Características:</h3>
-                    <ul>
-                        <li>No se renderizan con viñetas ni números</li>
-                        <li>Formato semántico especial</li>
-                        <li>La descripción (<code>&lt;dd&gt;</code>) suele mostrarse con sangría</li>
-                        <li>Un término puede tener múltiples descripciones</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="ejercicio-practico" class="topic-section">
-                <h2>Ejercicio Práctico</h2>
-                <div class="practice-exercise">
-                    <h4>Crea una lista de tu rutina matutina</h4>
-                    <p>Usa una lista ordenada para los pasos secuenciales y listas no ordenadas para las opciones dentro de cada paso.</p>
-
-                    <details>
-                        <summary>Ver ejemplo de solución</summary>
-                        <div class="code-block">
-                            <pre><code>&lt;h2&gt;Mi Rutina Matutina&lt;/h2&gt;
+                            <details>
+                                <summary>Ver ejemplo de solución</summary>
+                                <div class="code-block">
+                                    <pre><code>&lt;h2&gt;Mi Rutina Matutina&lt;/h2&gt;
 &lt;ol&gt;
     &lt;li&gt;Despertarse
         &lt;ul&gt;
@@ -270,63 +236,9 @@
         &lt;/ul&gt;
     &lt;/li&gt;
 &lt;/ol&gt;</code></pre>
+                                </div>
+                            </details>
                         </div>
-                    </details>
-                </div>
-            </section>
-
-            <section id="glosario-modulo" class="topic-section">
-                <h2>📚 Glosario del Módulo</h2>
-                <p>Términos y elementos HTML relacionados con listas:</p>
-
-                <div class="search-container">
-                    <input type="text" id="searchInput" class="search-box" placeholder="🔍 Buscar término...">
-                </div>
-
-                <div id="terminosContainer">
-                    <div class="termino" data-tags="ul lista desordenada viñetas bullets">
-                        <span class="tag">&lt;ul&gt;</span>
-                        <p class="significado">Significado: Lista no ordenada (Unordered List)</p>
-                        <p class="descripcion">
-                            Crea una lista con viñetas (bullets). Los elementos no tienen un orden específico o secuencial.
-                            Útil para listas donde el orden no importa: características, ingredientes, opciones del menú.
-                        </p>
-                        <div class="ejemplo">&lt;ul&gt;<br>&nbsp;&nbsp;&lt;li&gt;Primer elemento&lt;/li&gt;<br>&nbsp;&nbsp;&lt;li&gt;Segundo elemento&lt;/li&gt;<br>&nbsp;&nbsp;&lt;li&gt;Tercer elemento&lt;/li&gt;<br>&lt;/ul&gt;</div>
-                    </div>
-
-                    <div class="termino" data-tags="ol lista ordenada numerada numbers">
-                        <span class="tag">&lt;ol&gt;</span>
-                        <p class="significado">Significado: Lista ordenada (Ordered List)</p>
-                        <p class="descripcion">
-                            Crea una lista numerada. Los elementos tienen un orden específico y se numeran automáticamente.
-                            Útil para pasos de instrucciones, rankings, secuencias temporales, o cualquier lista donde el orden importa.
-                        </p>
-                        <div class="ejemplo">&lt;ol&gt;<br>&nbsp;&nbsp;&lt;li&gt;Primer paso&lt;/li&gt;<br>&nbsp;&nbsp;&lt;li&gt;Segundo paso&lt;/li&gt;<br>&nbsp;&nbsp;&lt;li&gt;Tercer paso&lt;/li&gt;<br>&lt;/ol&gt;</div>
-                        <div class="nota">
-                            <strong>Atributos útiles:</strong> <span class="atributo">type</span> - Tipo de numeración ("1", "A", "a", "I", "i"),
-                            <span class="atributo">start</span> - Número inicial, <span class="atributo">reversed</span> - Orden inverso
-                        </div>
-                    </div>
-
-                    <div class="termino" data-tags="li elemento lista item">
-                        <span class="tag">&lt;li&gt;</span>
-                        <p class="significado">Significado: Elemento de lista (List Item)</p>
-                        <p class="descripcion">
-                            Define un elemento individual dentro de una lista (ul, ol o menu).
-                            Solo puede ser hijo directo de ul, ol o menu. Puede contener cualquier contenido, incluso otras listas.
-                        </p>
-                        <div class="ejemplo">&lt;li&gt;Este es un elemento de lista&lt;/li&gt;</div>
-                    </div>
-
-                    <div class="termino" data-tags="dl dt dd lista definición descripción">
-                        <span class="tag">&lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;</span>
-                        <p class="significado">Significado: Lista de descripciones</p>
-                        <p class="descripcion">
-                            dl (Description List) crea una lista de términos y descripciones.
-                            dt (Description Term) define el término, dd (Description Details) define la descripción.
-                            Útil para glosarios, metadatos, pares clave-valor.
-                        </p>
-                        <div class="ejemplo">&lt;dl&gt;<br>&nbsp;&nbsp;&lt;dt&gt;HTML&lt;/dt&gt;<br>&nbsp;&nbsp;&lt;dd&gt;Lenguaje de marcado para páginas web&lt;/dd&gt;<br>&nbsp;&nbsp;&lt;dt&gt;CSS&lt;/dt&gt;<br>&nbsp;&nbsp;&lt;dd&gt;Lenguaje para estilos visuales&lt;/dd&gt;<br>&lt;/dl&gt;</div>
                     </div>
                 </div>
 
@@ -336,17 +248,44 @@
             </section>
         </main>
 
-        <aside class="toc">
-            <h3>Contenido</h3>
-            <ul>
-                <li><a href="#introduccion">Introducción</a></li>
-                <li><a href="#listas-no-ordenadas">Listas No Ordenadas</a></li>
-                <li><a href="#listas-ordenadas">Listas Ordenadas</a></li>
-                <li><a href="#listas-anidadas">Listas Anidadas</a></li>
-                <li><a href="#listas-definicion">Listas de Definición</a></li>
-                <li><a href="#ejercicio-practico">Ejercicio Práctico</a></li>
-                <li><a href="#glosario-modulo">Glosario del Módulo</a></li>
-            </ul>
+        <aside class="toc-sidebar">
+            <div class="toc-header">📋 Listas</div>
+
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-group">
+                        <div class="toc-group-header" onclick="toggleTOCGroup('elementos')">
+                            <span class="toggle-icon">▼</span>
+                            📝 Elementos de Lista
+                        </div>
+                        <ul class="toc-group-items" id="toc-group-elementos">
+                            <li class="toc-item level-2"><a href="#ul" class="toc-link">&lt;ul&gt; - Lista No Ordenada</a></li>
+                            <li class="toc-item level-2"><a href="#ol" class="toc-link">&lt;ol&gt; - Lista Ordenada</a></li>
+                            <li class="toc-item level-2"><a href="#li" class="toc-link">&lt;li&gt; - Elemento de Lista</a></li>
+                        </ul>
+                    </li>
+                    <li class="toc-group">
+                        <div class="toc-group-header" onclick="toggleTOCGroup('avanzado')">
+                            <span class="toggle-icon">▼</span>
+                            🔗 Conceptos Avanzados
+                        </div>
+                        <ul class="toc-group-items" id="toc-group-avanzado">
+                            <li class="toc-item level-2"><a href="#listas-anidadas" class="toc-link">Listas Anidadas</a></li>
+                            <li class="toc-item level-2"><a href="#dl" class="toc-link">&lt;dl&gt; - Lista de Definiciones</a></li>
+                        </ul>
+                    </li>
+                    <li class="toc-item"><a href="#ejercicio-practico" class="toc-link">🎯 Ejercicio Práctico</a></li>
+                </ul>
+            </nav>
+
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
         </aside>
     </div>
 
@@ -356,22 +295,85 @@
 
     <script src="/assets/js/sidebar-component.js"></script>
     <script>
-        // Funcionalidad de búsqueda en el glosario
+        // Funcionalidad de búsqueda en el glosario con normalización y resaltado
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('searchInput');
             const terminosContainer = document.getElementById('terminosContainer');
             const noResults = document.getElementById('noResults');
             const terminos = terminosContainer.querySelectorAll('.termino');
 
+            // Normalizar texto: eliminar tildes y convertir a minúsculas
+            function normalizeText(text) {
+                return text
+                    .toLowerCase()
+                    .normalize('NFD')
+                    .replace(/[\u0300-\u036f]/g, '');
+            }
+
+            // Resaltar texto encontrado
+            function highlightText(element, query) {
+                removeHighlights(element);
+
+                const walker = document.createTreeWalker(
+                    element,
+                    NodeFilter.SHOW_TEXT,
+                    null,
+                    false
+                );
+
+                const nodesToReplace = [];
+                let node;
+
+                while (node = walker.nextNode()) {
+                    if (normalizeText(node.nodeValue).includes(query)) {
+                        nodesToReplace.push(node);
+                    }
+                }
+
+                nodesToReplace.forEach(node => {
+                    const text = node.nodeValue;
+                    const escapedQuery = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+                    // Crear regex que ignore tildes
+                    const accentsMap = {
+                        'a': '[aáàäâã]', 'e': '[eéèëê]', 'i': '[iíìïî]',
+                        'o': '[oóòöôõ]', 'u': '[uúùüû]', 'n': '[nñ]'
+                    };
+
+                    let regexPattern = '';
+                    for (let char of escapedQuery) {
+                        regexPattern += accentsMap[char] || char;
+                    }
+
+                    const regex = new RegExp(`(${regexPattern})`, 'gi');
+                    const span = document.createElement('span');
+                    span.innerHTML = text.replace(regex, '<mark style="background: #f1c40f; color: #000; padding: 2px 4px; border-radius: 3px; font-weight: 500;">$1</mark>');
+                    node.parentNode.replaceChild(span, node);
+                });
+            }
+
+            // Eliminar resaltados previos
+            function removeHighlights(element) {
+                const marks = element.querySelectorAll('mark');
+                marks.forEach(mark => {
+                    const parent = mark.parentNode;
+                    if (parent) {
+                        const textNode = document.createTextNode(mark.textContent);
+                        parent.replaceChild(textNode, mark);
+                        parent.normalize();
+                    }
+                });
+            }
+
             searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase().trim();
+                const searchTerm = normalizeText(this.value.trim());
                 let visibleCount = 0;
 
                 terminos.forEach(termino => {
-                    const tag = termino.querySelector('.tag').textContent.toLowerCase();
-                    const significado = termino.querySelector('.significado').textContent.toLowerCase();
-                    const descripcion = termino.querySelector('.descripcion').textContent.toLowerCase();
-                    const tags = termino.getAttribute('data-tags').toLowerCase();
+                    const tag = normalizeText(termino.querySelector('.tag').textContent);
+                    const significado = normalizeText(termino.querySelector('.significado').textContent);
+                    const descripcion = normalizeText(termino.querySelector('.descripcion').textContent);
+                    const tags = normalizeText(termino.getAttribute('data-tags'));
 
                     const matches = tag.includes(searchTerm) ||
                                   significado.includes(searchTerm) ||
@@ -381,16 +383,84 @@
                     if (matches || searchTerm === '') {
                         termino.style.display = 'block';
                         visibleCount++;
+
+                        // Resaltar solo si hay término de búsqueda
+                        if (searchTerm !== '') {
+                            highlightText(termino, searchTerm);
+                        } else {
+                            removeHighlights(termino);
+                        }
                     } else {
                         termino.style.display = 'none';
+                        removeHighlights(termino);
                     }
                 });
 
+                // Mostrar mensaje si no hay resultados
                 if (visibleCount === 0 && searchTerm !== '') {
                     noResults.style.display = 'block';
                 } else {
                     noResults.style.display = 'none';
                 }
+            });
+
+            // Barra de progreso de scroll
+            const progressBar = document.getElementById('tocProgressBar');
+            if (progressBar) {
+                window.addEventListener('scroll', () => {
+                    const windowHeight = window.innerHeight;
+                    const documentHeight = document.documentElement.scrollHeight - windowHeight;
+                    const scrolled = window.scrollY;
+                    const progress = (scrolled / documentHeight) * 100;
+                    progressBar.style.width = `${Math.min(progress, 100)}%`;
+                });
+            }
+
+            // Función para toggle de grupos
+            window.toggleTOCGroup = function(groupId) {
+                const group = document.getElementById(`toc-group-${groupId}`);
+                const icon = event.currentTarget.querySelector('.toggle-icon');
+
+                if (!group) return;
+
+                if (group.style.display === 'none') {
+                    group.style.display = 'block';
+                    icon.textContent = '▼';
+                } else {
+                    group.style.display = 'none';
+                    icon.textContent = '▶';
+                }
+            };
+
+            // Resaltar término al hacer clic en TOC
+            const tocLinks = document.querySelectorAll('.toc-link');
+            tocLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href').substring(1);
+
+                    setTimeout(() => {
+                        const targetElement = document.getElementById(targetId);
+                        if (targetElement) {
+                            // Remover resaltados anteriores
+                            document.querySelectorAll('.termino, .topic-section').forEach(t => {
+                                t.style.outline = '';
+                                t.style.boxShadow = '';
+                            });
+
+                            // Resaltar el elemento seleccionado
+                            if (targetElement.classList.contains('termino') || targetElement.classList.contains('topic-section')) {
+                                targetElement.style.outline = '3px solid #e74c3c';
+                                targetElement.style.boxShadow = '0 0 20px rgba(231, 76, 60, 0.5)';
+
+                                // Quitar resaltado después de 3 segundos
+                                setTimeout(() => {
+                                    targetElement.style.outline = '';
+                                    targetElement.style.boxShadow = '';
+                                }, 3000);
+                            }
+                        }
+                    }, 100);
+                });
             });
         });
     </script>

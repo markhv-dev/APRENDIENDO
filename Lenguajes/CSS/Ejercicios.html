@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de CSS - Práctica Progresiva</title>
+
+    <!-- Sidebar Styles -->
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+
+    <!-- TOC (Table of Contents) Styles -->
+    <link rel="stylesheet" href="/assets/css/toc.css">
+
+    <!-- Ejercicios Styles -->
+    <link rel="stylesheet" href="/assets/css/ejercicios.css">
+
+    <style>
+        /* Estilos para el examen */
+        .examen-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+            color: white;
+        }
+
+        .pregunta-examen {
+            background: white;
+            color: #2c3e50;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .pregunta-examen h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .opciones-examen {
+            list-style: none;
+            padding: 0;
+        }
+
+        .opciones-examen li {
+            padding: 10px 15px;
+            margin: 8px 0;
+            background: #f8f9fa;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-left: 4px solid transparent;
+        }
+
+        .opciones-examen li:hover {
+            background: #e9ecef;
+            border-left-color: #667eea;
+        }
+
+        .opciones-examen li.correcta {
+            background: #d4edda;
+            border-left-color: #28a745;
+        }
+
+        .opciones-examen li.incorrecta {
+            background: #f8d7da;
+            border-left-color: #dc3545;
+        }
+
+        .btn-verificar {
+            background: #28a745;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .btn-verificar:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .resultado-examen {
+            background: white;
+            color: #2c3e50;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            display: none;
+        }
+
+        .resultado-examen.show {
+            display: block;
+        }
+
+        .badge-examen {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .aprobado {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .reprobado {
+            background: #f8d7da;
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="back-link">← Volver</a>
+        <h1>🎯 Ejercicios de CSS</h1>
+        <p class="subtitle">Práctica de Selectores, Flexbox, Grid y Estilos + Examen Final</p>
+    </header>
+
+    <!-- Level Navigation -->
+    <nav class="level-nav">
+        <div class="level-nav-links">
+            <a href="#basico">📦 Básico (Ejercicios 1-4)</a>
+            <a href="#layouts">🔀 Layouts (Ejercicios 5-8)</a>
+            <a href="#avanzado">✨ Avanzado (Ejercicios 9-12)</a>
+            <a href="#examen">📝 Examen Final</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="intro">
+            <p><strong>Instrucciones:</strong> Completa cada ejercicio en orden. Crea archivos HTML con sus respectivos estilos CSS. Prueba cada ejercicio en tu navegador y verifica que se vea correctamente. Los ejercicios están basados en el material del Ing. Marco Aedo López (UNSA 2025).</p>
+        </div>
+
+        <!-- EJERCICIOS BÁSICOS -->
+        <div id="basico" class="section-separator">📦 FUNDAMENTOS CSS</div>
+
+        <div class="ejercicio">
+            <span class="nivel basico">Ejercicio 1</span>
+            <h2>Selectores y Especificidad</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Dominar selectores básicos y comprender el sistema de especificidad.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea un archivo HTML con 5 párrafos</li>
+                    <li>Aplica estilos usando: selector de elemento, clase, ID, agrupación y descendiente</li>
+                    <li>Primer párrafo: color azul usando selector de elemento</li>
+                    <li>Segundo párrafo: color verde usando clase <code>.destacado</code></li>
+                    <li>Tercer párrafo: color rojo usando ID <code>#especial</code></li>
+                    <li>Cuarto y quinto: color gris usando selector de agrupación</li>
+                    <li>Experimenta con especificidad: ¿qué pasa si un elemento tiene clase E ID?</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Recuerda:</strong> Especificidad: Elemento=1, Clase=10, ID=100
+                <pre>&lt;p&gt;Párrafo 1&lt;/p&gt;
+&lt;p class="destacado"&gt;Párrafo 2&lt;/p&gt;
+&lt;p id="especial"&gt;Párrafo 3&lt;/p&gt;</pre>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel basico">Ejercicio 2</span>
+            <h2>Box Model y Espaciado</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Comprender el modelo de caja (content, padding, border, margin).</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea 3 cajas (div) con clase <code>.caja</code></li>
+                    <li>Aplica: width: 200px, height: 150px, background: lightblue</li>
+                    <li>Primera caja: padding de 20px (observa cómo aumenta el tamaño total)</li>
+                    <li>Segunda caja: border de 5px solid red</li>
+                    <li>Tercera caja: margin de 30px (observa la separación)</li>
+                    <li>Agrega <code>box-sizing: border-box</code> y observa la diferencia</li>
+                    <li>Usa border-radius: 10px para redondear esquinas</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Tip:</strong> Con border-box, padding y border se incluyen en width/height
+                <pre>.caja {
+    width: 200px;
+    padding: 20px;
+    border: 5px solid red;
+    box-sizing: border-box;
+}</pre>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel basico">Ejercicio 3</span>
+            <h2>Unidades y Colores</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Practicar unidades absolutas, relativas y diferentes formatos de color.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea un contenedor principal con font-size: 16px</li>
+                    <li>Dentro, crea 4 cajas diferentes</li>
+                    <li>Caja 1: width en px (300px), color hexadecimal (#ff5733)</li>
+                    <li>Caja 2: width en % (50%), color RGB (rgb(52, 152, 219))</li>
+                    <li>Caja 3: width en rem (20rem), color RGBA semi-transparente (rgba(46, 204, 113, 0.7))</li>
+                    <li>Caja 4: width en vw (80vw), gradiente linear (linear-gradient(to right, #667eea, #764ba2))</li>
+                    <li>Observa cómo cada unidad se comporta al cambiar tamaño de ventana</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Diferencias:</strong>
+                <ul>
+                    <li>px: Absoluto, no cambia</li>
+                    <li>%: Relativo al contenedor padre</li>
+                    <li>rem: Relativo al tamaño de fuente del root (html)</li>
+                    <li>vw: Relativo al ancho del viewport (1vw = 1% del ancho)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel intermedio">Ejercicio 4</span>
+            <h2>Selectores Avanzados y Pseudoclases</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Usar selectores de atributo, pseudoclases de interacción y estructurales.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea una lista (&lt;ul&gt;) con 6 elementos (&lt;li&gt;)</li>
+                    <li>Aplica :hover para cambiar background al pasar el mouse</li>
+                    <li>Usa :first-child para hacer el primer elemento en negrita</li>
+                    <li>Usa :last-child para cambiar color del último</li>
+                    <li>Usa :nth-child(odd) para background gris en impares</li>
+                    <li>Usa :nth-child(even) para background blanco en pares</li>
+                    <li>Crea un input y aplica :focus para cambiar border-color</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Ejemplo:</strong>
+                <pre>li:hover {
+    background: lightblue;
+    cursor: pointer;
+}
+
+li:nth-child(odd) {
+    background: #f0f0f0;
+}</pre>
+            </div>
+        </div>
+
+        <!-- EJERCICIOS LAYOUTS -->
+        <div id="layouts" class="section-separator">🔀 LAYOUTS MODERNOS</div>
+
+        <div class="ejercicio">
+            <span class="nivel intermedio">Ejercicio 5</span>
+            <h2>Flexbox: Navbar Horizontal</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Crear una barra de navegación horizontal usando Flexbox.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea un &lt;nav&gt; con clase <code>.navbar</code> y 5 enlaces dentro</li>
+                    <li>Aplica <code>display: flex</code> al navbar</li>
+                    <li>Usa <code>justify-content: space-between</code> para distribuir los enlaces</li>
+                    <li>Usa <code>align-items: center</code> para centrarlos verticalmente</li>
+                    <li>Agrega padding, background-color y gap: 20px</li>
+                    <li>Estiliza los enlaces: sin subrayado, color blanco, padding</li>
+                    <li>Agrega :hover a los enlaces</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Estructura:</strong>
+                <pre>.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2c3e50;
+    padding: 15px 30px;
+    gap: 20px;
+}</pre>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel intermedio">Ejercicio 6</span>
+            <h2>Flexbox: Card Layout Responsivo</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Crear un layout de tarjetas con flex-wrap.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea un contenedor con clase <code>.cards-container</code></li>
+                    <li>Dentro, crea 6 tarjetas (div.card) con imagen, título y descripción</li>
+                    <li>Aplica <code>display: flex</code> y <code>flex-wrap: wrap</code> al contenedor</li>
+                    <li>Cada card debe tener: <code>flex-basis: 300px</code>, padding, border-radius, box-shadow</li>
+                    <li>Usa <code>gap: 20px</code> para separar las tarjetas</li>
+                    <li>Las tarjetas deben ajustarse automáticamente (wrap) al cambiar tamaño de ventana</li>
+                    <li>Agrega :hover con transform: translateY(-5px) y box-shadow más grande</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Tip:</strong>
+                <pre>.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    flex-basis: 300px;
+    flex-grow: 1;
+}</pre>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel intermedio">Ejercicio 7</span>
+            <h2>Grid: Layout de Página Completa</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Crear un layout clásico con header, sidebar, main y footer usando Grid.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea un contenedor con clase <code>.grid-layout</code> y 4 secciones: header, sidebar, main, footer</li>
+                    <li>Aplica <code>display: grid</code></li>
+                    <li>Define: <code>grid-template-columns: 250px 1fr</code> (sidebar fijo, main flexible)</li>
+                    <li>Define: <code>grid-template-rows: 80px 1fr 60px</code> (header, content, footer)</li>
+                    <li>Usa grid-template-areas para definir el layout visualmente</li>
+                    <li>Header debe ocupar toda la fila superior</li>
+                    <li>Footer debe ocupar toda la fila inferior</li>
+                    <li>Sidebar y main ocupan la fila del medio</li>
+                    <li>Agrega colores de fondo diferentes a cada sección y gap: 10px</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Ejemplo:</strong>
+                <pre>.grid-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 80px 1fr 60px;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    gap: 10px;
+    height: 100vh;
+}
+
+.header { grid-area: header; }</pre>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel avanzado">Ejercicio 8</span>
+            <h2>Grid: Galería Responsiva</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Crear una galería de imágenes con Grid y repeat().</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea un contenedor <code>.galeria</code> con 12 imágenes (usa placeholders como https://picsum.photos/300/200)</li>
+                    <li>Aplica: <code>display: grid</code></li>
+                    <li>Usa: <code>grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))</code></li>
+                    <li>Agrega: gap: 15px</li>
+                    <li>Las imágenes deben ser responsivas: width: 100%, height: 200px, object-fit: cover</li>
+                    <li>Agrega border-radius: 8px a las imágenes</li>
+                    <li>Agrega :hover con transform: scale(1.05) y box-shadow</li>
+                    <li>Observa cómo el grid se ajusta automáticamente</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 auto-fit:</strong> Ajusta automáticamente el número de columnas según el espacio disponible
+                <pre>.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}</pre>
+            </div>
+        </div>
+
+        <!-- EJERCICIOS AVANZADOS -->
+        <div id="avanzado" class="section-separator">✨ TÉCNICAS AVANZADAS</div>
+
+        <div class="ejercicio">
+            <span class="nivel avanzado">Ejercicio 9</span>
+            <h2>Position: Header Fijo y Modal</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Usar position: fixed, absolute y sticky.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea un header con <code>position: fixed</code>, top: 0, width: 100%</li>
+                    <li>El header debe permanecer fijo al hacer scroll</li>
+                    <li>Agrega contenido largo para poder hacer scroll</li>
+                    <li>Crea un botón "Abrir Modal"</li>
+                    <li>Crea un modal (overlay + contenido) con <code>position: fixed</code> centrado</li>
+                    <li>Usa position: absolute para un botón de cerrar en esquina superior derecha del modal</li>
+                    <li>Agrega z-index: 1000 al modal para que esté sobre todo</li>
+                    <li>Crea una sección con <code>position: sticky</code> que se pegue al hacer scroll</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Centrar con position:</strong>
+                <pre>.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}</pre>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel avanzado">Ejercicio 10</span>
+            <h2>Pseudoelementos: Efectos Creativos</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Usar ::before y ::after para crear efectos visuales.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea un botón con clase <code>.btn-fancy</code></li>
+                    <li>Usa ::before para agregar un icono antes del texto (content: "→ ")</li>
+                    <li>Crea una caja de nota con clase <code>.nota</code></li>
+                    <li>Usa ::before para agregar un icono (content: "📌 ") al inicio</li>
+                    <li>Crea un link externo con clase <code>.link-externo</code></li>
+                    <li>Usa ::after para agregar "↗" después del texto</li>
+                    <li>Crea una cita con ::before y ::after para agregar comillas decorativas</li>
+                    <li>Experimenta con ::first-letter para crear una letra capital</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Recuerda:</strong> ::before y ::after SIEMPRE requieren la propiedad content
+                <pre>.btn-fancy::before {
+    content: "→ ";
+    margin-right: 5px;
+}</pre>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel avanzado">Ejercicio 11</span>
+            <h2>Transiciones y Transformaciones</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Crear animaciones suaves con transition y transform.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea 4 cajas, cada una con un efecto diferente al hacer hover</li>
+                    <li>Caja 1: Cambio de color con transition: background-color 0.3s ease</li>
+                    <li>Caja 2: Rotación con transform: rotate(45deg) y transition</li>
+                    <li>Caja 3: Escala con transform: scale(1.2) y transition</li>
+                    <li>Caja 4: Movimiento con transform: translateY(-10px) y transition</li>
+                    <li>Crea un botón que combine múltiples transformaciones al hacer hover</li>
+                    <li>Usa transition: all 0.3s ease-in-out para transiciones suaves</li>
+                    <li>Experimenta con diferentes funciones: ease, linear, ease-in, ease-out</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Combinar transformaciones:</strong>
+                <pre>.caja:hover {
+    transform: translateY(-5px) scale(1.05) rotate(2deg);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}</pre>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel avanzado">Ejercicio 12</span>
+            <h2>Formulario Completo Estilizado</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Crear un formulario profesional con estilos avanzados.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea un formulario con: nombre, email, teléfono, mensaje, select, checkbox, radio buttons</li>
+                    <li>Estiliza todos los inputs: width: 100%, padding: 12px, border: 1px solid #ccc, border-radius: 4px</li>
+                    <li>Usa :focus para cambiar border-color a azul y agregar outline</li>
+                    <li>Agrupa inputs relacionados en contenedores con margin-bottom</li>
+                    <li>Estiliza labels: display: block, margin-bottom: 5px, font-weight: 600</li>
+                    <li>Crea un botón submit estilizado con gradiente y :hover</li>
+                    <li>Usa ::placeholder para estilizar el texto placeholder (color: #999, font-style: italic)</li>
+                    <li>Agrega validación visual: input:invalid con border-color: red</li>
+                    <li>Usa box-sizing: border-box en todos los inputs</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Estructura completa:</strong>
+                <pre>input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #4CAF50;
+    outline: 2px solid rgba(76, 175, 80, 0.2);
+}
+
+button[type="submit"] {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}</pre>
+            </div>
+        </div>
+
+        <!-- EXAMEN FINAL -->
+        <div id="examen" class="section-separator">📝 EXAMEN FINAL DE CSS</div>
+
+        <div class="examen-container">
+            <h2 style="color: white; text-align: center; margin-bottom: 10px;">Examen Final - CSS</h2>
+            <p style="text-align: center; margin-bottom: 30px;">20 preguntas tipo parcial | Nota mínima aprobatoria: 11/20</p>
+
+            <!-- Pregunta 1 -->
+            <div class="pregunta-examen" data-correcta="b">
+                <h4>1. ¿Cuál es la sintaxis correcta de una regla CSS?</h4>
+                <ul class="opciones-examen">
+                    <li data-opcion="a">a) {selector: propiedad; valor;}</li>
+                    <li data-opcion="b">b) selector { propiedad: valor; }</li>
+                    <li data-opcion="c">c) selector [propiedad = valor]</li>
+                    <li data-opcion="d">d) selector (propiedad: valor)</li>
+                </ul>
+            </div>
+
+            <!-- Pregunta 2 -->
+            <div class="pregunta-examen" data-correcta="c">
+                <h4>2. ¿Qué valor de especificidad tiene un selector de ID?</h4>
+                <ul class="opciones-examen">
+                    <li data-opcion="a">a) 1</li>
+                    <li data-opcion="b">b) 10</li>
+                    <li data-opcion="c">c) 100</li>
+                    <li data-opcion="d">d) 1000</li>
+                </ul>
+            </div>
+
+            <!-- Pregunta 3 -->
+            <div class="pregunta-examen" data-correcta="b">
+                <h4>3. ¿Cuál es la forma RECOMENDADA de incluir CSS?</h4>
+                <ul class="opciones-examen">
+                    <li data-opcion="a">a) Inline (atributo style)</li>
+                    <li data-opcion="b">b) Externo (archivo .css con &lt;link&gt;)</li>
+                    <li data-opcion="c">c) Interno (etiqueta &lt;style&gt;)</li>
+                    <li data-opcion="d">d) Todas son igual de recomendables</li>
+                </ul>
+            </div>
+
+            <!-- Pregunta 4 -->
+            <div class="pregunta-examen" data-correcta="d">
+                <h4>4. ¿Qué selector selecciona el primer hijo de su padre?</h4>
+                <ul class="opciones-examen">
+                    <li data-opcion="a">a) :first-of-type</li>
+                    <li data-opcion="b">b) ::first-child</li>
+                    <li data-opcion="c">c) :nth-child(1)</li>
+                    <li data-opcion="d">d) a y c son correctas</li>
+                </ul>
+            </div>
+
+            <!-- Pregunta 5 -->
+            <div class="pregunta-examen" data-correcta="a">
+                <h4>5. ¿Qué propiedad controla el espacio INTERNO entre el contenido y el borde?</h4>
+                <ul class="opciones-examen">
+                    <li data-opcion="a">a) padding</li>
+                    <li data-opcion="b">b) margin</li>
+                    <li data-opcion="c">c) border</li>
+                    <li data-opcion="d">d) spacing</li>
+                </ul>
+            </div>
+
+            <!-- Pregunta 6 -->
+            <div class="pregunta-examen" data-correcta="c">
+                <h4>6. ¿Qué unidad es relativa al tamaño de fuente del elemento root (html)?</h4>
+                <ul class="opciones-examen">
+                    <li data-opcion="a">a) em</li>
+                    <li data-opcion="b">b) px</li>
+                    <li data-opcion="c">c) rem</li>
+                    <li data-opcion="d">d) %</li>
+                </ul>
+            </div>
+
+            <!-- Pregunta 7 -->
+            <div class="pregunta-examen" data-correcta="b">
+                <h4>7. ¿Cuál es la diferencia entre display: inline e inline-block?</h4>
+                <ul class="opciones-examen">
+                    <li data-opcion="a">a) No hay diferencia</li>
+                    <li data-opcion="b">b) inline-block acepta width y height, inline no</li>
+                    <li data-opcion="c">c) inline es para imágenes, inline-block para texto</li>
+                    <li data-opcion="d">d) inline-block rompe la línea, inline no</li>
+                </ul>
+            </div>
+
+            <!-- Pregunta 8 -->
+            <div class="pregunta-examen" data-correcta="a">
+                <h4>8. ¿Qué propiedad de Flexbox alinea items en el eje PRINCIPAL?</h4>
+                <ul class="opciones-examen">
+                    <li data-opcion="a">a) justify-content</li>
+                    <li data-opcion="b">b) align-items</li>
+                    <li data-opcion="c">c) align-content</li>
+                    <li data-opcion="d">d) flex-align</li>
+                </ul>
+            </div>
+
+            <!-- Pregunta 9 -->
+            <div class="pregunta-examen" data-correcta="c">
+                <h4>9. ¿Qué significa flex-direction: column?</h4>
+                <ul class="opciones-examen">
+                    <li data-opcion="a">a) Layout horizontal</li>
+                    <li data-opcion="b">b) 3 columnas iguales</li>
+                    <li data-opcion="c">c) Layout vertical (eje principal es vertical)</li>
+                    <li data-opcion="d">d) Grid con columnas</li>
+                </ul>
+            </div>
+
+            <!-- Pregunta 10 -->
+            <div class="pregunta-examen" data-correcta="b">
+                <h4>10. ¿Qué unidad de Grid representa una fracción del espacio disponible?</h4>
+                <ul class="opciones-examen">
+                    <li data-opcion="a">a) px</li>
+                    <li data-opcion="b">b) fr</li>
+                    <li data-opcion="c">c) %</li>
+                    <li data-opcion="d">d) rem</li>
+                </ul>
+            </div>
+
+            <!-- Pregunta 11 -->
+            <div class="pregunta-examen" data-correcta="d">
+                <h4>11. ¿Qué hace grid-template-columns: repeat(3, 1fr)?</h4>
+                <ul class="opciones-examen">
+                    <li data-opcion="a">a) 3 filas iguales</li>
+                    <li data-opcion="b">b) Repite el contenido 3 veces</li>
+                    <li data-opcion="c">c) 1 columna con fracción 3</li>
+                    <li data-opcion="d">d) 3 columnas de igual tamaño</li>
+                </ul>
+            </div>
+
+            <!-- Pregunta 12 -->
+            <div class="pregunta-examen" data-correcta="a">
+                <h4>12. ¿Qué position mantiene el espacio en el flujo del documento?</h4>
+                <ul class="opciones-examen">
+                    <li data-opcion="a">a) relative</li>
+                    <li data-opcion="b">b) absolute</li>
+                    <li data-opcion="c">c) fixed</li>
+                    <li data-opcion="d">d) sticky</li>
+                </ul>
+            </div>
+
+            <!-- Pregunta 13 -->
+            <div class="pregunta-examen" data-correcta="c">
+                <h4>13. ¿Cuál es la diferencia entre :hover (1 dos puntos) y ::before (2 dos puntos)?</h4>
+                <ul class="opciones-examen">
+                    <li data-opcion="a">a) No hay diferencia, son lo mismo</li>
+                    <li data-opcion="b">b) :: es la sintaxis antigua</li>
+                    <li data-opcion="c">c) : es pseudoclase (estado), :: es pseudoelemento (parte del elemento)</li>
+                    <li data-opcion="d">d) :: solo funciona en CSS3</li>
+                </ul>
+            </div>
+
+            <!-- Pregunta 14 -->
+            <div class="pregunta-examen" data-correcta="b">
+                <h4>14. ¿Qué propiedad es OBLIGATORIA al usar ::before o ::after?</h4>
+                <ul class="opciones-examen">
+                    <li data-opcion="a">a) display</li>
+                    <li data-opcion="b">b) content</li>
+                    <li data-opcion="c">c) position</li>
+                    <li data-opcion="d">d) width</li>
+                </ul>
+            </div>
+
+            <!-- Pregunta 15 -->
+            <div class="pregunta-examen" data-correcta="a">
+                <h4>15. ¿Qué selector aplica estilos a elementos impares (1, 3, 5...)?</h4>
+                <ul class="opciones-examen">
+                    <li data-opcion="a">a) :nth-child(odd)</li>
+                    <li data-opcion="b">b) :nth-child(even)</li>
+                    <li data-opcion="c">c) :nth-child(2n)</li>
+                    <li data-opcion="d">d) :odd-child</li>
+                </ul>
+            </div>
+
+            <!-- Pregunta 16 -->
+            <div class="pregunta-examen" data-correcta="c">
+                <h4>16. ¿Qué hace transform: scale(2)?</h4>
+                <ul class="opciones-examen">
+                    <li data-opcion="a">a) Rota 2 grados</li>
+                    <li data-opcion="b">b) Mueve 2px</li>
+                    <li data-opcion="c">c) Agranda al doble del tamaño</li>
+                    <li data-opcion="d">d) Reduce a la mitad</li>
+                </ul>
+            </div>
+
+            <!-- Pregunta 17 -->
+            <div class="pregunta-examen" data-correcta="b">
+                <h4>17. ¿Qué función de timing hace que la transición sea suave al inicio y final?</h4>
+                <ul class="opciones-examen">
+                    <li data-opcion="a">a) linear</li>
+                    <li data-opcion="b">b) ease-in-out</li>
+                    <li data-opcion="c">c) ease</li>
+                    <li data-opcion="d">d) step-start</li>
+                </ul>
+            </div>
+
+            <!-- Pregunta 18 -->
+            <div class="pregunta-examen" data-correcta="a">
+                <h4>18. ¿Qué valor de box-sizing incluye padding y border en el width?</h4>
+                <ul class="opciones-examen">
+                    <li data-opcion="a">a) border-box</li>
+                    <li data-opcion="b">b) content-box</li>
+                    <li data-opcion="c">c) padding-box</li>
+                    <li data-opcion="d">d) full-box</li>
+                </ul>
+            </div>
+
+            <!-- Pregunta 19 -->
+            <div class="pregunta-examen" data-correcta="d">
+                <h4>19. ¿Cuál NO es una ventaja de usar frameworks CSS como Bootstrap o Tailwind?</h4>
+                <ul class="opciones-examen">
+                    <li data-opcion="a">a) Acelera el desarrollo</li>
+                    <li data-opcion="b">b) Compatibilidad entre navegadores</li>
+                    <li data-opcion="c">c) Diseño responsivo automático</li>
+                    <li data-opcion="d">d) Sitios 100% únicos y personalizados</li>
+                </ul>
+            </div>
+
+            <!-- Pregunta 20 -->
+            <div class="pregunta-examen" data-correcta="c">
+                <h4>20. ¿Qué propiedad permite que las imágenes mantengan su proporción al cambiar de tamaño?</h4>
+                <ul class="opciones-examen">
+                    <li data-opcion="a">a) background-size</li>
+                    <li data-opcion="b">b) image-fit</li>
+                    <li data-opcion="c">c) object-fit</li>
+                    <li data-opcion="d">d) aspect-ratio</li>
+                </ul>
+            </div>
+
+            <div style="text-align: center;">
+                <button class="btn-verificar" onclick="verificarExamen()">Verificar Respuestas</button>
+            </div>
+
+            <div class="resultado-examen" id="resultadoExamen"></div>
+        </div>
+    </div>
+
+    <!-- Sidebar Component -->
+    <script src="/assets/js/sidebar-component.js"></script>
+
+    <!-- Examen Script -->
+    <script>
+        // Variables para el examen
+        let respuestasUsuario = {};
+
+        // Event listeners para las opciones
+        document.querySelectorAll('.opciones-examen li').forEach(opcion => {
+            opcion.addEventListener('click', function() {
+                const pregunta = this.closest('.pregunta-examen');
+                const opciones = pregunta.querySelectorAll('.opciones-examen li');
+
+                // Limpiar selección anterior
+                opciones.forEach(opt => {
+                    opt.style.background = '#f8f9fa';
+                    opt.style.borderLeftColor = 'transparent';
+                });
+
+                // Marcar opción seleccionada
+                this.style.background = '#e3f2fd';
+                this.style.borderLeftColor = '#2196F3';
+
+                // Guardar respuesta
+                const numeroPregunta = Array.from(document.querySelectorAll('.pregunta-examen')).indexOf(pregunta) + 1;
+                respuestasUsuario[numeroPregunta] = this.dataset.opcion;
+            });
+        });
+
+        function verificarExamen() {
+            const preguntas = document.querySelectorAll('.pregunta-examen');
+            let correctas = 0;
+            let total = preguntas.length;
+
+            // Verificar si respondió todas
+            if (Object.keys(respuestasUsuario).length < total) {
+                alert('Por favor responde todas las preguntas antes de verificar.');
+                return;
+            }
+
+            // Calificar
+            preguntas.forEach((pregunta, index) => {
+                const numeroPregunta = index + 1;
+                const respuestaCorrecta = pregunta.dataset.correcta;
+                const respuestaUsuario = respuestasUsuario[numeroPregunta];
+                const opciones = pregunta.querySelectorAll('.opciones-examen li');
+
+                opciones.forEach(opcion => {
+                    const valorOpcion = opcion.dataset.opcion;
+
+                    // Marcar correcta
+                    if (valorOpcion === respuestaCorrecta) {
+                        opcion.classList.add('correcta');
+                    }
+
+                    // Marcar incorrecta si fue seleccionada y es incorrecta
+                    if (valorOpcion === respuestaUsuario && valorOpcion !== respuestaCorrecta) {
+                        opcion.classList.add('incorrecta');
+                    }
+                });
+
+                // Contar correctas
+                if (respuestaUsuario === respuestaCorrecta) {
+                    correctas++;
+                }
+            });
+
+            // Mostrar resultado
+            const nota = correctas;
+            const porcentaje = ((correctas / total) * 100).toFixed(0);
+            const aprobado = nota >= 11;
+
+            const resultadoDiv = document.getElementById('resultadoExamen');
+            resultadoDiv.innerHTML = `
+                <div style="font-size: 48px; margin-bottom: 10px;">${aprobado ? '✅' : '❌'}</div>
+                <div>Tu nota: ${nota}/${total}</div>
+                <div style="font-size: 18px; margin: 10px 0;">${porcentaje}% de respuestas correctas</div>
+                <div class="badge-examen ${aprobado ? 'aprobado' : 'reprobado'}">
+                    ${aprobado ? '¡APROBADO!' : 'REPROBADO'}
+                </div>
+                <div style="margin-top: 20px; font-size: 16px; font-weight: normal;">
+                    ${aprobado
+                        ? '¡Excelente! Has dominado los fundamentos de CSS.'
+                        : 'Sigue practicando. Revisa el glosario y vuelve a intentarlo.'}
+                </div>
+            `;
+            resultadoDiv.classList.add('show');
+
+            // Scroll al resultado
+            resultadoDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // Deshabilitar botón
+            document.querySelector('.btn-verificar').disabled = true;
+            document.querySelector('.btn-verificar').style.opacity = '0.5';
+            document.querySelector('.btn-verificar').style.cursor = 'not-allowed';
+        }
+    </script>
+</body>
+</html>
