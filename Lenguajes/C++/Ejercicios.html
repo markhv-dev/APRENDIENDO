@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de C++ - Práctica Progresiva</title>
+
+    <!-- Sidebar Styles -->
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+
+    <!-- TOC (Table of Contents) Styles -->
+    <link rel="stylesheet" href="/assets/css/toc.css">
+
+    <!-- Ejercicios Styles -->
+    <link rel="stylesheet" href="/assets/css/ejercicios.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="back-link">← Volver</a>
+        <h1>🎯 Ejercicios de C++</h1>
+        <p class="subtitle">Práctica progresiva desde fundamentos hasta POO y STL</p>
+    </header>
+
+    <!-- Level Navigation -->
+    <nav class="level-nav">
+        <div class="level-nav-links">
+            <a href="#basico">🟢 Básico (1-3)</a>
+            <a href="#intermedio">🟡 Intermedio (4-6)</a>
+            <a href="#avanzado">🔴 Avanzado (7-9)</a>
+            <a href="#experto">🟣 Experto (10-12)</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="intro">
+            <p><strong>Instrucciones:</strong> Completa cada ejercicio en orden. Crea archivos .cpp separados para cada uno y compílalos usando g++ o tu compilador favorito. Prueba cada programa para verificar que funciona correctamente.</p>
+        </div>
+
+        <!-- NIVEL BÁSICO -->
+        <div id="basico" class="section-separator">🟢 NIVEL BÁSICO</div>
+
+        <div class="ejercicio">
+            <span class="nivel basico">Ejercicio 1</span>
+            <h2>Hola Mundo y Variables</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Familiarizarte con la sintaxis básica de C++ y compilación.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea un programa que imprima "Hola, C++" en la consola</li>
+                    <li>Declara variables de diferentes tipos: int, double, char, bool, string</li>
+                    <li>Asigna valores a cada variable</li>
+                    <li>Imprime todas las variables usando cout</li>
+                    <li>Compila con: <code>g++ ejercicio1.cpp -o ejercicio1</code></li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Plantilla:</strong>
+                <pre>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+
+int main() {
+    // Tu código aquí
+    return 0;
+}</pre>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel basico">Ejercicio 2</span>
+            <h2>Calculadora Simple</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Practicar entrada/salida y operadores aritméticos.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Pide al usuario dos números usando <code>cin</code></li>
+                    <li>Calcula y muestra: suma, resta, multiplicación, división y módulo</li>
+                    <li>Maneja el caso de división por cero con un <code>if</code></li>
+                    <li>Formatea la salida para que sea clara y legible</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Ejemplo de salida:</strong>
+                <pre>Ingresa dos números: 10 3
+Suma: 13
+Resta: 7
+Multiplicación: 30
+División: 3.33333
+Módulo: 1</pre>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel basico">Ejercicio 3</span>
+            <h2>Tabla de Multiplicar</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Practicar loops y control de flujo.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Pide al usuario un número del 1 al 10</li>
+                    <li>Usa un loop <code>for</code> para imprimir la tabla de multiplicar de ese número</li>
+                    <li>Formatea la salida como: <code>5 x 1 = 5</code></li>
+                    <li>Valida que el número esté entre 1 y 10</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Ejemplo de salida (para 5):</strong>
+                <pre>5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+...
+5 x 10 = 50</pre>
+            </div>
+        </div>
+
+        <!-- NIVEL INTERMEDIO -->
+        <div id="intermedio" class="section-separator">🟡 NIVEL INTERMEDIO</div>
+
+        <div class="ejercicio">
+            <span class="nivel intermedio">Ejercicio 4</span>
+            <h2>Funciones: Calculadora Mejorada</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Crear funciones reutilizables y practicar sobrecarga.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea funciones separadas para: sumar, restar, multiplicar, dividir</li>
+                    <li>Cada función debe recibir dos parámetros y retornar el resultado</li>
+                    <li>Sobrecarga las funciones para que funcionen con int y double</li>
+                    <li>En <code>main()</code>, presenta un menú al usuario y llama a la función correspondiente</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Ejemplo de función:</strong>
+                <pre>int sumar(int a, int b) {
+    return a + b;
+}
+
+double sumar(double a, double b) {
+    return a + b;
+}</pre>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel intermedio">Ejercicio 5</span>
+            <h2>Arrays y Funciones</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Trabajar con arrays y pasar arrays a funciones.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea un array de 10 enteros</li>
+                    <li>Llénalo con números ingresados por el usuario</li>
+                    <li>Crea una función <code>int maximo(int arr[], int tamaño)</code> que retorne el valor máximo</li>
+                    <li>Crea una función <code>double promedio(int arr[], int tamaño)</code> que retorne el promedio</li>
+                    <li>Crea una función <code>void imprimir(int arr[], int tamaño)</code> que imprima todos los elementos</li>
+                    <li>Llama a todas las funciones desde <code>main()</code></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel intermedio">Ejercicio 6</span>
+            <h2>Punteros y Referencias</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Entender la diferencia entre pasar por valor, puntero y referencia.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea 3 funciones para intercambiar dos números:
+                        <ul>
+                            <li><code>void swapValor(int a, int b)</code> - No funciona</li>
+                            <li><code>void swapPuntero(int* a, int* b)</code> - Funciona</li>
+                            <li><code>void swapReferencia(int& a, int& b)</code> - Funciona</li>
+                        </ul>
+                    </li>
+                    <li>En <code>main()</code>, prueba las 3 funciones y muestra los resultados</li>
+                    <li>Explica en comentarios por qué algunas funcionan y otras no</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Tip:</strong> Usa <code>*a</code> para desreferenciar punteros y acceder al valor.
+            </div>
+        </div>
+
+        <!-- NIVEL AVANZADO -->
+        <div id="avanzado" class="section-separator">🔴 NIVEL AVANZADO</div>
+
+        <div class="ejercicio">
+            <span class="nivel avanzado">Ejercicio 7</span>
+            <h2>POO: Clase Rectángulo</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Crear tu primera clase completa con constructores y métodos.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea la clase <code>Rectangulo</code> con atributos privados: <code>ancho</code> y <code>alto</code></li>
+                    <li>Implementa un constructor que inicialice ancho y alto</li>
+                    <li>Crea métodos públicos:
+                        <ul>
+                            <li><code>double area()</code> - Retorna área</li>
+                            <li><code>double perimetro()</code> - Retorna perímetro</li>
+                            <li><code>void escalar(double factor)</code> - Multiplica ancho y alto por el factor</li>
+                            <li><code>void mostrar()</code> - Imprime información del rectángulo</li>
+                        </ul>
+                    </li>
+                    <li>En <code>main()</code>, crea varios objetos Rectangulo y prueba todos los métodos</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel avanzado">Ejercicio 8</span>
+            <h2>POO: Sistema de Cuenta Bancaria</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Practicar encapsulamiento y métodos más complejos.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea la clase <code>CuentaBancaria</code> con:
+                        <ul>
+                            <li>Atributos privados: <code>titular</code> (string), <code>saldo</code> (double)</li>
+                            <li>Constructor que reciba el titular e inicialice el saldo en 0</li>
+                        </ul>
+                    </li>
+                    <li>Implementa métodos:
+                        <ul>
+                            <li><code>void depositar(double monto)</code> - Valida que monto > 0</li>
+                            <li><code>bool retirar(double monto)</code> - Valida saldo suficiente, retorna true/false</li>
+                            <li><code>void transferir(CuentaBancaria& destino, double monto)</code></li>
+                            <li><code>double consultarSaldo()</code></li>
+                            <li><code>void mostrarInfo()</code></li>
+                        </ul>
+                    </li>
+                    <li>Crea un menú interactivo en <code>main()</code> para probar todas las operaciones</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel avanzado">Ejercicio 9</span>
+            <h2>Herencia: Sistema de Figuras Geométricas</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Implementar herencia y polimorfismo.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea la clase base abstracta <code>Figura</code> con:
+                        <ul>
+                            <li>Función virtual pura: <code>virtual double area() = 0;</code></li>
+                            <li>Función virtual pura: <code>virtual double perimetro() = 0;</code></li>
+                            <li>Función virtual: <code>virtual void mostrar()</code></li>
+                        </ul>
+                    </li>
+                    <li>Crea clases derivadas:
+                        <ul>
+                            <li><code>Circulo</code> con atributo <code>radio</code></li>
+                            <li><code>Rectangulo</code> con atributos <code>ancho</code> y <code>alto</code></li>
+                            <li><code>Triangulo</code> con atributos <code>base</code> y <code>altura</code></li>
+                        </ul>
+                    </li>
+                    <li>Implementa todos los métodos en cada clase derivada</li>
+                    <li>En <code>main()</code>, crea un array de punteros a <code>Figura</code> y usa polimorfismo</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Tip:</strong> Usa <code>Figura* figuras[3];</code> y asigna objetos de diferentes clases.
+            </div>
+        </div>
+
+        <!-- NIVEL EXPERTO -->
+        <div id="experto" class="section-separator">🟣 NIVEL EXPERTO</div>
+
+        <div class="ejercicio">
+            <span class="nivel experto">Ejercicio 10</span>
+            <h2>Gestión de Memoria: Sistema de Estudiantes</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Practicar memoria dinámica y prevenir memory leaks.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea la clase <code>Estudiante</code> con: nombre, edad, carrera</li>
+                    <li>Implementa constructor, destructor (que imprima un mensaje), y copy constructor</li>
+                    <li>En <code>main()</code>, crea un array dinámico de estudiantes usando <code>new</code></li>
+                    <li>Llena el array con datos ingresados por el usuario</li>
+                    <li>Implementa funciones para:
+                        <ul>
+                            <li>Buscar estudiante por nombre</li>
+                            <li>Mostrar todos los estudiantes</li>
+                            <li>Liberar la memoria correctamente</li>
+                        </ul>
+                    </li>
+                    <li>Asegúrate de que no haya memory leaks (verifica que se llamen los destructores)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel experto">Ejercicio 11</span>
+            <h2>Templates: Contenedor Genérico</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Crear una clase template reutilizable.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea una clase template <code>Pila&lt;T&gt;</code> (stack) con:
+                        <ul>
+                            <li>Array dinámico para almacenar elementos</li>
+                            <li>Atributos: <code>capacidad</code>, <code>tope</code></li>
+                        </ul>
+                    </li>
+                    <li>Implementa métodos:
+                        <ul>
+                            <li><code>void push(T elemento)</code> - Agrega al tope</li>
+                            <li><code>T pop()</code> - Remueve y retorna el tope</li>
+                            <li><code>T peek()</code> - Retorna el tope sin remover</li>
+                            <li><code>bool isEmpty()</code></li>
+                            <li><code>int size()</code></li>
+                        </ul>
+                    </li>
+                    <li>En <code>main()</code>, prueba la pila con diferentes tipos: int, double, string</li>
+                    <li>Implementa un destructor que libere la memoria correctamente</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel experto">Ejercicio 12</span>
+            <h2>STL: Sistema de Gestión de Biblioteca</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Dominar contenedores STL y algoritmos.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea la clase <code>Libro</code> con: título, autor, ISBN, año</li>
+                    <li>Usa contenedores STL:
+                        <ul>
+                            <li><code>vector&lt;Libro&gt;</code> para almacenar todos los libros</li>
+                            <li><code>map&lt;string, Libro&gt;</code> para búsqueda rápida por ISBN</li>
+                            <li><code>set&lt;string&gt;</code> para almacenar autores únicos</li>
+                        </ul>
+                    </li>
+                    <li>Implementa funciones usando algoritmos STL:
+                        <ul>
+                            <li>Agregar libro (push_back)</li>
+                            <li>Buscar libro por ISBN (map.find)</li>
+                            <li>Buscar libros por autor (find_if + lambda)</li>
+                            <li>Ordenar libros por año (sort + lambda)</li>
+                            <li>Listar todos los autores únicos (set)</li>
+                            <li>Contar libros de un autor específico (count_if)</li>
+                        </ul>
+                    </li>
+                    <li>Crea un menú interactivo para probar todas las funcionalidades</li>
+                    <li>Sobrecarga el operador <code>&lt;&lt;</code> para imprimir libros fácilmente</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Ejemplo de lambda:</strong>
+                <pre>auto porAutor = [](const Libro& l) {
+    return l.autor == "Gabriel García Márquez";
+};</pre>
+            </div>
+        </div>
+
+        <div class="intro" style="margin-top: 40px;">
+            <h3>🎉 ¡Felicidades por completar los ejercicios!</h3>
+            <p>Has practicado los conceptos fundamentales de C++ desde sintaxis básica hasta características avanzadas como templates, STL y gestión de memoria. Estos son los pilares del desarrollo profesional en C++.</p>
+            <p><strong>Próximos pasos:</strong></p>
+            <ul>
+                <li>Repasa los conceptos del <a href="Glosario.html">Glosario</a></li>
+                <li>Practica más con proyectos personales (juegos, simuladores, etc.)</li>
+                <li>Aprende sobre C++ moderno (C++17, C++20, C++23)</li>
+                <li>Explora bibliotecas externas como Boost, Qt, SDL</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Sidebar Component -->
+    <script src="/assets/js/sidebar-component.js"></script>
+
+    <!-- TOC Component -->
+    <script src="/assets/js/toc-component.js"></script>
+</body>
+</html>

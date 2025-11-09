@@ -59,6 +59,14 @@ document.addEventListener('DOMContentLoaded', function() {
                             <span class="item-icon">🎨</span>
                             <span class="item-text">CSS</span>
                         </a>
+                        <a href="/Lenguajes/C++/index.html" class="menu-item" data-section="cpp">
+                            <span class="item-icon">⚙️</span>
+                            <span class="item-text">C++</span>
+                        </a>
+                        <a href="/Lenguajes/Java/index.html" class="menu-item" data-section="java">
+                            <span class="item-icon">☕</span>
+                            <span class="item-text">Java</span>
+                        </a>
                     </div>
                 </div>
 

@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glosario - Java</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>☕ Glosario de Java</h1>
+            <p class="subtitle">50+ conceptos esenciales para programación orientada a objetos</p>
+        </header>
+
+        <div class="breadcrumb">
+            <a href="../../index.html">← Inicio</a> /
+            <a href="index.html">Java</a> /
+            <span>Glosario</span>
+        </div>
+
+        <div class="search-container">
+            <input type="text" class="search-box" id="searchBox" placeholder="Buscar concepto (ej: class, ArrayList, interface)...">
+        </div>
+
+        <nav class="category-nav">
+            <div class="category-nav-links">
+                <a href="#fundamentos">📦 Fundamentos</a>
+                <a href="#control">🔀 Control</a>
+                <a href="#metodos">⚙️ Métodos</a>
+                <a href="#arrays">📋 Arrays</a>
+                <a href="#poo">🏛️ POO</a>
+                <a href="#herencia">🔗 Herencia</a>
+                <a href="#colecciones">📚 Colecciones</a>
+                <a href="#excepciones">⚠️ Excepciones</a>
+                <a href="#generics">📐 Generics</a>
+                <a href="#streams">🌊 Streams</a>
+            </div>
+        </nav>
+
+        <div id="terminos">
+            <!-- FUNDAMENTOS -->
+            <div id="fundamentos" class="category-section">
+                <h2 class="category-title">Fundamentos de Java</h2>
+
+                <div class="termino" data-tags="variable tipos primitivos int double boolean">
+                    <span class="categoria-badge badge-basico">Fundamento</span>
+                    <div class="comando">Variables y Tipos Primitivos</div>
+                    <p class="descripcion">
+                        Java tiene 8 tipos primitivos: <code>byte</code>, <code>short</code>, <code>int</code>, <code>long</code>, 
+                        <code>float</code>, <code>double</code>, <code>boolean</code>, <code>char</code>.
+                    </p>
+                    <div class="ejemplo">int edad = 25;
+double precio = 19.99;
+boolean activo = true;
+char letra = 'A';
+String nombre = "Carlos";  // No es primitivo, es objeto</div>
+                </div>
+
+                <div class="termino" data-tags="string cadena texto inmutable">
+                    <span class="categoria-badge badge-basico">Fundamento</span>
+                    <div class="comando">String - Cadenas de Texto</div>
+                    <p class="descripcion">
+                        Clase para manejar texto. Los Strings son inmutables (no cambian). Métodos importantes:
+                        length(), charAt(), substring(), equals(), toUpperCase(), split().
+                    </p>
+                    <div class="ejemplo">String mensaje = "Hola Java";
+int longitud = mensaje.length();           // 9
+char primera = mensaje.charAt(0);          // 'H'
+String sub = mensaje.substring(0, 4);      // "Hola"
+boolean igual = mensaje.equals("Hola");    // false
+String mayus = mensaje.toUpperCase();      // "HOLA JAVA"</div>
+                </div>
+
+                <div class="termino" data-tags="scanner entrada input teclado">
+                    <span class="categoria-badge badge-basico">Fundamento</span>
+                    <div class="comando">Scanner - Entrada de Datos</div>
+                    <p class="descripcion">
+                        Clase para leer entrada del usuario. Requiere <code>import java.util.Scanner;</code>
+                    </p>
+                    <div class="ejemplo">import java.util.Scanner;
+
+Scanner sc = new Scanner(System.in);
+System.out.print("Ingresa tu nombre: ");
+String nombre = sc.nextLine();
+System.out.print("Ingresa tu edad: ");
+int edad = sc.nextInt();
+sc.close();</div>
+                </div>
+
+                <div class="termino" data-tags="final constante inmutable">
+                    <span class="categoria-badge badge-basico">Fundamento</span>
+                    <div class="comando">final - Constantes</div>
+                    <p class="descripcion">
+                        Palabra clave para declarar valores que no pueden cambiar. Por convención, nombres en MAYÚSCULAS.
+                    </p>
+                    <div class="ejemplo">final double PI = 3.14159;
+final int MAX_USUARIOS = 100;</div>
+                </div>
+
+                <div class="termino" data-tags="operadores aritmeticos suma resta">
+                    <span class="categoria-badge badge-basico">Fundamento</span>
+                    <div class="comando">Operadores Aritméticos</div>
+                    <p class="descripcion">
+                        +, -, *, /, % (módulo), ++, --. División entre enteros trunca (5/2 = 2).
+                    </p>
+                    <div class="ejemplo">int a = 10, b = 3;
+int suma = a + b;        // 13
+int modulo = a % b;      // 1
+double div = a / 3.0;    // 3.333... (usa 3.0 para decimal)</div>
+                </div>
+            </div>
+
+            <!-- CONTROL DE FLUJO -->
+            <div id="control" class="category-section">
+                <h2 class="category-title">Estructuras de Control</h2>
+
+                <div class="termino" data-tags="if else condicional">
+                    <span class="categoria-badge badge-basico">Control</span>
+                    <div class="comando">if / else / else if</div>
+                    <p class="descripcion">Estructuras condicionales para tomar decisiones.</p>
+                    <div class="ejemplo">int edad = 20;
+if (edad >= 18) {
+    System.out.println("Mayor de edad");
+} else if (edad >= 13) {
+    System.out.println("Adolescente");
+} else {
+    System.out.println("Niño");
+}</div>
+                </div>
+
+                <div class="termino" data-tags="switch case break">
+                    <span class="categoria-badge badge-intermedio">Control</span>
+                    <div class="comando">switch</div>
+                    <p class="descripcion">Evalúa una variable y ejecuta diferentes bloques. Requiere break.</p>
+                    <div class="ejemplo">int dia = 2;
+switch (dia) {
+    case 1:
+        System.out.println("Lunes");
+        break;
+    case 2:
+        System.out.println("Martes");
+        break;
+    default:
+        System.out.println("Otro día");
+}</div>
+                </div>
+
+                <div class="termino" data-tags="for loop ciclo">
+                    <span class="categoria-badge badge-basico">Control</span>
+                    <div class="comando">for - Loop tradicional</div>
+                    <p class="descripcion">Loop con contador.</p>
+                    <div class="ejemplo">for (int i = 0; i < 5; i++) {
+    System.out.print(i + " ");  // 0 1 2 3 4
+}</div>
+                </div>
+
+                <div class="termino" data-tags="enhanced for foreach">
+                    <span class="categoria-badge badge-intermedio">Control</span>
+                    <div class="comando">Enhanced for (for-each)</div>
+                    <p class="descripcion">Itera sobre colecciones sin índices.</p>
+                    <div class="ejemplo">int[] numeros = {10, 20, 30};
+for (int num : numeros) {
+    System.out.print(num + " ");  // 10 20 30
+}</div>
+                </div>
+
+                <div class="termino" data-tags="while loop">
+                    <span class="categoria-badge badge-basico">Control</span>
+                    <div class="comando">while</div>
+                    <p class="descripcion">Loop que ejecuta mientras la condición sea true.</p>
+                    <div class="ejemplo">int i = 0;
+while (i < 5) {
+    System.out.print(i + " ");
+    i++;
+}</div>
+                </div>
+            </div>
+
+            <!-- MÉTODOS -->
+            <div id="metodos" class="category-section">
+                <h2 class="category-title">Métodos</h2>
+
+                <div class="termino" data-tags="metodo funcion declaracion">
+                    <span class="categoria-badge badge-basico">Método</span>
+                    <div class="comando">Declaración de Métodos</div>
+                    <p class="descripcion">
+                        Sintaxis: <code>modificador tipoRetorno nombre(parámetros) { cuerpo }</code>
+                    </p>
+                    <div class="ejemplo">public int sumar(int a, int b) {
+    return a + b;
+}
+
+public void saludar(String nombre) {
+    System.out.println("Hola, " + nombre);
+}
+
+sumar(5, 3);         // 8
+saludar("Ana");      // "Hola, Ana"</div>
+                </div>
+
+                <div class="termino" data-tags="sobrecarga overload metodos">
+                    <span class="categoria-badge badge-intermedio">Método</span>
+                    <div class="comando">Sobrecarga de Métodos</div>
+                    <p class="descripcion">Múltiples métodos con el mismo nombre pero diferentes parámetros.</p>
+                    <div class="ejemplo">public int sumar(int a, int b) {
+    return a + b;
+}
+
+public double sumar(double a, double b) {
+    return a + b;
+}
+
+public int sumar(int a, int b, int c) {
+    return a + b + c;
+}</div>
+                </div>
+
+                <div class="termino" data-tags="static estatico clase">
+                    <span class="categoria-badge badge-intermedio">Método</span>
+                    <div class="comando">Métodos Estáticos</div>
+                    <p class="descripcion">
+                        Pertenecen a la clase, no a las instancias. Se llaman con NombreClase.metodo().
+                    </p>
+                    <div class="ejemplo">public class Utilidades {
+    public static int sumar(int a, int b) {
+        return a + b;
+    }
+}
+
+// Llamar sin crear objeto
+int resultado = Utilidades.sumar(5, 3);  // 8</div>
+                </div>
+
+                <div class="termino" data-tags="varargs parametros variables">
+                    <span class="categoria-badge badge-intermedio">Método</span>
+                    <div class="comando">Varargs - Argumentos Variables</div>
+                    <p class="descripcion">Acepta número variable de argumentos usando <code>...</code></p>
+                    <div class="ejemplo">public int sumar(int... numeros) {
+    int total = 0;
+    for (int num : numeros) {
+        total += num;
+    }
+    return total;
+}
+
+sumar(1, 2, 3);        // 6
+sumar(1, 2, 3, 4, 5);  // 15</div>
+                </div>
+            </div>
+
+            <!-- ARRAYS Y COLECCIONES BÁSICAS -->
+            <div id="arrays" class="category-section">
+                <h2 class="category-title">Arrays</h2>
+
+                <div class="termino" data-tags="array arreglo []">
+                    <span class="categoria-badge badge-basico">Array</span>
+                    <div class="comando">Arrays</div>
+                    <p class="descripcion">Colección de elementos del mismo tipo con tamaño fijo.</p>
+                    <div class="ejemplo">int[] numeros = {10, 20, 30, 40, 50};
+System.out.println(numeros[0]);  // 10
+System.out.println(numeros.length);  // 5
+
+// Crear array vacío
+int[] arr = new int[5];  // [0, 0, 0, 0, 0]</div>
+                </div>
+
+                <div class="termino" data-tags="array multidimensional matriz">
+                    <span class="categoria-badge badge-intermedio">Array</span>
+                    <div class="comando">Arrays Multidimensionales</div>
+                    <p class="descripcion">Arrays de arrays (matrices).</p>
+                    <div class="ejemplo">int[][] matriz = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+};
+
+System.out.println(matriz[1][2]);  // 6</div>
+                </div>
+            </div>
+
+            <!-- POO -->
+            <div id="poo" class="category-section">
+                <h2 class="category-title">Programación Orientada a Objetos</h2>
+
+                <div class="termino" data-tags="class clase objeto">
+                    <span class="categoria-badge badge-intermedio">POO</span>
+                    <div class="comando">Clases y Objetos</div>
+                    <p class="descripcion">Una clase es una plantilla para crear objetos.</p>
+                    <div class="ejemplo">public class Persona {
+    String nombre;
+    int edad;
+
+    void saludar() {
+        System.out.println("Hola, soy " + nombre);
+    }
+}
+
+Persona p1 = new Persona();
+p1.nombre = "Ana";
+p1.edad = 25;
+p1.saludar();  // "Hola, soy Ana"</div>
+                </div>
+
+                <div class="termino" data-tags="constructor inicializacion">
+                    <span class="categoria-badge badge-intermedio">POO</span>
+                    <div class="comando">Constructores</div>
+                    <p class="descripcion">Método especial que se ejecuta al crear un objeto.</p>
+                    <div class="ejemplo">public class Persona {
+    String nombre;
+    int edad;
+
+    // Constructor
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+}
+
+Persona p1 = new Persona("Ana", 25);</div>
+                </div>
+
+                <div class="termino" data-tags="this objeto actual">
+                    <span class="categoria-badge badge-intermedio">POO</span>
+                    <div class="comando">this - Referencia al Objeto Actual</div>
+                    <p class="descripcion">Diferencia atributos de parámetros con el mismo nombre.</p>
+                    <div class="ejemplo">public class Persona {
+    String nombre;
+
+    public Persona(String nombre) {
+        this.nombre = nombre;  // this.nombre es el atributo
+    }
+}</div>
+                </div>
+
+                <div class="termino" data-tags="encapsulamiento private public protected">
+                    <span class="categoria-badge badge-intermedio">POO</span>
+                    <div class="comando">Encapsulamiento</div>
+                    <p class="descripcion">
+                        Controla el acceso: <code>private</code> (solo la clase), <code>public</code> (todos),
+                        <code>protected</code> (la clase y subclases).
+                    </p>
+                    <div class="ejemplo">public class CuentaBancaria {
+    private double saldo;  // No accesible desde fuera
+
+    public void depositar(double monto) {
+        saldo += monto;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+}</div>
+                </div>
+
+                <div class="termino" data-tags="getters setters accesores mutadores">
+                    <span class="categoria-badge badge-intermedio">POO</span>
+                    <div class="comando">Getters y Setters</div>
+                    <p class="descripcion">Métodos para leer (get) y modificar (set) atributos privados.</p>
+                    <div class="ejemplo">public class Persona {
+    private String nombre;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+}</div>
+                </div>
+            </div>
+
+            <!-- HERENCIA Y POLIMORFISMO -->
+            <div id="herencia" class="category-section">
+                <h2 class="category-title">Herencia y Polimorfismo</h2>
+
+                <div class="termino" data-tags="herencia extends super">
+                    <span class="categoria-badge badge-intermedio">Herencia</span>
+                    <div class="comando">Herencia</div>
+                    <p class="descripcion">Una clase hereda atributos y métodos de otra usando <code>extends</code>.</p>
+                    <div class="ejemplo">public class Animal {
+    public void comer() {
+        System.out.println("Comiendo...");
+    }
+}
+
+public class Perro extends Animal {
+    public void ladrar() {
+        System.out.println("Guau!");
+    }
+}
+
+Perro p = new Perro();
+p.comer();   // De Animal
+p.ladrar();  // De Perro</div>
+                </div>
+
+                <div class="termino" data-tags="override sobrescribir polimorfismo">
+                    <span class="categoria-badge badge-avanzado">Herencia</span>
+                    <div class="comando">@Override y Polimorfismo</div>
+                    <p class="descripcion">Sobrescribir métodos de la clase padre.</p>
+                    <div class="ejemplo">public class Animal {
+    public void sonido() {
+        System.out.println("Sonido genérico");
+    }
+}
+
+public class Perro extends Animal {
+    @Override
+    public void sonido() {
+        System.out.println("Guau!");
+    }
+}
+
+Animal a = new Perro();  // Polimorfismo
+a.sonido();  // "Guau!" (método de Perro)</div>
+                </div>
+
+                <div class="termino" data-tags="abstract clase abstracta">
+                    <span class="categoria-badge badge-avanzado">Herencia</span>
+                    <div class="comando">Clases Abstractas</div>
+                    <p class="descripcion">No se pueden instanciar. Definen métodos que las subclases deben implementar.</p>
+                    <div class="ejemplo">public abstract class Figura {
+    public abstract double area();  // Sin implementación
+}
+
+public class Cuadrado extends Figura {
+    double lado;
+
+    @Override
+    public double area() {
+        return lado * lado;
+    }
+}</div>
+                </div>
+
+                <div class="termino" data-tags="interface interfaz implements">
+                    <span class="categoria-badge badge-avanzado">Herencia</span>
+                    <div class="comando">Interfaces</div>
+                    <p class="descripcion">
+                        Contrato que define métodos que una clase debe implementar. Una clase puede implementar múltiples interfaces.
+                    </p>
+                    <div class="ejemplo">public interface Volador {
+    void volar();
+}
+
+public interface Nadador {
+    void nadar();
+}
+
+public class Pato implements Volador, Nadador {
+    @Override
+    public void volar() {
+        System.out.println("Volando...");
+    }
+
+    @Override
+    public void nadar() {
+        System.out.println("Nadando...");
+    }
+}</div>
+                </div>
+            </div>
+
+            <!-- COLECCIONES -->
+            <div id="colecciones" class="category-section">
+                <h2 class="category-title">Colecciones (Collections Framework)</h2>
+
+                <div class="termino" data-tags="arraylist lista dinamica">
+                    <span class="categoria-badge badge-intermedio">Colección</span>
+                    <div class="comando">ArrayList</div>
+                    <p class="descripcion">Lista dinámica que cambia de tamaño automáticamente.</p>
+                    <div class="ejemplo">import java.util.ArrayList;
+
+ArrayList&lt;String&gt; nombres = new ArrayList&lt;&gt;();
+nombres.add("Ana");
+nombres.add("Juan");
+nombres.add("Pedro");
+
+System.out.println(nombres.get(0));  // "Ana"
+System.out.println(nombres.size());  // 3
+
+for (String nombre : nombres) {
+    System.out.println(nombre);
+}</div>
+                </div>
+
+                <div class="termino" data-tags="hashmap mapa diccionario clave valor">
+                    <span class="categoria-badge badge-intermedio">Colección</span>
+                    <div class="comando">HashMap</div>
+                    <p class="descripcion">Almacena pares clave-valor. Búsqueda rápida por clave.</p>
+                    <div class="ejemplo">import java.util.HashMap;
+
+HashMap&lt;String, Integer&gt; edades = new HashMap&lt;&gt;();
+edades.put("Ana", 25);
+edades.put("Juan", 30);
+
+System.out.println(edades.get("Ana"));  // 25
+
+for (String nombre : edades.keySet()) {
+    System.out.println(nombre + ": " + edades.get(nombre));
+}</div>
+                </div>
+
+                <div class="termino" data-tags="hashset conjunto valores unicos">
+                    <span class="categoria-badge badge-intermedio">Colección</span>
+                    <div class="comando">HashSet</div>
+                    <p class="descripcion">Conjunto de valores únicos (sin duplicados).</p>
+                    <div class="ejemplo">import java.util.HashSet;
+
+HashSet&lt;Integer&gt; numeros = new HashSet&lt;&gt;();
+numeros.add(1);
+numeros.add(2);
+numeros.add(2);  // No se agrega (duplicado)
+
+System.out.println(numeros.size());  // 2</div>
+                </div>
+            </div>
+
+            <!-- EXCEPCIONES -->
+            <div id="excepciones" class="category-section">
+                <h2 class="category-title">Manejo de Excepciones</h2>
+
+                <div class="termino" data-tags="try catch finally exception">
+                    <span class="categoria-badge badge-intermedio">Excepción</span>
+                    <div class="comando">try-catch-finally</div>
+                    <p class="descripcion">Maneja errores en tiempo de ejecución.</p>
+                    <div class="ejemplo">try {
+    int resultado = 10 / 0;  // División por cero
+} catch (ArithmeticException e) {
+    System.out.println("Error: " + e.getMessage());
+} finally {
+    System.out.println("Siempre se ejecuta");
+}</div>
+                </div>
+
+                <div class="termino" data-tags="throw lanzar excepcion">
+                    <span class="categoria-badge badge-avanzado">Excepción</span>
+                    <div class="comando">throw - Lanzar Excepciones</div>
+                    <p class="descripcion">Lanza manualmente una excepción.</p>
+                    <div class="ejemplo">public void validarEdad(int edad) {
+    if (edad < 18) {
+        throw new IllegalArgumentException("Debe ser mayor de 18");
+    }
+}</div>
+                </div>
+
+                <div class="termino" data-tags="throws declarar excepcion">
+                    <span class="categoria-badge badge-avanzado">Excepción</span>
+                    <div class="comando">throws - Declarar Excepciones</div>
+                    <p class="descripcion">Indica que un método puede lanzar excepciones.</p>
+                    <div class="ejemplo">public void leerArchivo() throws IOException {
+    // Código que puede lanzar IOException
+}</div>
+                </div>
+            </div>
+
+            <!-- GENERICS -->
+            <div id="generics" class="category-section">
+                <h2 class="category-title">Generics (Tipos Genéricos)</h2>
+
+                <div class="termino" data-tags="generics parametrizacion tipo">
+                    <span class="categoria-badge badge-avanzado">Generics</span>
+                    <div class="comando">Clases Genéricas</div>
+                    <p class="descripcion">Clases que funcionan con cualquier tipo de dato.</p>
+                    <div class="ejemplo">public class Caja&lt;T&gt; {
+    private T contenido;
+
+    public void guardar(T item) {
+        this.contenido = item;
+    }
+
+    public T obtener() {
+        return contenido;
+    }
+}
+
+Caja&lt;String&gt; c1 = new Caja&lt;&gt;();
+c1.guardar("Hola");
+
+Caja&lt;Integer&gt; c2 = new Caja&lt;&gt;();
+c2.guardar(42);</div>
+                </div>
+
+                <div class="termino" data-tags="metodos genericos">
+                    <span class="categoria-badge badge-avanzado">Generics</span>
+                    <div class="comando">Métodos Genéricos</div>
+                    <p class="descripcion">Métodos que funcionan con diferentes tipos.</p>
+                    <div class="ejemplo">public &lt;T&gt; void imprimir(T elemento) {
+    System.out.println(elemento);
+}
+
+imprimir("Hola");    // String
+imprimir(42);        // Integer
+imprimir(3.14);      // Double</div>
+                </div>
+            </div>
+
+            <!-- STREAMS Y PROGRAMACIÓN FUNCIONAL -->
+            <div id="streams" class="category-section">
+                <h2 class="category-title">Streams y Programación Funcional</h2>
+
+                <div class="termino" data-tags="lambda expresion anonima ->">
+                    <span class="categoria-badge badge-avanzado">Stream</span>
+                    <div class="comando">Lambda Expressions</div>
+                    <p class="descripcion">Funciones anónimas inline. Sintaxis: <code>(parámetros) -> expresión</code></p>
+                    <div class="ejemplo">// Forma tradicional
+Comparator&lt;Integer&gt; comp = new Comparator&lt;Integer&gt;() {
+    public int compare(Integer a, Integer b) {
+        return a - b;
+    }
+};
+
+// Lambda
+Comparator&lt;Integer&gt; compLambda = (a, b) -> a - b;</div>
+                </div>
+
+                <div class="termino" data-tags="stream api map filter reduce">
+                    <span class="categoria-badge badge-avanzado">Stream</span>
+                    <div class="comando">Stream API</div>
+                    <p class="descripcion">Procesamiento de colecciones de forma funcional.</p>
+                    <div class="ejemplo">import java.util.stream.*;
+
+List&lt;Integer&gt; numeros = Arrays.asList(1, 2, 3, 4, 5);
+
+// map: transforma cada elemento
+List&lt;Integer&gt; cuadrados = numeros.stream()
+    .map(n -> n * n)
+    .collect(Collectors.toList());  // [1, 4, 9, 16, 25]
+
+// filter: filtra elementos
+List&lt;Integer&gt; pares = numeros.stream()
+    .filter(n -> n % 2 == 0)
+    .collect(Collectors.toList());  // [2, 4]
+
+// reduce: combina elementos
+int suma = numeros.stream()
+    .reduce(0, (a, b) -> a + b);  // 15</div>
+                </div>
+
+                <div class="termino" data-tags="optional presente ausente null">
+                    <span class="categoria-badge badge-avanzado">Stream</span>
+                    <div class="comando">Optional</div>
+                    <p class="descripcion">Contenedor que puede o no contener un valor. Evita NullPointerException.</p>
+                    <div class="ejemplo">Optional&lt;String&gt; nombre = Optional.of("Ana");
+
+if (nombre.isPresent()) {
+    System.out.println(nombre.get());  // "Ana"
+}
+
+// orElse: valor por defecto
+String valor = nombre.orElse("Desconocido");</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Script -->
+        <script>
+            const searchBox = document.getElementById('searchBox');
+            const terminos = document.querySelectorAll('.termino');
+
+            searchBox.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+
+                terminos.forEach(termino => {
+                    const comando = termino.querySelector('.comando').textContent.toLowerCase();
+                    const descripcion = termino.querySelector('.descripcion').textContent.toLowerCase();
+                    const tags = termino.getAttribute('data-tags') || '';
+
+                    if (comando.includes(searchTerm) || descripcion.includes(searchTerm) || tags.includes(searchTerm)) {
+                        termino.style.display = 'block';
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+            });
+        </script>
+
+        <!-- Category Navigation Smooth Scroll -->
+        <script>
+            document.querySelectorAll('.category-nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        </script>
+    </div>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script src="/assets/js/toc-component.js"></script>
+</body>
+</html>

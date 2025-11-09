@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios de Java - Práctica Progresiva</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+    <link rel="stylesheet" href="/assets/css/ejercicios.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="back-link">← Volver</a>
+        <h1>🎯 Ejercicios de Java</h1>
+        <p class="subtitle">Práctica progresiva desde fundamentos hasta POO avanzada y colecciones</p>
+    </header>
+
+    <nav class="level-nav">
+        <div class="level-nav-links">
+            <a href="#basico">🟢 Básico (1-3)</a>
+            <a href="#intermedio">🟡 Intermedio (4-6)</a>
+            <a href="#avanzado">🔴 Avanzado (7-9)</a>
+            <a href="#experto">🟣 Experto (10-12)</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="intro">
+            <p><strong>Instrucciones:</strong> Completa cada ejercicio en orden. Crea archivos .java separados y compila con <code>javac Archivo.java</code>, ejecuta con <code>java Archivo</code>.</p>
+        </div>
+
+        <!-- NIVEL BÁSICO -->
+        <div id="basico" class="section-separator">🟢 NIVEL BÁSICO</div>
+
+        <div class="ejercicio">
+            <span class="nivel basico">Ejercicio 1</span>
+            <h2>Hola Mundo y Variables</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Familiarizarte con la sintaxis básica de Java y compilación.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea una clase <code>Ejercicio1</code> con método <code>main</code></li>
+                    <li>Imprime "Hola, Java!" en consola</li>
+                    <li>Declara variables de diferentes tipos: int, double, boolean, char, String</li>
+                    <li>Imprime todas las variables</li>
+                    <li>Compila: <code>javac Ejercicio1.java</code></li>
+                    <li>Ejecuta: <code>java Ejercicio1</code></li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Plantilla:</strong>
+                <pre>public class Ejercicio1 {
+    public static void main(String[] args) {
+        System.out.println("Hola, Java!");
+        // Tu código aquí
+    }
+}</pre>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel basico">Ejercicio 2</span>
+            <h2>Calculadora con Scanner</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Practicar entrada/salida y operadores.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Usa <code>Scanner</code> para pedir dos números al usuario</li>
+                    <li>Calcula y muestra: suma, resta, multiplicación, división, módulo</li>
+                    <li>Maneja división por cero con un <code>if</code></li>
+                    <li>Cierra el Scanner con <code>close()</code></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel basico">Ejercicio 3</span>
+            <h2>Tabla de Multiplicar con Loops</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Practicar loops y control de flujo.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Pide al usuario un número del 1 al 10</li>
+                    <li>Usa un loop <code>for</code> para imprimir su tabla de multiplicar</li>
+                    <li>Formatea como: <code>5 x 1 = 5</code></li>
+                    <li>Valida que el número esté entre 1 y 10</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- NIVEL INTERMEDIO -->
+        <div id="intermedio" class="section-separator">🟡 NIVEL INTERMEDIO</div>
+
+        <div class="ejercicio">
+            <span class="nivel intermedio">Ejercicio 4</span>
+            <h2>Métodos: Calculadora Modular</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Crear métodos reutilizables.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea métodos <code>static</code> para: sumar, restar, multiplicar, dividir</li>
+                    <li>Cada método recibe dos parámetros y retorna el resultado</li>
+                    <li>Sobrecarga los métodos para int y double</li>
+                    <li>En <code>main()</code>, presenta un menú y llama a los métodos</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel intermedio">Ejercicio 5</span>
+            <h2>Arrays y Estadísticas</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Trabajar con arrays y métodos.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea un array de 10 enteros ingresados por el usuario</li>
+                    <li>Crea método <code>int maximo(int[] arr)</code> que retorne el máximo</li>
+                    <li>Crea método <code>int minimo(int[] arr)</code> que retorne el mínimo</li>
+                    <li>Crea método <code>double promedio(int[] arr)</code></li>
+                    <li>Crea método <code>void imprimir(int[] arr)</code></li>
+                    <li>Llama a todos los métodos desde <code>main()</code></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel intermedio">Ejercicio 6</span>
+            <h2>Manipulación de Strings</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Dominar métodos de String.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Pide al usuario una frase completa</li>
+                    <li>Crea métodos que:
+                        <ul>
+                            <li>Cuenten las palabras (usando <code>split</code>)</li>
+                            <li>Conviertan a mayúsculas y minúsculas</li>
+                            <li>Inviertan la frase</li>
+                            <li>Verifiquen si es un palíndromo</li>
+                            <li>Reemplacen una palabra por otra</li>
+                        </ul>
+                    </li>
+                    <li>Muestra todos los resultados</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- NIVEL AVANZADO -->
+        <div id="avanzado" class="section-separator">🔴 NIVEL AVANZADO</div>
+
+        <div class="ejercicio">
+            <span class="nivel avanzado">Ejercicio 7</span>
+            <h2>POO: Clase Libro</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Crear tu primera clase completa.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea la clase <code>Libro</code> con atributos privados: titulo, autor, paginas, precio</li>
+                    <li>Implementa constructor que inicialice todos los atributos</li>
+                    <li>Crea getters y setters para todos los atributos</li>
+                    <li>Crea método <code>void mostrarInfo()</code></li>
+                    <li>Crea método <code>void aplicarDescuento(double porcentaje)</code></li>
+                    <li>En <code>main()</code>, crea varios objetos Libro y prueba todos los métodos</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel avanzado">Ejercicio 8</span>
+            <h2>POO: Sistema de Estudiantes</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Practicar POO con arrays de objetos.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea la clase <code>Estudiante</code> con: nombre, codigo, edad, promedio</li>
+                    <li>Implementa constructor y getters/setters</li>
+                    <li>Crea método <code>boolean estaAprobado()</code> (promedio >= 13)</li>
+                    <li>En <code>main()</code>, crea un array de 5 estudiantes</li>
+                    <li>Llena el array con datos ingresados por el usuario</li>
+                    <li>Muestra: todos los estudiantes, solo aprobados, promedio general, mejor estudiante</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel avanzado">Ejercicio 9</span>
+            <h2>Herencia: Figuras Geométricas</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Implementar herencia y polimorfismo.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea clase abstracta <code>Figura</code> con métodos abstractos: <code>area()</code> y <code>perimetro()</code></li>
+                    <li>Crea clases derivadas:
+                        <ul>
+                            <li><code>Circulo</code> con atributo <code>radio</code></li>
+                            <li><code>Rectangulo</code> con <code>ancho</code> y <code>alto</code></li>
+                            <li><code>Triangulo</code> con <code>base</code> y <code>altura</code></li>
+                        </ul>
+                    </li>
+                    <li>Implementa todos los métodos en cada clase</li>
+                    <li>En <code>main()</code>, crea un array de <code>Figura[]</code> y usa polimorfismo</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- NIVEL EXPERTO -->
+        <div id="experto" class="section-separator">🟣 NIVEL EXPERTO</div>
+
+        <div class="ejercicio">
+            <span class="nivel experto">Ejercicio 10</span>
+            <h2>ArrayList: Agenda de Contactos</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Dominar ArrayList y operaciones CRUD.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea clase <code>Contacto</code> con: nombre, telefono, email</li>
+                    <li>Crea clase <code>Agenda</code> con un <code>ArrayList&lt;Contacto&gt;</code></li>
+                    <li>Implementa métodos en Agenda:
+                        <ul>
+                            <li><code>void agregarContacto(Contacto c)</code></li>
+                            <li><code>Contacto buscarPorNombre(String nombre)</code></li>
+                            <li><code>void eliminarContacto(String nombre)</code></li>
+                            <li><code>void listarTodos()</code></li>
+                            <li><code>int cantidadContactos()</code></li>
+                        </ul>
+                    </li>
+                    <li>Crea un menú interactivo en <code>main()</code></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel experto">Ejercicio 11</span>
+            <h2>HashMap: Sistema de Inventario</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Trabajar con HashMap y relaciones de datos.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea clase <code>Producto</code> con: codigo, nombre, precio, stock</li>
+                    <li>Usa <code>HashMap&lt;String, Producto&gt;</code> para almacenar productos por código</li>
+                    <li>Implementa funcionalidades:
+                        <ul>
+                            <li>Agregar producto</li>
+                            <li>Buscar producto por código</li>
+                            <li>Actualizar stock</li>
+                            <li>Actualizar precio</li>
+                            <li>Listar todos los productos</li>
+                            <li>Calcular valor total del inventario</li>
+                            <li>Productos con stock bajo (< 5)</li>
+                        </ul>
+                    </li>
+                    <li>Crea menú interactivo</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ejercicio">
+            <span class="nivel experto">Ejercicio 12</span>
+            <h2>Proyecto Final: Sistema de Biblioteca</h2>
+            <p class="objetivo"><strong>Objetivo:</strong> Integrar todos los conceptos aprendidos.</p>
+            <div class="instrucciones">
+                <strong>Tareas:</strong>
+                <ul>
+                    <li>Crea clases:
+                        <ul>
+                            <li><code>Libro</code>: ISBN, titulo, autor, añoPublicacion, disponible</li>
+                            <li><code>Usuario</code>: id, nombre, email, librosPrestados (ArrayList)</li>
+                            <li><code>Biblioteca</code>: gestiona libros y usuarios</li>
+                        </ul>
+                    </li>
+                    <li>Usa colecciones:
+                        <ul>
+                            <li><code>HashMap&lt;String, Libro&gt;</code> para libros por ISBN</li>
+                            <li><code>HashMap&lt;Integer, Usuario&gt;</code> para usuarios por ID</li>
+                        </ul>
+                    </li>
+                    <li>Implementa funcionalidades:
+                        <ul>
+                            <li>Registrar libro / usuario</li>
+                            <li>Prestar libro (validar disponibilidad)</li>
+                            <li>Devolver libro</li>
+                            <li>Buscar libros por autor</li>
+                            <li>Listar libros disponibles</li>
+                            <li>Listar libros de un usuario</li>
+                            <li>Estadísticas: total libros, total prestados, usuario con más libros</li>
+                        </ul>
+                    </li>
+                    <li>Manejo de excepciones para casos de error</li>
+                    <li>Menú interactivo completo</li>
+                </ul>
+            </div>
+            <div class="tip">
+                <strong>💡 Tip:</strong> Este ejercicio combina POO, colecciones, excepciones y lógica de negocio. Es un proyecto completo que demuestra dominio de Java.
+            </div>
+        </div>
+
+        <div class="intro" style="margin-top: 40px;">
+            <h3>🎉 ¡Felicidades por completar los ejercicios!</h3>
+            <p>Has practicado los conceptos fundamentales de Java desde sintaxis básica hasta POO avanzada, colecciones y proyectos completos. Estos son los pilares del desarrollo profesional en Java.</p>
+            <p><strong>Próximos pasos:</strong></p>
+            <ul>
+                <li>Repasa los conceptos del <a href="Glosario.html">Glosario</a></li>
+                <li>Aprende frameworks: Spring Boot, Hibernate, JavaFX</li>
+                <li>Explora desarrollo Android con Java</li>
+                <li>Practica con proyectos reales (APIs REST, CRUD applications)</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script src="/assets/js/toc-component.js"></script>
+</body>
+</html>

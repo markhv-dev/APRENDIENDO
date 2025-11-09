@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glosario - C++</title>
+
+    <!-- Sidebar Styles -->
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+
+    <!-- TOC (Table of Contents) Styles -->
+    <link rel="stylesheet" href="/assets/css/toc.css">
+
+    <!-- Glosario Styles -->
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚙️ Glosario de C++</h1>
+            <p class="subtitle">55+ conceptos esenciales para programación de alto rendimiento</p>
+        </header>
+
+        <div class="breadcrumb">
+            <a href="../../index.html">← Inicio</a> /
+            <a href="index.html">C++</a> /
+            <span>Glosario</span>
+        </div>
+
+        <div class="search-container">
+            <input
+                type="text"
+                class="search-box"
+                id="searchBox"
+                placeholder="Buscar concepto (ej: vector, class, pointer)..."
+            >
+        </div>
+
+        <!-- Category Navigation -->
+        <nav class="category-nav">
+            <div class="category-nav-links">
+                <a href="#fundamentos">📦 Fundamentos</a>
+                <a href="#control">🔀 Control</a>
+                <a href="#funciones">⚙️ Funciones</a>
+                <a href="#punteros">🎯 Punteros</a>
+                <a href="#arrays">📋 Arrays</a>
+                <a href="#poo">🏛️ POO</a>
+                <a href="#herencia">🔗 Herencia</a>
+                <a href="#memoria">💾 Memoria</a>
+                <a href="#templates">📐 Templates</a>
+                <a href="#stl">📚 STL</a>
+            </div>
+        </nav>
+
+        <div id="terminos">
+            <!-- FUNDAMENTOS -->
+            <div id="fundamentos" class="category-section">
+                <h2 class="category-title">Fundamentos de C++</h2>
+
+                <div class="termino" data-tags="variable int float double declaracion tipo">
+                    <span class="categoria-badge badge-basico">Fundamento</span>
+                    <div class="comando">Variables y Tipos de Datos</div>
+                    <p class="descripcion">
+                        C++ es fuertemente tipado. Debes declarar el tipo antes de usar una variable.
+                        Tipos principales: <code>int</code> (enteros), <code>float</code>/<code>double</code> (decimales),
+                        <code>char</code> (caracteres), <code>bool</code> (booleanos), <code>string</code> (cadenas).
+                    </p>
+                    <div class="ejemplo">int edad = 25;</div>
+                    <div class="ejemplo">double pi = 3.14159;</div>
+                    <div class="ejemplo">char letra = 'A';</div>
+                    <div class="ejemplo">bool activo = true;</div>
+                    <div class="ejemplo">string nombre = "Carlos";</div>
+                </div>
+
+                <div class="termino" data-tags="cout cin iostream entrada salida">
+                    <span class="categoria-badge badge-basico">Fundamento</span>
+                    <div class="comando">Entrada/Salida: cin y cout</div>
+                    <p class="descripcion">
+                        <code>cout</code> (salida a consola) y <code>cin</code> (entrada desde consola) son
+                        parte de <code>&lt;iostream&gt;</code>. <code>&lt;&lt;</code> envía a cout, <code>&gt;&gt;</code> lee de cin.
+                    </p>
+                    <div class="ejemplo">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    string nombre;
+    cout << "Ingresa tu nombre: ";
+    cin >> nombre;
+    cout << "Hola, " << nombre << endl;
+    return 0;
+}</div>
+                </div>
+
+                <div class="termino" data-tags="const constante inmutable">
+                    <span class="categoria-badge badge-basico">Fundamento</span>
+                    <div class="comando">const - Constantes</div>
+                    <p class="descripcion">
+                        Palabra clave para declarar valores que no pueden cambiar después de su inicialización.
+                    </p>
+                    <div class="ejemplo">const double PI = 3.14159;</div>
+                    <div class="ejemplo">const int MAX_USUARIOS = 100;</div>
+                    <div class="nota">
+                        <strong>💡 Tip:</strong> Usa <code>const</code> siempre que un valor no deba modificarse. Ayuda a prevenir bugs.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="operadores aritmeticos suma resta">
+                    <span class="categoria-badge badge-basico">Fundamento</span>
+                    <div class="comando">Operadores Aritméticos</div>
+                    <p class="descripcion">
+                        <code>+</code> (suma), <code>-</code> (resta), <code>*</code> (multiplicación),
+                        <code>/</code> (división), <code>%</code> (módulo), <code>++</code> (incremento), <code>--</code> (decremento).
+                    </p>
+                    <div class="ejemplo">int a = 10, b = 3;</div>
+                    <div class="ejemplo">int suma = a + b;        // 13</div>
+                    <div class="ejemplo">int modulo = a % b;      // 1</div>
+                    <div class="ejemplo">a++;                     // a ahora es 11</div>
+                </div>
+
+                <div class="termino" data-tags="namespace using std">
+                    <span class="categoria-badge badge-basico">Fundamento</span>
+                    <div class="comando">namespace y using</div>
+                    <p class="descripcion">
+                        Los namespaces organizan el código y previenen conflictos de nombres.
+                        <code>std</code> es el namespace estándar que contiene cout, cin, string, vector, etc.
+                    </p>
+                    <div class="ejemplo">// Opción 1: using namespace std (todo el namespace)
+using namespace std;
+cout << "Hola" << endl;
+
+// Opción 2: prefijo std:: (recomendado)
+std::cout << "Hola" << std::endl;</div>
+                    <div class="nota">
+                        <strong>💡 Buena práctica:</strong> Evita <code>using namespace std;</code> en proyectos grandes. Usa <code>std::</code> explícitamente.
+                    </div>
+                </div>
+            </div>
+
+            <!-- CONTROL DE FLUJO -->
+            <div id="control" class="category-section">
+                <h2 class="category-title">Estructuras de Control</h2>
+
+                <div class="termino" data-tags="if else condicional decision">
+                    <span class="categoria-badge badge-basico">Control</span>
+                    <div class="comando">if / else / else if</div>
+                    <p class="descripcion">
+                        Estructuras condicionales para tomar decisiones en el programa.
+                    </p>
+                    <div class="ejemplo">int edad = 20;
+
+if (edad >= 18) {
+    cout << "Mayor de edad" << endl;
+} else if (edad >= 13) {
+    cout << "Adolescente" << endl;
+} else {
+    cout << "Niño" << endl;
+}</div>
+                </div>
+
+                <div class="termino" data-tags="switch case break">
+                    <span class="categoria-badge badge-intermedio">Control</span>
+                    <div class="comando">switch</div>
+                    <p class="descripcion">
+                        Evalúa una variable y ejecuta diferentes bloques según su valor. Requiere <code>break</code> para evitar fall-through.
+                    </p>
+                    <div class="ejemplo">int opcion = 2;
+
+switch (opcion) {
+    case 1:
+        cout << "Opción 1" << endl;
+        break;
+    case 2:
+        cout << "Opción 2" << endl;
+        break;
+    default:
+        cout << "Opción desconocida" << endl;
+}</div>
+                </div>
+
+                <div class="termino" data-tags="for loop ciclo iteracion">
+                    <span class="categoria-badge badge-basico">Control</span>
+                    <div class="comando">for - Loop con contador</div>
+                    <p class="descripcion">
+                        Loop tradicional con inicialización, condición e incremento.
+                    </p>
+                    <div class="ejemplo">for (int i = 0; i < 5; i++) {
+    cout << i << " ";  // 0 1 2 3 4
+}</div>
+                </div>
+
+                <div class="termino" data-tags="while loop ciclo">
+                    <span class="categoria-badge badge-basico">Control</span>
+                    <div class="comando">while</div>
+                    <p class="descripcion">
+                        Loop que se ejecuta mientras la condición sea verdadera.
+                    </p>
+                    <div class="ejemplo">int i = 0;
+while (i < 5) {
+    cout << i << " ";
+    i++;
+}</div>
+                </div>
+
+                <div class="termino" data-tags="range-based for each">
+                    <span class="categoria-badge badge-intermedio">Control</span>
+                    <div class="comando">Range-based for (C++11)</div>
+                    <p class="descripcion">
+                        Forma moderna de iterar sobre contenedores sin usar índices.
+                    </p>
+                    <div class="ejemplo">vector&lt;int&gt; numeros = {10, 20, 30};
+
+for (int num : numeros) {
+    cout << num << " ";  // 10 20 30
+}</div>
+                </div>
+            </div>
+
+            <!-- FUNCIONES -->
+            <div id="funciones" class="category-section">
+                <h2 class="category-title">Funciones</h2>
+
+                <div class="termino" data-tags="funcion declaracion definicion prototipo">
+                    <span class="categoria-badge badge-basico">Función</span>
+                    <div class="comando">Declaración y Definición de Funciones</div>
+                    <p class="descripcion">
+                        Las funciones deben declararse antes de usarse. Especificas tipo de retorno, nombre y parámetros.
+                    </p>
+                    <div class="ejemplo">// Declaración (prototipo)
+int sumar(int a, int b);
+
+// Definición
+int sumar(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int resultado = sumar(5, 3);  // 8
+    return 0;
+}</div>
+                </div>
+
+                <div class="termino" data-tags="parametros valor referencia &">
+                    <span class="categoria-badge badge-intermedio">Función</span>
+                    <div class="comando">Parámetros por Valor vs Referencia</div>
+                    <p class="descripcion">
+                        Por defecto, C++ pasa por valor (copia). Para modificar el original, usa <code>&</code> (referencia).
+                    </p>
+                    <div class="ejemplo">// Por valor (no modifica original)
+void incrementarValor(int x) {
+    x++;
+}
+
+// Por referencia (SÍ modifica original)
+void incrementarReferencia(int& x) {
+    x++;
+}
+
+int num = 5;
+incrementarValor(num);       // num sigue siendo 5
+incrementarReferencia(num);  // num ahora es 6</div>
+                </div>
+
+                <div class="termino" data-tags="sobrecarga overload funciones">
+                    <span class="categoria-badge badge-intermedio">Función</span>
+                    <div class="comando">Sobrecarga de Funciones</div>
+                    <p class="descripcion">
+                        Múltiples funciones con el mismo nombre pero diferentes parámetros.
+                    </p>
+                    <div class="ejemplo">int sumar(int a, int b) {
+    return a + b;
+}
+
+double sumar(double a, double b) {
+    return a + b;
+}
+
+string sumar(string a, string b) {
+    return a + b;
+}
+
+sumar(5, 3);         // llama a int
+sumar(5.5, 3.2);     // llama a double
+sumar("Hola", "!"); // llama a string</div>
+                </div>
+
+                <div class="termino" data-tags="valores defecto default parameters">
+                    <span class="categoria-badge badge-intermedio">Función</span>
+                    <div class="comando">Valores por Defecto</div>
+                    <p class="descripcion">
+                        Parámetros opcionales con valores predeterminados.
+                    </p>
+                    <div class="ejemplo">void saludar(string nombre = "Usuario") {
+    cout << "Hola, " << nombre << endl;
+}
+
+saludar();         // "Hola, Usuario"
+saludar("Ana");    // "Hola, Ana"</div>
+                </div>
+            </div>
+
+            <!-- PUNTEROS Y REFERENCIAS -->
+            <div id="punteros" class="category-section">
+                <h2 class="category-title">Punteros y Referencias</h2>
+
+                <div class="termino" data-tags="puntero pointer * direccion memoria">
+                    <span class="categoria-badge badge-avanzado">Puntero</span>
+                    <div class="comando">Punteros</div>
+                    <p class="descripcion">
+                        Variable que almacena la dirección de memoria de otra variable.
+                        <code>*</code> declara un puntero y desreferencia. <code>&</code> obtiene la dirección.
+                    </p>
+                    <div class="ejemplo">int x = 10;
+int* ptr = &x;   // ptr apunta a x
+
+cout << x;       // 10 (valor)
+cout << &x;      // 0x7ffd... (dirección)
+cout << ptr;     // 0x7ffd... (dirección almacenada)
+cout << *ptr;    // 10 (valor apuntado)</div>
+                </div>
+
+                <div class="termino" data-tags="referencia reference & alias">
+                    <span class="categoria-badge badge-intermedio">Puntero</span>
+                    <div class="comando">Referencias</div>
+                    <p class="descripcion">
+                        Alias para una variable existente. Debe inicializarse y no puede reasignarse.
+                    </p>
+                    <div class="ejemplo">int x = 10;
+int& ref = x;   // ref es un alias de x
+
+ref = 20;       // Modifica x
+cout << x;      // 20</div>
+                    <div class="nota">
+                        <strong>💡 Diferencia:</strong> Referencias son más seguras que punteros (no pueden ser null).
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="nullptr null puntero nulo">
+                    <span class="categoria-badge badge-intermedio">Puntero</span>
+                    <div class="comando">nullptr (C++11)</div>
+                    <p class="descripcion">
+                        Valor nulo para punteros. Reemplaza a <code>NULL</code> de C.
+                    </p>
+                    <div class="ejemplo">int* ptr = nullptr;
+
+if (ptr == nullptr) {
+    cout << "Puntero nulo" << endl;
+}</div>
+                </div>
+
+                <div class="termino" data-tags="aritmetica punteros array">
+                    <span class="categoria-badge badge-avanzado">Puntero</span>
+                    <div class="comando">Aritmética de Punteros</div>
+                    <p class="descripcion">
+                        Los punteros pueden sumarse/restarse para navegar en arrays.
+                    </p>
+                    <div class="ejemplo">int arr[] = {10, 20, 30};
+int* ptr = arr;      // Apunta al primer elemento
+
+cout << *ptr;        // 10
+cout << *(ptr + 1);  // 20 (siguiente elemento)
+cout << *(ptr + 2);  // 30</div>
+                </div>
+            </div>
+
+            <!-- ARRAYS Y STRINGS -->
+            <div id="arrays" class="category-section">
+                <h2 class="category-title">Arrays y Strings</h2>
+
+                <div class="termino" data-tags="array arreglo estatico []">
+                    <span class="categoria-badge badge-basico">Array</span>
+                    <div class="comando">Arrays Estáticos</div>
+                    <p class="descripcion">
+                        Colección de elementos del mismo tipo con tamaño fijo.
+                    </p>
+                    <div class="ejemplo">int numeros[5] = {10, 20, 30, 40, 50};
+
+cout << numeros[0];  // 10 (primer elemento)
+cout << numeros[4];  // 50 (último elemento)
+
+// Tamaño en bytes / tamaño de un elemento
+int tamaño = sizeof(numeros) / sizeof(numeros[0]);  // 5</div>
+                </div>
+
+                <div class="termino" data-tags="string cadena texto">
+                    <span class="categoria-badge badge-basico">Array</span>
+                    <div class="comando">std::string</div>
+                    <p class="descripcion">
+                        Clase para manejar cadenas de texto. Parte de <code>&lt;string&gt;</code>.
+                    </p>
+                    <div class="ejemplo">#include &lt;string&gt;
+
+string nombre = "Carlos";
+string apellido = "Lopez";
+
+string completo = nombre + " " + apellido;  // "Carlos Lopez"
+int longitud = nombre.length();             // 6
+char primera = nombre[0];                   // 'C'
+
+nombre.append(" Jr.");  // "Carlos Jr."
+nombre.substr(0, 3);    // "Car"</div>
+                </div>
+
+                <div class="termino" data-tags="c-string char array null terminated">
+                    <span class="categoria-badge badge-intermedio">Array</span>
+                    <div class="comando">C-Strings (char[])</div>
+                    <p class="descripcion">
+                        Arrays de caracteres terminados en null (<code>'\0'</code>). Estilo antiguo de C.
+                    </p>
+                    <div class="ejemplo">char nombre[20] = "Carlos";
+
+cout << nombre;  // "Carlos"
+cout << strlen(nombre);  // 6 (requiere &lt;cstring&gt;)</div>
+                    <div class="nota">
+                        <strong>💡 Recomendación:</strong> Usa <code>std::string</code> en lugar de C-strings cuando sea posible.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="array multidimensional matriz">
+                    <span class="categoria-badge badge-intermedio">Array</span>
+                    <div class="comando">Arrays Multidimensionales</div>
+                    <p class="descripcion">
+                        Arrays de arrays (matrices).
+                    </p>
+                    <div class="ejemplo">int matriz[3][3] = {
+    {1, 2, 3},
+    {4, 5, 6},
+    {7, 8, 9}
+};
+
+cout << matriz[1][2];  // 6 (fila 1, columna 2)</div>
+                </div>
+            </div>
+
+            <!-- PROGRAMACIÓN ORIENTADA A OBJETOS -->
+            <div id="poo" class="category-section">
+                <h2 class="category-title">Programación Orientada a Objetos</h2>
+
+                <div class="termino" data-tags="class clase objeto instancia">
+                    <span class="categoria-badge badge-intermedio">POO</span>
+                    <div class="comando">Clases y Objetos</div>
+                    <p class="descripcion">
+                        Una clase es una plantilla para crear objetos. Define atributos (variables) y métodos (funciones).
+                    </p>
+                    <div class="ejemplo">class Persona {
+public:
+    string nombre;
+    int edad;
+
+    void saludar() {
+        cout << "Hola, soy " << nombre << endl;
+    }
+};
+
+Persona p1;
+p1.nombre = "Ana";
+p1.edad = 25;
+p1.saludar();  // "Hola, soy Ana"</div>
+                </div>
+
+                <div class="termino" data-tags="constructor inicializacion objeto">
+                    <span class="categoria-badge badge-intermedio">POO</span>
+                    <div class="comando">Constructores</div>
+                    <p class="descripcion">
+                        Función especial que se ejecuta al crear un objeto. Inicializa atributos.
+                    </p>
+                    <div class="ejemplo">class Persona {
+public:
+    string nombre;
+    int edad;
+
+    // Constructor
+    Persona(string n, int e) {
+        nombre = n;
+        edad = e;
+    }
+};
+
+Persona p1("Ana", 25);  // Llama al constructor</div>
+                </div>
+
+                <div class="termino" data-tags="destructor ~clase memoria">
+                    <span class="categoria-badge badge-avanzado">POO</span>
+                    <div class="comando">Destructores</div>
+                    <p class="descripcion">
+                        Función especial que se ejecuta al destruir un objeto. Se usa para liberar recursos.
+                        Se denota con <code>~NombreClase()</code>.
+                    </p>
+                    <div class="ejemplo">class Archivo {
+public:
+    Archivo() {
+        cout << "Archivo abierto" << endl;
+    }
+
+    ~Archivo() {
+        cout << "Archivo cerrado" << endl;
+    }
+};
+
+{
+    Archivo f;  // "Archivo abierto"
+}  // Al salir del scope: "Archivo cerrado"</div>
+                </div>
+
+                <div class="termino" data-tags="encapsulamiento public private protected">
+                    <span class="categoria-badge badge-intermedio">POO</span>
+                    <div class="comando">Encapsulamiento: public, private, protected</div>
+                    <p class="descripcion">
+                        Control de acceso a miembros de la clase. <code>private</code>: solo la clase,
+                        <code>public</code>: todos, <code>protected</code>: la clase y clases derivadas.
+                    </p>
+                    <div class="ejemplo">class CuentaBancaria {
+private:
+    double saldo;  // No accesible desde fuera
+
+public:
+    void depositar(double monto) {
+        saldo += monto;
+    }
+
+    double verSaldo() {
+        return saldo;
+    }
+};</div>
+                </div>
+
+                <div class="termino" data-tags="this puntero objeto">
+                    <span class="categoria-badge badge-intermedio">POO</span>
+                    <div class="comando">this - Puntero al objeto actual</div>
+                    <p class="descripcion">
+                        <code>this</code> es un puntero al objeto actual. Se usa para diferenciar atributos de parámetros.
+                    </p>
+                    <div class="ejemplo">class Persona {
+private:
+    string nombre;
+
+public:
+    Persona(string nombre) {
+        this->nombre = nombre;  // Diferencia atributo de parámetro
+    }
+};</div>
+                </div>
+
+                <div class="termino" data-tags="sobrecarga operadores operator">
+                    <span class="categoria-badge badge-avanzado">POO</span>
+                    <div class="comando">Sobrecarga de Operadores</div>
+                    <p class="descripcion">
+                        Definir comportamiento de operadores (+, -, ==, etc.) para clases personalizadas.
+                    </p>
+                    <div class="ejemplo">class Punto {
+public:
+    int x, y;
+
+    Punto(int x, int y) : x(x), y(y) {}
+
+    Punto operator+(const Punto& p) {
+        return Punto(x + p.x, y + p.y);
+    }
+};
+
+Punto p1(1, 2);
+Punto p2(3, 4);
+Punto p3 = p1 + p2;  // (4, 6)</div>
+                </div>
+            </div>
+
+            <!-- HERENCIA Y POLIMORFISMO -->
+            <div id="herencia" class="category-section">
+                <h2 class="category-title">Herencia y Polimorfismo</h2>
+
+                <div class="termino" data-tags="herencia inheritance extends base derivada">
+                    <span class="categoria-badge badge-intermedio">Herencia</span>
+                    <div class="comando">Herencia</div>
+                    <p class="descripcion">
+                        Una clase puede heredar atributos y métodos de otra. Usa <code>:</code> para heredar.
+                    </p>
+                    <div class="ejemplo">class Animal {
+public:
+    void comer() {
+        cout << "Comiendo..." << endl;
+    }
+};
+
+class Perro : public Animal {  // Hereda de Animal
+public:
+    void ladrar() {
+        cout << "Guau!" << endl;
+    }
+};
+
+Perro p;
+p.comer();   // De Animal
+p.ladrar();  // De Perro</div>
+                </div>
+
+                <div class="termino" data-tags="virtual polimorfismo override">
+                    <span class="categoria-badge badge-avanzado">Herencia</span>
+                    <div class="comando">Funciones Virtuales y Polimorfismo</div>
+                    <p class="descripcion">
+                        <code>virtual</code> permite que las clases derivadas sobrescriban métodos.
+                        Permite polimorfismo en tiempo de ejecución.
+                    </p>
+                    <div class="ejemplo">class Animal {
+public:
+    virtual void sonido() {
+        cout << "Sonido genérico" << endl;
+    }
+};
+
+class Perro : public Animal {
+public:
+    void sonido() override {  // Sobrescribe
+        cout << "Guau!" << endl;
+    }
+};
+
+Animal* a = new Perro();
+a->sonido();  // "Guau!" (polimorfismo)</div>
+                </div>
+
+                <div class="termino" data-tags="clase abstracta pure virtual interface">
+                    <span class="categoria-badge badge-avanzado">Herencia</span>
+                    <div class="comando">Clases Abstractas (Pure Virtual)</div>
+                    <p class="descripcion">
+                        Función virtual pura (<code>= 0</code>) obliga a las clases derivadas a implementarla.
+                        No se pueden crear instancias de clases con funciones virtuales puras.
+                    </p>
+                    <div class="ejemplo">class Figura {
+public:
+    virtual double area() = 0;  // Función virtual pura
+};
+
+class Cuadrado : public Figura {
+public:
+    double lado;
+
+    double area() override {
+        return lado * lado;
+    }
+};</div>
+                </div>
+
+                <div class="termino" data-tags="herencia multiple multiple inheritance">
+                    <span class="categoria-badge badge-avanzado">Herencia</span>
+                    <div class="comando">Herencia Múltiple</div>
+                    <p class="descripcion">
+                        Una clase puede heredar de múltiples clases. Puede causar problemas (diamond problem).
+                    </p>
+                    <div class="ejemplo">class Vehiculo {
+public:
+    void mover() { cout << "Moviendo" << endl; }
+};
+
+class Barco {
+public:
+    void navegar() { cout << "Navegando" << endl; }
+};
+
+class AnfibioCar : public Vehiculo, public Barco {
+    // Hereda de ambas
+};
+
+AnfibioCar ac;
+ac.mover();
+ac.navegar();</div>
+                </div>
+            </div>
+
+            <!-- GESTIÓN DE MEMORIA -->
+            <div id="memoria" class="category-section">
+                <h2 class="category-title">Gestión de Memoria Dinámica</h2>
+
+                <div class="termino" data-tags="new delete heap memoria dinamica">
+                    <span class="categoria-badge badge-avanzado">Memoria</span>
+                    <div class="comando">new y delete</div>
+                    <p class="descripcion">
+                        <code>new</code> reserva memoria en el heap. <code>delete</code> la libera. Fundamental prevenir memory leaks.
+                    </p>
+                    <div class="ejemplo">int* ptr = new int;      // Reserva memoria
+*ptr = 10;
+cout << *ptr;            // 10
+delete ptr;              // Libera memoria
+ptr = nullptr;           // Buena práctica
+
+// Arrays dinámicos
+int* arr = new int[5];
+delete[] arr;            // delete[] para arrays</div>
+                    <div class="nota">
+                        <strong>⚠️ IMPORTANTE:</strong> Siempre libera la memoria con <code>delete</code> para evitar memory leaks.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="smart pointer unique_ptr shared_ptr">
+                    <span class="categoria-badge badge-avanzado">Memoria</span>
+                    <div class="comando">Smart Pointers (C++11)</div>
+                    <p class="descripcion">
+                        Punteros que liberan memoria automáticamente. <code>unique_ptr</code> (único dueño),
+                        <code>shared_ptr</code> (múltiples dueños), <code>weak_ptr</code> (observador).
+                    </p>
+                    <div class="ejemplo">#include &lt;memory&gt;
+
+// unique_ptr: solo un dueño
+unique_ptr&lt;int&gt; p1(new int(10));
+// No necesitas delete, se libera automáticamente
+
+// shared_ptr: múltiples dueños
+shared_ptr&lt;int&gt; p2 = make_shared&lt;int&gt;(20);
+shared_ptr&lt;int&gt; p3 = p2;  // Comparten la memoria</div>
+                    <div class="nota">
+                        <strong>💡 Buena práctica:</strong> Usa smart pointers en lugar de punteros raw siempre que sea posible.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="raii resource acquisition initialization">
+                    <span class="categoria-badge badge-avanzado">Memoria</span>
+                    <div class="comando">RAII (Resource Acquisition Is Initialization)</div>
+                    <p class="descripcion">
+                        Patrón de diseño donde los recursos se adquieren en el constructor y se liberan en el destructor.
+                        Garantiza que los recursos se liberen correctamente.
+                    </p>
+                    <div class="ejemplo">class Archivo {
+    FILE* file;
+public:
+    Archivo(const char* nombre) {
+        file = fopen(nombre, "r");
+    }
+
+    ~Archivo() {
+        if (file) fclose(file);  // Se libera automáticamente
+    }
+};</div>
+                </div>
+            </div>
+
+            <!-- TEMPLATES -->
+            <div id="templates" class="category-section">
+                <h2 class="category-title">Templates (Plantillas)</h2>
+
+                <div class="termino" data-tags="template plantilla funcion generica">
+                    <span class="categoria-badge badge-avanzado">Template</span>
+                    <div class="comando">Function Templates</div>
+                    <p class="descripcion">
+                        Funciones genéricas que funcionan con cualquier tipo de dato.
+                    </p>
+                    <div class="ejemplo">template &lt;typename T&gt;
+T maximo(T a, T b) {
+    return (a > b) ? a : b;
+}
+
+cout << maximo(5, 3);         // 5 (int)
+cout << maximo(5.5, 3.2);     // 5.5 (double)
+cout << maximo('a', 'z');     // 'z' (char)</div>
+                </div>
+
+                <div class="termino" data-tags="template class plantilla clase generica">
+                    <span class="categoria-badge badge-avanzado">Template</span>
+                    <div class="comando">Class Templates</div>
+                    <p class="descripcion">
+                        Clases genéricas que funcionan con diferentes tipos.
+                    </p>
+                    <div class="ejemplo">template &lt;typename T&gt;
+class Caja {
+    T contenido;
+public:
+    Caja(T c) : contenido(c) {}
+    T obtener() { return contenido; }
+};
+
+Caja&lt;int&gt; c1(10);
+Caja&lt;string&gt; c2("Hola");
+
+cout << c1.obtener();  // 10
+cout << c2.obtener();  // "Hola"</div>
+                </div>
+            </div>
+
+            <!-- STL (STANDARD TEMPLATE LIBRARY) -->
+            <div id="stl" class="category-section">
+                <h2 class="category-title">STL (Standard Template Library)</h2>
+
+                <div class="termino" data-tags="vector array dinamico stl">
+                    <span class="categoria-badge badge-intermedio">STL</span>
+                    <div class="comando">vector</div>
+                    <p class="descripcion">
+                        Array dinámico que cambia de tamaño automáticamente. El contenedor más usado de STL.
+                    </p>
+                    <div class="ejemplo">#include &lt;vector&gt;
+
+vector&lt;int&gt; nums = {10, 20, 30};
+
+nums.push_back(40);      // [10, 20, 30, 40]
+nums.pop_back();         // [10, 20, 30]
+cout << nums[0];         // 10
+cout << nums.size();     // 3
+
+for (int n : nums) {
+    cout << n << " ";    // 10 20 30
+}</div>
+                </div>
+
+                <div class="termino" data-tags="map diccionario clave valor stl">
+                    <span class="categoria-badge badge-intermedio">STL</span>
+                    <div class="comando">map</div>
+                    <p class="descripcion">
+                        Contenedor de pares clave-valor ordenados. Búsqueda eficiente (log n).
+                    </p>
+                    <div class="ejemplo">#include &lt;map&gt;
+
+map&lt;string, int&gt; edades;
+edades["Ana"] = 25;
+edades["Juan"] = 30;
+
+cout << edades["Ana"];  // 25
+
+for (auto par : edades) {
+    cout << par.first << ": " << par.second << endl;
+}</div>
+                </div>
+
+                <div class="termino" data-tags="set conjunto valores unicos stl">
+                    <span class="categoria-badge badge-intermedio">STL</span>
+                    <div class="comando">set</div>
+                    <p class="descripcion">
+                        Contenedor de valores únicos ordenados. No permite duplicados.
+                    </p>
+                    <div class="ejemplo">#include &lt;set&gt;
+
+set&lt;int&gt; numeros = {1, 2, 3, 2, 1};  // Solo guarda {1, 2, 3}
+
+numeros.insert(4);       // {1, 2, 3, 4}
+numeros.erase(2);        // {1, 3, 4}
+cout << numeros.size();  // 3</div>
+                </div>
+
+                <div class="termino" data-tags="algoritmos sort find transform stl">
+                    <span class="categoria-badge badge-intermedio">STL</span>
+                    <div class="comando">Algoritmos STL</div>
+                    <p class="descripcion">
+                        Funciones predefinidas para operar sobre contenedores: <code>sort</code>, <code>find</code>,
+                        <code>reverse</code>, <code>count</code>, etc.
+                    </p>
+                    <div class="ejemplo">#include &lt;algorithm&gt;
+
+vector&lt;int&gt; nums = {5, 2, 8, 1, 9};
+
+sort(nums.begin(), nums.end());  // {1, 2, 5, 8, 9}
+reverse(nums.begin(), nums.end());  // {9, 8, 5, 2, 1}
+
+auto it = find(nums.begin(), nums.end(), 5);
+if (it != nums.end()) {
+    cout << "Encontrado en posición " << (it - nums.begin());
+}</div>
+                </div>
+
+                <div class="termino" data-tags="lambda funcion anonima []">
+                    <span class="categoria-badge badge-avanzado">STL</span>
+                    <div class="comando">Lambda Expressions (C++11)</div>
+                    <p class="descripcion">
+                        Funciones anónimas inline. Útiles para algoritmos STL.
+                        Sintaxis: <code>[captura](parámetros) { cuerpo }</code>
+                    </p>
+                    <div class="ejemplo">vector&lt;int&gt; nums = {1, 2, 3, 4, 5};
+
+// Lambda como función
+auto cuadrado = [](int x) { return x * x; };
+cout << cuadrado(5);  // 25
+
+// Lambda con algoritmo
+for_each(nums.begin(), nums.end(), [](int n) {
+    cout << n * 2 << " ";  // 2 4 6 8 10
+});</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Script -->
+        <script>
+            const searchBox = document.getElementById('searchBox');
+            const terminos = document.querySelectorAll('.termino');
+
+            searchBox.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+
+                terminos.forEach(termino => {
+                    const comando = termino.querySelector('.comando').textContent.toLowerCase();
+                    const descripcion = termino.querySelector('.descripcion').textContent.toLowerCase();
+                    const tags = termino.getAttribute('data-tags') || '';
+
+                    if (comando.includes(searchTerm) ||
+                        descripcion.includes(searchTerm) ||
+                        tags.includes(searchTerm)) {
+                        termino.style.display = 'block';
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+            });
+        </script>
+
+        <!-- Category Navigation Smooth Scroll -->
+        <script>
+            document.querySelectorAll('.category-nav a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        </script>
+    </div>
+
+    <!-- Sidebar Component -->
+    <script src="/assets/js/sidebar-component.js"></script>
+
+    <!-- TOC Component -->
+    <script src="/assets/js/toc-component.js"></script>
+</body>
+</html>

@@ -448,6 +448,118 @@ const searchData = {
     ],
     css: [],
     javascript: [],
+    cpp: [
+        {
+            term: "Variables y Tipos",
+            description: "int, double, char, bool, string - Tipos de datos en C++",
+            category: "C++",
+            url: "Lenguajes/C++/Glosario.html"
+        },
+        {
+            term: "Punteros",
+            description: "Variables que almacenan direcciones de memoria (*ptr, &variable)",
+            category: "C++",
+            url: "Lenguajes/C++/Glosario.html"
+        },
+        {
+            term: "Referencias",
+            description: "Alias para variables existentes (int& ref)",
+            category: "C++",
+            url: "Lenguajes/C++/Glosario.html"
+        },
+        {
+            term: "Clases",
+            description: "Plantillas para crear objetos con atributos y métodos",
+            category: "C++",
+            url: "Lenguajes/C++/Glosario.html"
+        },
+        {
+            term: "vector",
+            description: "Array dinámico de STL que cambia de tamaño automáticamente",
+            category: "C++",
+            url: "Lenguajes/C++/Glosario.html"
+        },
+        {
+            term: "Templates",
+            description: "Funciones y clases genéricas que funcionan con cualquier tipo",
+            category: "C++",
+            url: "Lenguajes/C++/Glosario.html"
+        },
+        {
+            term: "new y delete",
+            description: "Gestión de memoria dinámica en heap",
+            category: "C++",
+            url: "Lenguajes/C++/Glosario.html"
+        },
+        {
+            term: "Herencia",
+            description: "Una clase hereda propiedades y métodos de otra",
+            category: "C++",
+            url: "Lenguajes/C++/Glosario.html"
+        }
+    ],
+    java: [
+        {
+            term: "Tipos Primitivos",
+            description: "int, double, boolean, char - Tipos básicos de Java",
+            category: "Java",
+            url: "Lenguajes/Java/Glosario.html"
+        },
+        {
+            term: "String",
+            description: "Clase para manejar cadenas de texto inmutables",
+            category: "Java",
+            url: "Lenguajes/Java/Glosario.html"
+        },
+        {
+            term: "Clases y Objetos",
+            description: "Plantillas para crear objetos con atributos y métodos",
+            category: "Java",
+            url: "Lenguajes/Java/Glosario.html"
+        },
+        {
+            term: "Constructores",
+            description: "Método especial que se ejecuta al crear un objeto",
+            category: "Java",
+            url: "Lenguajes/Java/Glosario.html"
+        },
+        {
+            term: "Herencia",
+            description: "Una clase hereda atributos y métodos usando extends",
+            category: "Java",
+            url: "Lenguajes/Java/Glosario.html"
+        },
+        {
+            term: "ArrayList",
+            description: "Lista dinámica que cambia de tamaño automáticamente",
+            category: "Java",
+            url: "Lenguajes/Java/Glosario.html"
+        },
+        {
+            term: "HashMap",
+            description: "Almacena pares clave-valor con búsqueda rápida",
+            category: "Java",
+            url: "Lenguajes/Java/Glosario.html"
+        },
+        {
+            term: "Excepciones",
+            description: "Manejo de errores con try-catch-finally",
+            category: "Java",
+            url: "Lenguajes/Java/Glosario.html"
+        },
+        {
+            term: "Generics",
+            description: "Clases y métodos parametrizados por tipo (ArrayList<T>)",
+            category: "Java",
+            url: "Lenguajes/Java/Glosario.html"
+        },
+        {
+            term: "Lambda",
+            description: "Expresiones funcionales anónimas ((a, b) -> a + b)",
+            category: "Java",
+            url: "Lenguajes/Java/Glosario.html"
+        }
+    ],
     python: [],
     react: [],
     vue: [],
