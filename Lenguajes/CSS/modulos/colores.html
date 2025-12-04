@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colores y Fondos - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a CSS</a>
+        <span class="icon">🎨</span>
+        <h1>Módulo 6: Colores y Fondos</h1>
+        <p class="subtitle">Formatos de color, gradientes y backgrounds</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #f1c40f; margin-bottom: 40px;">
+                <h2 style="color: #f1c40f; margin-bottom: 15px; font-size: 1.8em;">🎨 Colores y Fondos</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    Los colores y fondos son fundamentales para crear diseños atractivos.
+                    CSS ofrece múltiples formatos de color y opciones de fondo.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="color-nombres" data-tags="color nombre keyword">
+                        <span class="tag">📋 Colores por Nombre</span>
+                        <p class="significado">140+ nombres de colores predefinidos</p>
+                        <div class="ejemplo">color: red;
+color: blue;
+color: lightblue;
+color: darkgreen;
+color: transparent;
+color: currentColor;  /* Hereda el color actual */</div>
+                    </div>
+
+                    <div class="termino" id="color-hex" data-tags="hexadecimal hex color">
+                        <span class="tag">📋 Hexadecimal</span>
+                        <p class="significado">Formato #RRGGBB o #RGB</p>
+                        <div class="ejemplo">color: #ff0000;      /* Rojo */
+color: #00ff00;      /* Verde */
+color: #0000ff;      /* Azul */
+color: #f00;         /* Rojo (corto) */
+color: #ffffff;      /* Blanco */
+color: #000000;      /* Negro */
+color: #ff000080;    /* Rojo 50% transparente (con alfa) */</div>
+                    </div>
+
+                    <div class="termino" id="color-rgb" data-tags="rgb rgba color transparencia">
+                        <span class="tag">📋 RGB y RGBA</span>
+                        <p class="significado">Rojo, Verde, Azul (0-255) con alfa opcional</p>
+                        <div class="ejemplo">color: rgb(255, 0, 0);           /* Rojo */
+color: rgb(0, 128, 255);         /* Azul */
+
+/* Con transparencia (0.0 - 1.0) */
+background: rgba(0, 0, 0, 0.5);  /* Negro 50% */
+background: rgba(255, 255, 255, 0.9);
+
+/* Sintaxis moderna */
+color: rgb(255 0 0 / 50%);       /* Rojo 50% */</div>
+                    </div>
+
+                    <div class="termino" id="color-hsl" data-tags="hsl hsla tono saturacion luminosidad">
+                        <span class="tag">📋 HSL y HSLA</span>
+                        <p class="significado">Tono (0-360°), Saturación (%), Luminosidad (%)</p>
+                        <p class="descripcion">
+                            HSL es más intuitivo para ajustar colores que RGB.
+                        </p>
+                        <div class="ejemplo">/* hsl(tono, saturación, luminosidad) */
+color: hsl(0, 100%, 50%);        /* Rojo */
+color: hsl(120, 100%, 50%);      /* Verde */
+color: hsl(240, 100%, 50%);      /* Azul */
+
+/* Con transparencia */
+background: hsla(200, 80%, 50%, 0.8);
+
+/* Ajustar luminosidad fácilmente */
+--primary: hsl(210, 80%, 50%);
+--primary-light: hsl(210, 80%, 70%);
+--primary-dark: hsl(210, 80%, 30%);</div>
+                        <div class="nota">
+                            <strong>💡 Tip:</strong> HSL facilita crear variaciones de un color cambiando solo la luminosidad.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="gradientes" data-tags="gradiente linear radial degradado">
+                        <span class="tag">🎨 Gradientes</span>
+                        <p class="significado">Transiciones suaves entre colores</p>
+                        <div class="ejemplo">/* Gradiente lineal */
+background: linear-gradient(to right, red, blue);
+background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+background: linear-gradient(to bottom, #333, #333 50%, #666 50%);
+
+/* Gradiente radial */
+background: radial-gradient(circle, yellow, orange);
+background: radial-gradient(ellipse at top, #fff, #000);
+
+/* Múltiples colores con stops */
+background: linear-gradient(
+    to right,
+    red 0%,
+    orange 25%,
+    yellow 50%,
+    green 75%,
+    blue 100%
+);
+
+/* Gradiente cónico */
+background: conic-gradient(red, yellow, green, blue, red);</div>
+                    </div>
+
+                    <div class="termino" id="background" data-tags="background fondo imagen">
+                        <span class="tag">🎨 background</span>
+                        <p class="significado">Propiedad shorthand para fondos</p>
+                        <div class="ejemplo">/* Solo color */
+background: #f0f0f0;
+
+/* Imagen */
+background: url('imagen.jpg');
+
+/* Completo */
+background: url('bg.jpg') no-repeat center/cover;
+
+/* Propiedades individuales */
+background-color: #fff;
+background-image: url('pattern.png');
+background-repeat: no-repeat;  /* repeat, repeat-x, repeat-y */
+background-position: center;   /* top, bottom, left, right, % */
+background-size: cover;        /* contain, 100px, 50% */
+background-attachment: fixed;  /* scroll, local */
+
+/* Múltiples fondos */
+background:
+    url('overlay.png') no-repeat center,
+    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url('photo.jpg') no-repeat center/cover;</div>
+                    </div>
+
+                    <div class="termino" id="opacity" data-tags="opacity transparencia">
+                        <span class="tag">🎨 Opacity</span>
+                        <p class="significado">Transparencia del elemento completo</p>
+                        <div class="ejemplo">opacity: 1;      /* Totalmente opaco */
+opacity: 0.5;    /* Semi-transparente */
+opacity: 0;      /* Invisible */
+
+/* Diferencia con rgba */
+.con-opacity {
+    background: black;
+    opacity: 0.5;    /* Afecta TODO, incluido texto */
+}
+
+.con-rgba {
+    background: rgba(0, 0, 0, 0.5);  /* Solo el fondo */
+}</div>
+                    </div>
+
+                    <div class="termino" id="variables-color" data-tags="variables custom properties colores tema">
+                        <span class="tag">🎨 Variables de Color</span>
+                        <p class="significado">Paleta de colores reutilizable</p>
+                        <div class="ejemplo">:root {
+    /* Paleta principal */
+    --color-primary: #3498db;
+    --color-secondary: #2ecc71;
+    --color-accent: #f1c40f;
+
+    /* Escala de grises */
+    --gray-100: #f8f9fa;
+    --gray-500: #6c757d;
+    --gray-900: #212529;
+
+    /* Semánticos */
+    --color-success: #28a745;
+    --color-warning: #ffc107;
+    --color-error: #dc3545;
+}
+
+.button-primary {
+    background: var(--color-primary);
+}
+
+.alert-error {
+    background: var(--color-error);
+}</div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">🌈 Colores y Fondos</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#color-nombres" class="toc-link">Colores por Nombre</a></li>
+                    <li class="toc-item"><a href="#color-hex" class="toc-link">Hexadecimal</a></li>
+                    <li class="toc-item"><a href="#color-rgb" class="toc-link">RGB y RGBA</a></li>
+                    <li class="toc-item"><a href="#color-hsl" class="toc-link">HSL y HSLA</a></li>
+                    <li class="toc-item"><a href="#gradientes" class="toc-link">Gradientes</a></li>
+                    <li class="toc-item"><a href="#background" class="toc-link">background</a></li>
+                    <li class="toc-item"><a href="#opacity" class="toc-link">Opacity</a></li>
+                    <li class="toc-item"><a href="#variables-color" class="toc-link">Variables de Color</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>CSS - Sistema de Aprendizaje | <a href="../index.html">Volver a CSS</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) {
+                return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const tags = termino.getAttribute('data-tags') || '';
+                    const title = termino.querySelector('.tag')?.textContent || '';
+                    const desc = termino.querySelector('.descripcion')?.textContent || '';
+                    const ejemplo = termino.querySelector('.ejemplo')?.textContent || '';
+                    const searchText = normalizeText(tags + ' ' + title + ' ' + desc + ' ' + ejemplo);
+                    if (query === '' || searchText.includes(query)) {
+                        termino.style.display = 'block';
+                        found++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+</body>
+</html>

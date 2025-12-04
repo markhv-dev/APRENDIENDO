@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudoclases y Pseudoelementos - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a CSS</a>
+        <span class="icon">✨</span>
+        <h1>Módulo 9: Pseudoclases y Pseudoelementos</h1>
+        <p class="subtitle">Estados, posiciones y contenido generado</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #f1c40f; margin-bottom: 40px;">
+                <h2 style="color: #f1c40f; margin-bottom: 15px; font-size: 1.8em;">✨ Pseudoclases y Pseudoelementos</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    Las pseudoclases seleccionan elementos según su estado. Los pseudoelementos
+                    crean partes virtuales de un elemento.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="hover" data-tags="hover mouse encima">
+                        <span class="tag">📋 :hover</span>
+                        <p class="significado">Mouse sobre el elemento</p>
+                        <div class="ejemplo">a:hover {
+    color: red;
+    text-decoration: underline;
+}
+
+.button:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+.card:hover {
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}</div>
+                    </div>
+
+                    <div class="termino" id="focus" data-tags="focus foco input">
+                        <span class="tag">📋 :focus</span>
+                        <p class="significado">Elemento con foco</p>
+                        <div class="ejemplo">input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+}
+
+/* :focus-visible - solo con teclado */
+button:focus-visible {
+    outline: 2px solid blue;
+}
+
+/* :focus-within - hijo tiene foco */
+.form-group:focus-within {
+    background: #f0f0f0;
+}</div>
+                    </div>
+
+                    <div class="termino" id="active" data-tags="active activo click">
+                        <span class="tag">📋 :active</span>
+                        <p class="significado">Mientras se hace click</p>
+                        <div class="ejemplo">button:active {
+    transform: scale(0.95);
+}
+
+.link:active {
+    color: darkred;
+}</div>
+                    </div>
+
+                    <div class="termino" id="first-last-child" data-tags="first-child last-child primero ultimo">
+                        <span class="tag">📋 :first-child / :last-child</span>
+                        <p class="significado">Primer o último hijo</p>
+                        <div class="ejemplo">li:first-child {
+    font-weight: bold;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+
+/* También existe */
+:only-child     /* Único hijo */
+:first-of-type  /* Primero de su tipo */
+:last-of-type   /* Último de su tipo */</div>
+                    </div>
+
+                    <div class="termino" id="nth-child" data-tags="nth-child enesimo par impar">
+                        <span class="tag">📋 :nth-child()</span>
+                        <p class="significado">Selección por posición/fórmula</p>
+                        <div class="ejemplo">/* Filas alternas */
+tr:nth-child(odd) { background: #f9f9f9; }
+tr:nth-child(even) { background: white; }
+
+/* Elemento específico */
+li:nth-child(3) { color: red; }
+
+/* Cada N elementos */
+li:nth-child(3n) { }      /* 3, 6, 9... */
+li:nth-child(3n+1) { }    /* 1, 4, 7... */
+
+/* Primeros N */
+li:nth-child(-n+3) { }    /* Primeros 3 */
+
+/* :nth-last-child() - desde el final */
+li:nth-last-child(2) { }  /* Penúltimo */</div>
+                    </div>
+
+                    <div class="termino" id="not" data-tags="not negacion excluir">
+                        <span class="tag">📋 :not()</span>
+                        <p class="significado">Negación - excluir elementos</p>
+                        <div class="ejemplo">/* Todos menos .especial */
+p:not(.especial) {
+    color: gray;
+}
+
+/* Links externos */
+a:not([href^="#"]) {
+    color: blue;
+}
+
+/* Múltiples exclusiones */
+input:not([type="submit"]):not([type="button"]) {
+    border: 1px solid #ccc;
+}</div>
+                    </div>
+
+                    <div class="termino" id="checked-disabled" data-tags="checked disabled enabled estados">
+                        <span class="tag">📋 Estados de Formulario</span>
+                        <p class="significado">Estados de inputs y controles</p>
+                        <div class="ejemplo">/* Checkbox marcado */
+input:checked + label {
+    font-weight: bold;
+}
+
+/* Deshabilitado */
+input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Válido/inválido */
+input:valid { border-color: green; }
+input:invalid { border-color: red; }
+
+/* Requerido */
+input:required { }
+
+/* Placeholder visible */
+input:placeholder-shown { }</div>
+                    </div>
+
+                    <div class="termino" id="before-after" data-tags="before after antes despues contenido">
+                        <span class="tag">🔮 ::before / ::after</span>
+                        <p class="significado">Contenido generado antes/después</p>
+                        <p class="descripcion">
+                            Crean pseudo-elementos para agregar contenido decorativo.
+                            Requieren la propiedad content.
+                        </p>
+                        <div class="ejemplo">/* Agregar icono */
+.link-externo::after {
+    content: " ↗";
+    font-size: 0.8em;
+}
+
+/* Decoración */
+.titulo::before {
+    content: "";
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: #f1c40f;
+    margin-bottom: 10px;
+}
+
+/* Tooltip */
+[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    background: black;
+    color: white;
+    padding: 5px 10px;
+}
+
+/* Clearfix */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}</div>
+                        <div class="nota">
+                            <strong>⚠️ Importante:</strong> content es obligatorio, aunque sea vacío ("").
+                        </div>
+                    </div>
+
+                    <div class="termino" id="first-letter-line" data-tags="first-letter first-line primera">
+                        <span class="tag">🔮 ::first-letter / ::first-line</span>
+                        <p class="significado">Primera letra o línea</p>
+                        <div class="ejemplo">/* Letra capital */
+p::first-letter {
+    font-size: 3em;
+    float: left;
+    line-height: 1;
+    margin-right: 10px;
+}
+
+/* Primera línea */
+p::first-line {
+    font-weight: bold;
+}</div>
+                    </div>
+
+                    <div class="termino" id="selection" data-tags="selection seleccion resaltado">
+                        <span class="tag">🔮 ::selection</span>
+                        <p class="significado">Texto seleccionado</p>
+                        <div class="ejemplo">::selection {
+    background: #f1c40f;
+    color: black;
+}
+
+p::selection {
+    background: #3498db;
+    color: white;
+}</div>
+                    </div>
+
+                    <div class="termino" id="placeholder" data-tags="placeholder input">
+                        <span class="tag">🔮 ::placeholder</span>
+                        <p class="significado">Texto placeholder de inputs</p>
+                        <div class="ejemplo">input::placeholder {
+    color: #999;
+    font-style: italic;
+}</div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">✨ Pseudoclases</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#hover" class="toc-link">:hover</a></li>
+                    <li class="toc-item"><a href="#focus" class="toc-link">:focus</a></li>
+                    <li class="toc-item"><a href="#active" class="toc-link">:active</a></li>
+                    <li class="toc-item"><a href="#first-last-child" class="toc-link">:first-child / :last-child</a></li>
+                    <li class="toc-item"><a href="#nth-child" class="toc-link">:nth-child()</a></li>
+                    <li class="toc-item"><a href="#not" class="toc-link">:not()</a></li>
+                    <li class="toc-item"><a href="#checked-disabled" class="toc-link">Estados de Formulario</a></li>
+                    <li class="toc-item"><a href="#before-after" class="toc-link">::before / ::after</a></li>
+                    <li class="toc-item"><a href="#first-letter-line" class="toc-link">::first-letter / ::first-line</a></li>
+                    <li class="toc-item"><a href="#selection" class="toc-link">::selection</a></li>
+                    <li class="toc-item"><a href="#placeholder" class="toc-link">::placeholder</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>CSS - Sistema de Aprendizaje | <a href="../index.html">Volver a CSS</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) {
+                return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const tags = termino.getAttribute('data-tags') || '';
+                    const title = termino.querySelector('.tag')?.textContent || '';
+                    const desc = termino.querySelector('.descripcion')?.textContent || '';
+                    const ejemplo = termino.querySelector('.ejemplo')?.textContent || '';
+                    const searchText = normalizeText(tags + ' ' + title + ' ' + desc + ' ' + ejemplo);
+                    if (query === '' || searchText.includes(query)) {
+                        termino.style.display = 'block';
+                        found++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+</body>
+</html>

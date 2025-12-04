@@ -18,7 +18,7 @@
     <div class="container">
         <header>
             <h1>🎨 Glosario de CSS</h1>
-            <p class="subtitle">70+ conceptos esenciales para diseño web</p>
+            <p class="subtitle">90+ conceptos esenciales para diseño web</p>
         </header>
 
         <div class="breadcrumb">
@@ -52,6 +52,8 @@
                 <a href="#pseudoclases">✨ Pseudoclases</a>
                 <a href="#pseudoelementos">🔮 Pseudoelementos</a>
                 <a href="#animaciones">🎬 Animaciones</a>
+                <a href="#responsive">📱 Responsive</a>
+                <a href="#moderno">🚀 CSS Moderno</a>
                 <a href="#frameworks">🛠️ Frameworks</a>
             </div>
         </nav>
@@ -1118,6 +1120,330 @@
                     <div class="ejemplo">transform: translate(50px, 100px) rotate(45deg) scale(1.2);</div>
                     <div class="nota">
                         <strong>⚠️ Orden importa:</strong> El orden de transformaciones afecta el resultado.
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESPONSIVE DESIGN -->
+            <div id="responsive" class="category-section">
+                <h2 class="category-title">Responsive Design</h2>
+
+                <div class="termino" data-tags="media query responsive pantalla dispositivo">
+                    <span class="categoria-badge badge-intermedio">Responsive</span>
+                    <div class="comando">@media (Media Queries)</div>
+                    <p class="descripcion">
+                        Aplica estilos según características del dispositivo (ancho, altura, orientación).
+                        Base del diseño responsive.
+                    </p>
+                    <div class="ejemplo">/* Móviles pequeños */</div>
+                    <div class="ejemplo">@media (max-width: 480px) {</div>
+                    <div class="ejemplo">    .container { padding: 10px; }</div>
+                    <div class="ejemplo">}</div>
+                    <div class="ejemplo"></div>
+                    <div class="ejemplo">/* Tablets */</div>
+                    <div class="ejemplo">@media (min-width: 768px) {</div>
+                    <div class="ejemplo">    .grid { grid-template-columns: repeat(2, 1fr); }</div>
+                    <div class="ejemplo">}</div>
+                    <div class="ejemplo"></div>
+                    <div class="ejemplo">/* Desktop */</div>
+                    <div class="ejemplo">@media (min-width: 1024px) {</div>
+                    <div class="ejemplo">    .grid { grid-template-columns: repeat(4, 1fr); }</div>
+                    <div class="ejemplo">}</div>
+                    <div class="nota">
+                        <strong>💡 Breakpoints comunes:</strong> 480px (móvil), 768px (tablet), 1024px (desktop), 1200px (large).
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="mobile first movil primero responsive">
+                    <span class="categoria-badge badge-intermedio">Responsive</span>
+                    <div class="comando">Mobile First</div>
+                    <p class="descripcion">
+                        Estrategia de diseño: estilos base para móvil, luego escalar con min-width.
+                        Mejor rendimiento y mantenibilidad.
+                    </p>
+                    <div class="ejemplo">/* Base: móvil */</div>
+                    <div class="ejemplo">.nav { display: block; }</div>
+                    <div class="ejemplo"></div>
+                    <div class="ejemplo">/* Escalar hacia arriba */</div>
+                    <div class="ejemplo">@media (min-width: 768px) {</div>
+                    <div class="ejemplo">    .nav { display: flex; }</div>
+                    <div class="ejemplo">}</div>
+                    <div class="nota">
+                        <strong>✅ Best Practice:</strong> Siempre usa mobile-first en proyectos nuevos.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="viewport meta responsive escala">
+                    <span class="categoria-badge badge-basico">Responsive</span>
+                    <div class="comando">Viewport Meta Tag</div>
+                    <p class="descripcion">
+                        Etiqueta HTML esencial para responsive. Controla el ancho y escala inicial.
+                    </p>
+                    <div class="ejemplo">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</div>
+                    <div class="nota">
+                        <strong>⚠️ Obligatorio:</strong> Sin esta etiqueta, el responsive no funciona en móviles.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="min-width max-width contenedor fluido">
+                    <span class="categoria-badge badge-intermedio">Responsive</span>
+                    <div class="comando">min-width / max-width</div>
+                    <p class="descripcion">
+                        Limitan el ancho del elemento. Esencial para contenedores fluidos.
+                    </p>
+                    <div class="ejemplo">.container {</div>
+                    <div class="ejemplo">    width: 100%;              /* Fluido */</div>
+                    <div class="ejemplo">    max-width: 1200px;        /* Límite máximo */</div>
+                    <div class="ejemplo">    margin: 0 auto;           /* Centrar */</div>
+                    <div class="ejemplo">}</div>
+                    <div class="ejemplo">.card {</div>
+                    <div class="ejemplo">    min-width: 280px;         /* Nunca más pequeño */</div>
+                    <div class="ejemplo">}</div>
+                </div>
+
+                <div class="termino" data-tags="orientation landscape portrait orientacion">
+                    <span class="categoria-badge badge-avanzado">Responsive</span>
+                    <div class="comando">Media Query: Orientación</div>
+                    <p class="descripcion">
+                        Detecta si el dispositivo está en modo horizontal o vertical.
+                    </p>
+                    <div class="ejemplo">@media (orientation: landscape) {</div>
+                    <div class="ejemplo">    .hero { height: 100vh; }</div>
+                    <div class="ejemplo">}</div>
+                    <div class="ejemplo"></div>
+                    <div class="ejemplo">@media (orientation: portrait) {</div>
+                    <div class="ejemplo">    .hero { height: 50vh; }</div>
+                    <div class="ejemplo">}</div>
+                </div>
+
+                <div class="termino" data-tags="aspect-ratio proporcion aspecto">
+                    <span class="categoria-badge badge-avanzado">Responsive</span>
+                    <div class="comando">aspect-ratio</div>
+                    <p class="descripcion">
+                        Define la proporción de aspecto de un elemento. Útil para videos, imágenes, cards.
+                    </p>
+                    <div class="ejemplo">.video-container {</div>
+                    <div class="ejemplo">    aspect-ratio: 16 / 9;    /* Widescreen */</div>
+                    <div class="ejemplo">    width: 100%;</div>
+                    <div class="ejemplo">}</div>
+                    <div class="ejemplo">.square {</div>
+                    <div class="ejemplo">    aspect-ratio: 1 / 1;     /* Cuadrado */</div>
+                    <div class="ejemplo">}</div>
+                </div>
+
+                <div class="termino" data-tags="object-fit imagen cover contain">
+                    <span class="categoria-badge badge-intermedio">Responsive</span>
+                    <div class="comando">object-fit</div>
+                    <p class="descripcion">
+                        Controla cómo una imagen/video se ajusta dentro de su contenedor.
+                    </p>
+                    <div class="ejemplo">img {</div>
+                    <div class="ejemplo">    object-fit: cover;       /* Llena, recorta si es necesario */</div>
+                    <div class="ejemplo">    object-fit: contain;     /* Cabe completo, puede dejar espacios */</div>
+                    <div class="ejemplo">    object-fit: fill;        /* Estira (distorsiona) */</div>
+                    <div class="ejemplo">    object-fit: none;        /* Tamaño original */</div>
+                    <div class="ejemplo">}</div>
+                </div>
+            </div>
+
+            <!-- CSS MODERNO -->
+            <div id="moderno" class="category-section">
+                <h2 class="category-title">CSS Moderno</h2>
+
+                <div class="termino" data-tags="variable custom property propiedad personalizada">
+                    <span class="categoria-badge badge-intermedio">Moderno</span>
+                    <div class="comando">Variables CSS (Custom Properties)</div>
+                    <p class="descripcion">
+                        Variables reutilizables en CSS. Se definen con -- y se usan con var().
+                        Pueden heredarse y cambiar en runtime.
+                    </p>
+                    <div class="ejemplo">:root {</div>
+                    <div class="ejemplo">    --color-primary: #3498db;</div>
+                    <div class="ejemplo">    --color-secondary: #2ecc71;</div>
+                    <div class="ejemplo">    --spacing: 16px;</div>
+                    <div class="ejemplo">    --border-radius: 8px;</div>
+                    <div class="ejemplo">}</div>
+                    <div class="ejemplo"></div>
+                    <div class="ejemplo">.button {</div>
+                    <div class="ejemplo">    background: var(--color-primary);</div>
+                    <div class="ejemplo">    padding: var(--spacing);</div>
+                    <div class="ejemplo">    border-radius: var(--border-radius);</div>
+                    <div class="ejemplo">}</div>
+                    <div class="nota">
+                        <strong>💡 Ventajas:</strong> Temas, mantenibilidad, cambios dinámicos con JS.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="calc calcular operaciones matematicas">
+                    <span class="categoria-badge badge-intermedio">Moderno</span>
+                    <div class="comando">calc()</div>
+                    <p class="descripcion">
+                        Función para realizar cálculos matemáticos. Mezcla unidades diferentes.
+                    </p>
+                    <div class="ejemplo">width: calc(100% - 40px);           /* Ancho menos márgenes */</div>
+                    <div class="ejemplo">height: calc(100vh - 60px);         /* Altura menos header */</div>
+                    <div class="ejemplo">font-size: calc(1rem + 0.5vw);      /* Tipografía fluida */</div>
+                    <div class="ejemplo">padding: calc(var(--spacing) * 2);  /* Con variables */</div>
+                    <div class="nota">
+                        <strong>⚠️ Importante:</strong> Espacios obligatorios alrededor de + y -.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="clamp minimo maximo fluido">
+                    <span class="categoria-badge badge-avanzado">Moderno</span>
+                    <div class="comando">clamp()</div>
+                    <p class="descripcion">
+                        Define un valor que escala entre un mínimo y máximo. Sintaxis: clamp(min, preferred, max).
+                        Perfecto para tipografía fluida.
+                    </p>
+                    <div class="ejemplo">/* Tipografía fluida */</div>
+                    <div class="ejemplo">font-size: clamp(1rem, 2.5vw, 2rem);</div>
+                    <div class="ejemplo"></div>
+                    <div class="ejemplo">/* Ancho fluido */</div>
+                    <div class="ejemplo">width: clamp(300px, 50%, 600px);</div>
+                    <div class="nota">
+                        <strong>💡 Tip:</strong> Equivale a min(max(min, preferred), max).
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="min max funciones comparacion">
+                    <span class="categoria-badge badge-avanzado">Moderno</span>
+                    <div class="comando">min() y max()</div>
+                    <p class="descripcion">
+                        Funciones que devuelven el valor más pequeño o más grande de los argumentos.
+                    </p>
+                    <div class="ejemplo">width: min(100%, 800px);             /* El más pequeño */</div>
+                    <div class="ejemplo">width: max(300px, 50%);              /* El más grande */</div>
+                    <div class="ejemplo">padding: min(5%, 20px);              /* Padding responsive */</div>
+                </div>
+
+                <div class="termino" data-tags="z-index capas apilamiento">
+                    <span class="categoria-badge badge-intermedio">Moderno</span>
+                    <div class="comando">z-index</div>
+                    <p class="descripcion">
+                        Controla el orden de apilamiento (eje Z). Mayor valor = más arriba.
+                        Solo funciona con position diferente a static.
+                    </p>
+                    <div class="ejemplo">.modal {</div>
+                    <div class="ejemplo">    position: fixed;</div>
+                    <div class="ejemplo">    z-index: 1000;           /* Sobre todo */</div>
+                    <div class="ejemplo">}</div>
+                    <div class="ejemplo">.dropdown {</div>
+                    <div class="ejemplo">    position: absolute;</div>
+                    <div class="ejemplo">    z-index: 100;</div>
+                    <div class="ejemplo">}</div>
+                    <div class="nota">
+                        <strong>💡 Tip:</strong> Usa escalas predefinidas (10, 100, 1000) para evitar "z-index war".
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="overflow desbordamiento scroll hidden">
+                    <span class="categoria-badge badge-basico">Moderno</span>
+                    <div class="comando">overflow</div>
+                    <p class="descripcion">
+                        Controla qué sucede cuando el contenido desborda su contenedor.
+                    </p>
+                    <div class="ejemplo">overflow: visible;       /* Visible afuera (default) */</div>
+                    <div class="ejemplo">overflow: hidden;        /* Oculta el desbordamiento */</div>
+                    <div class="ejemplo">overflow: scroll;        /* Siempre scroll */</div>
+                    <div class="ejemplo">overflow: auto;          /* Scroll solo si necesario */</div>
+                    <div class="ejemplo">overflow-x: hidden;      /* Solo horizontal */</div>
+                    <div class="ejemplo">overflow-y: auto;        /* Solo vertical */</div>
+                </div>
+
+                <div class="termino" data-tags="opacity transparencia alfa">
+                    <span class="categoria-badge badge-basico">Moderno</span>
+                    <div class="comando">opacity</div>
+                    <p class="descripcion">
+                        Transparencia del elemento completo (incluidos hijos). Valor de 0 a 1.
+                    </p>
+                    <div class="ejemplo">opacity: 1;              /* Totalmente opaco */</div>
+                    <div class="ejemplo">opacity: 0.5;            /* Semi-transparente */</div>
+                    <div class="ejemplo">opacity: 0;              /* Invisible (pero ocupa espacio) */</div>
+                    <div class="nota">
+                        <strong>💡 Diferencia:</strong> opacity afecta todo el elemento, rgba solo el color.
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="filter filtro blur grayscale sepia">
+                    <span class="categoria-badge badge-avanzado">Moderno</span>
+                    <div class="comando">filter</div>
+                    <p class="descripcion">
+                        Aplica efectos visuales como blur, grayscale, brightness, contrast.
+                    </p>
+                    <div class="ejemplo">filter: blur(5px);                   /* Desenfoque */</div>
+                    <div class="ejemplo">filter: grayscale(100%);             /* Escala de grises */</div>
+                    <div class="ejemplo">filter: brightness(150%);            /* Brillo */</div>
+                    <div class="ejemplo">filter: contrast(200%);              /* Contraste */</div>
+                    <div class="ejemplo">filter: sepia(100%);                 /* Tono sepia */</div>
+                    <div class="ejemplo">filter: drop-shadow(5px 5px 10px rgba(0,0,0,0.5)); /* Sombra */</div>
+                    <div class="ejemplo"></div>
+                    <div class="ejemplo">/* Combinar filtros */</div>
+                    <div class="ejemplo">filter: blur(2px) brightness(80%);</div>
+                </div>
+
+                <div class="termino" data-tags="backdrop-filter fondo difuminado glass">
+                    <span class="categoria-badge badge-avanzado">Moderno</span>
+                    <div class="comando">backdrop-filter</div>
+                    <p class="descripcion">
+                        Aplica filtros al fondo detrás del elemento. Efecto "glass morphism".
+                    </p>
+                    <div class="ejemplo">.glass-card {</div>
+                    <div class="ejemplo">    background: rgba(255, 255, 255, 0.2);</div>
+                    <div class="ejemplo">    backdrop-filter: blur(10px);</div>
+                    <div class="ejemplo">    border: 1px solid rgba(255, 255, 255, 0.3);</div>
+                    <div class="ejemplo">}</div>
+                </div>
+
+                <div class="termino" data-tags="box-shadow sombra caja">
+                    <span class="categoria-badge badge-intermedio">Moderno</span>
+                    <div class="comando">box-shadow</div>
+                    <p class="descripcion">
+                        Añade sombras al elemento. Sintaxis: offset-x offset-y blur spread color.
+                    </p>
+                    <div class="ejemplo">box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);        /* Sutil */</div>
+                    <div class="ejemplo">box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);      /* Elevación */</div>
+                    <div class="ejemplo">box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);  /* Interior */</div>
+                    <div class="ejemplo">box-shadow: 0 0 0 3px blue;                      /* Borde alternativo */</div>
+                    <div class="ejemplo"></div>
+                    <div class="ejemplo">/* Múltiples sombras */</div>
+                    <div class="ejemplo">box-shadow: 0 2px 4px rgba(0,0,0,0.1), 0 8px 16px rgba(0,0,0,0.1);</div>
+                </div>
+
+                <div class="termino" data-tags="keyframes animacion fotogramas">
+                    <span class="categoria-badge badge-avanzado">Moderno</span>
+                    <div class="comando">@keyframes</div>
+                    <p class="descripcion">
+                        Define animaciones personalizadas con estados intermedios.
+                    </p>
+                    <div class="ejemplo">@keyframes fadeIn {</div>
+                    <div class="ejemplo">    from {</div>
+                    <div class="ejemplo">        opacity: 0;</div>
+                    <div class="ejemplo">        transform: translateY(20px);</div>
+                    <div class="ejemplo">    }</div>
+                    <div class="ejemplo">    to {</div>
+                    <div class="ejemplo">        opacity: 1;</div>
+                    <div class="ejemplo">        transform: translateY(0);</div>
+                    <div class="ejemplo">    }</div>
+                    <div class="ejemplo">}</div>
+                    <div class="ejemplo"></div>
+                    <div class="ejemplo">.element {</div>
+                    <div class="ejemplo">    animation: fadeIn 0.5s ease-out;</div>
+                    <div class="ejemplo">}</div>
+                </div>
+
+                <div class="termino" data-tags="animation animacion nombre duracion">
+                    <span class="categoria-badge badge-avanzado">Moderno</span>
+                    <div class="comando">animation (shorthand)</div>
+                    <p class="descripcion">
+                        Propiedad abreviada para animaciones. Sintaxis: nombre duración timing delay iteration direction fill-mode.
+                    </p>
+                    <div class="ejemplo">animation: fadeIn 0.5s ease-out;                        /* Básico */</div>
+                    <div class="ejemplo">animation: bounce 1s ease-in-out infinite;              /* Infinito */</div>
+                    <div class="ejemplo">animation: slide 0.3s ease 0.2s forwards;               /* Con delay y forwards */</div>
+                    <div class="ejemplo">animation: spin 2s linear infinite alternate;           /* Alternado */</div>
+                    <div class="nota">
+                        <strong>💡 iteration-count:</strong> número o infinite. <strong>direction:</strong> normal, reverse, alternate.
                     </div>
                 </div>
             </div>

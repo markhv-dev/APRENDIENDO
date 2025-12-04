@@ -1,0 +1,57 @@
+Título: Ejercicio 3: Listas y Organización
+Enunciado corto: Crea una página "Mi Rutina Diaria" con listas ordenadas (actividades matutinas), listas no ordenadas (hobbies), una lista anidada (comidas con ingredientes) y una lista de definiciones con 5 términos.
+Solución:
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Rutina Diaria</title>
+</head>
+<body>
+    <h1>Mi Rutina Diaria</h1>
+    
+    <h2>Actividades Matutinas</h2>
+    <ol>
+        <li>Despertarme a las 7:00 AM</li>
+        <li>Ducharme</li>
+        <li>Desayunar</li>
+    </ol>
+    
+    <h2>Mis Hobbies</h2>
+    <ul>
+        <li>Programar</li>
+        <li>Leer libros</li>
+        <li>Jugar videojuegos</li>
+    </ul>
+    
+    <h2>Comidas del Día</h2>
+    <ol>
+        <li>Desayuno
+            <ul>
+                <li>Café</li>
+                <li>Tostadas</li>
+            </ul>
+        </li>
+        <li>Almuerzo
+            <ul>
+                <li>Arroz</li>
+                <li>Pollo</li>
+            </ul>
+        </li>
+    </ol>
+    
+    <h2>Términos de Programación</h2>
+    <dl>
+        <dt>HTML</dt>
+        <dd>Lenguaje de marcado para páginas web</dd>
+        <dt>CSS</dt>
+        <dd>Lenguaje para estilos visuales</dd>
+        <dt>JavaScript</dt>
+        <dd>Lenguaje de programación para interactividad</dd>
+        <dt>DOM</dt>
+        <dd>Modelo de objetos del documento</dd>
+        <dt>API</dt>
+        <dd>Interfaz de programación de aplicaciones</dd>
+    </dl>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bucles - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a JavaScript</a>
+        <span class="icon">🔄</span>
+        <h1>Módulo 6: Bucles</h1>
+        <p class="subtitle">for, while, do-while y métodos de iteración</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #f1c40f; margin-bottom: 40px;">
+                <h2 style="color: #f1c40f; margin-bottom: 15px; font-size: 1.8em;">🔄 Bucles</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0;">
+                    Los bucles permiten ejecutar código repetidamente hasta que se cumpla una condición.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="for" data-tags="for bucle loop clasico">
+                        <span class="tag">📋 for clásico</span>
+                        <p class="significado">Bucle con contador</p>
+                        <div class="ejemplo">// Sintaxis: for (inicio; condición; incremento)
+for (let i = 0; i < 5; i++) {
+    console.log(i);  // 0, 1, 2, 3, 4
+}
+
+// Contar hacia atrás
+for (let i = 10; i >= 0; i--) {
+    console.log(i);
+}
+
+// Incremento de 2 en 2
+for (let i = 0; i < 10; i += 2) {
+    console.log(i);  // 0, 2, 4, 6, 8
+}
+
+// Iterar array por índice
+const frutas = ["manzana", "banana", "naranja"];
+for (let i = 0; i < frutas.length; i++) {
+    console.log(`${i}: ${frutas[i]}`);
+}
+
+// Bucle anidado
+for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+        console.log(`${i}, ${j}`);
+    }
+}</div>
+                    </div>
+
+                    <div class="termino" id="for-of" data-tags="for of iterable array string">
+                        <span class="tag">📋 for...of</span>
+                        <p class="significado">Iterar sobre valores de un iterable</p>
+                        <div class="ejemplo">// Arrays
+const frutas = ["manzana", "banana", "naranja"];
+for (const fruta of frutas) {
+    console.log(fruta);
+}
+
+// Strings
+const texto = "Hola";
+for (const char of texto) {
+    console.log(char);  // H, o, l, a
+}
+
+// Con índice usando entries()
+for (const [index, fruta] of frutas.entries()) {
+    console.log(`${index}: ${fruta}`);
+}
+
+// Maps
+const mapa = new Map([["a", 1], ["b", 2]]);
+for (const [key, value] of mapa) {
+    console.log(`${key}: ${value}`);
+}
+
+// Sets
+const set = new Set([1, 2, 3]);
+for (const num of set) {
+    console.log(num);
+}</div>
+                        <div class="nota">
+                            <strong>💡 Tip:</strong> Usa for...of para arrays y strings. Es más limpio que el for clásico.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="for-in" data-tags="for in objeto propiedades">
+                        <span class="tag">📋 for...in</span>
+                        <p class="significado">Iterar sobre propiedades de un objeto</p>
+                        <div class="ejemplo">const persona = {
+    nombre: "Ana",
+    edad: 25,
+    ciudad: "Madrid"
+};
+
+// Iterar propiedades
+for (const key in persona) {
+    console.log(`${key}: ${persona[key]}`);
+}
+
+// Solo propiedades propias (no heredadas)
+for (const key in persona) {
+    if (persona.hasOwnProperty(key)) {
+        console.log(key);
+    }
+}
+
+// ⚠️ Evitar con arrays
+const arr = ["a", "b", "c"];
+for (const i in arr) {
+    console.log(i);  // "0", "1", "2" (strings!)
+}
+// Mejor usar for...of para arrays</div>
+                        <div class="nota">
+                            <strong>⚠️ Cuidado:</strong> for...in es para objetos. Para arrays usa for...of o forEach.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="while" data-tags="while bucle condicion">
+                        <span class="tag">📋 while</span>
+                        <p class="significado">Bucle mientras se cumpla condición</p>
+                        <div class="ejemplo">// Básico
+let i = 0;
+while (i < 5) {
+    console.log(i);
+    i++;
+}
+
+// Buscar elemento
+const nums = [1, 3, 5, 8, 10];
+let idx = 0;
+while (idx < nums.length && nums[idx] % 2 !== 0) {
+    idx++;
+}
+console.log(`Primer par en índice: ${idx}`);
+
+// Esperar condición
+let intentos = 0;
+while (!exito && intentos < 3) {
+    exito = intentarConexion();
+    intentos++;
+}
+
+// ⚠️ Evitar bucles infinitos
+// while (true) { }  // Necesita break</div>
+                    </div>
+
+                    <div class="termino" id="do-while" data-tags="do while bucle">
+                        <span class="tag">📋 do...while</span>
+                        <p class="significado">Ejecuta al menos una vez</p>
+                        <div class="ejemplo">// Se ejecuta mínimo una vez
+let i = 0;
+do {
+    console.log(i);
+    i++;
+} while (i < 5);
+
+// Incluso si la condición es falsa
+let x = 10;
+do {
+    console.log(x);  // Se imprime 10
+} while (x < 5);
+
+// Útil para menús
+let opcion;
+do {
+    opcion = prompt("1. Ver, 2. Salir");
+    if (opcion === "1") {
+        mostrarDatos();
+    }
+} while (opcion !== "2");</div>
+                    </div>
+
+                    <div class="termino" id="break-continue" data-tags="break continue salir saltar">
+                        <span class="tag">📋 break y continue</span>
+                        <p class="significado">Control del flujo del bucle</p>
+                        <div class="ejemplo">// break - salir del bucle
+for (let i = 0; i < 10; i++) {
+    if (i === 5) break;
+    console.log(i);  // 0, 1, 2, 3, 4
+}
+
+// continue - saltar iteración
+for (let i = 0; i < 5; i++) {
+    if (i === 2) continue;
+    console.log(i);  // 0, 1, 3, 4
+}
+
+// break con label (bucles anidados)
+outer: for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+        if (i === 1 && j === 1) {
+            break outer;  // Sale de ambos
+        }
+        console.log(`${i}, ${j}`);
+    }
+}
+
+// Buscar y salir
+const usuarios = [{id: 1}, {id: 2}, {id: 3}];
+let encontrado;
+for (const u of usuarios) {
+    if (u.id === 2) {
+        encontrado = u;
+        break;
+    }
+}</div>
+                    </div>
+
+                    <div class="termino" id="foreach" data-tags="forEach array iterar">
+                        <span class="tag">📋 forEach</span>
+                        <p class="significado">Método de array para iterar</p>
+                        <div class="ejemplo">const frutas = ["manzana", "banana", "naranja"];
+
+// Básico
+frutas.forEach(fruta => {
+    console.log(fruta);
+});
+
+// Con índice y array
+frutas.forEach((fruta, index, arr) => {
+    console.log(`${index}: ${fruta}`);
+});
+
+// No se puede usar break/continue
+// No retorna nada (undefined)
+
+// Comparación con for...of
+// for...of: puede usar break/continue
+// forEach: más funcional, no puede salir
+
+// Ejemplo práctico
+const precios = [100, 200, 300];
+let total = 0;
+precios.forEach(precio => {
+    total += precio;
+});
+// Mejor usar reduce para esto</div>
+                        <div class="nota">
+                            <strong>💡 Tip:</strong> forEach no puede usar break. Si necesitas salir temprano, usa for...of o some/every.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="otros-metodos" data-tags="some every find findIndex">
+                        <span class="tag">📋 Otros métodos de iteración</span>
+                        <p class="significado">Métodos funcionales para arrays</p>
+                        <div class="ejemplo">const nums = [1, 2, 3, 4, 5];
+
+// some - ¿alguno cumple?
+nums.some(n => n > 3);      // true
+
+// every - ¿todos cumplen?
+nums.every(n => n > 0);     // true
+
+// find - primer elemento que cumple
+nums.find(n => n > 3);      // 4
+
+// findIndex - índice del primero
+nums.findIndex(n => n > 3); // 3
+
+// map - transformar
+nums.map(n => n * 2);       // [2, 4, 6, 8, 10]
+
+// filter - filtrar
+nums.filter(n => n % 2 === 0); // [2, 4]
+
+// reduce - reducir a un valor
+nums.reduce((acc, n) => acc + n, 0); // 15
+
+// Encadenar
+nums
+    .filter(n => n > 2)
+    .map(n => n * 2)
+    .reduce((acc, n) => acc + n, 0); // 24</div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">🔄 Bucles</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#for" class="toc-link">for clásico</a></li>
+                    <li class="toc-item"><a href="#for-of" class="toc-link">for...of</a></li>
+                    <li class="toc-item"><a href="#for-in" class="toc-link">for...in</a></li>
+                    <li class="toc-item"><a href="#while" class="toc-link">while</a></li>
+                    <li class="toc-item"><a href="#do-while" class="toc-link">do...while</a></li>
+                    <li class="toc-item"><a href="#break-continue" class="toc-link">break y continue</a></li>
+                    <li class="toc-item"><a href="#foreach" class="toc-link">forEach</a></li>
+                    <li class="toc-item"><a href="#otros-metodos" class="toc-link">Otros métodos</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>JavaScript - Sistema de Aprendizaje | <a href="../index.html">Volver a JavaScript</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) { return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const searchText = normalizeText((termino.getAttribute('data-tags') || '') + ' ' + (termino.querySelector('.tag')?.textContent || ''));
+                    if (query === '' || searchText.includes(query)) { termino.style.display = 'block'; found++; } else { termino.style.display = 'none'; }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => { if (scrollY >= section.offsetTop - 100) current = section.getAttribute('id'); });
+                tocLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === '#' + current) link.classList.add('active'); });
+                document.getElementById('tocProgressBar').style.width = ((document.body.scrollTop || document.documentElement.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100 + '%';
+            });
+        });
+    </script>
+</body>
+</html>

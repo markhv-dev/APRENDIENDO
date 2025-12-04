@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos de CSS - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a CSS</a>
+        <span class="icon">🎨</span>
+        <h1>Módulo 1: Fundamentos de CSS</h1>
+        <p class="subtitle">Sintaxis, selectores básicos y formas de incluir CSS</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #f1c40f; margin-bottom: 40px;">
+                <h2 style="color: #f1c40f; margin-bottom: 15px; font-size: 1.8em;">
+                    📚 Fundamentos de CSS
+                </h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    Este módulo cubre los conceptos fundamentales de CSS: qué es CSS, su sintaxis básica, cómo incluirlo en HTML, y los principios de cascada y especificidad.
+                </p>
+                <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 8px; border: 1px solid rgba(241, 196, 15, 0.3);">
+                    <h3 style="color: #f1c40f; margin-bottom: 12px; font-size: 1.1em;">📋 Contenido del módulo:</h3>
+                    <ul style="list-style: none; padding-left: 0; line-height: 2;">
+                        <li style="color: #b0b0b0;">✓ Qué es CSS y para qué sirve</li>
+                        <li style="color: #b0b0b0;">✓ Sintaxis básica: selector, propiedad, valor</li>
+                        <li style="color: #b0b0b0;">✓ Formas de incluir CSS en HTML</li>
+                        <li style="color: #b0b0b0;">✓ Cascada y herencia</li>
+                        <li style="color: #b0b0b0;">✓ Especificidad y precedencia</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="que-es-css" data-tags="css cascading style sheets hojas estilo">
+                        <span class="tag">📋 ¿Qué es CSS?</span>
+                        <p class="significado">Cascading Style Sheets - Hojas de Estilo en Cascada</p>
+                        <p class="descripcion">
+                            CSS es un lenguaje de hojas de estilo utilizado para describir la presentación de documentos HTML.
+                            Mientras HTML proporciona la estructura del contenido, CSS define cómo ese contenido debe verse visualmente.
+                            CSS permite separar completamente el contenido de la presentación.
+                        </p>
+                        <div class="ejemplo">/* CSS controla la apariencia visual */
+body {
+    background-color: #1a1a2e;
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+}
+
+h1 {
+    color: #f1c40f;
+    font-size: 2.5rem;
+}</div>
+                        <div class="nota">
+                            <strong>💡 Beneficios de CSS:</strong><br>
+                            • Separación de contenido y presentación<br>
+                            • Reutilización de estilos en múltiples páginas<br>
+                            • Diseño responsive para diferentes dispositivos<br>
+                            • Animaciones y transiciones
+                        </div>
+                    </div>
+
+                    <div class="termino" id="sintaxis-basica" data-tags="sintaxis selector propiedad valor regla">
+                        <span class="tag">📋 Sintaxis Básica</span>
+                        <p class="significado">Estructura fundamental de una regla CSS</p>
+                        <p class="descripcion">
+                            Una regla CSS tiene tres partes: el <strong>selector</strong> (qué elementos afectar),
+                            la <strong>propiedad</strong> (qué característica cambiar) y el <strong>valor</strong> (cómo cambiarla).
+                            Múltiples declaraciones se agrupan dentro de llaves { }.
+                        </p>
+                        <div class="ejemplo">selector {
+    propiedad: valor;
+    propiedad2: valor2;
+}
+
+/* Ejemplo real */
+h1 {
+    color: blue;        /* propiedad: valor */
+    font-size: 24px;    /* propiedad: valor */
+    margin-bottom: 20px;
+}</div>
+                        <div class="nota">
+                            <strong>⚠️ Importante:</strong><br>
+                            • Cada declaración termina con punto y coma (;)<br>
+                            • Las propiedades y valores son sensibles a errores de escritura<br>
+                            • Los comentarios van entre /* */
+                        </div>
+                    </div>
+
+                    <div class="termino" id="css-inline" data-tags="inline atributo style directo">
+                        <span class="tag">📋 CSS Inline</span>
+                        <p class="significado">Estilos directamente en el atributo style del elemento</p>
+                        <p class="descripcion">
+                            El CSS inline se aplica directamente en el elemento HTML usando el atributo <code>style</code>.
+                            Tiene la mayor especificidad pero es difícil de mantener y no es reutilizable.
+                            <strong>No recomendado</strong> para proyectos reales.
+                        </p>
+                        <div class="ejemplo">&lt;!-- CSS Inline - NO RECOMENDADO --&gt;
+&lt;p style="color: red; font-size: 16px;"&gt;
+    Texto con estilo inline
+&lt;/p&gt;
+
+&lt;div style="background: #333; padding: 20px;"&gt;
+    Contenedor con estilos inline
+&lt;/div&gt;</div>
+                        <div class="nota">
+                            <strong>❌ Desventajas:</strong><br>
+                            • No es reutilizable<br>
+                            • Mezcla contenido con presentación<br>
+                            • Difícil de mantener<br>
+                            • No permite pseudoclases (:hover, :focus)
+                        </div>
+                    </div>
+
+                    <div class="termino" id="css-interno" data-tags="interno style head embebido">
+                        <span class="tag">📋 CSS Interno</span>
+                        <p class="significado">Estilos dentro de la etiqueta &lt;style&gt; en el &lt;head&gt;</p>
+                        <p class="descripcion">
+                            El CSS interno se coloca dentro de una etiqueta <code>&lt;style&gt;</code> en el <code>&lt;head&gt;</code> del documento.
+                            Es útil para páginas únicas o prototipos rápidos, pero no es reutilizable entre páginas.
+                        </p>
+                        <div class="ejemplo">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;style&gt;
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: navy;
+            text-align: center;
+        }
+
+        .destacado {
+            background: yellow;
+            padding: 10px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Título&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+                        <div class="nota">
+                            <strong>⚠️ Uso recomendado:</strong> Solo para páginas únicas, emails HTML, o estilos críticos above-the-fold.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="css-externo" data-tags="externo link archivo separado">
+                        <span class="tag">📋 CSS Externo</span>
+                        <p class="significado">Archivo .css separado enlazado con &lt;link&gt;</p>
+                        <p class="descripcion">
+                            El CSS externo es la forma <strong>recomendada</strong> de incluir estilos. Se crea un archivo .css separado
+                            y se enlaza al HTML con la etiqueta <code>&lt;link&gt;</code>. Permite reutilización, caching y mejor organización.
+                        </p>
+                        <div class="ejemplo">&lt;!-- En el archivo HTML --&gt;
+&lt;head&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+    &lt;link rel="stylesheet" href="css/layout.css"&gt;
+    &lt;link rel="stylesheet" href="/assets/css/main.css"&gt;
+&lt;/head&gt;
+
+/* En el archivo styles.css */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}</div>
+                        <div class="nota">
+                            <strong>✅ Ventajas:</strong><br>
+                            • Separación completa de HTML y CSS<br>
+                            • Reutilizable en múltiples páginas<br>
+                            • Caching del navegador (mejor rendimiento)<br>
+                            • Fácil de mantener y organizar
+                        </div>
+                    </div>
+
+                    <div class="termino" id="cascada" data-tags="cascada cascade orden prioridad">
+                        <span class="tag">💡 La Cascada</span>
+                        <p class="significado">Sistema de resolución de conflictos entre reglas CSS</p>
+                        <p class="descripcion">
+                            "Cascada" en CSS significa que cuando múltiples reglas aplican al mismo elemento,
+                            el navegador determina cuál usar basándose en: origen, especificidad y orden de aparición.
+                            Las reglas más específicas o las que aparecen después tienen prioridad.
+                        </p>
+                        <div class="ejemplo">/* El orden importa - la última regla gana si tienen igual especificidad */
+p {
+    color: blue;
+}
+
+p {
+    color: red;  /* Esta gana - aparece después */
+}
+
+/* La especificidad importa más que el orden */
+.texto {
+    color: green;  /* Esta gana sobre p { color: red } */
+}
+
+p {
+    color: red;
+}</div>
+                        <div class="nota">
+                            <strong>💡 Orden de prioridad (menor a mayor):</strong><br>
+                            1. Estilos del navegador (user-agent)<br>
+                            2. Estilos externos/internos<br>
+                            3. Estilos inline<br>
+                            4. !important (evitar usar)
+                        </div>
+                    </div>
+
+                    <div class="termino" id="herencia" data-tags="herencia inherit heredar padre hijo">
+                        <span class="tag">💡 Herencia</span>
+                        <p class="significado">Propiedades que se transmiten de padres a hijos</p>
+                        <p class="descripcion">
+                            Algunas propiedades CSS se heredan automáticamente de elementos padre a hijos.
+                            Típicamente, propiedades de texto (color, font-family, line-height) se heredan,
+                            mientras que propiedades de caja (margin, padding, border) no.
+                        </p>
+                        <div class="ejemplo">/* El color y font-family se heredan */
+body {
+    color: #333;
+    font-family: Arial, sans-serif;
+}
+
+/* Todos los elementos dentro de body heredan estos estilos */
+
+/* Forzar herencia */
+.hijo {
+    color: inherit;        /* Hereda del padre */
+    border: inherit;       /* Fuerza herencia de border */
+}
+
+/* Resetear a valor inicial */
+.reset {
+    color: initial;        /* Valor por defecto del navegador */
+}</div>
+                        <div class="nota">
+                            <strong>📋 Propiedades que SÍ se heredan:</strong> color, font-*, text-*, line-height, visibility, cursor<br>
+                            <strong>📋 Propiedades que NO se heredan:</strong> margin, padding, border, background, width, height
+                        </div>
+                    </div>
+
+                    <div class="termino" id="especificidad" data-tags="especificidad prioridad peso puntos">
+                        <span class="tag">⚙️ Especificidad</span>
+                        <p class="significado">Sistema de puntos para determinar qué regla aplica</p>
+                        <p class="descripcion">
+                            La especificidad es un sistema de puntuación que determina qué regla CSS tiene prioridad
+                            cuando múltiples reglas afectan al mismo elemento. Se calcula como (inline, IDs, clases, elementos).
+                        </p>
+                        <div class="ejemplo">/* Especificidad: (0, 0, 0, 1) = 1 punto */
+p {
+    color: black;
+}
+
+/* Especificidad: (0, 0, 1, 0) = 10 puntos */
+.texto {
+    color: blue;
+}
+
+/* Especificidad: (0, 0, 1, 1) = 11 puntos */
+p.texto {
+    color: green;
+}
+
+/* Especificidad: (0, 1, 0, 0) = 100 puntos */
+#principal {
+    color: red;
+}
+
+/* Especificidad: (0, 1, 1, 1) = 111 puntos */
+#principal p.texto {
+    color: purple;
+}
+
+/* Inline: (1, 0, 0, 0) = 1000 puntos */
+&lt;p style="color: orange;"&gt;</div>
+                        <div class="nota">
+                            <strong>💡 Cálculo rápido:</strong><br>
+                            • Elemento/pseudoelemento = 1<br>
+                            • Clase/atributo/pseudoclase = 10<br>
+                            • ID = 100<br>
+                            • Inline = 1000<br>
+                            • !important = gana siempre (evitar)
+                        </div>
+                    </div>
+
+                    <div class="termino" id="important" data-tags="important prioridad maxima override">
+                        <span class="tag">⚠️ !important</span>
+                        <p class="significado">Fuerza máxima prioridad a una declaración</p>
+                        <p class="descripcion">
+                            La declaración <code>!important</code> anula todas las demás reglas de especificidad.
+                            <strong>Debe evitarse</strong> porque hace el CSS difícil de mantener y depurar.
+                            Solo usar en casos muy específicos como sobrescribir estilos de terceros.
+                        </p>
+                        <div class="ejemplo">/* Evitar esto */
+p {
+    color: red !important;  /* Gana sobre todo */
+}
+
+#id .clase p {
+    color: blue;  /* Pierde aunque tenga alta especificidad */
+}
+
+/* Casos donde PUEDE ser aceptable */
+.utility-class {
+    display: none !important;  /* Clase utilitaria */
+}
+
+/* Para sobrescribir librería externa */
+.third-party-widget {
+    background: white !important;
+}</div>
+                        <div class="nota">
+                            <strong>❌ Por qué evitar !important:</strong><br>
+                            • Rompe el flujo natural de la cascada<br>
+                            • Difícil de sobrescribir después<br>
+                            • Indica mal diseño de CSS<br>
+                            • Dificulta el mantenimiento
+                        </div>
+                    </div>
+
+                    <div class="termino" id="comentarios" data-tags="comentarios documentacion notas">
+                        <span class="tag">📋 Comentarios en CSS</span>
+                        <p class="significado">Notas y documentación dentro del código CSS</p>
+                        <p class="descripcion">
+                            Los comentarios en CSS se escriben entre <code>/* */</code> y son ignorados por el navegador.
+                            Son útiles para documentar el código, organizar secciones y dejar notas para otros desarrolladores.
+                        </p>
+                        <div class="ejemplo">/* =================================
+   HEADER STYLES
+   ================================= */
+
+/* Comentario de una línea */
+.header {
+    background: #333;  /* Color de fondo oscuro */
+}
+
+/*
+   Comentario de
+   múltiples líneas
+   para explicaciones largas
+*/
+
+/* TODO: Agregar responsive para móviles */
+/* FIXME: El padding no funciona en Safari */
+
+/* Deshabilitar temporalmente */
+/*
+.old-class {
+    color: red;
+}
+*/</div>
+                        <div class="nota">
+                            <strong>💡 Best Practices:</strong><br>
+                            • Usa comentarios para separar secciones<br>
+                            • Documenta código complejo o "hacks"<br>
+                            • Usa TODO/FIXME para tareas pendientes<br>
+                            • No comentes lo obvio
+                        </div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">🎨 Fundamentos CSS</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#que-es-css" class="toc-link">¿Qué es CSS?</a></li>
+                    <li class="toc-item"><a href="#sintaxis-basica" class="toc-link">Sintaxis Básica</a></li>
+                    <li class="toc-item"><a href="#css-inline" class="toc-link">CSS Inline</a></li>
+                    <li class="toc-item"><a href="#css-interno" class="toc-link">CSS Interno</a></li>
+                    <li class="toc-item"><a href="#css-externo" class="toc-link">CSS Externo</a></li>
+                    <li class="toc-item"><a href="#cascada" class="toc-link">La Cascada</a></li>
+                    <li class="toc-item"><a href="#herencia" class="toc-link">Herencia</a></li>
+                    <li class="toc-item"><a href="#especificidad" class="toc-link">Especificidad</a></li>
+                    <li class="toc-item"><a href="#important" class="toc-link">!important</a></li>
+                    <li class="toc-item"><a href="#comentarios" class="toc-link">Comentarios</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>CSS - Sistema de Aprendizaje | <a href="../index.html">Volver a CSS</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+
+            function normalizeText(text) {
+                return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            }
+
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+
+                terminos.forEach(termino => {
+                    const tags = termino.getAttribute('data-tags') || '';
+                    const title = termino.querySelector('.tag')?.textContent || '';
+                    const desc = termino.querySelector('.descripcion')?.textContent || '';
+                    const ejemplo = termino.querySelector('.ejemplo')?.textContent || '';
+
+                    const searchText = normalizeText(tags + ' ' + title + ' ' + desc + ' ' + ejemplo);
+
+                    if (query === '' || searchText.includes(query)) {
+                        termino.style.display = 'block';
+                        found++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+
+            // Scroll spy para TOC
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+
+                // Progress bar
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+</body>
+</html>

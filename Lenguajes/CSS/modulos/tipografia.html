@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipografía - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a CSS</a>
+        <span class="icon">📝</span>
+        <h1>Módulo 7: Tipografía</h1>
+        <p class="subtitle">Fuentes, tamaños y propiedades de texto</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #f1c40f; margin-bottom: 40px;">
+                <h2 style="color: #f1c40f; margin-bottom: 15px; font-size: 1.8em;">📝 Tipografía</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    La tipografía es fundamental para la legibilidad y estética. Aprende a controlar
+                    fuentes, tamaños, espaciado y decoración del texto.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="font-family" data-tags="font-family fuente tipografia">
+                        <span class="tag">📋 font-family</span>
+                        <p class="significado">Familia de fuentes a usar</p>
+                        <div class="ejemplo">/* Stack de fuentes con fallback */
+font-family: 'Helvetica Neue', Arial, sans-serif;
+font-family: Georgia, 'Times New Roman', serif;
+font-family: 'Courier New', Consolas, monospace;
+
+/* Fuentes del sistema */
+font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+/* Fuentes web (Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+}</div>
+                        <div class="nota">
+                            <strong>💡 Tipos genéricos:</strong> serif, sans-serif, monospace, cursive, fantasy
+                        </div>
+                    </div>
+
+                    <div class="termino" id="font-size" data-tags="font-size tamaño fuente">
+                        <span class="tag">📋 font-size</span>
+                        <p class="significado">Tamaño de la fuente</p>
+                        <div class="ejemplo">font-size: 16px;         /* Píxeles */
+font-size: 1rem;         /* Relativo al root (16px) */
+font-size: 1.5em;        /* Relativo al padre */
+font-size: 120%;         /* Porcentaje del padre */
+
+/* Escalas tipográficas */
+html { font-size: 16px; }
+h1 { font-size: 2.5rem; }   /* 40px */
+h2 { font-size: 2rem; }     /* 32px */
+h3 { font-size: 1.5rem; }   /* 24px */
+p { font-size: 1rem; }      /* 16px */
+
+/* Tipografía fluida con clamp */
+font-size: clamp(1rem, 2.5vw, 2rem);</div>
+                    </div>
+
+                    <div class="termino" id="font-weight" data-tags="font-weight negrita peso">
+                        <span class="tag">📋 font-weight</span>
+                        <p class="significado">Grosor de la fuente</p>
+                        <div class="ejemplo">font-weight: normal;     /* 400 */
+font-weight: bold;       /* 700 */
+font-weight: lighter;    /* Un nivel menos */
+font-weight: bolder;     /* Un nivel más */
+
+/* Valores numéricos */
+font-weight: 100;        /* Thin */
+font-weight: 300;        /* Light */
+font-weight: 400;        /* Normal */
+font-weight: 500;        /* Medium */
+font-weight: 600;        /* Semi-bold */
+font-weight: 700;        /* Bold */
+font-weight: 900;        /* Black */</div>
+                    </div>
+
+                    <div class="termino" id="line-height" data-tags="line-height interlineado altura linea">
+                        <span class="tag">📋 line-height</span>
+                        <p class="significado">Altura de línea / interlineado</p>
+                        <div class="ejemplo">line-height: normal;     /* ~1.2 */
+line-height: 1.5;        /* 1.5x el font-size */
+line-height: 24px;       /* Valor absoluto */
+line-height: 150%;       /* Porcentaje */
+
+/* Recomendación para legibilidad */
+body {
+    line-height: 1.6;    /* Texto de párrafo */
+}
+
+h1, h2, h3 {
+    line-height: 1.2;    /* Títulos más compactos */
+}</div>
+                        <div class="nota">
+                            <strong>✅ Best Practice:</strong> Usa valores sin unidad (1.5) para mejor herencia.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="text-align" data-tags="text-align alinear">
+                        <span class="tag">📋 text-align</span>
+                        <p class="significado">Alineación horizontal del texto</p>
+                        <div class="ejemplo">text-align: left;        /* Izquierda (default) */
+text-align: right;       /* Derecha */
+text-align: center;      /* Centro */
+text-align: justify;     /* Justificado */</div>
+                    </div>
+
+                    <div class="termino" id="text-decoration" data-tags="text-decoration subrayado linea">
+                        <span class="tag">📋 text-decoration</span>
+                        <p class="significado">Decoración del texto</p>
+                        <div class="ejemplo">text-decoration: none;           /* Sin decoración */
+text-decoration: underline;      /* Subrayado */
+text-decoration: overline;       /* Línea arriba */
+text-decoration: line-through;   /* Tachado */
+
+/* Quitar subrayado de links */
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Personalizar la línea */
+text-decoration: underline wavy red;</div>
+                    </div>
+
+                    <div class="termino" id="text-transform" data-tags="text-transform mayusculas minusculas">
+                        <span class="tag">📋 text-transform</span>
+                        <p class="significado">Transformar mayúsculas/minúsculas</p>
+                        <div class="ejemplo">text-transform: none;            /* Sin cambio */
+text-transform: uppercase;       /* MAYÚSCULAS */
+text-transform: lowercase;       /* minúsculas */
+text-transform: capitalize;      /* Primera Letra */
+
+/* Común en botones y navegación */
+.nav-link {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}</div>
+                    </div>
+
+                    <div class="termino" id="letter-spacing" data-tags="letter-spacing espaciado letras">
+                        <span class="tag">📋 letter-spacing</span>
+                        <p class="significado">Espacio entre letras</p>
+                        <div class="ejemplo">letter-spacing: normal;
+letter-spacing: 2px;
+letter-spacing: 0.1em;
+letter-spacing: -0.5px;  /* Más junto */
+
+/* Común con uppercase */
+.heading {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}</div>
+                    </div>
+
+                    <div class="termino" id="word-spacing" data-tags="word-spacing espaciado palabras">
+                        <span class="tag">📋 word-spacing</span>
+                        <p class="significado">Espacio entre palabras</p>
+                        <div class="ejemplo">word-spacing: normal;
+word-spacing: 5px;
+word-spacing: 0.5em;</div>
+                    </div>
+
+                    <div class="termino" id="font-shorthand" data-tags="font shorthand abreviado">
+                        <span class="tag">⚙️ font (shorthand)</span>
+                        <p class="significado">Atajo para propiedades de fuente</p>
+                        <div class="ejemplo">/* font: style weight size/line-height family */
+font: italic bold 16px/1.5 'Arial', sans-serif;
+font: 700 1.2rem/1.4 system-ui;
+
+/* Valores de sistema */
+font: caption;    /* Fuente de controles */
+font: menu;       /* Fuente de menús */</div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">📝 Tipografía</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#font-family" class="toc-link">font-family</a></li>
+                    <li class="toc-item"><a href="#font-size" class="toc-link">font-size</a></li>
+                    <li class="toc-item"><a href="#font-weight" class="toc-link">font-weight</a></li>
+                    <li class="toc-item"><a href="#line-height" class="toc-link">line-height</a></li>
+                    <li class="toc-item"><a href="#text-align" class="toc-link">text-align</a></li>
+                    <li class="toc-item"><a href="#text-decoration" class="toc-link">text-decoration</a></li>
+                    <li class="toc-item"><a href="#text-transform" class="toc-link">text-transform</a></li>
+                    <li class="toc-item"><a href="#letter-spacing" class="toc-link">letter-spacing</a></li>
+                    <li class="toc-item"><a href="#word-spacing" class="toc-link">word-spacing</a></li>
+                    <li class="toc-item"><a href="#font-shorthand" class="toc-link">font (shorthand)</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>CSS - Sistema de Aprendizaje | <a href="../index.html">Volver a CSS</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) {
+                return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const tags = termino.getAttribute('data-tags') || '';
+                    const title = termino.querySelector('.tag')?.textContent || '';
+                    const desc = termino.querySelector('.descripcion')?.textContent || '';
+                    const ejemplo = termino.querySelector('.ejemplo')?.textContent || '';
+                    const searchText = normalizeText(tags + ' ' + title + ' ' + desc + ' ' + ejemplo);
+                    if (query === '' || searchText.includes(query)) {
+                        termino.style.display = 'block';
+                        found++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+</body>
+</html>

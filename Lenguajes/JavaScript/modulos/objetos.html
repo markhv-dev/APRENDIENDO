@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetos - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a JavaScript</a>
+        <span class="icon">📦</span>
+        <h1>Módulo 4: Objetos</h1>
+        <p class="subtitle">Propiedades, métodos, destructuring y this</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #f1c40f; margin-bottom: 40px;">
+                <h2 style="color: #f1c40f; margin-bottom: 15px; font-size: 1.8em;">📦 Objetos</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0;">
+                    Los objetos son colecciones de pares clave-valor y la base de la programación orientada a objetos en JavaScript.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="crear-objeto" data-tags="objeto crear declarar literal">
+                        <span class="tag">📋 Crear Objetos</span>
+                        <p class="significado">Diferentes formas de crear objetos</p>
+                        <div class="ejemplo">// Objeto literal (recomendado)
+const persona = {
+    nombre: "Ana",
+    edad: 25,
+    ciudad: "Madrid"
+};
+
+// Constructor Object
+const obj = new Object();
+obj.nombre = "Luis";
+
+// Object.create
+const proto = { saludar() { return "Hola"; } };
+const nuevo = Object.create(proto);
+
+// Shorthand properties (ES6)
+const nombre = "Ana";
+const edad = 25;
+const usuario = { nombre, edad };  // { nombre: "Ana", edad: 25 }
+
+// Computed property names
+const key = "dinamico";
+const obj2 = {
+    [key]: "valor",
+    [`${key}_2`]: "otro"
+};</div>
+                    </div>
+
+                    <div class="termino" id="acceder-propiedades" data-tags="acceder propiedades punto corchetes">
+                        <span class="tag">📋 Acceder a Propiedades</span>
+                        <p class="significado">Notación de punto y corchetes</p>
+                        <div class="ejemplo">const persona = {
+    nombre: "Ana",
+    edad: 25,
+    "dirección completa": "Calle 123"
+};
+
+// Notación de punto
+persona.nombre        // "Ana"
+persona.edad          // 25
+
+// Notación de corchetes
+persona["nombre"]     // "Ana"
+persona["dirección completa"]  // "Calle 123"
+
+// Con variable
+const prop = "edad";
+persona[prop]         // 25
+
+// Acceso seguro (optional chaining)
+const usuario = { perfil: { nombre: "Ana" } };
+usuario.perfil?.nombre     // "Ana"
+usuario.config?.tema       // undefined (no error)
+
+// Nullish coalescing
+const tema = usuario.config?.tema ?? "dark";</div>
+                    </div>
+
+                    <div class="termino" id="modificar" data-tags="modificar agregar eliminar delete">
+                        <span class="tag">📋 Modificar Objetos</span>
+                        <p class="significado">Agregar, modificar y eliminar propiedades</p>
+                        <div class="ejemplo">const persona = { nombre: "Ana" };
+
+// Agregar propiedad
+persona.edad = 25;
+persona["ciudad"] = "Madrid";
+
+// Modificar
+persona.nombre = "Ana María";
+
+// Eliminar
+delete persona.ciudad;
+
+// Verificar existencia
+"nombre" in persona           // true
+persona.hasOwnProperty("edad") // true
+
+// Object.assign - copiar/mezclar
+const defaults = { tema: "dark", idioma: "es" };
+const config = Object.assign({}, defaults, { tema: "light" });
+
+// Spread (preferido)
+const merged = { ...defaults, tema: "light" };
+
+// Congelar objeto (inmutable)
+Object.freeze(persona);
+persona.edad = 30;  // No hace nada
+
+// Sellar (no agregar/eliminar, sí modificar)
+Object.seal(persona);</div>
+                    </div>
+
+                    <div class="termino" id="metodos-objeto" data-tags="metodos keys values entries">
+                        <span class="tag">📋 Métodos de Object</span>
+                        <p class="significado">Métodos estáticos útiles</p>
+                        <div class="ejemplo">const persona = {
+    nombre: "Ana",
+    edad: 25,
+    ciudad: "Madrid"
+};
+
+// Object.keys - array de claves
+Object.keys(persona)
+// ["nombre", "edad", "ciudad"]
+
+// Object.values - array de valores
+Object.values(persona)
+// ["Ana", 25, "Madrid"]
+
+// Object.entries - array de [clave, valor]
+Object.entries(persona)
+// [["nombre", "Ana"], ["edad", 25], ["ciudad", "Madrid"]]
+
+// Object.fromEntries - crear objeto desde entries
+const entries = [["a", 1], ["b", 2]];
+Object.fromEntries(entries)  // { a: 1, b: 2 }
+
+// Iterar con for...in
+for (const key in persona) {
+    console.log(`${key}: ${persona[key]}`);
+}
+
+// Iterar con entries
+for (const [key, value] of Object.entries(persona)) {
+    console.log(`${key}: ${value}`);
+}</div>
+                    </div>
+
+                    <div class="termino" id="destructuring-obj" data-tags="destructuring desestructuracion extraer">
+                        <span class="tag">📋 Destructuring</span>
+                        <p class="significado">Extraer valores de objetos</p>
+                        <div class="ejemplo">const persona = {
+    nombre: "Ana",
+    edad: 25,
+    ciudad: "Madrid"
+};
+
+// Básico
+const { nombre, edad } = persona;
+// nombre = "Ana", edad = 25
+
+// Renombrar
+const { nombre: nombrePersona } = persona;
+// nombrePersona = "Ana"
+
+// Valores por defecto
+const { pais = "España" } = persona;
+// pais = "España"
+
+// Nested
+const usuario = {
+    perfil: {
+        nombre: "Ana",
+        config: { tema: "dark" }
+    }
+};
+const { perfil: { nombre, config: { tema } } } = usuario;
+
+// Rest
+const { nombre: n, ...resto } = persona;
+// resto = { edad: 25, ciudad: "Madrid" }
+
+// En parámetros de función
+function mostrar({ nombre, edad = 0 }) {
+    console.log(`${nombre}, ${edad}`);
+}
+mostrar(persona);</div>
+                    </div>
+
+                    <div class="termino" id="metodos" data-tags="metodos funciones objeto">
+                        <span class="tag">📋 Métodos en Objetos</span>
+                        <p class="significado">Funciones como propiedades</p>
+                        <div class="ejemplo">const calculadora = {
+    // Método tradicional
+    sumar: function(a, b) {
+        return a + b;
+    },
+
+    // Shorthand (ES6)
+    restar(a, b) {
+        return a - b;
+    },
+
+    // Arrow (cuidado con this)
+    multiplicar: (a, b) => a * b
+};
+
+calculadora.sumar(5, 3);      // 8
+calculadora.restar(10, 4);    // 6
+calculadora.multiplicar(2, 3); // 6
+
+// Métodos con this
+const persona = {
+    nombre: "Ana",
+    saludar() {
+        return `Hola, soy ${this.nombre}`;
+    }
+};
+
+persona.saludar();  // "Hola, soy Ana"</div>
+                    </div>
+
+                    <div class="termino" id="this" data-tags="this contexto">
+                        <span class="tag">📋 this</span>
+                        <p class="significado">Referencia al contexto de ejecución</p>
+                        <div class="ejemplo">const persona = {
+    nombre: "Ana",
+    saludar() {
+        console.log(`Hola, ${this.nombre}`);
+    },
+    // Arrow NO tiene su propio this
+    despedir: () => {
+        console.log(this.nombre);  // undefined
+    }
+};
+
+persona.saludar();  // "Hola, Ana"
+
+// Problema: pérdida de contexto
+const saludar = persona.saludar;
+saludar();  // "Hola, undefined"
+
+// Solución: bind
+const saludarBound = persona.saludar.bind(persona);
+saludarBound();  // "Hola, Ana"
+
+// call y apply
+function presentar(saludo) {
+    console.log(`${saludo}, soy ${this.nombre}`);
+}
+
+presentar.call(persona, "Hola");    // "Hola, soy Ana"
+presentar.apply(persona, ["Hola"]); // "Hola, soy Ana"</div>
+                        <div class="nota">
+                            <strong>💡 Tip:</strong> En métodos usa funciones normales. En callbacks usa arrow functions para mantener el this.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="spread-rest" data-tags="spread rest operador">
+                        <span class="tag">📋 Spread y Rest</span>
+                        <p class="significado">Expandir y recoger propiedades</p>
+                        <div class="ejemplo">// Spread - expandir
+const defaults = { tema: "dark", idioma: "es" };
+const userConfig = { tema: "light" };
+
+const config = { ...defaults, ...userConfig };
+// { tema: "light", idioma: "es" }
+
+// Copia superficial
+const original = { a: 1, b: { c: 2 } };
+const copia = { ...original };
+copia.b.c = 99;  // ¡Modifica el original!
+
+// Copia profunda
+const copiaDeep = JSON.parse(JSON.stringify(original));
+// O usar structuredClone(original)
+
+// Rest - recoger el resto
+const { tema, ...resto } = config;
+// tema = "light", resto = { idioma: "es" }
+
+// En funciones
+function crear({ id, ...datos }) {
+    return { id, ...datos, creado: new Date() };
+}</div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">📦 Objetos</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#crear-objeto" class="toc-link">Crear Objetos</a></li>
+                    <li class="toc-item"><a href="#acceder-propiedades" class="toc-link">Acceder Propiedades</a></li>
+                    <li class="toc-item"><a href="#modificar" class="toc-link">Modificar Objetos</a></li>
+                    <li class="toc-item"><a href="#metodos-objeto" class="toc-link">Métodos de Object</a></li>
+                    <li class="toc-item"><a href="#destructuring-obj" class="toc-link">Destructuring</a></li>
+                    <li class="toc-item"><a href="#metodos" class="toc-link">Métodos en Objetos</a></li>
+                    <li class="toc-item"><a href="#this" class="toc-link">this</a></li>
+                    <li class="toc-item"><a href="#spread-rest" class="toc-link">Spread y Rest</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>JavaScript - Sistema de Aprendizaje | <a href="../index.html">Volver a JavaScript</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) { return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const searchText = normalizeText((termino.getAttribute('data-tags') || '') + ' ' + (termino.querySelector('.tag')?.textContent || ''));
+                    if (query === '' || searchText.includes(query)) { termino.style.display = 'block'; found++; } else { termino.style.display = 'none'; }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => { if (scrollY >= section.offsetTop - 100) current = section.getAttribute('id'); });
+                tocLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === '#' + current) link.classList.add('active'); });
+                document.getElementById('tocProgressBar').style.width = ((document.body.scrollTop || document.documentElement.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100 + '%';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTTP y HTTPS - Protocolos</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a Protocolos</a>
+        <span class="icon">🔒</span>
+        <h1>Módulo 1: HTTP y HTTPS</h1>
+        <p class="subtitle">Protocolos de transferencia de hipertexto</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(74, 144, 226, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #4a90e2; margin-bottom: 40px;">
+                <h2 style="color: #4a90e2; margin-bottom: 15px; font-size: 1.8em;">
+                    <span class="unsa-tag" style="background: #4a90e2; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.5em; margin-right: 10px;">[U]</span>
+                    🌐 HTTP y HTTPS
+                </h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0;">
+                    HTTP (HyperText Transfer Protocol) es el protocolo fundamental de la web. Define cómo los navegadores y servidores se comunican para intercambiar información.
+                </p>
+            </section>
+
+            <div class="termino">
+                <span class="tag">📡 HTTP</span>
+                <p class="significado"><span class="unsa-tag">[U]</span> HyperText Transfer Protocol</p>
+                <p class="descripcion">
+                    Protocolo de comunicación que permite la transferencia de información en la World Wide Web.
+                    Define la estructura de mensajes y cómo clientes y servidores intercambian datos.
+                </p>
+                <div class="ejemplo">
+                    <strong>Petición HTTP típica:</strong><br>
+                    GET /index.html HTTP/1.1<br>
+                    Host: www.ejemplo.com<br>
+                    User-Agent: Mozilla/5.0<br>
+                    Accept: text/html
+                </div>
+                <div class="nota">
+                    <strong>📌 Características clave:</strong><br>
+                    • Sin estado (stateless): Cada petición es independiente<br>
+                    • Basado en texto: Mensajes legibles por humanos<br>
+                    • Puerto por defecto: 80<br>
+                    • No encriptado: Los datos viajan en texto plano
+                </div>
+            </div>
+
+            <div class="termino">
+                <span class="tag">🔐 HTTPS</span>
+                <p class="significado"><span class="unsa-tag">[U]</span> HTTP Secure</p>
+                <p class="descripcion">
+                    Versión segura de HTTP que encripta la comunicación usando SSL/TLS. Protege datos sensibles como contraseñas y tarjetas de crédito.
+                </p>
+                <div class="ejemplo">
+                    <strong>URL HTTPS:</strong><br>
+                    https://www.banco.com/login<br>
+                    <br>
+                    <strong>Diferencias visuales:</strong><br>
+                    • Candado 🔒 en la barra de direcciones<br>
+                    • URL comienza con "https://"<br>
+                    • Certificado digital verificable
+                </div>
+                <div class="nota">
+                    <strong>🔒 Características:</strong><br>
+                    • Puerto por defecto: 443<br>
+                    • Encriptación: SSL/TLS<br>
+                    • Requiere certificado digital<br>
+                    • Protege contra ataques man-in-the-middle<br>
+                    • Google da prioridad en SEO a sitios HTTPS
+                </div>
+            </div>
+
+            <div class="termino">
+                <span class="tag">📋 Estructura de Request HTTP</span>
+                <p class="descripcion">
+                    Una petición HTTP consta de:
+                </p>
+                <div class="ejemplo">
+                    <strong>1. Línea de petición:</strong><br>
+                    GET /api/usuarios HTTP/1.1<br>
+                    <br>
+                    <strong>2. Cabeceras (Headers):</strong><br>
+                    Host: api.ejemplo.com<br>
+                    User-Agent: Mozilla/5.0<br>
+                    Accept: application/json<br>
+                    Content-Type: application/json<br>
+                    Authorization: Bearer token123<br>
+                    <br>
+                    <strong>3. Línea en blanco</strong><br>
+                    <br>
+                    <strong>4. Cuerpo (Body) - opcional:</strong><br>
+                    {"nombre": "Juan", "edad": 25}
+                </div>
+            </div>
+
+            <div class="termino">
+                <span class="tag">📋 Estructura de Response HTTP</span>
+                <p class="descripcion">
+                    Una respuesta HTTP consta de:
+                </p>
+                <div class="ejemplo">
+                    <strong>1. Línea de estado:</strong><br>
+                    HTTP/1.1 200 OK<br>
+                    <br>
+                    <strong>2. Cabeceras:</strong><br>
+                    Content-Type: text/html; charset=UTF-8<br>
+                    Content-Length: 1234<br>
+                    Date: Wed, 04 Dec 2024 12:00:00 GMT<br>
+                    Server: Apache/2.4<br>
+                    <br>
+                    <strong>3. Línea en blanco</strong><br>
+                    <br>
+                    <strong>4. Cuerpo (Body):</strong><br>
+                    &lt;html&gt;&lt;body&gt;Contenido&lt;/body&gt;&lt;/html&gt;
+                </div>
+            </div>
+
+            <div class="termino">
+                <span class="tag">🔑 SSL/TLS</span>
+                <p class="significado">Secure Sockets Layer / Transport Layer Security</p>
+                <p class="descripcion">
+                    Protocolos de seguridad que encriptan la comunicación entre cliente y servidor.
+                    TLS es el sucesor moderno de SSL.
+                </p>
+                <div class="nota">
+                    <strong>🔐 Proceso de Handshake TLS:</strong><br>
+                    1. Cliente envía "Client Hello" con versiones TLS soportadas<br>
+                    2. Servidor responde "Server Hello" y envía certificado<br>
+                    3. Cliente verifica certificado con Autoridad Certificadora<br>
+                    4. Se intercambian claves de encriptación<br>
+                    5. Comunicación encriptada establecida
+                </div>
+            </div>
+
+            <div class="termino">
+                <span class="tag">📜 Certificado Digital</span>
+                <p class="descripcion">
+                    Archivo que verifica la identidad de un sitio web. Emitido por una Autoridad Certificadora (CA) de confianza.
+                </p>
+                <div class="ejemplo">
+                    <strong>Contenido de un certificado:</strong><br>
+                    • Nombre del dominio<br>
+                    • Organización propietaria<br>
+                    • Autoridad Certificadora<br>
+                    • Clave pública<br>
+                    • Fecha de validez<br>
+                    • Firma digital<br>
+                    <br>
+                    <strong>Autoridades Certificadoras populares:</strong><br>
+                    • Let's Encrypt (gratuito)<br>
+                    • DigiCert<br>
+                    • GlobalSign<br>
+                    • Comodo
+                </div>
+            </div>
+
+            <div class="termino">
+                <span class="tag">⚡ Diferencias Clave HTTP vs HTTPS</span>
+                <div class="ejemplo">
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                        <tr style="background: rgba(74, 144, 226, 0.2);">
+                            <th style="padding: 10px; border: 1px solid #444;">Aspecto</th>
+                            <th style="padding: 10px; border: 1px solid #444;">HTTP</th>
+                            <th style="padding: 10px; border: 1px solid #444;">HTTPS</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #444;"><strong>Puerto</strong></td>
+                            <td style="padding: 10px; border: 1px solid #444;">80</td>
+                            <td style="padding: 10px; border: 1px solid #444;">443</td>
+                        </tr>
+                        <tr style="background: rgba(255,255,255,0.05);">
+                            <td style="padding: 10px; border: 1px solid #444;"><strong>Seguridad</strong></td>
+                            <td style="padding: 10px; border: 1px solid #444;">❌ No encriptado</td>
+                            <td style="padding: 10px; border: 1px solid #444;">✅ Encriptado SSL/TLS</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #444;"><strong>Velocidad</strong></td>
+                            <td style="padding: 10px; border: 1px solid #444;">Más rápido</td>
+                            <td style="padding: 10px; border: 1px solid #444;">Ligeramente más lento</td>
+                        </tr>
+                        <tr style="background: rgba(255,255,255,0.05);">
+                            <td style="padding: 10px; border: 1px solid #444;"><strong>Certificado</strong></td>
+                            <td style="padding: 10px; border: 1px solid #444;">No requiere</td>
+                            <td style="padding: 10px; border: 1px solid #444;">Requiere certificado</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border: 1px solid #444;"><strong>SEO</strong></td>
+                            <td style="padding: 10px; border: 1px solid #444;">Penalizado</td>
+                            <td style="padding: 10px; border: 1px solid #444;">Favorecido por Google</td>
+                        </tr>
+                        <tr style="background: rgba(255,255,255,0.05);">
+                            <td style="padding: 10px; border: 1px solid #444;"><strong>Uso ideal</strong></td>
+                            <td style="padding: 10px; border: 1px solid #444;">Sitios informativos simples</td>
+                            <td style="padding: 10px; border: 1px solid #444;">Login, pagos, datos sensibles</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="termino" style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(76, 175, 80, 0.05)); border-left: 4px solid #4CAF50;">
+                <span class="tag" style="background: #4CAF50;">💡 Para el Examen</span>
+                <div class="nota">
+                    <strong>Conceptos que DEBES saber:</strong><br>
+                    <br>
+                    ✅ <strong>HTTP:</strong> Protocolo sin estado, puerto 80, texto plano<br>
+                    ✅ <strong>HTTPS:</strong> HTTP + SSL/TLS, puerto 443, encriptado<br>
+                    ✅ <strong>Diferencia principal:</strong> HTTPS encripta, HTTP no<br>
+                    ✅ <strong>Certificado digital:</strong> Verifica identidad del sitio<br>
+                    ✅ <strong>SSL/TLS:</strong> Protocolos de encriptación<br>
+                    ✅ <strong>Cuándo usar HTTPS:</strong> Login, contraseñas, pagos, datos personales<br>
+                    ✅ <strong>Request:</strong> GET, POST, cabeceras, body<br>
+                    ✅ <strong>Response:</strong> Código de estado, cabeceras, contenido
+                </div>
+            </div>
+        </main>
+
+        <!-- TOC Sidebar -->
+        <aside class="toc-sidebar">
+            <nav class="toc">
+                <h3 class="toc-title">📑 En esta página</h3>
+                <ul class="toc-list">
+                    <li><a href="#introduccion">Introducción</a></li>
+                </ul>
+            </nav>
+        </aside>
+    </div>
+
+    <footer>
+        <p>HTTP y HTTPS - Sistema de Aprendizaje | <a href="../index.html">Volver a Protocolos</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script src="/assets/js/toc-component.js"></script>
+</body>
+</html>

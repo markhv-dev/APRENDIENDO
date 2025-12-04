@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos de JavaScript - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a JavaScript</a>
+        <span class="icon">⚡</span>
+        <h1>Módulo 1: Fundamentos</h1>
+        <p class="subtitle">Variables, tipos de datos y operadores</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #f1c40f; margin-bottom: 40px;">
+                <h2 style="color: #f1c40f; margin-bottom: 15px; font-size: 1.8em;">📦 Fundamentos de JavaScript</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    Los fundamentos de JavaScript incluyen variables, tipos de datos, operadores y la sintaxis básica del lenguaje.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="variables" data-tags="variable let const var declaracion">
+                        <span class="tag">📋 Variables: let, const, var</span>
+                        <p class="significado">Contenedores para almacenar valores</p>
+                        <p class="descripcion">
+                            <code>let</code> es reasignable con scope de bloque, <code>const</code> es inmutable con scope de bloque,
+                            <code>var</code> tiene scope de función (evitar).
+                        </p>
+                        <div class="ejemplo">// const - valor inmutable
+const PI = 3.1416;
+const nombre = "Ana";
+
+// let - valor reasignable
+let edad = 25;
+edad = 26;  // OK
+
+// var - evitar (scope de función)
+var antiguo = "no usar";</div>
+                        <div class="nota">
+                            <strong>💡 Best Practice:</strong> Usa <code>const</code> por defecto. Solo usa <code>let</code> si necesitas reasignar.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="tipos-primitivos" data-tags="tipos datos primitivos string number boolean">
+                        <span class="tag">📋 Tipos de Datos Primitivos</span>
+                        <p class="significado">7 tipos básicos en JavaScript</p>
+                        <div class="ejemplo">// String - texto
+let nombre = "Juan";
+let mensaje = 'Hola';
+let template = `Hola ${nombre}`;
+
+// Number - números
+let entero = 42;
+let decimal = 3.14;
+let negativo = -10;
+
+// Boolean - verdadero/falso
+let activo = true;
+let eliminado = false;
+
+// Null - valor vacío intencional
+let vacio = null;
+
+// Undefined - sin definir
+let sinDefinir;
+console.log(sinDefinir);  // undefined
+
+// Symbol - identificador único
+const id = Symbol('id');
+
+// BigInt - números muy grandes
+const grande = 9007199254740991n;</div>
+                    </div>
+
+                    <div class="termino" id="operadores-aritmeticos" data-tags="operadores aritmeticos suma resta multiplicacion">
+                        <span class="tag">📋 Operadores Aritméticos</span>
+                        <p class="significado">Operadores para cálculos matemáticos</p>
+                        <div class="ejemplo">let a = 10, b = 3;
+
+let suma = a + b;        // 13
+let resta = a - b;       // 7
+let mult = a * b;        // 30
+let div = a / b;         // 3.333...
+let modulo = a % b;      // 1 (resto)
+let potencia = a ** b;   // 1000
+
+// Incremento/Decremento
+let x = 5;
+x++;    // 6
+x--;    // 5
+x += 3; // 8
+x *= 2; // 16</div>
+                    </div>
+
+                    <div class="termino" id="operadores-comparacion" data-tags="operadores comparacion igual diferente mayor menor">
+                        <span class="tag">📋 Operadores de Comparación</span>
+                        <p class="significado">Comparan valores y retornan boolean</p>
+                        <div class="ejemplo">// Igualdad estricta (recomendado)
+5 === 5      // true
+5 === "5"    // false (diferente tipo)
+
+// Igualdad débil (evitar)
+5 == "5"     // true (convierte tipo)
+
+// Desigualdad
+5 !== 3      // true
+5 != "5"     // false
+
+// Comparación
+5 > 3        // true
+5 < 3        // false
+5 >= 5       // true
+5 <= 4       // false</div>
+                        <div class="nota">
+                            <strong>⚠️ Importante:</strong> Siempre usa === y !== para evitar errores de coerción de tipos.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="operadores-logicos" data-tags="operadores logicos and or not">
+                        <span class="tag">📋 Operadores Lógicos</span>
+                        <p class="significado">Combinan expresiones booleanas</p>
+                        <div class="ejemplo">// AND - ambos deben ser true
+true && true    // true
+true && false   // false
+
+// OR - al menos uno true
+true || false   // true
+false || false  // false
+
+// NOT - invierte el valor
+!true           // false
+!false          // true
+
+// Ejemplo práctico
+const edad = 25;
+const tieneLicencia = true;
+
+if (edad >= 18 && tieneLicencia) {
+    console.log("Puede conducir");
+}
+
+// Short-circuit evaluation
+const nombre = usuario || "Anónimo";
+const config = opciones && opciones.tema;</div>
+                    </div>
+
+                    <div class="termino" id="typeof" data-tags="typeof tipo verificar">
+                        <span class="tag">📋 typeof</span>
+                        <p class="significado">Operador para verificar el tipo de dato</p>
+                        <div class="ejemplo">typeof "hola"      // "string"
+typeof 42          // "number"
+typeof true        // "boolean"
+typeof undefined   // "undefined"
+typeof null        // "object" (bug histórico)
+typeof {}          // "object"
+typeof []          // "object"
+typeof function(){} // "function"
+
+// Verificar array
+Array.isArray([1,2,3])  // true
+Array.isArray("hola")   // false</div>
+                    </div>
+
+                    <div class="termino" id="template-literals" data-tags="template literals string interpolacion backticks">
+                        <span class="tag">📋 Template Literals</span>
+                        <p class="significado">Strings con interpolación usando backticks</p>
+                        <div class="ejemplo">const nombre = "Ana";
+const edad = 25;
+
+// Interpolación de variables
+const mensaje = `Hola, ${nombre}. Tienes ${edad} años.`;
+
+// Expresiones
+const precio = 100;
+const total = `Total: $${precio * 1.16}`;
+
+// Strings multilínea
+const html = `
+    <div class="card">
+        <h2>${nombre}</h2>
+        <p>Edad: ${edad}</p>
+    </div>
+`;
+
+// Tagged templates (avanzado)
+function destacar(strings, ...values) {
+    return strings.reduce((acc, str, i) =>
+        acc + str + (values[i] ? `<b>${values[i]}</b>` : ''), '');
+}</div>
+                    </div>
+
+                    <div class="termino" id="scope" data-tags="scope alcance bloque funcion global">
+                        <span class="tag">📋 Scope (Alcance)</span>
+                        <p class="significado">Determina dónde las variables son accesibles</p>
+                        <div class="ejemplo">// Scope global
+const global = "Accesible en todo el código";
+
+function ejemplo() {
+    // Scope de función
+    const local = "Solo dentro de esta función";
+
+    if (true) {
+        // Scope de bloque
+        let bloque = "Solo dentro del if";
+        const otraBloque = "También solo aquí";
+        var funcionScope = "Accesible en toda la función";
+    }
+
+    console.log(funcionScope);  // OK (var)
+    // console.log(bloque);     // Error (let)
+}
+
+// console.log(local);  // Error</div>
+                        <div class="nota">
+                            <strong>💡 Tip:</strong> let y const tienen scope de bloque. var tiene scope de función (puede causar bugs).
+                        </div>
+                    </div>
+
+                    <div class="termino" id="hoisting" data-tags="hoisting elevacion declaracion">
+                        <span class="tag">📋 Hoisting</span>
+                        <p class="significado">Elevación de declaraciones al inicio del scope</p>
+                        <div class="ejemplo">// var se eleva (hoisting)
+console.log(x);  // undefined (no error)
+var x = 5;
+
+// let y const NO se elevan
+// console.log(y);  // Error: Cannot access before initialization
+let y = 10;
+
+// Funciones declaradas se elevan completas
+saludar();  // "Hola" - funciona
+
+function saludar() {
+    console.log("Hola");
+}
+
+// Funciones expresión NO se elevan
+// despedir();  // Error
+const despedir = function() {
+    console.log("Adiós");
+};</div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">⚡ Fundamentos JS</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#variables" class="toc-link">Variables: let, const, var</a></li>
+                    <li class="toc-item"><a href="#tipos-primitivos" class="toc-link">Tipos Primitivos</a></li>
+                    <li class="toc-item"><a href="#operadores-aritmeticos" class="toc-link">Operadores Aritméticos</a></li>
+                    <li class="toc-item"><a href="#operadores-comparacion" class="toc-link">Operadores Comparación</a></li>
+                    <li class="toc-item"><a href="#operadores-logicos" class="toc-link">Operadores Lógicos</a></li>
+                    <li class="toc-item"><a href="#typeof" class="toc-link">typeof</a></li>
+                    <li class="toc-item"><a href="#template-literals" class="toc-link">Template Literals</a></li>
+                    <li class="toc-item"><a href="#scope" class="toc-link">Scope</a></li>
+                    <li class="toc-item"><a href="#hoisting" class="toc-link">Hoisting</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>JavaScript - Sistema de Aprendizaje | <a href="../index.html">Volver a JavaScript</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) {
+                return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const tags = termino.getAttribute('data-tags') || '';
+                    const title = termino.querySelector('.tag')?.textContent || '';
+                    const desc = termino.querySelector('.descripcion')?.textContent || '';
+                    const ejemplo = termino.querySelector('.ejemplo')?.textContent || '';
+                    const searchText = normalizeText(tags + ' ' + title + ' ' + desc + ' ' + ejemplo);
+                    if (query === '' || searchText.includes(query)) {
+                        termino.style.display = 'block';
+                        found++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+</body>
+</html>

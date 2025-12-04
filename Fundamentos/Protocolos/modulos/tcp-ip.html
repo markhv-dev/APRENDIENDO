@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCP/IP - Protocolos</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a Protocolos</a>
+        <span class="icon">🔗</span>
+        <h1>Módulo 3: TCP/IP</h1>
+        <p class="subtitle">Protocolos fundamentales de Internet</p>
+    </header>
+
+    <div class="container">
+        <div class="termino">
+            <span class="tag">🔗 TCP/IP</span>
+            <p class="significado"><span class="unsa-tag">[U]</span> Transmission Control Protocol / Internet Protocol</p>
+            <p class="descripcion">
+                Conjunto de protocolos que hacen posible Internet. TCP controla la transmisión de datos, IP maneja el direccionamiento.
+            </p>
+            <div class="ejemplo">
+                <strong>Modelo TCP/IP (4 capas):</strong><br>
+                1. <strong>Aplicación:</strong> HTTP, FTP, SMTP, DNS<br>
+                2. <strong>Transporte:</strong> TCP, UDP<br>
+                3. <strong>Internet:</strong> IP, ICMP<br>
+                4. <strong>Acceso a Red:</strong> Ethernet, WiFi
+            </div>
+        </div>
+
+        <div class="termino">
+            <span class="tag">📦 TCP</span>
+            <p class="descripcion">
+                Garantiza entrega ordenada y confiable de datos. Orientado a conexión (handshake de 3 vías).
+            </p>
+            <div class="ejemplo">
+                <strong>Handshake TCP:</strong><br>
+                Cliente → SYN → Servidor<br>
+                Cliente ← SYN-ACK ← Servidor<br>
+                Cliente → ACK → Servidor<br>
+                (Conexión establecida)
+            </div>
+            <div class="nota">
+                <strong>✓ Características:</strong> Confiable, ordenado, detección de errores, control de flujo
+            </div>
+        </div>
+
+        <div class="termino">
+            <span class="tag">📍 IP</span>
+            <p class="descripcion">
+                Direcciona y enruta paquetes entre dispositivos. Cada dispositivo tiene una dirección IP única.
+            </p>
+            <div class="ejemplo">
+                <strong>IPv4:</strong> 192.168.1.1 (32 bits, ~4.3 mil millones direcciones)<br>
+                <strong>IPv6:</strong> 2001:0db8:85a3::8a2e:0370:7334 (128 bits, ~340 sextillones)
+            </div>
+        </div>
+
+        <div class="termino">
+            <span class="tag">📌 Puerto</span>
+            <p class="descripcion">
+                Número que identifica un proceso/servicio específico. Rango: 0-65535.
+            </p>
+            <div class="ejemplo">
+                <strong>Puertos conocidos:</strong><br>
+                :80 (HTTP), :443 (HTTPS), :22 (SSH), :21 (FTP), :25 (SMTP), :3306 (MySQL)
+            </div>
+        </div>
+
+        <div class="termino" style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(76, 175, 80, 0.05)); border-left: 4px solid #4CAF50;">
+            <span class="tag" style="background: #4CAF50;">💡 Para el Examen</span>
+            <div class="nota">
+                ✅ <strong>TCP:</strong> Confiable, conexión, handshake 3 vías<br>
+                ✅ <strong>IP:</strong> Direccionamiento, IPv4 vs IPv6<br>
+                ✅ <strong>Puerto 80:</strong> HTTP | <strong>Puerto 443:</strong> HTTPS<br>
+                ✅ <strong>Dirección IP:</strong> Identificador único de dispositivo
+            </div>
+        </div>
+    </div>
+
+    <footer><p>TCP/IP - Sistema de Aprendizaje</p></footer>
+    <script src="/assets/js/sidebar-component.js"></script>
+</body>
+</html>

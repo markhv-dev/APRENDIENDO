@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Métodos HTTP - Protocolos</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a Protocolos</a>
+        <span class="icon">📡</span>
+        <h1>Módulo 2: Métodos HTTP</h1>
+        <p class="subtitle">GET, POST, PUT, DELETE y códigos de estado</p>
+    </header>
+
+    <div class="container">
+        <section style="background: linear-gradient(135deg, rgba(74, 144, 226, 0.1) 0%, rgba(74, 144, 226, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #4a90e2; margin-bottom: 40px;">
+            <h2 style="color: #4a90e2;"><span class="unsa-tag" style="background: #4a90e2; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 0.6em; margin-right: 10px;">[U]</span>Métodos HTTP</h2>
+            <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0;">
+                Los métodos HTTP definen la acción que se desea realizar sobre un recurso. Son fundamentales para APIs REST y formularios web.
+            </p>
+        </section>
+
+        <div class="termino">
+            <span class="tag">📥 GET</span>
+            <p class="significado"><span class="unsa-tag">[U]</span> Obtener/Solicitar Datos</p>
+            <p class="descripcion">
+                Solicita datos del servidor. Los parámetros van en la URL (visibles). Es idempotente (puede repetirse sin efectos secundarios) y cacheable.
+            </p>
+            <div class="ejemplo">
+                <strong>Ejemplo URL con parámetros GET:</strong><br>
+                https://api.ejemplo.com/usuarios?id=123&nombre=Juan<br>
+                <br>
+                <strong>Formulario HTML con GET:</strong><br>
+                &lt;form action="/buscar" method="GET"&gt;<br>
+                &nbsp;&nbsp;&lt;input type="text" name="q"&gt;<br>
+                &nbsp;&nbsp;&lt;button&gt;Buscar&lt;/button&gt;<br>
+                &lt;/form&gt;<br>
+                <br>
+                <strong>Resultado:</strong> /buscar?q=termino
+            </div>
+            <div class="nota">
+                <strong>✓ Características:</strong><br>
+                • Parámetros en URL (visibles en barra de direcciones)<br>
+                • Limitado (~2000 caracteres)<br>
+                • Se puede guardar en favoritos<br>
+                • Cacheable por navegadores<br>
+                • Idempotente (repetible sin efectos)<br>
+                • NO debe modificar datos del servidor<br>
+                <br>
+                <strong>📌 Cuándo usar:</strong> Buscar, filtrar, leer datos, compartir URL
+            </div>
+        </div>
+
+        <div class="termino">
+            <span class="tag">📤 POST</span>
+            <p class="significado"><span class="unsa-tag">[U]</span> Enviar/Crear Datos</p>
+            <p class="descripcion">
+                Envía datos al servidor para crear o procesar. Los datos van en el cuerpo (body) de la petición, no en la URL. No idempotente.
+            </p>
+            <div class="ejemplo">
+                <strong>Formulario HTML con POST:</strong><br>
+                &lt;form action="/registro" method="POST"&gt;<br>
+                &nbsp;&nbsp;&lt;input type="text" name="nombre"&gt;<br>
+                &nbsp;&nbsp;&lt;input type="email" name="email"&gt;<br>
+                &nbsp;&nbsp;&lt;input type="password" name="password"&gt;<br>
+                &nbsp;&nbsp;&lt;button&gt;Registrar&lt;/button&gt;<br>
+                &lt;/form&gt;<br>
+                <br>
+                <strong>Request HTTP:</strong><br>
+                POST /registro HTTP/1.1<br>
+                Content-Type: application/x-www-form-urlencoded<br>
+                <br>
+                nombre=Juan&email=juan@ejemplo.com&password=12345
+            </div>
+            <div class="nota">
+                <strong>✓ Características:</strong><br>
+                • Datos en el body (ocultos en la URL)<br>
+                • Sin límite de tamaño<br>
+                • NO cacheable<br>
+                • NO idempotente (puede crear duplicados)<br>
+                • Más seguro para datos sensibles<br>
+                <br>
+                <strong>📌 Cuándo usar:</strong> Login, registro, subir archivos, crear recursos
+            </div>
+        </div>
+
+        <div class="termino" style="background: linear-gradient(135deg, rgba(255, 152, 0, 0.1), rgba(255, 152, 0, 0.05)); border-left: 4px solid #FF9800;">
+            <span class="tag" style="background: #FF9800;">⚔️ GET vs POST - CRÍTICO PARA EXAMEN</span>
+            <div class="ejemplo">
+                <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+                    <tr style="background: rgba(255, 152, 0, 0.2);">
+                        <th style="padding: 10px; border: 1px solid #444;">Aspecto</th>
+                        <th style="padding: 10px; border: 1px solid #444;">GET</th>
+                        <th style="padding: 10px; border: 1px solid #444;">POST</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #444;"><strong>Datos</strong></td>
+                        <td style="padding: 10px; border: 1px solid #444;">En URL</td>
+                        <td style="padding: 10px; border: 1px solid #444;">En body</td>
+                    </tr>
+                    <tr style="background: rgba(255,255,255,0.05);">
+                        <td style="padding: 10px; border: 1px solid #444;"><strong>Visibilidad</strong></td>
+                        <td style="padding: 10px; border: 1px solid #444;">👁️ Visible</td>
+                        <td style="padding: 10px; border: 1px solid #444;">🔒 Oculto</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #444;"><strong>Tamaño</strong></td>
+                        <td style="padding: 10px; border: 1px solid #444;">~2000 caracteres</td>
+                        <td style="padding: 10px; border: 1px solid #444;">Ilimitado</td>
+                    </tr>
+                    <tr style="background: rgba(255,255,255,0.05);">
+                        <td style="padding: 10px; border: 1px solid #444;"><strong>Cacheable</strong></td>
+                        <td style="padding: 10px; border: 1px solid #444;">✅ Sí</td>
+                        <td style="padding: 10px; border: 1px solid #444;">❌ No</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #444;"><strong>Historial</strong></td>
+                        <td style="padding: 10px; border: 1px solid #444;">Queda en historial</td>
+                        <td style="padding: 10px; border: 1px solid #444;">No queda</td>
+                    </tr>
+                    <tr style="background: rgba(255,255,255,0.05);">
+                        <td style="padding: 10px; border: 1px solid #444;"><strong>Idempotente</strong></td>
+                        <td style="padding: 10px; border: 1px solid #444;">✅ Sí</td>
+                        <td style="padding: 10px; border: 1px solid #444;">❌ No</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px; border: 1px solid #444;"><strong>Uso</strong></td>
+                        <td style="padding: 10px; border: 1px solid #444;">Leer/Buscar</td>
+                        <td style="padding: 10px; border: 1px solid #444;">Crear/Enviar</td>
+                    </tr>
+                    <tr style="background: rgba(255,255,255,0.05);">
+                        <td style="padding: 10px; border: 1px solid #444;"><strong>Seguridad</strong></td>
+                        <td style="padding: 10px; border: 1px solid #444;">❌ Menos seguro</td>
+                        <td style="padding: 10px; border: 1px solid #444;">✅ Más seguro</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="termino">
+            <span class="tag">🔄 PUT</span>
+            <p class="significado">Actualizar/Reemplazar</p>
+            <p class="descripcion">
+                Actualiza o reemplaza completamente un recurso existente. Idempotente.
+            </p>
+            <div class="ejemplo">
+                PUT /api/usuarios/123 HTTP/1.1<br>
+                Content-Type: application/json<br>
+                <br>
+                {"nombre": "Juan Actualizado", "edad": 31, "email": "nuevo@email.com"}
+            </div>
+            <div class="nota">
+                <strong>💡 Diferencia PUT vs PATCH:</strong><br>
+                • PUT: Reemplaza TODO el recurso<br>
+                • PATCH: Actualiza solo campos específicos
+            </div>
+        </div>
+
+        <div class="termino">
+            <span class="tag">🗑️ DELETE</span>
+            <p class="significado">Eliminar</p>
+            <p class="descripcion">
+                Elimina un recurso del servidor. Idempotente.
+            </p>
+            <div class="ejemplo">
+                DELETE /api/usuarios/123 HTTP/1.1
+            </div>
+        </div>
+
+        <div class="termino">
+            <span class="tag">🔢 Códigos de Estado HTTP</span>
+            <p class="descripcion">
+                Números de 3 dígitos que indican el resultado de una petición HTTP.
+            </p>
+            <div class="ejemplo">
+                <strong>📗 2xx - Éxito:</strong><br>
+                • <strong>200 OK:</strong> Petición exitosa<br>
+                • <strong>201 Created:</strong> Recurso creado (POST exitoso)<br>
+                • <strong>204 No Content:</strong> Éxito sin contenido en respuesta<br>
+                <br>
+                <strong>📘 3xx - Redirección:</strong><br>
+                • <strong>301 Moved Permanently:</strong> Recurso movido permanentemente<br>
+                • <strong>302 Found:</strong> Redirección temporal<br>
+                • <strong>304 Not Modified:</strong> Recurso no modificado (caché)<br>
+                <br>
+                <strong>📙 4xx - Error del Cliente:</strong><br>
+                • <strong>400 Bad Request:</strong> Solicitud mal formada<br>
+                • <strong>401 Unauthorized:</strong> No autenticado (falta login)<br>
+                • <strong>403 Forbidden:</strong> No autorizado (sin permisos)<br>
+                • <strong>404 Not Found:</strong> Recurso no encontrado<br>
+                • <strong>405 Method Not Allowed:</strong> Método HTTP no permitido<br>
+                <br>
+                <strong>📕 5xx - Error del Servidor:</strong><br>
+                • <strong>500 Internal Server Error:</strong> Error genérico del servidor<br>
+                • <strong>502 Bad Gateway:</strong> Puerta de enlace inválida<br>
+                • <strong>503 Service Unavailable:</strong> Servicio no disponible<br>
+                • <strong>504 Gateway Timeout:</strong> Tiempo de espera agotado
+            </div>
+        </div>
+
+        <div class="termino" style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(76, 175, 80, 0.05)); border-left: 4px solid #4CAF50;">
+            <span class="tag" style="background: #4CAF50;">💡 Para el Examen - MEMORIZA ESTO</span>
+            <div class="nota">
+                <strong>✅ GET:</strong><br>
+                • Datos en URL<br>
+                • Visible, limitado (~2000 chars)<br>
+                • Para buscar/leer<br>
+                • Idempotente, cacheable<br>
+                <br>
+                <strong>✅ POST:</strong><br>
+                • Datos en body<br>
+                • Oculto, ilimitado<br>
+                • Para crear/enviar<br>
+                • NO idempotente, NO cacheable<br>
+                <br>
+                <strong>✅ Códigos importantes:</strong><br>
+                • 200 = OK<br>
+                • 404 = No encontrado<br>
+                • 500 = Error del servidor<br>
+                • 401 = No autenticado<br>
+                • 403 = Sin permisos<br>
+                <br>
+                <strong>✅ Idempotente:</strong> Puede repetirse sin efectos secundarios<br>
+                (GET, PUT, DELETE son idempotentes. POST NO)
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Métodos HTTP - Sistema de Aprendizaje | <a href="../index.html">Volver a Protocolos</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+</body>
+</html>

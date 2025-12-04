@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Contenido - Curso Desarrollo Web</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 40px;
+        }
+
+        h1 {
+            color: #667eea;
+            border-bottom: 4px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #764ba2;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-left: 6px solid #764ba2;
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: #667eea;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        h4 {
+            color: #555;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+
+        .toc h3 {
+            margin-top: 0;
+            color: #667eea;
+        }
+
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .toc li {
+            padding: 8px 0;
+        }
+
+        .toc a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .toc a:hover {
+            color: #764ba2;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        .estado-listo {
+            background: #d4edda;
+            color: #155724;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .estado-pendiente {
+            background: #fff3cd;
+            color: #856404;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .estado-parcial {
+            background: #d1ecf1;
+            color: #0c5460;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            transition: width 0.3s ease;
+        }
+
+        .alert {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            border-left-color: #28a745;
+        }
+
+        .prioridad {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+
+        .prioridad-alta {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .prioridad-media {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .prioridad-baja {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .checkmark {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            text-align: center;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.5em;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Plan de Contenido - Curso Desarrollo Web</h1>
+        <p class="subtitle">Plan de implementación basado en el syllabus del curso de desarrollo web.</p>
+
+        <div class="toc">
+            <h3>Tabla de Contenidos</h3>
+            <ul>
+                <li><a href="#estado-general">Estado General</a></li>
+                <li><a href="#primera-unidad">Primera Unidad</a>
+                    <ul>
+                        <li><a href="#cap1">Capítulo I: Conceptos Básicos</a></li>
+                        <li><a href="#cap2">Capítulo II: Protocolos</a></li>
+                        <li><a href="#cap3">Capítulo III: HTML y CSS</a></li>
+                    </ul>
+                </li>
+                <li><a href="#segunda-unidad">Segunda Unidad</a>
+                    <ul>
+                        <li><a href="#cap4">Capítulo IV: JavaScript</a></li>
+                        <li><a href="#cap5">Capítulo V: Python</a></li>
+                    </ul>
+                </li>
+                <li><a href="#tercera-unidad">Tercera Unidad</a>
+                    <ul>
+                        <li><a href="#cap6">Capítulo VI: Bases de Datos</a></li>
+                        <li><a href="#cap7">Capítulo VII: Python y MySQL</a></li>
+                        <li><a href="#cap8">Capítulo VIII: AJAX</a></li>
+                    </ul>
+                </li>
+                <li><a href="#acciones">Acciones Prioritarias</a></li>
+                <li><a href="#cronograma">Cronograma Sugerido</a></li>
+            </ul>
+        </div>
+
+        <section id="estado-general">
+            <h2>Estado General</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Unidad</th>
+                        <th>Capítulos</th>
+                        <th>Estado</th>
+                        <th>Progreso</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Primera</td>
+                        <td>I, II, III</td>
+                        <td><span class="estado-parcial">~65%</span></td>
+                        <td>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%">65%</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Segunda</td>
+                        <td>IV, V</td>
+                        <td><span class="estado-parcial">~55%</span></td>
+                        <td>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 55%">55%</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tercera</td>
+                        <td>VI, VII, VIII</td>
+                        <td><span class="estado-pendiente">~5%</span></td>
+                        <td>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 5%">5%</div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="primera-unidad">
+            <h2>PRIMERA UNIDAD</h2>
+
+            <div id="cap1">
+                <h3>Capítulo I: Conceptos Básicos</h3>
+
+                <h4>Tema 01: Fundamentos de Computación</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Contenido</th>
+                            <th>Estado</th>
+                            <th>Ubicación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Hardware y Software</td>
+                            <td><span class="estado-parcial">Parcial</span></td>
+                            <td>Fundamentos/Diseño</td>
+                        </tr>
+                        <tr>
+                            <td>Sistemas Operativos</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Redes</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Cliente-Servidor</td>
+                            <td><span class="estado-parcial">Parcial</span></td>
+                            <td>Fundamentos/Backend</td>
+                        </tr>
+                        <tr>
+                            <td>Internet y la Web</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Infraestructura y Plataformas</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Entorno tipo UNIX</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Sistema de Archivos UNIX</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="alert">
+                    <strong>Acción requerida:</strong> Crear sección "Conceptos de Computación" o expandir Fundamentos
+                </div>
+
+                <h4>Tema 02: Herramientas de Desarrollo</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Contenido</th>
+                            <th>Estado</th>
+                            <th>Ubicación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Lenguajes de Programación</td>
+                            <td><span class="estado-parcial">Parcial</span></td>
+                            <td>Fundamentos</td>
+                        </tr>
+                        <tr>
+                            <td>Editores de Código</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Frameworks y Bibliotecas</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Desarrollo Frontend</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>Fundamentos/Frontend</td>
+                        </tr>
+                        <tr>
+                            <td>Desarrollo Backend</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>Fundamentos/Backend</td>
+                        </tr>
+                        <tr>
+                            <td>Desarrollo Fullstack</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Git y GitHub</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>Comandos/Git (45 comandos + 10 ejercicios)</td>
+                        </tr>
+                        <tr>
+                            <td>WebAssembly</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Contenedores Docker</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>Herramientas/Docker (en roadmap)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="alert">
+                    <strong>Acción requerida:</strong> Agregar secciones de editores, WebAssembly y Fullstack
+                </div>
+            </div>
+
+            <div id="cap2">
+                <h3>Capítulo II: Protocolos</h3>
+
+                <h4>Tema 03: Protocolos de Red y Web</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Contenido</th>
+                            <th>Estado</th>
+                            <th>Ubicación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>HTTP</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>HTTPS</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>TCP/IP</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>SSH</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>FTP</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>URL</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Dirección IP</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Servidor DNS</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Servidor WEB</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Modelos de Comunicación</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Directorio public_html</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Cliente WEB</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Métodos GET y POST</td>
+                            <td><span class="estado-parcial">Parcial</span></td>
+                            <td>HTML/Formularios, JS/Fetch</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="alert">
+                    <strong>Acción requerida:</strong> Crear nueva sección "Protocolos y Redes" en Fundamentos o como categoría separada
+                </div>
+            </div>
+
+            <div id="cap3">
+                <h3>Capítulo III: Fundamentos del Desarrollo Frontend - HTML y CSS</h3>
+
+                <h4>Tema 04: HTML 5</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Contenido</th>
+                            <th>Estado</th>
+                            <th>Ubicación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Estructura básica HTML 5</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>Lenguajes/HTML/modulos/estructura.html</td>
+                        </tr>
+                        <tr>
+                            <td>Títulos o headings</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>HTML/Glosario + módulos</td>
+                        </tr>
+                        <tr>
+                            <td>Párrafos</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>HTML/Glosario + módulos</td>
+                        </tr>
+                        <tr>
+                            <td>Hipervínculos</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>HTML/Glosario + módulos</td>
+                        </tr>
+                        <tr>
+                            <td>Imágenes</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>HTML/modulos/multimedia.html</td>
+                        </tr>
+                        <tr>
+                            <td>Listas</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>HTML/Glosario + módulos</td>
+                        </tr>
+                        <tr>
+                            <td>Tablas</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>HTML/modulos/tablas.html</td>
+                        </tr>
+                        <tr>
+                            <td>Estructura Semántica</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>HTML/modulos/semantico.html</td>
+                        </tr>
+                        <tr>
+                            <td>Formularios</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>HTML/modulos/formularios.html</td>
+                        </tr>
+                        <tr>
+                            <td>GET y POST</td>
+                            <td><span class="estado-parcial">Parcial</span></td>
+                            <td>HTML/Formularios (method)</td>
+                        </tr>
+                        <tr>
+                            <td>Ejercicios</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>HTML/Ejercicios.html (13 ejercicios prácticos)</td>
+                        </tr>
+                        <tr>
+                            <td>Quizzes</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>HTML/Quiz.html (4 quizzes temáticos + examen final)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="alert alert-success">
+                    <strong>Estado: <span class="checkmark">✅ COMPLETO</span></strong> - 13 ejercicios prácticos + 5 quizzes (50 preguntas) + 10 módulos
+                </div>
+
+                <h4>Tema 05: CSS 3</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Contenido</th>
+                            <th>Estado</th>
+                            <th>Ubicación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sintaxis de CSS 3</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>CSS/modulos/fundamentos.html</td>
+                        </tr>
+                        <tr>
+                            <td>Archivos CSS</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>CSS/modulos/fundamentos.html</td>
+                        </tr>
+                        <tr>
+                            <td>CSS incrustado</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>CSS/Glosario</td>
+                        </tr>
+                        <tr>
+                            <td>Selectores</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>CSS/modulos/selectores.html</td>
+                        </tr>
+                        <tr>
+                            <td>Tablas con CSS</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>CSS/Glosario</td>
+                        </tr>
+                        <tr>
+                            <td>Formularios con CSS</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>CSS/Glosario</td>
+                        </tr>
+                        <tr>
+                            <td>Ejercicios</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>CSS/Ejercicios.html (12 ejercicios)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="alert alert-success">
+                    <strong>Estado: <span class="checkmark">✅ COMPLETO</span></strong> - 90+ términos del Glosario + 12 ejercicios + 10 módulos
+                </div>
+
+                <h4>Tema 06: Examen Parcial 1</h4>
+                <ul>
+                    <li>☐ Crear examen que cubra HTML y CSS</li>
+                    <li>Referencia: Ya existe estructura de exámenes en JS</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="segunda-unidad">
+            <h2>SEGUNDA UNIDAD</h2>
+
+            <div id="cap4">
+                <h3>Capítulo IV: Fundamentos del Desarrollo Frontend - JavaScript</h3>
+
+                <h4>Tema 07: JavaScript Básico</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Contenido</th>
+                            <th>Estado</th>
+                            <th>Ubicación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Primer programa</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>JS/modulos/fundamentos.html</td>
+                        </tr>
+                        <tr>
+                            <td>Sintaxis</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>JS/modulos/fundamentos.html</td>
+                        </tr>
+                        <tr>
+                            <td>Objetos</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>JS/modulos/objetos.html</td>
+                        </tr>
+                        <tr>
+                            <td>Funciones</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>JS/modulos/funciones.html</td>
+                        </tr>
+                        <tr>
+                            <td>Depuración</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Eventos</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>JS/modulos/eventos.html</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="alert">
+                    <strong>Acción requerida:</strong> Agregar sección de depuración (console, debugger, DevTools)
+                </div>
+
+                <h4>Tema 08: JavaScript Avanzado</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Contenido</th>
+                            <th>Estado</th>
+                            <th>Ubicación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>DOM</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>JS/modulos/dom.html</td>
+                        </tr>
+                        <tr>
+                            <td>Páginas Web dinámicas</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>JS/modulos/dom.html + eventos.html</td>
+                        </tr>
+                        <tr>
+                            <td>JavaScript y Formularios</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>JS/modulos/eventos.html</td>
+                        </tr>
+                        <tr>
+                            <td>Funciones como valor</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>JS/modulos/funciones.html (callbacks)</td>
+                        </tr>
+                        <tr>
+                            <td>Promesas</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>JS/modulos/async.html</td>
+                        </tr>
+                        <tr>
+                            <td>Objeto Fetch</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>JS/modulos/async.html</td>
+                        </tr>
+                        <tr>
+                            <td>Ejercicios</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>JS/Ejercicios.html (12 ejercicios)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="alert alert-success">
+                    <strong>Estado: <span class="checkmark">✅ COMPLETO</span></strong> - 60+ términos del Glosario + 12 ejercicios + 10 módulos
+                </div>
+            </div>
+
+            <div id="cap5">
+                <h3>Capítulo V: Fundamentos del Desarrollo Backend - Python</h3>
+
+                <h4>Tema 09: Python Básico</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Contenido</th>
+                            <th>Estado</th>
+                            <th>Ubicación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Primer programa</td>
+                            <td><span class="estado-parcial">En estructura</span></td>
+                            <td>Lenguajes/Python/index.html</td>
+                        </tr>
+                        <tr>
+                            <td>Ejecución</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Sintaxis</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Variables</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Strings</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Arreglos</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Tipos de Datos</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Operadores</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Listas</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Tuplas</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Conjuntos</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Diccionarios</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Condicionales</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Ciclos</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Foreach</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Subrutinas</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="alert">
+                    <strong>Estado actual:</strong> Estructura creada (index.html + Ejercicios.html + carpeta modulos/)<br>
+                    <strong>Acción requerida:</strong> Crear Glosario + contenido de 10 módulos + 12 ejercicios (Alta prioridad en roadmap)
+                </div>
+
+                <h4>Tema 10: Python para Web</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Contenido</th>
+                            <th>Estado</th>
+                            <th>Ubicación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Primer CGI</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Formularios y CGI</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Expresiones regulares</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Archivos</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="alert">
+                    <strong>Acción requerida:</strong> Incluir en módulos de Python
+                </div>
+
+                <h4>Tema 11: Examen Parcial 2</h4>
+                <ul>
+                    <li>☐ Crear examen que cubra JavaScript y Python</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="tercera-unidad">
+            <h2>TERCERA UNIDAD</h2>
+
+            <div id="cap6">
+                <h3>Capítulo VI: Bases de Datos</h3>
+
+                <h4>Tema 12: Fundamentos de BD</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Contenido</th>
+                            <th>Estado</th>
+                            <th>Ubicación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Conceptos de BD</td>
+                            <td><span class="estado-parcial">Parcial</span></td>
+                            <td>Fundamentos/Base de Datos</td>
+                        </tr>
+                        <tr>
+                            <td>Modelos de datos</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Diseño de BD</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Tema 13: MySQL y SQL</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Contenido</th>
+                            <th>Estado</th>
+                            <th>Ubicación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>MySQL</td>
+                            <td><span class="estado-parcial">En estructura</span></td>
+                            <td>Lenguajes/SQL/index.html</td>
+                        </tr>
+                        <tr>
+                            <td>Conexión al Servidor</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Clientes</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Lenguaje SQL</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Consultas SELECT</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>INSERT, UPDATE, DELETE</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>JOINs</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="alert">
+                    <strong>Estado actual:</strong> Estructura creada (index.html + Ejercicios.html + carpeta modulos/)<br>
+                    <strong>Acción requerida:</strong> Crear Glosario + contenido de módulos + 12 ejercicios (Alta prioridad en roadmap)
+                </div>
+            </div>
+
+            <div id="cap7">
+                <h3>Capítulo VII: Python y MySQL</h3>
+
+                <h4>Tema 14: Integración Python-MySQL</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Contenido</th>
+                            <th>Estado</th>
+                            <th>Ubicación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Conexión Python-MySQL</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Insertando datos</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Consultas desde Python</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Ejemplo Unificado</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="alert">
+                    <strong>Acción requerida:</strong> Crear después de completar Python y SQL
+                </div>
+            </div>
+
+            <div id="cap8">
+                <h3>Capítulo VIII: AJAX</h3>
+
+                <h4>Tema 15: AJAX y Comunicación Asíncrona</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Contenido</th>
+                            <th>Estado</th>
+                            <th>Ubicación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Funcionamiento y beneficios</td>
+                            <td><span class="estado-parcial">Parcial</span></td>
+                            <td>JS/modulos/async.html</td>
+                        </tr>
+                        <tr>
+                            <td>XML</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>XMLHttpRequest</td>
+                            <td><span class="estado-pendiente">Pendiente</span></td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td>Configuración de respuesta</td>
+                            <td><span class="estado-parcial">Parcial</span></td>
+                            <td>JS/async (fetch)</td>
+                        </tr>
+                        <tr>
+                            <td>Activación asíncrona</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>JS/modulos/async.html</td>
+                        </tr>
+                        <tr>
+                            <td>Respuesta del servidor</td>
+                            <td><span class="estado-listo">✅ Listo</span></td>
+                            <td>JS/modulos/async.html</td>
+                        </tr>
+                        <tr>
+                            <td>JSON</td>
+                            <td><span class="estado-parcial">Parcial</span></td>
+                            <td>JS/async (implícito)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="alert">
+                    <strong>Acción requerida:</strong> Agregar XMLHttpRequest y XML (aunque Fetch es más moderno)
+                </div>
+
+                <h4>Tema 16: Examen Final</h4>
+                <ul>
+                    <li>☐ Crear examen final comprehensivo</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="acciones">
+            <h2>Resumen de Acciones Prioritarias</h2>
+
+            <h3><span class="prioridad prioridad-alta">Alta Prioridad</span> (Para completar el curso)</h3>
+            <ol>
+                <li><strong>Python completo</strong> - Lenguajes/Python/
+                    <ul>
+                        <li>Glosario</li>
+                        <li>10 módulos</li>
+                        <li>Ejercicios</li>
+                        <li>CGI y web</li>
+                    </ul>
+                </li>
+                <li><strong>SQL/MySQL completo</strong> - Lenguajes/SQL/
+                    <ul>
+                        <li>Glosario</li>
+                        <li>Módulos (SELECT, INSERT, JOINs, etc.)</li>
+                        <li>Ejercicios</li>
+                    </ul>
+                </li>
+                <li><strong>Protocolos de Red</strong> - Nueva sección
+                    <ul>
+                        <li>HTTP/HTTPS</li>
+                        <li>TCP/IP</li>
+                        <li>DNS</li>
+                        <li>GET/POST detallado</li>
+                    </ul>
+                </li>
+            </ol>
+
+            <h3><span class="prioridad prioridad-media">Media Prioridad</span></h3>
+            <ol start="4">
+                <li><strong>Integración Python-MySQL</strong></li>
+                <li><strong>Exámenes parciales</strong> (1 y 2)</li>
+                <li><strong>Depuración en JS</strong> (DevTools, console, debugger)</li>
+                <li><strong>AJAX clásico</strong> (XMLHttpRequest)</li>
+            </ol>
+
+            <h3><span class="prioridad prioridad-baja">Baja Prioridad</span></h3>
+            <ol start="8">
+                <li><strong>Conceptos de computación</strong> (Hardware, SO, UNIX)</li>
+                <li><strong>Editores de código</strong></li>
+                <li><strong>WebAssembly</strong></li>
+                <li><strong>Docker</strong> (ya en roadmap largo plazo)</li>
+            </ol>
+        </section>
+
+        <section id="cronograma">
+            <h2>Cronograma Sugerido</h2>
+
+            <h3>Semana 1-2: Python Básico</h3>
+            <ul>
+                <li>Crear glosario y módulos 1-5</li>
+                <li>Sintaxis, variables, estructuras de datos</li>
+            </ul>
+
+            <h3>Semana 3: Python Avanzado</h3>
+            <ul>
+                <li>Módulos 6-10</li>
+                <li>Funciones, clases, archivos, CGI</li>
+            </ul>
+
+            <h3>Semana 4: SQL Básico</h3>
+            <ul>
+                <li>Glosario y módulos</li>
+                <li>SELECT, INSERT, UPDATE, DELETE</li>
+            </ul>
+
+            <h3>Semana 5: SQL Avanzado + Integración</h3>
+            <ul>
+                <li>JOINs, subqueries</li>
+                <li>Python + MySQL</li>
+            </ul>
+
+            <h3>Semana 6: Protocolos y Exámenes</h3>
+            <ul>
+                <li>Sección de protocolos</li>
+                <li>Crear exámenes parciales y final</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Notas</h2>
+            <ul>
+                <li>El contenido de <strong>HTML, CSS y JavaScript ya está completo</strong> y cubre los temas 04, 05, 07 y 08</li>
+                <li><strong>HTML</strong> ahora incluye 13 ejercicios prácticos + 5 quizzes interactivos (50 preguntas totales)</li>
+                <li><strong>Git/GitHub</strong> ya está completo con 45 comandos + 10 ejercicios</li>
+                <li>Priorizar <strong>Python y SQL</strong> para completar el backend del curso</li>
+                <li>Los <strong>Fundamentos</strong> existentes cubren parcialmente los conceptos básicos</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Lenguajes Adicionales (Fuera del Curso Base)</h2>
+            <p style="margin-bottom: 20px;">Estos lenguajes tienen estructura creada pero no forman parte del curso de desarrollo web oficial:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Lenguaje</th>
+                        <th>Estado</th>
+                        <th>Ubicación</th>
+                        <th>Contenido</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>TypeScript</strong></td>
+                        <td><span class="estado-parcial">En estructura</span></td>
+                        <td>Lenguajes/TypeScript/</td>
+                        <td>index.html + Ejercicios.html + carpeta modulos/ vacía</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Java</strong></td>
+                        <td><span class="estado-parcial">Parcial</span></td>
+                        <td>Lenguajes/Java/</td>
+                        <td>index.html + Glosario.html + Ejercicios.html</td>
+                    </tr>
+                    <tr>
+                        <td><strong>C++</strong></td>
+                        <td><span class="estado-pendiente">Mínimo</span></td>
+                        <td>Lenguajes/C++/</td>
+                        <td>Solo Glosario.html + README.md</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Go</strong></td>
+                        <td><span class="estado-pendiente">Mínimo</span></td>
+                        <td>Lenguajes/Go/</td>
+                        <td>Solo README.md</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rust</strong></td>
+                        <td><span class="estado-pendiente">Mínimo</span></td>
+                        <td>Lenguajes/Rust/</td>
+                        <td>Solo README.md</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PHP</strong></td>
+                        <td><span class="estado-pendiente">Mínimo</span></td>
+                        <td>Lenguajes/PHP/</td>
+                        <td>Solo README.md</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Kotlin</strong></td>
+                        <td><span class="estado-pendiente">Mínimo</span></td>
+                        <td>Lenguajes/Kotlin/</td>
+                        <td>Solo README.md</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Swift</strong></td>
+                        <td><span class="estado-pendiente">Mínimo</span></td>
+                        <td>Lenguajes/Swift/</td>
+                        <td>Solo README.md</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ruby</strong></td>
+                        <td><span class="estado-pendiente">Mínimo</span></td>
+                        <td>Lenguajes/Ruby/</td>
+                        <td>Solo README.md</td>
+                    </tr>
+                    <tr>
+                        <td><strong>C#</strong></td>
+                        <td><span class="estado-pendiente">Mínimo</span></td>
+                        <td>Lenguajes/CSharp/</td>
+                        <td>Solo README.md</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="alert" style="margin-top: 20px;">
+                <strong>Nota:</strong> TypeScript podría ser útil como extensión del módulo de JavaScript en el futuro.
+            </div>
+        </section>
+
+        <div class="footer">
+            <p><strong>Última actualización:</strong> 2025-12-03</p>
+            <p>Plan de Contenido - Curso Desarrollo Web</p>
+        </div>
+    </div>
+</body>
+</html>

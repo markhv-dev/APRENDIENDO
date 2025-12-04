@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glosario - Protocolos de Red</title>
+
+    <!-- Sidebar Styles -->
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+
+    <!-- TOC (Table of Contents) Styles -->
+    <link rel="stylesheet" href="/assets/css/toc.css">
+
+    <!-- Glosario Styles -->
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌐 Glosario de Protocolos de Red</h1>
+            <p class="subtitle">35+ conceptos esenciales de redes y comunicación web</p>
+        </header>
+
+        <div class="breadcrumb">
+            <a href="../../index.html">← Inicio</a> /
+            <a href="index.html">Protocolos</a> /
+            <span>Glosario</span>
+        </div>
+
+        <div class="search-container">
+            <input
+                type="text"
+                class="search-box"
+                id="searchBox"
+                placeholder="Buscar protocolo o concepto (ej: HTTP, TCP, DNS)..."
+            >
+        </div>
+
+        <!-- Category Navigation -->
+        <nav class="category-nav">
+            <div class="category-nav-links">
+                <a href="#protocolos">🌐 Protocolos Web</a>
+                <a href="#tcpip">🔗 TCP/IP</a>
+                <a href="#dns">🗺️ DNS y URL</a>
+                <a href="#metodos">📡 Métodos HTTP</a>
+                <a href="#codigos">🔢 Códigos de Estado</a>
+                <a href="#seguridad">🔒 Seguridad</a>
+                <a href="#arquitectura">🏗️ Arquitectura</a>
+            </div>
+        </nav>
+
+        <div id="terminos">
+            <!-- PROTOCOLOS WEB -->
+            <div id="protocolos" class="category-section">
+                <h2 class="category-title">Protocolos Web</h2>
+
+                <div class="termino" data-tags="http protocolo hipertexto transferencia web">
+                    <span class="categoria-badge badge-basico">Protocolo</span>
+                    <div class="comando">HTTP (HyperText Transfer Protocol)</div>
+                    <p class="descripcion">
+                        Protocolo de transferencia de hipertexto. Define cómo se formatean y transmiten
+                        los mensajes entre navegadores y servidores web. Sin estado (stateless).
+                    </p>
+                    <div class="ejemplo">GET /index.html HTTP/1.1</div>
+                    <div class="ejemplo">Host: www.ejemplo.com</div>
+                    <div class="nota">
+                        <strong>📌 Puerto:</strong> 80 (por defecto) | <strong>Estado:</strong> Sin estado (cada petición es independiente)
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="https seguro ssl tls encriptacion">
+                    <span class="categoria-badge badge-intermedio">Protocolo</span>
+                    <div class="comando">HTTPS (HTTP Secure)</div>
+                    <p class="descripcion">
+                        HTTP sobre SSL/TLS. Versión segura de HTTP que encripta la comunicación
+                        entre cliente y servidor usando certificados digitales.
+                    </p>
+                    <div class="ejemplo">https://www.ejemplo.com</div>
+                    <div class="nota">
+                        <strong>🔒 Puerto:</strong> 443 | <strong>Encriptación:</strong> SSL/TLS | <strong>Seguro para:</strong> Contraseñas, datos sensibles
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="ftp file transfer protocol archivos">
+                    <span class="categoria-badge badge-basico">Protocolo</span>
+                    <div class="comando">FTP (File Transfer Protocol)</div>
+                    <p class="descripcion">
+                        Protocolo de transferencia de archivos. Usado para subir y descargar archivos
+                        entre un cliente y un servidor.
+                    </p>
+                    <div class="ejemplo">ftp://ftp.ejemplo.com</div>
+                    <div class="nota">
+                        <strong>📁 Puerto:</strong> 21 (comandos), 20 (datos) | <strong>Variantes:</strong> FTPS (seguro), SFTP (SSH)
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="ssh secure shell remoto terminal">
+                    <span class="categoria-badge badge-intermedio">Protocolo</span>
+                    <div class="comando">SSH (Secure Shell)</div>
+                    <p class="descripcion">
+                        Protocolo de red seguro para acceder remotamente a sistemas y ejecutar comandos.
+                        Encripta toda la comunicación.
+                    </p>
+                    <div class="ejemplo">ssh usuario@servidor.com</div>
+                    <div class="nota">
+                        <strong>🔐 Puerto:</strong> 22 | <strong>Uso:</strong> Acceso remoto a servidores, transferencia segura de archivos
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="smtp email correo electronico">
+                    <span class="categoria-badge badge-basico">Protocolo</span>
+                    <div class="comando">SMTP (Simple Mail Transfer Protocol)</div>
+                    <p class="descripcion">
+                        Protocolo para el envío de correos electrónicos. Usado por servidores
+                        de correo para transmitir mensajes.
+                    </p>
+                    <div class="ejemplo">smtp.gmail.com:587</div>
+                    <div class="nota">
+                        <strong>📧 Puerto:</strong> 25 (sin cifrar), 587 (TLS), 465 (SSL)
+                    </div>
+                </div>
+            </div>
+
+            <!-- TCP/IP -->
+            <div id="tcpip" class="category-section">
+                <h2 class="category-title">TCP/IP</h2>
+
+                <div class="termino" data-tags="tcp transmission control protocol conexion">
+                    <span class="categoria-badge badge-basico">Protocolo</span>
+                    <div class="comando">TCP (Transmission Control Protocol)</div>
+                    <p class="descripcion">
+                        Protocolo de control de transmisión. Garantiza la entrega ordenada y sin errores
+                        de datos entre aplicaciones. Orientado a conexión.
+                    </p>
+                    <div class="ejemplo">Cliente ←[SYN]→ Servidor</div>
+                    <div class="ejemplo">Cliente ←[SYN-ACK]→ Servidor</div>
+                    <div class="ejemplo">Cliente ←[ACK]→ Servidor (conexión establecida)</div>
+                    <div class="nota">
+                        <strong>✓ Características:</strong> Orientado a conexión, confiable, ordenado | <strong>Handshake:</strong> 3 pasos
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="ip internet protocol direccion">
+                    <span class="categoria-badge badge-basico">Protocolo</span>
+                    <div class="comando">IP (Internet Protocol)</div>
+                    <p class="descripcion">
+                        Protocolo de Internet. Direcciona y enruta paquetes de datos entre dispositivos
+                        en redes. Base de Internet.
+                    </p>
+                    <div class="ejemplo">IPv4: 192.168.1.1 (32 bits)</div>
+                    <div class="ejemplo">IPv6: 2001:0db8:85a3::8a2e:0370:7334 (128 bits)</div>
+                    <div class="nota">
+                        <strong>📊 Versiones:</strong> IPv4 (4.3 mil millones direcciones), IPv6 (340 sextillones)
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="udp user datagram protocol sin conexion">
+                    <span class="categoria-badge badge-intermedio">Protocolo</span>
+                    <div class="comando">UDP (User Datagram Protocol)</div>
+                    <p class="descripcion">
+                        Protocolo de datagrama de usuario. Transmisión rápida sin garantía de entrega.
+                        Sin conexión, usado para streaming y juegos en línea.
+                    </p>
+                    <div class="ejemplo">DNS, VoIP, streaming de video</div>
+                    <div class="nota">
+                        <strong>⚡ Ventaja:</strong> Más rápido que TCP | <strong>⚠️ Desventaja:</strong> No garantiza entrega ni orden
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="puerto port numero conexion">
+                    <span class="categoria-badge badge-basico">Concepto</span>
+                    <div class="comando">Puerto (Port)</div>
+                    <p class="descripcion">
+                        Número que identifica un proceso o servicio específico en un dispositivo de red.
+                        Rango: 0-65535.
+                    </p>
+                    <div class="ejemplo">:80 (HTTP), :443 (HTTPS), :22 (SSH), :3306 (MySQL)</div>
+                    <div class="nota">
+                        <strong>📍 Tipos:</strong> Bien conocidos (0-1023), Registrados (1024-49151), Dinámicos (49152-65535)
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="direccion ip address ipv4 ipv6">
+                    <span class="categoria-badge badge-basico">Concepto</span>
+                    <div class="comando">Dirección IP</div>
+                    <p class="descripcion">
+                        Identificador único numérico asignado a cada dispositivo en una red.
+                        Permite ubicar y comunicarse con dispositivos.
+                    </p>
+                    <div class="ejemplo">IPv4: 192.168.0.1 (privada)</div>
+                    <div class="ejemplo">IPv4: 8.8.8.8 (pública - Google DNS)</div>
+                    <div class="nota">
+                        <strong>🏠 Privadas:</strong> 192.168.x.x, 10.x.x.x, 172.16-31.x.x | <strong>🌐 Públicas:</strong> Únicas en Internet
+                    </div>
+                </div>
+            </div>
+
+            <!-- DNS Y URL -->
+            <div id="dns" class="category-section">
+                <h2 class="category-title">DNS y URL</h2>
+
+                <div class="termino" data-tags="dns domain name system nombres dominio">
+                    <span class="categoria-badge badge-basico">Protocolo</span>
+                    <div class="comando">DNS (Domain Name System)</div>
+                    <p class="descripcion">
+                        Sistema de nombres de dominio. Traduce nombres de dominio legibles (google.com)
+                        a direcciones IP numéricas (142.250.185.46).
+                    </p>
+                    <div class="ejemplo">www.google.com → 142.250.185.46</div>
+                    <div class="nota">
+                        <strong>📞 Analogía:</strong> Como una agenda telefónica de Internet | <strong>Puerto:</strong> 53
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="url uniform resource locator direccion web">
+                    <span class="categoria-badge badge-basico">Concepto</span>
+                    <div class="comando">URL (Uniform Resource Locator)</div>
+                    <p class="descripcion">
+                        Localizador uniforme de recursos. Dirección completa que especifica la ubicación
+                        de un recurso en Internet y cómo acceder a él.
+                    </p>
+                    <div class="ejemplo">https://www.ejemplo.com:443/ruta/pagina.html?id=123#seccion</div>
+                    <div class="ejemplo">  ↑       ↑            ↑    ↑              ↑        ↑</div>
+                    <div class="ejemplo">Protocolo Dominio   Puerto  Ruta       Query   Fragment</div>
+                    <div class="nota">
+                        <strong>📝 Partes:</strong> protocolo://dominio:puerto/ruta?query#fragmento
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="dominio domain nombre">
+                    <span class="categoria-badge badge-basico">Concepto</span>
+                    <div class="comando">Dominio (Domain)</div>
+                    <p class="descripcion">
+                        Nombre único y legible que identifica un sitio web. Ejemplo: google.com, unsa.edu.pe
+                    </p>
+                    <div class="ejemplo">ejemplo.com</div>
+                    <div class="ejemplo">  ↑      ↑</div>
+                    <div class="ejemplo">Nombre  TLD (Top-Level Domain)</div>
+                    <div class="nota">
+                        <strong>🌍 TLDs:</strong> .com (comercial), .org (organización), .edu (educación), .pe (Perú)
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="subdominio subdomain">
+                    <span class="categoria-badge badge-basico">Concepto</span>
+                    <div class="comando">Subdominio</div>
+                    <p class="descripcion">
+                        Subdivisión de un dominio principal. Usado para organizar secciones de un sitio.
+                    </p>
+                    <div class="ejemplo">blog.ejemplo.com</div>
+                    <div class="ejemplo">api.ejemplo.com</div>
+                    <div class="ejemplo">www.ejemplo.com (www es un subdominio)</div>
+                </div>
+            </div>
+
+            <!-- MÉTODOS HTTP -->
+            <div id="metodos" class="category-section">
+                <h2 class="category-title">Métodos HTTP</h2>
+
+                <div class="termino" data-tags="get obtener solicitar">
+                    <span class="categoria-badge badge-basico">Método HTTP</span>
+                    <div class="comando">GET</div>
+                    <p class="descripcion">
+                        Solicita datos del servidor. Los parámetros van en la URL (visibles).
+                        Idempotente y cacheable. Usado para obtener recursos.
+                    </p>
+                    <div class="ejemplo">GET /api/usuarios?id=123 HTTP/1.1</div>
+                    <div class="nota">
+                        <strong>✓ Características:</strong> Visible en URL, limitado (~2000 caracteres), cacheable, idempotente
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="post enviar crear datos">
+                    <span class="categoria-badge badge-basico">Método HTTP</span>
+                    <div class="comando">POST</div>
+                    <p class="descripcion">
+                        Envía datos al servidor. Los datos van en el cuerpo (body) de la petición.
+                        No idempotente. Usado para crear recursos o enviar formularios.
+                    </p>
+                    <div class="ejemplo">POST /api/usuarios HTTP/1.1</div>
+                    <div class="ejemplo">Content-Type: application/json</div>
+                    <div class="ejemplo">{"nombre": "Juan", "email": "juan@ejemplo.com"}</div>
+                    <div class="nota">
+                        <strong>✓ Características:</strong> Oculto en body, sin límite de tamaño, NO cacheable, NO idempotente
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="put actualizar modificar">
+                    <span class="categoria-badge badge-intermedio">Método HTTP</span>
+                    <div class="comando">PUT</div>
+                    <p class="descripcion">
+                        Actualiza o reemplaza completamente un recurso existente. Idempotente.
+                    </p>
+                    <div class="ejemplo">PUT /api/usuarios/123 HTTP/1.1</div>
+                    <div class="ejemplo">{"nombre": "Juan Pérez", "edad": 30}</div>
+                    <div class="nota">
+                        <strong>💡 Diferencia:</strong> PUT reemplaza TODO el recurso, PATCH actualiza parcialmente
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="delete eliminar borrar">
+                    <span class="categoria-badge badge-intermedio">Método HTTP</span>
+                    <div class="comando">DELETE</div>
+                    <p class="descripcion">
+                        Elimina un recurso del servidor. Idempotente.
+                    </p>
+                    <div class="ejemplo">DELETE /api/usuarios/123 HTTP/1.1</div>
+                </div>
+
+                <div class="termino" data-tags="patch actualizar parcial">
+                    <span class="categoria-badge badge-intermedio">Método HTTP</span>
+                    <div class="comando">PATCH</div>
+                    <p class="descripcion">
+                        Actualiza parcialmente un recurso. Solo modifica los campos especificados.
+                    </p>
+                    <div class="ejemplo">PATCH /api/usuarios/123 HTTP/1.1</div>
+                    <div class="ejemplo">{"edad": 31} (solo actualiza edad)</div>
+                </div>
+            </div>
+
+            <!-- CÓDIGOS DE ESTADO -->
+            <div id="codigos" class="category-section">
+                <h2 class="category-title">Códigos de Estado HTTP</h2>
+
+                <div class="termino" data-tags="200 ok exito">
+                    <span class="categoria-badge badge-basico">Código 2xx</span>
+                    <div class="comando">200 OK</div>
+                    <p class="descripcion">
+                        Petición exitosa. El servidor respondió correctamente con los datos solicitados.
+                    </p>
+                    <div class="nota">
+                        <strong>✅ Significado:</strong> Todo está bien, operación completada con éxito
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="201 created creado">
+                    <span class="categoria-badge badge-basico">Código 2xx</span>
+                    <div class="comando">201 Created</div>
+                    <p class="descripcion">
+                        Recurso creado exitosamente. Típicamente después de un POST.
+                    </p>
+                </div>
+
+                <div class="termino" data-tags="301 moved permanently redireccion">
+                    <span class="categoria-badge badge-intermedio">Código 3xx</span>
+                    <div class="comando">301 Moved Permanently</div>
+                    <p class="descripcion">
+                        El recurso se ha movido permanentemente a una nueva URL.
+                    </p>
+                    <div class="nota">
+                        <strong>🔄 Redirección:</strong> Los navegadores guardan la nueva URL y futuros requests van directamente ahí
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="302 found redireccion temporal">
+                    <span class="categoria-badge badge-intermedio">Código 3xx</span>
+                    <div class="comando">302 Found</div>
+                    <p class="descripcion">
+                        El recurso está temporalmente en otra URL.
+                    </p>
+                </div>
+
+                <div class="termino" data-tags="400 bad request solicitud incorrecta">
+                    <span class="categoria-badge badge-basico">Código 4xx</span>
+                    <div class="comando">400 Bad Request</div>
+                    <p class="descripcion">
+                        La solicitud tiene sintaxis incorrecta o no puede ser procesada por el servidor.
+                    </p>
+                    <div class="nota">
+                        <strong>❌ Error del cliente:</strong> Datos inválidos, JSON malformado, parámetros faltantes
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="401 unauthorized no autorizado">
+                    <span class="categoria-badge badge-intermedio">Código 4xx</span>
+                    <div class="comando">401 Unauthorized</div>
+                    <p class="descripcion">
+                        Se requiere autenticación. El usuario no está autenticado.
+                    </p>
+                    <div class="nota">
+                        <strong>🔐 Solución:</strong> Proporcionar credenciales válidas (login, token)
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="403 forbidden prohibido">
+                    <span class="categoria-badge badge-intermedio">Código 4xx</span>
+                    <div class="comando">403 Forbidden</div>
+                    <p class="descripcion">
+                        El servidor entiende la petición pero se niega a autorizarla. Aunque estés autenticado, no tienes permisos.
+                    </p>
+                </div>
+
+                <div class="termino" data-tags="404 not found no encontrado">
+                    <span class="categoria-badge badge-basico">Código 4xx</span>
+                    <div class="comando">404 Not Found</div>
+                    <p class="descripcion">
+                        El recurso solicitado no existe en el servidor.
+                    </p>
+                    <div class="nota">
+                        <strong>🔍 Causa común:</strong> URL incorrecta, recurso eliminado, ruta inexistente
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="500 internal server error error servidor">
+                    <span class="categoria-badge badge-avanzado">Código 5xx</span>
+                    <div class="comando">500 Internal Server Error</div>
+                    <p class="descripcion">
+                        Error genérico del servidor. Algo falló en el servidor al procesar la petición.
+                    </p>
+                    <div class="nota">
+                        <strong>⚠️ Error del servidor:</strong> Bug en el código, base de datos caída, excepción no manejada
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="503 service unavailable servicio no disponible">
+                    <span class="categoria-badge badge-avanzado">Código 5xx</span>
+                    <div class="comando">503 Service Unavailable</div>
+                    <p class="descripcion">
+                        El servidor no está disponible temporalmente (mantenimiento, sobrecarga).
+                    </p>
+                </div>
+            </div>
+
+            <!-- SEGURIDAD -->
+            <div id="seguridad" class="category-section">
+                <h2 class="category-title">Seguridad</h2>
+
+                <div class="termino" data-tags="ssl secure sockets layer">
+                    <span class="categoria-badge badge-intermedio">Seguridad</span>
+                    <div class="comando">SSL (Secure Sockets Layer)</div>
+                    <p class="descripcion">
+                        Protocolo de seguridad obsoleto (reemplazado por TLS). Encripta la comunicación
+                        entre cliente y servidor.
+                    </p>
+                    <div class="nota">
+                        <strong>⚠️ Nota:</strong> Ahora se usa TLS, pero comúnmente se sigue llamando "SSL"
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="tls transport layer security">
+                    <span class="categoria-badge badge-intermedio">Seguridad</span>
+                    <div class="comando">TLS (Transport Layer Security)</div>
+                    <p class="descripcion">
+                        Protocolo de seguridad que encripta datos transmitidos por la red.
+                        Sucesor mejorado de SSL.
+                    </p>
+                    <div class="ejemplo">HTTPS usa TLS para encriptar HTTP</div>
+                    <div class="nota">
+                        <strong>🔐 Versiones:</strong> TLS 1.2, TLS 1.3 (más moderna y rápida)
+                    </div>
+                </div>
+
+                <div class="termino" data-tags="certificado digital certificate">
+                    <span class="categoria-badge badge-intermedio">Seguridad</span>
+                    <div class="comando">Certificado Digital</div>
+                    <p class="descripcion">
+                        Documento electrónico que verifica la identidad de un sitio web.
+                        Emitido por una Autoridad Certificadora (CA).
+                    </p>
+                    <div class="nota">
+                        <strong>🔒 Uso:</strong> Habilita HTTPS, muestra candado en navegador | <strong>Emisor:</strong> Let's Encrypt, DigiCert
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARQUITECTURA -->
+            <div id="arquitectura" class="category-section">
+                <h2 class="category-title">Arquitectura</h2>
+
+                <div class="termino" data-tags="cliente client navegador browser">
+                    <span class="categoria-badge badge-basico">Arquitectura</span>
+                    <div class="comando">Cliente (Client)</div>
+                    <p class="descripcion">
+                        Aplicación que solicita recursos o servicios a un servidor. En web: navegadores.
+                    </p>
+                    <div class="ejemplo">Chrome, Firefox, Safari, Edge</div>
+                </div>
+
+                <div class="termino" data-tags="servidor server backend">
+                    <span class="categoria-badge badge-basico">Arquitectura</span>
+                    <div class="comando">Servidor (Server)</div>
+                    <p class="descripcion">
+                        Sistema que provee recursos o servicios a clientes. Procesa peticiones y envía respuestas.
+                    </p>
+                    <div class="ejemplo">Apache, Nginx, Node.js, IIS</div>
+                </div>
+
+                <div class="termino" data-tags="cliente servidor architecture arquitectura">
+                    <span class="categoria-badge badge-basico">Arquitectura</span>
+                    <div class="comando">Cliente-Servidor</div>
+                    <p class="descripcion">
+                        Modelo de arquitectura donde clientes solicitan servicios y servidores los proveen.
+                        Comunicación mediante protocolos (HTTP, FTP, etc.).
+                    </p>
+                    <div class="ejemplo">Cliente (navegador) → Request → Servidor (Apache)</div>
+                    <div class="ejemplo">Cliente (navegador) ← Response ← Servidor (Apache)</div>
+                </div>
+
+                <div class="termino" data-tags="request peticion solicitud">
+                    <span class="categoria-badge badge-basico">Concepto</span>
+                    <div class="comando">Request (Petición)</div>
+                    <p class="descripcion">
+                        Mensaje enviado por un cliente a un servidor solicitando un recurso o acción.
+                    </p>
+                    <div class="ejemplo">GET /index.html HTTP/1.1</div>
+                    <div class="ejemplo">Host: www.ejemplo.com</div>
+                </div>
+
+                <div class="termino" data-tags="response respuesta">
+                    <span class="categoria-badge badge-basico">Concepto</span>
+                    <div class="comando">Response (Respuesta)</div>
+                    <p class="descripcion">
+                        Mensaje enviado por el servidor al cliente en respuesta a una petición.
+                        Incluye código de estado y datos solicitados.
+                    </p>
+                    <div class="ejemplo">HTTP/1.1 200 OK</div>
+                    <div class="ejemplo">Content-Type: text/html</div>
+                    <div class="ejemplo">&lt;html&gt;...&lt;/html&gt;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Glosario de Protocolos - Sistema de Aprendizaje</p>
+    </footer>
+
+    <!-- Sidebar Component -->
+    <script src="/assets/js/sidebar-component.js"></script>
+
+    <!-- Búsqueda en Glosario -->
+    <script>
+        const searchBox = document.getElementById('searchBox');
+        const terminos = document.querySelectorAll('.termino');
+
+        searchBox.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+
+            terminos.forEach(termino => {
+                const comando = termino.querySelector('.comando').textContent.toLowerCase();
+                const descripcion = termino.querySelector('.descripcion').textContent.toLowerCase();
+                const tags = termino.getAttribute('data-tags').toLowerCase();
+
+                if (comando.includes(searchTerm) || descripcion.includes(searchTerm) || tags.includes(searchTerm)) {
+                    termino.style.display = 'block';
+                } else {
+                    termino.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

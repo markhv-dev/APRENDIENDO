@@ -13,6 +13,35 @@
 
     <!-- Ejercicios Styles -->
     <link rel="stylesheet" href="/assets/css/ejercicios.css">
+
+    <style>
+        .btn-start {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+        .btn-start:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+            background: linear-gradient(135deg, #357abd, #2868a8);
+        }
+        details summary {
+            cursor: pointer;
+            font-weight: 600;
+            color: #4a90e2;
+            margin-bottom: 15px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -43,6 +72,8 @@
             <span class="nivel basico">Básico</span>
             <h2>Ejercicio 1: Mi Primera Página</h2>
             <p class="objetivo"><strong>Objetivo:</strong> Crear la estructura básica de una página HTML válida.</p>
+            <details>
+                <summary>👁️ Ver Tareas y Tips</summary>
             <div class="instrucciones">
                 <strong>Tareas:</strong>
                 <ul>
@@ -57,12 +88,18 @@
             <div class="tip">
                 <strong>💡 Tip:</strong> Asegúrate de cerrar todas las etiquetas correctamente. Usa la indentación para mantener tu código organizado y legible.
             </div>
+            </details>
+            <a href="ejercicio1-practica.html" class="btn-start">
+                ⚡ Empezar
+            </a>
         </div>
 
         <div class="ejercicio">
             <span class="nivel basico">Básico</span>
             <h2>Ejercicio 2: Jerarquía de Encabezados</h2>
             <p class="objetivo"><strong>Objetivo:</strong> Practicar el uso correcto de diferentes niveles de encabezados.</p>
+            <details>
+                <summary>👁️ Ver Tareas</summary>
             <div class="instrucciones">
                 <strong>Tareas:</strong>
                 <ul>
@@ -74,12 +111,18 @@
                     <li>Asegúrate de no saltar niveles de encabezados (no uses h4 después de h2)</li>
                 </ul>
             </div>
+            </details>
+            <a href="ejercicio2-practica.html" class="btn-start">
+                ⚡ Empezar
+            </a>
         </div>
 
         <div class="ejercicio">
             <span class="nivel basico">Básico</span>
             <h2>Ejercicio 3: Listas y Organización</h2>
             <p class="objetivo"><strong>Objetivo:</strong> Dominar listas ordenadas, no ordenadas y anidadas.</p>
+            <details>
+                <summary>👁️ Ver Tareas y Tips</summary>
             <div class="instrucciones">
                 <strong>Tareas:</strong>
                 <ul>
@@ -93,12 +136,18 @@
             <div class="tip">
                 <strong>💡 Tip:</strong> Las listas anidadas deben ir dentro de elementos <code>&lt;li&gt;</code>, no directamente dentro de <code>&lt;ul&gt;</code> u <code>&lt;ol&gt;</code>.
             </div>
+            </details>
+            <a href="ejercicio3-practica.html" class="btn-start">
+                ⚡ Empezar
+            </a>
         </div>
 
         <div class="ejercicio">
             <span class="nivel basico">Básico</span>
             <h2>Ejercicio 4: Enlaces e Imágenes</h2>
             <p class="objetivo"><strong>Objetivo:</strong> Trabajar con hipervínculos e imágenes.</p>
+            <details>
+                <summary>👁️ Ver Tareas</summary>
             <div class="instrucciones">
                 <strong>Tareas:</strong>
                 <ul>
@@ -111,12 +160,18 @@
                     <li>Agrega un enlace que lleve a una sección específica de la misma página (ancla interna)</li>
                 </ul>
             </div>
+            </details>
+            <a href="ejercicio4-practica.html" class="btn-start">
+                ⚡ Empezar
+            </a>
         </div>
 
         <div class="ejercicio">
             <span class="nivel basico">Básico</span>
             <h2>Ejercicio 5: Formato de Texto</h2>
             <p class="objetivo"><strong>Objetivo:</strong> Usar etiquetas de formato semántico de texto.</p>
+            <details>
+                <summary>👁️ Ver Tareas</summary>
             <div class="instrucciones">
                 <strong>Tareas:</strong>
                 <ul>
@@ -130,6 +185,10 @@
                     <li>Usa <code>&lt;hr&gt;</code> para separar secciones temáticas</li>
                 </ul>
             </div>
+            </details>
+            <a href="ejercicio5-practica.html" class="btn-start">
+                ⚡ Empezar
+            </a>
         </div>
 
         <!-- EJERCICIOS INTERMEDIOS -->
@@ -139,6 +198,8 @@
             <span class="nivel intermedio">Intermedio</span>
             <h2>Ejercicio 6: Tablas de Datos</h2>
             <p class="objetivo"><strong>Objetivo:</strong> Crear y estructurar tablas HTML correctamente.</p>
+            <details>
+                <summary>👁️ Ver Tareas y Tips</summary>
             <div class="instrucciones">
                 <strong>Tareas:</strong>
                 <ul>
@@ -154,12 +215,18 @@
             <div class="tip">
                 <strong>💡 Tip:</strong> Las tablas deben usarse solo para datos tabulares, no para diseñar el layout de la página.
             </div>
+            </details>
+            <a href="ejercicio6-practica.html" class="btn-start">
+                ⚡ Empezar
+            </a>
         </div>
 
         <div class="ejercicio">
             <span class="nivel intermedio">Intermedio</span>
             <h2>Ejercicio 7: Formulario de Registro</h2>
             <p class="objetivo"><strong>Objetivo:</strong> Crear un formulario completo con diferentes tipos de inputs.</p>
+            <details>
+                <summary>👁️ Ver Tareas</summary>
             <div class="instrucciones">
                 <strong>Tareas:</strong>
                 <ul>
@@ -175,12 +242,18 @@
                     <li>Añade un botón de submit y otro de reset</li>
                 </ul>
             </div>
+            </details>
+            <a href="ejercicio7-practica.html" class="btn-start">
+                ⚡ Empezar
+            </a>
         </div>
 
         <div class="ejercicio">
             <span class="nivel intermedio">Intermedio</span>
             <h2>Ejercicio 8: Estructura Semántica</h2>
             <p class="objetivo"><strong>Objetivo:</strong> Usar correctamente las etiquetas semánticas HTML5.</p>
+            <details>
+                <summary>👁️ Ver Tareas</summary>
             <div class="instrucciones">
                 <strong>Tareas:</strong>
                 <ul>
@@ -196,12 +269,18 @@
                     <li>Usa <code>&lt;time&gt;</code> con el atributo <code>datetime</code> para las fechas</li>
                 </ul>
             </div>
+            </details>
+            <a href="ejercicio8-practica.html" class="btn-start">
+                ⚡ Empezar
+            </a>
         </div>
 
         <div class="ejercicio">
             <span class="nivel intermedio">Intermedio</span>
             <h2>Ejercicio 9: Multimedia</h2>
             <p class="objetivo"><strong>Objetivo:</strong> Integrar elementos multimedia en una página.</p>
+            <details>
+                <summary>👁️ Ver Tareas</summary>
             <div class="instrucciones">
                 <strong>Tareas:</strong>
                 <ul>
@@ -215,6 +294,10 @@
                     <li>Añade atributos <code>poster</code> para el video y <code>loading="lazy"</code> para las imágenes</li>
                 </ul>
             </div>
+            </details>
+            <a href="ejercicio9-practica.html" class="btn-start">
+                ⚡ Empezar
+            </a>
         </div>
 
         <!-- EJERCICIOS AVANZADOS -->
@@ -224,6 +307,8 @@
             <span class="nivel avanzado">Avanzado</span>
             <h2>Ejercicio 10: Formulario Avanzado con Validación</h2>
             <p class="objetivo"><strong>Objetivo:</strong> Trabajar con validación HTML5 y tipos de input avanzados.</p>
+            <details>
+                <summary>👁️ Ver Tareas y Tips</summary>
             <div class="instrucciones">
                 <strong>Tareas:</strong>
                 <ul>
@@ -246,12 +331,18 @@
             <div class="tip">
                 <strong>💡 Tip:</strong> Prueba el formulario sin llenar campos requeridos para ver la validación HTML5 en acción.
             </div>
+            </details>
+            <a href="ejercicio10-practica.html" class="btn-start">
+                ⚡ Empezar
+            </a>
         </div>
 
         <div class="ejercicio">
             <span class="nivel avanzado">Avanzado</span>
             <h2>Ejercicio 11: Metadatos y SEO</h2>
             <p class="objetivo"><strong>Objetivo:</strong> Optimizar el head del documento para SEO y redes sociales.</p>
+            <details>
+                <summary>👁️ Ver Tareas</summary>
             <div class="instrucciones">
                 <strong>Tareas:</strong>
                 <ul>
@@ -275,12 +366,18 @@
                     <li>Agrega <code>&lt;meta name="robots"&gt;</code> con <code>content="index, follow"</code></li>
                 </ul>
             </div>
+            </details>
+            <a href="ejercicio11-practica.html" class="btn-start">
+                ⚡ Empezar
+            </a>
         </div>
 
         <div class="ejercicio">
             <span class="nivel avanzado">Avanzado</span>
             <h2>Ejercicio 12: Componentes Interactivos</h2>
             <p class="objetivo"><strong>Objetivo:</strong> Usar elementos HTML interactivos sin JavaScript.</p>
+            <details>
+                <summary>👁️ Ver Tareas</summary>
             <div class="instrucciones">
                 <strong>Tareas:</strong>
                 <ul>
@@ -294,6 +391,10 @@
                     <li>Incluye diálogos <code>&lt;dialog&gt;</code> si tu navegador los soporta</li>
                 </ul>
             </div>
+            </details>
+            <a href="ejercicio12-practica.html" class="btn-start">
+                ⚡ Empezar
+            </a>
         </div>
 
         <!-- PROYECTO FINAL EXPERTO -->
@@ -303,6 +404,8 @@
             <span class="nivel experto">Experto</span>
             <h2>Ejercicio 13: Portfolio Personal Completo</h2>
             <p class="objetivo"><strong>Objetivo:</strong> Demostrar dominio completo de HTML creando un sitio web multipágina profesional.</p>
+            <details>
+                <summary>👁️ Ver Tareas y Tips</summary>
             <div class="instrucciones">
                 <strong>Crea un sitio web de portfolio personal con mínimo 5 páginas:</strong>
 
@@ -388,6 +491,10 @@
                     <li>Prueba tu sitio en diferentes navegadores</li>
                 </ul>
             </div>
+            </details>
+            <a href="ejercicio13-practica.html" class="btn-start">
+                ⚡ Empezar
+            </a>
         </div>
     </div>
 

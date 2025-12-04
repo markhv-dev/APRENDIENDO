@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posicionamiento - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a CSS</a>
+        <span class="icon">📍</span>
+        <h1>Módulo 8: Posicionamiento</h1>
+        <p class="subtitle">Position, z-index y display</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #f1c40f; margin-bottom: 40px;">
+                <h2 style="color: #f1c40f; margin-bottom: 15px; font-size: 1.8em;">📍 Posicionamiento</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    El posicionamiento controla cómo los elementos se colocan en la página
+                    y cómo interactúan entre sí.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="position-static" data-tags="position static estatico default">
+                        <span class="tag">📋 position: static</span>
+                        <p class="significado">Posición normal del flujo (default)</p>
+                        <div class="ejemplo">position: static;  /* Valor por defecto */
+
+/* top, right, bottom, left NO funcionan con static */</div>
+                    </div>
+
+                    <div class="termino" id="position-relative" data-tags="position relative relativo">
+                        <span class="tag">📋 position: relative</span>
+                        <p class="significado">Relativo a su posición original</p>
+                        <p class="descripcion">
+                            El elemento mantiene su espacio en el flujo pero puede moverse
+                            relativamente a su posición original.
+                        </p>
+                        <div class="ejemplo">.elemento {
+    position: relative;
+    top: 10px;      /* 10px abajo de su posición */
+    left: 20px;     /* 20px a la derecha */
+}
+
+/* Uso común: contenedor para position: absolute */
+.parent {
+    position: relative;
+}
+
+.child {
+    position: absolute;
+    /* Se posiciona relativo a .parent */
+}</div>
+                    </div>
+
+                    <div class="termino" id="position-absolute" data-tags="position absolute absoluto">
+                        <span class="tag">📋 position: absolute</span>
+                        <p class="significado">Relativo al ancestro posicionado más cercano</p>
+                        <p class="descripcion">
+                            Sale del flujo normal. Se posiciona respecto al ancestro con position
+                            diferente a static (o el viewport si no hay ninguno).
+                        </p>
+                        <div class="ejemplo">.parent {
+    position: relative;
+}
+
+.absolute-child {
+    position: absolute;
+    top: 0;
+    right: 0;        /* Esquina superior derecha */
+}
+
+/* Centrar con absolute */
+.centrado {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Llenar todo el contenedor */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* O: inset: 0; */
+}</div>
+                    </div>
+
+                    <div class="termino" id="position-fixed" data-tags="position fixed fijo viewport">
+                        <span class="tag">📋 position: fixed</span>
+                        <p class="significado">Fijo respecto al viewport</p>
+                        <p class="descripcion">
+                            Se posiciona respecto al viewport y permanece fijo al hacer scroll.
+                        </p>
+                        <div class="ejemplo">/* Header fijo */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    z-index: 1000;
+}
+
+/* Botón flotante */
+.fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}</div>
+                    </div>
+
+                    <div class="termino" id="position-sticky" data-tags="position sticky pegajoso">
+                        <span class="tag">📋 position: sticky</span>
+                        <p class="significado">Híbrido entre relative y fixed</p>
+                        <p class="descripcion">
+                            Se comporta como relative hasta que alcanza un umbral,
+                            luego se comporta como fixed.
+                        </p>
+                        <div class="ejemplo">/* Header que se pega al hacer scroll */
+.sticky-header {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 100;
+}
+
+/* Sidebar sticky */
+.sidebar {
+    position: sticky;
+    top: 80px;  /* Se pega 80px desde arriba */
+}</div>
+                        <div class="nota">
+                            <strong>⚠️ Importante:</strong> Requiere un valor de top/bottom para funcionar.
+                            El padre no puede tener overflow: hidden.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="z-index" data-tags="z-index capas apilamiento">
+                        <span class="tag">📋 z-index</span>
+                        <p class="significado">Orden de apilamiento (eje Z)</p>
+                        <p class="descripcion">
+                            Controla qué elemento aparece encima de otro.
+                            Solo funciona con position diferente a static.
+                        </p>
+                        <div class="ejemplo">/* Mayor z-index = más arriba */
+.dropdown {
+    z-index: 100;
+}
+
+.modal {
+    z-index: 1000;
+}
+
+.tooltip {
+    z-index: 9999;
+}
+
+/* Escala recomendada */
+:root {
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-modal: 1000;
+    --z-tooltip: 9999;
+}</div>
+                    </div>
+
+                    <div class="termino" id="display" data-tags="display block inline none">
+                        <span class="tag">📋 display</span>
+                        <p class="significado">Tipo de caja del elemento</p>
+                        <div class="ejemplo">display: block;         /* Bloque, ocupa todo el ancho */
+display: inline;        /* En línea, no acepta width/height */
+display: inline-block;  /* Híbrido */
+display: none;          /* Oculta completamente */
+display: flex;          /* Contenedor flex */
+display: grid;          /* Contenedor grid */
+display: contents;      /* Solo el contenido, no la caja */
+
+/* inline-flex, inline-grid */
+display: inline-flex;</div>
+                    </div>
+
+                    <div class="termino" id="visibility" data-tags="visibility hidden visible">
+                        <span class="tag">📋 visibility</span>
+                        <p class="significado">Visibilidad (mantiene espacio)</p>
+                        <div class="ejemplo">visibility: visible;    /* Visible (default) */
+visibility: hidden;     /* Oculto pero ocupa espacio */
+visibility: collapse;   /* Para tablas */
+
+/* Diferencia con display: none */
+.display-none {
+    display: none;      /* No ocupa espacio */
+}
+
+.visibility-hidden {
+    visibility: hidden; /* Ocupa espacio, invisible */
+}</div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">📍 Posicionamiento</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#position-static" class="toc-link">position: static</a></li>
+                    <li class="toc-item"><a href="#position-relative" class="toc-link">position: relative</a></li>
+                    <li class="toc-item"><a href="#position-absolute" class="toc-link">position: absolute</a></li>
+                    <li class="toc-item"><a href="#position-fixed" class="toc-link">position: fixed</a></li>
+                    <li class="toc-item"><a href="#position-sticky" class="toc-link">position: sticky</a></li>
+                    <li class="toc-item"><a href="#z-index" class="toc-link">z-index</a></li>
+                    <li class="toc-item"><a href="#display" class="toc-link">display</a></li>
+                    <li class="toc-item"><a href="#visibility" class="toc-link">visibility</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>CSS - Sistema de Aprendizaje | <a href="../index.html">Volver a CSS</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) {
+                return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const tags = termino.getAttribute('data-tags') || '';
+                    const title = termino.querySelector('.tag')?.textContent || '';
+                    const desc = termino.querySelector('.descripcion')?.textContent || '';
+                    const ejemplo = termino.querySelector('.ejemplo')?.textContent || '';
+                    const searchText = normalizeText(tags + ' ' + title + ' ' + desc + ' ' + ejemplo);
+                    if (query === '' || searchText.includes(query)) {
+                        termino.style.display = 'block';
+                        found++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+</body>
+</html>

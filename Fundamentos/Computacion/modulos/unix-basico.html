@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>UNIX Básico</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver</a>
+        <h1>UNIX Básico</h1>
+    </header>
+    <div class="container">
+        <div class="termino">
+            <span class="tag">⌨️ Comandos Básicos</span>
+            <div class="ejemplo">
+                <strong>ls</strong> - Lista archivos<br>
+                <strong>cd</strong> - Cambia directorio<br>
+                <strong>pwd</strong> - Muestra ruta actual<br>
+                <strong>mkdir</strong> - Crea directorio<br>
+                <strong>rm</strong> - Elimina archivos<br>
+                <strong>cp</strong> - Copia archivos<br>
+                <strong>mv</strong> - Mueve/renombra
+            </div>
+        </div>
+        <div class="termino">
+            <span class="tag">📁 Sistema de Archivos</span>
+            <p class="descripcion">Estructura jerárquica desde raíz (/).</p>
+            <div class="ejemplo">
+                / (raíz)<br>
+                ├── home/ (usuarios)<br>
+                ├── etc/ (configuración)<br>
+                ├── var/ (variables, logs)<br>
+                └── usr/ (programas)
+            </div>
+        </div>
+        <div class="termino">
+            <span class="tag">🔐 Permisos</span>
+            <p class="descripcion">rwx para usuario, grupo y otros.</p>
+            <div class="ejemplo">
+                <strong>r</strong> = lectura (4)<br>
+                <strong>w</strong> = escritura (2)<br>
+                <strong>x</strong> = ejecución (1)<br>
+                <br>
+                rwxr-xr-x = 755
+            </div>
+        </div>
+        <div class="termino">
+            <span class="tag">👤 root</span>
+            <p class="descripcion">Superusuario con todos los permisos. Administrador del sistema.</p>
+            <div class="nota"><strong>⚠️</strong> root puede hacer cualquier cosa, usar con cuidado</div>
+        </div>
+        <div class="termino" style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(76, 175, 80, 0.05)); border-left: 4px solid #4CAF50;">
+            <span class="tag" style="background: #4CAF50;">💡 Para el Examen</span>
+            <div class="nota">
+                ✅ <strong>Comandos:</strong> ls, cd, pwd, mkdir, rm<br>
+                ✅ <strong>Sistema archivos:</strong> Jerárquico desde /<br>
+                ✅ <strong>Permisos:</strong> rwx (lectura, escritura, ejecución)<br>
+                ✅ <strong>root:</strong> Superusuario
+            </div>
+        </div>
+    </div>
+    <script src="/assets/js/sidebar-component.js"></script>
+</body>
+</html>

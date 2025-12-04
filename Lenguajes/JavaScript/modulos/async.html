@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asincronía - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a JavaScript</a>
+        <span class="icon">⏱️</span>
+        <h1>Módulo 9: Asincronía</h1>
+        <p class="subtitle">Promises, async/await y Fetch API</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #f1c40f; margin-bottom: 40px;">
+                <h2 style="color: #f1c40f; margin-bottom: 15px; font-size: 1.8em;">⏱️ Asincronía</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0;">
+                    JavaScript es single-threaded pero maneja operaciones asíncronas con callbacks, promises y async/await.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="callbacks" data-tags="callback asincrono setTimeout">
+                        <span class="tag">📋 Callbacks</span>
+                        <p class="significado">Funciones pasadas como argumentos</p>
+                        <div class="ejemplo">// setTimeout
+setTimeout(() => {
+    console.log("Después de 1 segundo");
+}, 1000);
+
+// setInterval
+const id = setInterval(() => {
+    console.log("Cada 2 segundos");
+}, 2000);
+clearInterval(id);  // Detener
+
+// Callback pattern
+function obtenerDatos(callback) {
+    setTimeout(() => {
+        const datos = { id: 1, nombre: "Ana" };
+        callback(datos);
+    }, 1000);
+}
+
+obtenerDatos((datos) => {
+    console.log(datos);
+});
+
+// Callback Hell (evitar)
+obtenerUsuario(id, (usuario) => {
+    obtenerPosts(usuario.id, (posts) => {
+        obtenerComentarios(posts[0].id, (comments) => {
+            // Difícil de leer y mantener
+        });
+    });
+});</div>
+                        <div class="nota">
+                            <strong>⚠️ Problema:</strong> Los callbacks anidados crean "callback hell". Usa Promises o async/await.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="promises" data-tags="promise promesa then catch finally">
+                        <span class="tag">📋 Promises</span>
+                        <p class="significado">Objeto que representa valor futuro</p>
+                        <div class="ejemplo">// Crear promise
+const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        const exito = true;
+        if (exito) {
+            resolve({ data: "OK" });
+        } else {
+            reject(new Error("Falló"));
+        }
+    }, 1000);
+});
+
+// Consumir con then/catch
+promise
+    .then(result => {
+        console.log(result);
+        return result.data;
+    })
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.error(error.message);
+    })
+    .finally(() => {
+        console.log("Siempre se ejecuta");
+    });
+
+// Estados: pending → fulfilled/rejected
+
+// Ejemplo práctico
+function delay(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+delay(1000).then(() => console.log("1 segundo después"));</div>
+                    </div>
+
+                    <div class="termino" id="promise-methods" data-tags="Promise all allSettled race any">
+                        <span class="tag">📋 Métodos de Promise</span>
+                        <p class="significado">Promise.all, race, allSettled</p>
+                        <div class="ejemplo">const p1 = fetch("/api/users");
+const p2 = fetch("/api/posts");
+const p3 = fetch("/api/comments");
+
+// Promise.all - todas deben resolverse
+Promise.all([p1, p2, p3])
+    .then(([users, posts, comments]) => {
+        // Todas completadas
+    })
+    .catch(error => {
+        // Si alguna falla
+    });
+
+// Promise.allSettled - espera todas sin importar resultado
+Promise.allSettled([p1, p2, p3])
+    .then(results => {
+        results.forEach(result => {
+            if (result.status === "fulfilled") {
+                console.log(result.value);
+            } else {
+                console.log(result.reason);
+            }
+        });
+    });
+
+// Promise.race - primera en resolver/rechazar
+Promise.race([p1, timeout(5000)])
+    .then(result => {})
+    .catch(() => console.log("Timeout"));
+
+// Promise.any - primera en resolver
+Promise.any([p1, p2, p3])
+    .then(first => {})
+    .catch(() => console.log("Todas fallaron"));
+
+// Promise.resolve/reject
+Promise.resolve("valor");
+Promise.reject(new Error("error"));</div>
+                    </div>
+
+                    <div class="termino" id="async-await" data-tags="async await asincrono">
+                        <span class="tag">📋 async/await</span>
+                        <p class="significado">Sintaxis moderna para promises</p>
+                        <div class="ejemplo">// Función async siempre retorna Promise
+async function obtenerUsuario(id) {
+    const response = await fetch(`/api/users/${id}`);
+    const data = await response.json();
+    return data;
+}
+
+// Llamar función async
+obtenerUsuario(1)
+    .then(user => console.log(user))
+    .catch(error => console.error(error));
+
+// O dentro de otra función async
+async function main() {
+    try {
+        const user = await obtenerUsuario(1);
+        console.log(user);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+// Múltiples awaits secuenciales
+async function secuencial() {
+    const a = await fetch("/api/a");  // Espera
+    const b = await fetch("/api/b");  // Después espera
+}
+
+// Paralelo con Promise.all
+async function paralelo() {
+    const [a, b] = await Promise.all([
+        fetch("/api/a"),
+        fetch("/api/b")
+    ]);
+}
+
+// Top-level await (en módulos)
+const config = await fetch("/config.json");</div>
+                        <div class="nota">
+                            <strong>💡 Tip:</strong> Siempre usa try/catch con async/await para manejar errores.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="fetch" data-tags="fetch api http request response">
+                        <span class="tag">📋 Fetch API</span>
+                        <p class="significado">API moderna para peticiones HTTP</p>
+                        <div class="ejemplo">// GET básico
+const response = await fetch("/api/users");
+const data = await response.json();
+
+// Verificar respuesta
+if (!response.ok) {
+    throw new Error(`HTTP ${response.status}`);
+}
+
+// POST con JSON
+const response = await fetch("/api/users", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        nombre: "Ana",
+        email: "ana@email.com"
+    })
+});
+
+// PUT, DELETE
+await fetch(`/api/users/${id}`, { method: "DELETE" });
+
+// Con FormData
+const formData = new FormData(form);
+await fetch("/api/upload", {
+    method: "POST",
+    body: formData
+});
+
+// Función reutilizable
+async function api(endpoint, options = {}) {
+    const response = await fetch(`/api${endpoint}`, {
+        headers: {
+            "Content-Type": "application/json",
+            ...options.headers
+        },
+        ...options
+    });
+    if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+    }
+    return response.json();
+}</div>
+                    </div>
+
+                    <div class="termino" id="error-handling" data-tags="error manejo try catch">
+                        <span class="tag">📋 Manejo de Errores</span>
+                        <p class="significado">Gestionar errores en código async</p>
+                        <div class="ejemplo">// try/catch con async/await
+async function fetchData() {
+    try {
+        const response = await fetch("/api/data");
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+        return await response.json();
+    } catch (error) {
+        if (error.name === "TypeError") {
+            console.error("Error de red");
+        } else {
+            console.error("Error:", error.message);
+        }
+        throw error;  // Re-lanzar si es necesario
+    }
+}
+
+// Wrapper para evitar try/catch repetido
+async function safeAsync(promise) {
+    try {
+        const data = await promise;
+        return [data, null];
+    } catch (error) {
+        return [null, error];
+    }
+}
+
+// Uso
+const [data, error] = await safeAsync(fetchData());
+if (error) {
+    console.error(error);
+} else {
+    console.log(data);
+}
+
+// Retry pattern
+async function fetchWithRetry(url, retries = 3) {
+    for (let i = 0; i < retries; i++) {
+        try {
+            return await fetch(url);
+        } catch (error) {
+            if (i === retries - 1) throw error;
+            await delay(1000 * (i + 1));  // Backoff
+        }
+    }
+}</div>
+                    </div>
+
+                    <div class="termino" id="patrones" data-tags="patrones practicos ejemplos">
+                        <span class="tag">📋 Patrones Prácticos</span>
+                        <p class="significado">Ejemplos comunes de uso</p>
+                        <div class="ejemplo">// Debounce (esperar que deje de escribir)
+function debounce(fn, delay) {
+    let timeoutId;
+    return (...args) => {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => fn(...args), delay);
+    };
+}
+
+const search = debounce(async (query) => {
+    const results = await api(`/search?q=${query}`);
+    displayResults(results);
+}, 300);
+
+// Throttle (máximo una vez por intervalo)
+function throttle(fn, limit) {
+    let inThrottle;
+    return (...args) => {
+        if (!inThrottle) {
+            fn(...args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    };
+}
+
+// Loading state
+async function loadData() {
+    setLoading(true);
+    try {
+        const data = await fetchData();
+        setData(data);
+    } catch (error) {
+        setError(error.message);
+    } finally {
+        setLoading(false);
+    }
+}
+
+// Cancelar peticiones con AbortController
+const controller = new AbortController();
+fetch(url, { signal: controller.signal });
+controller.abort();  // Cancelar</div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">⏱️ Asincronía</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#callbacks" class="toc-link">Callbacks</a></li>
+                    <li class="toc-item"><a href="#promises" class="toc-link">Promises</a></li>
+                    <li class="toc-item"><a href="#promise-methods" class="toc-link">Métodos de Promise</a></li>
+                    <li class="toc-item"><a href="#async-await" class="toc-link">async/await</a></li>
+                    <li class="toc-item"><a href="#fetch" class="toc-link">Fetch API</a></li>
+                    <li class="toc-item"><a href="#error-handling" class="toc-link">Manejo de Errores</a></li>
+                    <li class="toc-item"><a href="#patrones" class="toc-link">Patrones Prácticos</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>JavaScript - Sistema de Aprendizaje | <a href="../index.html">Volver a JavaScript</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) { return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const searchText = normalizeText((termino.getAttribute('data-tags') || '') + ' ' + (termino.querySelector('.tag')?.textContent || ''));
+                    if (query === '' || searchText.includes(query)) { termino.style.display = 'block'; found++; } else { termino.style.display = 'none'; }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => { if (scrollY >= section.offsetTop - 100) current = section.getAttribute('id'); });
+                tocLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === '#' + current) link.classList.add('active'); });
+                document.getElementById('tocProgressBar').style.width = ((document.body.scrollTop || document.documentElement.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100 + '%';
+            });
+        });
+    </script>
+</body>
+</html>

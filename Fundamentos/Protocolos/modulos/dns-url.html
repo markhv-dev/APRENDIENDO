@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNS y URL - Protocolos</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a Protocolos</a>
+        <span class="icon">🗺️</span>
+        <h1>Módulo 4: DNS y URLs</h1>
+        <p class="subtitle">Sistema de nombres y direcciones web</p>
+    </header>
+
+    <div class="container">
+        <div class="termino">
+            <span class="tag">📞 DNS</span>
+            <p class="significado"><span class="unsa-tag">[U]</span> Domain Name System</p>
+            <p class="descripcion">
+                Sistema que traduce nombres de dominio legibles a direcciones IP numéricas.
+            </p>
+            <div class="ejemplo">
+                <strong>Traducción DNS:</strong><br>
+                www.google.com → 142.250.185.46<br>
+                www.unsa.edu.pe → 200.37.180.61
+            </div>
+            <div class="nota">
+                <strong>📌 Analogía:</strong> Como una agenda telefónica de Internet<br>
+                <strong>Puerto:</strong> 53 | <strong>Protocolo:</strong> UDP (mayoría de casos)
+            </div>
+        </div>
+
+        <div class="termino">
+            <span class="tag">🔗 URL</span>
+            <p class="significado"><span class="unsa-tag">[U]</span> Uniform Resource Locator</p>
+            <p class="descripcion">
+                Dirección completa que especifica la ubicación de un recurso en Internet.
+            </p>
+            <div class="ejemplo">
+                <strong>Estructura de URL:</strong><br>
+                https://www.ejemplo.com:443/ruta/pagina.html?id=123&nombre=Juan#seccion<br>
+                <br>
+                <strong>Partes:</strong><br>
+                • <strong>Protocolo:</strong> https://<br>
+                • <strong>Dominio:</strong> www.ejemplo.com<br>
+                • <strong>Puerto:</strong> :443 (opcional si es el por defecto)<br>
+                • <strong>Ruta:</strong> /ruta/pagina.html<br>
+                • <strong>Query:</strong> ?id=123&nombre=Juan<br>
+                • <strong>Fragment:</strong> #seccion
+            </div>
+        </div>
+
+        <div class="termino">
+            <span class="tag">🌍 Dominio</span>
+            <p class="descripcion">
+                Nombre único que identifica un sitio web. Compuesto por nombre + TLD (Top-Level Domain).
+            </p>
+            <div class="ejemplo">
+                <strong>Ejemplos:</strong><br>
+                google.com → nombre: "google" + TLD: ".com"<br>
+                unsa.edu.pe → nombre: "unsa" + TLD: ".edu.pe"<br>
+                <br>
+                <strong>TLDs comunes:</strong><br>
+                .com (comercial), .org (organización), .edu (educación), .pe (Perú)
+            </div>
+        </div>
+
+        <div class="termino" style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(76, 175, 80, 0.05)); border-left: 4px solid #4CAF50;">
+            <span class="tag" style="background: #4CAF50;">💡 Para el Examen</span>
+            <div class="nota">
+                ✅ <strong>DNS:</strong> Traduce dominio → IP (google.com → 142.250.x.x)<br>
+                ✅ <strong>URL estructura:</strong> protocolo://dominio:puerto/ruta?query#fragment<br>
+                ✅ <strong>Dominio:</strong> Nombre único del sitio (ejemplo.com)<br>
+                ✅ <strong>Puerto DNS:</strong> 53
+            </div>
+        </div>
+    </div>
+
+    <footer><p>DNS y URL - Sistema de Aprendizaje</p></footer>
+    <script src="/assets/js/sidebar-component.js"></script>
+</body>
+</html>

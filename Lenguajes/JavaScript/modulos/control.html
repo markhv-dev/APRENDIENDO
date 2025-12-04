@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Flujo - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a JavaScript</a>
+        <span class="icon">🔀</span>
+        <h1>Módulo 5: Control de Flujo</h1>
+        <p class="subtitle">Condicionales, switch y operador ternario</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #f1c40f; margin-bottom: 40px;">
+                <h2 style="color: #f1c40f; margin-bottom: 15px; font-size: 1.8em;">🔀 Control de Flujo</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0;">
+                    El control de flujo permite tomar decisiones y ejecutar código condicionalmente.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="if-else" data-tags="if else condicional">
+                        <span class="tag">📋 if / else</span>
+                        <p class="significado">Condicional básico</p>
+                        <div class="ejemplo">const edad = 18;
+
+// if simple
+if (edad >= 18) {
+    console.log("Mayor de edad");
+}
+
+// if-else
+if (edad >= 18) {
+    console.log("Mayor de edad");
+} else {
+    console.log("Menor de edad");
+}
+
+// if-else if-else
+const nota = 85;
+
+if (nota >= 90) {
+    console.log("A");
+} else if (nota >= 80) {
+    console.log("B");
+} else if (nota >= 70) {
+    console.log("C");
+} else {
+    console.log("F");
+}
+
+// Condiciones múltiples
+const usuario = { edad: 25, activo: true };
+
+if (usuario.edad >= 18 && usuario.activo) {
+    console.log("Puede acceder");
+}
+
+if (usuario.edad < 13 || !usuario.activo) {
+    console.log("Acceso denegado");
+}</div>
+                    </div>
+
+                    <div class="termino" id="ternario" data-tags="ternario operador condicional">
+                        <span class="tag">📋 Operador Ternario</span>
+                        <p class="significado">Condicional en una línea</p>
+                        <div class="ejemplo">// Sintaxis: condición ? valorSiTrue : valorSiFalse
+const edad = 20;
+const mensaje = edad >= 18 ? "Adulto" : "Menor";
+
+// Asignar valores
+const precio = esVIP ? 0 : 100;
+
+// En template literals
+console.log(`Estado: ${activo ? "Activo" : "Inactivo"}`);
+
+// Ternarios anidados (evitar si es posible)
+const nota = 85;
+const letra = nota >= 90 ? "A"
+            : nota >= 80 ? "B"
+            : nota >= 70 ? "C"
+            : "F";
+
+// En JSX/React
+const elemento = (
+    <div>
+        {usuario ? <Perfil /> : <Login />}
+    </div>
+);
+
+// Mejor usar if para lógica compleja
+// NO hagas esto:
+// const x = a ? b ? c : d : e ? f : g;</div>
+                        <div class="nota">
+                            <strong>💡 Tip:</strong> Usa ternarios para asignaciones simples. Para lógica compleja, usa if/else.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="switch" data-tags="switch case break default">
+                        <span class="tag">📋 switch</span>
+                        <p class="significado">Múltiples casos para una expresión</p>
+                        <div class="ejemplo">const dia = "lunes";
+
+switch (dia) {
+    case "lunes":
+    case "martes":
+    case "miercoles":
+    case "jueves":
+    case "viernes":
+        console.log("Día laboral");
+        break;
+    case "sabado":
+    case "domingo":
+        console.log("Fin de semana");
+        break;
+    default:
+        console.log("Día inválido");
+}
+
+// Con retorno en función
+function obtenerPrecio(tipo) {
+    switch (tipo) {
+        case "basico":
+            return 10;
+        case "premium":
+            return 25;
+        case "enterprise":
+            return 100;
+        default:
+            return 0;
+    }
+}
+
+// Alternativa moderna con objeto
+const precios = {
+    basico: 10,
+    premium: 25,
+    enterprise: 100
+};
+const precio = precios[tipo] ?? 0;</div>
+                        <div class="nota">
+                            <strong>⚠️ Cuidado:</strong> No olvides el <code>break</code>, o se ejecutarán los siguientes casos.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="truthy-falsy" data-tags="truthy falsy boolean conversion">
+                        <span class="tag">📋 Truthy y Falsy</span>
+                        <p class="significado">Valores que evalúan a true o false</p>
+                        <div class="ejemplo">// Valores FALSY (evalúan a false)
+false
+0
+-0
+""           // string vacío
+null
+undefined
+NaN
+
+// Valores TRUTHY (todo lo demás)
+true
+1
+"texto"
+[]           // array vacío
+{}           // objeto vacío
+function(){}
+
+// En condicionales
+if (usuario) {
+    // Se ejecuta si usuario no es null/undefined
+}
+
+if (lista.length) {
+    // Se ejecuta si lista tiene elementos
+}
+
+// Convertir a boolean
+Boolean("hola")  // true
+!!"hola"         // true (doble negación)
+!!0              // false
+
+// Default con ||
+const nombre = input || "Anónimo";
+
+// Nullish coalescing (??) - solo null/undefined
+const valor = 0;
+valor || 10    // 10 (0 es falsy)
+valor ?? 10    // 0 (solo null/undefined)</div>
+                    </div>
+
+                    <div class="termino" id="short-circuit" data-tags="short circuit cortocircuito and or">
+                        <span class="tag">📋 Short-circuit</span>
+                        <p class="significado">Evaluación de cortocircuito</p>
+                        <div class="ejemplo">// AND (&&) - retorna el primer falsy o el último
+true && "hola"     // "hola"
+false && "hola"    // false
+"a" && "b" && "c"  // "c"
+
+// OR (||) - retorna el primer truthy o el último
+false || "hola"    // "hola"
+"" || "default"    // "default"
+null || undefined || "ok"  // "ok"
+
+// Uso práctico - ejecutar si condición
+const usuario = { admin: true };
+usuario.admin && console.log("Es admin");
+
+// Valores por defecto
+const config = opciones || {};
+const nombre = usuario?.nombre || "Anónimo";
+
+// Nullish coalescing (??)
+const cantidad = 0;
+cantidad || 10    // 10 (0 es falsy)
+cantidad ?? 10    // 0 (mejor para números)
+
+// Optional chaining (?.)
+const ciudad = usuario?.direccion?.ciudad;
+const metodo = objeto?.metodo?.();</div>
+                    </div>
+
+                    <div class="termino" id="try-catch" data-tags="try catch error exception finally">
+                        <span class="tag">📋 try / catch / finally</span>
+                        <p class="significado">Manejo de errores</p>
+                        <div class="ejemplo">try {
+    // Código que puede fallar
+    const data = JSON.parse(jsonString);
+    console.log(data);
+} catch (error) {
+    // Manejar el error
+    console.error("Error:", error.message);
+} finally {
+    // Siempre se ejecuta
+    console.log("Proceso terminado");
+}
+
+// Lanzar errores
+function dividir(a, b) {
+    if (b === 0) {
+        throw new Error("No se puede dividir por cero");
+    }
+    return a / b;
+}
+
+try {
+    dividir(10, 0);
+} catch (e) {
+    console.error(e.message);
+}
+
+// Tipos de error
+throw new Error("Error genérico");
+throw new TypeError("Tipo incorrecto");
+throw new RangeError("Fuera de rango");
+
+// Re-lanzar errores
+try {
+    riskyOperation();
+} catch (e) {
+    if (e instanceof TypeError) {
+        // Manejar
+    } else {
+        throw e;  // Re-lanzar otros
+    }
+}</div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">🔀 Control de Flujo</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#if-else" class="toc-link">if / else</a></li>
+                    <li class="toc-item"><a href="#ternario" class="toc-link">Operador Ternario</a></li>
+                    <li class="toc-item"><a href="#switch" class="toc-link">switch</a></li>
+                    <li class="toc-item"><a href="#truthy-falsy" class="toc-link">Truthy y Falsy</a></li>
+                    <li class="toc-item"><a href="#short-circuit" class="toc-link">Short-circuit</a></li>
+                    <li class="toc-item"><a href="#try-catch" class="toc-link">try / catch</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>JavaScript - Sistema de Aprendizaje | <a href="../index.html">Volver a JavaScript</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) { return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const searchText = normalizeText((termino.getAttribute('data-tags') || '') + ' ' + (termino.querySelector('.tag')?.textContent || ''));
+                    if (query === '' || searchText.includes(query)) { termino.style.display = 'block'; found++; } else { termino.style.display = 'none'; }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => { if (scrollY >= section.offsetTop - 100) current = section.getAttribute('id'); });
+                tocLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === '#' + current) link.classList.add('active'); });
+                document.getElementById('tocProgressBar').style.width = ((document.body.scrollTop || document.documentElement.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100 + '%';
+            });
+        });
+    </script>
+</body>
+</html>

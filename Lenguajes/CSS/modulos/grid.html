@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a CSS</a>
+        <span class="icon">⊞</span>
+        <h1>Módulo 5: CSS Grid</h1>
+        <p class="subtitle">Layout bidimensional con filas y columnas</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #f1c40f; margin-bottom: 40px;">
+                <h2 style="color: #f1c40f; margin-bottom: 15px; font-size: 1.8em;">⊞ CSS Grid</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    CSS Grid es un sistema de layout bidimensional que permite crear diseños complejos
+                    controlando filas y columnas simultáneamente.
+                </p>
+                <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 8px; border: 1px solid rgba(241, 196, 15, 0.3);">
+                    <h3 style="color: #f1c40f; margin-bottom: 12px; font-size: 1.1em;">📋 Contenido del módulo:</h3>
+                    <ul style="list-style: none; padding-left: 0; line-height: 2;">
+                        <li style="color: #b0b0b0;">✓ Contenedor grid y grid items</li>
+                        <li style="color: #b0b0b0;">✓ Definir filas y columnas</li>
+                        <li style="color: #b0b0b0;">✓ Unidad fr y función repeat()</li>
+                        <li style="color: #b0b0b0;">✓ Posicionamiento de items</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="display-grid" data-tags="display grid contenedor cuadricula">
+                        <span class="tag">📋 display: grid</span>
+                        <p class="significado">Activa el contexto grid en un contenedor</p>
+                        <p class="descripcion">
+                            Al aplicar <code>display: grid</code>, el elemento se convierte en un grid container
+                            y sus hijos directos en grid items.
+                        </p>
+                        <div class="ejemplo">.container {
+    display: grid;
+}
+
+/* inline-grid para contenedor inline */
+.inline-container {
+    display: inline-grid;
+}</div>
+                    </div>
+
+                    <div class="termino" id="grid-template-columns" data-tags="grid-template-columns columnas">
+                        <span class="tag">📋 grid-template-columns</span>
+                        <p class="significado">Define el número y tamaño de columnas</p>
+                        <p class="descripcion">
+                            Especifica cuántas columnas tendrá el grid y sus tamaños.
+                        </p>
+                        <div class="ejemplo">.grid {
+    display: grid;
+
+    /* 3 columnas de 200px */
+    grid-template-columns: 200px 200px 200px;
+
+    /* 3 columnas iguales con fr */
+    grid-template-columns: 1fr 1fr 1fr;
+
+    /* Con repeat() */
+    grid-template-columns: repeat(3, 1fr);
+
+    /* Mixto */
+    grid-template-columns: 250px 1fr 2fr;
+
+    /* Auto-fit responsive */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}</div>
+                    </div>
+
+                    <div class="termino" id="grid-template-rows" data-tags="grid-template-rows filas">
+                        <span class="tag">📋 grid-template-rows</span>
+                        <p class="significado">Define el número y tamaño de filas</p>
+                        <p class="descripcion">
+                            Especifica cuántas filas tendrá el grid y sus tamaños.
+                        </p>
+                        <div class="ejemplo">.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    /* Filas explícitas */
+    grid-template-rows: 100px auto 100px;
+
+    /* Filas iguales */
+    grid-template-rows: repeat(4, 1fr);
+}
+
+/* Layout típico */
+.page-layout {
+    display: grid;
+    grid-template-rows: 60px 1fr 40px;  /* Header, Content, Footer */
+    min-height: 100vh;
+}</div>
+                    </div>
+
+                    <div class="termino" id="unidad-fr" data-tags="fr fraccion unidad flexible">
+                        <span class="tag">📋 Unidad fr</span>
+                        <p class="significado">Fracción del espacio disponible</p>
+                        <p class="descripcion">
+                            La unidad <code>fr</code> representa una fracción del espacio libre disponible.
+                            Similar a flex-grow.
+                        </p>
+                        <div class="ejemplo">.grid {
+    display: grid;
+
+    /* 3 columnas iguales */
+    grid-template-columns: 1fr 1fr 1fr;
+
+    /* Columna central el doble */
+    grid-template-columns: 1fr 2fr 1fr;
+
+    /* Sidebar fijo + contenido flexible */
+    grid-template-columns: 250px 1fr;
+}</div>
+                    </div>
+
+                    <div class="termino" id="repeat" data-tags="repeat repetir funcion">
+                        <span class="tag">📋 repeat()</span>
+                        <p class="significado">Repite patrones de columnas/filas</p>
+                        <p class="descripcion">
+                            Función para definir patrones repetitivos de forma más concisa.
+                        </p>
+                        <div class="ejemplo">/* En lugar de: 1fr 1fr 1fr 1fr */
+grid-template-columns: repeat(4, 1fr);
+
+/* Patrón repetido */
+grid-template-columns: repeat(3, 100px 1fr);
+/* = 100px 1fr 100px 1fr 100px 1fr */
+
+/* auto-fill: crea tantas como quepan */
+grid-template-columns: repeat(auto-fill, 200px);
+
+/* auto-fit: igual pero colapsa columnas vacías */
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));</div>
+                        <div class="nota">
+                            <strong>💡 auto-fit + minmax:</strong> La combinación perfecta para grids responsive sin media queries.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="gap-grid" data-tags="gap espacio grid">
+                        <span class="tag">📋 gap</span>
+                        <p class="significado">Espacio entre celdas del grid</p>
+                        <p class="descripcion">
+                            Define el espacio entre filas y columnas del grid.
+                        </p>
+                        <div class="ejemplo">.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;              /* Uniforme */
+    gap: 10px 20px;         /* row-gap column-gap */
+
+    row-gap: 10px;
+    column-gap: 20px;
+}</div>
+                    </div>
+
+                    <div class="termino" id="grid-column" data-tags="grid-column posicion item">
+                        <span class="tag">⚙️ grid-column</span>
+                        <p class="significado">Posiciona un item en columnas específicas</p>
+                        <p class="descripcion">
+                            Define en qué columnas se coloca un grid item. Usa líneas de grid (empiezan en 1).
+                        </p>
+                        <div class="ejemplo">.item {
+    /* De línea 1 a línea 3 (ocupa 2 columnas) */
+    grid-column: 1 / 3;
+
+    /* Ocupa 2 columnas desde donde esté */
+    grid-column: span 2;
+
+    /* Todas las columnas */
+    grid-column: 1 / -1;
+}
+
+/* Propiedades separadas */
+grid-column-start: 1;
+grid-column-end: 3;</div>
+                    </div>
+
+                    <div class="termino" id="grid-row" data-tags="grid-row posicion item fila">
+                        <span class="tag">⚙️ grid-row</span>
+                        <p class="significado">Posiciona un item en filas específicas</p>
+                        <p class="descripcion">
+                            Define en qué filas se coloca un grid item.
+                        </p>
+                        <div class="ejemplo">.item {
+    /* De línea 1 a línea 4 (ocupa 3 filas) */
+    grid-row: 1 / 4;
+
+    /* Ocupa 2 filas */
+    grid-row: span 2;
+}
+
+/* Ejemplo: item que ocupa toda la altura */
+.sidebar {
+    grid-row: 1 / -1;
+}</div>
+                    </div>
+
+                    <div class="termino" id="grid-template-areas" data-tags="grid-template-areas areas layout visual">
+                        <span class="tag">⚙️ grid-template-areas</span>
+                        <p class="significado">Define áreas nombradas visualmente</p>
+                        <p class="descripcion">
+                            Permite definir el layout de forma visual usando nombres de áreas.
+                            Muy intuitivo para layouts complejos.
+                        </p>
+                        <div class="ejemplo">.container {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    grid-template-rows: 60px 1fr 40px;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+}
+
+.header  { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main    { grid-area: main; }
+.footer  { grid-area: footer; }
+
+/* Celda vacía con punto */
+grid-template-areas:
+    "header header header"
+    "sidebar main ."
+    "footer footer footer";</div>
+                        <div class="nota">
+                            <strong>💡 Tip:</strong> Cada string representa una fila. Los nombres deben formar rectángulos.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="minmax" data-tags="minmax minimo maximo funcion">
+                        <span class="tag">⚙️ minmax()</span>
+                        <p class="significado">Define un rango de tamaño mínimo y máximo</p>
+                        <p class="descripcion">
+                            Permite definir un tamaño que varía entre un mínimo y un máximo.
+                            Esencial para grids responsive.
+                        </p>
+                        <div class="ejemplo">/* Columna entre 200px y 1fr */
+grid-template-columns: minmax(200px, 1fr);
+
+/* Grid responsive perfecto */
+.grid-responsive {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* Filas con altura mínima */
+grid-template-rows: minmax(100px, auto);</div>
+                    </div>
+
+                    <div class="termino" id="place-items" data-tags="place-items alinear centrar">
+                        <span class="tag">⚙️ place-items</span>
+                        <p class="significado">Alinea items en ambos ejes</p>
+                        <p class="descripcion">
+                            Atajo para align-items y justify-items. Centra contenido fácilmente.
+                        </p>
+                        <div class="ejemplo">.grid {
+    display: grid;
+
+    /* Centrado perfecto */
+    place-items: center;
+
+    /* align-items justify-items */
+    place-items: start end;
+}
+
+/* También existe place-content */
+place-content: center;  /* Centra todo el grid */</div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">⊞ CSS Grid</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#display-grid" class="toc-link">display: grid</a></li>
+                    <li class="toc-item"><a href="#grid-template-columns" class="toc-link">grid-template-columns</a></li>
+                    <li class="toc-item"><a href="#grid-template-rows" class="toc-link">grid-template-rows</a></li>
+                    <li class="toc-item"><a href="#unidad-fr" class="toc-link">Unidad fr</a></li>
+                    <li class="toc-item"><a href="#repeat" class="toc-link">repeat()</a></li>
+                    <li class="toc-item"><a href="#gap-grid" class="toc-link">gap</a></li>
+                    <li class="toc-item"><a href="#grid-column" class="toc-link">grid-column</a></li>
+                    <li class="toc-item"><a href="#grid-row" class="toc-link">grid-row</a></li>
+                    <li class="toc-item"><a href="#grid-template-areas" class="toc-link">grid-template-areas</a></li>
+                    <li class="toc-item"><a href="#minmax" class="toc-link">minmax()</a></li>
+                    <li class="toc-item"><a href="#place-items" class="toc-link">place-items</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>CSS - Sistema de Aprendizaje | <a href="../index.html">Volver a CSS</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) {
+                return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const tags = termino.getAttribute('data-tags') || '';
+                    const title = termino.querySelector('.tag')?.textContent || '';
+                    const desc = termino.querySelector('.descripcion')?.textContent || '';
+                    const ejemplo = termino.querySelector('.ejemplo')?.textContent || '';
+                    const searchText = normalizeText(tags + ' ' + title + ' ' + desc + ' ' + ejemplo);
+                    if (query === '' || searchText.includes(query)) {
+                        termino.style.display = 'block';
+                        found++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+</body>
+</html>

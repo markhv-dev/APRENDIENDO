@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Final de HTML - HTML</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <style>
+        body {
+            background: #0f0f0f;
+            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            margin: 0;
+            padding: 0;
+            margin-left: 280px;
+        }
+        .quiz-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 300px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.95em;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.5);
+        }
+        .quiz-header {
+            background: rgba(74, 144, 226, 0.1);
+            border-left: 4px solid #4a90e2;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 80px 0 30px 0;
+        }
+        .quiz-header h1 {
+            color: #4a90e2;
+            margin-bottom: 10px;
+        }
+        .progress-bar {
+            background: #1a1a1a;
+            height: 8px;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        .progress-fill {
+            background: linear-gradient(90deg, #4a90e2, #357abd);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .question-card {
+            background: rgba(30, 30, 30, 0.5);
+            border: 2px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 25px 0;
+        }
+        .question-number {
+            color: #4a90e2;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .question-text {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #e0e0e0;
+        }
+        .option {
+            background: rgba(74, 144, 226, 0.05);
+            border: 2px solid #2a2a2a;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .option:hover {
+            border-color: #4a90e2;
+            background: rgba(74, 144, 226, 0.1);
+            transform: translateX(5px);
+        }
+        .option.selected {
+            border-color: #4a90e2;
+            background: rgba(74, 144, 226, 0.15);
+        }
+        .option.correct {
+            border-color: #4CAF50;
+            background: rgba(76, 175, 80, 0.15);
+        }
+        .option.incorrect {
+            border-color: #e74c3c;
+            background: rgba(231, 76, 60, 0.15);
+        }
+        .option.disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        .option-letter {
+            background: #2a2a2a;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .explanation {
+            display: none;
+            background: rgba(74, 144, 226, 0.1);
+            border-left: 4px solid #4a90e2;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            animation: slideDown 0.3s ease;
+        }
+        .explanation.show {
+            display: block;
+        }
+        .explanation.correct {
+            border-left-color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
+        }
+        .explanation.incorrect {
+            border-left-color: #e74c3c;
+            background: rgba(231, 76, 60, 0.1);
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .btn-next {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            display: none;
+        }
+        .btn-next.show {
+            display: inline-block;
+        }
+        .btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+        }
+        .results {
+            display: none;
+            background: rgba(74, 144, 226, 0.1);
+            border: 2px solid #4a90e2;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        .results.show {
+            display: block;
+        }
+        .results h2 {
+            color: #4a90e2;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .score {
+            font-size: 4em;
+            font-weight: 700;
+            color: #4CAF50;
+            margin: 20px 0;
+        }
+        .btn-retry {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+        .btn-retry:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+        }
+        @media (max-width: 768px) {
+            body {
+                margin-left: 0;
+            }
+            .back-link {
+                left: 15px;
+            }
+            .quiz-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="Quiz.html" class="back-link">← Volver</a>
+
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h1>📝 Examen Final de HTML y Semántica</h1>
+            <p>30 preguntas comprehensivas sobre todos los temas de HTML</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+            <p id="progress-text">Pregunta <span id="current">0</span> de <span id="total">30</span></p>
+        </div>
+
+        <div id="quiz-questions"></div>
+
+        <div id="results" class="results">
+            <h2>🎉 ¡Quiz Completado!</h2>
+            <div class="score" id="score">0/10</div>
+            <p id="message"></p>
+            <button class="btn-retry" onclick="location.reload()">🔄 Reintentar Quiz</button>
+            <button class="btn-retry" onclick="location.href='Quiz.html'" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">← Volver a Quizzes</button>
+        </div>
+    </div>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+
+    <script>
+                const questions = [
+            {question:"¿Declaración DOCTYPE HTML5?",options:["&lt;!DOCTYPE HTML&gt;","&lt;!DOCTYPE html&gt;","&lt;DOCTYPE&gt;","&lt;html5&gt;"],correct:1,explanation:"&lt;!DOCTYPE html&gt; es la declaración correcta para HTML5."},
+            {question:"¿Etiqueta raíz HTML?",options:["&lt;body&gt;","&lt;html&gt;","&lt;head&gt;","&lt;root&gt;"],correct:1,explanation:"&lt;html&gt; es la etiqueta raíz que contiene todo."},
+            {question:"¿Lista ordenada?",options:["&lt;ul&gt;","&lt;ol&gt;","&lt;list&gt;","&lt;dl&gt;"],correct:1,explanation:"&lt;ol&gt; crea listas numeradas."},
+            {question:"¿Enlace nueva pestaña?",options:["new='true'","target='_blank'","window='new'","blank"],correct:1,explanation:"target='_blank' abre en nueva pestaña."},
+            {question:"¿Atributo obligatorio &lt;img&gt;?",options:["alt","src","width","title"],correct:1,explanation:"src especifica ruta de la imagen."},
+            {question:"¿Fusionar columnas tabla?",options:["merge","colspan","rowspan","join"],correct:1,explanation:"colspan fusiona columnas horizontalmente."},
+            {question:"¿Campo obligatorio formulario?",options:["must","required","mandatory","need"],correct:1,explanation:"required hace el campo obligatorio."},
+            {question:"¿Etiqueta video?",options:["&lt;movie&gt;","&lt;video&gt;","&lt;media&gt;","&lt;film&gt;"],correct:1,explanation:"&lt;video&gt; inserta videos HTML5."},
+            {question:"¿Controles multimedia?",options:["show","controls","buttons","ui"],correct:1,explanation:"controls muestra controles play/pause."},
+            {question:"¿Meta charset?",options:["&lt;charset&gt;","&lt;meta charset&gt;","&lt;encoding&gt;","&lt;meta encoding&gt;"],correct:1,explanation:"&lt;meta charset='UTF-8'&gt; define codificación."},
+            {question:"¿Etiqueta semántica navegación?",options:["&lt;menu&gt;","&lt;nav&gt;","&lt;navigation&gt;","&lt;links&gt;"],correct:1,explanation:"&lt;nav&gt; define secciones de navegación."},
+            {question:"¿Contenido principal único?",options:["&lt;content&gt;","&lt;main&gt;","&lt;primary&gt;","&lt;body&gt;"],correct:1,explanation:"&lt;main&gt; representa contenido principal único."},
+            {question:"¿Asociar label a input?",options:["id","for","name","link"],correct:1,explanation:"&lt;label for='id'&gt; asocia label a input con ese id."},
+            {question:"¿Email link?",options:["&lt;email&gt;","href='email:'","href='mailto:'","&lt;mail&gt;"],correct:2,explanation:"href='mailto:correo@ejemplo.com' crea enlace email."},
+            {question:"¿Lista definiciones?",options:["&lt;ul&gt;","&lt;ol&gt;","&lt;dl&gt;","&lt;def&gt;"],correct:2,explanation:"&lt;dl&gt; es lista definiciones. &lt;dt&gt; término, &lt;dd&gt; descripción."},
+            {question:"¿Texto alternativo imagen?",options:["title","alt","description","text"],correct:1,explanation:"alt proporciona texto alternativo para accesibilidad."},
+            {question:"¿Ancla interna?",options:["href='#id'","anchor='id'","link='#id'","id='#'"],correct:0,explanation:"href='#id' enlaza a elemento con ese id."},
+            {question:"¿Agrupar inputs?",options:["&lt;group&gt;","&lt;fieldset&gt;","&lt;div&gt;","&lt;form&gt;"],correct:1,explanation:"&lt;fieldset&gt; agrupa inputs. &lt;legend&gt; proporciona título."},
+            {question:"¿Título tabla?",options:["&lt;title&gt;","&lt;caption&gt;","&lt;header&gt;","&lt;h1&gt;"],correct:1,explanation:"&lt;caption&gt; es título de tabla."},
+            {question:"¿Campo multilínea?",options:["&lt;input&gt;","&lt;textarea&gt;","&lt;text&gt;","&lt;multiline&gt;"],correct:1,explanation:"&lt;textarea&gt; crea campo multilínea."},
+            {question:"¿Favicon?",options:["&lt;icon&gt;","&lt;link rel='icon'&gt;","&lt;favicon&gt;","&lt;img&gt;"],correct:1,explanation:"&lt;link rel='icon' href='...'&gt; define favicon."},
+            {question:"¿Gráficos vectoriales?",options:["&lt;vector&gt;","&lt;svg&gt;","&lt;canvas&gt;","&lt;graphic&gt;"],correct:1,explanation:"&lt;svg&gt; permite gráficos vectoriales inline."},
+            {question:"¿Etiqueta audio?",options:["&lt;sound&gt;","&lt;audio&gt;","&lt;music&gt;","&lt;media&gt;"],correct:1,explanation:"&lt;audio&gt; inserta audio HTML5."},
+            {question:"¿Input email?",options:["text","email","mail","e-mail"],correct:1,explanation:"type='email' valida formato email."},
+            {question:"¿Checkbox vs radio?",options:["Iguales","Checkbox múltiple","Radio múltiple","Ninguna"],correct:1,explanation:"Checkbox permite múltiples selecciones, radio solo una."},
+            {question:"¿Scope columna?",options:["column","col","vertical","row"],correct:1,explanation:"scope='col' indica encabezado de columna."},
+            {question:"¿Imagen con descripción?",options:["&lt;img&gt;","&lt;figure&gt;","&lt;picture&gt;","&lt;caption&gt;"],correct:1,explanation:"&lt;figure&gt; agrupa imagen. &lt;figcaption&gt; describe."},
+            {question:"¿Meta SEO descripción?",options:["description","name='description'","content","meta-desc"],correct:1,explanation:"&lt;meta name='description' content='...'&gt; para SEO."},
+            {question:"¿Precargar video?",options:["autoload","preload","load","auto"],correct:1,explanation:"preload='auto' precarga video al cargar página."},
+            {question:"¿Jerarquía correcta?",options:["h1→h3→h2","h1→h2→h3","h2→h1→h3","No importa"],correct:1,explanation:"Los encabezados deben seguir jerarquía h1→h2→h3."},
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answers = new Array(30).fill(null);
+
+        function renderQuestion(index) {
+            const question = questions[index];
+            const container = document.getElementById('quiz-questions');
+
+            const questionCard = document.createElement('div');
+            questionCard.className = 'question-card';
+            questionCard.id = `question-${index}`;
+
+            questionCard.innerHTML = `
+                <div class="question-number">Pregunta ${index + 1} de ${30}</div>
+                <div class="question-text">${question.question}</div>
+                ${question.options.map((option, i) => `
+                    <div class="option" data-index="${i}" onclick="selectOption(${index}, ${i})">
+                        <div class="option-letter">${String.fromCharCode(65 + i)}</div>
+                        <div>${option}</div>
+                    </div>
+                `).join('')}
+                <div class="explanation" id="explanation-${index}"></div>
+                <button class="btn-next" id="next-${index}" onclick="nextQuestion(${index})">
+                    ${index < 30 - 1 ? 'Siguiente Pregunta →' : 'Ver Resultados'}
+                </button>
+            `;
+
+            container.appendChild(questionCard);
+        }
+
+        function selectOption(questionIndex, optionIndex) {
+            const question = questions[questionIndex];
+            const card = document.getElementById(`question-${questionIndex}`);
+            const options = card.querySelectorAll('.option');
+            const explanation = document.getElementById(`explanation-${questionIndex}`);
+            const nextBtn = document.getElementById(`next-${questionIndex}`);
+
+            // Solo permitir selección si no se ha respondido
+            if (answers[questionIndex] !== null) return;
+
+            answers[questionIndex] = optionIndex;
+            const isCorrect = optionIndex === question.correct;
+
+            if (isCorrect) score++;
+
+            // Marcar opciones
+            options.forEach((opt, i) => {
+                opt.classList.add('disabled');
+                if (i === question.correct) {
+                    opt.classList.add('correct');
+                } else if (i === optionIndex && !isCorrect) {
+                    opt.classList.add('incorrect');
+                }
+            });
+
+            // Mostrar explicación
+            explanation.innerHTML = `
+                <strong>${isCorrect ? '✓ ¡Correcto!' : '✗ Incorrecto'}</strong>
+                <p>${question.explanation}</p>
+            `;
+            explanation.classList.add('show', isCorrect ? 'correct' : 'incorrect');
+            nextBtn.classList.add('show');
+
+            updateProgress();
+        }
+
+        function nextQuestion(currentIndex) {
+            if (currentIndex < 30 - 1) {
+                currentQuestion++;
+                renderQuestion(currentQuestion);
+                document.getElementById(`question-${currentIndex}`).style.display = 'none';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                showResults();
+            }
+        }
+
+        function updateProgress() {
+            const answered = answers.filter(a => a !== null).length;
+            const progress = (answered / 30) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+            document.getElementById('current').textContent = answered;
+        }
+
+        function showResults() {
+            document.getElementById('quiz-questions').style.display = 'none';
+            const results = document.getElementById('results');
+            const scoreElement = document.getElementById('score');
+            const messageElement = document.getElementById('message');
+
+            const percentage = (score / 30) * 100;
+            scoreElement.textContent = `${score}/${30}`;
+
+            let message = '';
+            if (percentage >= 90) {
+                message = '🏆 ¡Excelente! Dominas la estructura HTML.';
+                scoreElement.style.color = '#4CAF50';
+            } else if (percentage >= 70) {
+                message = '👍 ¡Bien hecho! Tienes buen conocimiento de HTML.';
+                scoreElement.style.color = '#4a90e2';
+            } else if (percentage >= 50) {
+                message = '📚 Puedes mejorar. Revisa los módulos y vuelve a intentarlo.';
+                scoreElement.style.color = '#FF9800';
+            } else {
+                message = '💪 Sigue practicando. Revisa los módulos antes de reintentar.';
+                scoreElement.style.color = '#e74c3c';
+            }
+
+            messageElement.textContent = message;
+            results.classList.add('show');
+        }
+
+        // Inicializar
+        document.getElementById('total').textContent = 30;
+        renderQuestion(0);
+    </script>
+</body>
+</html>

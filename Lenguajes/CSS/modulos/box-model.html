@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Model - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a CSS</a>
+        <span class="icon">📦</span>
+        <h1>Módulo 3: Box Model</h1>
+        <p class="subtitle">Content, padding, border, margin y box-sizing</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #f1c40f; margin-bottom: 40px;">
+                <h2 style="color: #f1c40f; margin-bottom: 15px; font-size: 1.8em;">📦 Box Model</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    Todo elemento HTML es una caja rectangular. El Box Model define cómo se calculan las dimensiones
+                    y el espaciado de cada elemento.
+                </p>
+                <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 8px; border: 1px solid rgba(241, 196, 15, 0.3);">
+                    <h3 style="color: #f1c40f; margin-bottom: 12px; font-size: 1.1em;">📋 Contenido del módulo:</h3>
+                    <ul style="list-style: none; padding-left: 0; line-height: 2;">
+                        <li style="color: #b0b0b0;">✓ Las 4 capas del Box Model</li>
+                        <li style="color: #b0b0b0;">✓ Width, height y dimensiones</li>
+                        <li style="color: #b0b0b0;">✓ Padding, margin y border</li>
+                        <li style="color: #b0b0b0;">✓ Box-sizing: content-box vs border-box</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="modelo-caja" data-tags="box model caja modelo capas">
+                        <span class="tag">📋 El Modelo de Caja</span>
+                        <p class="significado">Las 4 capas que componen cada elemento HTML</p>
+                        <p class="descripcion">
+                            Todo elemento HTML es una caja con 4 capas concéntricas: content (contenido),
+                            padding (relleno interno), border (borde) y margin (margen externo).
+                        </p>
+                        <div class="ejemplo">/* Visualización del Box Model */
+.caja {
+    /* Content - El contenido real */
+    width: 200px;
+    height: 100px;
+
+    /* Padding - Espacio interno */
+    padding: 20px;
+
+    /* Border - Borde alrededor */
+    border: 5px solid black;
+
+    /* Margin - Espacio externo */
+    margin: 30px;
+}
+
+/* Tamaño total (content-box):
+   Ancho = 200 + 20*2 + 5*2 = 250px
+   Alto = 100 + 20*2 + 5*2 = 150px
+   (margin no cuenta en el tamaño) */</div>
+                        <div class="nota">
+                            <strong>💡 De adentro hacia afuera:</strong> Content → Padding → Border → Margin
+                        </div>
+                    </div>
+
+                    <div class="termino" id="width-height" data-tags="width height ancho alto dimensiones">
+                        <span class="tag">📏 Width y Height</span>
+                        <p class="significado">Ancho y alto del contenido</p>
+                        <p class="descripcion">
+                            Definen las dimensiones del área de contenido. Por defecto (content-box),
+                            padding y border se suman a estas medidas.
+                        </p>
+                        <div class="ejemplo">.elemento {
+    width: 300px;           /* Ancho fijo */
+    height: 200px;          /* Alto fijo */
+
+    width: 50%;             /* 50% del contenedor */
+    height: auto;           /* Altura automática */
+
+    min-width: 200px;       /* Mínimo 200px */
+    max-width: 800px;       /* Máximo 800px */
+
+    min-height: 100px;
+    max-height: 500px;
+}
+
+/* Contenedor fluido con límites */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}</div>
+                    </div>
+
+                    <div class="termino" id="padding" data-tags="padding relleno interno espacio">
+                        <span class="tag">📏 Padding</span>
+                        <p class="significado">Espacio interno entre el contenido y el borde</p>
+                        <p class="descripcion">
+                            El padding crea espacio dentro del elemento, entre el contenido y el borde.
+                            El color de fondo se extiende por el área de padding.
+                        </p>
+                        <div class="ejemplo">/* Un valor: todos los lados */
+padding: 20px;
+
+/* Dos valores: vertical horizontal */
+padding: 10px 20px;
+
+/* Tres valores: top horizontal bottom */
+padding: 10px 20px 30px;
+
+/* Cuatro valores: top right bottom left (horario) */
+padding: 10px 15px 20px 25px;
+
+/* Propiedades individuales */
+padding-top: 10px;
+padding-right: 15px;
+padding-bottom: 20px;
+padding-left: 25px;
+
+/* Ejemplo práctico */
+.card {
+    padding: 20px;           /* Respiro interno */
+}
+
+.boton {
+    padding: 12px 24px;      /* Más horizontal que vertical */
+}</div>
+                        <div class="nota">
+                            <strong>💡 Tip:</strong> Recuerda el orden con las agujas del reloj: Top, Right, Bottom, Left (TRBL).
+                        </div>
+                    </div>
+
+                    <div class="termino" id="margin" data-tags="margin margen externo espacio separacion">
+                        <span class="tag">📏 Margin</span>
+                        <p class="significado">Espacio externo alrededor del elemento</p>
+                        <p class="descripcion">
+                            El margin crea espacio fuera del borde, separando el elemento de otros.
+                            Los márgenes verticales colapsan (margin collapsing).
+                        </p>
+                        <div class="ejemplo">/* Misma sintaxis que padding */
+margin: 20px;
+margin: 10px 20px;
+margin: 10px 20px 30px 40px;
+
+/* Valores individuales */
+margin-top: 20px;
+margin-bottom: 30px;
+
+/* Centrar horizontalmente */
+.contenedor {
+    width: 800px;
+    margin: 0 auto;       /* 0 arriba/abajo, auto izq/der */
+}
+
+/* Márgenes negativos (avanzado) */
+.overlap {
+    margin-top: -20px;    /* Superponer elementos */
+}
+
+/* Margin collapse - los márgenes verticales colapsan */
+.parrafo {
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+/* Entre dos párrafos: 30px (el mayor), NO 50px */</div>
+                        <div class="nota">
+                            <strong>⚠️ Margin Collapsing:</strong> Los márgenes verticales adyacentes se fusionan, quedando el mayor.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="border" data-tags="border borde linea estilo">
+                        <span class="tag">📏 Border</span>
+                        <p class="significado">Línea alrededor del elemento</p>
+                        <p class="descripcion">
+                            El border es la línea visible entre el padding y el margin.
+                            Tiene tres propiedades: ancho, estilo y color.
+                        </p>
+                        <div class="ejemplo">/* Shorthand: ancho estilo color */
+border: 1px solid black;
+border: 2px dashed #3498db;
+border: 3px dotted red;
+
+/* Propiedades separadas */
+border-width: 2px;
+border-style: solid;    /* none, solid, dashed, dotted, double */
+border-color: #333;
+
+/* Bordes individuales */
+border-top: 3px solid blue;
+border-bottom: 1px dashed gray;
+border-left: none;
+border-right: 5px double red;
+
+/* Solo un lado específico */
+border-bottom-width: 2px;
+border-bottom-style: solid;
+border-bottom-color: #f1c40f;</div>
+                    </div>
+
+                    <div class="termino" id="border-radius" data-tags="border-radius esquinas redondeadas circulo">
+                        <span class="tag">📏 Border Radius</span>
+                        <p class="significado">Redondea las esquinas del elemento</p>
+                        <p class="descripcion">
+                            Permite crear esquinas redondeadas. Con 50% en un elemento cuadrado crea un círculo.
+                        </p>
+                        <div class="ejemplo">/* Todas las esquinas */
+border-radius: 10px;
+
+/* Esquinas individuales */
+border-radius: 10px 20px 30px 40px;  /* TL TR BR BL */
+
+/* Círculo perfecto */
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+/* Píldora */
+.tag {
+    padding: 5px 15px;
+    border-radius: 9999px;
+}
+
+/* Solo algunas esquinas */
+.card {
+    border-radius: 10px 10px 0 0;    /* Solo arriba */
+}
+
+/* Esquinas individuales */
+border-top-left-radius: 10px;
+border-top-right-radius: 20px;
+border-bottom-right-radius: 10px;
+border-bottom-left-radius: 20px;</div>
+                    </div>
+
+                    <div class="termino" id="box-sizing" data-tags="box-sizing content-box border-box calculo">
+                        <span class="tag">⚙️ Box Sizing</span>
+                        <p class="significado">Define cómo se calcula el tamaño total</p>
+                        <p class="descripcion">
+                            <code>content-box</code> (default): width/height solo aplica al contenido.
+                            <code>border-box</code>: width/height incluye padding y border.
+                        </p>
+                        <div class="ejemplo">/* content-box (default) */
+.content-box {
+    box-sizing: content-box;
+    width: 200px;
+    padding: 20px;
+    border: 5px solid;
+    /* Tamaño total: 200 + 40 + 10 = 250px */
+}
+
+/* border-box (recomendado) */
+.border-box {
+    box-sizing: border-box;
+    width: 200px;
+    padding: 20px;
+    border: 5px solid;
+    /* Tamaño total: 200px (content se ajusta) */
+}
+
+/* Reset recomendado para todo el proyecto */
+*, *::before, *::after {
+    box-sizing: border-box;
+}</div>
+                        <div class="nota">
+                            <strong>✅ Best Practice:</strong> Siempre usa border-box. Hace los cálculos mucho más intuitivos.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="overflow" data-tags="overflow desbordamiento scroll hidden">
+                        <span class="tag">⚙️ Overflow</span>
+                        <p class="significado">Controla el contenido que desborda el contenedor</p>
+                        <p class="descripcion">
+                            Cuando el contenido es más grande que el contenedor, overflow define qué hacer.
+                        </p>
+                        <div class="ejemplo">/* Valores de overflow */
+overflow: visible;      /* Visible afuera (default) */
+overflow: hidden;       /* Oculta lo que sobra */
+overflow: scroll;       /* Siempre muestra scrollbars */
+overflow: auto;         /* Scrollbars solo si necesario */
+
+/* Ejes individuales */
+overflow-x: hidden;     /* Solo horizontal */
+overflow-y: auto;       /* Solo vertical */
+
+/* Ejemplo: contenedor con scroll */
+.scroll-container {
+    height: 300px;
+    overflow-y: auto;
+}
+
+/* Texto truncado con ellipsis */
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}</div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">📦 Box Model</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#modelo-caja" class="toc-link">El Modelo de Caja</a></li>
+                    <li class="toc-item"><a href="#width-height" class="toc-link">Width y Height</a></li>
+                    <li class="toc-item"><a href="#padding" class="toc-link">Padding</a></li>
+                    <li class="toc-item"><a href="#margin" class="toc-link">Margin</a></li>
+                    <li class="toc-item"><a href="#border" class="toc-link">Border</a></li>
+                    <li class="toc-item"><a href="#border-radius" class="toc-link">Border Radius</a></li>
+                    <li class="toc-item"><a href="#box-sizing" class="toc-link">Box Sizing</a></li>
+                    <li class="toc-item"><a href="#overflow" class="toc-link">Overflow</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>CSS - Sistema de Aprendizaje | <a href="../index.html">Volver a CSS</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+
+            function normalizeText(text) {
+                return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            }
+
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const tags = termino.getAttribute('data-tags') || '';
+                    const title = termino.querySelector('.tag')?.textContent || '';
+                    const desc = termino.querySelector('.descripcion')?.textContent || '';
+                    const ejemplo = termino.querySelector('.ejemplo')?.textContent || '';
+                    const searchText = normalizeText(tags + ' ' + title + ' ' + desc + ' ' + ejemplo);
+                    if (query === '' || searchText.includes(query)) {
+                        termino.style.display = 'block';
+                        found++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+</body>
+</html>

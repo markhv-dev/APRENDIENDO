@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3 - Práctica | Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <style>
+        body {
+            background: #0f0f0f;
+            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            margin: 0;
+            padding: 0;
+            margin-left: 280px;
+        }
+        .practice-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 300px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.95em;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.5);
+        }
+        .problem-statement {
+            background: rgba(74, 144, 226, 0.1);
+            border-left: 4px solid #4a90e2;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 80px 0 30px 0;
+        }
+        .problem-statement h1 {
+            color: #4a90e2;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        .problem-text {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #e0e0e0;
+        }
+        .help-section {
+            margin: 20px 0;
+        }
+        .btn-help {
+            background: rgba(255, 152, 0, 0.15);
+            border: 2px solid #ff9800;
+            color: #ff9800;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-help:hover {
+            background: rgba(255, 152, 0, 0.25);
+            transform: translateX(5px);
+        }
+        .help-content {
+            display: none;
+            background: rgba(255, 152, 0, 0.1);
+            border: 2px solid #ff9800;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 15px;
+            animation: slideDown 0.3s ease;
+        }
+        .help-content.active {
+            display: block;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .nivel-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            background: rgba(76, 175, 80, 0.2);
+            color: #4CAF50;
+            border: 2px solid #4CAF50;
+        }
+        .help-content h3 {
+            color: #ff9800;
+            margin-bottom: 15px;
+        }
+        .help-content ul {
+            line-height: 2;
+        }
+        .start-section {
+            margin: 40px 0;
+            text-align: center;
+        }
+        .btn-start-exercise {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            border: none;
+            padding: 20px 60px;
+            border-radius: 12px;
+            font-size: 1.5em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(74, 144, 226, 0.4);
+        }
+        .btn-start-exercise:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 40px rgba(74, 144, 226, 0.6);
+        }
+        .countdown-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .countdown-overlay.active {
+            display: flex;
+        }
+        .countdown-number {
+            font-size: 15em;
+            font-weight: 900;
+            color: #4a90e2;
+            text-shadow: 0 0 50px rgba(74, 144, 226, 0.8);
+            animation: countPulse 1s ease-in-out;
+        }
+        .countdown-message {
+            font-size: 2.5em;
+            color: #4CAF50;
+            font-weight: 700;
+            margin-top: 30px;
+            animation: fadeInScale 0.5s ease;
+        }
+        @keyframes countPulse {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        @keyframes fadeInScale {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        .timer-section {
+            margin: 30px 0;
+            text-align: center;
+            display: none;
+        }
+        .timer-section.active {
+            display: block;
+        }
+        .timer-display {
+            font-size: 3em;
+            font-weight: 700;
+            color: #e74c3c;
+            font-family: 'Courier New', monospace;
+            text-shadow: 0 2px 10px rgba(231, 76, 60, 0.3);
+        }
+        .timer-display.warning {
+            animation: pulse 1s infinite;
+            color: #ff6b5a;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .solution-section {
+            margin: 30px 0;
+        }
+        .btn-solution {
+            background: rgba(255, 193, 7, 0.15);
+            border: 2px solid #ffc107;
+            color: #ffc107;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-solution:hover {
+            background: rgba(255, 193, 7, 0.25);
+            transform: translateX(5px);
+        }
+        .solution-content {
+            display: none;
+            background: rgba(76, 175, 80, 0.1);
+            border: 2px solid #4CAF50;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 15px;
+            animation: slideDown 0.3s ease;
+        }
+        .solution-content.active {
+            display: block;
+        }
+        .solution-content h3 {
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+        .solution-content pre {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border-left: 4px solid #4CAF50;
+        }
+        .solution-content code {
+            color: #e0e0e0;
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        .btn-action {
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        .btn-finish {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+        .btn-finish:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+        }
+        .instructions-box {
+            background: rgba(74, 144, 226, 0.05);
+            border: 2px solid #4a90e2;
+            border-radius: 8px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        .instructions-box h3 {
+            color: #4a90e2;
+            margin-bottom: 15px;
+        }
+        .instructions-box p {
+            line-height: 1.8;
+            color: #b0b0b0;
+        }
+        @media (max-width: 768px) {
+            body {
+                margin-left: 0;
+            }
+            .back-link {
+                left: 15px;
+            }
+            .timer-display {
+                font-size: 2em;
+            }
+            .countdown-number {
+                font-size: 8em;
+            }
+            .countdown-message {
+                font-size: 1.8em;
+            }
+            .btn-start-exercise {
+                padding: 15px 40px;
+                font-size: 1.2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="Ejercicios.html" class="back-link">← Volver</a>
+
+    <div id="countdown-overlay" class="countdown-overlay">
+        <div id="countdown-number" class="countdown-number">3</div>
+        <div id="countdown-message" class="countdown-message" style="display: none;">¡A programar! 🚀</div>
+    </div>
+
+    <div class="practice-container">
+        <div class="problem-statement">
+            <h1>📝 Ejercicio 3: Listas y Organización</h1>
+            <p class="problem-text">
+                Crea una página con listas ordenadas (ol), listas no ordenadas (ul), lista anidada (comidas con ingredientes) y lista de definiciones (dl/dt/dd con 5 términos).
+            </p>
+        </div>
+
+        <div class="instructions-box">
+            <h3>📋 Instrucciones:</h3>
+            <p>
+                Abre tu editor de código y crea un archivo llamado <code>ejercicio3.html</code>.
+                Completa las tareas que aparecen en la sección de ayuda. ¡Tienes 8 minutos!
+            </p>
+        </div>
+
+        <div class="help-section">
+            <button class="btn-help" onclick="toggleHelp()">
+                <span id="help-icon">👁️</span>
+                <span id="help-text">Ver Ayuda</span>
+            </button>
+
+            <div id="help-content" class="help-content">
+                <span class="nivel-badge">Nivel Básico</span>
+
+                <h3>🎯 Objetivo:</h3>
+                <p>Practicar el uso correcto de diferentes niveles de encabezados.</p>
+
+                <h3>✅ Tareas específicas:</h3>
+                <ul>
+                    <li>Crea un documento sobre tu película, libro o serie favorita</li>
+                    <li>Usa <code>&lt;h1&gt;</code> para el título principal</li>
+                    <li>Usa <code>&lt;h2&gt;</code> para las secciones: "Sinopsis", "Personajes Principales", "Mi Opinión"</li>
+                    <li>Usa <code>&lt;h3&gt;</code> para subsecciones dentro de "Personajes Principales"</li>
+                    <li>Añade al menos 3 párrafos con contenido relevante en cada sección</li>
+                    <li>Asegúrate de no saltar niveles de encabezados</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="start-section" class="start-section">
+            <button class="btn-start-exercise" onclick="startExercise()">
+                ⚡ Empezar Ejercicio
+            </button>
+        </div>
+
+        <div id="timer-section" class="timer-section">
+            <div id="timer-display" class="timer-display">08:00</div>
+        </div>
+
+        <div class="solution-section">
+            <button class="btn-solution" onclick="toggleSolution()">
+                <span id="solution-icon">💡</span>
+                <span id="solution-text">Ver Solución</span>
+            </button>
+
+            <div id="solution-content" class="solution-content">
+                <h3>✅ Solución del Ejercicio:</h3>
+                <pre><code>&lt;!DOCTYPE html&gt;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi Rutina</title>
+</head>
+<body>
+    <h1>Mi Rutina Diaria</h1>
+    
+    <h2>Actividades Matutinas</h2>
+    <ol>
+        <li>Despertarme</li>
+        <li>Hacer ejercicio</li>
+        <li>Desayunar</li>
+    </ol>
+    
+    <h2>Mis Hobbies</h2>
+    <ul>
+        <li>Programar</li>
+        <li>Leer</li>
+        <li>Tocar guitarra</li>
+    </ul>
+    
+    <h2>Comidas</h2>
+    <ol>
+        <li>Desayuno
+            <ul>
+                <li>Café</li>
+                <li>Tostadas</li>
+            </ul>
+        </li>
+        <li>Almuerzo
+            <ul>
+                <li>Arroz</li>
+                <li>Pollo</li>
+            </ul>
+        </li>
+    </ol>
+    
+    <h2>Términos de Programación</h2>
+    <dl>
+        <dt>HTML</dt>
+        <dd>Lenguaje de marcado</dd>
+        <dt>CSS</dt>
+        <dd>Estilos visuales</dd>
+        <dt>JavaScript</dt>
+        <dd>Lenguaje de programación</dd>
+        <dt>DOM</dt>
+        <dd>Modelo de objetos</dd>
+        <dt>API</dt>
+        <dd>Interfaz de programación</dd>
+    </dl>
+</body>
+</html>
+&lt;/html&gt;</code></pre>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn-action btn-finish" onclick="finishExercise()">
+                ⏹️ Finalizar
+            </button>
+        </div>
+    </div>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+
+    <script>
+        let timerInterval = null;
+        let timeLeft = 480;
+
+        function toggleHelp() {
+            const helpContent = document.getElementById('help-content');
+            const helpIcon = document.getElementById('help-icon');
+            const helpText = document.getElementById('help-text');
+
+            helpContent.classList.toggle('active');
+
+            if (helpContent.classList.contains('active')) {
+                helpIcon.textContent = '🙈';
+                helpText.textContent = 'Ocultar Ayuda';
+            } else {
+                helpIcon.textContent = '👁️';
+                helpText.textContent = 'Ver Ayuda';
+            }
+        }
+
+        function toggleSolution() {
+            const solutionContent = document.getElementById('solution-content');
+            const solutionIcon = document.getElementById('solution-icon');
+            const solutionText = document.getElementById('solution-text');
+
+            solutionContent.classList.toggle('active');
+
+            if (solutionContent.classList.contains('active')) {
+                solutionIcon.textContent = '🙈';
+                solutionText.textContent = 'Ocultar Solución';
+            } else {
+                solutionIcon.textContent = '💡';
+                solutionText.textContent = 'Ver Solución';
+            }
+        }
+
+        function startExercise() {
+            const startSection = document.getElementById('start-section');
+            const countdownOverlay = document.getElementById('countdown-overlay');
+            const countdownNumber = document.getElementById('countdown-number');
+            const countdownMessage = document.getElementById('countdown-message');
+
+            startSection.style.display = 'none';
+            countdownOverlay.classList.add('active');
+
+            let count = 3;
+            countdownNumber.textContent = count;
+
+            const countInterval = setInterval(() => {
+                count--;
+                if (count > 0) {
+                    countdownNumber.textContent = count;
+                    countdownNumber.style.animation = 'none';
+                    setTimeout(() => {
+                        countdownNumber.style.animation = 'countPulse 1s ease-in-out';
+                    }, 10);
+                } else {
+                    clearInterval(countInterval);
+                    countdownNumber.style.display = 'none';
+                    countdownMessage.style.display = 'block';
+
+                    setTimeout(() => {
+                        countdownOverlay.classList.remove('active');
+                        countdownNumber.style.display = 'block';
+                        countdownMessage.style.display = 'none';
+                        countdownNumber.textContent = '3';
+                        startTimer();
+                    }, 1000);
+                }
+            }, 1000);
+        }
+
+        function startTimer() {
+            const timerSection = document.getElementById('timer-section');
+            const timerDisplay = document.getElementById('timer-display');
+
+            timerSection.classList.add('active');
+
+            timerInterval = setInterval(() => {
+                timeLeft--;
+
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+                if (timeLeft <= 60 && timeLeft > 0) {
+                    timerDisplay.classList.add('warning');
+                }
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    timerDisplay.textContent = '00:00';
+                    alert('⏰ ¡Tiempo agotado!');
+                }
+            }, 1000);
+        }
+
+        function finishExercise() {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+                alert('⏹️ Ejercicio finalizado. Tiempo detenido.');
+            } else {
+                alert('⚠️ No hay ningún ejercicio en progreso.');
+            }
+        }
+
+        window.addEventListener('beforeunload', () => {
+            if (timerInterval) {
+                clearInterval(timerInterval);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz 4: Multimedia y Metadatos - HTML</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <style>
+        body {
+            background: #0f0f0f;
+            color: #e0e0e0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            margin: 0;
+            padding: 0;
+            margin-left: 280px;
+        }
+        .quiz-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        .back-link {
+            position: fixed;
+            top: 20px;
+            left: 300px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.95em;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.5);
+        }
+        .quiz-header {
+            background: rgba(74, 144, 226, 0.1);
+            border-left: 4px solid #4a90e2;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 80px 0 30px 0;
+        }
+        .quiz-header h1 {
+            color: #4a90e2;
+            margin-bottom: 10px;
+        }
+        .progress-bar {
+            background: #1a1a1a;
+            height: 8px;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        .progress-fill {
+            background: linear-gradient(90deg, #4a90e2, #357abd);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        .question-card {
+            background: rgba(30, 30, 30, 0.5);
+            border: 2px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 25px 0;
+        }
+        .question-number {
+            color: #4a90e2;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .question-text {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #e0e0e0;
+        }
+        .option {
+            background: rgba(74, 144, 226, 0.05);
+            border: 2px solid #2a2a2a;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .option:hover {
+            border-color: #4a90e2;
+            background: rgba(74, 144, 226, 0.1);
+            transform: translateX(5px);
+        }
+        .option.selected {
+            border-color: #4a90e2;
+            background: rgba(74, 144, 226, 0.15);
+        }
+        .option.correct {
+            border-color: #4CAF50;
+            background: rgba(76, 175, 80, 0.15);
+        }
+        .option.incorrect {
+            border-color: #e74c3c;
+            background: rgba(231, 76, 60, 0.15);
+        }
+        .option.disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        .option-letter {
+            background: #2a2a2a;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .explanation {
+            display: none;
+            background: rgba(74, 144, 226, 0.1);
+            border-left: 4px solid #4a90e2;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            animation: slideDown 0.3s ease;
+        }
+        .explanation.show {
+            display: block;
+        }
+        .explanation.correct {
+            border-left-color: #4CAF50;
+            background: rgba(76, 175, 80, 0.1);
+        }
+        .explanation.incorrect {
+            border-left-color: #e74c3c;
+            background: rgba(231, 76, 60, 0.1);
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .btn-next {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            display: none;
+        }
+        .btn-next.show {
+            display: inline-block;
+        }
+        .btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+        }
+        .results {
+            display: none;
+            background: rgba(74, 144, 226, 0.1);
+            border: 2px solid #4a90e2;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin: 30px 0;
+        }
+        .results.show {
+            display: block;
+        }
+        .results h2 {
+            color: #4a90e2;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .score {
+            font-size: 4em;
+            font-weight: 700;
+            color: #4CAF50;
+            margin: 20px 0;
+        }
+        .btn-retry {
+            background: linear-gradient(135deg, #4a90e2, #357abd);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+        }
+        .btn-retry:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 144, 226, 0.4);
+        }
+        @media (max-width: 768px) {
+            body {
+                margin-left: 0;
+            }
+            .back-link {
+                left: 15px;
+            }
+            .quiz-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="Quiz.html" class="back-link">← Volver</a>
+
+    <div class="quiz-container">
+        <div class="quiz-header">
+            <h1>📝 Quiz 4: Multimedia y Metadatos y Semántica</h1>
+            <p>10 preguntas sobre elementos multimedia y metadatos SEO</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress"></div>
+            </div>
+            <p id="progress-text">Pregunta <span id="current">0</span> de <span id="total">10</span></p>
+        </div>
+
+        <div id="quiz-questions"></div>
+
+        <div id="results" class="results">
+            <h2>🎉 ¡Quiz Completado!</h2>
+            <div class="score" id="score">0/10</div>
+            <p id="message"></p>
+            <button class="btn-retry" onclick="location.reload()">🔄 Reintentar Quiz</button>
+            <button class="btn-retry" onclick="location.href='Quiz.html'" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">← Volver a Quizzes</button>
+        </div>
+    </div>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+
+    <script>
+                const questions = [
+            {question:"¿Qué etiqueta inserta video?",options:["&lt;movie&gt;","&lt;media&gt;","&lt;video&gt;","&lt;film&gt;"],correct:2,explanation:"&lt;video&gt; inserta videos HTML5. Usa &lt;source&gt; para múltiples formatos."},
+            {question:"¿Qué atributo muestra controles de video?",options:["controls","show","buttons","ui"],correct:0,explanation:"controls muestra play, pause, volumen. Sin él, no hay controles."},
+            {question:"¿Qué meta tag define descripción para SEO?",options:["description","content","meta-desc","name='description'"],correct:3,explanation:"&lt;meta name='description' content='...'&gt; define descripción para buscadores."},
+            {question:"¿Qué etiqueta agrupa imagen con descripción?",options:["&lt;img&gt;","&lt;figure&gt;","&lt;picture&gt;","&lt;caption&gt;"],correct:1,explanation:"&lt;figure&gt; agrupa imagen. &lt;figcaption&gt; proporciona descripción."},
+            {question:"¿Qué protocolo Open Graph usa?",options:["meta","og:","open:","graph:"],correct:1,explanation:"Open Graph usa property='og:title', og:description para redes sociales."},
+            {question:"¿Qué etiqueta inserta audio?",options:["&lt;sound&gt;","&lt;audio&gt;","&lt;music&gt;","&lt;media&gt;"],correct:1,explanation:"&lt;audio&gt; inserta audio HTML5. Similar a &lt;video&gt;."},
+            {question:"¿Qué etiqueta proporciona favicon?",options:["&lt;icon&gt;","&lt;favicon&gt;","&lt;link rel='icon'&gt;","&lt;img&gt;"],correct:2,explanation:"&lt;link rel='icon' href='favicon.ico'&gt; en &lt;head&gt; define favicon."},
+            {question:"¿Qué meta tag define charset?",options:["&lt;meta charset&gt;","&lt;charset&gt;","&lt;encoding&gt;","&lt;meta encoding&gt;"],correct:0,explanation:"&lt;meta charset='UTF-8'&gt; define codificación de caracteres. Debe ir al inicio de &lt;head&gt;."},
+            {question:"¿Qué etiqueta permite gráficos vectoriales inline?",options:["&lt;vector&gt;","&lt;graphic&gt;","&lt;svg&gt;","&lt;canvas&gt;"],correct:2,explanation:"&lt;svg&gt; permite gráficos vectoriales directamente en HTML. &lt;canvas&gt; usa JavaScript."},
+            {question:"¿Qué atributo carga video al cargar página?",options:["autoload","preload","load","auto"],correct:1,explanation:"preload='auto' carga video al cargar página. 'none' no precarga."},
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+        let answers = new Array(questions.length).fill(null);
+
+        function renderQuestion(index) {
+            const question = questions[index];
+            const container = document.getElementById('quiz-questions');
+
+            const questionCard = document.createElement('div');
+            questionCard.className = 'question-card';
+            questionCard.id = `question-${index}`;
+
+            questionCard.innerHTML = `
+                <div class="question-number">Pregunta ${index + 1} de ${questions.length}</div>
+                <div class="question-text">${question.question}</div>
+                ${question.options.map((option, i) => `
+                    <div class="option" data-index="${i}" onclick="selectOption(${index}, ${i})">
+                        <div class="option-letter">${String.fromCharCode(65 + i)}</div>
+                        <div>${option}</div>
+                    </div>
+                `).join('')}
+                <div class="explanation" id="explanation-${index}"></div>
+                <button class="btn-next" id="next-${index}" onclick="nextQuestion(${index})">
+                    ${index < questions.length - 1 ? 'Siguiente Pregunta →' : 'Ver Resultados'}
+                </button>
+            `;
+
+            container.appendChild(questionCard);
+        }
+
+        function selectOption(questionIndex, optionIndex) {
+            const question = questions[questionIndex];
+            const card = document.getElementById(`question-${questionIndex}`);
+            const options = card.querySelectorAll('.option');
+            const explanation = document.getElementById(`explanation-${questionIndex}`);
+            const nextBtn = document.getElementById(`next-${questionIndex}`);
+
+            // Solo permitir selección si no se ha respondido
+            if (answers[questionIndex] !== null) return;
+
+            answers[questionIndex] = optionIndex;
+            const isCorrect = optionIndex === question.correct;
+
+            if (isCorrect) score++;
+
+            // Marcar opciones
+            options.forEach((opt, i) => {
+                opt.classList.add('disabled');
+                if (i === question.correct) {
+                    opt.classList.add('correct');
+                } else if (i === optionIndex && !isCorrect) {
+                    opt.classList.add('incorrect');
+                }
+            });
+
+            // Mostrar explicación
+            explanation.innerHTML = `
+                <strong>${isCorrect ? '✓ ¡Correcto!' : '✗ Incorrecto'}</strong>
+                <p>${question.explanation}</p>
+            `;
+            explanation.classList.add('show', isCorrect ? 'correct' : 'incorrect');
+            nextBtn.classList.add('show');
+
+            updateProgress();
+        }
+
+        function nextQuestion(currentIndex) {
+            if (currentIndex < questions.length - 1) {
+                currentQuestion++;
+                renderQuestion(currentQuestion);
+                document.getElementById(`question-${currentIndex}`).style.display = 'none';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                showResults();
+            }
+        }
+
+        function updateProgress() {
+            const answered = answers.filter(a => a !== null).length;
+            const progress = (answered / questions.length) * 100;
+            document.getElementById('progress').style.width = progress + '%';
+            document.getElementById('current').textContent = answered;
+        }
+
+        function showResults() {
+            document.getElementById('quiz-questions').style.display = 'none';
+            const results = document.getElementById('results');
+            const scoreElement = document.getElementById('score');
+            const messageElement = document.getElementById('message');
+
+            const percentage = (score / questions.length) * 100;
+            scoreElement.textContent = `${score}/${questions.length}`;
+
+            let message = '';
+            if (percentage >= 90) {
+                message = '🏆 ¡Excelente! Dominas la estructura HTML.';
+                scoreElement.style.color = '#4CAF50';
+            } else if (percentage >= 70) {
+                message = '👍 ¡Bien hecho! Tienes buen conocimiento de HTML.';
+                scoreElement.style.color = '#4a90e2';
+            } else if (percentage >= 50) {
+                message = '📚 Puedes mejorar. Revisa los módulos y vuelve a intentarlo.';
+                scoreElement.style.color = '#FF9800';
+            } else {
+                message = '💪 Sigue practicando. Revisa los módulos antes de reintentar.';
+                scoreElement.style.color = '#e74c3c';
+            }
+
+            messageElement.textContent = message;
+            results.classList.add('show');
+        }
+
+        // Inicializar
+        document.getElementById('total').textContent = questions.length;
+        renderQuestion(0);
+    </script>
+</body>
+</html>

@@ -50,14 +50,17 @@ document.addEventListener('DOMContentLoaded', function() {
                         <a href="/Lenguajes/HTML/index.html" class="menu-item" data-section="html">
                             <span class="item-icon">📄</span>
                             <span class="item-text">HTML</span>
+                            <span class="badge-completed">✓</span>
                         </a>
                         <a href="/Lenguajes/JavaScript/index.html" class="menu-item" data-section="javascript">
                             <span class="item-icon">⚡</span>
                             <span class="item-text">JavaScript</span>
+                            <span class="badge-completed">✓</span>
                         </a>
                         <a href="/Lenguajes/CSS/index.html" class="menu-item" data-section="css">
                             <span class="item-icon">🎨</span>
                             <span class="item-text">CSS</span>
+                            <span class="badge-completed">✓</span>
                         </a>
                         <a href="/Lenguajes/C++/index.html" class="menu-item" data-section="cpp">
                             <span class="item-icon">⚙️</span>
@@ -100,6 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <a href="/Comandos/Git-GitHub/index.html" class="menu-item" data-section="git">
                             <span class="item-icon">🔀</span>
                             <span class="item-text">Git & GitHub</span>
+                            <span class="badge-completed">✓</span>
                         </a>
                     </div>
                 </div>
@@ -178,8 +182,8 @@ function highlightActiveItem() {
         const normalizedHref = href.toLowerCase().replace('/index.html', '');
         const normalizedPath = currentPath.replace('/index.html', '');
 
-        // Si la ruta actual contiene el href del menú
-        if (normalizedPath.includes(normalizedHref) && normalizedHref.length > 1) {
+        // Si la ruta actual coincide exactamente con el href del menú
+        if (normalizedPath === normalizedHref || normalizedPath.startsWith(normalizedHref + '/')) {
             item.classList.add('active');
         }
     });

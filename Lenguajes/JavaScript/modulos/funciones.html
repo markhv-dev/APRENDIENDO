@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a JavaScript</a>
+        <span class="icon">⚙️</span>
+        <h1>Módulo 2: Funciones</h1>
+        <p class="subtitle">Declaración, arrow functions, callbacks y closures</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #f1c40f; margin-bottom: 40px;">
+                <h2 style="color: #f1c40f; margin-bottom: 15px; font-size: 1.8em;">⚙️ Funciones</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0;">
+                    Las funciones son bloques de código reutilizables. Son fundamentales en JavaScript y soportan múltiples paradigmas.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="declaracion" data-tags="funcion declaracion function">
+                        <span class="tag">📋 Declaración de Función</span>
+                        <p class="significado">Forma tradicional de definir funciones</p>
+                        <div class="ejemplo">// Declaración de función
+function saludar(nombre) {
+    return `Hola, ${nombre}!`;
+}
+
+// Llamar la función
+const mensaje = saludar("Ana");
+console.log(mensaje);  // "Hola, Ana!"
+
+// Función sin parámetros
+function obtenerFecha() {
+    return new Date().toLocaleDateString();
+}
+
+// Función sin return (retorna undefined)
+function mostrarMensaje(texto) {
+    console.log(texto);
+}</div>
+                    </div>
+
+                    <div class="termino" id="expresion" data-tags="funcion expresion anonima">
+                        <span class="tag">📋 Expresión de Función</span>
+                        <p class="significado">Función asignada a una variable</p>
+                        <div class="ejemplo">// Función anónima asignada a variable
+const sumar = function(a, b) {
+    return a + b;
+};
+
+console.log(sumar(5, 3));  // 8
+
+// Función nombrada (útil para debugging)
+const factorial = function fact(n) {
+    return n <= 1 ? 1 : n * fact(n - 1);
+};</div>
+                        <div class="nota">
+                            <strong>⚠️ Diferencia:</strong> Las expresiones no se elevan (hoisting), las declaraciones sí.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="arrow" data-tags="arrow function flecha">
+                        <span class="tag">📋 Arrow Functions</span>
+                        <p class="significado">Sintaxis corta para funciones (ES6+)</p>
+                        <div class="ejemplo">// Sintaxis básica
+const sumar = (a, b) => {
+    return a + b;
+};
+
+// Return implícito (una expresión)
+const multiplicar = (a, b) => a * b;
+
+// Un solo parámetro (sin paréntesis)
+const doble = n => n * 2;
+
+// Sin parámetros
+const random = () => Math.random();
+
+// Retornar objeto (necesita paréntesis)
+const crearUsuario = (nombre, edad) => ({
+    nombre,
+    edad,
+    activo: true
+});
+
+// En métodos de array
+const numeros = [1, 2, 3, 4, 5];
+const dobles = numeros.map(n => n * 2);</div>
+                        <div class="nota">
+                            <strong>⚠️ Importante:</strong> Arrow functions no tienen su propio <code>this</code>, heredan del contexto padre.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="parametros" data-tags="parametros default rest spread">
+                        <span class="tag">📋 Parámetros Avanzados</span>
+                        <p class="significado">Default, rest y destructuring</p>
+                        <div class="ejemplo">// Parámetros por defecto
+function saludar(nombre = "Invitado") {
+    return `Hola, ${nombre}!`;
+}
+saludar();        // "Hola, Invitado!"
+saludar("Ana");   // "Hola, Ana!"
+
+// Rest parameters (...)
+function sumarTodos(...numeros) {
+    return numeros.reduce((acc, n) => acc + n, 0);
+}
+sumarTodos(1, 2, 3, 4);  // 10
+
+// Destructuring en parámetros
+function mostrarUsuario({ nombre, edad, ciudad = "N/A" }) {
+    console.log(`${nombre}, ${edad}, ${ciudad}`);
+}
+
+mostrarUsuario({ nombre: "Ana", edad: 25 });</div>
+                    </div>
+
+                    <div class="termino" id="callback" data-tags="callback funcion argumento">
+                        <span class="tag">📋 Callbacks</span>
+                        <p class="significado">Funciones pasadas como argumentos</p>
+                        <div class="ejemplo">// Callback básico
+function procesar(datos, callback) {
+    const resultado = datos.toUpperCase();
+    callback(resultado);
+}
+
+procesar("hola", function(res) {
+    console.log(res);  // "HOLA"
+});
+
+// Con arrow function
+procesar("mundo", res => console.log(res));
+
+// Callbacks en métodos de array
+const numeros = [1, 2, 3, 4, 5];
+
+numeros.forEach(n => console.log(n));
+const dobles = numeros.map(n => n * 2);
+const pares = numeros.filter(n => n % 2 === 0);
+
+// Callback con setTimeout
+setTimeout(() => {
+    console.log("Ejecutado después de 1 segundo");
+}, 1000);</div>
+                    </div>
+
+                    <div class="termino" id="closure" data-tags="closure clausura scope">
+                        <span class="tag">📋 Closures</span>
+                        <p class="significado">Función que recuerda su scope léxico</p>
+                        <div class="ejemplo">// Closure básico
+function crearContador() {
+    let count = 0;  // Variable "privada"
+
+    return function() {
+        count++;
+        return count;
+    };
+}
+
+const contador = crearContador();
+console.log(contador());  // 1
+console.log(contador());  // 2
+console.log(contador());  // 3
+
+// Closure con parámetros
+function multiplicador(factor) {
+    return function(numero) {
+        return numero * factor;
+    };
+}
+
+const doble = multiplicador(2);
+const triple = multiplicador(3);
+
+console.log(doble(5));   // 10
+console.log(triple(5));  // 15</div>
+                        <div class="nota">
+                            <strong>💡 Uso común:</strong> Encapsular datos privados, crear factories, memoization.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="iife" data-tags="iife immediately invoked function">
+                        <span class="tag">📋 IIFE</span>
+                        <p class="significado">Immediately Invoked Function Expression</p>
+                        <div class="ejemplo">// IIFE básica
+(function() {
+    console.log("Ejecutada inmediatamente");
+})();
+
+// Con arrow function
+(() => {
+    const privado = "No accesible fuera";
+    console.log(privado);
+})();
+
+// Retornando valor
+const resultado = (function() {
+    return 42;
+})();
+
+// Módulo pattern (pre-ES6)
+const modulo = (function() {
+    let privado = 0;
+
+    return {
+        incrementar: () => ++privado,
+        obtener: () => privado
+    };
+})();</div>
+                    </div>
+
+                    <div class="termino" id="recursion" data-tags="recursion recursiva">
+                        <span class="tag">📋 Recursión</span>
+                        <p class="significado">Función que se llama a sí misma</p>
+                        <div class="ejemplo">// Factorial
+function factorial(n) {
+    if (n <= 1) return 1;        // Caso base
+    return n * factorial(n - 1);  // Caso recursivo
+}
+console.log(factorial(5));  // 120
+
+// Fibonacci
+function fibonacci(n) {
+    if (n <= 1) return n;
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+// Recorrer árbol
+function recorrerArbol(nodo) {
+    console.log(nodo.valor);
+    if (nodo.hijos) {
+        nodo.hijos.forEach(hijo => recorrerArbol(hijo));
+    }
+}</div>
+                        <div class="nota">
+                            <strong>⚠️ Cuidado:</strong> Siempre define un caso base para evitar stack overflow.
+                        </div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">⚙️ Funciones</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#declaracion" class="toc-link">Declaración</a></li>
+                    <li class="toc-item"><a href="#expresion" class="toc-link">Expresión</a></li>
+                    <li class="toc-item"><a href="#arrow" class="toc-link">Arrow Functions</a></li>
+                    <li class="toc-item"><a href="#parametros" class="toc-link">Parámetros Avanzados</a></li>
+                    <li class="toc-item"><a href="#callback" class="toc-link">Callbacks</a></li>
+                    <li class="toc-item"><a href="#closure" class="toc-link">Closures</a></li>
+                    <li class="toc-item"><a href="#iife" class="toc-link">IIFE</a></li>
+                    <li class="toc-item"><a href="#recursion" class="toc-link">Recursión</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>JavaScript - Sistema de Aprendizaje | <a href="../index.html">Volver a JavaScript</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) { return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const searchText = normalizeText((termino.getAttribute('data-tags') || '') + ' ' + (termino.querySelector('.tag')?.textContent || '') + ' ' + (termino.querySelector('.descripcion')?.textContent || ''));
+                    if (query === '' || searchText.includes(query)) { termino.style.display = 'block'; found++; } else { termino.style.display = 'none'; }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => { if (scrollY >= section.offsetTop - 100) current = section.getAttribute('id'); });
+                tocLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === '#' + current) link.classList.add('active'); });
+                const scrolled = ((document.body.scrollTop || document.documentElement.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100;
+                document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+</body>
+</html>

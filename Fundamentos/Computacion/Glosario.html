@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glosario - Fundamentos de Computación</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💻 Glosario de Fundamentos de Computación</h1>
+            <p class="subtitle">25+ conceptos esenciales</p>
+        </header>
+
+        <div class="breadcrumb">
+            <a href="../../index.html">← Inicio</a> /
+            <a href="index.html">Computación</a> /
+            <span>Glosario</span>
+        </div>
+
+        <div class="search-container">
+            <input type="text" class="search-box" id="searchBox" placeholder="Buscar concepto...">
+        </div>
+
+        <div id="terminos">
+            <div class="termino" data-tags="sistema operativo os windows linux">
+                <span class="categoria-badge badge-basico">SO</span>
+                <div class="comando">Sistema Operativo (OS)</div>
+                <p class="descripcion">
+                    Software que gestiona hardware y recursos. Intermediario entre usuario y computadora.
+                </p>
+                <div class="ejemplo">Windows, Linux, macOS, Android, iOS</div>
+            </div>
+
+            <div class="termino" data-tags="kernel nucleo sistema">
+                <span class="categoria-badge badge-intermedio">SO</span>
+                <div class="comando">Kernel</div>
+                <p class="descripcion">
+                    Núcleo del sistema operativo. Gestiona CPU, memoria, dispositivos.
+                </p>
+            </div>
+
+            <div class="termino" data-tags="proceso program ejecucion">
+                <span class="categoria-badge badge-basico">SO</span>
+                <div class="comando">Proceso</div>
+                <p class="descripcion">
+                    Programa en ejecución. El SO asigna recursos (CPU, memoria) a cada proceso.
+                </p>
+            </div>
+
+            <div class="termino" data-tags="red network lan wan">
+                <span class="categoria-badge badge-basico">Redes</span>
+                <div class="comando">LAN (Local Area Network)</div>
+                <p class="descripcion">
+                    Red de área local. Conecta dispositivos en un área pequeña (casa, oficina).
+                </p>
+                <div class="ejemplo">Red de tu casa, red de la universidad</div>
+            </div>
+
+            <div class="termino" data-tags="wan wide area network internet">
+                <span class="categoria-badge badge-basico">Redes</span>
+                <div class="comando">WAN (Wide Area Network)</div>
+                <p class="descripcion">
+                    Red de área amplia. Conecta redes en áreas geográficas extensas.
+                </p>
+                <div class="ejemplo">Internet es la WAN más grande</div>
+            </div>
+
+            <div class="termino" data-tags="internet red global">
+                <span class="categoria-badge badge-basico">Internet</span>
+                <div class="comando">Internet</div>
+                <p class="descripcion">
+                    Red global de redes interconectadas. Usa protocolo TCP/IP.
+                </p>
+            </div>
+
+            <div class="termino" data-tags="www world wide web">
+                <span class="categoria-badge badge-basico">Internet</span>
+                <div class="comando">WWW (World Wide Web)</div>
+                <p class="descripcion">
+                    Sistema de documentos de hipertexto enlazados, accesibles vía Internet.
+                </p>
+                <div class="nota">
+                    <strong>⚠️ Internet ≠ WWW:</strong> Internet es la infraestructura, WWW es un servicio que funciona sobre Internet
+                </div>
+            </div>
+
+            <div class="termino" data-tags="isp proveedor internet">
+                <span class="categoria-badge badge-basico">Internet</span>
+                <div class="comando">ISP (Internet Service Provider)</div>
+                <p class="descripcion">
+                    Proveedor de servicios de Internet. Empresa que te da acceso a Internet.
+                </p>
+                <div class="ejemplo">Claro, Movistar, Entel en Perú</div>
+            </div>
+
+            <div class="termino" data-tags="unix linux comando terminal">
+                <span class="categoria-badge badge-basico">UNIX</span>
+                <div class="comando">UNIX</div>
+                <p class="descripcion">
+                    Sistema operativo multitarea y multiusuario. Base de Linux y macOS.
+                </p>
+            </div>
+
+            <div class="termino" data-tags="linux sistema operativo">
+                <span class="categoria-badge badge-basico">UNIX</span>
+                <div class="comando">Linux</div>
+                <p class="descripcion">
+                    Sistema operativo de código abierto basado en UNIX.
+                </p>
+                <div class="ejemplo">Ubuntu, Debian, CentOS, Fedora</div>
+            </div>
+
+            <div class="termino" data-tags="shell terminal comando bash">
+                <span class="categoria-badge badge-basico">UNIX</span>
+                <div class="comando">Shell</div>
+                <p class="descripcion">
+                    Intérprete de comandos. Interfaz entre usuario y sistema operativo.
+                </p>
+                <div class="ejemplo">Bash, Zsh, Fish</div>
+            </div>
+
+            <div class="termino" data-tags="comando command line cli">
+                <span class="categoria-badge badge-basico">UNIX</span>
+                <div class="comando">ls</div>
+                <p class="descripcion">
+                    Lista archivos y directorios en el directorio actual.
+                </p>
+                <div class="ejemplo">ls -la (lista detallada con archivos ocultos)</div>
+            </div>
+
+            <div class="termino" data-tags="cambiar directorio cd">
+                <span class="categoria-badge badge-basico">UNIX</span>
+                <div class="comando">cd</div>
+                <p class="descripcion">
+                    Cambia de directorio (change directory).
+                </p>
+                <div class="ejemplo">cd /home/usuario<br>cd .. (sube un nivel)<br>cd ~ (va al home)</div>
+            </div>
+
+            <div class="termino" data-tags="crear directorio mkdir">
+                <span class="categoria-badge badge-basico">UNIX</span>
+                <div class="comando">mkdir</div>
+                <p class="descripcion">
+                    Crea un nuevo directorio (make directory).
+                </p>
+                <div class="ejemplo">mkdir nueva_carpeta</div>
+            </div>
+
+            <div class="termino" data-tags="eliminar remove rm">
+                <span class="categoria-badge badge-basico">UNIX</span>
+                <div class="comando">rm</div>
+                <p class="descripcion">
+                    Elimina archivos o directorios (remove).
+                </p>
+                <div class="ejemplo">rm archivo.txt<br>rm -r carpeta/ (recursivo)</div>
+            </div>
+
+            <div class="termino" data-tags="permisos chmod rwx">
+                <span class="categoria-badge badge-intermedio">UNIX</span>
+                <div class="comando">Permisos (rwx)</div>
+                <p class="descripcion">
+                    Control de acceso a archivos. r (read), w (write), x (execute).
+                </p>
+                <div class="ejemplo">
+                    rwxr-xr-x<br>
+                    ├─ rwx: usuario (lectura, escritura, ejecución)<br>
+                    ├─ r-x: grupo (lectura, ejecución)<br>
+                    └─ r-x: otros (lectura, ejecución)
+                </div>
+            </div>
+
+            <div class="termino" data-tags="root superusuario admin">
+                <span class="categoria-badge badge-intermedio">UNIX</span>
+                <div class="comando">root</div>
+                <p class="descripcion">
+                    Superusuario con todos los permisos. Equivalente a Administrador en Windows.
+                </p>
+                <div class="nota">
+                    <strong>⚠️ Peligro:</strong> root puede hacer cualquier cosa, incluso destruir el sistema
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer><p>Glosario de Computación - Sistema de Aprendizaje</p></footer>
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        const searchBox = document.getElementById('searchBox');
+        const terminos = document.querySelectorAll('.termino');
+        searchBox.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            terminos.forEach(termino => {
+                const texto = termino.textContent.toLowerCase() + termino.getAttribute('data-tags');
+                termino.style.display = texto.includes(searchTerm) ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

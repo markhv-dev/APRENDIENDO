@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clases - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a JavaScript</a>
+        <span class="icon">🏗️</span>
+        <h1>Módulo 10: Clases y OOP</h1>
+        <p class="subtitle">Clases, herencia, getters/setters y módulos</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #f1c40f; margin-bottom: 40px;">
+                <h2 style="color: #f1c40f; margin-bottom: 15px; font-size: 1.8em;">🏗️ Clases y OOP</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0;">
+                    Las clases en JavaScript son sintaxis sobre prototipos que facilitan la programación orientada a objetos.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="clase-basica" data-tags="clase class constructor new">
+                        <span class="tag">📋 Clase Básica</span>
+                        <p class="significado">Definir clases con constructor</p>
+                        <div class="ejemplo">class Usuario {
+    // Constructor
+    constructor(nombre, email) {
+        this.nombre = nombre;
+        this.email = email;
+        this.activo = true;
+    }
+
+    // Método
+    saludar() {
+        return `Hola, soy ${this.nombre}`;
+    }
+
+    // Método
+    desactivar() {
+        this.activo = false;
+    }
+}
+
+// Crear instancia
+const usuario = new Usuario("Ana", "ana@email.com");
+
+console.log(usuario.nombre);     // "Ana"
+console.log(usuario.saludar());  // "Hola, soy Ana"
+
+// Verificar instancia
+usuario instanceof Usuario;  // true
+
+// typeof clase
+typeof Usuario;  // "function"</div>
+                    </div>
+
+                    <div class="termino" id="getters-setters" data-tags="getter setter get set">
+                        <span class="tag">📋 Getters y Setters</span>
+                        <p class="significado">Accesores para propiedades</p>
+                        <div class="ejemplo">class Circulo {
+    constructor(radio) {
+        this._radio = radio;  // Convención: _ = privado
+    }
+
+    // Getter
+    get radio() {
+        return this._radio;
+    }
+
+    // Setter con validación
+    set radio(valor) {
+        if (valor <= 0) {
+            throw new Error("Radio debe ser positivo");
+        }
+        this._radio = valor;
+    }
+
+    // Getter calculado
+    get area() {
+        return Math.PI * this._radio ** 2;
+    }
+
+    get diametro() {
+        return this._radio * 2;
+    }
+}
+
+const circulo = new Circulo(5);
+console.log(circulo.radio);     // 5 (usa getter)
+console.log(circulo.area);      // 78.54...
+
+circulo.radio = 10;             // Usa setter
+// circulo.radio = -5;          // Error!</div>
+                    </div>
+
+                    <div class="termino" id="static" data-tags="static estatico">
+                        <span class="tag">📋 Métodos Estáticos</span>
+                        <p class="significado">Métodos de la clase, no de instancias</p>
+                        <div class="ejemplo">class Matematicas {
+    static PI = 3.14159;
+
+    static sumar(a, b) {
+        return a + b;
+    }
+
+    static random(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+}
+
+// Llamar sin instanciar
+Matematicas.sumar(5, 3);      // 8
+Matematicas.PI;               // 3.14159
+Matematicas.random(1, 10);    // número aleatorio
+
+// Factory pattern
+class Usuario {
+    constructor(nombre, rol) {
+        this.nombre = nombre;
+        this.rol = rol;
+    }
+
+    static crearAdmin(nombre) {
+        return new Usuario(nombre, "admin");
+    }
+
+    static crearInvitado() {
+        return new Usuario("Invitado", "guest");
+    }
+}
+
+const admin = Usuario.crearAdmin("Ana");
+const invitado = Usuario.crearInvitado();</div>
+                    </div>
+
+                    <div class="termino" id="herencia" data-tags="herencia extends super">
+                        <span class="tag">📋 Herencia</span>
+                        <p class="significado">Extender clases con extends</p>
+                        <div class="ejemplo">class Animal {
+    constructor(nombre) {
+        this.nombre = nombre;
+    }
+
+    hablar() {
+        console.log(`${this.nombre} hace un sonido`);
+    }
+}
+
+class Perro extends Animal {
+    constructor(nombre, raza) {
+        super(nombre);  // Llamar constructor padre
+        this.raza = raza;
+    }
+
+    // Override método
+    hablar() {
+        console.log(`${this.nombre} ladra`);
+    }
+
+    // Método propio
+    correr() {
+        console.log(`${this.nombre} corre`);
+    }
+}
+
+const perro = new Perro("Max", "Labrador");
+perro.hablar();  // "Max ladra"
+perro.correr();  // "Max corre"
+
+// Llamar método padre
+class Gato extends Animal {
+    hablar() {
+        super.hablar();  // Llama al padre
+        console.log(`${this.nombre} maulla`);
+    }
+}
+
+// Verificar herencia
+perro instanceof Perro;   // true
+perro instanceof Animal;  // true</div>
+                    </div>
+
+                    <div class="termino" id="private" data-tags="private privado # encapsulacion">
+                        <span class="tag">📋 Campos Privados</span>
+                        <p class="significado">Propiedades realmente privadas</p>
+                        <div class="ejemplo">class CuentaBancaria {
+    // Campos privados (ES2022+)
+    #saldo = 0;
+    #pin;
+
+    constructor(pin) {
+        this.#pin = pin;
+    }
+
+    depositar(cantidad) {
+        if (cantidad > 0) {
+            this.#saldo += cantidad;
+        }
+    }
+
+    retirar(cantidad, pin) {
+        if (pin !== this.#pin) {
+            throw new Error("PIN incorrecto");
+        }
+        if (cantidad > this.#saldo) {
+            throw new Error("Saldo insuficiente");
+        }
+        this.#saldo -= cantidad;
+        return cantidad;
+    }
+
+    get saldo() {
+        return this.#saldo;
+    }
+
+    // Método privado
+    #validarPin(pin) {
+        return pin === this.#pin;
+    }
+}
+
+const cuenta = new CuentaBancaria("1234");
+cuenta.depositar(100);
+console.log(cuenta.saldo);    // 100
+// cuenta.#saldo;             // Error! Es privado
+// cuenta.#pin;               // Error!</div>
+                        <div class="nota">
+                            <strong>💡 Tip:</strong> Usa # para campos verdaderamente privados, _ es solo convención.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="modulos" data-tags="modulos import export module">
+                        <span class="tag">📋 Módulos ES6</span>
+                        <p class="significado">Import y export de código</p>
+                        <div class="ejemplo">// archivo: utils.js
+// Export nombrado
+export const PI = 3.14159;
+
+export function sumar(a, b) {
+    return a + b;
+}
+
+export class Calculator {
+    // ...
+}
+
+// Export default (uno por archivo)
+export default class Usuario {
+    // ...
+}
+
+// archivo: app.js
+// Import nombrado
+import { PI, sumar } from "./utils.js";
+
+// Import default
+import Usuario from "./utils.js";
+
+// Import todo
+import * as utils from "./utils.js";
+utils.PI;
+utils.sumar(1, 2);
+
+// Renombrar
+import { sumar as add } from "./utils.js";
+
+// Import dinámico (lazy loading)
+const modulo = await import("./utils.js");
+
+// Re-export
+export { sumar } from "./utils.js";
+export * from "./utils.js";</div>
+                    </div>
+
+                    <div class="termino" id="prototipos" data-tags="prototype prototipo __proto__">
+                        <span class="tag">📋 Prototipos</span>
+                        <p class="significado">El sistema real detrás de las clases</p>
+                        <div class="ejemplo">// Las clases son azúcar sintáctico sobre prototipos
+
+// Función constructora (pre-ES6)
+function Persona(nombre) {
+    this.nombre = nombre;
+}
+
+Persona.prototype.saludar = function() {
+    return `Hola, soy ${this.nombre}`;
+};
+
+const p = new Persona("Ana");
+p.saludar();  // "Hola, soy Ana"
+
+// Equivalente con clase
+class PersonaClase {
+    constructor(nombre) {
+        this.nombre = nombre;
+    }
+    saludar() {
+        return `Hola, soy ${this.nombre}`;
+    }
+}
+
+// Acceder al prototipo
+Object.getPrototypeOf(p);
+p.__proto__;  // No recomendado
+
+// Verificar propiedad propia vs heredada
+p.hasOwnProperty("nombre");   // true
+p.hasOwnProperty("saludar");  // false
+
+// Cadena de prototipos
+// p → Persona.prototype → Object.prototype → null</div>
+                    </div>
+
+                    <div class="termino" id="patrones-oop" data-tags="patrones singleton factory">
+                        <span class="tag">📋 Patrones OOP</span>
+                        <p class="significado">Patrones de diseño comunes</p>
+                        <div class="ejemplo">// Singleton
+class Database {
+    static #instance;
+
+    constructor() {
+        if (Database.#instance) {
+            return Database.#instance;
+        }
+        Database.#instance = this;
+        this.connection = null;
+    }
+
+    connect() {
+        this.connection = "connected";
+    }
+}
+
+const db1 = new Database();
+const db2 = new Database();
+db1 === db2;  // true
+
+// Factory
+class VehiculoFactory {
+    static crear(tipo) {
+        switch (tipo) {
+            case "auto":
+                return new Auto();
+            case "moto":
+                return new Moto();
+            default:
+                throw new Error("Tipo desconocido");
+        }
+    }
+}
+
+// Mixin (composición)
+const ConLogger = (Base) => class extends Base {
+    log(msg) {
+        console.log(`[${this.constructor.name}] ${msg}`);
+    }
+};
+
+class Servicio extends ConLogger(Object) {
+    ejecutar() {
+        this.log("Ejecutando...");
+    }
+}</div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">🏗️ Clases y OOP</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#clase-basica" class="toc-link">Clase Básica</a></li>
+                    <li class="toc-item"><a href="#getters-setters" class="toc-link">Getters y Setters</a></li>
+                    <li class="toc-item"><a href="#static" class="toc-link">Métodos Estáticos</a></li>
+                    <li class="toc-item"><a href="#herencia" class="toc-link">Herencia</a></li>
+                    <li class="toc-item"><a href="#private" class="toc-link">Campos Privados</a></li>
+                    <li class="toc-item"><a href="#modulos" class="toc-link">Módulos ES6</a></li>
+                    <li class="toc-item"><a href="#prototipos" class="toc-link">Prototipos</a></li>
+                    <li class="toc-item"><a href="#patrones-oop" class="toc-link">Patrones OOP</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>JavaScript - Sistema de Aprendizaje | <a href="../index.html">Volver a JavaScript</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) { return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const searchText = normalizeText((termino.getAttribute('data-tags') || '') + ' ' + (termino.querySelector('.tag')?.textContent || ''));
+                    if (query === '' || searchText.includes(query)) { termino.style.display = 'block'; found++; } else { termino.style.display = 'none'; }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => { if (scrollY >= section.offsetTop - 100) current = section.getAttribute('id'); });
+                tocLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === '#' + current) link.classList.add('active'); });
+                document.getElementById('tocProgressBar').style.width = ((document.body.scrollTop || document.documentElement.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100 + '%';
+            });
+        });
+    </script>
+</body>
+</html>

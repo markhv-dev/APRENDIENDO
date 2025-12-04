@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selectores CSS - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a CSS</a>
+        <span class="icon">🎯</span>
+        <h1>Módulo 2: Selectores</h1>
+        <p class="subtitle">Selectores básicos, combinadores y selectores de atributo</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #f1c40f; margin-bottom: 40px;">
+                <h2 style="color: #f1c40f; margin-bottom: 15px; font-size: 1.8em;">
+                    🎯 Selectores CSS
+                </h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    Los selectores son patrones que permiten seleccionar elementos HTML para aplicarles estilos.
+                    Dominar los selectores es fundamental para escribir CSS eficiente y mantenible.
+                </p>
+                <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 8px; border: 1px solid rgba(241, 196, 15, 0.3);">
+                    <h3 style="color: #f1c40f; margin-bottom: 12px; font-size: 1.1em;">📋 Contenido del módulo:</h3>
+                    <ul style="list-style: none; padding-left: 0; line-height: 2;">
+                        <li style="color: #b0b0b0;">✓ Selectores de elemento, clase e ID</li>
+                        <li style="color: #b0b0b0;">✓ Selectores de agrupación y universales</li>
+                        <li style="color: #b0b0b0;">✓ Combinadores (descendiente, hijo, hermano)</li>
+                        <li style="color: #b0b0b0;">✓ Selectores de atributo</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="selector-elemento" data-tags="selector elemento tipo tag">
+                        <span class="tag">📋 Selector de Elemento</span>
+                        <p class="significado">Selecciona todos los elementos de un tipo específico</p>
+                        <p class="descripcion">
+                            El selector de elemento (o de tipo) selecciona todos los elementos HTML que coincidan con el nombre de la etiqueta.
+                            Es el selector más básico y tiene la especificidad más baja.
+                        </p>
+                        <div class="ejemplo">/* Selecciona TODOS los párrafos */
+p {
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Selecciona TODOS los h1 */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+/* Selecciona TODAS las imágenes */
+img {
+    max-width: 100%;
+    height: auto;
+}</div>
+                        <div class="nota">
+                            <strong>💡 Uso:</strong> Ideal para estilos base/reset. Evita usarlo para estilos específicos.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="selector-clase" data-tags="selector clase class punto reutilizable">
+                        <span class="tag">📋 Selector de Clase (.)</span>
+                        <p class="significado">Selecciona elementos con un atributo class específico</p>
+                        <p class="descripcion">
+                            El selector de clase usa un punto (.) seguido del nombre de la clase.
+                            Las clases son <strong>reutilizables</strong> y un elemento puede tener múltiples clases.
+                            Es el selector más usado en CSS moderno.
+                        </p>
+                        <div class="ejemplo">/* Selector de clase */
+.boton {
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.boton-primario {
+    background: #3498db;
+    color: white;
+}
+
+.boton-secundario {
+    background: #95a5a6;
+    color: white;
+}
+
+/* HTML */
+&lt;button class="boton boton-primario"&gt;Enviar&lt;/button&gt;
+&lt;button class="boton boton-secundario"&gt;Cancelar&lt;/button&gt;</div>
+                        <div class="nota">
+                            <strong>✅ Best Practice:</strong> Usa clases para la mayoría de tus estilos. Nombres descriptivos en kebab-case.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="selector-id" data-tags="selector id identificador numeral unico">
+                        <span class="tag">📋 Selector de ID (#)</span>
+                        <p class="significado">Selecciona UN elemento único con un id específico</p>
+                        <p class="descripcion">
+                            El selector de ID usa numeral (#) seguido del nombre del ID.
+                            Los IDs deben ser <strong>únicos</strong> en la página. Tienen alta especificidad (100 puntos).
+                            Preferir clases sobre IDs para estilos.
+                        </p>
+                        <div class="ejemplo">/* Selector de ID */
+#header {
+    background: #2c3e50;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+#main-content {
+    margin-top: 80px;
+    padding: 20px;
+}
+
+#footer {
+    background: #34495e;
+    text-align: center;
+    padding: 30px;
+}
+
+/* HTML */
+&lt;header id="header"&gt;...&lt;/header&gt;
+&lt;main id="main-content"&gt;...&lt;/main&gt;
+&lt;footer id="footer"&gt;...&lt;/footer&gt;</div>
+                        <div class="nota">
+                            <strong>⚠️ Consideraciones:</strong><br>
+                            • IDs deben ser únicos en el documento<br>
+                            • Alta especificidad dificulta sobrescribir<br>
+                            • Mejor usar para anclas/JavaScript que para estilos
+                        </div>
+                    </div>
+
+                    <div class="termino" id="selector-universal" data-tags="selector universal asterisco todos">
+                        <span class="tag">📋 Selector Universal (*)</span>
+                        <p class="significado">Selecciona TODOS los elementos</p>
+                        <p class="descripcion">
+                            El asterisco (*) selecciona todos los elementos del documento.
+                            Útil para resets CSS pero puede afectar el rendimiento si se abusa.
+                        </p>
+                        <div class="ejemplo">/* Reset básico - selecciona TODO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Selector universal dentro de un contenedor */
+.card * {
+    color: inherit;
+}
+
+/* Seleccionar todos los hijos directos */
+.container > * {
+    margin-bottom: 20px;
+}</div>
+                        <div class="nota">
+                            <strong>💡 Uso común:</strong> Reset de box-sizing para cálculos más intuitivos.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="selector-agrupacion" data-tags="selector agrupacion multiples coma">
+                        <span class="tag">📋 Selector de Agrupación (,)</span>
+                        <p class="significado">Aplica los mismos estilos a múltiples selectores</p>
+                        <p class="descripcion">
+                            La coma (,) permite agrupar selectores para aplicarles los mismos estilos.
+                            Reduce la repetición de código y mejora la mantenibilidad.
+                        </p>
+                        <div class="ejemplo">/* Agrupar selectores con coma */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Georgia', serif;
+    color: #2c3e50;
+    margin-bottom: 0.5em;
+}
+
+/* Mezclar tipos de selectores */
+.boton,
+.enlace,
+input[type="submit"] {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Múltiples clases */
+.error,
+.warning,
+.success {
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}</div>
+                    </div>
+
+                    <div class="termino" id="selector-descendiente" data-tags="selector descendiente espacio anidado">
+                        <span class="tag">🔗 Selector Descendiente (espacio)</span>
+                        <p class="significado">Selecciona elementos dentro de otro elemento (cualquier nivel)</p>
+                        <p class="descripcion">
+                            El espacio entre selectores indica descendencia. Selecciona elementos que están
+                            dentro de otro, sin importar cuántos niveles de anidación haya.
+                        </p>
+                        <div class="ejemplo">/* Todos los &lt;p&gt; dentro de &lt;article&gt; */
+article p {
+    line-height: 1.8;
+    margin-bottom: 1em;
+}
+
+/* Todos los &lt;a&gt; dentro de &lt;nav&gt; */
+nav a {
+    text-decoration: none;
+    color: white;
+    padding: 10px 15px;
+}
+
+/* Múltiples niveles de descendencia */
+.sidebar .widget h3 {
+    font-size: 1.2em;
+    border-bottom: 2px solid #f1c40f;
+}</div>
+                        <div class="nota">
+                            <strong>⚠️ Cuidado:</strong> Selectores muy anidados aumentan especificidad y dificultan mantenimiento.
+                            Máximo 3 niveles recomendado.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="selector-hijo" data-tags="selector hijo directo mayor que">
+                        <span class="tag">🔗 Selector de Hijo Directo (>)</span>
+                        <p class="significado">Selecciona solo hijos directos, no descendientes más profundos</p>
+                        <p class="descripcion">
+                            El signo mayor que (>) selecciona elementos que son hijos directos del padre,
+                            ignorando los que están más anidados. Más específico que el selector descendiente.
+                        </p>
+                        <div class="ejemplo">/* Solo &lt;li&gt; hijos directos de &lt;ul&gt; */
+ul > li {
+    list-style: none;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Solo elementos directos del contenedor */
+.menu > a {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+/* Comparación */
+.lista li { }      /* TODOS los li dentro de .lista */
+.lista > li { }    /* Solo li hijos DIRECTOS de .lista */</div>
+                        <div class="nota">
+                            <strong>💡 Uso común:</strong> Menús de navegación, listas donde no quieres afectar sublistas.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="selector-hermano-adyacente" data-tags="selector hermano adyacente siguiente mas">
+                        <span class="tag">🔗 Selector Hermano Adyacente (+)</span>
+                        <p class="significado">Selecciona el elemento inmediatamente siguiente</p>
+                        <p class="descripcion">
+                            El signo más (+) selecciona el elemento que es hermano inmediato (siguiente)
+                            del primer selector. Solo selecciona UN elemento.
+                        </p>
+                        <div class="ejemplo">/* Primer párrafo después de h2 */
+h2 + p {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Imagen después de figura */
+figure + figcaption {
+    font-style: italic;
+    color: #666;
+}
+
+/* Input siguiente a label */
+label + input {
+    margin-left: 10px;
+}</div>
+                    </div>
+
+                    <div class="termino" id="selector-hermano-general" data-tags="selector hermano general todos siguientes virgulilla">
+                        <span class="tag">🔗 Selector Hermano General (~)</span>
+                        <p class="significado">Selecciona todos los hermanos siguientes</p>
+                        <p class="descripcion">
+                            La virgulilla (~) selecciona todos los elementos hermanos que siguen
+                            al primer selector, no solo el inmediato.
+                        </p>
+                        <div class="ejemplo">/* Todos los párrafos después de h2 */
+h2 ~ p {
+    margin-left: 20px;
+}
+
+/* Todos los items después del activo */
+.active ~ li {
+    opacity: 0.5;
+}
+
+/* Comparación */
+h2 + p { }   /* Solo el PRIMER p después de h2 */
+h2 ~ p { }   /* TODOS los p después de h2 */</div>
+                    </div>
+
+                    <div class="termino" id="selector-atributo" data-tags="selector atributo corchetes valor">
+                        <span class="tag">⚙️ Selectores de Atributo</span>
+                        <p class="significado">Seleccionan elementos basados en sus atributos</p>
+                        <p class="descripcion">
+                            Los selectores de atributo permiten seleccionar elementos según la presencia
+                            o valor de sus atributos HTML. Muy útiles para formularios y enlaces.
+                        </p>
+                        <div class="ejemplo">/* Tiene el atributo */
+[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Valor exacto */
+[type="text"] {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* Empieza con (^=) */
+[href^="https"] {
+    color: green;  /* Enlaces seguros */
+}
+
+/* Termina con ($=) */
+[href$=".pdf"] {
+    color: red;  /* Enlaces a PDF */
+}
+
+/* Contiene (*=) */
+[class*="btn"] {
+    cursor: pointer;
+}
+
+/* Palabra exacta (~=) */
+[class~="active"] {
+    font-weight: bold;
+}
+
+/* Prefijo con guión (|=) */
+[lang|="en"] {
+    quotes: '"' '"';  /* en, en-US, en-GB */
+}</div>
+                        <div class="nota">
+                            <strong>💡 Resumen de operadores:</strong><br>
+                            • [attr] - tiene atributo<br>
+                            • [attr="val"] - valor exacto<br>
+                            • [attr^="val"] - empieza con<br>
+                            • [attr$="val"] - termina con<br>
+                            • [attr*="val"] - contiene
+                        </div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">🎯 Selectores CSS</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#selector-elemento" class="toc-link">Selector de Elemento</a></li>
+                    <li class="toc-item"><a href="#selector-clase" class="toc-link">Selector de Clase (.)</a></li>
+                    <li class="toc-item"><a href="#selector-id" class="toc-link">Selector de ID (#)</a></li>
+                    <li class="toc-item"><a href="#selector-universal" class="toc-link">Selector Universal (*)</a></li>
+                    <li class="toc-item"><a href="#selector-agrupacion" class="toc-link">Agrupación (,)</a></li>
+                    <li class="toc-item"><a href="#selector-descendiente" class="toc-link">Descendiente (espacio)</a></li>
+                    <li class="toc-item"><a href="#selector-hijo" class="toc-link">Hijo Directo (>)</a></li>
+                    <li class="toc-item"><a href="#selector-hermano-adyacente" class="toc-link">Hermano Adyacente (+)</a></li>
+                    <li class="toc-item"><a href="#selector-hermano-general" class="toc-link">Hermano General (~)</a></li>
+                    <li class="toc-item"><a href="#selector-atributo" class="toc-link">Selectores de Atributo</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>CSS - Sistema de Aprendizaje | <a href="../index.html">Volver a CSS</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+
+            function normalizeText(text) {
+                return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            }
+
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+
+                terminos.forEach(termino => {
+                    const tags = termino.getAttribute('data-tags') || '';
+                    const title = termino.querySelector('.tag')?.textContent || '';
+                    const desc = termino.querySelector('.descripcion')?.textContent || '';
+                    const ejemplo = termino.querySelector('.ejemplo')?.textContent || '';
+                    const searchText = normalizeText(tags + ' ' + title + ' ' + desc + ' ' + ejemplo);
+
+                    if (query === '' || searchText.includes(query)) {
+                        termino.style.display = 'block';
+                        found++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+</body>
+</html>

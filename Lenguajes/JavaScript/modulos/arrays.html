@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a JavaScript</a>
+        <span class="icon">📋</span>
+        <h1>Módulo 3: Arrays</h1>
+        <p class="subtitle">Métodos de array, iteración y transformación</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #f1c40f; margin-bottom: 40px;">
+                <h2 style="color: #f1c40f; margin-bottom: 15px; font-size: 1.8em;">📋 Arrays</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0;">
+                    Los arrays son estructuras de datos fundamentales para almacenar colecciones ordenadas de elementos.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="crear-array" data-tags="array crear declarar">
+                        <span class="tag">📋 Crear Arrays</span>
+                        <p class="significado">Diferentes formas de crear arrays</p>
+                        <div class="ejemplo">// Literal (recomendado)
+const frutas = ["manzana", "banana", "naranja"];
+
+// Constructor
+const numeros = new Array(1, 2, 3);
+
+// Array vacío con tamaño
+const vacio = new Array(5);  // [empty × 5]
+
+// Array.from
+const letras = Array.from("hola");  // ['h','o','l','a']
+
+// Array.of
+const items = Array.of(1, 2, 3);
+
+// Spread
+const copia = [...frutas];
+
+// Fill
+const ceros = new Array(5).fill(0);  // [0,0,0,0,0]</div>
+                    </div>
+
+                    <div class="termino" id="acceder" data-tags="acceder indice length">
+                        <span class="tag">📋 Acceder y Modificar</span>
+                        <p class="significado">Acceso por índice y propiedades básicas</p>
+                        <div class="ejemplo">const arr = ["a", "b", "c", "d"];
+
+// Acceder por índice (empieza en 0)
+arr[0]   // "a"
+arr[2]   // "c"
+arr[-1]  // undefined (usar at())
+arr.at(-1)  // "d" (último elemento)
+
+// Longitud
+arr.length  // 4
+
+// Modificar
+arr[1] = "B";  // ["a", "B", "c", "d"]
+
+// Agregar al final
+arr[arr.length] = "e";
+
+// Verificar si es array
+Array.isArray(arr)  // true</div>
+                    </div>
+
+                    <div class="termino" id="agregar-eliminar" data-tags="push pop shift unshift splice">
+                        <span class="tag">📋 Agregar y Eliminar</span>
+                        <p class="significado">Métodos para modificar el array</p>
+                        <div class="ejemplo">const arr = [1, 2, 3];
+
+// Agregar al final
+arr.push(4);       // [1,2,3,4] - retorna length
+
+// Eliminar del final
+arr.pop();         // [1,2,3] - retorna elemento
+
+// Agregar al inicio
+arr.unshift(0);    // [0,1,2,3] - retorna length
+
+// Eliminar del inicio
+arr.shift();       // [1,2,3] - retorna elemento
+
+// Splice: agregar/eliminar en posición
+const letras = ['a', 'b', 'c', 'd'];
+
+// Eliminar 1 elemento en posición 1
+letras.splice(1, 1);      // ['a','c','d']
+
+// Insertar sin eliminar
+letras.splice(1, 0, 'x'); // ['a','x','c','d']
+
+// Reemplazar
+letras.splice(1, 1, 'y', 'z'); // ['a','y','z','c','d']</div>
+                    </div>
+
+                    <div class="termino" id="buscar" data-tags="find findIndex indexOf includes">
+                        <span class="tag">📋 Buscar Elementos</span>
+                        <p class="significado">Métodos para encontrar elementos</p>
+                        <div class="ejemplo">const nums = [1, 2, 3, 4, 5];
+
+// includes - ¿existe?
+nums.includes(3);     // true
+nums.includes(10);    // false
+
+// indexOf - posición (o -1)
+nums.indexOf(3);      // 2
+nums.indexOf(10);     // -1
+
+// find - primer elemento que cumple
+const mayor = nums.find(n => n > 3);  // 4
+
+// findIndex - índice del primero que cumple
+const idx = nums.findIndex(n => n > 3);  // 3
+
+// Con objetos
+const usuarios = [
+    { id: 1, nombre: "Ana" },
+    { id: 2, nombre: "Luis" }
+];
+
+const usuario = usuarios.find(u => u.id === 2);
+// { id: 2, nombre: "Luis" }</div>
+                    </div>
+
+                    <div class="termino" id="transformar" data-tags="map filter reduce">
+                        <span class="tag">📋 Transformar: map, filter, reduce</span>
+                        <p class="significado">Métodos funcionales esenciales</p>
+                        <div class="ejemplo">const nums = [1, 2, 3, 4, 5];
+
+// map - transformar cada elemento
+const dobles = nums.map(n => n * 2);
+// [2, 4, 6, 8, 10]
+
+// filter - filtrar elementos
+const pares = nums.filter(n => n % 2 === 0);
+// [2, 4]
+
+// reduce - reducir a un valor
+const suma = nums.reduce((acc, n) => acc + n, 0);
+// 15
+
+// Encadenar métodos
+const resultado = nums
+    .filter(n => n > 2)
+    .map(n => n * 2)
+    .reduce((acc, n) => acc + n, 0);
+// 24
+
+// Ejemplos prácticos
+const productos = [
+    { nombre: "A", precio: 100 },
+    { nombre: "B", precio: 200 }
+];
+
+// Total de precios
+const total = productos.reduce((acc, p) => acc + p.precio, 0);
+
+// Solo nombres
+const nombres = productos.map(p => p.nombre);</div>
+                        <div class="nota">
+                            <strong>💡 Tip:</strong> map/filter/reduce no modifican el array original, retornan uno nuevo.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="iterar" data-tags="forEach for of entries">
+                        <span class="tag">📋 Iterar</span>
+                        <p class="significado">Formas de recorrer arrays</p>
+                        <div class="ejemplo">const frutas = ["manzana", "banana", "naranja"];
+
+// forEach
+frutas.forEach((fruta, index) => {
+    console.log(`${index}: ${fruta}`);
+});
+
+// for...of (ES6)
+for (const fruta of frutas) {
+    console.log(fruta);
+}
+
+// for clásico
+for (let i = 0; i < frutas.length; i++) {
+    console.log(frutas[i]);
+}
+
+// entries - índice y valor
+for (const [index, fruta] of frutas.entries()) {
+    console.log(`${index}: ${fruta}`);
+}
+
+// every - ¿todos cumplen?
+const todosMayores = [5, 10, 15].every(n => n > 0);  // true
+
+// some - ¿alguno cumple?
+const algunPar = [1, 3, 4].some(n => n % 2 === 0);   // true</div>
+                    </div>
+
+                    <div class="termino" id="ordenar" data-tags="sort reverse">
+                        <span class="tag">📋 Ordenar</span>
+                        <p class="significado">Ordenar y revertir arrays</p>
+                        <div class="ejemplo">// sort modifica el array original
+const letras = ["c", "a", "b"];
+letras.sort();  // ["a", "b", "c"]
+
+// Números (¡cuidado!)
+const nums = [10, 2, 5, 1];
+nums.sort();  // [1, 10, 2, 5] - orden alfabético
+
+// Correcto para números
+nums.sort((a, b) => a - b);  // [1, 2, 5, 10] ascendente
+nums.sort((a, b) => b - a);  // [10, 5, 2, 1] descendente
+
+// Ordenar objetos
+const usuarios = [
+    { nombre: "Zoe", edad: 25 },
+    { nombre: "Ana", edad: 30 }
+];
+
+usuarios.sort((a, b) => a.edad - b.edad);
+usuarios.sort((a, b) => a.nombre.localeCompare(b.nombre));
+
+// reverse
+const arr = [1, 2, 3];
+arr.reverse();  // [3, 2, 1]</div>
+                        <div class="nota">
+                            <strong>⚠️ Cuidado:</strong> sort() y reverse() modifican el array original. Usa [...arr].sort() para no modificarlo.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="combinar" data-tags="concat spread slice join">
+                        <span class="tag">📋 Combinar y Copiar</span>
+                        <p class="significado">Unir, copiar y extraer partes</p>
+                        <div class="ejemplo">const a = [1, 2];
+const b = [3, 4];
+
+// concat
+const c = a.concat(b);       // [1,2,3,4]
+
+// spread (preferido)
+const d = [...a, ...b];      // [1,2,3,4]
+const e = [...a, 5, ...b];   // [1,2,5,3,4]
+
+// slice - extraer porción (no modifica)
+const arr = [1, 2, 3, 4, 5];
+arr.slice(1, 3);   // [2, 3]
+arr.slice(2);      // [3, 4, 5]
+arr.slice(-2);     // [4, 5]
+
+// Copia superficial
+const copia = arr.slice();
+const copia2 = [...arr];
+
+// join - convertir a string
+const frutas = ["a", "b", "c"];
+frutas.join(", ");   // "a, b, c"
+frutas.join("-");    // "a-b-c"
+
+// flat - aplanar arrays anidados
+const nested = [1, [2, 3], [4, [5]]];
+nested.flat();     // [1, 2, 3, 4, [5]]
+nested.flat(2);    // [1, 2, 3, 4, 5]</div>
+                    </div>
+
+                    <div class="termino" id="destructuring" data-tags="destructuring desestructuracion">
+                        <span class="tag">📋 Destructuring</span>
+                        <p class="significado">Extraer valores de arrays</p>
+                        <div class="ejemplo">const colores = ["rojo", "verde", "azul"];
+
+// Básico
+const [primero, segundo] = colores;
+// primero = "rojo", segundo = "verde"
+
+// Saltar elementos
+const [, , tercero] = colores;  // tercero = "azul"
+
+// Valores por defecto
+const [a, b, c, d = "amarillo"] = colores;
+
+// Rest
+const [head, ...tail] = colores;
+// head = "rojo", tail = ["verde", "azul"]
+
+// Swap de variables
+let x = 1, y = 2;
+[x, y] = [y, x];  // x = 2, y = 1
+
+// En parámetros de función
+function procesar([primero, ...resto]) {
+    console.log(primero, resto);
+}</div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">📋 Arrays</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#crear-array" class="toc-link">Crear Arrays</a></li>
+                    <li class="toc-item"><a href="#acceder" class="toc-link">Acceder y Modificar</a></li>
+                    <li class="toc-item"><a href="#agregar-eliminar" class="toc-link">Agregar y Eliminar</a></li>
+                    <li class="toc-item"><a href="#buscar" class="toc-link">Buscar Elementos</a></li>
+                    <li class="toc-item"><a href="#transformar" class="toc-link">map, filter, reduce</a></li>
+                    <li class="toc-item"><a href="#iterar" class="toc-link">Iterar</a></li>
+                    <li class="toc-item"><a href="#ordenar" class="toc-link">Ordenar</a></li>
+                    <li class="toc-item"><a href="#combinar" class="toc-link">Combinar y Copiar</a></li>
+                    <li class="toc-item"><a href="#destructuring" class="toc-link">Destructuring</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>JavaScript - Sistema de Aprendizaje | <a href="../index.html">Volver a JavaScript</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) { return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const searchText = normalizeText((termino.getAttribute('data-tags') || '') + ' ' + (termino.querySelector('.tag')?.textContent || ''));
+                    if (query === '' || searchText.includes(query)) { termino.style.display = 'block'; found++; } else { termino.style.display = 'none'; }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => { if (scrollY >= section.offsetTop - 100) current = section.getAttribute('id'); });
+                tocLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === '#' + current) link.classList.add('active'); });
+                document.getElementById('tocProgressBar').style.width = ((document.body.scrollTop || document.documentElement.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100 + '%';
+            });
+        });
+    </script>
+</body>
+</html>

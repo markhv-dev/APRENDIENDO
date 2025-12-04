@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a JavaScript</a>
+        <span class="icon">🌐</span>
+        <h1>Módulo 7: DOM</h1>
+        <p class="subtitle">Manipulación del Document Object Model</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #f1c40f; margin-bottom: 40px;">
+                <h2 style="color: #f1c40f; margin-bottom: 15px; font-size: 1.8em;">🌐 DOM</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0;">
+                    El DOM permite a JavaScript acceder y manipular el contenido, estructura y estilo de una página web.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="seleccionar" data-tags="seleccionar selector querySelector getElementById">
+                        <span class="tag">📋 Seleccionar Elementos</span>
+                        <p class="significado">Métodos para encontrar elementos</p>
+                        <div class="ejemplo">// Por ID (retorna 1 elemento)
+const header = document.getElementById("header");
+
+// Por selector CSS (retorna 1 elemento)
+const btn = document.querySelector(".btn-primary");
+const first = document.querySelector("p");
+
+// Por selector CSS (retorna NodeList)
+const items = document.querySelectorAll(".item");
+const parrafos = document.querySelectorAll("p");
+
+// Por clase (retorna HTMLCollection)
+const cards = document.getElementsByClassName("card");
+
+// Por tag (retorna HTMLCollection)
+const divs = document.getElementsByTagName("div");
+
+// Iterar NodeList
+items.forEach(item => console.log(item));
+
+// Convertir a array
+const arr = Array.from(items);
+const arr2 = [...items];
+
+// Buscar dentro de elemento
+const container = document.querySelector(".container");
+const child = container.querySelector(".child");</div>
+                        <div class="nota">
+                            <strong>💡 Tip:</strong> Usa querySelector/All para todo. Son más versátiles.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="modificar-contenido" data-tags="textContent innerHTML innerText contenido">
+                        <span class="tag">📋 Modificar Contenido</span>
+                        <p class="significado">Cambiar texto y HTML</p>
+                        <div class="ejemplo">const element = document.querySelector(".content");
+
+// textContent - solo texto (más seguro)
+element.textContent = "Nuevo texto";
+const texto = element.textContent;
+
+// innerHTML - incluye HTML
+element.innerHTML = "<strong>Texto en negrita</strong>";
+const html = element.innerHTML;
+
+// innerText - texto visible (respeta CSS)
+element.innerText = "Solo texto visible";
+
+// outerHTML - incluye el elemento mismo
+element.outerHTML = "<div class='nuevo'>Reemplazado</div>";
+
+// Agregar texto
+element.textContent += " más texto";
+
+// ⚠️ Seguridad con innerHTML
+// NUNCA insertes input del usuario directamente
+const userInput = "<script>alert('xss')</script>";
+element.innerHTML = userInput;  // ¡PELIGROSO!
+element.textContent = userInput; // Seguro (escapa HTML)</div>
+                    </div>
+
+                    <div class="termino" id="atributos" data-tags="atributos getAttribute setAttribute data">
+                        <span class="tag">📋 Atributos</span>
+                        <p class="significado">Leer y modificar atributos</p>
+                        <div class="ejemplo">const img = document.querySelector("img");
+const link = document.querySelector("a");
+
+// getAttribute / setAttribute
+img.getAttribute("src");
+img.setAttribute("src", "nueva-imagen.jpg");
+img.setAttribute("alt", "Descripción");
+
+// Acceso directo (atributos estándar)
+img.src = "imagen.jpg";
+link.href = "https://ejemplo.com";
+
+// Verificar y eliminar
+img.hasAttribute("alt");      // true/false
+img.removeAttribute("title");
+
+// Data attributes (data-*)
+// <div data-user-id="123" data-active="true">
+const div = document.querySelector("[data-user-id]");
+
+// Leer
+div.dataset.userId;    // "123"
+div.dataset.active;    // "true"
+
+// Escribir
+div.dataset.role = "admin";
+// Crea: data-role="admin"
+
+// Nombres se convierten a camelCase
+// data-user-id → dataset.userId</div>
+                    </div>
+
+                    <div class="termino" id="clases" data-tags="clases classList add remove toggle">
+                        <span class="tag">📋 Clases CSS</span>
+                        <p class="significado">Manipular clases de elementos</p>
+                        <div class="ejemplo">const element = document.querySelector(".card");
+
+// classList - API moderna
+element.classList.add("active");
+element.classList.add("visible", "highlighted");
+
+element.classList.remove("hidden");
+element.classList.remove("a", "b", "c");
+
+// toggle - agregar/quitar
+element.classList.toggle("active");
+// Con condición
+element.classList.toggle("visible", isLoggedIn);
+
+// contains - verificar
+if (element.classList.contains("active")) {
+    // ...
+}
+
+// replace
+element.classList.replace("old", "new");
+
+// className - string completo
+element.className = "card active visible";
+element.className += " extra";  // Agregar
+
+// Ejemplo práctico: tabs
+tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+    });
+});</div>
+                    </div>
+
+                    <div class="termino" id="estilos" data-tags="estilos style CSS getComputedStyle">
+                        <span class="tag">📋 Estilos</span>
+                        <p class="significado">Modificar CSS inline</p>
+                        <div class="ejemplo">const element = document.querySelector(".box");
+
+// style - estilos inline
+element.style.color = "red";
+element.style.backgroundColor = "blue";  // camelCase
+element.style.fontSize = "16px";
+element.style.display = "none";
+
+// Múltiples estilos
+Object.assign(element.style, {
+    color: "white",
+    backgroundColor: "#333",
+    padding: "20px"
+});
+
+// Leer estilos inline
+const color = element.style.color;
+
+// Leer estilos computados (incluye CSS)
+const styles = getComputedStyle(element);
+styles.width;        // "200px"
+styles.display;      // "block"
+
+// CSS custom properties
+element.style.setProperty("--main-color", "#f00");
+const value = element.style.getPropertyValue("--main-color");
+
+// Quitar estilo inline
+element.style.color = "";
+element.style.removeProperty("background-color");</div>
+                        <div class="nota">
+                            <strong>💡 Tip:</strong> Prefiere toggle de clases CSS sobre estilos inline para mantenibilidad.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="crear-elementos" data-tags="crear createElement appendChild append">
+                        <span class="tag">📋 Crear Elementos</span>
+                        <p class="significado">Crear y agregar elementos al DOM</p>
+                        <div class="ejemplo">// Crear elemento
+const div = document.createElement("div");
+div.textContent = "Hola";
+div.className = "card";
+div.id = "miCard";
+
+// Agregar al DOM
+document.body.appendChild(div);
+
+// append - múltiples nodos y texto
+const container = document.querySelector(".container");
+container.append(div, "texto", otroElemento);
+
+// prepend - al inicio
+container.prepend(div);
+
+// before/after - hermanos
+const ref = document.querySelector(".referencia");
+ref.before(div);   // antes
+ref.after(div);    // después
+
+// insertAdjacentHTML
+container.insertAdjacentHTML("beforeend", `
+    <div class="card">
+        <h2>Título</h2>
+        <p>Contenido</p>
+    </div>
+`);
+// Posiciones: beforebegin, afterbegin, beforeend, afterend
+
+// Clonar
+const clon = div.cloneNode(true);  // true = deep clone
+
+// Fragmento (mejor rendimiento)
+const fragment = document.createDocumentFragment();
+items.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = item;
+    fragment.appendChild(li);
+});
+lista.appendChild(fragment);</div>
+                    </div>
+
+                    <div class="termino" id="eliminar-elementos" data-tags="eliminar remove removeChild">
+                        <span class="tag">📋 Eliminar Elementos</span>
+                        <p class="significado">Quitar elementos del DOM</p>
+                        <div class="ejemplo">const element = document.querySelector(".card");
+
+// remove() - moderno
+element.remove();
+
+// removeChild - antiguo (necesita padre)
+const parent = element.parentNode;
+parent.removeChild(element);
+
+// replaceChild
+const nuevo = document.createElement("div");
+parent.replaceChild(nuevo, element);
+
+// replaceWith - moderno
+element.replaceWith(nuevo);
+
+// Vaciar contenedor
+container.innerHTML = "";
+// O
+while (container.firstChild) {
+    container.removeChild(container.firstChild);
+}
+
+// Eliminar varios
+document.querySelectorAll(".temp").forEach(el => el.remove());</div>
+                    </div>
+
+                    <div class="termino" id="navegacion" data-tags="navegacion parent children siblings">
+                        <span class="tag">📋 Navegación DOM</span>
+                        <p class="significado">Moverse entre nodos</p>
+                        <div class="ejemplo">const element = document.querySelector(".item");
+
+// Padre
+element.parentNode;
+element.parentElement;
+element.closest(".container");  // Ancestro más cercano
+
+// Hijos
+element.children;           // HTMLCollection de elementos
+element.childNodes;         // NodeList incluye texto
+element.firstElementChild;
+element.lastElementChild;
+element.childElementCount;
+
+// Hermanos
+element.nextElementSibling;
+element.previousElementSibling;
+
+// Ejemplo: obtener todos los hermanos
+const siblings = [...element.parentElement.children]
+    .filter(child => child !== element);
+
+// Verificar contenido
+element.contains(otroElement);  // true/false
+element.matches(".clase");      // true/false
+
+// Ejemplo práctico
+function getParentByClass(element, className) {
+    return element.closest(`.${className}`);
+}</div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">🌐 DOM</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#seleccionar" class="toc-link">Seleccionar Elementos</a></li>
+                    <li class="toc-item"><a href="#modificar-contenido" class="toc-link">Modificar Contenido</a></li>
+                    <li class="toc-item"><a href="#atributos" class="toc-link">Atributos</a></li>
+                    <li class="toc-item"><a href="#clases" class="toc-link">Clases CSS</a></li>
+                    <li class="toc-item"><a href="#estilos" class="toc-link">Estilos</a></li>
+                    <li class="toc-item"><a href="#crear-elementos" class="toc-link">Crear Elementos</a></li>
+                    <li class="toc-item"><a href="#eliminar-elementos" class="toc-link">Eliminar Elementos</a></li>
+                    <li class="toc-item"><a href="#navegacion" class="toc-link">Navegación DOM</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>JavaScript - Sistema de Aprendizaje | <a href="../index.html">Volver a JavaScript</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) { return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const searchText = normalizeText((termino.getAttribute('data-tags') || '') + ' ' + (termino.querySelector('.tag')?.textContent || ''));
+                    if (query === '' || searchText.includes(query)) { termino.style.display = 'block'; found++; } else { termino.style.display = 'none'; }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => { if (scrollY >= section.offsetTop - 100) current = section.getAttribute('id'); });
+                tocLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === '#' + current) link.classList.add('active'); });
+                document.getElementById('tocProgressBar').style.width = ((document.body.scrollTop || document.documentElement.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100 + '%';
+            });
+        });
+    </script>
+</body>
+</html>

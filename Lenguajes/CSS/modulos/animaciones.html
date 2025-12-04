@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animaciones y Transiciones - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a CSS</a>
+        <span class="icon">🎬</span>
+        <h1>Módulo 10: Animaciones y Transiciones</h1>
+        <p class="subtitle">Transiciones suaves, transformaciones y keyframes</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #f1c40f; margin-bottom: 40px;">
+                <h2 style="color: #f1c40f; margin-bottom: 15px; font-size: 1.8em;">🎬 Animaciones y Transiciones</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    Las animaciones y transiciones dan vida a las interfaces. Aprende a crear
+                    efectos suaves y animaciones complejas.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="transition" data-tags="transition transicion suave">
+                        <span class="tag">📋 transition</span>
+                        <p class="significado">Transición suave entre estados</p>
+                        <p class="descripcion">
+                            Crea animaciones automáticas cuando cambian propiedades CSS.
+                        </p>
+                        <div class="ejemplo">/* Sintaxis: propiedad duración función delay */
+transition: all 0.3s ease;
+transition: background-color 0.5s linear;
+transition: transform 0.2s ease-in-out 0.1s;
+
+/* Múltiples propiedades */
+transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+
+/* Ejemplo práctico */
+.button {
+    background: #3498db;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}</div>
+                        <div class="nota">
+                            <strong>💡 Timing functions:</strong> ease, linear, ease-in, ease-out, ease-in-out, cubic-bezier()
+                        </div>
+                    </div>
+
+                    <div class="termino" id="transform" data-tags="transform transformar mover rotar escalar">
+                        <span class="tag">📋 transform</span>
+                        <p class="significado">Transformaciones 2D/3D</p>
+                        <div class="ejemplo">/* Mover */
+transform: translateX(100px);
+transform: translateY(50px);
+transform: translate(100px, 50px);
+
+/* Rotar */
+transform: rotate(45deg);
+transform: rotate(-90deg);
+
+/* Escalar */
+transform: scale(1.5);        /* 150% */
+transform: scale(0.8);        /* 80% */
+transform: scale(2, 1);       /* X doble, Y normal */
+
+/* Inclinar */
+transform: skewX(20deg);
+transform: skewY(10deg);
+
+/* Combinar */
+transform: translate(50px, 100px) rotate(45deg) scale(1.2);
+
+/* Origen de la transformación */
+transform-origin: center;     /* default */
+transform-origin: top left;
+transform-origin: 50% 50%;</div>
+                    </div>
+
+                    <div class="termino" id="keyframes" data-tags="keyframes animacion fotogramas">
+                        <span class="tag">📋 @keyframes</span>
+                        <p class="significado">Define animaciones con estados intermedios</p>
+                        <div class="ejemplo">/* Definir la animación */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Con porcentajes */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Animación de pulso */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Spinner */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}</div>
+                    </div>
+
+                    <div class="termino" id="animation" data-tags="animation animacion aplicar">
+                        <span class="tag">📋 animation</span>
+                        <p class="significado">Aplica una animación keyframes</p>
+                        <div class="ejemplo">/* Sintaxis: nombre duración timing delay iteration direction fill-mode */
+animation: fadeIn 0.5s ease-out;
+animation: bounce 1s ease-in-out infinite;
+animation: pulse 2s ease infinite;
+animation: spin 1s linear infinite;
+
+/* Con todas las opciones */
+animation: slideIn 0.3s ease-out 0.2s 1 normal forwards;
+
+/* Propiedades individuales */
+animation-name: fadeIn;
+animation-duration: 0.5s;
+animation-timing-function: ease-out;
+animation-delay: 0.2s;
+animation-iteration-count: 1;      /* número o infinite */
+animation-direction: normal;        /* reverse, alternate */
+animation-fill-mode: forwards;      /* none, forwards, backwards, both */
+animation-play-state: running;      /* paused */
+
+/* Ejemplo práctico */
+.element {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+.loader {
+    animation: spin 1s linear infinite;
+}</div>
+                    </div>
+
+                    <div class="termino" id="animation-ejemplos" data-tags="ejemplos animaciones practicos">
+                        <span class="tag">🎬 Ejemplos Prácticos</span>
+                        <p class="significado">Animaciones comunes y útiles</p>
+                        <div class="ejemplo">/* Fade In */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Slide In desde abajo */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Shake (error) */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* Aplicar en hover */
+.card {
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* Animación escalonada */
+.item { animation: fadeIn 0.5s ease forwards; }
+.item:nth-child(1) { animation-delay: 0.1s; }
+.item:nth-child(2) { animation-delay: 0.2s; }
+.item:nth-child(3) { animation-delay: 0.3s; }</div>
+                    </div>
+
+                    <div class="termino" id="will-change" data-tags="will-change rendimiento optimizacion">
+                        <span class="tag">⚙️ will-change</span>
+                        <p class="significado">Optimización de rendimiento</p>
+                        <p class="descripcion">
+                            Indica al navegador qué propiedades van a cambiar para optimizar.
+                        </p>
+                        <div class="ejemplo">/* Antes de animar */
+.elemento {
+    will-change: transform, opacity;
+}
+
+/* Usar con moderación */
+.card:hover {
+    will-change: transform;
+}
+
+/* Quitar después */
+.card {
+    will-change: auto;
+}</div>
+                        <div class="nota">
+                            <strong>⚠️ Cuidado:</strong> Usar solo cuando sea necesario. Consume recursos.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="prefers-reduced-motion" data-tags="prefers-reduced-motion accesibilidad">
+                        <span class="tag">⚙️ Accesibilidad</span>
+                        <p class="significado">Respetar preferencias de movimiento</p>
+                        <div class="ejemplo">/* Reducir animaciones si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}</div>
+                        <div class="nota">
+                            <strong>✅ Best Practice:</strong> Siempre incluye esto para usuarios con sensibilidad al movimiento.
+                        </div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">🎬 Animaciones</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#transition" class="toc-link">transition</a></li>
+                    <li class="toc-item"><a href="#transform" class="toc-link">transform</a></li>
+                    <li class="toc-item"><a href="#keyframes" class="toc-link">@keyframes</a></li>
+                    <li class="toc-item"><a href="#animation" class="toc-link">animation</a></li>
+                    <li class="toc-item"><a href="#animation-ejemplos" class="toc-link">Ejemplos Prácticos</a></li>
+                    <li class="toc-item"><a href="#will-change" class="toc-link">will-change</a></li>
+                    <li class="toc-item"><a href="#prefers-reduced-motion" class="toc-link">Accesibilidad</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>CSS - Sistema de Aprendizaje | <a href="../index.html">Volver a CSS</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) {
+                return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const tags = termino.getAttribute('data-tags') || '';
+                    const title = termino.querySelector('.tag')?.textContent || '';
+                    const desc = termino.querySelector('.descripcion')?.textContent || '';
+                    const ejemplo = termino.querySelector('.ejemplo')?.textContent || '';
+                    const searchText = normalizeText(tags + ' ' + title + ' ' + desc + ' ' + ejemplo);
+                    if (query === '' || searchText.includes(query)) {
+                        termino.style.display = 'block';
+                        found++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+</body>
+</html>

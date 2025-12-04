@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servidores y Clientes - Protocolos</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a Protocolos</a>
+        <span class="icon">🖥️</span>
+        <h1>Módulo 5: Servidores y Clientes</h1>
+        <p class="subtitle">Arquitectura Cliente-Servidor</p>
+    </header>
+
+    <div class="container">
+        <div class="termino">
+            <span class="tag">🏗️ Cliente-Servidor</span>
+            <p class="significado"><span class="unsa-tag">[U]</span> Modelo de arquitectura fundamental de Internet</p>
+            <p class="descripcion">
+                Arquitectura donde clientes solicitan servicios y servidores los proveen. Comunicación bidireccional mediante protocolos.
+            </p>
+            <div class="ejemplo">
+                <strong>Flujo Cliente-Servidor:</strong><br>
+                1. Cliente (navegador) envía REQUEST → Servidor<br>
+                2. Servidor procesa la petición<br>
+                3. Servidor envía RESPONSE → Cliente<br>
+                4. Cliente muestra el resultado
+            </div>
+        </div>
+
+        <div class="termino">
+            <span class="tag">💻 Cliente</span>
+            <p class="descripcion">
+                Aplicación que solicita recursos o servicios. En desarrollo web, generalmente navegadores.
+            </p>
+            <div class="ejemplo">
+                <strong>Clientes web:</strong><br>
+                • Chrome, Firefox, Safari, Edge (navegadores)<br>
+                • Aplicaciones móviles<br>
+                • Postman, cURL (herramientas de desarrollo)
+            </div>
+        </div>
+
+        <div class="termino">
+            <span class="tag">🖥️ Servidor Web</span>
+            <p class="descripcion">
+                Software que responde a peticiones HTTP y sirve páginas web y recursos.
+            </p>
+            <div class="ejemplo">
+                <strong>Servidores web populares:</strong><br>
+                • <strong>Apache:</strong> Más usado, open source<br>
+                • <strong>Nginx:</strong> Alto rendimiento, moderno<br>
+                • <strong>IIS:</strong> Microsoft Windows<br>
+                • <strong>Node.js:</strong> JavaScript en servidor
+            </div>
+        </div>
+
+        <div class="termino">
+            <span class="tag">🔄 Request-Response</span>
+            <p class="descripcion">
+                Ciclo básico de comunicación web. Cliente envía petición, servidor responde.
+            </p>
+            <div class="ejemplo">
+                <strong>Ejemplo completo:</strong><br>
+                <br>
+                <strong>REQUEST (Cliente → Servidor):</strong><br>
+                GET /index.html HTTP/1.1<br>
+                Host: www.ejemplo.com<br>
+                <br>
+                <strong>RESPONSE (Servidor → Cliente):</strong><br>
+                HTTP/1.1 200 OK<br>
+                Content-Type: text/html<br>
+                &lt;html&gt;&lt;body&gt;Contenido&lt;/body&gt;&lt;/html&gt;
+            </div>
+        </div>
+
+        <div class="termino" style="background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(76, 175, 80, 0.05)); border-left: 4px solid #4CAF50;">
+            <span class="tag" style="background: #4CAF50;">💡 Para el Examen</span>
+            <div class="nota">
+                ✅ <strong>Cliente:</strong> Solicita recursos (navegador, app)<br>
+                ✅ <strong>Servidor:</strong> Provee recursos (Apache, Nginx)<br>
+                ✅ <strong>Flujo:</strong> Cliente → Request → Servidor → Response → Cliente<br>
+                ✅ <strong>Ejemplos:</strong> Chrome (cliente), Apache (servidor)<br>
+                ✅ <strong>Protocolo de comunicación:</strong> HTTP/HTTPS
+            </div>
+        </div>
+    </div>
+
+    <footer><p>Servidores y Clientes - Sistema de Aprendizaje</p></footer>
+    <script src="/assets/js/sidebar-component.js"></script>
+</body>
+</html>

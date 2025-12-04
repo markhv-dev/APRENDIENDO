@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a CSS</a>
+        <span class="icon">🔀</span>
+        <h1>Módulo 4: Flexbox</h1>
+        <p class="subtitle">Layout flexible unidimensional</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #f1c40f; margin-bottom: 40px;">
+                <h2 style="color: #f1c40f; margin-bottom: 15px; font-size: 1.8em;">🔀 Flexbox</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    Flexbox es un sistema de layout unidimensional que facilita la distribución de espacio
+                    y alineación de elementos en una fila o columna.
+                </p>
+                <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 8px; border: 1px solid rgba(241, 196, 15, 0.3);">
+                    <h3 style="color: #f1c40f; margin-bottom: 12px; font-size: 1.1em;">📋 Contenido del módulo:</h3>
+                    <ul style="list-style: none; padding-left: 0; line-height: 2;">
+                        <li style="color: #b0b0b0;">✓ Contenedor flex y elementos flex</li>
+                        <li style="color: #b0b0b0;">✓ Dirección y alineación</li>
+                        <li style="color: #b0b0b0;">✓ justify-content y align-items</li>
+                        <li style="color: #b0b0b0;">✓ flex-grow, flex-shrink, flex-basis</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="display-flex" data-tags="display flex contenedor flexible">
+                        <span class="tag">📋 display: flex</span>
+                        <p class="significado">Activa el contexto flexbox en un contenedor</p>
+                        <p class="descripcion">
+                            Al aplicar <code>display: flex</code> a un elemento, se convierte en un "flex container"
+                            y sus hijos directos se convierten en "flex items".
+                        </p>
+                        <div class="ejemplo">.container {
+    display: flex;    /* Activa flexbox */
+}
+
+/* Los hijos se colocan en fila por defecto */
+&lt;div class="container"&gt;
+    &lt;div&gt;Item 1&lt;/div&gt;
+    &lt;div&gt;Item 2&lt;/div&gt;
+    &lt;div&gt;Item 3&lt;/div&gt;
+&lt;/div&gt;
+
+/* inline-flex para contenedor inline */
+.inline-container {
+    display: inline-flex;
+}</div>
+                        <div class="nota">
+                            <strong>💡 Conceptos clave:</strong><br>
+                            • Eje principal (main axis): dirección del flex<br>
+                            • Eje cruzado (cross axis): perpendicular al principal
+                        </div>
+                    </div>
+
+                    <div class="termino" id="flex-direction" data-tags="flex-direction direccion fila columna">
+                        <span class="tag">📋 flex-direction</span>
+                        <p class="significado">Define la dirección del eje principal</p>
+                        <p class="descripcion">
+                            Controla si los items se colocan en fila o columna, y en qué dirección.
+                        </p>
+                        <div class="ejemplo">.container {
+    display: flex;
+
+    flex-direction: row;            /* Fila izq→der (default) */
+    flex-direction: row-reverse;    /* Fila der→izq */
+    flex-direction: column;         /* Columna arriba→abajo */
+    flex-direction: column-reverse; /* Columna abajo→arriba */
+}
+
+/* Ejemplo: navegación vertical */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}</div>
+                    </div>
+
+                    <div class="termino" id="justify-content" data-tags="justify-content alinear principal horizontal">
+                        <span class="tag">📋 justify-content</span>
+                        <p class="significado">Alinea items en el eje principal</p>
+                        <p class="descripcion">
+                            Distribuye el espacio libre entre y alrededor de los flex items
+                            a lo largo del eje principal.
+                        </p>
+                        <div class="ejemplo">.container {
+    display: flex;
+
+    justify-content: flex-start;    /* Inicio (default) */
+    justify-content: flex-end;      /* Final */
+    justify-content: center;        /* Centro */
+    justify-content: space-between; /* Espacio entre items */
+    justify-content: space-around;  /* Espacio alrededor */
+    justify-content: space-evenly;  /* Espacio uniforme */
+}
+
+/* Ejemplo: header con logo y nav */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Centrar un elemento */
+.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}</div>
+                    </div>
+
+                    <div class="termino" id="align-items" data-tags="align-items alinear cruzado vertical">
+                        <span class="tag">📋 align-items</span>
+                        <p class="significado">Alinea items en el eje cruzado</p>
+                        <p class="descripcion">
+                            Controla la alineación de los flex items en el eje perpendicular al principal.
+                        </p>
+                        <div class="ejemplo">.container {
+    display: flex;
+    height: 200px;
+
+    align-items: stretch;     /* Estirar (default) */
+    align-items: flex-start;  /* Inicio del eje cruzado */
+    align-items: flex-end;    /* Final del eje cruzado */
+    align-items: center;      /* Centro */
+    align-items: baseline;    /* Línea base del texto */
+}
+
+/* Centrado perfecto */
+.center-both {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}</div>
+                    </div>
+
+                    <div class="termino" id="flex-wrap" data-tags="flex-wrap envolver lineas wrap">
+                        <span class="tag">📋 flex-wrap</span>
+                        <p class="significado">Permite que los items pasen a múltiples líneas</p>
+                        <p class="descripcion">
+                            Por defecto, los flex items intentan caber en una línea.
+                            flex-wrap permite que salten a la siguiente línea.
+                        </p>
+                        <div class="ejemplo">.container {
+    display: flex;
+
+    flex-wrap: nowrap;        /* Una línea (default) */
+    flex-wrap: wrap;          /* Múltiples líneas */
+    flex-wrap: wrap-reverse;  /* Múltiples líneas invertidas */
+}
+
+/* Grid de cards responsive */
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    flex: 1 1 300px;  /* Crece, encoge, base 300px */
+}</div>
+                    </div>
+
+                    <div class="termino" id="gap" data-tags="gap espacio separacion">
+                        <span class="tag">📋 gap</span>
+                        <p class="significado">Espacio entre flex items</p>
+                        <p class="descripcion">
+                            Define el espacio entre items sin necesidad de márgenes.
+                            Más limpio que usar margin.
+                        </p>
+                        <div class="ejemplo">.container {
+    display: flex;
+    gap: 20px;           /* Espacio uniforme */
+    gap: 10px 20px;      /* row-gap column-gap */
+
+    row-gap: 10px;       /* Solo filas */
+    column-gap: 20px;    /* Solo columnas */
+}
+
+/* Ejemplo práctico */
+.button-group {
+    display: flex;
+    gap: 10px;
+}</div>
+                    </div>
+
+                    <div class="termino" id="flex-grow" data-tags="flex-grow crecer expandir">
+                        <span class="tag">⚙️ flex-grow</span>
+                        <p class="significado">Factor de crecimiento del item</p>
+                        <p class="descripcion">
+                            Define cuánto puede crecer un item para llenar el espacio disponible.
+                            0 = no crece, 1+ = crece proporcionalmente.
+                        </p>
+                        <div class="ejemplo">.item {
+    flex-grow: 0;    /* No crece (default) */
+    flex-grow: 1;    /* Crece */
+    flex-grow: 2;    /* Crece el doble que flex-grow: 1 */
+}
+
+/* Ejemplo: sidebar + contenido */
+.sidebar {
+    flex-grow: 0;
+    width: 250px;
+}
+
+.main-content {
+    flex-grow: 1;    /* Toma el espacio restante */
+}</div>
+                    </div>
+
+                    <div class="termino" id="flex-shrink" data-tags="flex-shrink encoger reducir">
+                        <span class="tag">⚙️ flex-shrink</span>
+                        <p class="significado">Factor de encogimiento del item</p>
+                        <p class="descripcion">
+                            Define cuánto puede encogerse un item cuando falta espacio.
+                            0 = no se encoge, 1 = se encoge proporcionalmente.
+                        </p>
+                        <div class="ejemplo">.item {
+    flex-shrink: 1;  /* Se encoge (default) */
+    flex-shrink: 0;  /* NO se encoge */
+}
+
+/* Ejemplo: imagen que no se encoge */
+.logo {
+    flex-shrink: 0;
+    width: 150px;
+}</div>
+                    </div>
+
+                    <div class="termino" id="flex-basis" data-tags="flex-basis base tamaño inicial">
+                        <span class="tag">⚙️ flex-basis</span>
+                        <p class="significado">Tamaño inicial antes de distribuir espacio</p>
+                        <p class="descripcion">
+                            Define el tamaño inicial del item antes de que flex-grow y flex-shrink lo modifiquen.
+                        </p>
+                        <div class="ejemplo">.item {
+    flex-basis: auto;    /* Basado en contenido (default) */
+    flex-basis: 200px;   /* Tamaño fijo inicial */
+    flex-basis: 0;       /* Para distribución uniforme */
+    flex-basis: 25%;     /* Porcentaje del contenedor */
+}</div>
+                    </div>
+
+                    <div class="termino" id="flex-shorthand" data-tags="flex shorthand abreviado">
+                        <span class="tag">⚙️ flex (shorthand)</span>
+                        <p class="significado">Atajo para grow, shrink y basis</p>
+                        <p class="descripcion">
+                            Combina flex-grow, flex-shrink y flex-basis en una sola propiedad.
+                            Es la forma recomendada de usarlos.
+                        </p>
+                        <div class="ejemplo">/* flex: grow shrink basis */
+.item {
+    flex: 0 1 auto;      /* Default */
+    flex: 1;             /* flex: 1 1 0 (crece y encoge) */
+    flex: auto;          /* flex: 1 1 auto */
+    flex: none;          /* flex: 0 0 auto (fijo) */
+    flex: 1 1 200px;     /* Específico */
+}
+
+/* Ejemplo: 3 columnas iguales */
+.column {
+    flex: 1;
+}
+
+/* Ejemplo: cards que se ajustan */
+.card {
+    flex: 1 1 300px;     /* Mínimo 300px, crece si hay espacio */
+}</div>
+                        <div class="nota">
+                            <strong>✅ Best Practice:</strong> Siempre usa el shorthand <code>flex</code> en lugar de las propiedades individuales.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="align-self" data-tags="align-self individual item">
+                        <span class="tag">⚙️ align-self</span>
+                        <p class="significado">Alineación individual de un item</p>
+                        <p class="descripcion">
+                            Permite sobrescribir align-items para un item específico.
+                        </p>
+                        <div class="ejemplo">.container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.item-especial {
+    align-self: center;     /* Este item se centra */
+    align-self: flex-end;   /* Este va al final */
+    align-self: stretch;    /* Este se estira */
+}</div>
+                    </div>
+
+                    <div class="termino" id="order" data-tags="order orden visual">
+                        <span class="tag">⚙️ order</span>
+                        <p class="significado">Cambia el orden visual de los items</p>
+                        <p class="descripcion">
+                            Permite reordenar items visualmente sin cambiar el HTML.
+                            Valores menores aparecen primero.
+                        </p>
+                        <div class="ejemplo">.item {
+    order: 0;    /* Default - orden del HTML */
+}
+
+.primero {
+    order: -1;   /* Aparece primero */
+}
+
+.ultimo {
+    order: 99;   /* Aparece último */
+}
+
+/* Ejemplo: mobile first */
+@media (max-width: 768px) {
+    .sidebar {
+        order: 2;    /* Sidebar después en móvil */
+    }
+    .main {
+        order: 1;
+    }
+}</div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">🔀 Flexbox</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#display-flex" class="toc-link">display: flex</a></li>
+                    <li class="toc-item"><a href="#flex-direction" class="toc-link">flex-direction</a></li>
+                    <li class="toc-item"><a href="#justify-content" class="toc-link">justify-content</a></li>
+                    <li class="toc-item"><a href="#align-items" class="toc-link">align-items</a></li>
+                    <li class="toc-item"><a href="#flex-wrap" class="toc-link">flex-wrap</a></li>
+                    <li class="toc-item"><a href="#gap" class="toc-link">gap</a></li>
+                    <li class="toc-item"><a href="#flex-grow" class="toc-link">flex-grow</a></li>
+                    <li class="toc-item"><a href="#flex-shrink" class="toc-link">flex-shrink</a></li>
+                    <li class="toc-item"><a href="#flex-basis" class="toc-link">flex-basis</a></li>
+                    <li class="toc-item"><a href="#flex-shorthand" class="toc-link">flex (shorthand)</a></li>
+                    <li class="toc-item"><a href="#align-self" class="toc-link">align-self</a></li>
+                    <li class="toc-item"><a href="#order" class="toc-link">order</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>CSS - Sistema de Aprendizaje | <a href="../index.html">Volver a CSS</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) {
+                return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const tags = termino.getAttribute('data-tags') || '';
+                    const title = termino.querySelector('.tag')?.textContent || '';
+                    const desc = termino.querySelector('.descripcion')?.textContent || '';
+                    const ejemplo = termino.querySelector('.ejemplo')?.textContent || '';
+                    const searchText = normalizeText(tags + ' ' + title + ' ' + desc + ' ' + ejemplo);
+                    if (query === '' || searchText.includes(query)) {
+                        termino.style.display = 'block';
+                        found++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+</body>
+</html>

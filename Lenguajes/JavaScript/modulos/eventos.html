@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a JavaScript</a>
+        <span class="icon">🎯</span>
+        <h1>Módulo 8: Eventos</h1>
+        <p class="subtitle">Event listeners, propagación y eventos del DOM</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #f1c40f; margin-bottom: 40px;">
+                <h2 style="color: #f1c40f; margin-bottom: 15px; font-size: 1.8em;">🎯 Eventos</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0;">
+                    Los eventos permiten responder a acciones del usuario como clicks, teclas, scroll y más.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="addEventListener" data-tags="addEventListener evento listener">
+                        <span class="tag">📋 addEventListener</span>
+                        <p class="significado">Agregar escuchador de eventos</p>
+                        <div class="ejemplo">const button = document.querySelector("button");
+
+// Básico
+button.addEventListener("click", function() {
+    console.log("Click!");
+});
+
+// Con arrow function
+button.addEventListener("click", () => {
+    console.log("Click!");
+});
+
+// Función nombrada (mejor para remover)
+function handleClick(event) {
+    console.log("Click!", event);
+}
+button.addEventListener("click", handleClick);
+
+// Remover listener
+button.removeEventListener("click", handleClick);
+
+// Opciones
+button.addEventListener("click", handleClick, {
+    once: true,      // Solo una vez
+    capture: true,   // Fase de captura
+    passive: true    // No llamará preventDefault
+});
+
+// Múltiples eventos al mismo elemento
+["mouseenter", "focus"].forEach(evt => {
+    input.addEventListener(evt, highlight);
+});</div>
+                    </div>
+
+                    <div class="termino" id="event-object" data-tags="event objeto evento target">
+                        <span class="tag">📋 Objeto Event</span>
+                        <p class="significado">Información del evento</p>
+                        <div class="ejemplo">element.addEventListener("click", function(event) {
+    // Target - elemento que disparó el evento
+    event.target;
+    event.currentTarget;  // Elemento con el listener
+
+    // Tipo de evento
+    event.type;  // "click"
+
+    // Posición del mouse
+    event.clientX;  // Relativo al viewport
+    event.clientY;
+    event.pageX;    // Relativo al documento
+    event.pageY;
+
+    // Teclas modificadoras
+    event.shiftKey;
+    event.ctrlKey;
+    event.altKey;
+    event.metaKey;  // Cmd en Mac
+
+    // Prevenir comportamiento por defecto
+    event.preventDefault();
+
+    // Detener propagación
+    event.stopPropagation();
+
+    // Timestamp
+    event.timeStamp;
+});
+
+// Ejemplo: prevenir envío de formulario
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    // Validar y enviar con fetch
+});</div>
+                    </div>
+
+                    <div class="termino" id="eventos-mouse" data-tags="mouse click hover mouseenter mouseleave">
+                        <span class="tag">📋 Eventos de Mouse</span>
+                        <p class="significado">Click, hover, arrastrar</p>
+                        <div class="ejemplo">const element = document.querySelector(".box");
+
+// Click
+element.addEventListener("click", () => {});
+element.addEventListener("dblclick", () => {});
+element.addEventListener("contextmenu", (e) => {
+    e.preventDefault();  // Menú personalizado
+});
+
+// Mouse enter/leave (no burbujea)
+element.addEventListener("mouseenter", () => {
+    element.classList.add("hover");
+});
+element.addEventListener("mouseleave", () => {
+    element.classList.remove("hover");
+});
+
+// Mouse over/out (burbujea)
+element.addEventListener("mouseover", () => {});
+element.addEventListener("mouseout", () => {});
+
+// Mouse move
+element.addEventListener("mousemove", (e) => {
+    console.log(e.clientX, e.clientY);
+});
+
+// Mouse down/up
+element.addEventListener("mousedown", () => {});
+element.addEventListener("mouseup", () => {});
+
+// Botón del mouse
+element.addEventListener("mousedown", (e) => {
+    if (e.button === 0) // Izquierdo
+    if (e.button === 2) // Derecho
+});</div>
+                    </div>
+
+                    <div class="termino" id="eventos-teclado" data-tags="teclado keyboard keydown keyup key">
+                        <span class="tag">📋 Eventos de Teclado</span>
+                        <p class="significado">Teclas presionadas</p>
+                        <div class="ejemplo">// keydown - tecla presionada
+document.addEventListener("keydown", (e) => {
+    console.log(e.key);   // "Enter", "a", "Escape"
+    console.log(e.code);  // "Enter", "KeyA", "Escape"
+
+    // Teclas especiales
+    if (e.key === "Escape") {
+        closeModal();
+    }
+
+    // Combinaciones
+    if (e.ctrlKey && e.key === "s") {
+        e.preventDefault();
+        save();
+    }
+
+    // Cmd/Ctrl + Key
+    if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+        e.preventDefault();
+        openSearch();
+    }
+});
+
+// keyup - tecla soltada
+input.addEventListener("keyup", (e) => {
+    if (e.key === "Enter") {
+        submit();
+    }
+});
+
+// input - mientras escribe (mejor para inputs)
+input.addEventListener("input", (e) => {
+    console.log(e.target.value);
+});
+
+// Ejemplo: búsqueda en vivo
+searchInput.addEventListener("input", debounce((e) => {
+    search(e.target.value);
+}, 300));</div>
+                    </div>
+
+                    <div class="termino" id="eventos-form" data-tags="formulario form submit change input">
+                        <span class="tag">📋 Eventos de Formulario</span>
+                        <p class="significado">Submit, change, input</p>
+                        <div class="ejemplo">const form = document.querySelector("form");
+const input = document.querySelector("input");
+
+// Submit
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    // Enviar datos
+});
+
+// Input - cada cambio
+input.addEventListener("input", (e) => {
+    console.log(e.target.value);
+});
+
+// Change - al perder foco o seleccionar
+select.addEventListener("change", (e) => {
+    console.log(e.target.value);
+});
+
+// Focus/Blur
+input.addEventListener("focus", () => {
+    input.parentElement.classList.add("focused");
+});
+input.addEventListener("blur", () => {
+    input.parentElement.classList.remove("focused");
+});
+
+// Validación
+input.addEventListener("invalid", (e) => {
+    e.preventDefault();
+    showError(input, "Campo requerido");
+});
+
+// Ejemplo: formulario completo
+form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(form));
+    await fetch("/api", {
+        method: "POST",
+        body: JSON.stringify(data)
+    });
+});</div>
+                    </div>
+
+                    <div class="termino" id="propagacion" data-tags="propagacion bubbling capturing delegation">
+                        <span class="tag">📋 Propagación</span>
+                        <p class="significado">Bubbling y capturing</p>
+                        <div class="ejemplo">// Bubbling (por defecto): hijo → padre
+// Capturing: padre → hijo
+
+// El evento burbujea hacia arriba
+document.querySelector(".child").addEventListener("click", () => {
+    console.log("Child");  // 1
+});
+document.querySelector(".parent").addEventListener("click", () => {
+    console.log("Parent"); // 2
+});
+
+// Detener propagación
+element.addEventListener("click", (e) => {
+    e.stopPropagation();  // No burbujea
+});
+
+// Captura (tercero parámetro true)
+parent.addEventListener("click", () => {
+    console.log("Capture"); // Se ejecuta primero
+}, true);
+
+// stopImmediatePropagation
+// Detiene otros listeners del mismo elemento
+
+// Event Delegation
+// En lugar de listener en cada item:
+document.querySelector(".list").addEventListener("click", (e) => {
+    if (e.target.matches(".item")) {
+        handleItem(e.target);
+    }
+    // O con closest para elementos anidados
+    const item = e.target.closest(".item");
+    if (item) {
+        handleItem(item);
+    }
+});</div>
+                        <div class="nota">
+                            <strong>💡 Tip:</strong> Event delegation es más eficiente para listas dinámicas.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="custom-events" data-tags="custom events personalizado dispatch">
+                        <span class="tag">📋 Eventos Personalizados</span>
+                        <p class="significado">Crear y disparar eventos</p>
+                        <div class="ejemplo">// Crear evento
+const evento = new CustomEvent("miEvento", {
+    detail: { mensaje: "Hola", id: 123 },
+    bubbles: true,
+    cancelable: true
+});
+
+// Disparar evento
+element.dispatchEvent(evento);
+
+// Escuchar evento
+element.addEventListener("miEvento", (e) => {
+    console.log(e.detail.mensaje);  // "Hola"
+});
+
+// Ejemplo práctico: notificaciones
+function notify(message, type = "info") {
+    const event = new CustomEvent("notification", {
+        detail: { message, type },
+        bubbles: true
+    });
+    document.dispatchEvent(event);
+}
+
+document.addEventListener("notification", (e) => {
+    showToast(e.detail.message, e.detail.type);
+});
+
+// Uso
+notify("Guardado exitosamente", "success");</div>
+                    </div>
+
+                    <div class="termino" id="otros-eventos" data-tags="scroll resize load DOMContentLoaded">
+                        <span class="tag">📋 Otros Eventos</span>
+                        <p class="significado">Scroll, resize, load</p>
+                        <div class="ejemplo">// DOMContentLoaded - DOM listo
+document.addEventListener("DOMContentLoaded", () => {
+    // Inicializar app
+});
+
+// load - todo cargado (imágenes, etc)
+window.addEventListener("load", () => {});
+
+// Scroll
+window.addEventListener("scroll", () => {
+    const scrollY = window.scrollY;
+    // Usar throttle para rendimiento
+});
+
+// Resize
+window.addEventListener("resize", () => {
+    const width = window.innerWidth;
+});
+
+// Antes de cerrar
+window.addEventListener("beforeunload", (e) => {
+    if (hasUnsavedChanges) {
+        e.preventDefault();
+        e.returnValue = "";
+    }
+});
+
+// Visibility change
+document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+        // Pausar video, etc
+    }
+});
+
+// Online/Offline
+window.addEventListener("online", () => {});
+window.addEventListener("offline", () => {});
+
+// Copy/Paste
+document.addEventListener("copy", (e) => {
+    e.clipboardData.setData("text/plain", "Texto copiado");
+    e.preventDefault();
+});</div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">🎯 Eventos</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#addEventListener" class="toc-link">addEventListener</a></li>
+                    <li class="toc-item"><a href="#event-object" class="toc-link">Objeto Event</a></li>
+                    <li class="toc-item"><a href="#eventos-mouse" class="toc-link">Eventos de Mouse</a></li>
+                    <li class="toc-item"><a href="#eventos-teclado" class="toc-link">Eventos de Teclado</a></li>
+                    <li class="toc-item"><a href="#eventos-form" class="toc-link">Eventos de Formulario</a></li>
+                    <li class="toc-item"><a href="#propagacion" class="toc-link">Propagación</a></li>
+                    <li class="toc-item"><a href="#custom-events" class="toc-link">Eventos Personalizados</a></li>
+                    <li class="toc-item"><a href="#otros-eventos" class="toc-link">Otros Eventos</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>JavaScript - Sistema de Aprendizaje | <a href="../index.html">Volver a JavaScript</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) { return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const searchText = normalizeText((termino.getAttribute('data-tags') || '') + ' ' + (termino.querySelector('.tag')?.textContent || ''));
+                    if (query === '' || searchText.includes(query)) { termino.style.display = 'block'; found++; } else { termino.style.display = 'none'; }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => { if (scrollY >= section.offsetTop - 100) current = section.getAttribute('id'); });
+                tocLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === '#' + current) link.classList.add('active'); });
+                document.getElementById('tocProgressBar').style.width = ((document.body.scrollTop || document.documentElement.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100 + '%';
+            });
+        });
+    </script>
+</body>
+</html>

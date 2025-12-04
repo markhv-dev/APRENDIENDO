@@ -6,176 +6,154 @@ Plan de desarrollo y evolución del sistema de aprendizaje.
 
 ## Estado Actual
 
-**Versión**: 2.0.0
-**Fecha**: 2025-10-12
-**Progreso General**: 100% (5 de 5 fases completadas) ✅
+**Versión**: 2.3.0
+**Fecha**: 2025-11-19
+**Progreso General**: ~40%
 
 ### Completado ✅
 
-- **Fase 1**: Fundamentos (Diseño, Frontend, Backend, Base de Datos) ✅
-- **Fase 2**: Git/GitHub (39 comandos Git + 9 GitHub CLI + 10 ejercicios) ✅
-- **Fase 3**: Restructuración (organización profesional de carpetas) ✅
-- **Fase 4**: Documentación (4 archivos MD completos) ✅
-- **Fase 5**: Integración Final (search.js con 73 términos, stats actualizadas) ✅
-- HTML completo (62 términos + 13 ejercicios)
+- **Fundamentos** (Diseño, Frontend, Backend, Base de Datos) ✅
+- **Git/GitHub** (45 comandos + 10 ejercicios) ✅
+- **HTML** (62 términos + 12 ejercicios + 10 módulos) ✅
+- **CSS** (90+ términos + 12 ejercicios + 10 módulos) ✅
+- **JavaScript** (60+ términos + 12 ejercicios + examen) ✅
 - Búsqueda global funcional
 - Diseño dark minimalista responsive
+- Documentación completa en /docs/
+
+### En Progreso 🔄
+
+- **C++** - Glosario y módulos
+- **Java** - Glosario y módulos
+
+### Pendiente 📋
+
+- **Lenguajes**: Python, TypeScript, SQL, Go, Rust, C#, Swift, Ruby, PHP, Kotlin
+- **Frameworks**: React, Vue, Angular, Next.js, Express, Django, etc.
+- **Herramientas**: Docker, Node.js, Kubernetes, etc.
 
 ---
 
 ## 📅 Plan de Desarrollo
 
-### Fase 4: Documentación ✅ (COMPLETADA)
+### Fase Actual: Lenguajes Core
 
-**Estado**: ✅ Completada
-**Fecha de finalización**: 2025-10-12
+#### CSS ✅ (COMPLETADO)
+
+**Estado**: ✅ Completado
+**Fecha**: 2025-11-19
+
+**Contenido**:
+- Glosario: 90+ términos (16 categorías)
+- Ejercicios: 12 progresivos + examen final
+- Módulos: 10 completos con TOC
+  1. Fundamentos
+  2. Selectores
+  3. Box Model
+  4. Flexbox
+  5. Grid
+  6. Colores y Fondos
+  7. Tipografía
+  8. Posicionamiento
+  9. Pseudoclases y Pseudoelementos
+  10. Animaciones y Transiciones
+
+#### JavaScript ✅ (COMPLETADO)
+
+**Estado**: ✅ Completado
+
+**Contenido**:
+- Glosario: 60+ términos
+- Ejercicios: 12 progresivos + examen
+- Categorías: Variables, Funciones, Arrays, Objetos, DOM, Eventos, Async
+
+#### C++ 🔄 (EN PROGRESO)
+
+**Estado**: En desarrollo
 **Prioridad**: Alta
 
-**Objetivos**:
-- [x] Simplificar README.md principal a ~500 palabras
-- [x] Crear /docs/GUIA_COMPLETA.md (16 KB)
-- [x] Crear /docs/INSTRUCCIONES_CLAUDE.md (30 KB)
-- [x] Crear /docs/ROADMAP.md (este archivo - 13 KB)
-- [x] Crear /docs/ARQUITECTURA.md (33 KB)
-- [x] Revisar y validar toda la documentación
+**Contenido planeado**:
+- Glosario con términos fundamentales
+- 10 módulos de aprendizaje
+- Ejercicios progresivos
 
-**Resultado**: ✅ Documentación completa y profesional creada. Sistema totalmente documentado para usuarios y Claude Code.
+#### Java 🔄 (EN PROGRESO)
+
+**Estado**: En desarrollo
+**Prioridad**: Alta
+
+**Contenido planeado**:
+- Glosario con términos fundamentales
+- 10 módulos de aprendizaje
+- Ejercicios progresivos
 
 ---
 
-### Fase 5: Integración Final ✅ (COMPLETADA)
+### Próxima Fase: Lenguajes Adicionales
 
-**Estado**: ✅ Completada
-**Fecha de finalización**: 2025-10-12
-**Tiempo real**: 45 minutos
-**Prioridad**: Alta
+#### Python - Alta Prioridad
+**Estimación**: 2-3 semanas
 
-**Objetivos**:
-1. ✅ Actualizar main index.html con nueva estructura completa
-2. ✅ Agregar todos los términos de Git a search.js (39 Git + 9 GitHub CLI)
-3. ✅ Verificar navegación completa del sistema
-4. ✅ Testing de todas las páginas clave
-5. ✅ Verificación de responsive design
-6. ✅ Validación de breadcrumbs y links
+**Contenido**:
+- Sintaxis y tipos de datos
+- Funciones y clases
+- Estructuras de datos
+- File I/O
+- List comprehensions
+- Virtual environments
+- 10 módulos + ejercicios
 
-**Tareas específicas**:
-- [x] Extraer términos de Fundamentos/ (no aplica - son páginas informativas)
-- [x] Extraer 39 comandos Git + 9 GitHub CLI y agregarlos a search.js
-- [x] Actualizar estadísticas en tarjetas del index (62 términos HTML, 48 comandos Git)
-- [x] Verificar todos los breadcrumbs y navegación
-- [x] Confirmar que search.js funciona (73 términos totales)
-- [x] Verificación de estructura de carpetas
-
-**Resultado**: ✅ Sistema completamente funcional e integrado. 73 términos buscables, navegación verificada, stats actualizadas. Listo para uso y expansión con nuevas tecnologías.
-
----
-
-## 🎯 Contenido Futuro
-
-### Corto Plazo (1-3 meses)
-
-#### CSS - Alta Prioridad
-**Estado**: Pendiente
-**Estimación**: 2 semanas
-
-**Contenido planeado**:
-- **Glosario** (40-50 términos):
-  - Selectores y especificidad
-  - Box model (margin, padding, border)
-  - Display y position
-  - Flexbox completo
-  - Grid completo
-  - Colores y gradientes
-  - Tipografía y fuentes
-  - Transforms y transitions
-  - Animations
-  - Media queries
-  - Variables CSS
-  - Pseudo-clases y pseudo-elementos
-
-- **Ejercicios** (12-15):
-  - Básico: Selectores, colores, tipografía, box model
-  - Intermedio: Layouts con flexbox, grid básico, responsive
-  - Avanzado: Grid avanzado, animaciones, transforms
-  - Experto: Landing page completa y responsive
-
-#### JavaScript - Alta Prioridad
-**Estado**: Pendiente
-**Estimación**: 3 semanas
-
-**Contenido planeado**:
-- **Glosario** (60-70 términos):
-  - Sintaxis básica (variables, tipos, operadores)
-  - Funciones (declaraciones, expresiones, arrow, callbacks)
-  - Arrays y objetos
-  - DOM manipulation
-  - Eventos
-  - Async/await y Promises
-  - Fetch API
-  - ES6+ features (spread, destructuring, modules)
-  - Local storage
-  - JSON
-  - Error handling
-
-- **Ejercicios** (15-18):
-  - Básico: Variables, funciones, arrays, objetos
-  - Intermedio: DOM manipulation, eventos, formularios
-  - Avanzado: Fetch API, async, local storage
-  - Experto: Web app interactiva completa (ej: Todo app con persistencia)
-
-### Mediano Plazo (3-6 meses)
-
-#### TypeScript
+#### TypeScript - Alta Prioridad
 **Estimación**: 2 semanas
 
 **Contenido**:
 - Tipado básico y avanzado
 - Interfaces y tipos
 - Generics
-- Decorators
-- Configuración de TypeScript
+- Enums y Union types
+- Configuración tsconfig
 - Migración de JS a TS
+
+#### SQL - Alta Prioridad
+**Estimación**: 2 semanas
+
+**Contenido**:
+- CRUD operations
+- Joins (INNER, LEFT, RIGHT, FULL)
+- Subqueries y CTEs
+- Aggregate functions
+- Indexes y optimización
+- Transacciones
+- PostgreSQL/MySQL específico
+
+---
+
+### Mediano Plazo: Frameworks
 
 #### React
 **Estimación**: 3 semanas
+**Prioridad**: Alta
 
 **Contenido**:
-- Componentes y JSX
+- JSX y componentes
 - Props y State
-- Hooks (useState, useEffect, useContext, etc.)
-- Routing con React Router
-- State management (Context, Redux básico)
-- Fetch de datos
+- Hooks (useState, useEffect, useContext, useReducer, useMemo)
+- React Router
+- Context API
+- Fetch y manejo de datos
 - Proyecto: SPA completa
 
-#### Node.js (más detalle)
+#### Node.js / Express
 **Estimación**: 3 semanas
 
 **Contenido**:
 - Fundamentos de Node
 - NPM y módulos
-- File system
-- HTTP server
 - Express.js
-- REST APIs
-- Autenticación
 - Middleware
+- REST APIs
+- Autenticación JWT
 - Proyecto: API REST completa
-
-#### SQL (más detalle)
-**Estimación**: 2 semanas
-
-**Contenido**:
-- Sintaxis básica (SELECT, INSERT, UPDATE, DELETE)
-- Joins
-- Subqueries
-- Aggregate functions
-- Indexes
-- Transacciones
-- Normalización
-- PostgreSQL/MySQL específico
-
-### Largo Plazo (6-12 meses)
 
 #### Vue.js
 **Estimación**: 2-3 semanas
@@ -183,366 +161,277 @@ Plan de desarrollo y evolución del sistema de aprendizaje.
 **Contenido**:
 - Vue 3 Composition API
 - Components y props
-- Reactivity
+- Reactivity system
 - Vue Router
 - Pinia (state management)
 - Proyecto completo
 
-#### Angular
-**Estimación**: 3-4 semanas
+---
 
-**Contenido**:
-- TypeScript + Angular
-- Components y modules
-- Services y dependency injection
-- RxJS y observables
-- Routing
-- Forms
-- Proyecto enterprise
+### Largo Plazo: Herramientas y DevOps
 
 #### Docker
 **Estimación**: 2 semanas
 
 **Contenido**:
-- Containers y images
+- Containers e images
 - Dockerfile
 - Docker Compose
 - Volumes y networks
-- Docker Hub
+- Multi-stage builds
 - Best practices
 
-#### Python (expansión)
-**Estimación**: 3 semanas
+#### Kubernetes
+**Estimación**: 2-3 semanas
 
 **Contenido**:
-- Sintaxis y tipos
-- Funciones y clases
-- List comprehensions
-- File I/O
-- APIs con Flask/FastAPI
-- Virtual environments
-- pip y packages
+- Pods y deployments
+- Services y ingress
+- ConfigMaps y Secrets
+- Helm charts
+- Monitoreo
+
+#### CI/CD
+**Estimación**: 1-2 semanas
+
+**Contenido**:
+- GitHub Actions
+- Jenkins basics
+- Pipelines
+- Testing automatizado
+- Deploy automático
 
 ---
 
 ## 🚀 Mejoras del Sistema
 
-### Funcionalidades Nuevas
+### Implementadas ✅
 
-#### Corto Plazo
+- [x] Búsqueda global con 200+ términos
+- [x] TOC sidebar con scroll spy
+- [x] Búsqueda en vivo en módulos
+- [x] Barra de progreso de lectura
+- [x] Diseño responsive completo
+- [x] Sidebar colapsable
+- [x] Exámenes finales por lenguaje
 
-**Progreso de Aprendizaje** (2-3 días)
+### Corto Plazo (Próximas semanas)
+
+**Progreso de Aprendizaje**
 - [ ] LocalStorage para guardar progreso
-- [ ] Checkbox en términos del glosario "✓ Aprendido"
-- [ ] Checkbox en ejercicios "✓ Completado"
-- [ ] Barra de progreso por tecnología
+- [ ] Checkbox "✓ Aprendido" en términos
+- [ ] Checkbox "✓ Completado" en ejercicios
 - [ ] Dashboard de progreso general
 
-**Soluciones de Ejercicios** (1 semana)
-- [ ] Agregar soluciones a todos los ejercicios HTML
-- [ ] Agregar soluciones a ejercicios Git
-- [ ] Botones de toggle funcionales (ya implementados)
-- [ ] Explicaciones de las soluciones
-
-**Snippets Copiables** (1 día)
+**Snippets Copiables**
 - [ ] Botón "Copiar código" en ejemplos
 - [ ] Feedback visual al copiar
 - [ ] Clipboard API integration
 
-#### Mediano Plazo
+**Soluciones de Ejercicios**
+- [ ] Toggle para mostrar/ocultar soluciones
+- [ ] Explicaciones paso a paso
 
-**Modo Claro/Oscuro** (2-3 días)
+### Mediano Plazo
+
+**Modo Claro/Oscuro**
 - [ ] Toggle en header
-- [ ] Paleta de colores para modo claro
 - [ ] Persistencia en localStorage
-- [ ] Transición suave entre modos
+- [ ] Transición suave
 
-**Quiz Interactivos** (1-2 semanas)
-- [ ] Sistema de preguntas de opción múltiple
+**Quiz Interactivos**
+- [ ] Preguntas de opción múltiple
 - [ ] Feedback inmediato
 - [ ] Scoring y tracking
-- [ ] 5-10 quiz por tecnología
 
-**Bookmarks/Favoritos** (2-3 días)
+**Bookmarks/Favoritos**
 - [ ] Marcar términos favoritos
 - [ ] Página de favoritos
-- [ ] Persistencia en localStorage
-- [ ] Export/import de favoritos
+- [ ] Export/import
 
-**Notas Personales** (1 semana)
-- [ ] Sistema de notas en términos
-- [ ] Editor simple de markdown
-- [ ] Persistencia en localStorage
-- [ ] Export de notas
+### Largo Plazo
 
-#### Largo Plazo
-
-**Exportar Progreso** (3-5 días)
-- [ ] Export a JSON
-- [ ] Export a PDF
-- [ ] Export a Markdown
-- [ ] Import desde JSON
-
-**Integración con Git** (1 semana)
-- [ ] Auto-commit de progreso
-- [ ] Sync con GitHub Gists
-- [ ] Backup automático
-
-**Modo Offline** (1 semana)
+**PWA / Modo Offline**
 - [ ] Service Worker
 - [ ] Caché de contenido
-- [ ] PWA manifest
 - [ ] Instalable como app
 
-**Gamificación** (2 semanas)
-- [ ] Puntos por ejercicios completados
+**Gamificación**
+- [ ] Puntos por completar
 - [ ] Badges/logros
 - [ ] Streaks de estudio
-- [ ] Leaderboard personal
 
 ---
 
-## 🔧 Mejoras Técnicas
+## 📊 Métricas de Progreso
 
-### Performance
+### Contenido Actual
 
-**Corto Plazo**:
-- [ ] Minificar CSS inline (opcional)
-- [ ] Lazy loading de imágenes (si se agregan)
-- [ ] Optimizar search.js para >1000 términos
+| Categoría | Completado | Pendiente | Total Planeado |
+|-----------|------------|-----------|----------------|
+| Fundamentos | 4 | 0 | 4 |
+| Comandos | 1 (Git) | 0 | 1 |
+| Lenguajes | 3 (HTML, CSS, JS) | 10 | 13 |
+| Frameworks | 0 | 10 | 10 |
+| Herramientas | 0 | 8 | 8 |
 
-**Mediano Plazo**:
-- [ ] Code splitting (si crece mucho)
-- [ ] Caché de búsquedas frecuentes
-- [ ] Virtual scrolling para listas largas
+### Objetivos
 
-### Accesibilidad
+**3 meses**:
+- [ ] 6 lenguajes completos (agregar Python, TypeScript, SQL)
+- [ ] 400+ términos documentados
+- [ ] 80+ ejercicios
+- [ ] Progreso con localStorage
 
-**Corto Plazo**:
-- [ ] Audit con Lighthouse
-- [ ] Agregar aria-labels faltantes
-- [ ] Mejorar contraste donde sea necesario
-- [ ] Keyboard navigation completa
+**6 meses**:
+- [ ] 10 lenguajes completos
+- [ ] 3 frameworks (React, Vue, Node)
+- [ ] 700+ términos
+- [ ] 150+ ejercicios
+- [ ] Quiz interactivos
 
-**Mediano Plazo**:
-- [ ] Screen reader testing
-- [ ] Focus indicators mejorados
-- [ ] Skip links
-- [ ] Reducción de movimiento (prefers-reduced-motion)
-
-### Testing
-
-**Mediano Plazo**:
-- [ ] Tests de búsqueda con Jest
-- [ ] Tests de navegación
-- [ ] Validación automática de HTML
-- [ ] CI/CD para validación
-
----
-
-## 📊 Métricas de Éxito
-
-### Métricas de Contenido
-
-**Objetivo Corto Plazo (3 meses)**:
-- [ ] 5 tecnologías completas
-- [ ] 300+ términos documentados
-- [ ] 60+ ejercicios
-
-**Objetivo Mediano Plazo (6 meses)**:
-- [ ] 10 tecnologías completas
-- [ ] 600+ términos
-- [ ] 120+ ejercicios
-
-**Objetivo Largo Plazo (12 meses)**:
+**12 meses**:
+- [ ] Sistema completo full-stack
 - [ ] 15+ tecnologías
 - [ ] 1000+ términos
 - [ ] 200+ ejercicios
-- [ ] Sistema completo de full-stack development
-
-### Métricas de Calidad
-
-**Continuamente**:
-- [ ] Todos los ejemplos de código funcionan
-- [ ] Cero enlaces rotos
-- [ ] HTML 100% válido
-- [ ] Responsive en todos los dispositivos
-- [ ] Lighthouse score >90
+- [ ] PWA funcional
 
 ---
 
-## 🎓 Rutas de Aprendizaje Planificadas
+## 🎓 Rutas de Aprendizaje
 
-### Ruta Frontend (Completa en 6 meses)
+### Ruta Frontend
 
-**Fase 1: Fundamentos** (Mes 1)
-- Fundamentos ✅
-- HTML ✅
-- CSS
-- Git básico ✅
+```
+1. Fundamentos ✅
+2. HTML ✅
+3. CSS ✅
+4. JavaScript ✅
+5. TypeScript
+6. React/Vue/Angular
+7. Testing
+8. Build Tools
+```
 
-**Fase 2: Interactividad** (Mes 2-3)
-- JavaScript completo
-- Git avanzado ✅
+### Ruta Backend
 
-**Fase 3: Framework** (Mes 4-5)
-- React O Vue O Angular
-- TypeScript
+```
+1. Fundamentos ✅
+2. Git ✅
+3. JavaScript ✅
+4. Node.js
+5. SQL
+6. Express/APIs
+7. Autenticación
+8. Docker
+```
 
-**Fase 4: Profesional** (Mes 6)
-- Testing
-- Build tools
-- Deploy
-- Proyecto portfolio final
+### Ruta Full-Stack
 
-### Ruta Backend (Completa en 6 meses)
+```
+Frontend + Backend + DevOps
+Duración estimada: 9-12 meses
+```
 
-**Fase 1: Fundamentos** (Mes 1)
-- Fundamentos ✅
-- Git ✅
-- JavaScript básico
+---
 
-**Fase 2: Node.js** (Mes 2-3)
-- Node.js completo
-- Express.js
-- APIs REST
+## 📝 Historial de Versiones
 
-**Fase 3: Bases de Datos** (Mes 4)
-- SQL completo
-- MongoDB
-- ORMs
+### v2.3.0 (2025-11-19)
 
-**Fase 4: Avanzado** (Mes 5-6)
-- Autenticación
-- Seguridad
-- Testing
-- Docker
-- Proyecto API completa
+**Mejoras**:
+- CSS: Glosario expandido a 90+ términos
+- CSS: 10 módulos completos con TOC y búsqueda
+- Archivo INSTRUCCIONES_MODULOS.md para estandarización
+- Fix: Selección en sidebar (Java vs JavaScript)
 
-### Ruta Full-Stack (Completa en 9-12 meses)
+### v2.2.0 (Anterior)
 
-Combina Frontend + Backend + DevOps
+**Contenido**:
+- JavaScript completo con examen
+- CSS con glosario y ejercicios
+- Estructura de módulos para HTML
+
+### v2.0.0 (2025-10-12)
+
+**Cambios Mayores**:
+- Restructuración completa
+- Nueva organización de carpetas
+- Documentación profesional en /docs/
+- Git/GitHub completo
+
+### v1.0.0 (2025-10-11)
+
+**Primer Release**:
+- HTML completo
+- Estructura base
+- Diseño dark minimalista
+
+---
+
+## 🎯 Prioridades Inmediatas
+
+### Esta Semana
+
+1. ✅ Completar módulos CSS con TOC
+2. 🔄 Finalizar C++ y Java (en progreso por otra IA)
+3. Crear módulos para JavaScript
+
+### Próximas 2 Semanas
+
+1. Comenzar Python
+2. Implementar snippets copiables
+3. Agregar soluciones a ejercicios
+
+### Próximo Mes
+
+1. Completar Python, TypeScript, SQL
+2. Comenzar React
+3. Implementar progreso con localStorage
 
 ---
 
 ## 💡 Ideas Futuras
 
-### Experimentales
+### Funcionalidades
 
-- **AI Assistant Integration**: Chatbot para responder preguntas sobre contenido
 - **Code Playground**: Editor in-browser para probar código
-- **Video Tutorials**: Integración con videos explicativos
-- **Community Features**: Foro o comments (si se hace online)
-- **Multi-idioma**: Versiones en inglés/otros idiomas
+- **AI Assistant**: Chatbot para preguntas sobre contenido
+- **Video Integration**: Links a tutoriales relevantes
+- **Multi-idioma**: Versión en inglés
 
 ### Expansión de Contenido
 
-- **Mobile Development**: React Native, Flutter
 - **Testing**: Jest, Cypress, Playwright
-- **DevOps**: CI/CD, Kubernetes, Cloud platforms
+- **Mobile**: React Native, Flutter
+- **Cloud**: AWS, Azure, GCP basics
 - **Databases**: MongoDB, Redis, PostgreSQL avanzado
-- **Backend Frameworks**: Django, Laravel, Spring Boot
-- **Tools**: Webpack, Vite, ESLint, Prettier
 
 ---
 
-## 📝 Notas de Versiones
+## 📈 Visión
 
-### v2.0.0 (2025-10-12)
+**Objetivo**: Sistema de aprendizaje completo, local y gratuito que cubra desde fundamentos hasta nivel profesional en desarrollo web full-stack.
 
-**Cambios Mayores**:
-- Restructuración completa del sistema
-- Nueva organización: Lenguajes/, Frameworks/, Herramientas/, Comandos/
-- Documentación profesional en /docs/
-- README simplificado
-
-**Nuevo Contenido**:
-- Fundamentos completos
-- Git/GitHub completo (45 comandos + 10 ejercicios)
-
-**Mejoras**:
-- Sistema de navegación mejorado
-- Búsqueda global funcional
-- Estructura escalable
-
-### v1.0.0 (2025-10-11)
-
-**Primer Release**:
-- HTML completo (50+ términos + 13 ejercicios)
-- Estructura base del sistema
-- Diseño dark minimalista
-- Búsqueda básica
-
----
-
-## 🎯 Prioridades Actuales
-
-### ✅ Completado (Todas las fases base)
-
-1. ✅ Fase 1: Fundamentos
-2. ✅ Fase 2: Git/GitHub
-3. ✅ Fase 3: Restructuración
-4. ✅ Fase 4: Documentación
-5. ✅ Fase 5: Integración Final
-
-**Sistema base: 100% completo y funcional** 🎉
-
-### 🚀 Siguiente (Próximas 2 Semanas)
-
-1. **CSS** - Crear glosario completo (40-50 términos + 12-15 ejercicios)
-2. Agregar soluciones expandibles a ejercicios HTML existentes
-3. Implementar progreso con localStorage (opcional)
-
-### 📅 Mes Siguiente
-
-1. Completar CSS
-2. Comenzar **JavaScript** (60-70 términos + 15-18 ejercicios)
-3. Implementar snippets copiables (mejora UX)
-4. Agregar quiz básicos (mejora de aprendizaje)
-
----
-
-## 🤝 Contribución y Feedback
-
-Este es un proyecto personal en constante evolución. Las prioridades pueden cambiar según necesidades de aprendizaje.
-
-**Para sugerir contenido nuevo**:
-- Agrega un issue en el proyecto (si está en GitHub)
-- Documenta en este ROADMAP
-- Discute con Claude Code
-
-**Para reportar bugs**:
-- Describe el problema específico
-- Incluye pasos para reproducir
-- Sugiere solución si es posible
-
----
-
-## 📈 Visión a Largo Plazo
-
-**Objetivo Final**: Crear el sistema de aprendizaje de desarrollo web más completo y accesible, completamente local y gratuito, que cubra desde fundamentos hasta nivel profesional en todas las tecnologías principales del stack moderno.
-
-**Cuando esté completo (12-18 meses)**:
+**Meta final**:
 - 15-20 tecnologías documentadas
 - 1000+ términos con ejemplos
 - 200+ ejercicios progresivos
 - Sistema de progreso completo
-- Quizzes interactivos
-- Modo offline completo
-- Exportable y portable
+- Modo offline (PWA)
 
-**Impacto esperado**: Un desarrollador siguiendo este sistema completo debería poder:
-- Crear aplicaciones web full-stack profesionales
-- Entender y aplicar best practices
-- Trabajar con Git de forma profesional
-- Deployar aplicaciones reales
-- Estar listo para posiciones junior/mid-level
+**Resultado esperado**: Un desarrollador completando este sistema estará preparado para posiciones junior/mid-level con conocimiento sólido en:
+- Frontend (HTML, CSS, JS, React/Vue)
+- Backend (Node, SQL, APIs)
+- DevOps (Git, Docker, CI/CD)
+- Best practices y testing
 
 ---
 
-**Última actualización**: 2025-10-12
-**Próxima revisión**: 2025-11-12
+**Última actualización**: 2025-11-19
+**Próxima revisión**: 2025-12-19
 
 ---
 
-Este roadmap es un documento vivo y se actualizará regularmente según el progreso y necesidades.
+Este roadmap es un documento vivo que se actualiza según el progreso del proyecto.
