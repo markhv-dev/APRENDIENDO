@@ -1,0 +1,551 @@
+Introducción al
+Desarrollo Web
+Ing. Marco Aedo López
+EPIS UNSA – 2025
+Ing. Marco Aedo López
+
+maedol@unsa.edu.pe
+EPIS – UNSA
+
+marcoaedo@hotmail.com
+2025
+
+Fundamentos del desarrollo Frontend
+
+JavaScript
+Tema 6
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones
+• Es un bloque de código reutilizable que se ejecuta cuando es
+llamado
+• Sirve para organizar, estructurar y reutilizar código, evitando su
+repetición
+• Facilitan el mantenimiento del código
+• También se les llama métodos, procedimientos, etc.
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones Declaradas
+• Se define usando la palabra clave function seguida de un
+nombre, parámetros (opcional) y un bloque de código
+• Pueden devolver valores con return
+• Son elevadas (Hoisting): se puede llamar a la función antes de
+declararla
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones Expresadas
+• Se asigna a una variable o constante
+• En lugar de declarar la función directamente con function
+nombre() {}, se escribe la función dentro de una asignación
+• No hay hoisting: a diferencia de las declaradas, no se pueden llamar
+antes de definirlas
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones Expresadas
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones Flecha
+• Forma más compacta y legible de escribir funciones
+• Se definen usando el operador => (flecha) en lugar de la palabra
+clave function
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones Anidadas
+• Función definida dentro de otra función
+• La función interna sólo puede ser accedida desde la función
+externa, y tiene acceso a las variables de ésta
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones Anidadas
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones Anidadas
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones: Scope (Ámbito) y Closure
+Scope
+• Alcance o contexto en el que las variables, funciones y objetos son
+accesibles en un programa
+• Define dónde puedes usar una variable y dónde no
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones: Scope (Ámbito) y Closure
+• Scope global:
+– Las variables declaradas fuera de cualquier función o bloque
+pertenecen al ámbito global
+– Son accesibles desde cualquier parte del código
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones: Scope (Ámbito) y Closure
+• Scope local (de función):
+– Las variables declaradas dentro de una función sólo existen dentro de
+ella
+– No pueden ser accedidas desde fuera
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones: Scope (Ámbito) y Closure
+• Scope de bloque (con let y const):
+– Las variables declaradas dentro de un bloque { } con let o const sólo
+existen dentro de ese bloque
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones: Scope (Ámbito) y Closure
+Closure
+•
+
+•
+
+Cuando una función interna recuerda y accede a las variables del scope de
+su función externa en la que fue creada, aunque la función externa ya haya
+terminado de ejecutarse
+Las funciones mantienen una referencia al entorno léxico donde fueron
+definidas
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones: Scope (Ámbito) y Closure
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones: Parámetros por defecto y
+operador rest
+• Los parámetros por defecto (default parameters) permiten que
+una función asigne un valor predeterminado a un parámetro si no se
+le proporciona un valor al invocar la función
+• Esto evita tener que verificar manualmente si un argumento es
+undefined dentro de la función
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones: Parámetros por defecto y
+operador rest
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones: Parámetros por defecto y
+operador rest
+• El operador rest (...) permite capturar un número indefinido de
+argumentos de una función en un solo arreglo
+• Es muy útil cuando no sabemos cuántos argumentos recibirá la
+función
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones: Parámetros por defecto y
+operador rest
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones de orden superior y
+Callbacks
+• Funciones de orden superior son funciones que operan sobre
+otras funciones, permitiendo un estilo de programación más flexible
+y funcional
+• Cumple al menos una de estas dos condiciones:
+– Recibe una o más funciones como argumentos
+– Devuelve otra función como resultado
+
+• Permite modularidad y reutilización del código
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones de orden superior y
+Callbacks
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones de orden superior y
+Callbacks
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones de orden superior y
+Callbacks
+• Un callback es simplemente una función que se pasa como
+argumento a otra función y que se ejecuta dentro de esa función
+• Los callbacks se usan para controlar el flujo de ejecución,
+especialmente en operaciones asíncronas o cuando queremos
+ejecutar código después de que ocurra algo
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones de orden superior y
+Callbacks
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+20. Funciones de orden superior y
+Callbacks
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+21. Estructuras de Datos
+• Una manera organizada de almacenar y manejar datos para poder
+accederlos, modificarlos y procesarlos de manera eficiente
+• Permiten agrupar y relacionar múltiples valores
+– Array (arreglo / lista)
+– Set
+– Map
+– Objeto (Object)
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+22. Estructuras de Datos - Array
+• Arreglo o lista, es una estructura de datos que permite almacenar
+una colección ordenada de elementos
+• Cada elemento tiene un índice numérico, empezando desde 0, y
+puede ser de cualquier tipo de dato, incluso otros arrays u objetos
+• Son dinámicos!!!
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+22. Estructuras de Datos - Array
+• Características:
+– Ordenado: cada elemento tiene un índice numérico
+– Heterogéneo: puede contener distintos tipos de datos
+– Dinámico: puede cambiar de tamaño (agregar o eliminar elementos)
+– Objeto: un array es un objeto con propiedades y métodos
+especiales
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+22. Estructuras de Datos - Array
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+22. Estructuras de Datos - Array
+• Declarar con let y const
+– Ambas son válidas
+– let: cuando se planea reasignar el arreglo
+– const: cuando el arreglo no cambiará de referencia (pero si se
+puede modificar los elementos)
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+22. Estructuras de Datos - Array
+• Acceso a elementos
+
+• length: devuelve el número de elementos del array
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+22. Estructuras de Datos - Array
+Métodos más comunes
+• Agregar elementos
+
+Ing. Marco Aedo López
+
+• Eliminar elementos
+
+EPIS – UNSA
+
+2025
+
+22. Estructuras de Datos - Array
+• Recorrer un arreglo
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+22. Estructuras de Datos - Array
+• Recorrer un arreglo
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+22. Estructuras de Datos –
+Array Multidimensional
+• Son arrays que contienen arrays
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+22. Estructuras de Datos –
+Array Multidimensional
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+23. Estructuras de Datos - Set
+• Representa una colección de valores únicos, es decir, no permite
+elementos duplicados
+• No mantiene índices
+• Cada valor puede aparecer una sola vez
+• Es iterable y heterogéneo
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Método /
+Propiedad
+
+Descripción
+Estructuras
+de Datos - SetEjemplo
+
+add(valor)
+
+Agrega un valor al Set. Si ya existe, no lo
+duplica
+
+const numeros = new Set();
+numeros.add(1);
+numeros.add(2);
+
+has(valor)
+
+Verifica si un valor existe en el Set
+
+numeros.has(1); // true
+numeros.has(3); // false
+
+delete(valor) Elimina un valor del Set si existe
+
+numeros.delete(2);
+
+clear()
+
+Elimina todos los elementos del Set
+
+numeros.clear();
+
+size
+
+Devuelve la cantidad de elementos en el Set
+
+let cantidad=letras.size);
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+23. Estructuras de Datos - Set
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+23. Estructuras de Datos - Set
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ejercicios
+1. Crea una función llamada promedio que reciba tres números y devuelva su promedio. 4
+versiones: declarada, expresada, flecha con bloque y flecha simplificada
+2. Crea una función flecha llamada evaluarNumero que reciba un número y devuelva un
+mensaje indicando si es positivo, negativo o cero
+3. Crea una función operar que reciba dos números y una función como parámetro (la
+operación que se aplicará, crear para las 6 operaciones aritméticas conocidas)
+4. Crea una función calcularTotal que reciba dos precios y una función callback para mostrar el
+resultado
+5. Crea una función llamada mostrarResultado que use otra función interna para calcular el
+doble de un número
+6. Crea una función que reciba un arreglo de números y devuelva la suma de los positivos
+7. Crea una función que reciba un arreglo y devuelva un nuevo arreglo con el menor y el mayor
+número, en ese orden
+8. Crea una función que devuelva un nuevo arreglo con los elementos en orden inverso
+9. Crea una función que reciba un arreglo y un número, y devuelva cuántos elementos son
+múltiplos de ese número
+10. Dado un arreglo de números, crea una función que devuelva un nuevo arreglo con los
+números pares elevados al cuadrado
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+11. Crea una función que reciba un array y devuelva cuántos valores únicos contiene
+12. Crea una función que reciba dos arreglos heterogéneos y que devuelva un arreglo con la
+unión, intersección y diferencia
+13. Crea una función soloUnaVez(arr) que reciba un arreglo de números y retorne un nuevo
+arreglo con los elementos que aparecen exactamente una vez en el original
+14. Crea una función diferenciaSimetrica(a, b) que devuelva un arreglo con los elementos
+que están en uno solo de los arreglos (no en ambos)
+15. Crea una función booleana esSubconjunto(a, b) que determine si todos los elementos de
+a están contenidos en b (detector de subconjunto)
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+

@@ -1,0 +1,826 @@
+Introducción al
+Desarrollo Web
+Ing. Marco Aedo López
+EPIS UNSA – 2025
+Ing. Marco Aedo López
+
+maedol@unsa.edu.pe
+EPIS – UNSA
+
+marcoaedo@hotmail.com
+2025
+
+Fundamentos del desarrollo Frontend
+
+JavaScript
+Tema 6
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Objetivos
+●
+
+●
+
+●
+
+Comprender los fundamentos del lenguaje JavaScript: variables,
+tipos de datos, operadores, estructuras de control, funciones y
+manejo del DOM
+Aplicar JavaScript para crear interactividad en páginas web,
+incluyendo validación de formularios, manipulación dinámica de
+elementos HTML y respuesta a eventos del usuario
+Desarrollar proyectos prácticos utilizando buenas prácticas de
+programación, integrando JavaScript con HTML y CSS para
+construir aplicaciones web funcionales y escalables
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+1. ¿Qué es JavaScript?
+• Lenguaje de programación interpretado, no compilado y basado en
+prototipos
+• Usado principalmente para dar interactividad a páginas web
+• Compatible con todos los navegadores modernos
+• No requiere compilación, se ejecuta en el navegador
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+1. ¿Qué es JavaScript?
+•
+•
+•
+•
+
+Tipado dinámico
+Débilmente tipado
+Multiparadigma
+Gran ecosistema
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+2. ¿Por qué aprender JavaScript?
+1. Lenguaje universal del desarrollo web
+• Es el único lenguaje que funciona de forma nativa en todos los
+navegadores
+• Es indispensable para crear interfaces interactivas y mejorar la
+experiencia del usuario
+• Se creó para que la web deje de ser estática y limitada
+• Permite desarrollo frontend, backend, aplicaciones móviles y
+escritorio
+• Alta demanda laboral
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+2. ¿Por qué aprender JavaScript?
+2. Ecosistema enorme y en constante evolución
+• Gran cantidad de librerías y frameworks (React, Angular, Vue,
+Svelte, etc.)
+• Con Node.js, puedes usar JavaScript en el servidor
+• Amplio soporte de la comunidad, tutoriales y documentación
+accesible
+• Innovación continua gracias a actualizaciones de ECMAScript
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+2. ¿Por qué aprender JavaScript?
+3. Independencia tecnológica
+• Permite crear proyectos propios sin depender de herramientas o
+plataformas externas
+• Control total sobre el comportamiento del navegador y las
+interacciones del usuario
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+3. Sintaxis básica
+• JavaScript es sensible a mayúsculas y minúsculas
+(case-sensitive)
+• Se recomienda usar punto y coma (;) al final de cada
+sentencia
+• Es zero-based
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+4. Variables y Constantes
+• No es obligatorio declarar variables pero es altamente
+recomendable
+• var: declaración antigua, ámbito global o de función
+• let: declaración moderna, ámbito de bloque
+• const: declaración para valores constantes, no se puede reasignar.
+Ámbito de bloque
+• Buenas prácticas: usar let y const en lugar de var
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+4. Variables y Constantes
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+5. Reglas para nombres de
+identificadores
+• Se aplican a variables, constantes, funciones, clases, parámetros,
+etc.
+• Pueden contener letras, números, guion bajo (_) o signo de dólar ($)
+• No pueden comenzar con un número
+• No se permiten espacios ni caracteres especiales (excepto _ y $)
+• Usar camelCase para nombres compuestos: miVariableEjemplo
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+6. Convenciones para nombres de
+identificadores
+• Variables y funciones:
+camelCase → nombreUsuario
+• Constantes:
+MAYUS_CON_GUIONES_BAJOS → PI_VALOR
+• Clases:
+PascalCase → MiClase
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+7. Tipos de Datos
+• Primitivos: string, number, boolean, null, undefined, symbol, bigint
+• Objetos: arrays, funciones, objetos literales, clases
+• JavaScript es dinámicamente tipado: el tipo puede cambiar en
+tiempo de ejecución
+• Conversión implícita y explícita de tipos
+• typeof permite saber el tipo de dato
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+7. Tipos de datos primitivos
+Tipo
+
+Descripción
+
+Ejemplo
+
+string
+
+Representa texto. Se define entre comillas simples ' ',
+dobles " " o backticks ` ` (template literals)
+
+"Hola", 'JavaScript’
+`Hola ${nombre}`
+
+number
+
+Números enteros o decimales. JavaScript no diferencia
+entre int y float
+
+42, 3.14, -10
+
+bigint
+
+Enteros de tamaño arbitrario, para números más grandes
+9007199254740991n
+que Number.MAX_SAFE_INTEGER. Se define con n al final 123456789012345678901n
+
+boolean
+
+Valores lógicos: verdadero o falso
+
+true, false
+
+undefined
+
+Variable declarada pero sin valor asignado
+
+let x; // undefined
+
+null
+
+Ausencia intencional de valor (lo pone el programador)
+
+let persona = null;
+
+symbol
+
+Valores únicos e inmutables, usados como identificadores
+de propiedades de objetos
+
+Symbol("id")
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+8. Principales Operadores
+Tipo de operador
+
+Aritmético
+
+Asignación
+Incremento /
+Decremento
+
+Igualdad
+
+Operador
+Descripción
++
+Suma
+Resta
+*
+Multiplicación
+/
+División
+%
+Módulo (resto)
+**
+Exponente
+=
++= -= *= /= Asignación
+%= **=
+
+Ejemplo
+
+Resultado
+
+5+3
+5-3
+4*2
+10 / 2
+10 % 3
+2 ** 3
+
+8
+2
+8
+5
+1
+8
+
+let a = 5
+
+5
+
+++
+
+Incrementa en 1
+
+a++
+
+a+1
+
+-==
+===
+!=
+!==
+
+Decrementa en 1
+Igualdad (solo valor)
+Igualdad estricta (valor y tipo)
+Diferente (solo valor)
+Diferente estricta (valor y tipo)
+
+a-5 == '5'
+5 === '5'
+5 != '6'
+5 !== '5'
+
+a-1
+true
+false
+true
+true
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+8. Principales Operadores
+Tipo de operador
+Comparación
+
+Lógicos
+Cadena
+Tipo
+
+Operador
+Descripción
+>
+Mayor que
+<
+Menor que
+>=
+Mayor o igual que
+<=
+Menor o igual que
+&&
+AND (y)
+||
+OR (o)
+!
+NOT (negación)
++
+Concatenación
+typeof
+Devuelve tipo de dato
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+Ejemplo
+
+Resultado
+7>3
+true
+3<7
+true
+7 >= 7
+true
+3 <= 5
+true
+true && false
+false
+true || false
+true
+!true
+false
+"Hola " + "Mundo" "Hola Mundo"
+typeof 5
+"number"
+
+2025
+
+9. Expresiones
+• Cualquier fragmento de código que genera un valor
+• Ese valor puede ser un número, un string, un booleano,
+un objeto, una función, etc.
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+9. Expresiones
+• Simples: un literal tal como: 42
+"Juancito"
+• Complejas: involucran operadores, llamadas a
+funciones u otras expresiones anidadas
+• Pueden formar parte de sentencias
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+true
+
+2025
+
+10. Tipos de Expresiones
+Tipo de expresión
+
+Descripción
+
+Ejemplo
+
+Literal
+
+Valor escrito directamente
+
+42, "Hola", true
+
+Aritmética
+
+Operaciones matemáticas
+
+5+3
+(a * b) / 2
+
+De asignación
+
+Asigna un valor
+
+x = 10
+y += 5
+
+Lógica
+
+Devuelven un valor booleano
+
+x > 10
+a && b
+
+De cadena
+
+Concatenación o manipulación de
+textos
+
+"Hola " + " Mundo"
+
+De llamada a función
+
+Invocan funciones y producen un valor
+
+Condicional (ternaria) Evalúa condición y devuelve un valor
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+Math.max(5, 10)
+edad >= 18 ? "Sí" : "No"
+2025
+
+11. Estructura de una Sentencia
+• Se compone de palabras clave, identificadores, operadores y
+valores
+• Ejemplo:
+let suma = a + b + 5;
+• Los espacios en blanco no afectan la ejecución, pero mejoran la
+legibilidad
+• Las sentencias pueden estar en una sola línea o en varias
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+12. Bloques de Código
+• Un bloque se define con llaves { ... }
+
+• Sirven para agrupar varias instrucciones
+• Ejemplo en un if:
+if (condición) { ... }
+• El bloque define el alcance (scope) de las variables let y const
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+13. Comentarios en JavaScript
+• Una línea:
+
+// Esto es un comentario
+
+• Varias líneas:
+/* Esto es un comentario de
+varias líneas */
+• Sirven para documentar y aclarar el código
+• No afectan la ejecución del programa
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Estructura de Programa
+Comentarios
+
+Comentarios
+
+Declaración de variables
+globales
+
+Funciones
+
+Bloque global
+(main implícito)
+
+Bloque global
+(main implícito)
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+14. Tipo de dato string
+• Es un tipo de dato primitivo que representa una secuencia de
+caracteres (letras, números, símbolos o espacios)
+• Se utiliza para manejar texto en los programas
+• Formas de definir un string
+– Comillas simples ' '
+– Comillas dobles " "
+– Template literals (backticks) ` `
+• Interpolar variables
+• Escribir texto en varias líneas
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+14. Tipo de dato string
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+14. Tipo de dato string
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+14. Tipos de dato string
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+15. Salida de datos
+• alert()
+– Muestra un cuadro emergente en el navegador
+– Es la forma más directa de salida de datos
+
+• console.log()
+– Envía datos a la consola del navegador. Herramientas de desarrollador (F12 o
+Inspeccionar) → pestaña Console
+– Ideal para depuración y para uso de la consola
+
+• document.write()
+– Inserta texto directamente en el html
+– Ya no se usa profesionalmente
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+15. Salida de datos
+• Dentro del <script> en el archivo html
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+15. Salida de datos
+• Dentro de un archivo .js y enlazado con el <script> en el archivo .html
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+16. Entrada de datos
+• Prompt (método clásico y sencillo)
+– Muestra un cuadro de diálogo en el navegador para que el
+usuario escriba algo
+– Ideal para aprendizaje básico, no recomendado en producción
+
+• Formularios HTML
+• Eventos y elementos interactivos
+• Otros
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+16. Entrada de datos
+• Dentro de un archivo .js y enlazado con el <script> en el archivo .html
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+17. Estructuras de Control
+• Condicionales: if, else if, else, switch
+• Bucles: for, while, do...while, for...of, for...in
+• break y continue para controlar el flujo
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+18. Estructuras de Control Condicionales
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+19. Estructuras de Control Repetitivas
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+19. Estructuras de Control Repetitivas
+• En desarrollo web se usan mucho:
+• Para recorrer arreglos de datos (por ejemplo, productos en
+un carrito de compras)
+• Para generar dinámicamente HTML
+• Para iterar resultados de una API y mostrarlos en pantalla
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ejercicios
+1. Crea un programa que lea tres notas y sus respectivos pesos (porcentaje de
+evaluación), y calcule el promedio ponderado final del estudiante.
+Muestra el resultado con dos decimales. Sugerencia: num.toFixed(2)
+2. Escribe un programa que lea una temperatura en grados Celsius y muestre su
+equivalente en Fahrenheit y Kelvin.
+Considerar:
+F = C * 9/5 + 32
+K = C + 273.15
+3. Crea un programa que lea las coordenadas de dos puntos (x1, y1) y (x2, y2), y calcule
+la distancia entre ellos. Usa Math.sqrt() como si fuera Java
+4. Escribe un programa que calcule el monto final de una inversión usando interés
+compuesto. El usuario ingresa el capital, la tasa de interés anual (%) y el número de
+años. Mostrar el monto final y el interés ganado.
+Considerar:
+Monto = Capital * (1 + tasa/100) ^ tiempo
+5. Crea un programa que lea una velocidad en kilómetros por hora (km/h) y la convierta a:
+metros por segundo (m/s) y millas por hora (mph)
+Considerar:
+1 milla = 1.60934 kilómetros
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+6.
+7.
+
+8.
+
+Crea un programa que lea tres números y muestre el número mayor
+Crea un programa que lea por separado dos números y un operador (+, -, *, /, %, **).
+Realizar la operación correcta según el operador.
+Si el operador no es válido, muestra un mensaje de error.
+Crea un programa que lea peso y estatura, calcule el IMC y lo clasifique:
+IMC < 18.5 → Bajo peso
+18.5 ≤ IMC < 25 → Normal
+25 ≤ IMC < 30 → Sobrepeso
+IMC ≥ 30 → Obesidad
+Muestra un mensaje indicando la categoría correspondiente.
+
+9.
+
+Crea un programa que lea una nota numérica (0–100) y la convierta a una calificación con letra:
+90–100 → A
+80–89 → B
+70–79 → C
+60–69 → D
+0–59 → F
+Valida que la nota ingresada esté entre 0 y 100.
+
+10. Crea un programa que lea las tres longitudes de un triángulo y determine su tipo:
+Equilátero → los tres lados iguales
+Isósceles → dos lados iguales
+Escaleno → todos los lados diferentes
+También valida si los lados forman un triángulo válido (suma de dos lados > tercer lado).
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+11. Programa que pida al usuario que ingrese N números.
+Calcula y muestra la suma total y su promedio redondeado a 2 decimales.
+12. Programa que lea un número entero positivo n y muestre los primeros n términos de la
+serie de Fibonacci
+0, 1, 1, 2, 3, 5, 8, …
+13. Programa que pida al usuario que ingrese la edad de personas (no se sabe la
+cantidad).
+Calcula y muestra: Promedio de edades y cantidad de personas mayores de edad
+14. Programa que pida un número n y que muestre todos los números primos desde 2
+hasta n, y la cantidad de números primos que encontró
+15. Genera un número aleatorio entre 1 y 100. El usuario tiene 6 intentos para adivinarlo.
+Cada vez que ingresa un número, el programa indica si es mayor o menor que el
+número secreto.
+Termina cuando adivina o se acaban los intentos. Deberá mostrar si ganó o perdió, si
+ganó mostrar en cuántos intentos lo hizo
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+

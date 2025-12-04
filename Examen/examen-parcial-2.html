@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Parcial 2 - JavaScript</title>
+    
+    <!-- Sidebar Styles -->
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: #333;
+            padding: 20px;
+            padding-left: 320px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .container header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #f1c40f;
+        }
+
+        .container h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .exam-info {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 5px solid #3498db;
+        }
+
+        .exam-info h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .exam-info ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .exam-info li {
+            padding: 5px 0;
+            color: #34495e;
+        }
+
+        .exam-info li::before {
+            content: "✓ ";
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+
+        .warning strong {
+            color: #856404;
+        }
+
+        .container .section {
+            margin-bottom: 40px;
+        }
+
+        .container .section-title {
+            background: #34495e;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .container .question {
+            background: #f8f9fa;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            border-left: 5px solid #f1c40f;
+        }
+
+        .question-number {
+            color: #e67e22;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .requirements {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            border: 2px solid #3498db;
+        }
+
+        .requirements h4 {
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+
+        .requirements ul {
+            padding-left: 20px;
+            color: #555;
+        }
+
+        .requirements li {
+            margin: 5px 0;
+        }
+
+        .hint {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .hint strong {
+            color: #155724;
+        }
+
+        .answer-area {
+            background: white;
+            border: 2px dashed #bdc3c7;
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 5px;
+            min-height: 200px;
+        }
+
+        .answer-area p {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            color: #e74c3c;
+        }
+
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+
+        pre code {
+            background: transparent;
+            color: #ecf0f1;
+            padding: 20px;
+        }
+
+        .toggle-answers {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            transition: background 0.3s;
+        }
+
+        .toggle-answers:hover {
+            background: #229954;
+        }
+
+        .model-answer {
+            display: none;
+            background: #e8f5e9;
+            border: 2px solid #4caf50;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        .model-answer.show {
+            display: block;
+        }
+
+        .model-answer h4 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .points {
+            background: #e74c3c;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .container footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            color: #7f8c8d;
+        }
+        
+            margin-left: 0;
+            margin-right: auto;
+        }
+            margin-left: 0;
+            margin-right: auto;
+        }
+            margin-left: 0;
+            margin-right: auto;
+        }
+            margin-left: 0;
+            margin-right: auto;
+        }
+            margin-left: 0;
+            margin-right: auto;
+        }
+            margin-left: 0;
+            margin-right: auto;
+        }
+            margin-left: 0;
+            margin-right: auto;
+        }
+            margin-left: 0;
+            margin-right: auto;
+        }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Examen Parcial 2</h1>
+            <p style="color: #7f8c8d; font-size: 1.2em; margin-top: 10px;">Segunda Unidad - JavaScript</p>
+        </header>
+
+        <div class="exam-info">
+            <h3>📋 Información del Examen</h3>
+            <ul>
+                <li><strong>Materia:</strong> IDWeb - Desarrollo Web</li>
+                <li><strong>Contenido:</strong> JavaScript (Segunda Unidad)</li>
+                <li><strong>Duración:</strong> 2 horas</li>
+                <li><strong>Total de Puntos:</strong> 20 puntos</li>
+                <li><strong>Tipo:</strong> 3 Preguntas Prácticas</li>
+                <li><strong>Material Permitido:</strong> ✅ APUNTES PERMITIDOS</li>
+            </ul>
+        </div>
+
+        <div class="warning">
+            <strong>⚠️ IMPORTANTE:</strong> Este examen consta de 3 preguntas prácticas que requieren escribir código JavaScript funcional.
+            Lee cuidadosamente los requisitos de cada pregunta. Puedes usar tus apuntes.
+        </div>
+
+        <!-- PREGUNTA 1 -->
+        <div class="section">
+            <div class="section-title">💻 Parte Práctica - Programación JavaScript</div>
+
+            <div class="question">
+                <div class="question-number">Pregunta 1</div>
+                <span class="points">7 puntos</span>
+
+                <div class="question-text">
+                    <strong>Sistema de Lista de Tareas Interactivo</strong><br><br>
+                    Crea una aplicación web de lista de tareas (To-Do List) con las siguientes características:
+                </div>
+
+                <div class="requirements">
+                    <h4>Requisitos Técnicos:</h4>
+                    <ul>
+                        <li><strong>HTML:</strong> Un input para ingresar tareas, botón "Agregar", y un contenedor <code>&lt;ul&gt;</code> para mostrar las tareas</li>
+                        <li><strong>JavaScript - Funcionalidad:</strong>
+                            <ul>
+                                <li>Agregar tarea al hacer clic en el botón o presionar Enter</li>
+                                <li>Validar que el input no esté vacío antes de agregar</li>
+                                <li>Cada tarea debe tener un botón "Eliminar" que la quite de la lista</li>
+                                <li>Al hacer clic en una tarea, debe marcarse como completada (agregar/quitar clase CSS)</li>
+                                <li>Limpiar el input después de agregar una tarea</li>
+                            </ul>
+                        </li>
+                        <li><strong>CSS:</strong> Las tareas completadas deben verse con texto tachado y color gris</li>
+                        <li><strong>Estructura del código:</strong> Usar event listeners, funciones, manipulación del DOM</li>
+                    </ul>
+                </div>
+
+                <div class="hint">
+                    <strong>💡 Pista:</strong> Usa <code>addEventListener</code> para eventos de clic y teclado,
+                    <code>createElement</code> para crear elementos dinámicamente, y <code>classList</code> para manejar clases CSS.
+                </div>
+
+                <div class="answer-area">
+                    <p>Espacio para tu respuesta (escribe el código HTML, CSS y JavaScript)...</p>
+                </div>
+
+                <div class="model-answer">
+                    <h4>✅ Respuesta Modelo</h4>
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;To-Do List&lt;/title&gt;
+    &lt;style&gt;
+        .completed {
+            text-decoration: line-through;
+            color: #999;
+        }
+        .task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin: 5px 0;
+            background: #f4f4f4;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .delete-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Mi Lista de Tareas&lt;/h1&gt;
+    &lt;div&gt;
+        &lt;input type="text" id="taskInput" placeholder="Escribe una tarea..."&gt;
+        &lt;button id="addBtn"&gt;Agregar&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;ul id="taskList"&gt;&lt;/ul&gt;
+
+    &lt;script&gt;
+        const taskInput = document.getElementById('taskInput');
+        const addBtn = document.getElementById('addBtn');
+        const taskList = document.getElementById('taskList');
+
+        function addTask() {
+            const taskText = taskInput.value.trim();
+
+            // Validar que no esté vacío
+            if (taskText === '') {
+                alert('Por favor ingresa una tarea');
+                return;
+            }
+
+            // Crear elemento li
+            const li = document.createElement('li');
+            li.className = 'task-item';
+
+            // Crear span para el texto
+            const span = document.createElement('span');
+            span.textContent = taskText;
+
+            // Evento para marcar como completada
+            span.addEventListener('click', function() {
+                span.classList.toggle('completed');
+            });
+
+            // Crear botón eliminar
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = 'Eliminar';
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.addEventListener('click', function() {
+                li.remove();
+            });
+
+            // Agregar elementos al li
+            li.appendChild(span);
+            li.appendChild(deleteBtn);
+
+            // Agregar li a la lista
+            taskList.appendChild(li);
+
+            // Limpiar input
+            taskInput.value = '';
+            taskInput.focus();
+        }
+
+        // Evento al hacer clic en el botón
+        addBtn.addEventListener('click', addTask);
+
+        // Evento al presionar Enter
+        taskInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                addTask();
+            }
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    <p style="margin-top: 15px; color: #2e7d32;"><strong>Puntos clave:</strong></p>
+                    <ul style="color: #555;">
+                        <li>✅ Validación de input vacío</li>
+                        <li>✅ Event listeners para clic y tecla Enter</li>
+                        <li>✅ Creación dinámica de elementos con createElement</li>
+                        <li>✅ Toggle de clase CSS para completado</li>
+                        <li>✅ Eliminación de elementos con remove()</li>
+                        <li>✅ Limpieza del input después de agregar</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PREGUNTA 2 -->
+            <div class="question">
+                <div class="question-number">Pregunta 2</div>
+                <span class="points">6 puntos</span>
+
+                <div class="question-text">
+                    <strong>Procesamiento y Transformación de Datos</strong><br><br>
+                    Dado el siguiente array de objetos que representa estudiantes:
+                </div>
+
+                <pre><code>const estudiantes = [
+    { nombre: "Ana", edad: 20, notas: [15, 18, 16, 17] },
+    { nombre: "Luis", edad: 22, notas: [12, 14, 13, 15] },
+    { nombre: "María", edad: 19, notas: [18, 19, 20, 17] },
+    { nombre: "Carlos", edad: 21, notas: [10, 11, 12, 14] },
+    { nombre: "Elena", edad: 20, notas: [16, 17, 18, 19] }
+];</code></pre>
+
+                <div class="requirements">
+                    <h4>Crea las siguientes funciones:</h4>
+                    <ul>
+                        <li><strong>calcularPromedio(estudiante):</strong> Recibe un objeto estudiante y retorna el promedio de sus notas</li>
+                        <li><strong>estudiantesAprobados():</strong> Retorna un array con los nombres de estudiantes cuyo promedio sea >= 14</li>
+                        <li><strong>mejorEstudiante():</strong> Retorna el objeto del estudiante con el promedio más alto</li>
+                        <li><strong>promedioGeneral():</strong> Retorna el promedio general de todos los estudiantes</li>
+                        <li><strong>Mostrar en consola:</strong> Los resultados de cada función de manera legible</li>
+                    </ul>
+                </div>
+
+                <div class="hint">
+                    <strong>💡 Pista:</strong> Usa métodos de array como <code>map()</code>, <code>filter()</code>, <code>reduce()</code>,
+                    y funciones de flecha. Para calcular promedio: suma de elementos / cantidad de elementos.
+                </div>
+
+                <div class="answer-area">
+                    <p>Espacio para tu respuesta (escribe el código JavaScript)...</p>
+                </div>
+
+                <div class="model-answer">
+                    <h4>✅ Respuesta Modelo</h4>
+                    <pre><code>const estudiantes = [
+    { nombre: "Ana", edad: 20, notas: [15, 18, 16, 17] },
+    { nombre: "Luis", edad: 22, notas: [12, 14, 13, 15] },
+    { nombre: "María", edad: 19, notas: [18, 19, 20, 17] },
+    { nombre: "Carlos", edad: 21, notas: [10, 11, 12, 14] },
+    { nombre: "Elena", edad: 20, notas: [16, 17, 18, 19] }
+];
+
+// 1. Calcular promedio de un estudiante
+function calcularPromedio(estudiante) {
+    const suma = estudiante.notas.reduce((acc, nota) => acc + nota, 0);
+    return suma / estudiante.notas.length;
+}
+
+// 2. Obtener estudiantes aprobados (promedio >= 14)
+function estudiantesAprobados() {
+    return estudiantes
+        .filter(est => calcularPromedio(est) >= 14)
+        .map(est => est.nombre);
+}
+
+// 3. Encontrar el mejor estudiante
+function mejorEstudiante() {
+    return estudiantes.reduce((mejor, actual) => {
+        return calcularPromedio(actual) > calcularPromedio(mejor) ? actual : mejor;
+    });
+}
+
+// 4. Calcular promedio general
+function promedioGeneral() {
+    const sumaPromedios = estudiantes
+        .map(est => calcularPromedio(est))
+        .reduce((acc, prom) => acc + prom, 0);
+    return sumaPromedios / estudiantes.length;
+}
+
+// Mostrar resultados
+console.log("=== REPORTE DE ESTUDIANTES ===\n");
+
+estudiantes.forEach(est => {
+    console.log(`${est.nombre}: Promedio = ${calcularPromedio(est).toFixed(2)}`);
+});
+
+console.log("\n--- Estudiantes Aprobados ---");
+console.log(estudiantesAprobados().join(", "));
+
+console.log("\n--- Mejor Estudiante ---");
+const mejor = mejorEstudiante();
+console.log(`${mejor.nombre} con promedio de ${calcularPromedio(mejor).toFixed(2)}`);
+
+console.log("\n--- Promedio General del Curso ---");
+console.log(promedioGeneral().toFixed(2));</code></pre>
+                    <p style="margin-top: 15px; color: #2e7d32;"><strong>Salida esperada:</strong></p>
+                    <pre style="background: #f4f4f4; color: #333; border-left: 4px solid #4caf50;"><code>=== REPORTE DE ESTUDIANTES ===
+
+Ana: Promedio = 16.50
+Luis: Promedio = 13.50
+María: Promedio = 18.50
+Carlos: Promedio = 11.75
+Elena: Promedio = 17.50
+
+--- Estudiantes Aprobados ---
+Ana, María, Elena
+
+--- Mejor Estudiante ---
+María con promedio de 18.50
+
+--- Promedio General del Curso ---
+15.55</code></pre>
+                    <p style="margin-top: 15px; color: #2e7d32;"><strong>Conceptos evaluados:</strong></p>
+                    <ul style="color: #555;">
+                        <li>✅ Uso de reduce() para sumar elementos</li>
+                        <li>✅ filter() para filtrar por condición</li>
+                        <li>✅ map() para transformar datos</li>
+                        <li>✅ Funciones de flecha</li>
+                        <li>✅ Composición de funciones</li>
+                        <li>✅ Formateo de números con toFixed()</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PREGUNTA 3 -->
+            <div class="question">
+                <div class="question-number">Pregunta 3</div>
+                <span class="points">7 puntos</span>
+
+                <div class="question-text">
+                    <strong>Validador de Formulario Avanzado</strong><br><br>
+                    Crea un formulario de registro con validación en tiempo real que incluya:
+                </div>
+
+                <div class="requirements">
+                    <h4>Campos del Formulario:</h4>
+                    <ul>
+                        <li><strong>Nombre completo:</strong> Mínimo 3 caracteres, solo letras y espacios</li>
+                        <li><strong>Email:</strong> Formato válido (debe contener @ y dominio)</li>
+                        <li><strong>Contraseña:</strong> Mínimo 8 caracteres, al menos 1 mayúscula, 1 número</li>
+                        <li><strong>Confirmar contraseña:</strong> Debe coincidir con la contraseña</li>
+                        <li><strong>Edad:</strong> Debe ser número entre 18 y 100</li>
+                    </ul>
+
+                    <h4 style="margin-top: 15px;">Funcionalidad Requerida:</h4>
+                    <ul>
+                        <li>Validación en tiempo real (mientras el usuario escribe)</li>
+                        <li>Mensajes de error específicos debajo de cada campo</li>
+                        <li>Cambiar el borde del input a rojo si hay error, verde si es válido</li>
+                        <li>Deshabilitar el botón "Enviar" si hay algún campo inválido</li>
+                        <li>Al enviar el formulario correctamente, mostrar alert con los datos</li>
+                        <li>Usar funciones separadas para cada validación</li>
+                    </ul>
+                </div>
+
+                <div class="hint">
+                    <strong>💡 Pista:</strong> Usa <code>input</code> event para validación en tiempo real,
+                    expresiones regulares para validar formatos, y <code>disabled</code> para controlar el botón.
+                </div>
+
+                <div class="answer-area">
+                    <p>Espacio para tu respuesta (escribe el código HTML, CSS y JavaScript completo)...</p>
+                </div>
+
+                <div class="model-answer">
+                    <h4>✅ Respuesta Modelo</h4>
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Formulario de Registro&lt;/title&gt;
+    &lt;style&gt;
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        input.valid {
+            border-color: #28a745;
+        }
+        input.invalid {
+            border-color: #dc3545;
+        }
+        .error-message {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        .error-message.show {
+            display: block;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Formulario de Registro&lt;/h1&gt;
+    &lt;form id="registroForm"&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label for="nombre"&gt;Nombre Completo:&lt;/label&gt;
+            &lt;input type="text" id="nombre" name="nombre"&gt;
+            &lt;div class="error-message" id="errorNombre"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="form-group"&gt;
+            &lt;label for="email"&gt;Email:&lt;/label&gt;
+            &lt;input type="email" id="email" name="email"&gt;
+            &lt;div class="error-message" id="errorEmail"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="form-group"&gt;
+            &lt;label for="password"&gt;Contraseña:&lt;/label&gt;
+            &lt;input type="password" id="password" name="password"&gt;
+            &lt;div class="error-message" id="errorPassword"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="form-group"&gt;
+            &lt;label for="confirmPassword"&gt;Confirmar Contraseña:&lt;/label&gt;
+            &lt;input type="password" id="confirmPassword" name="confirmPassword"&gt;
+            &lt;div class="error-message" id="errorConfirmPassword"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class="form-group"&gt;
+            &lt;label for="edad"&gt;Edad:&lt;/label&gt;
+            &lt;input type="number" id="edad" name="edad"&gt;
+            &lt;div class="error-message" id="errorEdad"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;button type="submit" id="submitBtn" disabled&gt;Enviar&lt;/button&gt;
+    &lt;/form&gt;
+
+    &lt;script&gt;
+        // Obtener elementos
+        const form = document.getElementById('registroForm');
+        const nombre = document.getElementById('nombre');
+        const email = document.getElementById('email');
+        const password = document.getElementById('password');
+        const confirmPassword = document.getElementById('confirmPassword');
+        const edad = document.getElementById('edad');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Estado de validación
+        const validaciones = {
+            nombre: false,
+            email: false,
+            password: false,
+            confirmPassword: false,
+            edad: false
+        };
+
+        // Funciones de validación
+        function validarNombre(valor) {
+            const regex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]{3,}$/;
+            return regex.test(valor);
+        }
+
+        function validarEmail(valor) {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return regex.test(valor);
+        }
+
+        function validarPassword(valor) {
+            // Mínimo 8 caracteres, 1 mayúscula, 1 número
+            const regex = /^(?=.*[A-Z])(?=.*\d).{8,}$/;
+            return regex.test(valor);
+        }
+
+        function validarConfirmPassword(valor) {
+            return valor === password.value && valor !== '';
+        }
+
+        function validarEdad(valor) {
+            const num = parseInt(valor);
+            return num >= 18 && num <= 100;
+        }
+
+        // Función para mostrar error
+        function mostrarError(campo, mensaje, esValido) {
+            const errorDiv = document.getElementById(`error${campo.charAt(0).toUpperCase() + campo.slice(1)}`);
+            const input = document.getElementById(campo);
+
+            if (!esValido) {
+                errorDiv.textContent = mensaje;
+                errorDiv.classList.add('show');
+                input.classList.remove('valid');
+                input.classList.add('invalid');
+            } else {
+                errorDiv.classList.remove('show');
+                input.classList.remove('invalid');
+                input.classList.add('valid');
+            }
+        }
+
+        // Función para verificar si el formulario es válido
+        function verificarFormulario() {
+            const todosValidos = Object.values(validaciones).every(val => val === true);
+            submitBtn.disabled = !todosValidos;
+        }
+
+        // Event listeners para validación en tiempo real
+        nombre.addEventListener('input', function() {
+            validaciones.nombre = validarNombre(this.value);
+            mostrarError('nombre', 'Mínimo 3 caracteres, solo letras y espacios', validaciones.nombre);
+            verificarFormulario();
+        });
+
+        email.addEventListener('input', function() {
+            validaciones.email = validarEmail(this.value);
+            mostrarError('email', 'Formato de email inválido', validaciones.email);
+            verificarFormulario();
+        });
+
+        password.addEventListener('input', function() {
+            validaciones.password = validarPassword(this.value);
+            mostrarError('password', 'Mínimo 8 caracteres, 1 mayúscula, 1 número', validaciones.password);
+
+            // Re-validar confirmación si ya se escribió algo
+            if (confirmPassword.value) {
+                validaciones.confirmPassword = validarConfirmPassword(confirmPassword.value);
+                mostrarError('confirmPassword', 'Las contraseñas no coinciden', validaciones.confirmPassword);
+            }
+            verificarFormulario();
+        });
+
+        confirmPassword.addEventListener('input', function() {
+            validaciones.confirmPassword = validarConfirmPassword(this.value);
+            mostrarError('confirmPassword', 'Las contraseñas no coinciden', validaciones.confirmPassword);
+            verificarFormulario();
+        });
+
+        edad.addEventListener('input', function() {
+            validaciones.edad = validarEdad(this.value);
+            mostrarError('edad', 'Edad debe estar entre 18 y 100', validaciones.edad);
+            verificarFormulario();
+        });
+
+        // Envío del formulario
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const datos = {
+                nombre: nombre.value,
+                email: email.value,
+                edad: edad.value
+            };
+
+            alert(`¡Registro exitoso!\n\nNombre: ${datos.nombre}\nEmail: ${datos.email}\nEdad: ${datos.edad}`);
+            form.reset();
+
+            // Resetear validaciones
+            Object.keys(validaciones).forEach(key => validaciones[key] = false);
+            verificarFormulario();
+
+            // Limpiar estilos
+            document.querySelectorAll('input').forEach(input => {
+                input.classList.remove('valid', 'invalid');
+            });
+        });
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    <p style="margin-top: 15px; color: #2e7d32;"><strong>Conceptos evaluados:</strong></p>
+                    <ul style="color: #555;">
+                        <li>✅ Validación en tiempo real con evento <code>input</code></li>
+                        <li>✅ Expresiones regulares para validar formatos</li>
+                        <li>✅ Manipulación de clases CSS dinámicamente</li>
+                        <li>✅ Control del estado de habilitación del botón</li>
+                        <li>✅ Prevención del envío por defecto con preventDefault()</li>
+                        <li>✅ Estructura modular con funciones separadas</li>
+                        <li>✅ Objeto para mantener estado de validaciones</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <button class="toggle-answers" onclick="toggleAnswers()">👁️ Mostrar/Ocultar Respuestas Modelo</button>
+
+        <footer>
+            <p><strong>Recuerda:</strong> La práctica constante es la clave para dominar JavaScript</p>
+            <p style="margin-top: 10px;">Buena suerte en tu examen 🚀</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleAnswers() {
+            const answers = document.querySelectorAll('.model-answer');
+            answers.forEach(answer => {
+                answer.classList.toggle('show');
+            });
+        }
+    </script>
+
+    <!-- Sidebar Component -->
+    <script src="/assets/js/sidebar-component.js"></script>
+</body>
+</html>

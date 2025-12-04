@@ -32,6 +32,7 @@
                         <li style="color: #b0b0b0;">✓ Elemento form y sus atributos (action, method)</li>
                         <li style="color: #b0b0b0;">✓ Tipos de input (text, email, password, number, checkbox, radio)</li>
                         <li style="color: #b0b0b0;">✓ Elementos textarea, select y button</li>
+                        <li style="color: #b0b0b0;">✓ <strong>Métodos GET vs POST (CRÍTICO)</strong></li>
                         <li style="color: #b0b0b0;">✓ Validación HTML5 nativa</li>
                         <li style="color: #b0b0b0;">✓ Agrupación con fieldset y legend</li>
                         <li style="color: #b0b0b0;">✓ Buenas prácticas de accesibilidad y usabilidad</li>
@@ -168,6 +169,229 @@
                         <div class="ejemplo">&lt;fieldset&gt;<br>&nbsp;&nbsp;&lt;legend&gt;Información Personal&lt;/legend&gt;<br>&nbsp;&nbsp;&lt;label for="nombre"&gt;Nombre:&lt;/label&gt;<br>&nbsp;&nbsp;&lt;input type="text" id="nombre"&gt;<br>&nbsp;&nbsp;&lt;label for="email"&gt;Email:&lt;/label&gt;<br>&nbsp;&nbsp;&lt;input type="email" id="email"&gt;<br>&lt;/fieldset&gt;</div>
                     </div>
                 </div>
+            </section>
+
+            <section id="get-post" class="topic-section">
+                <h2>🔄 Métodos GET y POST</h2>
+                <p>Los dos métodos HTTP más importantes para el envío de formularios:</p>
+
+                <div id="getpostContainer">
+                    <div class="termino" style="background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(52, 152, 219, 0.05)); border-left: 4px solid #3498db;" data-tags="get metodo http url query">
+                        <span class="tag" style="background: #3498db;">GET</span>
+                        <p class="significado">Método: GET (Obtener)</p>
+                        <p class="descripcion">
+                            GET envía los datos del formulario como parámetros en la URL (query string).
+                            Los datos son visibles en la barra de direcciones del navegador. Se usa para obtener información del servidor.
+                        </p>
+                        <div class="ejemplo">
+                            &lt;form action="/buscar" method="get"&gt;<br>
+                            &nbsp;&nbsp;&lt;input type="text" name="q" placeholder="Buscar..."&gt;<br>
+                            &nbsp;&nbsp;&lt;button type="submit"&gt;Buscar&lt;/button&gt;<br>
+                            &lt;/form&gt;<br><br>
+                            &lt;!-- URL resultante: --&gt;<br>
+                            https://ejemplo.com/buscar?q=html+css
+                        </div>
+                        <div class="nota">
+                            <strong>✅ Cuándo usar GET:</strong><br>
+                            • Búsquedas y filtros<br>
+                            • Navegación y paginación<br>
+                            • URLs que se pueden compartir o guardar<br>
+                            • Cuando NO hay datos sensibles<br>
+                            • Operaciones de solo lectura (no modifican datos)<br>
+                            • Formularios simples con pocos campos<br><br>
+
+                            <strong>⚠️ Limitaciones de GET:</strong><br>
+                            • Datos visibles en la URL (inseguro para contraseñas)<br>
+                            • Límite de longitud (~2000 caracteres)<br>
+                            • Los datos quedan en historial del navegador<br>
+                            • No se puede enviar archivos<br>
+                            • Los datos pueden quedar en logs del servidor
+                        </div>
+                    </div>
+
+                    <div class="termino" style="background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(46, 204, 113, 0.05)); border-left: 4px solid #2ecc71;" data-tags="post metodo http body cuerpo datos">
+                        <span class="tag" style="background: #2ecc71;">POST</span>
+                        <p class="significado">Método: POST (Publicar/Enviar)</p>
+                        <p class="descripcion">
+                            POST envía los datos del formulario en el cuerpo (body) de la petición HTTP.
+                            Los datos NO son visibles en la URL. Se usa para enviar información al servidor que modifica o crea datos.
+                        </p>
+                        <div class="ejemplo">
+                            &lt;form action="/registro" method="post"&gt;<br>
+                            &nbsp;&nbsp;&lt;input type="email" name="email" required&gt;<br>
+                            &nbsp;&nbsp;&lt;input type="password" name="password" required&gt;<br>
+                            &nbsp;&nbsp;&lt;button type="submit"&gt;Registrarse&lt;/button&gt;<br>
+                            &lt;/form&gt;<br><br>
+                            &lt;!-- URL resultante: --&gt;<br>
+                            https://ejemplo.com/registro<br>
+                            &lt;!-- Los datos van ocultos en el cuerpo de la petición --&gt;
+                        </div>
+                        <div class="nota">
+                            <strong>✅ Cuándo usar POST:</strong><br>
+                            • Login y registro de usuarios<br>
+                            • Envío de datos sensibles (contraseñas, tarjetas)<br>
+                            • Subir archivos<br>
+                            • Crear, actualizar o eliminar datos<br>
+                            • Formularios con muchos campos<br>
+                            • Cuando los datos no deben quedar en historial<br><br>
+
+                            <strong>✨ Ventajas de POST:</strong><br>
+                            • Datos ocultos en la URL (más seguro)<br>
+                            • Sin límite práctico de tamaño<br>
+                            • Puede enviar archivos (con enctype="multipart/form-data")<br>
+                            • Los datos NO quedan en historial<br>
+                            • Más apropiado para operaciones que modifican datos
+                        </div>
+                    </div>
+
+                    <div class="termino" style="background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(155, 89, 182, 0.05)); border-left: 4px solid #9b59b6;" data-tags="comparacion get post diferencias tabla">
+                        <span class="tag" style="background: #9b59b6;">GET vs POST - Comparación</span>
+                        <p class="significado">Diferencias Clave</p>
+                        <div class="nota" style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 8px;">
+                            <table style="width: 100%; border-collapse: collapse; color: #e0e0e0;">
+                                <thead>
+                                    <tr style="background: rgba(155, 89, 182, 0.3);">
+                                        <th style="padding: 12px; text-align: left; border: 1px solid rgba(155, 89, 182, 0.5);">Característica</th>
+                                        <th style="padding: 12px; text-align: left; border: 1px solid rgba(155, 89, 182, 0.5);">GET</th>
+                                        <th style="padding: 12px; text-align: left; border: 1px solid rgba(155, 89, 182, 0.5);">POST</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);"><strong>Ubicación datos</strong></td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">En la URL (query string)</td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">En el cuerpo (body)</td>
+                                    </tr>
+                                    <tr style="background: rgba(155, 89, 182, 0.05);">
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);"><strong>Visibilidad</strong></td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">✗ Visible en URL</td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">✓ Oculto</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);"><strong>Límite tamaño</strong></td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">✗ ~2000 caracteres</td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">✓ Sin límite práctico</td>
+                                    </tr>
+                                    <tr style="background: rgba(155, 89, 182, 0.05);">
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);"><strong>Cacheable</strong></td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">✓ Sí</td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">✗ No</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);"><strong>Historial</strong></td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">✗ Queda guardado</td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">✓ No queda guardado</td>
+                                    </tr>
+                                    <tr style="background: rgba(155, 89, 182, 0.05);">
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);"><strong>Marcadores</strong></td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">✓ Se puede guardar</td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">✗ No se puede</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);"><strong>Recargar página</strong></td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">✓ Sin problema</td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">⚠️ Aviso de reenvío</td>
+                                    </tr>
+                                    <tr style="background: rgba(155, 89, 182, 0.05);">
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);"><strong>Subir archivos</strong></td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">✗ No</td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">✓ Sí</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);"><strong>Idempotente</strong></td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">✓ Sí (mismo resultado)</td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">✗ No</td>
+                                    </tr>
+                                    <tr style="background: rgba(155, 89, 182, 0.05);">
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);"><strong>Seguridad</strong></td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">✗ Menos seguro</td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">✓ Más seguro</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);"><strong>Uso típico</strong></td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">Búsquedas, filtros</td>
+                                        <td style="padding: 10px; border: 1px solid rgba(155, 89, 182, 0.3);">Login, registros</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="termino" style="background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(231, 76, 60, 0.05)); border-left: 4px solid #e74c3c;" data-tags="examen importante critico get post">
+                        <span class="tag" style="background: #e74c3c;">💡 Para el Examen</span>
+                        <p class="significado">Conceptos Clave que Debes Memorizar</p>
+                        <div class="nota" style="background: rgba(231, 76, 60, 0.15); padding: 20px; border-radius: 8px; border: 2px solid #e74c3c;">
+                            <h3 style="color: #e74c3c; margin-bottom: 15px;">⭐ CRÍTICO para el examen:</h3>
+
+                            <strong style="color: #3498db; font-size: 1.1em;">GET:</strong><br>
+                            ✓ Datos en la <strong>URL</strong> (visible)<br>
+                            ✓ Limitado a ~2000 caracteres<br>
+                            ✓ Se puede guardar en marcadores<br>
+                            ✓ Cacheable (se puede guardar en caché)<br>
+                            ✓ Idempotente (mismo resultado al repetir)<br>
+                            ✓ Para <strong>obtener/leer</strong> información<br>
+                            ✓ Ejemplos: búsquedas, filtros, paginación<br><br>
+
+                            <strong style="color: #2ecc71; font-size: 1.1em;">POST:</strong><br>
+                            ✓ Datos en el <strong>cuerpo/body</strong> (oculto)<br>
+                            ✓ Sin límite de tamaño<br>
+                            ✓ NO cacheable<br>
+                            ✓ NO idempotente<br>
+                            ✓ Puede enviar archivos<br>
+                            ✓ Para <strong>enviar/modificar</strong> información<br>
+                            ✓ Ejemplos: login, registro, subir archivos<br><br>
+
+                            <strong style="color: #f39c12; font-size: 1.1em;">Diferencia MÁS IMPORTANTE:</strong><br>
+                            🔑 <strong>GET</strong> = Datos en URL (visible)<br>
+                            🔒 <strong>POST</strong> = Datos en body (oculto)
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="validacion" class="topic-section">
+                <h2>✅ Validación HTML5</h2>
+                <p>HTML5 proporciona atributos de validación nativos que funcionan sin JavaScript:</p>
+
+                <div id="validacionContainer">
+                    <div class="termino" data-tags="required requerido obligatorio validacion">
+                        <span class="tag">required</span>
+                        <p class="significado">Atributo: Campo obligatorio</p>
+                        <p class="descripcion">
+                            Indica que el campo debe ser completado antes de enviar el formulario.
+                            El navegador mostrará un mensaje de error si el usuario intenta enviar sin completarlo.
+                        </p>
+                        <div class="ejemplo">&lt;input type="text" name="nombre" required&gt;<br>&lt;input type="email" name="email" required&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="pattern patron regex validacion">
+                        <span class="tag">pattern</span>
+                        <p class="significado">Atributo: Patrón de validación</p>
+                        <p class="descripcion">
+                            Define una expresión regular que el valor del campo debe cumplir.
+                            Útil para formatos específicos como códigos postales, teléfonos, etc.
+                        </p>
+                        <div class="ejemplo">&lt;input type="text" name="telefono" pattern="[0-9]{9}" placeholder="Ej: 987654321"&gt;<br>&lt;input type="text" name="codigo" pattern="[A-Z]{3}-[0-9]{3}"&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="minlength maxlength longitud validacion">
+                        <span class="tag">minlength / maxlength</span>
+                        <p class="significado">Atributos: Longitud mínima/máxima</p>
+                        <p class="descripcion">
+                            Establecen la cantidad mínima y máxima de caracteres permitidos.
+                        </p>
+                        <div class="ejemplo">&lt;input type="password" name="password" minlength="8" maxlength="20"&gt;<br>&lt;textarea name="comentario" maxlength="500"&gt;&lt;/textarea&gt;</div>
+                    </div>
+
+                    <div class="termino" data-tags="min max numero rango validacion">
+                        <span class="tag">min / max</span>
+                        <p class="significado">Atributos: Valor mínimo/máximo</p>
+                        <p class="descripcion">
+                            Para inputs numéricos y de fecha, establecen los valores mínimo y máximo permitidos.
+                        </p>
+                        <div class="ejemplo">&lt;input type="number" name="edad" min="18" max="99"&gt;<br>&lt;input type="date" name="fecha" min="2024-01-01" max="2024-12-31"&gt;</div>
+                    </div>
+                </div>
 
                 <div id="noResults" class="no-results" style="display: none;">
                     No se encontraron términos que coincidan con tu búsqueda.
@@ -186,6 +410,8 @@
                 <ul class="toc-list">
                     <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
                     <li class="toc-item"><a href="#terminos" class="toc-link">📚 Glosario del Módulo</a></li>
+                    <li class="toc-item"><a href="#get-post" class="toc-link">🔄 Métodos GET y POST</a></li>
+                    <li class="toc-item"><a href="#validacion" class="toc-link">✅ Validación HTML5</a></li>
                 </ul>
             </nav>
 
@@ -200,6 +426,7 @@
     </footer>
 
     <script src="/assets/js/sidebar-component.js"></script>
+    <script src="/assets/js/study-highlight.js"></script>
     <script>
         // Funcionalidad de búsqueda en el glosario con normalización y resaltado
         document.addEventListener('DOMContentLoaded', function() {

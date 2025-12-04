@@ -1,0 +1,1485 @@
+Introducción al
+Desarrollo Web
+Ing. Marco Aedo López
+EPIS UNSA – 2025
+Ing. Marco Aedo López
+
+maedol@unsa.edu.pe
+EPIS – UNSA
+
+marcoaedo@hotmail.com
+2025
+
+Fundamentos del desarrollo Frontend
+
+JavaScript
+Tema 6
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+29. Manipulación del DOM
+• DOM (Document Object Model) es la representación estructurada
+del contenido de una página web (documento HTML) en forma de
+árbol de nodos
+• Cada elemento HTML se convierte en un nodo que JavaScript
+puede manipular
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+29. Manipulación del DOM
+• Manipular el DOM significa leer, modificar o crear elementos
+dinámicamente usando JavaScript. Esto incluye cambiar texto,
+atributos, estilos, o incluso añadir y eliminar nodos
+• El punto de entrada al DOM en JavaScript es el objeto global
+document. A través de él podemos seleccionar y manipular los
+elementos del HTML
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+29. Manipulación del DOM
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+29. Manipulación del DOM
+Seleccionar Elementos
+Método
+
+Descripción
+
+Ejemplo
+
+getElementById
+
+Devuelve un elemento por su
+id
+
+document.getElementById(“contenedor”)
+
+getElementsByClassName
+
+Devuelve todos los elementos
+de una clase (HTMLCollection)
+
+document.getElementsByClassName(“texto”)
+
+getElementsByTagName
+
+Devuelve todos los elementos
+de una etiqueta
+
+document.getElementsByTagName(“p”)
+
+querySelector
+
+Devuelve el primer elemento
+que cumpla con un selector
+tipo CSS indicado
+
+document.querySelector(“.texto”)
+
+querySelectorAll
+
+Devuelve todos los elementos
+que cumplan con un selector
+tipo CSS (NodeList)
+
+document.querySelectorAll(“div p”)
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+29. Manipulación del DOM
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Leer Contenido de Elementos
+
+Tipo de
+contenido a
+leer
+
+ManipulaciónEjemplo
+del DOM
+
+Método/Propiedad
+
+Resultado
+
+Texto visible en la
+página
+
+.textContent
+
+document.getElementById("titulo").textContent
+
+Devuelve todo el texto
+dentro del elemento
+(aunque esté oculto por
+CSS)
+
+Texto interpretado
+por el navegador
+(incluye etiquetas
+HTML internas)
+
+.innerHTML
+
+document.getElementById("parrafo").innerHTML
+
+Devuelve el HTML
+interno del elemento
+
+.value
+
+document.getElementById("nombre").value
+
+Devuelve lo que el
+usuario escribió en un
+<input>, <textarea>,
+<select>
+
+Atributo específico
+
+.getAttribute("atributo")
+
+Devuelve el valor de un
+document.getElementById("link").getAttribute("href") atributo como href, src,
+alt, etc.
+
+Colección de
+atributos
+
+.attributes
+
+document.getElementById("imagen").attributes
+
+Valor de un campo
+de formulario
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+Lista de todos los
+atributos del elemento
+2025
+
+29. Manipulación del DOM
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Modificar Contenido de Elementos
+Tipo de contenido
+a modificar
+
+Método/Propiedad
+
+Ejemplo
+
+Efecto en la página
+
+Texto visible
+
+.textContent
+
+document.getElementById("titulo").textContent =
+"Nuevo título";
+
+Cambia solo el texto
+plano (ignora etiquetas
+HTML)
+
+HTML interno
+
+.innerHTML
+
+document.getElementById("parrafo").innerHTML =
+"Este es un <b>nuevo</b> párrafo.";
+
+Permite insertar texto +
+etiquetas HTML
+
+Valor de un campo
+de formulario
+
+.value
+
+Modifica lo que aparece
+document.getElementById("nombre").value = "Ana"; en <input>, <textarea>,
+<select>
+
+Atributo específico
+
+Cambia el valor de un
+.setAttribute("atributo", document.getElementById("link").setAttribute("href",
+atributo como src, href,
+"valor")
+"https://www.unsa.edu.pe");
+alt
+
+Estilos en línea
+
+.style.propiedad
+
+document.getElementById("caja").style.background
+Color = "lightblue";
+
+Aplica un estilo
+directamente al elemento
+
+Clases CSS
+
+.classList.add(),
+.classList.remove(),
+.classList.toggle()
+
+document.getElementById("caja").classList.add
+("resaltado");
+
+Agrega o quita clases
+para cambiar estilos
+dinámicamente
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Manipulación del DOM
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+29. Manipulación del DOM
+• Recorrido del DOM es el proceso de navegar por la estructura
+jerárquica del documento HTML desde un nodo específico
+• Cada elemento del HTML se convierte en un nodo, y estos se
+relacionan entre sí como padres, hijos y hermanos
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Propiedades principales para recorrer el DOM
+Propiedad
+
+Devuelve
+
+Descripción
+
+parentNode
+
+Nodo padre
+
+Devuelve el nodo padre del elemento actual
+
+childNodes
+
+NodeList
+
+Devuelve todos los nodos hijos, incluidos los
+de tipo texto (espacios, saltos de línea)
+
+children
+
+HTMLCollection
+
+Devuelve sólo los nodos elemento, sin los
+nodos de texto
+
+firstChild / lastChild
+
+Nodo
+
+Devuelve el primer o último hijo, que puede ser
+un nodo de texto
+
+firstElementChild /
+lastElementChild
+
+Elemento
+
+Devuelve el primer o último hijo elemento
+(ignora texto o comentarios)
+
+nextSibling / previousSibling
+
+Nodo
+
+Devuelve el hermano siguiente o anterior
+(puede ser texto o comentario)
+
+nextElementSibling /
+previousElementSibling
+
+Elemento
+
+Devuelve sólo los hermanos tipo elemento
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+29. Manipulación del DOM
+• Crear y eliminar elementos dinámicamente es clave para construir
+interfaces interactivas
+• Crear: el proceso siempre sigue estos pasos:
+– Crear el nodo con document.createElement("elemento")
+– Configurar su contenido o atributos (textContent, id, setAttribute(),
+classList.add(), innerHTML, etc.)
+– Insertarlo en el DOM con métodos como .appendChild(), .prepend(),
+before/after, .insertBefore(), .append()
+– Además de elementos, se pueden crear nodos de texto o comentarios con
+.createTextNode(), .createComment()
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+29. Manipulación del DOM
+• Eliminar: hay varias formas de eliminar nodos del DOM:
+– Elimina un nodo hijo desde su elemento padre contenedor.removeChild(hijo)
+– Elimina directamente el elemento sobre el que se invoca (más moderno y práctico)
+elemento.remove()
+
+– Se puede reemplazar un nodo hijo por otro
+contenedor.replaceChild(nuevoHijo, antiguoHijo)
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+30. Eventos
+•
+•
+
+•
+
+La manipulación del DOM suele ir acompañada de eventos (clics, teclado,
+formularios, etc.)
+Es cualquier acción que ocurre en la página web y que el navegador puede
+detectar:
+– Un usuario hace clic en un botón
+– Un usuario escribe en un campo de texto
+– La página termina de cargarse
+– El puntero del mouse pasa por encima de un elemento
+JavaScript permite escuchar esos eventos y responder con una acción, lo
+que hace la web interactiva
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+30. Eventos
+Evento
+
+Se dispara cuando...
+
+click
+
+El usuario hace clic en un elemento
+
+dblclick
+
+Doble clic en un elemento
+
+mouseover
+
+El puntero entra en un elemento
+
+mouseout
+
+El puntero sale del elemento
+
+keydown
+
+El usuario presiona una tecla
+
+keyup
+
+El usuario suelta una tecla
+
+input
+
+Cambia el contenido de un campo de texto
+
+submit
+
+Se envía un formulario
+
+load
+
+La página o recurso termina de cargarse
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Eventos
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+30. Eventos
+• Objeto event
+• Cada vez que ocurre un evento, JavaScript crea un objeto event
+con información útil
+
+Propiedad
+
+Descripción
+
+type
+
+Tipo de evento (ej. "click", "input")
+
+target
+
+Elemento que generó el evento
+
+clientX, clientY
+
+Posición del cursor
+
+key, code
+
+Tecla presionada (para eventos de teclado)
+
+preventDefault()
+
+Evita la acción por defecto (ej. enviar un formulario)
+
+stopPropagation()
+
+Detiene la propagación del evento a elementos padres
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+31. JSON
+• JSON (JavaScript Object Notation) es un formato ligero de intercambio
+de datos, muy utilizado en el desarrollo web por su simplicidad,
+legibilidad y compatibilidad con múltiples lenguajes de programación
+• Tiene estructura basada en texto que representa datos mediante pares
+clave – valor. Su sintaxis se deriva del formato de los objetos literales
+de JavaScript
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+•
+•
+
+31. JSON
+Formato de texto plano: fácil de leer y escribir tanto para humanos como para
+computadoras
+Estructurado: los datos se organizan en:
+– Objetos { } → colecciones de pares clave-valor
+– Arreglos [ ] → listas ordenadas de valores
+
+•
+
+Tipos de datos permitidos:
+–
+–
+–
+–
+–
+
+•
+•
+
+Cadenas (string)
+Números (number)
+Booleanos (true, false)
+Objetos y arreglos anidados
+Nulos (null)
+
+Independiente de lenguaje: aunque nació de JavaScript, se usa en Python,
+Java, PHP, C#, Go, etc.
+Ideal para comunicación cliente-servidor: es el formato estándar para APIs
+REST y respuestas AJAX
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+31. JSON
+• Conversión entre JSON y objetos JavaScript
+• De JSON a objeto:
+
+• De objeto a JSON:
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+31. JSON
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+31. JSON - Usos
+•
+
+Intercambio de datos entre cliente y servidor
+–
+
+•
+•
+
+Permite que diferentes sistemas, por ejemplo, un frontend en React (JavaScript) y un
+backend en Python se comuniquen sin importar el lenguaje
+Intercambio de información entre aplicaciones
+–
+
+•
+•
+•
+
+JSON permite conectar sistemas distintos (por ejemplo, un sistema web con una app móvil o con un
+servicio en la nube). Gracias a su formato simple y universal, casi cualquier lenguaje puede generar
+y leer JSON
+
+En Bases de Datos NoSQL los registros se guardan en formato JSON o similar
+Comunicación en APIs REST y servicios web usan JSON como formato principal para las
+solicitudes (POST, PUT, PATCH) y las respuestas (GET)
+Almacenamiento de configuración
+–
+–
+
+•
+
+JSON es el formato estándar para enviar y recibir datos en aplicaciones web modernas
+
+Muchos entornos y herramientas utilizan archivos .json para configurar proyectos
+Ejemplo: package.json en Node.js
+
+Persistencia local en el navegador
+–
+
+JSON se usa para guardar información en localStorage o sessionStorage
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+32. Manejo de Excepciones
+• Es una parte fundamental para crear código robusto, fácil de mantener
+y que no rompa la ejecución del programa ante fallos
+• Un error o excepción ocurre cuando el motor de JavaScript encuentra
+algo inesperado o incorrecto durante la ejecución
+Tipo de error
+
+Cuándo ocurre
+
+Ejemplo
+
+SyntaxError
+
+Cuando el código tiene un error de sintaxis if (true {
+
+ReferenceError
+
+Se usa una variable no declarada
+
+console.log(nombre);
+
+TypeError
+
+Cuando se usa un tipo incorrecto
+
+"hola".push("mundo");
+
+RangeError
+
+Un número está fuera del rango permitido
+
+new Array(-5)
+
+URIError
+
+Error en funciones de URI (como
+decodeURI)
+
+decodeURI("%");
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+32. Manejo de Excepciones
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+32. Manejo de Excepciones
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+33. Asincronía
+• Es la capacidad de JavaScript para realizar tareas sin bloquear la
+ejecución del programa
+• Puede continuar ejecutando otras instrucciones mientras espera que
+una operación de mayor duración termine (como una petición a un
+servidor o la lectura de un archivo)
+• JavaScript no se detiene mientras algo tarda en completarse; en su
+lugar, delegará la tarea y seguirá ejecutando el resto del código
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+33. Asincronía
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+33. Asincronía - Ventajas
+• JavaScript se ejecuta en un solo hilo (single-threaded)
+• Si todo fuera sincrónico, cualquier tarea lenta (como acceder a una API
+o cargar una imagen grande) bloquearía el resto del programa
+• La asincronía permite:
+– Mantener la aplicación responsiva
+– Aprovechar mejor los recursos del sistema
+– Esperar resultados externos sin detener la ejecución principal
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+33. Asincronía - Formas de manejar
+• Tres formas principales de manejar la asincronía, que han
+evolucionado con el tiempo para hacer el código más claro y fácil de
+mantener
+– Callbacks
+– Promesas (Promises)
+– Async / Await
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+33. Asincronía - Formas de manejar
+1) Callbacks
+•
+•
+
+Función que se pasa como argumento a otra función y que se ejecuta cuando
+la operación asincrónica termina
+Fue la primera forma usada para manejar la asincronía en JavaScript
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+33. Asincronía - Formas de manejar
+2) Promesas (Promises)
+•
+•
+
+Representa un valor que aún no se conoce, pero que se resolverá (éxito o
+error) en el futuro
+Tiene tres estados:
+– pending (pendiente)
+– fulfilled (resuelta correctamente → resolve)
+– rejected (con error → reject)
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+33. Asincronía - Formas de manejar
+2) Promesas (Promises)
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+33. Asincronía - Formas de manejar
+3) Async / Await
+•
+•
+
+Permiten escribir código asincrónico con una sintaxis similar al código síncrono,
+más limpia y legible que las promesas
+Código moderno y limpio
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+33. Asincronía - Formas de manejar
+3) Async / Await
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+33. Asincronía - Formas de manejar
+3) Async / Await
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+34. AJAX
+• AJAX (Asynchronous JavaScript And XML) es una técnica que permite
+a una página web comunicarse con un servidor sin recargar toda la
+página
+• Gracias a él, las aplicaciones web pueden enviar o recibir datos en
+segundo plano y actualizar solo partes específicas de la interfaz,
+mejorando la experiencia del usuario (UX)
+• Hoy en día, aunque el nombre incluye “XML”, en la práctica se usa
+JSON como formato principal de intercambio de datos
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+34. AJAX
+• En las versiones modernas de JavaScript, la forma más práctica de
+implementar AJAX es mediante la API fetch(), que reemplaza al
+antiguo XMLHttpRequest
+• Sintaxis:
+
+– url: dirección del recurso o API
+– opciones (opcional): objeto que define método HTTP, cabeceras, cuerpo, etc.
+– Devuelve una Promise, lo que facilita el manejo asíncrono con .then() o async/await
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+34. AJAX
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+34. AJAX
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+34. AJAX
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+34. AJAX
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+34. AJAX
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+34. AJAX - Usos
+• Actualizar secciones de una página sin recargarla (por ejemplo,
+comentarios, notificaciones)
+• Enviar formularios dinámicamente con validaciones en tiempo real
+• Consumir APIs REST de servicios externos
+• Cargar datos al iniciar la página (por ejemplo, listas, usuarios,
+productos)
+• Interacción con servidores backend en proyectos con Node.js, Python,
+Java, PHP, etc.
+• AJAX con fetch() es la forma moderna, limpia y estandarizada de
+realizar peticiones HTTP asíncronas en JavaScript
+• Favorece la arquitectura SPA (Single Page Application) y el uso de APIs
+REST
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+35. Módulos
+• Son una forma de organizar el código en archivos separados y
+reutilizables, de manera que cada módulo pueda encapsular sus
+variables, funciones, clases o constantes
+• Evita conflictos de nombres y facilita el mantenimiento del proyecto
+• Un módulo es simplemente un archivo de JavaScript que exporta
+partes de su código (funciones, clases, objetos, variables) y puede
+importar código desde otros módulos
+• Esto permite dividir un programa grande en partes más pequeñas y
+comprensibles
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+35. Módulos - Ventajas
+• Reutilización de código: se puede usar el mismo módulo en distintos
+proyectos
+• Mantenimiento más fácil: el código está dividido en archivos
+especializados
+• Encapsulamiento: evita conflictos de nombres (cada módulo tiene su
+propio alcance)
+• Carga selectiva: sólo se importa lo necesario
+• Compatibilidad con herramientas modernas como Node.js, React,
+Angular, Vue.js, etc.
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+35. Módulos
+•
+•
+•
+•
+
+ES Modules (ESM): es el estándar moderno
+Se usan en el navegador y en Node.js (desde versiones recientes)
+Extensión habitual: .js o .mjs
+Se usan las palabras clave export y import
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+36. Expresiones Regulares
+• Son patrones utilizados para buscar, validar o reemplazar texto dentro
+de cadenas
+• Son una herramienta muy poderosa para trabajar con texto de forma
+precisa y flexible
+• Define un patrón de búsqueda
+• Se usa en procesamiento de texto, validaciones de formularios, análisis
+de datos y más
+Notación Literal:
+
+Constructor:
+
+/patrón/flags
+
+new RegExp("patrón", "flags")
+
+const patron = /abc/;
+const regex = /[A-Z][a-z]+/g;
+
+const patron = new RegExp("abc");
+const regex = new RegExp("[A-Z][a-z]+", "g");
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+36. Expresiones Regulares
+const regex = /[A-Z][a-z]+/g;
+Parte
+
+Significado
+
+Explicación detallada
+Indican el inicio y fin del patrón literal de
+expresión regular
+
+/ ... /
+
+Delimitadores
+
+[A-Z]
+
+Una letra mayúscula
+
+Coincide con cualquier carácter entre la A y la
+Z. Es la primera letra obligatoriamente
+
+[a-z]+
+
+Una o más letras minúsculas
+
+El + significa “una o más repeticiones”. Aquí se
+permiten varias letras minúsculas después de la
+inicial
+
+g
+
+Bandera global (global flag)
+
+Permite buscar todas las coincidencias en un
+texto (no sólo la primera)
+
+"Hola" ✅
+"ElGato" ✅
+
+"Perro“ ✅
+"123Hola" ✅
+
+Ing. Marco Aedo López
+
+"hola" ✅
+"H"
+✅
+
+"HOLA"
+""
+
+✅
+✅
+
+EPIS – UNSA
+
+2025
+
+36. Expresiones Regulares – Elementos
+Básicos
+Símbolo
+Significado
+.
+Cualquier carácter (excepto salto de línea)
+\d
+Dígito (0–9)
+\w
+Carácter alfanumérico o _
+\s
+Espacio, tabulación o salto de línea
+^
+Inicio de cadena o línea
+$
+Fin de cadena o línea
+[...]
+Uno de los caracteres listados
+
+/a.b/
+/\d+/
+/\w+/
+/\s/
+/^Hola/
+/mundo$/
+/[aeiou]/
+
+Coincide con
+“acb”, “a7b”
+“123”
+“user_1”
+“”
+“Hola mundo”
+“Hola mundo”
+“a”, “e”, “i”, “o”, “u”
+
+[^...]
+()
+?
+*
++
+{n}
+{n,}
+{n,m}
+
+/[^aeiou]/
+/(ab)+/
+/colou?r/
+/go*/
+/go+/
+/\d{3}/
+/\d{2,}/
+/\d{2,4}/
+
+“b”, “c”, “d”
+“abab”
+“color” o “colour”
+“g”, “go”, “goo”
+“go”, “goo”
+“123”
+“12”, “123”, “1234”
+“12”, “123”, “1234”
+
+Ninguno de los caracteres listados
+Agrupación o captura
+0 o 1 ocurrencia
+0 o más ocurrencias
+1 o más ocurrencias
+Exactamente n repeticiones
+n o más repeticiones
+Entre n y m repeticiones
+Ing. Marco Aedo López
+
+Ejemplo
+
+EPIS – UNSA
+
+2025
+
+36. Expresiones Regulares - Flags
+Bandera
+
+Significado
+
+g
+
+Global: busca todas las coincidencias (no
+sólo la primera)
+
+i
+
+Ignore case: ignora mayúsculas/minúsculas /a/i
+
+m
+
+Multilínea: ^ y $ actúen por línea, no sólo al
+inicio o fin de todo el texto
+
+/^Hola/m
+
+s
+
+DotAll: permite que . coincida también con
+saltos de línea (\n, \r, etc.)
+
+/a.b/s
+
+u
+
+Unicode: permite usar caracteres Unicode
+(emojis, acentos, símbolos, caracteres no
+latinos, etc.)
+
+/^.$/u
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+Ejemplo
+/a/g
+
+2025
+
+36. Expresiones Regulares
+const regex = /^[A-Z][a-z]+$/g;
+Parte
+
+Significado
+
+Explicación detallada
+Indican el inicio y fin del patrón literal de
+expresión regular
+
+/ ... /
+
+Delimitadores
+
+^
+
+Inicio de la cadena
+
+Indica que la coincidencia debe comenzar desde
+el principio del texto
+
+[A-Z]
+
+Una letra mayúscula
+
+Coincide con cualquier carácter entre la A y la Z.
+Es la primera letra obligatoriamente
+
+[a-z]+
+
+Una o más letras minúsculas
+
+El + significa “una o más repeticiones”. Aquí se
+permiten varias letras minúsculas después de la
+inicial
+
+$
+
+Fin de la cadena
+
+Indica que la coincidencia debe terminar justo al
+final del texto
+
+g
+
+Bandera global (global flag)
+
+Permite buscar todas las coincidencias en un
+texto (no solo la primera)
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+36. Expresiones Regulares
+const regex = /^[A-Z][a-z]+$/g;
+console.log(regex.test("Juancito"));
+
+// true → Empieza con mayúscula
+y sigue con minúsculas
+console.log(regex.test("juancito")); // false → Empieza con minúscula
+console.log(regex.test("JUANCITO")); // false → Todo en mayúsculas
+console.log(regex.test("JuancitoPerez")); //false → Hay otra mayúscula
+console.log(regex.test("hola JuancitoPerez")); //false → ver ^ $
+const regex = /(ab)+/;
+console.log(regex.test("abab")); // true
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+36. Expresiones Regulares - Métodos
+Método
+test()
+
+Uso principal
+Verifica si el patrón existe en una cadena
+(devuelve true o false)
+
+Ejemplo
+/hola/.test("hola mundo")
+
+// true
+
+exec()
+
+Devuelve información detallada del primer
+match (como un array) o null si no hay
+coincidencia
+
+/\d+/.exec("Edad: 25 años")
+
+match()
+
+(De String) Devuelve todas las
+coincidencias si se usa con la bandera g
+
+"abc123".match(/\d/g)
+
+Reemplaza el texto que coincide con el
+patrón
+Divide una cadena en partes según el
+patrón
+
+"Hola mundo".replace(/mundo/, "JS")
+// "Hola JS"
+"uno, dos, tres".split(/,\s*/)
+// ["uno", "dos", "tres"]
+
+Devuelve el índice donde empieza la
+primera coincidencia, ó -1
+
+"abc123".search(/\d/)
+
+replace()
+split()
+search()
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+// ["25"]
+
+// ["1","2","3"]
+
+// 3
+
+2025
+
+Buscar coincidencias
+
+Validar un correo electrónico
+
+const texto = "El número es 12345";
+const patron = /\d+/;
+const resultado = texto.match(patron);
+console.log(resultado[0]); // "12345"
+
+const regex = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,}$/;
+console.log(regex.test("usuario@mail.com")); // true
+
+Extraer números de un texto
+
+Reemplazar texto
+
+const texto = "Mi número es 987654321";
+const resultado = texto.replace(/\d/g, "*");
+const texto = "Tengo 2 perros y 3 gatos.";
+const numeros = texto.match(/\d+/g); //["2", "3"] console.log(resultado); // "Mi número es *********"
+
+Reemplazar múltiples espacios por uno solo
+const texto = "Hola
+mundo
+JS";
+console.log(texto.replace(/\s+/g, " ")); // "Hola mundo JS"
+
+Verificar formato de fecha (dd/mm/yyyy)
+const fecha = /^(\d{2})\/(\d{2})\/(\d{4})$/;
+console.log(fecha.test("08/11/2025")); // true
+
+Extraer información
+const fecha = "2025-11-08";
+const patron = /(\d{4})-(\d{2})-(\d{2})/;
+const [, año, mes, dia] = fecha.match(patron); // desestructura ["2025-11-08", "2025", "11", "08"]
+console.log(`Año: ${año}, Mes: ${mes}, Día: ${dia}`);
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ejercicios
+1. Crea un botón que, al hacer clic, cambie el fondo de la página a un color aleatorio
+Usa addEventListener() para manejar el evento
+2. Crea un formulario con un campo de texto y un botón “Agregar tarea”
+Cada vez que el usuario escriba algo y haga clic, agrega un nuevo elemento <li> dentro de
+una lista <ul> con el texto ingresado
+Agrega además un botón junto a cada tarea que permita eliminarla
+3. Implementa la funcionalidad anterior, pero usando delegación de eventos:
+En lugar de asignar un addEventListener a cada botón ✅ , coloca un único listener en la
+lista <ul> que detecte qué elemento fue clicado
+4. Crea una tabla con datos simples (por ejemplo, nombres y edades)
+Con un botón, alterna entre ordenar las filas ascendentemente o descendentemente por
+edad, sin recargar la página
+5. Crea tres cajas <div> con la clase "caja". Al hacer clic en una, debe:
+Cambiar su color, agregar la clase "activa“ y quitar "activa" del resto de las cajas
+6. Usa fetch() para obtener datos de la API pública: https://jsonplaceholder.typicode.com/users
+Muestra los nombres de los usuarios en la consola y en un HTML
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ejercicios
+7. Con los mismos datos de usuarios del ejercicio anterior, muestra sus nombres y correos en
+una lista ordenada dentro de una página HTML
+8. Envía un nuevo “post” a la API:
+https://jsonplaceholder.typicode.com/posts
+El cuerpo (body) debe incluir un objeto con title, body y userId
+Muestra la respuesta del servidor en consola
+9. Crea una función asincrónica que obtenga datos de una API
+Si la respuesta no es correcta (!response.ok), lanza un error y muéstralo en consola con
+un try...catch
+Prueba usando una URL correcta y otra inexistente
+10. Crea un formulario con campos nombre y email
+Cuando el usuario lo envíe, usa fetch() para enviar los datos a una API (puede ser
+https://jsonplaceholder.typicode.com/posts)
+Muestra en pantalla un mensaje con el resultado de la operación
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ejercicios
+11. Crea un archivo operaciones.js que exporte tres funciones: sumar(a, b), restar(a, b) y
+multiplicar(a, b)
+En otro archivo app.js, importa todas las funciones y muestra sus resultados en la consola
+Luego, importa solo sumar
+12. Crea una mini aplicación con los siguientes módulos:
+– datos.js: exporta un arreglo de objetos con usuarios ({ nombre, edad })
+– filtros.js: exporta una función filtrarMayores(usuarios) que retorne solo los mayores de
+edad
+– main.js: importa ambos módulos y muestra en consola los usuarios mayores de 18
+años
+
+13. Generar la expresiones regulares para:
+a) Sólo letras
+b) Sólo números
+c) DNI peruano (8 dígitos) d) Celular peruano
+e) Contraseña segura: al menos 8 caracteres, al menos una letra mayúscula (A–Z), al menos una
+letra minúscula (a–z), al menos un número (0–9) y al menos un símbolo especial (@#$%^&*_-)
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+

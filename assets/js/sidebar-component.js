@@ -21,12 +21,22 @@ document.addEventListener('DOMContentLoaded', function() {
                         FUNDAMENTOS
                     </div>
                     <div class="section-items">
+                        <a href="/Fundamentos/Computacion/index.html" class="menu-item" data-section="computacion">
+                            <span class="item-icon">💻</span>
+                            <span class="item-text">Computación</span>
+                            <span class="badge-completed">✓</span>
+                        </a>
+                        <a href="/Fundamentos/Protocolos/index.html" class="menu-item" data-section="protocolos">
+                            <span class="item-icon">🌐</span>
+                            <span class="item-text">Protocolos y Redes</span>
+                            <span class="badge-completed">✓</span>
+                        </a>
                         <a href="/Fundamentos/Diseño/index.html" class="menu-item" data-section="diseño">
                             <span class="item-icon">🎨</span>
                             <span class="item-text">Diseño (UI/UX)</span>
                         </a>
                         <a href="/Fundamentos/Frontend/index.html" class="menu-item" data-section="frontend">
-                            <span class="item-icon">💻</span>
+                            <span class="item-icon">🖥️</span>
                             <span class="item-text">Frontend</span>
                         </a>
                         <a href="/Fundamentos/Backend/index.html" class="menu-item" data-section="backend">
@@ -108,16 +118,36 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
 
-                <!-- Examen -->
-                <div class="menu-section" data-section="examen">
-                    <div class="section-title" onclick="window.toggleSection('examen')">
+                <!-- Exámenes -->
+                <div class="menu-section" data-section="examenes">
+                    <div class="section-title" onclick="window.toggleSection('examenes')">
                         <span class="toggle-icon">▼</span>
-                        EXAMEN
+                        EXÁMENES
                     </div>
                     <div class="section-items">
-                        <a href="/Examen/JS/index.html" class="menu-item" data-section="examen-js">
+                        <a href="/Examen/examen-parcial-1.html" class="menu-item">
                             <span class="item-icon">📝</span>
-                            <span class="item-text">JavaScript (42 ejercicios)</span>
+                            <span class="item-text">Examen Parcial 1</span>
+                        </a>
+                        <a href="/Examen/examen-parcial-2.html" class="menu-item">
+                            <span class="item-icon">💻</span>
+                            <span class="item-text">Examen Parcial 2</span>
+                        </a>
+                        <a href="/Examen/examen-sustitorio.html" class="menu-item">
+                            <span class="item-icon">🎓</span>
+                            <span class="item-text">Examen Sustitorio</span>
+                        </a>
+                        <a href="/docs/roadmap-estudio-examen.html" class="menu-item">
+                            <span class="item-icon">🗺️</span>
+                            <span class="item-text">Roadmap de Estudio</span>
+                        </a>
+                        <a href="/Examen/SOLUCIONES_COMPLETAS.html" class="menu-item">
+                            <span class="item-icon">✅</span>
+                            <span class="item-text">Soluciones Completas</span>
+                        </a>
+                        <a href="/Examen/ANALISIS_DIFICULTAD.html" class="menu-item">
+                            <span class="item-icon">📊</span>
+                            <span class="item-text">Análisis de Dificultad</span>
                         </a>
                     </div>
                 </div>
@@ -145,9 +175,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="progress-info">
                     <span class="progress-label">PROGRESO GENERAL</span>
                     <div class="progress-bar">
-                        <div class="progress-fill" style="width: 33%"></div>
+                        <div class="progress-fill" style="width: 45%"></div>
                     </div>
-                    <span class="progress-text">33% Completado</span>
+                    <span class="progress-text">45% Completado</span>
                 </div>
             </div>
         </nav>

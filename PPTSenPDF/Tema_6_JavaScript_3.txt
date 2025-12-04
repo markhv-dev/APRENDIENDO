@@ -1,0 +1,727 @@
+Introducción al
+Desarrollo Web
+Ing. Marco Aedo López
+EPIS UNSA – 2025
+Ing. Marco Aedo López
+
+maedol@unsa.edu.pe
+EPIS – UNSA
+
+marcoaedo@hotmail.com
+2025
+
+Fundamentos del desarrollo Frontend
+
+JavaScript
+Tema 6
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+24. Estructuras de Datos - Map
+• Estructura de datos incorporada (ES6, 2015) que permite almacenar
+pares clave–valor
+• Las claves pueden ser de cualquier tipo: primitivas, funciones,
+objetos, etc.
+• Mantiene el orden de inserción de los elementos
+• Tiene métodos y propiedades específicos para manipular los pares
+clave–valor
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+24. Estructuras de Datos - Map
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Estructuras
+Descripción de Datos - Map
+Ejemplo
+
+Método /
+Propiedad
+set(clave, valor)
+
+get(clave)
+has(clave)
+
+Agrega un nuevo par clave–valor const miMapa = new Map();
+o actualiza el valor si la clave ya miMapa.set("nombre", "Juan");
+existe
+miMapa.set("edad", 30);
+
+Obtiene el valor asociado a una
+clave
+Verifica si existe una clave en el
+Map
+
+miMapa.get("nombre");
+miMapa.has("edad");
+
+delete(clave)
+
+Elimina un elemento por su clave miMapa.delete("edad");
+
+clear()
+
+Elimina todos los elementos del
+Map
+
+miMapa.clear();
+
+size
+
+Devuelve la cantidad de pares
+clave–valor en el Map
+
+const mapa = new Map([["a", 1], ["b", 2]]);
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+24. Estructuras de Datos - Map
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+25. Objetos
+• Es una colección de pares clave–valor, donde cada clave (o
+propiedad) se asocia a un valor
+• La clave siempre es un string
+• El valor puede ser cualquier tipo de dato: primitivo (número,
+string, boolean, null, undefined), otro objeto, un array o incluso
+una función
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+25. Objetos
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+25. Objetos: Clonación y Desestructuración
+• Clonar significa crear una copia de un objeto o arreglo existente
+• JavaScript distingue entre copia superficial (shallow copy) y
+copia profunda (deep copy)
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+25. Objetos: Clonación y Desestructuración
+• Desestructuración permite extraer valores de arrays u objetos
+de manera más clara y compacta
+• Es una forma rápida de asignar múltiples variables a partir de
+una estructura de datos
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+25. Objetos: Clonación y Desestructuración
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+26. Clases
+• Sintaxis especial introducida con ECMAScript 2015 (ES6) que
+permite definir objetos y manejar la programación orientada a
+objetos (POO) de una forma más clara
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Clases
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+26. Clases
+Propiedades privadas:
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Setters
+y Getters:
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+toString():
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+26. Clases
+Herencia:
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+26. Clases
+Prototipos:
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+26. Clases
+Polimorfismo:
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+26. Clases
+Polimorfismo:
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+27. Math
+• Math es un objeto global estático que proporciona funciones y constantes
+matemáticas
+• No se instancia con new Math(), sino que se usa directamente como
+Math.función()
+• Sirve para realizar operaciones comunes como redondeos, potencias,
+raíces, trigonometría, logaritmos y generación de números aleatorios
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Categoría
+Constantes
+
+Método / Constante
+Math.PI
+Math.E
+Math.SQRT2
+Math.LN10
+Math.LOG10E
+Redondeo y signo
+Math.round(x)
+Math.floor(x)
+Math.ceil(x)
+Math.trunc(x)
+Math.sign(x)
+Máximo, mínimo, valor Math.max(a,b,...)
+absoluto
+Math.min(a,b,...)
+Math.abs(x)
+Potencias y raíces
+Math.pow(a,b)
+Math.sqrt(x)
+Math.cbrt(x)
+Math.hypot(a,b,...)
+Trigonometría
+Math.sin(x)
+Math.cos(x)
+Math.tan(x)
+Math.log(x)
+Logaritmos y
+exponenciales
+Math.log10(x)
+Math.log2(x)
+Math.exp(x)
+Aleatorios
+Math.random()
+Ing. Marco Aedo López
+
+Descripción
+Valor de π (3.14159...)
+Base del logaritmo natural (≈2.718)
+√2 (≈1.414)
+ln(10)
+log₁₀(e)
+Redondea al entero más cercano
+Redondea hacia abajo
+Redondea hacia arriba
+Elimina los decimales (trunca)
+Devuelve -1, 0 o 1 según el signo
+Mayor de una lista
+Menor de una lista
+Valor absoluto
+a elevado a b
+Raíz cuadrada
+Raíz cúbica
+√(a² + b² + …)
+Seno (x en radianes)
+Coseno
+Tangente
+Logaritmo natural (base e)
+Logaritmo base 10
+Logaritmo base 2
+e^x
+Número aleatorio en [0, 1>
+EPIS – UNSA
+
+Ejemplo
+Math.PI
+Math.E
+Math.SQRT2
+Math.LN10
+Math.LOG10E
+Math.round(4.6) → 5
+Math.floor(4.9) → 4
+Math.ceil(4.1) → 5
+Math.trunc(4.9) → 4
+Math.sign(-8) → -1
+Math.max(2, 8, 5) → 8
+Math.min(2, 8, 5) → 2
+Math.abs(-7) → 7
+Math.pow(2, 3) → 8
+Math.sqrt(25) → 5
+Math.cbrt(27) → 3
+Math.hypot(3,4) → 5
+Math.sin(Math.PI/2) → 1
+Math.cos(0) → 1
+Math.tan(Math.PI/4) → 1
+Math.log(Math.E) → 1
+Math.log10(100) → 2
+Math.log2(8) → 3
+Math.exp(1) → ≈2.718
+Math.random()
+2025
+
+28. Clases y Objetos en el entorno web
+Contexto
+
+Cómo se usan los objetos/clases
+
+DOM
+
+Crear clases que manipulen elementos del HTML
+
+Eventos
+
+Métodos que responden a clicks, teclas, etc.
+
+APIs REST
+
+Manejar datos JSON como objetos JS
+
+Librerías y Frameworks
+(React, Angular, Vue)
+
+Componentes se basan en objetos y clases
+
+Node.js (backend)
+
+Clases para controladores, modelos, servicios, etc.
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+29. Manipulación del DOM
+• DOM (Document Object Model) es la representación estructurada
+del contenido de una página web (documento HTML) en forma de
+árbol de nodos
+• Cada elemento HTML se convierte en un nodo que JavaScript
+puede manipular
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+29. Manipulación del DOM
+• Manipular el DOM significa leer, modificar o crear elementos
+dinámicamente usando JavaScript. Esto incluye cambiar texto,
+atributos, estilos, o incluso añadir y eliminar nodos
+• El punto de entrada al DOM en JavaScript es el objeto global
+document. A través de él podemos seleccionar y manipular los
+elementos del HTML
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+29. Manipulación del DOM
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+29. Manipulación del DOM
+Seleccionar Elementos
+Método
+
+Descripción
+
+Ejemplo
+
+getElementById
+
+Devuelve un elemento por su
+id
+
+document.getElementById(“contenedor”)
+
+getElementsByClassName
+
+Devuelve todos los elementos
+de una clase (HTMLCollection)
+
+document.getElementsByClassName(“texto”)
+
+getElementsByTagName
+
+Devuelve todos los elementos
+de una etiqueta
+
+document.getElementsByTagName(“p”)
+
+querySelector
+
+Devuelve el primer elemento
+que cumpla con un selector
+tipo CSS indicado
+
+document.querySelector(“.texto”)
+
+querySelectorAll
+
+Devuelve todos los elementos
+que cumplan con un selector
+tipo CSS (NodeList)
+
+document.querySelectorAll(“div p”)
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+29. Manipulación del DOM
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Leer Contenido de Elementos
+
+Tipo de
+contenido a
+leer
+
+ManipulaciónEjemplo
+del DOM
+
+Método/Propiedad
+
+Resultado
+
+Texto visible en la
+página
+
+.textContent
+
+document.getElementById("titulo").textContent
+
+Devuelve todo el texto
+dentro del elemento
+(aunque esté oculto por
+CSS)
+
+Texto interpretado
+por el navegador
+(incluye etiquetas
+HTML internas)
+
+.innerHTML
+
+document.getElementById("parrafo").innerHTML
+
+Devuelve el HTML
+interno del elemento
+
+.value
+
+document.getElementById("nombre").value
+
+Devuelve lo que el
+usuario escribió en un
+<input>, <textarea>,
+<select>
+
+Atributo específico
+
+.getAttribute("atributo")
+
+Devuelve el valor de un
+document.getElementById("link").getAttribute("href") atributo como href, src,
+alt, etc.
+
+Colección de
+atributos
+
+.attributes
+
+document.getElementById("imagen").attributes
+
+Valor de un campo
+de formulario
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+Lista de todos los
+atributos del elemento
+2025
+
+29. Manipulación del DOM
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Modificar Contenido de Elementos
+Tipo de contenido
+a modificar
+
+Método/Propiedad
+
+Ejemplo
+
+Efecto en la página
+
+Texto visible
+
+.textContent
+
+document.getElementById("titulo").textContent =
+"Nuevo título";
+
+Cambia solo el texto
+plano (ignora etiquetas
+HTML)
+
+HTML interno
+
+.innerHTML
+
+document.getElementById("parrafo").innerHTML =
+"Este es un <b>nuevo</b> párrafo.";
+
+Permite insertar texto +
+etiquetas HTML
+
+Valor de un campo
+de formulario
+
+.value
+
+Modifica lo que aparece
+document.getElementById("nombre").value = "Ana"; en <input>, <textarea>,
+<select>
+
+Atributo específico
+
+Cambia el valor de un
+.setAttribute("atributo", document.getElementById("link").setAttribute("href",
+atributo como src, href,
+"valor")
+"https://www.unsa.edu.pe");
+alt
+
+Estilos en línea
+
+.style.propiedad
+
+document.getElementById("caja").style.background
+Color = "lightblue";
+
+Aplica un estilo
+directamente al elemento
+
+Clases CSS
+
+.classList.add(),
+.classList.remove(),
+.classList.toggle()
+
+document.getElementById("caja").classList.add
+("resaltado");
+
+Agrega o quita clases
+para cambiar estilos
+dinámicamente
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Manipulación del DOM
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ejercicios
+1. Crea una función que reciba dos arreglos (claves y valores) y devuelva un Map
+2. Crea una función que use un Map para contar cuántas veces aparece cada número en
+un arreglo
+3. Crea una función que reciba un Map y devuelva otro con claves y valores intercambiados
+4. Crea una función que reciba un objeto persona con al menos 3 propiedades y cambie el
+valor de la propiedad ciudadResidencia
+5. Crea una función que reciba un objeto, que recorra todas sus propiedades mostrándolas
+en consola y que devuelva cuántas propiedades tiene
+6. Crea una clase EquipoFutbol con propiedades nombre y ciudad, constructor y un método
+saludar()
+7. Crea una clase CuentaBancaria con titular y saldo, y métodos para depositar y retirar
+8. Crear la clase base Persona con 3 propiedades y constructor. Crear las clases hijas
+Estudiante y Profesor que heredan de Persona y aumentar al menos 2 propiedades y 2
+métodos diferentes a cada una. Crear un objeto de cada clase y probarlos. Crear un
+array con un objeto de cada una y una función para mostrar cada elemento usando
+toString
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+Ejercicios
+9. Crear un documento HTML con tres párrafos. Usar JavaScript para seleccionar:
+– El primer párrafo por su id
+– Todos los párrafos por su etiqueta
+– Todos los elementos con una clase común
+– Muestra cada selección en la consola
+10. Selecciona un elemento <h1> y cambia su texto a "DOM modificado con JavaScript"
+Luego, cambia su color y tamaño de fuente usando propiedades tipo CSS desde JS
+11. Mediante JavaScript, crea una lista <ul> con tres elementos <li>
+Luego agrega un cuarto elemento dinámicamente y elimina el segundo elemento
+12. Selecciona un contenedor <div> y muestra en consola:
+Su elemento padre, su primer hijo, su último hijo, Y la lista de todos sus nodos hijos
+
+Ing. Marco Aedo López
+
+EPIS – UNSA
+
+2025
+
+

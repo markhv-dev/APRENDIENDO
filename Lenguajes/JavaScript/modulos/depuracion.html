@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depuración en JavaScript - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
+    <link rel="stylesheet" href="/assets/css/glosario.css">
+    <link rel="stylesheet" href="/assets/css/toc.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a JavaScript</a>
+        <span class="icon">🐛</span>
+        <h1>Módulo 11: Depuración en JavaScript</h1>
+        <p class="subtitle">Herramientas y técnicas para encontrar y corregir errores</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(241, 196, 15, 0.1) 0%, rgba(241, 196, 15, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #f1c40f; margin-bottom: 40px;">
+                <h2 style="color: #f1c40f; margin-bottom: 15px; font-size: 1.8em;">
+                    🐛 Depuración en JavaScript
+                </h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    La depuración es el proceso de identificar y corregir errores en el código. JavaScript proporciona varias herramientas y técnicas para facilitar este proceso, desde el simple console.log hasta el uso avanzado de debugger y DevTools.
+                </p>
+                <div style="background: rgba(0, 0, 0, 0.3); padding: 20px; border-radius: 8px; border: 1px solid rgba(241, 196, 15, 0.3);">
+                    <h3 style="color: #f1c40f; margin-bottom: 12px; font-size: 1.1em;">🔍 Contenido del módulo:</h3>
+                    <ul style="list-style: none; padding-left: 0; line-height: 2;">
+                        <li style="color: #b0b0b0;">✓ Objeto console y sus métodos</li>
+                        <li style="color: #b0b0b0;">✓ Declaración debugger</li>
+                        <li style="color: #b0b0b0;">✓ DevTools del navegador</li>
+                        <li style="color: #b0b0b0;">✓ Breakpoints y paso a paso</li>
+                        <li style="color: #b0b0b0;">✓ Tipos de errores comunes</li>
+                        <li style="color: #b0b0b0;">✓ Buenas prácticas de depuración</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="console" class="topic-section">
+                <h2>🖥️ Objeto Console</h2>
+                <p>El objeto console proporciona acceso a la consola del navegador para mostrar información de depuración:</p>
+
+                <div id="consoleContainer">
+                    <div class="termino" data-tags="console log imprimir depurar">
+                        <span class="tag">console.log()</span>
+                        <p class="significado">Método: Mostrar mensaje en consola</p>
+                        <p class="descripcion">
+                            Imprime un mensaje en la consola del navegador. Es la forma más común y básica de depurar código.
+                            Acepta múltiples argumentos separados por comas y puede mostrar cualquier tipo de dato.
+                        </p>
+                        <div class="ejemplo">
+// Mensajes simples
+console.log("Hola Mundo");
+
+// Múltiples valores
+console.log("El valor de x es:", x);
+
+// Objetos y arrays
+console.log("Usuario:", { nombre: "Ana", edad: 25 });
+
+// Template strings
+console.log(`La suma es: ${a + b}`);
+                        </div>
+                        <div class="nota">
+                            <strong>Tip:</strong> Usa etiquetas descriptivas para identificar tus logs:<br>
+                            console.log("🔍 DEBUG - valor de x:", x);
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="console error rojo depurar">
+                        <span class="tag">console.error()</span>
+                        <p class="significado">Método: Mostrar error en consola</p>
+                        <p class="descripcion">
+                            Muestra un mensaje de error en la consola con formato rojo y un icono de error.
+                            Útil para registrar errores y condiciones excepcionales.
+                        </p>
+                        <div class="ejemplo">
+if (edad < 0) {
+    console.error("❌ Error: La edad no puede ser negativa");
+}
+
+try {
+    // código que puede fallar
+} catch (error) {
+    console.error("Error capturado:", error);
+}
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="console warn warning advertencia amarillo">
+                        <span class="tag">console.warn()</span>
+                        <p class="significado">Método: Mostrar advertencia</p>
+                        <p class="descripcion">
+                            Muestra un mensaje de advertencia en la consola con formato amarillo y un icono de advertencia.
+                            Se usa para indicar situaciones que no son errores pero requieren atención.
+                        </p>
+                        <div class="ejemplo">
+if (!usuario.email) {
+    console.warn("⚠️ Advertencia: El usuario no tiene email");
+}
+
+// Advertir sobre funciones deprecadas
+console.warn("Esta función está deprecada, usa newFunction()");
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="console table tabla datos array objeto">
+                        <span class="tag">console.table()</span>
+                        <p class="significado">Método: Mostrar datos en tabla</p>
+                        <p class="descripcion">
+                            Muestra arrays y objetos en formato de tabla, facilitando la visualización de datos estructurados.
+                            Especialmente útil para arrays de objetos.
+                        </p>
+                        <div class="ejemplo">
+const usuarios = [
+    { nombre: "Ana", edad: 25, ciudad: "Lima" },
+    { nombre: "Juan", edad: 30, ciudad: "Arequipa" },
+    { nombre: "María", edad: 28, ciudad: "Cusco" }
+];
+
+console.table(usuarios);
+
+// También funciona con objetos
+const persona = { nombre: "Pedro", edad: 35, profesion: "Ingeniero" };
+console.table(persona);
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="console group agrupar colapsar expandir">
+                        <span class="tag">console.group()</span>
+                        <p class="significado">Método: Agrupar mensajes</p>
+                        <p class="descripcion">
+                            Crea un grupo de mensajes en la consola que se puede expandir o colapsar.
+                            Útil para organizar información relacionada.
+                        </p>
+                        <div class="ejemplo">
+console.group("Información del usuario");
+console.log("Nombre:", usuario.nombre);
+console.log("Email:", usuario.email);
+console.log("Edad:", usuario.edad);
+console.groupEnd();
+
+// Grupo colapsado por defecto
+console.groupCollapsed("Detalles técnicos");
+console.log("Navegador:", navigator.userAgent);
+console.log("Resolución:", window.screen.width + "x" + window.screen.height);
+console.groupEnd();
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="console time tiempo rendimiento performance">
+                        <span class="tag">console.time()</span>
+                        <p class="significado">Método: Medir tiempo de ejecución</p>
+                        <p class="descripcion">
+                            Inicia un temporizador con un nombre específico. Se combina con console.timeEnd() para medir
+                            cuánto tiempo tarda en ejecutarse un bloque de código.
+                        </p>
+                        <div class="ejemplo">
+console.time("Búsqueda en array");
+
+// Código a medir
+const resultado = array.find(item => item.id === 12345);
+
+console.timeEnd("Búsqueda en array");
+// Salida: Búsqueda en array: 0.234ms
+
+// Múltiples temporizadores
+console.time("Operación completa");
+console.time("Parte 1");
+// ... código ...
+console.timeEnd("Parte 1");
+console.time("Parte 2");
+// ... código ...
+console.timeEnd("Parte 2");
+console.timeEnd("Operación completa");
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="console count contador veces llamadas">
+                        <span class="tag">console.count()</span>
+                        <p class="significado">Método: Contar llamadas</p>
+                        <p class="descripcion">
+                            Cuenta cuántas veces se ha llamado con la misma etiqueta.
+                            Útil para rastrear cuántas veces se ejecuta una función o bloque de código.
+                        </p>
+                        <div class="ejemplo">
+function procesarDato(dato) {
+    console.count("Procesamiento");
+    // ... lógica ...
+}
+
+procesarDato(1); // Procesamiento: 1
+procesarDato(2); // Procesamiento: 2
+procesarDato(3); // Procesamiento: 3
+
+// Reiniciar contador
+console.countReset("Procesamiento");
+procesarDato(4); // Procesamiento: 1
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="console clear limpiar consola borrar">
+                        <span class="tag">console.clear()</span>
+                        <p class="significado">Método: Limpiar consola</p>
+                        <p class="descripcion">
+                            Limpia todos los mensajes de la consola. Útil cuando tienes muchos logs y quieres empezar limpio.
+                        </p>
+                        <div class="ejemplo">
+console.log("Mensaje 1");
+console.log("Mensaje 2");
+console.clear(); // Limpia la consola
+console.log("Consola limpia - Nuevo inicio");
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="debugger" class="topic-section">
+                <h2>⏸️ Declaración debugger</h2>
+                <p>La palabra clave debugger pausa la ejecución del código en ese punto:</p>
+
+                <div id="debuggerContainer">
+                    <div class="termino" style="background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(231, 76, 60, 0.05)); border-left: 4px solid #e74c3c;" data-tags="debugger breakpoint pausar detener">
+                        <span class="tag" style="background: #e74c3c;">debugger</span>
+                        <p class="significado">Declaración: Punto de interrupción</p>
+                        <p class="descripcion">
+                            Detiene la ejecución del código y abre las herramientas de desarrollo (DevTools) en ese punto,
+                            permitiendo inspeccionar variables, el call stack y ejecutar código paso a paso.
+                            Solo funciona cuando las DevTools están abiertas.
+                        </p>
+                        <div class="ejemplo">
+function calcularTotal(items) {
+    let total = 0;
+
+    debugger; // Pausa aquí cuando DevTools está abierto
+
+    for (let item of items) {
+        total += item.precio * item.cantidad;
+    }
+
+    return total;
+}
+
+// Uso condicional
+function procesarDatos(datos) {
+    if (datos.length > 1000) {
+        debugger; // Solo pausar si hay muchos datos
+    }
+    // ... resto del código ...
+}
+                        </div>
+                        <div class="nota">
+                            <strong>⚠️ Importante:</strong><br>
+                            • Funciona solo con DevTools abierto<br>
+                            • Eliminar debugger en producción<br>
+                            • Alternativa: usar breakpoints desde DevTools
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="devtools" class="topic-section">
+                <h2>🔧 DevTools del Navegador</h2>
+                <p>Las herramientas de desarrollo del navegador son esenciales para depurar JavaScript:</p>
+
+                <div id="devtoolsContainer">
+                    <div class="termino" style="background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(52, 152, 219, 0.05)); border-left: 4px solid #3498db;" data-tags="devtools f12 inspector elementos">
+                        <span class="tag" style="background: #3498db;">Abrir DevTools</span>
+                        <p class="significado">Atajos de teclado</p>
+                        <p class="descripcion">
+                            Cómo abrir las herramientas de desarrollo en diferentes navegadores.
+                        </p>
+                        <div class="nota">
+                            <strong>Atajos principales:</strong><br>
+                            • <strong>F12</strong> - Abre DevTools (todos los navegadores)<br>
+                            • <strong>Ctrl + Shift + I</strong> (Windows/Linux) - Abre DevTools<br>
+                            • <strong>Cmd + Option + I</strong> (Mac) - Abre DevTools<br>
+                            • <strong>Ctrl + Shift + J</strong> - Abre directamente la consola<br>
+                            • <strong>Ctrl + Shift + C</strong> - Activa inspector de elementos
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="breakpoint punto interrupcion pausar">
+                        <span class="tag">Breakpoints</span>
+                        <p class="significado">Puntos de interrupción</p>
+                        <p class="descripcion">
+                            Los breakpoints permiten pausar la ejecución en líneas específicas del código.
+                            Se establecen haciendo clic en el número de línea en la pestaña Sources de DevTools.
+                        </p>
+                        <div class="nota">
+                            <strong>Tipos de breakpoints:</strong><br>
+                            • <strong>Line breakpoint</strong> - Pausa en una línea específica<br>
+                            • <strong>Conditional breakpoint</strong> - Pausa solo si se cumple una condición<br>
+                            • <strong>Logpoint</strong> - Imprime un mensaje sin pausar<br>
+                            • <strong>DOM breakpoint</strong> - Pausa cuando cambia un elemento<br>
+                            • <strong>Event listener breakpoint</strong> - Pausa en eventos específicos
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="step over into out continue paso">
+                        <span class="tag">Controles de ejecución</span>
+                        <p class="significado">Navegación paso a paso</p>
+                        <p class="descripcion">
+                            Una vez pausado en un breakpoint, puedes controlar la ejecución línea por línea.
+                        </p>
+                        <div class="nota">
+                            <strong>Controles principales:</strong><br>
+                            • <strong>Resume (F8)</strong> - Continuar hasta el siguiente breakpoint<br>
+                            • <strong>Step Over (F10)</strong> - Ejecutar la línea actual (sin entrar en funciones)<br>
+                            • <strong>Step Into (F11)</strong> - Entrar dentro de la función actual<br>
+                            • <strong>Step Out (Shift+F11)</strong> - Salir de la función actual<br>
+                            • <strong>Step</strong> - Ejecutar la siguiente instrucción
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="watch variables scope alcance">
+                        <span class="tag">Panel de Variables</span>
+                        <p class="significado">Inspección de estado</p>
+                        <p class="descripcion">
+                            Mientras el código está pausado, puedes inspeccionar el valor de todas las variables.
+                        </p>
+                        <div class="nota">
+                            <strong>Paneles útiles:</strong><br>
+                            • <strong>Watch</strong> - Observar expresiones personalizadas<br>
+                            • <strong>Scope</strong> - Variables locales y globales<br>
+                            • <strong>Call Stack</strong> - Cadena de llamadas de funciones<br>
+                            • <strong>Console</strong> - Ejecutar código en el contexto actual
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="sources pestaña archivos codigo">
+                        <span class="tag">Pestaña Sources</span>
+                        <p class="significado">Código fuente</p>
+                        <p class="descripcion">
+                            La pestaña Sources muestra todos los archivos JavaScript cargados y permite establecer breakpoints.
+                        </p>
+                        <div class="nota">
+                            <strong>Funciones principales:</strong><br>
+                            • Ver y navegar por archivos JavaScript<br>
+                            • Establecer breakpoints (clic en número de línea)<br>
+                            • Editar y guardar cambios temporalmente<br>
+                            • Ver código minificado en formato legible (Pretty print)<br>
+                            • Buscar en todos los archivos (Ctrl+Shift+F)
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="errores" class="topic-section">
+                <h2>❌ Tipos de Errores Comunes</h2>
+                <p>Conocer los tipos de errores más comunes ayuda a identificarlos y corregirlos más rápido:</p>
+
+                <div id="erroresContainer">
+                    <div class="termino" style="background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(231, 76, 60, 0.05)); border-left: 4px solid #e74c3c;" data-tags="syntaxerror sintaxis error">
+                        <span class="tag" style="background: #e74c3c;">SyntaxError</span>
+                        <p class="significado">Error de sintaxis</p>
+                        <p class="descripcion">
+                            Ocurre cuando el código no cumple con las reglas de sintaxis de JavaScript.
+                            El código no se ejecuta en absoluto.
+                        </p>
+                        <div class="ejemplo">
+// ❌ Error: falta cerrar paréntesis
+function suma(a, b {
+    return a + b;
+}
+
+// ❌ Error: falta cerrar comillas
+const mensaje = "Hola mundo;
+
+// ❌ Error: palabra clave mal escrita
+consst x = 10;
+
+// ✅ Correcto
+function suma(a, b) {
+    return a + b;
+}
+                        </div>
+                    </div>
+
+                    <div class="termino" style="background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(231, 76, 60, 0.05)); border-left: 4px solid #e74c3c;" data-tags="referenceerror referencia undefined">
+                        <span class="tag" style="background: #e74c3c;">ReferenceError</span>
+                        <p class="significado">Error de referencia</p>
+                        <p class="descripcion">
+                            Ocurre cuando intentas acceder a una variable que no existe o no ha sido declarada.
+                        </p>
+                        <div class="ejemplo">
+// ❌ Error: variable no declarada
+console.log(nombre); // ReferenceError: nombre is not defined
+
+// ❌ Error: variable fuera de alcance
+{
+    let x = 10;
+}
+console.log(x); // ReferenceError: x is not defined
+
+// ✅ Correcto: declarar antes de usar
+let nombre = "Ana";
+console.log(nombre);
+                        </div>
+                    </div>
+
+                    <div class="termino" style="background: linear-gradient(135deg, rgba(231, 76, 60, 0.1), rgba(231, 76, 60, 0.05)); border-left: 4px solid #e74c3c;" data-tags="typeerror tipo metodo funcion">
+                        <span class="tag" style="background: #e74c3c;">TypeError</span>
+                        <p class="significado">Error de tipo</p>
+                        <p class="descripcion">
+                            Ocurre cuando una operación se realiza sobre un tipo de dato incorrecto,
+                            o cuando intentas llamar algo que no es una función.
+                        </p>
+                        <div class="ejemplo">
+// ❌ Error: null no tiene propiedades
+let usuario = null;
+console.log(usuario.nombre); // TypeError: Cannot read property 'nombre' of null
+
+// ❌ Error: no es una función
+let numero = 42;
+numero(); // TypeError: numero is not a function
+
+// ❌ Error: método no existe
+let texto = "hola";
+texto.push("mundo"); // TypeError: texto.push is not a function
+
+// ✅ Correcto: verificar antes de acceder
+if (usuario !== null) {
+    console.log(usuario.nombre);
+}
+                        </div>
+                    </div>
+
+                    <div class="termino" data-tags="rangeerror rango limite array">
+                        <span class="tag">RangeError</span>
+                        <p class="significado">Error de rango</p>
+                        <p class="descripcion">
+                            Ocurre cuando un valor numérico está fuera del rango permitido.
+                        </p>
+                        <div class="ejemplo">
+// ❌ Error: recursión infinita
+function infinita() {
+    infinita(); // RangeError: Maximum call stack size exceeded
+}
+
+// ❌ Error: array demasiado grande
+const arr = new Array(-1); // RangeError: Invalid array length
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="buenas-practicas" class="topic-section">
+                <h2>✨ Buenas Prácticas de Depuración</h2>
+                <p>Consejos para depurar código de forma efectiva:</p>
+
+                <div id="practicasContainer">
+                    <div class="termino" style="background: linear-gradient(135deg, rgba(46, 204, 113, 0.1), rgba(46, 204, 113, 0.05)); border-left: 4px solid #2ecc71;" data-tags="mejores practicas tips consejos">
+                        <span class="tag" style="background: #2ecc71;">💡 Tips de Depuración</span>
+                        <div class="nota" style="background: rgba(46, 204, 113, 0.15); padding: 20px; border-radius: 8px;">
+                            <strong>1. Usa console.log estratégicamente:</strong><br>
+                            • Agrega etiquetas descriptivas: console.log("🔍 Valor de x:", x)<br>
+                            • Incluye el contexto: console.log("En función calcular, x =", x)<br>
+                            • Usa console.table() para arrays de objetos<br><br>
+
+                            <strong>2. Lee los mensajes de error completos:</strong><br>
+                            • El tipo de error te dice qué salió mal<br>
+                            • El stack trace muestra dónde ocurrió<br>
+                            • El número de línea te lleva directo al problema<br><br>
+
+                            <strong>3. Divide y conquista:</strong><br>
+                            • Comenta bloques de código para aislar el problema<br>
+                            • Prueba funciones individuales por separado<br>
+                            • Simplifica el código al mínimo que reproduce el error<br><br>
+
+                            <strong>4. Usa breakpoints en lugar de muchos console.log:</strong><br>
+                            • Más eficiente que llenar el código de logs<br>
+                            • Permite inspeccionar el estado completo<br>
+                            • Puedes modificar variables en tiempo real<br><br>
+
+                            <strong>5. Verifica tus suposiciones:</strong><br>
+                            • No asumas que una variable tiene cierto valor<br>
+                            • Verifica tipos de datos: typeof variable<br>
+                            • Comprueba que las funciones retornan lo esperado<br><br>
+
+                            <strong>6. Busca errores comunes:</strong><br>
+                            • Comparación (==) vs asignación (=)<br>
+                            • Olvidar return en funciones<br>
+                            • Scope de variables (let vs var)<br>
+                            • Callback asíncronos que no esperan<br><br>
+
+                            <strong>7. Usa try-catch para errores esperados:</strong><br>
+                            • Maneja errores de forma controlada<br>
+                            • Muestra mensajes útiles al usuario<br>
+                            • Registra errores para análisis posterior
+                        </div>
+                    </div>
+
+                    <div class="termino" style="background: linear-gradient(135deg, rgba(155, 89, 182, 0.1), rgba(155, 89, 182, 0.05)); border-left: 4px solid #9b59b6;" data-tags="examen importante critico">
+                        <span class="tag" style="background: #9b59b6;">💡 Para el Examen</span>
+                        <p class="significado">Conceptos Clave a Memorizar</p>
+                        <div class="nota" style="background: rgba(155, 89, 182, 0.15); padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                            <h3 style="color: #9b59b6; margin-bottom: 15px;">⭐ CRÍTICO para el examen:</h3>
+
+                            <strong style="font-size: 1.1em;">Console básico:</strong><br>
+                            ✓ <strong>console.log()</strong> - Imprimir mensajes<br>
+                            ✓ <strong>console.error()</strong> - Mostrar errores (rojo)<br>
+                            ✓ <strong>console.warn()</strong> - Mostrar advertencias (amarillo)<br>
+                            ✓ <strong>console.table()</strong> - Mostrar datos en tabla<br><br>
+
+                            <strong style="font-size: 1.1em;">Depuración avanzada:</strong><br>
+                            ✓ <strong>debugger</strong> - Pausar ejecución (solo si DevTools abierto)<br>
+                            ✓ <strong>Breakpoints</strong> - Puntos de interrupción en DevTools<br>
+                            ✓ <strong>F12</strong> - Abrir DevTools<br><br>
+
+                            <strong style="font-size: 1.1em;">Tipos de errores:</strong><br>
+                            ✓ <strong>SyntaxError</strong> - Error de sintaxis (código no válido)<br>
+                            ✓ <strong>ReferenceError</strong> - Variable no definida<br>
+                            ✓ <strong>TypeError</strong> - Operación en tipo incorrecto<br><br>
+
+                            <strong style="font-size: 1.1em; color: #f39c12;">Más común en exámenes:</strong><br>
+                            🔑 Saber usar <strong>console.log()</strong> para depurar<br>
+                            🔑 Identificar tipos de errores por su nombre<br>
+                            🔑 Saber que <strong>debugger</strong> pausa la ejecución
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">🐛 Depuración JavaScript</div>
+
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">🐛 Introducción</a></li>
+                    <li class="toc-item"><a href="#console" class="toc-link">🖥️ Objeto Console</a></li>
+                    <li class="toc-item"><a href="#debugger" class="toc-link">⏸️ Debugger</a></li>
+                    <li class="toc-item"><a href="#devtools" class="toc-link">🔧 DevTools</a></li>
+                    <li class="toc-item"><a href="#errores" class="toc-link">❌ Tipos de Errores</a></li>
+                    <li class="toc-item"><a href="#buenas-practicas" class="toc-link">✨ Buenas Prácticas</a></li>
+                </ul>
+            </nav>
+
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>Módulo 11: Depuración en JavaScript | <a href="../index.html">Volver a JavaScript</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script>
+        // Funcionalidad de búsqueda
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const containers = ['consoleContainer', 'debuggerContainer', 'devtoolsContainer', 'erroresContainer', 'practicasContainer'];
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+
+                containers.forEach(containerId => {
+                    const container = document.getElementById(containerId);
+                    if (!container) return;
+
+                    const terminos = container.querySelectorAll('.termino');
+
+                    terminos.forEach(termino => {
+                        const tag = termino.querySelector('.tag')?.textContent.toLowerCase() || '';
+                        const significado = termino.querySelector('.significado')?.textContent.toLowerCase() || '';
+                        const descripcion = termino.querySelector('.descripcion')?.textContent.toLowerCase() || '';
+                        const tags = termino.getAttribute('data-tags')?.toLowerCase() || '';
+
+                        const matches = tag.includes(searchTerm) ||
+                                      significado.includes(searchTerm) ||
+                                      descripcion.includes(searchTerm) ||
+                                      tags.includes(searchTerm);
+
+                        termino.style.display = matches || searchTerm === '' ? 'block' : 'none';
+                    });
+                });
+            });
+
+            // Barra de progreso
+            const progressBar = document.getElementById('tocProgressBar');
+            if (progressBar) {
+                window.addEventListener('scroll', () => {
+                    const windowHeight = window.innerHeight;
+                    const documentHeight = document.documentElement.scrollHeight - windowHeight;
+                    const scrolled = window.scrollY;
+                    const progress = (scrolled / documentHeight) * 100;
+                    progressBar.style.width = `${Math.min(progress, 100)}%`;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
