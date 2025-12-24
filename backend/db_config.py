@@ -83,16 +83,15 @@ def verificar_credenciales(username: str, password: str) -> Optional[Dict]:
 
         # Consultar usuario
         query = """
-            SELECT id, username, password, email, nombre_completo, rol, activo
+            SELECT id, username, password, email, nombre_completo, rol
             FROM usuarios
-            WHERE username = %s AND activo = TRUE
+            WHERE username = %s
         """
         cursor.execute(query, (username,))
         usuario = cursor.fetchone()
 
         if usuario and usuario['password'] == password:
             # Actualizar último acceso
-            update_query = "UPDATE usuarios SET ultimo_acceso = NOW() WHERE id = %s"
             cursor.execute(update_query, (usuario['id'],))
             connection.commit()
 
@@ -128,16 +127,15 @@ def verificar_credenciales_por_email(email: str, password: str) -> Optional[Dict
 
         # Consultar usuario por email
         query = """
-            SELECT id, username, password, email, nombre_completo, rol, activo
+            SELECT id, username, password, email, nombre_completo, rol
             FROM usuarios
-            WHERE email = %s AND activo = TRUE
+            WHERE email = %s
         """
         cursor.execute(query, (email,))
         usuario = cursor.fetchone()
 
         if usuario and usuario['password'] == password:
             # Actualizar último acceso
-            update_query = "UPDATE usuarios SET ultimo_acceso = NOW() WHERE id = %s"
             cursor.execute(update_query, (usuario['id'],))
             connection.commit()
 
@@ -253,7 +251,7 @@ def verificar_sesion(token: str) -> Optional[Dict]:
             SELECT s.*, u.username, u.email, u.rol
             FROM sesiones s
             JOIN usuarios u ON s.usuario_id = u.id
-            WHERE s.session_token = %s AND s.expires_at > NOW() AND u.activo = TRUE
+            WHERE s.session_token = %s AND s.expires_at > NOW()
         """
         cursor.execute(query, (token,))
         return cursor.fetchone()
