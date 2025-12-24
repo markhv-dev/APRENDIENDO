@@ -13,22 +13,7 @@
 
 ---
 
-## DATOS PARA DUTIC
-
-### Nombre del Proyecto
-Sistema APRENDIENDO - Plataforma Educativa de Desarrollo Web
-
-### URL del Repositorio GitHub
-```
-https://github.com/markhv-dev/APRENDIENDO
-```
-
-### URL del Proyecto Hospedado
-```
-https://markhvdev.pythonanywhere.com
-```
-
-### Descripción del Sistema
+## DESCRIPCIÓN
 
 Sistema web integral desarrollado como trabajo final del curso de Desarrollo Web, que implementa una plataforma educativa completa para el aprendizaje de tecnologías de desarrollo web. El proyecto integra un frontend moderno con diseño dark theme responsivo, backend desarrollado en Python puro sin frameworks externos, y base de datos MySQL con arquitectura relacional de 3 tablas.
 
@@ -39,9 +24,10 @@ El sistema incluye las siguientes funcionalidades principales:
 - Navegación dinámica mediante sidebar colapsable
 - Más de 100 páginas de contenido educativo organizado en módulos temáticos sobre HTML5, CSS3, JavaScript y Python
 
-### Tecnologías Implementadas
+**Repositorio:** https://github.com/markhv-dev/APRENDIENDO
+**Demo:** https://markhvdev.pythonanywhere.com
 
-El proyecto cumple con los requisitos técnicos establecidos, utilizando las siguientes tecnologías:
+## TECNOLOGÍAS
 
 | Tecnología | Descripción de Uso |
 |------------|-------------------|
@@ -50,28 +36,6 @@ El proyecto cumple con los requisitos técnicos establecidos, utilizando las sig
 | **JavaScript (ES6+)** | Fetch API para comunicación asíncrona, manipulación del DOM, validación de formularios |
 | **Python 3.x** | Backend con módulo http.server, routing manual, autenticación de usuarios |
 | **SQL (MySQL)** | Base de datos relacional con 3 tablas, operaciones CRUD completas |
-
----
-
-## CUMPLIMIENTO DE REQUISITOS
-
-### Requisitos del Frontend
-- Mínimo 5 páginas HTML con estructura semántica
-- CSS3 con layouts responsive (Flexbox y Grid)
-- JavaScript para interactividad y validación
-- Diseño profesional y consistente
-
-### Requisitos del Backend
-- Servidor Python sin frameworks externos (http.server)
-- Manejo de rutas GET y POST
-- Procesamiento de formularios
-- Autenticación de usuarios
-
-### Requisitos de Base de Datos
-- MySQL con mínimo 3 tablas relacionadas
-- Operaciones CRUD implementadas
-- Integridad referencial mediante Foreign Keys
-- Almacenamiento persistente de datos
 
 ---
 
@@ -359,19 +323,6 @@ El proyecto se encuentra desplegado en PythonAnywhere, plataforma de hosting par
 
 ---
 
-## ESTADÍSTICAS DEL PROYECTO
-
-- **Líneas de código HTML**: ~3,500
-- **Líneas de código CSS**: ~2,000
-- **Líneas de código JavaScript**: ~1,200
-- **Líneas de código Python**: ~800
-- **Líneas de código SQL**: ~150
-- **Total de páginas**: 100+
-- **Total de módulos educativos**: 41
-- **Tiempo de desarrollo**: 4 semanas
-
----
-
 ## SOLUCIÓN DE PROBLEMAS
 
 ### Error: "Error al conectar a base de datos"
@@ -411,81 +362,3 @@ pip install mysql-connector-python
 ```
 
 ---
-
-## TRABAJO FUTURO
-
-Mejoras potenciales para versiones futuras del sistema:
-
-- [ ] Implementación de recuperación de contraseña mediante email
-- [ ] Sistema de roles avanzado (administrador, moderador, usuario estándar)
-- [ ] Dashboard con estadísticas y gráficos analíticos
-- [ ] API REST completa con documentación Swagger/OpenAPI
-- [ ] Suite de tests automatizados (unittest, pytest, selenium)
-- [ ] Integración con Redis para caché y sesiones
-- [ ] Sistema de notificaciones en tiempo real con WebSockets
-- [ ] Migración a framework Django o Flask completo
-- [ ] Implementación de CI/CD con GitHub Actions
-- [ ] Containerización con Docker para deployment simplificado
-
----
-
-## REFERENCIAS BIBLIOGRÁFICAS
-
-1. **Python Documentation** - https://docs.python.org/3/
-2. **MySQL Documentation** - https://dev.mysql.com/doc/
-3. **MDN Web Docs** - https://developer.mozilla.org/
-4. **W3C HTML5 Specification** - https://www.w3.org/TR/html52/
-5. **OWASP Security Guidelines** - https://owasp.org/
-6. **PythonAnywhere Documentation** - https://help.pythonanywhere.com/
-
----
-
-## LICENCIA
-
-Este proyecto fue desarrollado exclusivamente como trabajo final para el curso de Desarrollo Web de la Universidad Nacional de San Agustín. El código se proporciona con fines educativos y de evaluación académica.
-
-**Restricciones de Uso**:
-- Uso educativo y académico permitido
-- Prohibida la distribución comercial
-- Se requiere atribución al autor original
-
----
-
-## INFORMACIÓN DEL AUTOR
-
-**Nombre**: Mark Harry Hancco Vargas
-**Email**: markhv509@gmail.com
-**GitHub**: https://github.com/markhv-dev
-**Universidad**: Universidad Nacional de San Agustín
-**Programa**: [Ingeniería de Sistemas / Ciencias de la Computación]
-**Curso**: Desarrollo Web
-**Docente**: Prof. Marco Wilfredo Aedo Lopez
-**Período Académico**: 2024-II
-
----
-
-## AGRADECIMIENTOS
-
-- **Prof. Marco Wilfredo Aedo Lopez** - Docente del curso de Desarrollo Web, por la orientación y conocimientos compartidos durante el desarrollo del proyecto
-- **Universidad Nacional de San Agustín** - Por proporcionar los recursos y el entorno académico necesario para el aprendizaje
-- **Comunidad de Desarrolladores** - Por la documentación, tutoriales y recursos open-source que facilitaron el desarrollo
-
----
-
-## CONTACTO
-
-Para consultas, sugerencias o reportes de errores relacionados con este proyecto:
-
-- **Email académico**: markhv509@gmail.com
-- **GitHub Issues**: https://github.com/markhv-dev/APRENDIENDO/issues
-- **LinkedIn**: [Perfil de LinkedIn]
-
----
-
-**Nota**: Este documento constituye la documentación oficial del proyecto para efectos de evaluación académica. Para documentación técnica detallada, consultar los comentarios en el código fuente y el archivo `schema.sql` de la base de datos.
-
----
-
-*Última actualización: Diciembre 2024*
-*Versión: 1.0.0*
-*Estado: Producción*
