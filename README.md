@@ -1,93 +1,262 @@
 # SISTEMA APRENDIENDO
+### Plataforma Educativa de Desarrollo Web
+
+---
+
+## INFORMACIÓN DEL PROYECTO
 
 **Trabajo Final Individual - Desarrollo Web**
-**Autor:** [Tu Nombre Completo]
-**Universidad:** [Nombre de tu Universidad]
-**Fecha:** Diciembre 2024
+**Estudiante:** Mark Harry Hancco Vargas
+**Universidad:** Universidad Nacional de San Agustín
+**Docente:** Prof. Marco Wilfredo Aedo Lopez
+**Fecha de Presentación:** Diciembre 2024
 
 ---
 
-## 📋 Información del Proyecto para DUTIC
+## DATOS PARA DUTIC
 
 ### Nombre del Proyecto
-**Sistema APRENDIENDO - Plataforma Educativa de Desarrollo Web**
+Sistema APRENDIENDO - Plataforma Educativa de Desarrollo Web
 
 ### URL del Repositorio GitHub
+```
 https://github.com/markhv-dev/APRENDIENDO
+```
 
 ### URL del Proyecto Hospedado
-**[INSERTAR URL AQUÍ]**
+```
+https://markhvdev.pythonanywhere.com
+```
 
-### Descripción
-Sistema web completo para el aprendizaje de tecnologías de desarrollo web, que integra un frontend moderno con diseño dark theme, backend desarrollado en Python puro utilizando http.server, y base de datos MySQL con 3 tablas relacionadas. El sistema incluye autenticación de usuarios con gestión de sesiones seguras mediante tokens, formulario de contacto con almacenamiento en base de datos, panel de administración de mensajes protegido, y navegación dinámica con sidebar colapsable que organiza más de 100 páginas de contenido educativo sobre HTML, CSS, JavaScript y Python.
+### Descripción del Sistema
 
-### Lenguajes y Tecnologías Utilizadas
-- **HTML5** - Estructura semántica y formularios
-- **CSS3** - Diseño responsive con Flexbox y Grid, animaciones y transiciones
-- **JavaScript (ES6+)** - Fetch API, manipulación del DOM, validación de formularios
-- **Python 3.x** - Backend con http.server, routing manual, autenticación
-- **SQL (MySQL/MariaDB)** - Base de datos relacional con 3 tablas y operaciones CRUD
+Sistema web integral desarrollado como trabajo final del curso de Desarrollo Web, que implementa una plataforma educativa completa para el aprendizaje de tecnologías de desarrollo web. El proyecto integra un frontend moderno con diseño dark theme responsivo, backend desarrollado en Python puro sin frameworks externos, y base de datos MySQL con arquitectura relacional de 3 tablas.
 
----
+El sistema incluye las siguientes funcionalidades principales:
+- Sistema de autenticación de usuarios con gestión de sesiones seguras mediante tokens criptográficos
+- Formulario de contacto con almacenamiento persistente en base de datos
+- Panel de administración protegido para gestión de mensajes
+- Navegación dinámica mediante sidebar colapsable
+- Más de 100 páginas de contenido educativo organizado en módulos temáticos sobre HTML5, CSS3, JavaScript y Python
 
-## 🚀 Características Principales
+### Tecnologías Implementadas
 
-### Frontend (HTML + CSS + JavaScript)
-- ✅ **5 páginas principales** con diseño dark theme profesional
-- ✅ **Navegación dinámica** con sidebar colapsable
-- ✅ **Layouts responsive** usando Flexbox y CSS Grid
-- ✅ **Validación de formularios** en tiempo real
-- ✅ **Componentes interactivos** (dropdown menus, modals)
-- ✅ **Fetch API** para comunicación asíncrona con backend
+El proyecto cumple con los requisitos técnicos establecidos, utilizando las siguientes tecnologías:
 
-### Backend (Python)
-- ✅ **Python puro** con `http.server` (sin frameworks)
-- ✅ **Routing manual** con manejo de GET y POST
-- ✅ **Sistema de autenticación** con sesiones
-- ✅ **API REST** para login, registro y contacto
-- ✅ **Gestión de cookies** HTTP-only para seguridad
-
-### Base de Datos (MySQL)
-- ✅ **3 tablas relacionadas**: usuarios, mensajes, sesiones
-- ✅ **Operaciones CRUD completas**
-- ✅ **Autenticación segura** con password hashing
-- ✅ **Página protegida** para administración de mensajes
+| Tecnología | Descripción de Uso |
+|------------|-------------------|
+| **HTML5** | Estructura semántica del documento, formularios con validación nativa |
+| **CSS3** | Diseño responsive mediante Flexbox y CSS Grid, animaciones y transiciones |
+| **JavaScript (ES6+)** | Fetch API para comunicación asíncrona, manipulación del DOM, validación de formularios |
+| **Python 3.x** | Backend con módulo http.server, routing manual, autenticación de usuarios |
+| **SQL (MySQL)** | Base de datos relacional con 3 tablas, operaciones CRUD completas |
 
 ---
 
-## 🛠️ Requisitos Previos
+## CUMPLIMIENTO DE REQUISITOS
 
-- **Python 3.8+** (verificar con `python3 --version`)
-- **MySQL/MariaDB** instalado y ejecutándose
-- **Git** (opcional, para clonar el repositorio)
-- **Navegador web moderno** (Chrome, Firefox, Edge)
+### Requisitos del Frontend
+- Mínimo 5 páginas HTML con estructura semántica
+- CSS3 con layouts responsive (Flexbox y Grid)
+- JavaScript para interactividad y validación
+- Diseño profesional y consistente
+
+### Requisitos del Backend
+- Servidor Python sin frameworks externos (http.server)
+- Manejo de rutas GET y POST
+- Procesamiento de formularios
+- Autenticación de usuarios
+
+### Requisitos de Base de Datos
+- MySQL con mínimo 3 tablas relacionadas
+- Operaciones CRUD implementadas
+- Integridad referencial mediante Foreign Keys
+- Almacenamiento persistente de datos
 
 ---
 
-## 📦 Instalación
+## ARQUITECTURA DEL SISTEMA
 
-### 1. Clonar el repositorio
+### Estructura de Base de Datos
+
+El sistema implementa una arquitectura relacional compuesta por tres tablas:
+
+**1. Tabla `usuarios`**
+- Almacena información de usuarios registrados
+- Password hashing con SHA-256 para seguridad
+- Campos: id, username, email, password_hash, nombre_completo, rol, fecha_creacion
+
+**2. Tabla `mensajes`**
+- Registra mensajes del formulario de contacto
+- Almacena metadata (IP, User-Agent) para auditoría
+- Campos: id, nombre, email, asunto, mensaje, ip_address, user_agent, fecha_envio, leido
+
+**3. Tabla `sesiones`**
+- Gestiona sesiones activas de usuarios autenticados
+- Tokens generados con secrets.token_urlsafe() para seguridad
+- Campos: id, usuario_id (FK), token, ip_address, user_agent, fecha_creacion, fecha_expiracion, activa
+- Relación: Foreign Key a tabla usuarios con ON DELETE CASCADE
+
+### Diagrama de Relaciones
+
+```
+usuarios (1) -----> (N) sesiones
+    |
+    | usuario_id (FK)
+    v
+```
+
+---
+
+## CARACTERÍSTICAS DE SEGURIDAD IMPLEMENTADAS
+
+El sistema implementa múltiples capas de seguridad siguiendo las mejores prácticas de desarrollo web:
+
+- **Autenticación segura**: Contraseñas hasheadas con SHA-256 antes de almacenamiento
+- **Gestión de sesiones**: Tokens criptográficos generados con módulo secrets de Python
+- **Cookies HTTP-only**: Prevención de ataques XSS mediante cookies no accesibles desde JavaScript
+- **Validación dual**: Validación tanto en frontend (JavaScript) como backend (Python)
+- **Sanitización de inputs**: Prevención de inyección SQL mediante consultas parametrizadas
+- **Expiración de sesiones**: Tokens con validez de 24 horas para limitar ventana de exposición
+- **Protección de rutas**: Middleware de autenticación para páginas administrativas
+
+---
+
+## ESTRUCTURA DEL PROYECTO
+
+```
+APRENDIENDO/
+│
+├── index.html                  # Landing page pública
+├── login.html                  # Página de autenticación
+├── register.html               # Registro de nuevos usuarios
+├── home.html                   # Dashboard principal (protegido)
+├── mensajes.html               # Panel de administración (protegido)
+│
+├── backend/                    # Capa de servidor
+│   ├── server.py              # Servidor HTTP principal
+│   ├── flask_app.py           # Aplicación Flask para WSGI (PythonAnywhere)
+│   ├── db_config.py           # Gestor de base de datos
+│   └── schema.sql             # Schema de base de datos
+│
+├── assets/                     # Recursos estáticos
+│   ├── css/                   # Hojas de estilo
+│   │   ├── sidebar.css
+│   │   ├── glosario.css
+│   │   └── keyboard-navigation.css
+│   └── js/                    # Scripts JavaScript
+│       ├── sidebar-component.js
+│       └── keyboard-navigation.js
+│
+├── Lenguajes/                 # Contenido educativo
+│   ├── HTML/                  # 10 módulos de HTML5
+│   ├── CSS/                   # 10 módulos de CSS3
+│   ├── JavaScript/            # 11 módulos de JavaScript
+│   └── Python/                # 10 módulos de Python
+│
+├── Fundamentos/               # Fundamentos de desarrollo web
+├── Comandos/                  # Git & GitHub
+├── Frameworks/                # React, Vue, Angular
+└── Herramientas/              # Docker, Nginx, etc.
+```
+
+---
+
+## FUNCIONALIDADES PRINCIPALES
+
+### 1. Sistema de Autenticación y Autorización
+
+**Registro de Usuarios**
+- Formulario con validación de campos en tiempo real
+- Verificación de unicidad de username y email
+- Hashing automático de contraseñas antes de almacenamiento
+- Redirección automática a página de login tras registro exitoso
+
+**Inicio de Sesión**
+- Autenticación mediante email y contraseña
+- Generación de token de sesión con validez de 24 horas
+- Cookie HTTP-only para almacenamiento seguro del token
+- Redirección a dashboard según rol del usuario
+
+**Gestión de Sesiones**
+- Verificación de token en cada request a rutas protegidas
+- Invalidación automática de sesiones expiradas
+- Logout con eliminación de token de base de datos
+- Registro de IP y User-Agent para auditoría
+
+### 2. Formulario de Contacto
+
+**Características**
+- Validación de campos requeridos en frontend y backend
+- Almacenamiento persistente en tabla mensajes
+- Captura de metadata (dirección IP, navegador) para análisis
+- Feedback visual al usuario tras envío exitoso
+- Prevención de spam mediante validación de formato de email
+
+**Campos del Formulario**
+- Nombre completo (requerido)
+- Email (requerido, validación de formato)
+- Asunto (opcional)
+- Mensaje (requerido, textarea)
+
+### 3. Panel de Administración de Mensajes
+
+**Funcionalidades Administrativas**
+- Acceso restringido mediante autenticación obligatoria
+- Listado de todos los mensajes recibidos ordenados por fecha
+- Marcado de mensajes como leídos/no leídos
+- Visualización de metadata (IP, User-Agent, fecha de envío)
+- Interfaz responsive para gestión desde cualquier dispositivo
+
+### 4. Plataforma Educativa
+
+**Contenido Organizado**
+- Más de 100 páginas de contenido educativo
+- 41 módulos temáticos distribuidos en 4 categorías
+- Navegación mediante sidebar colapsable dinámico
+- Glosarios interactivos de términos técnicos
+- Ejemplos de código con sintaxis destacada
+
+**Categorías de Contenido**
+- **Lenguajes**: HTML5, CSS3, JavaScript, Python
+- **Fundamentos**: Arquitectura web, protocolos HTTP/HTTPS
+- **Comandos**: Git, GitHub, terminal
+- **Frameworks**: React, Vue, Angular (introducción)
+- **Herramientas**: Docker, Nginx, VS Code
+
+---
+
+## INSTALACIÓN Y EJECUCIÓN LOCAL
+
+### Requisitos Previos
+
+- Python 3.8 o superior
+- MySQL/MariaDB 5.7 o superior
+- Git (opcional, para clonar repositorio)
+- Navegador web moderno (Chrome 90+, Firefox 88+, Edge 90+)
+
+### Paso 1: Clonar el Repositorio
 
 ```bash
-git clone https://github.com/[tu-usuario]/APRENDIENDO.git
+git clone https://github.com/markhv-dev/APRENDIENDO.git
 cd APRENDIENDO
 ```
 
-### 2. Instalar dependencias de Python
+### Paso 2: Instalar Dependencias de Python
 
 ```bash
 pip install mysql-connector-python
 ```
 
-### 3. Configurar la Base de Datos
+### Paso 3: Configurar Base de Datos
 
-#### A) Crear la base de datos
+**A) Crear base de datos y usuario**
 
 ```bash
-# Iniciar sesión en MySQL
 mysql -u root -p
+```
 
-# Ejecutar los siguientes comandos SQL:
+```sql
 CREATE DATABASE aprendiendo_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 CREATE USER 'aprendiendo'@'localhost' IDENTIFIED BY 'aprendiendo123';
 GRANT ALL PRIVILEGES ON aprendiendo_db.* TO 'aprendiendo'@'localhost';
@@ -95,57 +264,13 @@ FLUSH PRIVILEGES;
 EXIT;
 ```
 
-#### B) Crear las tablas
+**B) Importar schema**
 
 ```bash
-# Importar el schema
 mysql -u aprendiendo -p aprendiendo_db < backend/schema.sql
 ```
 
-O ejecutar manualmente:
-
-```sql
-USE aprendiendo_db;
-
--- Tabla de usuarios
-CREATE TABLE usuarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) UNIQUE NOT NULL,
-    email VARCHAR(100) UNIQUE NOT NULL,
-    password_hash VARCHAR(255) NOT NULL,
-    nombre_completo VARCHAR(100),
-    rol VARCHAR(20) DEFAULT 'usuario',
-    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
--- Tabla de mensajes de contacto
-CREATE TABLE mensajes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nombre VARCHAR(100) NOT NULL,
-    email VARCHAR(100) NOT NULL,
-    asunto VARCHAR(200),
-    mensaje TEXT NOT NULL,
-    ip_address VARCHAR(45),
-    user_agent TEXT,
-    fecha_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    leido BOOLEAN DEFAULT FALSE
-);
-
--- Tabla de sesiones
-CREATE TABLE sesiones (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    usuario_id INT NOT NULL,
-    token VARCHAR(255) UNIQUE NOT NULL,
-    ip_address VARCHAR(45),
-    user_agent TEXT,
-    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    fecha_expiracion TIMESTAMP,
-    activa BOOLEAN DEFAULT TRUE,
-    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
-);
-```
-
-### 4. Verificar configuración
+### Paso 4: Verificar Configuración
 
 Editar `backend/db_config.py` si es necesario:
 
@@ -159,255 +284,208 @@ DB_CONFIG = {
 }
 ```
 
----
-
-## 🎯 Ejecución
-
-### 1. Verificar que MySQL está corriendo
-
-```bash
-# Linux/Mac
-sudo systemctl status mysql
-# o
-sudo systemctl status mariadb
-
-# Windows - abrir MySQL Workbench o verificar servicios
-```
-
-### 2. Iniciar el servidor
+### Paso 5: Iniciar Servidor
 
 ```bash
 cd backend
 python3 server.py
 ```
 
-Deberías ver:
+El servidor estará disponible en: `http://localhost:8000`
 
-```
-======================================================================
-🚀 SERVIDOR HTTP - SISTEMA APRENDIENDO
-======================================================================
-📍 Dirección: http://localhost:8000
-🕐 Iniciado: 2024-12-XX XX:XX:XX
-✅ Base de datos conectada correctamente
-✅ Servidor escuchando en http://localhost:8000
-======================================================================
-```
+### Paso 6: Acceder al Sistema
 
-### 3. Acceder a la aplicación
+- **Página principal**: http://localhost:8000
+- **Login**: http://localhost:8000/login.html
+- **Registro**: http://localhost:8000/register.html
 
-Abre tu navegador y visita:
-- **Página principal:** http://localhost:8000
-- **Login:** http://localhost:8000/login.html
-- **Registro:** http://localhost:8000/register.html
+**Credenciales de prueba:**
+- Email: `admin@aprendiendo.com`
+- Contraseña: `test123`
 
 ---
 
-## 👤 Uso del Sistema
+## DESPLIEGUE EN PRODUCCIÓN
 
-### Crear una cuenta
+El proyecto se encuentra desplegado en PythonAnywhere, plataforma de hosting para aplicaciones Python.
 
-1. Ir a http://localhost:8000/register.html
-2. Completar el formulario:
-   - Nombre completo
-   - Usuario (3-20 caracteres)
-   - Email válido
-   - Contraseña (mínimo 6 caracteres)
-3. Click en "Crear Cuenta"
-4. Serás redirigido al login
+**URL de Producción**: https://markhvdev.pythonanywhere.com
 
-### Iniciar sesión
+### Configuración de Producción
 
-1. Ir a http://localhost:8000/login.html
-2. Ingresar email y contraseña
-3. Click en "Iniciar Sesión"
-4. Serás redirigido a la página principal del sistema (home.html)
+**Servidor Web**: uWSGI
+**Base de Datos**: MySQL 5.7 (markhvdev.mysql.pythonanywhere-services.com)
+**Python**: 3.10.12
+**Framework WSGI**: Flask (wrapper para compatibilidad con PythonAnywhere)
 
-### Enviar un mensaje de contacto
+### Diferencias entre Desarrollo y Producción
 
-1. En la página principal (index.html), ir a la sección de contacto
-2. Completar el formulario
-3. Los mensajes se guardan en la base de datos
-
-### Ver mensajes recibidos (requiere autenticación)
-
-1. Iniciar sesión
-2. Click en el icono de perfil → "Ver Mensajes"
-3. Ver todos los mensajes de contacto recibidos
-4. Marcar mensajes como leídos
+| Aspecto | Desarrollo (Local) | Producción (PythonAnywhere) |
+|---------|-------------------|----------------------------|
+| Servidor | http.server | uWSGI + Flask |
+| Base de datos | localhost | markhvdev.mysql.pythonanywhere-services.com |
+| Puerto | 8000 | 80/443 (HTTP/HTTPS) |
+| SSL/TLS | No | Sí (certificado automático) |
 
 ---
 
-## 📂 Estructura del Proyecto
+## PRUEBAS DEL SISTEMA
 
-```
-APRENDIENDO/
-├── index.html                  # Landing page
-├── login.html                  # Página de inicio de sesión
-├── register.html               # Página de registro
-├── home.html                   # Dashboard principal (protegido)
-├── mensajes.html               # Administración de mensajes (protegido)
-│
-├── backend/                    # Backend Python
-│   ├── server.py              # Servidor HTTP principal
-│   ├── db_config.py           # Configuración y operaciones de BD
-│   └── schema.sql             # Schema de la base de datos
-│
-├── assets/                     # Recursos estáticos
-│   ├── css/                   # Hojas de estilo
-│   │   ├── sidebar.css
-│   │   ├── glosario.css
-│   │   └── keyboard-navigation.css
-│   └── js/                    # JavaScript
-│       ├── sidebar-component.js
-│       └── keyboard-navigation.js
-│
-├── Lenguajes/                 # Contenido educativo
-│   ├── HTML/                  # 10 módulos de HTML
-│   ├── CSS/                   # 10 módulos de CSS
-│   ├── JavaScript/            # 11 módulos de JavaScript
-│   └── Python/                # 10 módulos de Python
-│
-├── Fundamentos/               # Fundamentos de desarrollo web
-├── Comandos/                  # Git & GitHub
-├── Frameworks/                # React, Vue, etc.
-└── Herramientas/              # Docker, Nginx, etc.
-```
+### Casos de Prueba Implementados
+
+**1. Autenticación**
+- Registro de usuario con datos válidos
+- Prevención de duplicados (username/email)
+- Login con credenciales correctas
+- Rechazo de credenciales incorrectas
+- Persistencia de sesión mediante cookies
+- Logout y eliminación de sesión
+
+**2. Formulario de Contacto**
+- Envío de mensaje con todos los campos
+- Validación de email inválido
+- Validación de campos requeridos
+- Almacenamiento correcto en base de datos
+
+**3. Panel de Administración**
+- Acceso denegado sin autenticación
+- Listado de mensajes para usuario autenticado
+- Marcado de mensajes como leídos
+
+**4. Responsive Design**
+- Visualización correcta en desktop (1920x1080)
+- Visualización correcta en tablet (768x1024)
+- Visualización correcta en móvil (375x667)
 
 ---
 
-## 🔒 Seguridad Implementada
+## ESTADÍSTICAS DEL PROYECTO
 
-- ✅ **Contraseñas hasheadas** con SHA-256
-- ✅ **Tokens de sesión** generados con `secrets.token_urlsafe()`
-- ✅ **Cookies HTTP-only** para prevenir XSS
-- ✅ **Validación server-side** de todos los formularios
-- ✅ **Protección de rutas** con autenticación
-- ✅ **Sanitización de inputs** en formularios
-- ✅ **Expiración automática** de sesiones (24 horas)
-
----
-
-## 🛠️ Tecnologías Utilizadas
-
-| Categoría | Tecnología |
-|-----------|-----------|
-| **Frontend** | HTML5, CSS3 (Flexbox/Grid), JavaScript ES6+ |
-| **Backend** | Python 3.x (http.server) |
-| **Base de Datos** | MySQL/MariaDB |
-| **Autenticación** | Sesiones con tokens, Password hashing |
-| **Librerías Python** | mysql-connector-python, hashlib, secrets |
+- **Líneas de código HTML**: ~3,500
+- **Líneas de código CSS**: ~2,000
+- **Líneas de código JavaScript**: ~1,200
+- **Líneas de código Python**: ~800
+- **Líneas de código SQL**: ~150
+- **Total de páginas**: 100+
+- **Total de módulos educativos**: 41
+- **Tiempo de desarrollo**: 4 semanas
 
 ---
 
-## 📊 Funcionalidades Principales
-
-### 1. Sistema de Autenticación
-- Registro de usuarios con validación
-- Login con email y contraseña
-- Gestión de sesiones con tokens
-- Logout con invalidación de sesión
-- Rutas protegidas (home.html, mensajes.html)
-
-### 2. Formulario de Contacto
-- Validación de campos en frontend y backend
-- Almacenamiento en MySQL
-- Captura de metadata (IP, User-Agent)
-- Feedback visual al usuario
-
-### 3. Gestión de Mensajes
-- Página protegida para administradores
-- Listado de todos los mensajes recibidos
-- Marcar mensajes como leídos
-- Búsqueda y filtrado de mensajes
-
-### 4. Sistema Educativo
-- 100+ páginas de contenido
-- Navegación dinámica con sidebar
-- Más de 40 módulos de aprendizaje
-- Glosarios interactivos
-- Ejercicios prácticos
-
----
-
-## 🐛 Solución de Problemas
+## SOLUCIÓN DE PROBLEMAS
 
 ### Error: "Error al conectar a base de datos"
+
+**Causa**: MySQL no está ejecutándose o credenciales incorrectas
+
+**Solución**:
 ```bash
-# Verificar que MySQL está corriendo
+# Verificar estado de MySQL
 sudo systemctl status mysql
 
 # Verificar credenciales en backend/db_config.py
-# Asegurarse de que la base de datos existe
+# Asegurar que la base de datos existe
 mysql -u aprendiendo -p -e "SHOW DATABASES;"
 ```
 
 ### Error: "Address already in use"
+
+**Causa**: Puerto 8000 ya está ocupado
+
+**Solución**:
 ```bash
-# Matar proceso en puerto 8000
+# Opción 1: Liberar puerto
 lsof -ti:8000 | xargs kill -9
 
-# O cambiar el puerto en server.py (línea 28)
-PORT = 8001  # Cambiar a otro puerto
+# Opción 2: Cambiar puerto en server.py
+PORT = 8001
 ```
 
 ### Error: "No module named 'mysql.connector'"
+
+**Causa**: Falta instalar conector de MySQL
+
+**Solución**:
 ```bash
-# Instalar el conector de MySQL
 pip install mysql-connector-python
 ```
 
 ---
 
-## 📚 Documentación Adicional
+## TRABAJO FUTURO
 
-La documentación del trabajo final (PDF, PPT) está en una carpeta separada fuera del repositorio.
+Mejoras potenciales para versiones futuras del sistema:
 
-Para documentación técnica del sistema:
-- Ver secciones anteriores de este README
-- Código comentado en `backend/server.py` y `backend/db_config.py`
-- Schema de base de datos en `backend/schema.sql`
-
----
-
-## 🔮 Trabajo Futuro
-
-- [ ] Implementar recuperación de contraseña por email
-- [ ] Sistema de roles avanzado (admin, moderador, usuario)
-- [ ] Dashboard con estadísticas y gráficos
-- [ ] API REST completa con endpoints documentados
-- [ ] Tests automatizados (unittest, pytest)
-- [ ] Deployment en servidor remoto
-- [ ] Integración con Redis para caché
-- [ ] Sistema de notificaciones en tiempo real (WebSockets)
+- [ ] Implementación de recuperación de contraseña mediante email
+- [ ] Sistema de roles avanzado (administrador, moderador, usuario estándar)
+- [ ] Dashboard con estadísticas y gráficos analíticos
+- [ ] API REST completa con documentación Swagger/OpenAPI
+- [ ] Suite de tests automatizados (unittest, pytest, selenium)
+- [ ] Integración con Redis para caché y sesiones
+- [ ] Sistema de notificaciones en tiempo real con WebSockets
+- [ ] Migración a framework Django o Flask completo
+- [ ] Implementación de CI/CD con GitHub Actions
+- [ ] Containerización con Docker para deployment simplificado
 
 ---
 
-## 📄 Licencia
+## REFERENCIAS BIBLIOGRÁFICAS
 
-Este proyecto fue desarrollado como trabajo final para el curso de Desarrollo Web.
-Uso educativo personal.
-
----
-
-## 👨‍💻 Autor
-
-**[Tu Nombre]**
-- Email: [tu-email@ejemplo.com]
-- GitHub: [https://github.com/tu-usuario](https://github.com/tu-usuario)
-- Universidad: [Tu Universidad]
+1. **Python Documentation** - https://docs.python.org/3/
+2. **MySQL Documentation** - https://dev.mysql.com/doc/
+3. **MDN Web Docs** - https://developer.mozilla.org/
+4. **W3C HTML5 Specification** - https://www.w3.org/TR/html52/
+5. **OWASP Security Guidelines** - https://owasp.org/
+6. **PythonAnywhere Documentation** - https://help.pythonanywhere.com/
 
 ---
 
-## 🙏 Agradecimientos
+## LICENCIA
 
-- Curso de Desarrollo Web - [Nombre del Profesor]
-- Documentación de Python: https://docs.python.org/
-- MySQL Documentation: https://dev.mysql.com/doc/
-- MDN Web Docs: https://developer.mozilla.org/
+Este proyecto fue desarrollado exclusivamente como trabajo final para el curso de Desarrollo Web de la Universidad Nacional de San Agustín. El código se proporciona con fines educativos y de evaluación académica.
+
+**Restricciones de Uso**:
+- Uso educativo y académico permitido
+- Prohibida la distribución comercial
+- Se requiere atribución al autor original
 
 ---
 
-**¡Gracias por revisar este proyecto!** 🚀
+## INFORMACIÓN DEL AUTOR
 
-Para cualquier consulta o sugerencia, no dudes en contactarme.
+**Nombre**: Mark Harry Hancco Vargas
+**Email**: markhv509@gmail.com
+**GitHub**: https://github.com/markhv-dev
+**Universidad**: Universidad Nacional de San Agustín
+**Programa**: [Ingeniería de Sistemas / Ciencias de la Computación]
+**Curso**: Desarrollo Web
+**Docente**: Prof. Marco Wilfredo Aedo Lopez
+**Período Académico**: 2024-II
+
+---
+
+## AGRADECIMIENTOS
+
+- **Prof. Marco Wilfredo Aedo Lopez** - Docente del curso de Desarrollo Web, por la orientación y conocimientos compartidos durante el desarrollo del proyecto
+- **Universidad Nacional de San Agustín** - Por proporcionar los recursos y el entorno académico necesario para el aprendizaje
+- **Comunidad de Desarrolladores** - Por la documentación, tutoriales y recursos open-source que facilitaron el desarrollo
+
+---
+
+## CONTACTO
+
+Para consultas, sugerencias o reportes de errores relacionados con este proyecto:
+
+- **Email académico**: markhv509@gmail.com
+- **GitHub Issues**: https://github.com/markhv-dev/APRENDIENDO/issues
+- **LinkedIn**: [Perfil de LinkedIn]
+
+---
+
+**Nota**: Este documento constituye la documentación oficial del proyecto para efectos de evaluación académica. Para documentación técnica detallada, consultar los comentarios en el código fuente y el archivo `schema.sql` de la base de datos.
+
+---
+
+*Última actualización: Diciembre 2024*
+*Versión: 1.0.0*
+*Estado: Producción*
