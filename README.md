@@ -1,38 +1,32 @@
 # SISTEMA APRENDIENDO
 
 **Trabajo Final Individual - Desarrollo Web**
+**Autor:** [Tu Nombre Completo]
+**Universidad:** [Nombre de tu Universidad]
+**Fecha:** Diciembre 2024
 
 ---
 
-## 📌 Información del Proyecto
+## 📋 Información del Proyecto para DUTIC
 
-- **Nombre del Proyecto:** Sistema APRENDIENDO - Plataforma Educativa de Desarrollo Web
-- **Autor:** [Tu Nombre Completo]
-- **Universidad:** [Nombre de tu Universidad]
-- **Fecha:** Diciembre 2024
+### Nombre del Proyecto
+**Sistema APRENDIENDO - Plataforma Educativa de Desarrollo Web**
 
----
+### URL del Repositorio GitHub
+https://github.com/markhv-dev/APRENDIENDO
 
-## 🔗 Enlaces
+### URL del Proyecto Hospedado
+**[INSERTAR URL AQUÍ]**
 
-- **Repositorio GitHub:** https://github.com/markhv-dev/APRENDIENDO
-- **URL del Proyecto:** `http://localhost:8000` (Ejecución local - Ver instrucciones de instalación)
-
----
-
-## 📝 Descripción
-
+### Descripción
 Sistema web completo para el aprendizaje de tecnologías de desarrollo web, que integra un frontend moderno con diseño dark theme, backend desarrollado en Python puro utilizando http.server, y base de datos MySQL con 3 tablas relacionadas. El sistema incluye autenticación de usuarios con gestión de sesiones seguras mediante tokens, formulario de contacto con almacenamiento en base de datos, panel de administración de mensajes protegido, y navegación dinámica con sidebar colapsable que organiza más de 100 páginas de contenido educativo sobre HTML, CSS, JavaScript y Python.
 
----
-
-## 🛠️ Tecnologías Utilizadas
-
-- **HTML5:** Estructura semántica y formularios
-- **CSS3:** Diseño responsive con Flexbox y Grid, animaciones y transiciones
-- **JavaScript (ES6+):** Fetch API, manipulación del DOM, validación de formularios
-- **Python 3.x:** Backend con http.server, routing manual, autenticación
-- **SQL (MySQL/MariaDB):** Base de datos relacional con 3 tablas y operaciones CRUD
+### Lenguajes y Tecnologías Utilizadas
+- **HTML5** - Estructura semántica y formularios
+- **CSS3** - Diseño responsive con Flexbox y Grid, animaciones y transiciones
+- **JavaScript (ES6+)** - Fetch API, manipulación del DOM, validación de formularios
+- **Python 3.x** - Backend con http.server, routing manual, autenticación
+- **SQL (MySQL/MariaDB)** - Base de datos relacional con 3 tablas y operaciones CRUD
 
 ---
 
