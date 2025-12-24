@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selectores CSS - Sistema de Aprendizaje</title>
-    <link rel="stylesheet" href="/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/assets/css/glosario.css">
-    <link rel="stylesheet" href="/assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
+    <!-- Highlight.js para resaltado de sintaxis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
 <body>
     <header>
@@ -63,6 +66,19 @@ img {
     max-width: 100%;
     height: auto;
 }</div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa de selectores:</strong>
+                            <div class="preview-content">
+                                <style scoped>
+                                    .ejemplo-clase { background: #3498db; color: white; padding: 10px; border-radius: 4px; display: inline-block; margin: 5px; }
+                                    #ejemplo-id { background: #e74c3c; color: white; padding: 10px; border-radius: 4px; display: inline-block; margin: 5px; }
+                                </style>
+                                <div class="ejemplo-clase">.clase {color: blue;}</div>
+                                <div id="ejemplo-id">#id {color: red;}</div>
+                                <p style="color: #2ecc71; margin-top: 10px;">elemento {color: green;}</p>
+                            </div>
+                        </div>
+
                         <div class="nota">
                             <strong>💡 Uso:</strong> Ideal para estilos base/reset. Evita usarlo para estilos específicos.
                         </div>
@@ -226,6 +242,41 @@ nav a {
     font-size: 1.2em;
     border-bottom: 2px solid #f1c40f;
 }</div>
+
+                        <!-- VISTA PREVIA DESCENDIENTE -->
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: .parent p (espacio = descendiente)</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 20px; border-radius: 8px;">
+                                    <div style="background: #9b59b6; padding: 20px; border-radius: 6px; border: 3px solid #8e44ad;">
+                                        <strong style="color: white; display: block; margin-bottom: 15px;">.parent</strong>
+
+                                        <div style="background: #3498db; padding: 15px; border-radius: 4px; margin-bottom: 10px; border: 2px solid #2980b9;">
+                                            <strong style="color: white; display: block; margin-bottom: 10px;">div intermedio</strong>
+                                            <p style="background: #2ecc71; color: white; padding: 10px; border-radius: 4px; margin: 5px 0; border: 2px solid #27ae60;">
+                                                ✅ &lt;p&gt; seleccionado (dentro de div intermedio)
+                                            </p>
+                                        </div>
+
+                                        <p style="background: #2ecc71; color: white; padding: 10px; border-radius: 4px; margin: 5px 0; border: 2px solid #27ae60;">
+                                            ✅ &lt;p&gt; seleccionado (hijo directo)
+                                        </p>
+
+                                        <div style="background: #e74c3c; padding: 10px; border-radius: 4px; margin-top: 10px;">
+                                            <span style="color: white; font-size: 12px;">
+                                                &lt;span&gt; NO seleccionado (no es &lt;p&gt;)
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-top: 20px; background: #fff3cd; padding: 15px; border-radius: 6px; border-left: 4px solid #f1c40f;">
+                                        <strong style="color: #856404;">📝 Regla:</strong><br>
+                                        <code style="background: rgba(0,0,0,0.1); padding: 2px 6px; border-radius: 3px;">.parent p</code> selecciona <strong>TODOS</strong> los &lt;p&gt; dentro de .parent, sin importar cuántos niveles de anidación haya.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="nota">
                             <strong>⚠️ Cuidado:</strong> Selectores muy anidados aumentan especificidad y dificultan mantenimiento.
                             Máximo 3 niveles recomendado.
@@ -255,6 +306,39 @@ ul > li {
 /* Comparación */
 .lista li { }      /* TODOS los li dentro de .lista */
 .lista > li { }    /* Solo li hijos DIRECTOS de .lista */</div>
+
+                        <!-- VISTA PREVIA HIJO DIRECTO -->
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: .parent > p (solo hijos directos)</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 20px; border-radius: 8px;">
+                                    <div style="background: #9b59b6; padding: 20px; border-radius: 6px; border: 3px solid #8e44ad;">
+                                        <strong style="color: white; display: block; margin-bottom: 15px;">.parent</strong>
+
+                                        <p style="background: #2ecc71; color: white; padding: 10px; border-radius: 4px; margin: 5px 0; border: 2px solid #27ae60;">
+                                            ✅ &lt;p&gt; HIJO DIRECTO (seleccionado)
+                                        </p>
+
+                                        <p style="background: #2ecc71; color: white; padding: 10px; border-radius: 4px; margin: 5px 0; border: 2px solid #27ae60;">
+                                            ✅ &lt;p&gt; HIJO DIRECTO (seleccionado)
+                                        </p>
+
+                                        <div style="background: #3498db; padding: 15px; border-radius: 4px; margin-top: 10px; border: 2px solid #2980b9;">
+                                            <strong style="color: white; display: block; margin-bottom: 10px;">div intermedio</strong>
+                                            <p style="background: #e74c3c; color: white; padding: 10px; border-radius: 4px; margin: 5px 0; border: 2px solid #c0392b;">
+                                                ❌ &lt;p&gt; NO seleccionado (nieto, no hijo directo)
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-top: 20px; background: #e8f5e9; padding: 15px; border-radius: 6px; border-left: 4px solid #4caf50;">
+                                        <strong style="color: #2e7d32;">📝 Regla:</strong><br>
+                                        <code style="background: rgba(0,0,0,0.1); padding: 2px 6px; border-radius: 3px;">.parent > p</code> selecciona <strong>SOLO</strong> los &lt;p&gt; que son hijos directos (nivel 1), ignorando los más anidados.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="nota">
                             <strong>💡 Uso común:</strong> Menús de navegación, listas donde no quieres afectar sublistas.
                         </div>
@@ -284,6 +368,37 @@ figure + figcaption {
 label + input {
     margin-left: 10px;
 }</div>
+
+                        <!-- VISTA PREVIA HERMANO ADYACENTE -->
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: h2 + p (hermano inmediato siguiente)</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 20px; border-radius: 8px;">
+                                    <div style="background: white; padding: 20px; border-radius: 6px; border: 2px solid #9b59b6;">
+                                        <div style="background: #3498db; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px; border: 2px solid #2980b9;">
+                                            &lt;h2&gt; Título &lt;/h2&gt;
+                                        </div>
+                                        <div style="position: relative;">
+                                            <div style="position: absolute; left: -25px; top: 50%; transform: translateY(-50%); color: #f39c12; font-size: 24px; font-weight: bold;">→</div>
+                                            <div style="background: #2ecc71; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px; border: 2px solid #27ae60;">
+                                                ✅ &lt;p&gt; SELECCIONADO (hermano inmediato)
+                                            </div>
+                                        </div>
+                                        <div style="background: #e74c3c; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px; border: 2px solid #c0392b;">
+                                            ❌ &lt;p&gt; NO seleccionado (segundo hermano)
+                                        </div>
+                                        <div style="background: #e74c3c; color: white; padding: 15px; border-radius: 4px; border: 2px solid #c0392b;">
+                                            ❌ &lt;p&gt; NO seleccionado (tercer hermano)
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-top: 20px; background: #fff3cd; padding: 15px; border-radius: 6px; border-left: 4px solid #f1c40f;">
+                                        <strong style="color: #856404;">📝 Regla:</strong><br>
+                                        <code style="background: rgba(0,0,0,0.1); padding: 2px 6px; border-radius: 3px;">h2 + p</code> selecciona <strong>SOLO</strong> el primer &lt;p&gt; que viene inmediatamente después de &lt;h2&gt;.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="selector-hermano-general" data-tags="selector hermano general todos siguientes virgulilla">
@@ -306,6 +421,56 @@ h2 ~ p {
 /* Comparación */
 h2 + p { }   /* Solo el PRIMER p después de h2 */
 h2 ~ p { }   /* TODOS los p después de h2 */</div>
+
+                        <!-- VISTA PREVIA HERMANO GENERAL -->
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: h2 ~ p (todos los hermanos siguientes)</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 20px; border-radius: 8px;">
+                                    <div style="background: white; padding: 20px; border-radius: 6px; border: 2px solid #9b59b6;">
+                                        <div style="background: #3498db; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px; border: 2px solid #2980b9;">
+                                            &lt;h2&gt; Título &lt;/h2&gt;
+                                        </div>
+                                        <div style="position: relative;">
+                                            <div style="position: absolute; left: -25px; top: 50%; transform: translateY(-50%); color: #f39c12; font-size: 24px; font-weight: bold;">→</div>
+                                            <div style="background: #2ecc71; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px; border: 2px solid #27ae60;">
+                                                ✅ &lt;p&gt; SELECCIONADO (primer hermano)
+                                            </div>
+                                        </div>
+                                        <div style="background: #95a5a6; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px; border: 2px solid #7f8c8d;">
+                                            &lt;div&gt; Otro elemento (no es &lt;p&gt;) &lt;/div&gt;
+                                        </div>
+                                        <div style="position: relative;">
+                                            <div style="position: absolute; left: -25px; top: 50%; transform: translateY(-50%); color: #f39c12; font-size: 24px; font-weight: bold;">→</div>
+                                            <div style="background: #2ecc71; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px; border: 2px solid #27ae60;">
+                                                ✅ &lt;p&gt; SELECCIONADO (segundo hermano &lt;p&gt;)
+                                            </div>
+                                        </div>
+                                        <div style="position: relative;">
+                                            <div style="position: absolute; left: -25px; top: 50%; transform: translateY(-50%); color: #f39c12; font-size: 24px; font-weight: bold;">→</div>
+                                            <div style="background: #2ecc71; color: white; padding: 15px; border-radius: 4px; border: 2px solid #27ae60;">
+                                                ✅ &lt;p&gt; SELECCIONADO (tercer hermano &lt;p&gt;)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Comparación lado a lado -->
+                                    <div style="margin-top: 25px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 6px; color: white;">
+                                        <strong style="font-size: 15px;">⚖️ COMPARACIÓN: + vs ~</strong>
+                                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
+                                            <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 4px;">
+                                                <strong style="color: #f1c40f;">h2 + p</strong><br>
+                                                <span style="font-size: 13px;">Selecciona <strong>1</strong> elemento:<br>Solo el inmediato siguiente</span>
+                                            </div>
+                                            <div style="background: rgba(0,0,0,0.2); padding: 15px; border-radius: 4px;">
+                                                <strong style="color: #2ecc71;">h2 ~ p</strong><br>
+                                                <span style="font-size: 13px;">Selecciona <strong>TODOS</strong>:<br>Todos los hermanos &lt;p&gt; siguientes</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="selector-atributo" data-tags="selector atributo corchetes valor">
@@ -398,8 +563,8 @@ h2 ~ p { }   /* TODOS los p después de h2 */</div>
         <p>CSS - Sistema de Aprendizaje | <a href="../index.html">Volver a CSS</a></p>
     </footer>
 
-    <script src="/assets/js/sidebar-component.js"></script>
-    <script src="/assets/js/study-highlight.js"></script>
+    <script src="../../../assets/js/sidebar-component.js"></script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('searchInput');
@@ -456,6 +621,20 @@ h2 ~ p { }   /* TODOS los p después de h2 */</div>
                 const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
                 const scrolled = (winScroll / height) * 100;
                 document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // Aplicar highlight.js solo a elementos .ejemplo que no tienen <br> (no son HTML)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.ejemplo').forEach(function(block) {
+                // Solo resaltar si no tiene elementos <br> (no es HTML con sintaxis manual)
+                if (block.querySelectorAll('br').length === 0) {
+                    block.classList.add('language-css');
+                    hljs.highlightElement(block);
+                }
             });
         });
     </script>

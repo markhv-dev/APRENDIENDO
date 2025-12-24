@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivos y JSON - Python</title>
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
+    <!-- Highlight.js para resaltado de sintaxis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a Python</a>
+        <span class="icon">🐍</span>
+        <h1>Módulo 7: Archivos y JSON</h1>
+        <p class="subtitle">Lectura, escritura y manipulación de archivos</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(55, 118, 171, 0.1) 0%, rgba(55, 118, 171, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #3776ab; margin-bottom: 40px;">
+                <h2 style="color: #3776ab; margin-bottom: 15px; font-size: 1.8em;">📁 Manejo de Archivos</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    El manejo de archivos permite guardar y recuperar información de manera persistente.
+                    Python facilita la lectura, escritura y manipulación de archivos de texto, binarios y JSON.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="open" data-tags="open abrir archivo file">
+                        <span class="tag">📋 Función open()</span>
+                        <p class="significado">Abrir archivos para lectura o escritura</p>
+                        <div class="ejemplo"># Sintaxis: open(archivo, modo, encoding)
+
+# Modos de apertura:
+# 'r'  - Lectura (error si no existe)
+# 'w'  - Escritura (sobrescribe si existe, crea si no)
+# 'a'  - Añadir (crea si no existe, escribe al final)
+# 'x'  - Crear nuevo (error si ya existe)
+# 'r+' - Lectura y escritura (debe existir)
+# 'w+' - Lectura y escritura (sobrescribe o crea)
+# 'a+' - Lectura y escritura (añade al final)
+# 'b'  - Modo binario (ej: 'rb', 'wb')
+# 't'  - Modo texto (por defecto)
+
+# Forma tradicional (hay que cerrar)
+archivo = open("datos.txt", "r")
+contenido = archivo.read()
+archivo.close()  # Importante cerrar
+
+# Forma recomendada: with (cierra automáticamente)
+with open("datos.txt", "r", encoding="utf-8") as archivo:
+    contenido = archivo.read()
+# El archivo se cierra automáticamente aquí
+
+# Especificar encoding (importante para acentos)
+with open("datos.txt", "r", encoding="utf-8") as f:
+    texto = f.read()</div>
+                    <div class="vista-previa">
+                        <strong>👁️ Vista previa de archivos y JSON:</strong>
+                        <div class="preview-content">
+                            <p><strong>Código Python:</strong></p>
+                            <pre style="white-space: pre-wrap; background: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 6px; font-family: 'Courier New', monospace;">import json
+
+# Trabajar con JSON
+datos = {
+    "nombre": "Juan",
+    "edad": 30,
+    "ciudad": "Madrid"
+}
+
+# Convertir a JSON
+json_string = json.dumps(datos, indent=2)
+print("JSON generado:")
+print(json_string)
+
+# Leer archivo
+with open("datos.txt", "w") as archivo:
+    archivo.write("Hola Python")
+
+with open("datos.txt", "r") as archivo:
+    contenido = archivo.read()
+    print(f"\nContenido del archivo: {contenido}")</pre>
+                            <p><strong>📤 Salida en terminal:</strong></p>
+                            <div style="background: #1e1e1e; color: #4ec9b0; font-family: 'Courier New', monospace; padding: 12px; border-radius: 6px; border-left: 3px solid #3776ab;">
+                                <span style="color: #dcdcaa;">JSON generado:</span><br>
+                                <span style="color: #dcdcaa;">{</span><br>
+                                <span style="color: #dcdcaa;">  "nombre": "Juan",</span><br>
+                                <span style="color: #dcdcaa;">  "edad": 30,</span><br>
+                                <span style="color: #dcdcaa;">  "ciudad": "Madrid"</span><br>
+                                <span style="color: #dcdcaa;">}</span><br><br>
+                                <span style="color: #dcdcaa;">Contenido del archivo: Hola Python</span>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="nota">
+                            <strong>💡 Siempre usa:</strong> 'with open()' para asegurar que el archivo se cierre correctamente.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="lectura" data-tags="read readline readlines leer">
+                        <span class="tag">📋 Lectura de Archivos</span>
+                        <p class="significado">Diferentes formas de leer contenido</p>
+                        <div class="ejemplo"># Leer todo el contenido
+with open("datos.txt", "r") as f:
+    contenido = f.read()
+    print(contenido)
+
+# Leer N caracteres
+with open("datos.txt", "r") as f:
+    primeros_100 = f.read(100)
+
+# Leer una línea
+with open("datos.txt", "r") as f:
+    primera_linea = f.readline()
+    segunda_linea = f.readline()
+
+# Leer todas las líneas (lista)
+with open("datos.txt", "r") as f:
+    lineas = f.readlines()
+    # ['línea 1\n', 'línea 2\n', ...]
+
+# Iterar línea por línea (eficiente en memoria)
+with open("datos.txt", "r") as f:
+    for linea in f:
+        print(linea.strip())  # strip() quita \n
+
+# Contar líneas
+with open("datos.txt", "r") as f:
+    num_lineas = sum(1 for _ in f)
+
+# Verificar si archivo existe
+import os
+if os.path.exists("datos.txt"):
+    with open("datos.txt", "r") as f:
+        contenido = f.read()</div>
+                    <div class="vista-previa" style="margin-top: 30px;">
+                        <strong>👁️ Vista previa: Métodos de Lectura</strong>
+                        <div class="preview-content">
+                            <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">📄 Contenido del archivo "datos.txt":</strong>
+                                    <div style="background: white; padding: 15px; border-radius: 5px; margin-top: 10px; border-left: 4px solid #3498db;">
+                                        <pre style="margin: 0; color: #2c3e50;">Primera línea
+Segunda línea
+Tercera línea
+Cuarta línea</pre>
+                                    </div>
+                                </div>
+
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">🔍 read() - Lee todo:</strong>
+                                    <div style="background: #3498db; color: white; padding: 12px; border-radius: 5px; margin-top: 8px;">
+                                        → Resultado: "Primera línea\nSegunda línea\nTercera línea\nCuarta línea"
+                                    </div>
+                                </div>
+
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">📝 readline() - Lee línea por línea:</strong>
+                                    <div style="background: #2ecc71; color: white; padding: 12px; border-radius: 5px; margin-top: 8px;">
+                                        → Primera llamada: "Primera línea\n"<br>
+                                        → Segunda llamada: "Segunda línea\n"
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <strong style="color: #2c3e50;">📋 readlines() - Lee todas como lista:</strong>
+                                    <div style="background: #9b59b6; color: white; padding: 12px; border-radius: 5px; margin-top: 8px;">
+                                        → ['Primera línea\n', 'Segunda línea\n', 'Tercera línea\n', 'Cuarta línea']
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="termino" id="escritura" data-tags="write writelines escribir guardar">
+                        <span class="tag">📋 Escritura de Archivos</span>
+                        <p class="significado">Escribir y guardar contenido</p>
+                        <div class="ejemplo"># Escribir texto (sobrescribe todo)
+with open("salida.txt", "w") as f:
+    f.write("Hola mundo\n")
+    f.write("Segunda línea\n")
+
+# Escribir múltiples líneas
+lineas = ["Línea 1\n", "Línea 2\n", "Línea 3\n"]
+with open("salida.txt", "w") as f:
+    f.writelines(lineas)
+
+# Añadir al final (no sobrescribe)
+with open("log.txt", "a") as f:
+    f.write("Nuevo registro\n")
+
+# Crear archivo nuevo (error si existe)
+try:
+    with open("nuevo.txt", "x") as f:
+        f.write("Archivo nuevo")
+except FileExistsError:
+    print("El archivo ya existe")
+
+# Escribir variables
+nombre = "Ana"
+edad = 25
+with open("datos.txt", "w") as f:
+    f.write(f"Nombre: {nombre}\n")
+    f.write(f"Edad: {edad}\n")
+
+# Guardar lista
+datos = ["manzana", "pera", "uva"]
+with open("frutas.txt", "w") as f:
+    for fruta in datos:
+        f.write(f"{fruta}\n")</div>
+                    <div class="vista-previa" style="margin-top: 30px;">
+                        <strong>👁️ Vista previa: Escritura de Archivos</strong>
+                        <div class="preview-content">
+                            <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">📝 Modo 'w' (write) - Sobrescribe:</strong>
+                                    <div style="display: flex; gap: 15px; margin-top: 10px;">
+                                        <div style="flex: 1; background: #e74c3c; color: white; padding: 15px; border-radius: 5px;">
+                                            <strong>Antes:</strong><br>
+                                            archivo.txt:<br>
+                                            "Contenido antiguo"
+                                        </div>
+                                        <div style="align-self: center; font-size: 24px;">→</div>
+                                        <div style="flex: 1; background: #2ecc71; color: white; padding: 15px; border-radius: 5px;">
+                                            <strong>Después (modo 'w'):</strong><br>
+                                            archivo.txt:<br>
+                                            "Contenido nuevo"
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">➕ Modo 'a' (append) - Agrega al final:</strong>
+                                    <div style="display: flex; gap: 15px; margin-top: 10px;">
+                                        <div style="flex: 1; background: #3498db; color: white; padding: 15px; border-radius: 5px;">
+                                            <strong>Antes:</strong><br>
+                                            log.txt:<br>
+                                            "Registro 1<br>Registro 2"
+                                        </div>
+                                        <div style="align-self: center; font-size: 24px;">→</div>
+                                        <div style="flex: 1; background: #2ecc71; color: white; padding: 15px; border-radius: 5px;">
+                                            <strong>Después (modo 'a'):</strong><br>
+                                            log.txt:<br>
+                                            "Registro 1<br>Registro 2<br>Registro 3"
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <strong style="color: #2c3e50;">✨ Modo 'x' (exclusive) - Crea solo si no existe:</strong>
+                                    <div style="background: #f39c12; color: white; padding: 12px; border-radius: 5px; margin-top: 8px;">
+                                        ✓ Si no existe → Crea el archivo<br>
+                                        ✗ Si ya existe → FileExistsError
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="termino" id="modulo-os" data-tags="os sistema archivos directorios">
+                        <span class="tag">📋 Módulo os</span>
+                        <p class="significado">Interactuar con el sistema operativo</p>
+                        <div class="ejemplo">import os
+
+# Directorio actual
+print(os.getcwd())
+
+# Listar archivos
+archivos = os.listdir(".")
+print(archivos)
+
+# Verificar si existe
+os.path.exists("archivo.txt")  # True/False
+os.path.isfile("archivo.txt")  # Es archivo?
+os.path.isdir("carpeta")       # Es directorio?
+
+# Crear directorio
+os.mkdir("nueva_carpeta")
+os.makedirs("ruta/anidada/carpeta")  # Crea intermedios
+
+# Eliminar
+os.remove("archivo.txt")       # Eliminar archivo
+os.rmdir("carpeta_vacia")      # Eliminar carpeta vacía
+
+# Renombrar/mover
+os.rename("viejo.txt", "nuevo.txt")
+
+# Rutas
+ruta = os.path.join("carpeta", "subcarpeta", "archivo.txt")
+# "carpeta/subcarpeta/archivo.txt"
+
+nombre = os.path.basename("/ruta/al/archivo.txt")
+# "archivo.txt"
+
+directorio = os.path.dirname("/ruta/al/archivo.txt")
+# "/ruta/al"
+
+# Separar nombre y extensión
+nombre, extension = os.path.splitext("archivo.txt")
+# "archivo", ".txt"
+
+# Variables de entorno
+os.getenv("HOME")
+os.environ.get("PATH")</div>
+                    <div class="vista-previa" style="margin-top: 30px;">
+                        <strong>👁️ Vista previa: Módulo os</strong>
+                        <div class="preview-content">
+                            <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">📂 Estructura de Directorios:</strong>
+                                    <div style="background: white; padding: 15px; border-radius: 5px; margin-top: 10px; border-left: 4px solid #3498db;">
+                                        <pre style="margin: 0; color: #2c3e50;">proyecto/
+├── archivo1.txt
+├── archivo2.py
+└── carpeta/
+    └── archivo3.json</pre>
+                                    </div>
+                                </div>
+
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">🔍 Operaciones principales:</strong>
+                                    <div style="background: #3498db; color: white; padding: 12px; border-radius: 5px; margin-top: 8px; margin-bottom: 8px;">
+                                        <strong>os.getcwd()</strong> → "/home/usuario/proyecto"
+                                    </div>
+                                    <div style="background: #2ecc71; color: white; padding: 12px; border-radius: 5px; margin-bottom: 8px;">
+                                        <strong>os.listdir(".")</strong> → ['archivo1.txt', 'archivo2.py', 'carpeta']
+                                    </div>
+                                    <div style="background: #9b59b6; color: white; padding: 12px; border-radius: 5px; margin-bottom: 8px;">
+                                        <strong>os.path.exists("archivo1.txt")</strong> → True
+                                    </div>
+                                    <div style="background: #f39c12; color: white; padding: 12px; border-radius: 5px;">
+                                        <strong>os.path.join("carpeta", "archivo")</strong> → "carpeta/archivo"
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <strong style="color: #2c3e50;">⚙️ Separar ruta y extensión:</strong>
+                                    <div style="background: #e74c3c; color: white; padding: 12px; border-radius: 5px; margin-top: 8px;">
+                                        os.path.splitext("archivo.txt")<br>
+                                        → ("archivo", ".txt")
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="termino" id="json-intro" data-tags="json javascript object notation">
+                        <span class="tag">📋 JSON - Introducción</span>
+                        <p class="significado">Formato de texto para almacenar datos</p>
+                        <div class="ejemplo">import json
+
+# JSON es muy similar a diccionarios de Python
+# Conversión JSON ↔ Python:
+# JSON      →  Python
+# {}        →  dict
+# []        →  list
+# "texto"   →  str
+# 123.45    →  int/float
+# true      →  True
+# false     →  False
+# null      →  None
+
+# Ejemplo de JSON (como string):
+json_string = '''
+{
+    "nombre": "Ana",
+    "edad": 25,
+    "activo": true,
+    "cursos": ["Python", "Java"],
+    "direccion": null
+}
+'''
+
+# En Python sería:
+python_dict = {
+    "nombre": "Ana",
+    "edad": 25,
+    "activo": True,
+    "cursos": ["Python", "Java"],
+    "direccion": None
+}</div>
+                    <div class="vista-previa" style="margin-top: 30px;">
+                        <strong>👁️ Vista previa: Conversión JSON ↔ Python</strong>
+                        <div class="preview-content">
+                            <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">📊 Tabla de Conversión:</strong>
+                                    <table style="width: 100%; margin-top: 10px; background: white; border-radius: 5px; overflow: hidden;">
+                                        <tr style="background: #3498db; color: white;">
+                                            <th style="padding: 12px; text-align: left;">JSON</th>
+                                            <th style="padding: 12px; text-align: center;">↔</th>
+                                            <th style="padding: 12px; text-align: left;">Python</th>
+                                        </tr>
+                                        <tr style="background: #ecf0f1;">
+                                            <td style="padding: 10px;"><code>{}</code></td>
+                                            <td style="padding: 10px; text-align: center;">→</td>
+                                            <td style="padding: 10px;"><code>dict</code></td>
+                                        </tr>
+                                        <tr style="background: white;">
+                                            <td style="padding: 10px;"><code>[]</code></td>
+                                            <td style="padding: 10px; text-align: center;">→</td>
+                                            <td style="padding: 10px;"><code>list</code></td>
+                                        </tr>
+                                        <tr style="background: #ecf0f1;">
+                                            <td style="padding: 10px;"><code>"texto"</code></td>
+                                            <td style="padding: 10px; text-align: center;">→</td>
+                                            <td style="padding: 10px;"><code>str</code></td>
+                                        </tr>
+                                        <tr style="background: white;">
+                                            <td style="padding: 10px;"><code>123</code></td>
+                                            <td style="padding: 10px; text-align: center;">→</td>
+                                            <td style="padding: 10px;"><code>int</code></td>
+                                        </tr>
+                                        <tr style="background: #ecf0f1;">
+                                            <td style="padding: 10px;"><code>true / false</code></td>
+                                            <td style="padding: 10px; text-align: center;">→</td>
+                                            <td style="padding: 10px;"><code>True / False</code></td>
+                                        </tr>
+                                        <tr style="background: white;">
+                                            <td style="padding: 10px;"><code>null</code></td>
+                                            <td style="padding: 10px; text-align: center;">→</td>
+                                            <td style="padding: 10px;"><code>None</code></td>
+                                        </tr>
+                                    </table>
+                                </div>
+
+                                <div>
+                                    <strong style="color: #2c3e50;">📝 Ejemplo de conversión:</strong>
+                                    <div style="display: flex; gap: 15px; margin-top: 10px;">
+                                        <div style="flex: 1; background: #f39c12; color: white; padding: 15px; border-radius: 5px;">
+                                            <strong>JSON:</strong><br>
+                                            {"activo": true}
+                                        </div>
+                                        <div style="align-self: center; font-size: 24px;">↔</div>
+                                        <div style="flex: 1; background: #3498db; color: white; padding: 15px; border-radius: 5px;">
+                                            <strong>Python:</strong><br>
+                                            {"activo": True}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="termino" id="json-loads-dumps" data-tags="json loads dumps serializar deserializar">
+                        <span class="tag">📋 json.loads() y json.dumps()</span>
+                        <p class="significado">Convertir entre JSON string y Python</p>
+                        <div class="ejemplo">import json
+
+# json.loads() - JSON string → Python (deserializar/parsear)
+json_string = '{"nombre": "Ana", "edad": 25}'
+datos = json.loads(json_string)
+print(datos["nombre"])  # "Ana"
+print(type(datos))      # <class 'dict'>
+
+# json.dumps() - Python → JSON string (serializar)
+persona = {"nombre": "Juan", "edad": 30, "activo": True}
+json_str = json.dumps(persona)
+print(json_str)  # '{"nombre": "Juan", "edad": 30, "activo": true}'
+
+# Con formato legible (indentación)
+json_bonito = json.dumps(persona, indent=4)
+print(json_bonito)
+# {
+#     "nombre": "Juan",
+#     "edad": 30,
+#     "activo": true
+# }
+
+# Ordenar claves
+json_ordenado = json.dumps(persona, sort_keys=True)
+
+# Manejar caracteres especiales
+datos = {"mensaje": "Hola ñ"}
+json.dumps(datos, ensure_ascii=False)  # Mantiene acentos</div>
+                    <div class="vista-previa" style="margin-top: 30px;">
+                        <strong>👁️ Vista previa: loads() y dumps()</strong>
+                        <div class="preview-content">
+                            <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">🔄 json.loads() - String → Python:</strong>
+                                    <div style="display: flex; gap: 15px; margin-top: 10px;">
+                                        <div style="flex: 1; background: #f39c12; color: white; padding: 15px; border-radius: 5px;">
+                                            <strong>Entrada (string JSON):</strong><br>
+                                            '{"edad": 25, "activo": true}'
+                                        </div>
+                                        <div style="align-self: center; font-size: 24px;">→</div>
+                                        <div style="flex: 1; background: #3498db; color: white; padding: 15px; border-radius: 5px;">
+                                            <strong>Salida (dict Python):</strong><br>
+                                            {"edad": 25, "activo": True}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">🔄 json.dumps() - Python → String:</strong>
+                                    <div style="display: flex; gap: 15px; margin-top: 10px;">
+                                        <div style="flex: 1; background: #3498db; color: white; padding: 15px; border-radius: 5px;">
+                                            <strong>Entrada (dict Python):</strong><br>
+                                            {"nombre": "Ana", "edad": 25}
+                                        </div>
+                                        <div style="align-self: center; font-size: 24px;">→</div>
+                                        <div style="flex: 1; background: #f39c12; color: white; padding: 15px; border-radius: 5px;">
+                                            <strong>Salida (string JSON):</strong><br>
+                                            '{"nombre": "Ana", "edad": 25}'
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <strong style="color: #2c3e50;">✨ Con formato (indent=4):</strong>
+                                    <div style="background: #2ecc71; color: white; padding: 15px; border-radius: 5px; margin-top: 8px;">
+                                        <pre style="margin: 0;">{
+    "nombre": "Juan",
+    "edad": 30,
+    "activo": true
+}</pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="termino" id="json-archivos" data-tags="json load dump archivo guardar leer">
+                        <span class="tag">📋 JSON con Archivos</span>
+                        <p class="significado">Guardar y leer JSON desde archivos</p>
+                        <div class="ejemplo">import json
+
+# Guardar JSON en archivo - json.dump()
+datos = {
+    "usuarios": [
+        {"nombre": "Ana", "edad": 25},
+        {"nombre": "Juan", "edad": 30}
+    ]
+}
+
+with open("datos.json", "w", encoding="utf-8") as f:
+    json.dump(datos, f, indent=4, ensure_ascii=False)
+
+# Leer JSON desde archivo - json.load()
+with open("datos.json", "r", encoding="utf-8") as f:
+    datos_leidos = json.load(f)
+
+print(datos_leidos["usuarios"][0]["nombre"])  # "Ana"
+
+# Recorrer JSON
+for usuario in datos_leidos["usuarios"]:
+    print(f"{usuario['nombre']}: {usuario['edad']}")
+
+# Modificar y guardar
+datos_leidos["usuarios"].append({"nombre": "María", "edad": 28})
+
+with open("datos.json", "w", encoding="utf-8") as f:
+    json.dump(datos_leidos, f, indent=4, ensure_ascii=False)</div>
+                    <div class="vista-previa" style="margin-top: 30px;">
+                        <strong>👁️ Vista previa: JSON con Archivos</strong>
+                        <div class="preview-content">
+                            <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">💾 json.dump() - Guardar en archivo:</strong>
+                                    <div style="display: flex; gap: 15px; margin-top: 10px;">
+                                        <div style="flex: 1; background: #3498db; color: white; padding: 15px; border-radius: 5px;">
+                                            <strong>Python dict:</strong><br>
+                                            <pre style="margin: 5px 0 0 0;">{
+  "usuarios": [
+    {"nombre": "Ana", "edad": 25}
+  ]
+}</pre>
+                                        </div>
+                                        <div style="align-self: center; font-size: 24px;">→</div>
+                                        <div style="flex: 1; background: #2ecc71; color: white; padding: 15px; border-radius: 5px;">
+                                            <strong>📄 datos.json:</strong><br>
+                                            <pre style="margin: 5px 0 0 0;">{
+  "usuarios": [
+    {"nombre": "Ana", "edad": 25}
+  ]
+}</pre>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">📂 json.load() - Leer desde archivo:</strong>
+                                    <div style="display: flex; gap: 15px; margin-top: 10px;">
+                                        <div style="flex: 1; background: #f39c12; color: white; padding: 15px; border-radius: 5px;">
+                                            <strong>📄 datos.json:</strong><br>
+                                            <pre style="margin: 5px 0 0 0;">{
+  "nombre": "Juan",
+  "edad": 30
+}</pre>
+                                        </div>
+                                        <div style="align-self: center; font-size: 24px;">→</div>
+                                        <div style="flex: 1; background: #3498db; color: white; padding: 15px; border-radius: 5px;">
+                                            <strong>Python dict:</strong><br>
+                                            <pre style="margin: 5px 0 0 0;">datos = {
+  "nombre": "Juan",
+  "edad": 30
+}</pre>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <strong style="color: #2c3e50;">🔄 Diferencia load vs loads:</strong>
+                                    <div style="background: #9b59b6; color: white; padding: 12px; border-radius: 5px; margin-top: 8px;">
+                                        <strong>json.load()</strong> → Lee de ARCHIVO<br>
+                                        <strong>json.loads()</strong> → Lee de STRING
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="termino" id="json-validar" data-tags="json validar error excepciones">
+                        <span class="tag">📋 Validar JSON</span>
+                        <p class="significado">Verificar si un string es JSON válido</p>
+                        <div class="ejemplo">import json
+
+def es_json_valido(texto):
+    """Verifica si un string es JSON válido."""
+    try:
+        json.loads(texto)
+        return True
+    except json.JSONDecodeError:
+        return False
+
+# Ejemplos
+print(es_json_valido('{"nombre": "Ana"}'))  # True
+print(es_json_valido('{"nombre": }'))       # False
+print(es_json_valido('no es json'))         # False
+
+# Manejo de errores al leer JSON
+def cargar_json_seguro(ruta):
+    try:
+        with open(ruta, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print(f"Archivo {ruta} no encontrado")
+        return None
+    except json.JSONDecodeError as e:
+        print(f"Error al parsear JSON: {e}")
+        return None
+
+# Uso
+datos = cargar_json_seguro("config.json")
+if datos:
+    print("JSON cargado correctamente")</div>
+                    <div class="vista-previa" style="margin-top: 30px;">
+                        <strong>👁️ Vista previa: Validación de JSON</strong>
+                        <div class="preview-content">
+                            <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">✅ JSON Válido:</strong>
+                                    <div style="background: #2ecc71; color: white; padding: 15px; border-radius: 5px; margin-top: 8px;">
+                                        <strong>Entrada:</strong> '{"nombre": "Ana", "edad": 25}'<br>
+                                        <strong>es_json_valido()</strong> → True ✓
+                                    </div>
+                                </div>
+
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">❌ JSON Inválido:</strong>
+                                    <div style="background: #e74c3c; color: white; padding: 15px; border-radius: 5px; margin-top: 8px;">
+                                        <strong>Entrada:</strong> '{"nombre": }'<br>
+                                        <strong>es_json_valido()</strong> → False ✗<br>
+                                        <em>Error: Valor faltante después de clave</em>
+                                    </div>
+                                </div>
+
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">🛡️ Manejo de errores:</strong>
+                                    <div style="background: #f39c12; color: white; padding: 12px; border-radius: 5px; margin-top: 8px;">
+                                        <strong>try/except json.JSONDecodeError</strong><br>
+                                        → Captura errores de formato JSON<br>
+                                        → Evita que el programa se detenga
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <strong style="color: #2c3e50;">📝 Errores comunes:</strong>
+                                    <div style="background: #9b59b6; color: white; padding: 12px; border-radius: 5px; margin-top: 8px;">
+                                        ❌ Comillas simples: {'nombre': 'Ana'}<br>
+                                        ✅ Comillas dobles: {"nombre": "Ana"}<br><br>
+                                        ❌ Coma final: {"edad": 25,}<br>
+                                        ✅ Sin coma final: {"edad": 25}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="termino" id="json-usos" data-tags="json api configuracion uso practico">
+                        <span class="tag">📋 Usos de JSON en Python</span>
+                        <p class="significado">Aplicaciones prácticas del formato JSON</p>
+                        <div class="ejemplo"># 1. APIs (peticiones con requests)
+import requests
+import json
+
+respuesta = requests.get("https://api.ejemplo.com/datos")
+datos = respuesta.json()  # Convierte automáticamente
+
+# 2. Archivos de configuración
+config = {
+    "debug": True,
+    "puerto": 8080,
+    "base_datos": "produccion"
+}
+
+with open("config.json", "w") as f:
+    json.dump(config, f, indent=4)
+
+# 3. Guardar estado de aplicación
+estado = {
+    "usuario_actual": "ana",
+    "tema": "oscuro",
+    "ultimo_acceso": "2025-01-15"
+}
+
+# 4. Comunicación frontend-backend
+# Backend envía JSON, frontend lo recibe
+
+# 5. Filtrar datos JSON
+usuarios = [
+    {"nombre": "Ana", "edad": 25, "pais": "Perú"},
+    {"nombre": "Juan", "edad": 30, "pais": "Chile"},
+    {"nombre": "María", "edad": 28, "pais": "Perú"}
+]
+
+# Filtrar peruanos
+peruanos = [u for u in usuarios if u["pais"] == "Perú"]
+
+# Guardar resultado
+with open("peruanos.json", "w") as f:
+    json.dump(peruanos, f, indent=4)</div>
+                    <div class="vista-previa" style="margin-top: 30px;">
+                        <strong>👁️ Vista previa: Usos Prácticos de JSON</strong>
+                        <div class="preview-content">
+                            <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">1. 🌐 APIs Web:</strong>
+                                    <div style="background: #3498db; color: white; padding: 15px; border-radius: 5px; margin-top: 8px;">
+                                        <strong>GET</strong> https://api.ejemplo.com/usuarios<br>
+                                        ↓<br>
+                                        {"usuarios": [{"id": 1, "nombre": "Ana"}]}
+                                    </div>
+                                </div>
+
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">2. ⚙️ Archivo de Configuración:</strong>
+                                    <div style="display: flex; gap: 15px; margin-top: 10px;">
+                                        <div style="flex: 1; background: #f39c12; color: white; padding: 15px; border-radius: 5px;">
+                                            <strong>📄 config.json:</strong><br>
+                                            <pre style="margin: 5px 0 0 0;">{
+  "debug": true,
+  "puerto": 8080,
+  "db": "produccion"
+}</pre>
+                                        </div>
+                                        <div style="align-self: center; font-size: 24px;">→</div>
+                                        <div style="flex: 1; background: #3498db; color: white; padding: 15px; border-radius: 5px;">
+                                            <strong>Python lee:</strong><br>
+                                            <pre style="margin: 5px 0 0 0;">config["puerto"]
+→ 8080</pre>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">3. 💾 Guardar Estado:</strong>
+                                    <div style="background: #2ecc71; color: white; padding: 12px; border-radius: 5px; margin-top: 8px;">
+                                        Usuario actual, preferencias, historial<br>
+                                        → Persiste entre sesiones de la app
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <strong style="color: #2c3e50;">4. 🔄 Frontend ↔ Backend:</strong>
+                                    <div style="background: #9b59b6; color: white; padding: 12px; border-radius: 5px; margin-top: 8px;">
+                                        JavaScript (frontend) → JSON → Python (backend)<br>
+                                        Formato universal de intercambio de datos
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="termino" id="binarios" data-tags="binario rb wb imagen pdf">
+                        <span class="tag">📋 Archivos Binarios</span>
+                        <p class="significado">Leer y escribir archivos no-texto</p>
+                        <div class="ejemplo"># Modos binarios: 'rb', 'wb', 'ab'
+# Para: imágenes, PDFs, videos, etc.
+
+# Leer archivo binario
+with open("imagen.png", "rb") as f:
+    datos = f.read()
+    print(type(datos))  # <class 'bytes'>
+
+# Copiar archivo binario
+with open("original.pdf", "rb") as origen:
+    with open("copia.pdf", "wb") as destino:
+        destino.write(origen.read())
+
+# Copiar en chunks (para archivos grandes)
+def copiar_archivo(origen, destino, chunk_size=1024):
+    with open(origen, "rb") as src:
+        with open(destino, "wb") as dst:
+            while True:
+                chunk = src.read(chunk_size)
+                if not chunk:
+                    break
+                dst.write(chunk)
+
+# Leer primeros bytes (magic number)
+with open("archivo.pdf", "rb") as f:
+    primeros_bytes = f.read(4)
+    print(primeros_bytes)  # b'%PDF'</div>
+                    <div class="vista-previa" style="margin-top: 30px;">
+                        <strong>👁️ Vista previa: Archivos Binarios</strong>
+                        <div class="preview-content">
+                            <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">📂 Tipos de archivos binarios:</strong>
+                                    <div style="background: #3498db; color: white; padding: 12px; border-radius: 5px; margin-top: 8px;">
+                                        🖼️ Imágenes: .png, .jpg, .gif<br>
+                                        📄 Documentos: .pdf, .docx<br>
+                                        🎵 Audio: .mp3, .wav<br>
+                                        🎬 Video: .mp4, .avi
+                                    </div>
+                                </div>
+
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">🔄 Copiar archivo binario:</strong>
+                                    <div style="display: flex; gap: 15px; margin-top: 10px;">
+                                        <div style="flex: 1; background: #f39c12; color: white; padding: 15px; border-radius: 5px;">
+                                            <strong>📄 original.png</strong><br>
+                                            (modo 'rb')<br>
+                                            ↓ leer bytes
+                                        </div>
+                                        <div style="align-self: center; font-size: 24px;">→</div>
+                                        <div style="flex: 1; background: #2ecc71; color: white; padding: 15px; border-radius: 5px;">
+                                            <strong>📄 copia.png</strong><br>
+                                            (modo 'wb')<br>
+                                            ↓ escribir bytes
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">🔍 Magic Numbers (identificar tipo):</strong>
+                                    <div style="background: #9b59b6; color: white; padding: 12px; border-radius: 5px; margin-top: 8px;">
+                                        PDF: b'%PDF'<br>
+                                        PNG: b'\x89PNG'<br>
+                                        ZIP: b'PK\x03\x04'<br>
+                                        → Primeros bytes identifican el formato
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <strong style="color: #2c3e50;">⚠️ Importante:</strong>
+                                    <div style="background: #e74c3c; color: white; padding: 12px; border-radius: 5px; margin-top: 8px;">
+                                        Usar 'rb' y 'wb' (NO 'r' o 'w')<br>
+                                        Los datos son bytes, no texto
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="termino" id="csv" data-tags="csv comma separated values">
+                        <span class="tag">📋 Archivos CSV</span>
+                        <p class="significado">Datos separados por comas</p>
+                        <div class="ejemplo">import csv
+
+# Leer CSV
+with open("datos.csv", "r", encoding="utf-8") as f:
+    lector = csv.reader(f)
+    for fila in lector:
+        print(fila)  # Lista: ['col1', 'col2', 'col3']
+
+# Leer CSV como diccionario
+with open("datos.csv", "r", encoding="utf-8") as f:
+    lector = csv.DictReader(f)
+    for fila in lector:
+        print(fila["nombre"], fila["edad"])
+
+# Escribir CSV
+datos = [
+    ["nombre", "edad", "ciudad"],
+    ["Ana", 25, "Lima"],
+    ["Juan", 30, "Madrid"]
+]
+
+with open("salida.csv", "w", newline="", encoding="utf-8") as f:
+    escritor = csv.writer(f)
+    escritor.writerows(datos)
+
+# Escribir desde diccionarios
+personas = [
+    {"nombre": "Ana", "edad": 25},
+    {"nombre": "Juan", "edad": 30}
+]
+
+with open("personas.csv", "w", newline="", encoding="utf-8") as f:
+    campos = ["nombre", "edad"]
+    escritor = csv.DictWriter(f, fieldnames=campos)
+    escritor.writeheader()
+    escritor.writerows(personas)</div>
+                    <div class="vista-previa" style="margin-top: 30px;">
+                        <strong>👁️ Vista previa: Archivos CSV</strong>
+                        <div class="preview-content">
+                            <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">📄 Estructura CSV:</strong>
+                                    <div style="background: white; padding: 15px; border-radius: 5px; margin-top: 10px; border-left: 4px solid #3498db;">
+                                        <pre style="margin: 0; color: #2c3e50;">nombre,edad,ciudad
+Ana,25,Lima
+Juan,30,Madrid
+María,28,Barcelona</pre>
+                                    </div>
+                                </div>
+
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">🔍 csv.reader() - Leer como listas:</strong>
+                                    <div style="display: flex; gap: 15px; margin-top: 10px;">
+                                        <div style="flex: 1; background: #f39c12; color: white; padding: 15px; border-radius: 5px;">
+                                            <strong>datos.csv:</strong><br>
+                                            nombre,edad<br>
+                                            Ana,25<br>
+                                            Juan,30
+                                        </div>
+                                        <div style="align-self: center; font-size: 24px;">→</div>
+                                        <div style="flex: 1; background: #3498db; color: white; padding: 15px; border-radius: 5px;">
+                                            <strong>Python lee:</strong><br>
+                                            ['nombre', 'edad']<br>
+                                            ['Ana', '25']<br>
+                                            ['Juan', '30']
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="margin-bottom: 20px;">
+                                    <strong style="color: #2c3e50;">📋 csv.DictReader() - Leer como diccionarios:</strong>
+                                    <div style="background: #2ecc71; color: white; padding: 15px; border-radius: 5px; margin-top: 8px;">
+                                        <pre style="margin: 0;">{'nombre': 'Ana', 'edad': '25'}
+{'nombre': 'Juan', 'edad': '30'}</pre>
+                                        → Acceso por clave: fila["nombre"]
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <strong style="color: #2c3e50;">💾 Escribir CSV:</strong>
+                                    <div style="background: #9b59b6; color: white; padding: 12px; border-radius: 5px; margin-top: 8px;">
+                                        <strong>writer.writerow()</strong> → Escribe una fila<br>
+                                        <strong>writer.writerows()</strong> → Escribe múltiples filas<br>
+                                        <strong>DictWriter.writeheader()</strong> → Escribe encabezados
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">🐍 Archivos y JSON</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#open" class="toc-link">Función open()</a></li>
+                    <li class="toc-item"><a href="#lectura" class="toc-link">Lectura de Archivos</a></li>
+                    <li class="toc-item"><a href="#escritura" class="toc-link">Escritura de Archivos</a></li>
+                    <li class="toc-item"><a href="#modulo-os" class="toc-link">Módulo os</a></li>
+                    <li class="toc-item"><a href="#json-intro" class="toc-link">JSON Introducción</a></li>
+                    <li class="toc-item"><a href="#json-loads-dumps" class="toc-link">loads() y dumps()</a></li>
+                    <li class="toc-item"><a href="#json-archivos" class="toc-link">JSON con Archivos</a></li>
+                    <li class="toc-item"><a href="#json-validar" class="toc-link">Validar JSON</a></li>
+                    <li class="toc-item"><a href="#json-usos" class="toc-link">Usos de JSON</a></li>
+                    <li class="toc-item"><a href="#binarios" class="toc-link">Archivos Binarios</a></li>
+                    <li class="toc-item"><a href="#csv" class="toc-link">Archivos CSV</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>Python - Sistema de Aprendizaje | <a href="../index.html">Volver a Python</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script src="/assets/js/study-highlight.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) {
+                return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const tags = termino.getAttribute('data-tags') || '';
+                    const title = termino.querySelector('.tag')?.textContent || '';
+                    const desc = termino.querySelector('.descripcion')?.textContent || '';
+                    const ejemplo = termino.querySelector('.ejemplo')?.textContent || '';
+                    const searchText = normalizeText(tags + ' ' + title + ' ' + desc + ' ' + ejemplo);
+                    if (query === '' || searchText.includes(query)) {
+                        termino.style.display = 'block';
+                        found++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // Aplicar highlight.js solo a elementos .ejemplo que no tienen <br> (no son HTML)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.ejemplo').forEach(function(block) {
+                // Solo resaltar si no tiene elementos <br> (no es HTML con sintaxis manual)
+                if (block.querySelectorAll('br').length === 0) {
+                    block.classList.add('language-python');
+                    hljs.highlightElement(block);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+/* Estilos para navegación por teclado */
+
+/* Highlight de sección activa - MÁS VISIBLE */
+.kb-nav-active {
+    outline: 4px solid #e74c3c !important;
+    outline-offset: 8px;
+    box-shadow:
+        0 0 0 4px rgba(231, 76, 60, 0.3),
+        0 0 40px rgba(231, 76, 60, 0.5),
+        inset 0 0 20px rgba(231, 76, 60, 0.1) !important;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 10;
+}
+
+/* Animación de pulso para el highlight */
+@keyframes pulse-border {
+    0% { outline-color: #e74c3c; }
+    50% { outline-color: #ff6b5b; }
+    100% { outline-color: #e74c3c; }
+}
+
+.kb-nav-active {
+    animation: pulse-border 2s ease-in-out infinite;
+}
+
+/* TOC link activo */
+.toc-link.toc-active,
+.toc-sidebar a.toc-active {
+    background: rgba(231, 76, 60, 0.2) !important;
+    color: #e74c3c !important;
+    border-left: 3px solid #e74c3c !important;
+    padding-left: 12px !important;
+    font-weight: 600 !important;
+}
+
+/* Indicador de navegación - MEJORADO */
+#kb-nav-indicator {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, rgba(20, 20, 20, 0.98), rgba(40, 40, 40, 0.98));
+    border: 2px solid #e74c3c;
+    border-radius: 16px;
+    padding: 20px 25px;
+    z-index: 10000;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    min-width: 280px;
+    max-width: 350px;
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(231, 76, 60, 0.3);
+}
+
+#kb-nav-indicator.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Título de la sección actual */
+.kb-nav-title {
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(231, 76, 60, 0.3);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Progreso numérico */
+.kb-nav-progress {
+    display: block;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #e74c3c;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+/* Barra de progreso */
+.kb-nav-bar {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.kb-nav-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #e74c3c, #ff6b5b);
+    border-radius: 6px;
+    transition: width 0.4s ease;
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.5);
+}
+
+/* Hint de controles */
+.kb-nav-hint {
+    display: block;
+    font-size: 0.7em;
+    color: #888;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #kb-nav-indicator {
+        bottom: 15px;
+        right: 15px;
+        left: 15px;
+        min-width: auto;
+        max-width: none;
+    }
+
+    .kb-nav-active {
+        outline-width: 3px !important;
+        outline-offset: 4px;
+    }
+}
+
+/* Smooth scroll para todo */
+html {
+    scroll-behavior: smooth;
+}

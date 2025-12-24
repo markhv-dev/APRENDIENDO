@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funciones - Python</title>
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
+    <!-- Highlight.js para resaltado de sintaxis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a Python</a>
+        <span class="icon">🐍</span>
+        <h1>Módulo 4: Funciones</h1>
+        <p class="subtitle">Definición, parámetros, lambdas y scope</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(55, 118, 171, 0.1) 0%, rgba(55, 118, 171, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #3776ab; margin-bottom: 40px;">
+                <h2 style="color: #3776ab; margin-bottom: 15px; font-size: 1.8em;">⚙️ Funciones en Python</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    Las funciones son bloques de código reutilizables que realizan tareas específicas.
+                    Permiten organizar, estructurar y evitar repetición de código.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="definicion" data-tags="def funcion definir crear">
+                        <span class="tag">📋 Definición de Funciones</span>
+                        <p class="significado">Crear funciones con def</p>
+                        <div class="ejemplo"># Sintaxis básica
+def nombre_funcion():
+    # Bloque de código
+    pass
+
+# Función simple
+def saludar():
+    print("¡Hola!")
+
+# Llamar la función
+saludar()  # ¡Hola!
+
+# Función con parámetro
+def saludar_nombre(nombre):
+    print(f"¡Hola {nombre}!")
+
+saludar_nombre("Ana")  # ¡Hola Ana!
+
+# Función con return
+def cuadrado(n):
+    return n ** 2
+
+resultado = cuadrado(5)  # 25
+
+# Función sin return devuelve None
+def sin_retorno():
+    print("Hola")
+
+x = sin_retorno()
+print(x)  # None</div>
+                    <div class="vista-previa">
+                        <strong>👁️ Vista previa de funciones:</strong>
+                        <div class="preview-content">
+                            <p><strong>Código Python:</strong></p>
+                            <pre style="white-space: pre-wrap; background: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 6px; font-family: 'Courier New', monospace;">def saludar(nombre):
+    return f"¡Hola, {nombre}!"
+
+def sumar(a, b):
+    return a + b
+
+# Llamadas a funciones
+mensaje = saludar("Ana")
+resultado = sumar(10, 5)
+
+print(mensaje)
+print(f"La suma es: {resultado}")</pre>
+                            <p><strong>📤 Salida en terminal:</strong></p>
+                            <div style="background: #1e1e1e; color: #4ec9b0; font-family: 'Courier New', monospace; padding: 12px; border-radius: 6px; border-left: 3px solid #3776ab;">
+                                <span style="color: #dcdcaa;">¡Hola, Ana!</span><br>
+                                <span style="color: #dcdcaa;">La suma es: 15</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+
+                    <div class="termino" id="parametros" data-tags="parametros argumentos posicionales">
+                        <span class="tag">📋 Parámetros y Argumentos</span>
+                        <p class="significado">Tipos de parámetros en funciones</p>
+                        <div class="ejemplo"># Parámetros posicionales
+def sumar(a, b):
+    return a + b
+
+sumar(3, 5)  # 8 (a=3, b=5)
+
+# Parámetros con valor por defecto
+def saludar(nombre, saludo="Hola"):
+    return f"{saludo} {nombre}"
+
+saludar("Ana")           # "Hola Ana"
+saludar("Ana", "Buenos días")  # "Buenos días Ana"
+
+# Argumentos por nombre (keyword)
+def crear_persona(nombre, edad, ciudad):
+    return {"nombre": nombre, "edad": edad, "ciudad": ciudad}
+
+# Orden no importa si usas nombres
+persona = crear_persona(
+    ciudad="Madrid",
+    nombre="Ana",
+    edad=25
+)
+
+# Mezcla posicionales y keyword
+# Los posicionales SIEMPRE van primero
+crear_persona("Ana", ciudad="Lima", edad=30)</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Tipos de Parámetros</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="text-align: center; font-size: 1.3em; margin-bottom: 25px; color: #2c3e50;"><strong>📊 Jerarquía de Parámetros en Funciones</strong></div>
+
+                        <!-- Parámetros Posicionales -->
+                        <div style="background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 10px;">1️⃣ Posicionales Obligatorios</div>
+                            <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; font-family: monospace;">
+                                def sumar(a, b):<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;return a + b
+                            </div>
+                            <div style="margin-top: 10px; font-size: 0.95em;">
+                                ✓ Orden importa<br>
+                                ✓ Obligatorios<br>
+                                → sumar(3, 5) = 8
+                            </div>
+                        </div>
+
+                        <!-- Parámetros con Default -->
+                        <div style="background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 10px;">2️⃣ Con Valor por Defecto</div>
+                            <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; font-family: monospace;">
+                                def saludar(nombre, saludo="Hola"):<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;return f"{saludo} {nombre}"
+                            </div>
+                            <div style="margin-top: 10px; font-size: 0.95em;">
+                                ✓ Opcionales<br>
+                                ✓ Tienen valor por defecto<br>
+                                → saludar("Ana") = "Hola Ana"<br>
+                                → saludar("Ana", "Buenos días") = "Buenos días Ana"
+                            </div>
+                        </div>
+
+                        <!-- Keyword Arguments -->
+                        <div style="background: linear-gradient(135deg, #9b59b6, #8e44ad); color: white; padding: 20px; border-radius: 8px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 10px;">3️⃣ Argumentos por Nombre (Keyword)</div>
+                            <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; font-family: monospace;">
+                                crear_persona(<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;ciudad="Madrid",<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;nombre="Ana",<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;edad=25<br>
+                                )
+                            </div>
+                            <div style="margin-top: 10px; font-size: 0.95em;">
+                                ✓ Orden NO importa<br>
+                                ✓ Más legible<br>
+                                ✓ Posicionales primero, luego keyword
+                            </div>
+                        </div>
+
+                        <!-- Regla de Orden -->
+                        <div style="background: #e74c3c; color: white; padding: 15px; border-radius: 8px; margin-top: 20px; text-align: center; font-weight: bold;">
+                            ⚠️ ORDEN: Posicionales → Defaults → Keyword
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="args-kwargs" data-tags="args kwargs variable argumentos">
+                        <span class="tag">📋 *args y **kwargs</span>
+                        <p class="significado">Número variable de argumentos</p>
+                        <div class="ejemplo"># *args - Múltiples argumentos posicionales (tupla)
+def sumar_todos(*args):
+    print(type(args))  # <class 'tuple'>
+    return sum(args)
+
+sumar_todos(1, 2, 3)       # 6
+sumar_todos(1, 2, 3, 4, 5) # 15
+
+# **kwargs - Múltiples argumentos con nombre (dict)
+def mostrar_info(**kwargs):
+    print(type(kwargs))  # <class 'dict'>
+    for clave, valor in kwargs.items():
+        print(f"{clave}: {valor}")
+
+mostrar_info(nombre="Ana", edad=25, ciudad="Lima")
+# nombre: Ana
+# edad: 25
+# ciudad: Lima
+
+# Combinando ambos
+def funcion_flexible(obligatorio, *args, **kwargs):
+    print(f"Obligatorio: {obligatorio}")
+    print(f"Args: {args}")
+    print(f"Kwargs: {kwargs}")
+
+funcion_flexible("primero", 1, 2, 3, x=10, y=20)
+# Obligatorio: primero
+# Args: (1, 2, 3)
+# Kwargs: {'x': 10, 'y': 20}</div>
+                        <div class="nota">
+                            <strong>💡 Orden correcto:</strong> def f(posicionales, *args, keyword, **kwargs)
+                        </div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: *args y **kwargs</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="text-align: center; font-size: 1.3em; margin-bottom: 25px; color: #2c3e50;"><strong>🔄 Argumentos Variables: *args vs **kwargs</strong></div>
+
+                        <!-- Diagrama de flujo -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                            <!-- *args -->
+                            <div style="background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 20px; border-radius: 8px;">
+                                <div style="font-weight: bold; font-size: 1.3em; margin-bottom: 15px; text-align: center;">*args</div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; margin-bottom: 10px; font-family: monospace; font-size: 0.9em;">
+                                    def sumar(*args):
+                                </div>
+                                <div style="text-align: center; margin: 15px 0; font-size: 1.5em;">↓</div>
+                                <div style="background: rgba(255,255,255,0.3); padding: 15px; border-radius: 6px; text-align: center;">
+                                    <div style="font-weight: bold; margin-bottom: 8px;">TUPLA</div>
+                                    <div style="font-family: monospace;">(1, 2, 3, 4, 5)</div>
+                                </div>
+                                <div style="margin-top: 15px; font-size: 0.9em;">
+                                    ✓ Múltiples posicionales<br>
+                                    ✓ Se convierte en tupla<br>
+                                    ✓ Orden importa<br>
+                                    → sumar(1, 2, 3)
+                                </div>
+                            </div>
+
+                            <!-- **kwargs -->
+                            <div style="background: linear-gradient(135deg, #9b59b6, #8e44ad); color: white; padding: 20px; border-radius: 8px;">
+                                <div style="font-weight: bold; font-size: 1.3em; margin-bottom: 15px; text-align: center;">**kwargs</div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; margin-bottom: 10px; font-family: monospace; font-size: 0.9em;">
+                                    def info(**kwargs):
+                                </div>
+                                <div style="text-align: center; margin: 15px 0; font-size: 1.5em;">↓</div>
+                                <div style="background: rgba(255,255,255,0.3); padding: 15px; border-radius: 6px; text-align: center;">
+                                    <div style="font-weight: bold; margin-bottom: 8px;">DICCIONARIO</div>
+                                    <div style="font-family: monospace; font-size: 0.85em;">
+                                        {'nombre': 'Ana',<br>
+                                        'edad': 25}
+                                    </div>
+                                </div>
+                                <div style="margin-top: 15px; font-size: 0.9em;">
+                                    ✓ Múltiples keyword<br>
+                                    ✓ Se convierte en dict<br>
+                                    ✓ Orden NO importa<br>
+                                    → info(nombre="Ana")
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Combinación -->
+                        <div style="background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; padding: 20px; border-radius: 8px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 10px; text-align: center;">🔗 Combinación Completa</div>
+                            <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 6px; font-family: monospace; text-align: center;">
+                                def f(obligatorio, *args, **kwargs)
+                            </div>
+                            <div style="text-align: center; margin: 20px 0;">
+                                <div style="background: rgba(255,255,255,0.3); padding: 12px; border-radius: 6px; display: inline-block; font-family: monospace; font-size: 0.9em;">
+                                    f("primero", 1, 2, 3, x=10, y=20)
+                                </div>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; font-size: 0.9em;">
+                                <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 6px; text-align: center;">
+                                    <strong>obligatorio</strong><br>"primero"
+                                </div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 6px; text-align: center;">
+                                    <strong>args</strong><br>(1, 2, 3)
+                                </div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 6px; text-align: center;">
+                                    <strong>kwargs</strong><br>{'x':10, 'y':20}
+                                </div>
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="return" data-tags="return retornar devolver valor">
+                        <span class="tag">📋 return - Retornar Valores</span>
+                        <p class="significado">Devolver valores desde funciones</p>
+                        <div class="ejemplo"># Return simple
+def doble(n):
+    return n * 2
+
+# Return múltiple (devuelve tupla)
+def dividir(a, b):
+    cociente = a // b
+    resto = a % b
+    return cociente, resto
+
+c, r = dividir(17, 5)  # c=3, r=2
+# O recibir como tupla
+resultado = dividir(17, 5)  # (3, 2)
+
+# Return temprano (guard clause)
+def calcular_descuento(precio, porcentaje):
+    if precio <= 0:
+        return 0
+    if porcentaje < 0 or porcentaje > 100:
+        return precio
+    return precio * (1 - porcentaje/100)
+
+# Return en condicional
+def valor_absoluto(n):
+    return n if n >= 0 else -n
+
+# Sin return explícito = return None
+def solo_imprime():
+    print("Hola")
+    # return None implícito</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: return - Retornar Valores</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="text-align: center; font-size: 1.3em; margin-bottom: 25px; color: #2c3e50;"><strong>↩️ Flujo de Retorno de Funciones</strong></div>
+
+                        <!-- Return Simple -->
+                        <div style="background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 10px;">1️⃣ Return Simple</div>
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; font-family: monospace; flex: 1;">
+                                    def doble(n):<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;return n * 2
+                                </div>
+                                <div style="font-size: 2em; margin: 0 15px;">→</div>
+                                <div style="background: rgba(255,255,255,0.3); padding: 15px; border-radius: 6px; text-align: center; font-family: monospace;">
+                                    doble(5)<br>
+                                    <strong style="font-size: 1.3em;">10</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Return Múltiple -->
+                        <div style="background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 10px;">2️⃣ Return Múltiple (Tupla)</div>
+                            <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; font-family: monospace; margin-bottom: 15px;">
+                                def dividir(a, b):<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;cociente = a // b<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;resto = a % b<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;return cociente, resto
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 15px; align-items: center;">
+                                <div style="background: rgba(255,255,255,0.3); padding: 12px; border-radius: 6px; text-align: center; font-family: monospace;">
+                                    dividir(17, 5)
+                                </div>
+                                <div style="font-size: 1.5em;">⇒</div>
+                                <div style="background: rgba(255,255,255,0.3); padding: 12px; border-radius: 6px; text-align: center; font-family: monospace;">
+                                    (3, 2)<br>
+                                    <div style="font-size: 0.85em; margin-top: 5px;">c, r = dividir(17, 5)</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Return Temprano -->
+                        <div style="background: linear-gradient(135deg, #f39c12, #e67e22); color: white; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 10px;">3️⃣ Return Temprano (Guard Clause)</div>
+                            <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; font-family: monospace; font-size: 0.9em;">
+                                def calcular(precio):<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;if precio <= 0:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">return 0</span> &nbsp;# ❌ Sale aquí<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;if precio > 100:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">return precio * 0.9</span> &nbsp;# ❌ Sale aquí<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span style="background: #2ecc71; padding: 2px 6px; border-radius: 3px;">return precio</span> &nbsp;# ✓ O aquí
+                            </div>
+                            <div style="margin-top: 10px; font-size: 0.9em;">
+                                ✓ Valida condiciones primero<br>
+                                ✓ Sale inmediatamente<br>
+                                ✓ Evita anidación profunda
+                            </div>
+                        </div>
+
+                        <!-- Sin Return -->
+                        <div style="background: linear-gradient(135deg, #95a5a6, #7f8c8d); color: white; padding: 20px; border-radius: 8px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 10px;">4️⃣ Sin Return = None</div>
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; font-family: monospace; flex: 1;">
+                                    def solo_imprime():<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;print("Hola")<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;# return None (implícito)
+                                </div>
+                                <div style="font-size: 2em; margin: 0 15px;">→</div>
+                                <div style="background: rgba(255,255,255,0.3); padding: 15px; border-radius: 6px; text-align: center; font-family: monospace;">
+                                    <strong style="font-size: 1.3em;">None</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="lambda" data-tags="lambda anonima funcion inline">
+                        <span class="tag">📋 Funciones Lambda</span>
+                        <p class="significado">Funciones anónimas en una línea</p>
+                        <div class="ejemplo"># Sintaxis: lambda argumentos: expresión
+
+# Lambda simple
+cuadrado = lambda x: x ** 2
+print(cuadrado(5))  # 25
+
+# Múltiples argumentos
+sumar = lambda a, b: a + b
+print(sumar(3, 4))  # 7
+
+# Con condicional (ternario)
+es_par = lambda n: "par" if n % 2 == 0 else "impar"
+print(es_par(4))  # "par"
+
+# Uso común: como argumento de funciones
+numeros = [3, 1, 4, 1, 5, 9]
+
+# Ordenar por valor absoluto
+ordenados = sorted(numeros, key=lambda x: x)
+
+# Ordenar lista de tuplas
+personas = [("Ana", 25), ("Juan", 30), ("María", 20)]
+por_edad = sorted(personas, key=lambda p: p[1])
+# [('María', 20), ('Ana', 25), ('Juan', 30)]
+
+# Con map y filter
+dobles = list(map(lambda x: x * 2, [1, 2, 3]))  # [2, 4, 6]
+pares = list(filter(lambda x: x % 2 == 0, [1, 2, 3, 4]))  # [2, 4]</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Funciones Lambda</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="text-align: center; font-size: 1.3em; margin-bottom: 25px; color: #2c3e50;"><strong>⚡ Lambda: Funciones Anónimas vs Normales</strong></div>
+
+                        <!-- Comparación Lambda vs Def -->
+                        <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 20px; margin-bottom: 20px; align-items: center;">
+                            <div style="background: linear-gradient(135deg, #9b59b6, #8e44ad); color: white; padding: 20px; border-radius: 8px;">
+                                <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 10px; text-align: center;">Función Normal</div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 6px; font-family: monospace; font-size: 0.9em;">
+                                    def cuadrado(x):<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;return x ** 2
+                                </div>
+                                <div style="margin-top: 10px; font-size: 0.9em;">
+                                    ✓ Múltiples líneas<br>
+                                    ✓ Tiene nombre<br>
+                                    ✓ Puede tener docstring<br>
+                                    ✓ Múltiples statements
+                                </div>
+                            </div>
+
+                            <div style="font-size: 2.5em; text-align: center; color: #3498db;">⇄</div>
+
+                            <div style="background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; padding: 20px; border-radius: 8px;">
+                                <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 10px; text-align: center;">Lambda</div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 6px; font-family: monospace; font-size: 0.9em; text-align: center;">
+                                    lambda x: x ** 2
+                                </div>
+                                <div style="margin-top: 10px; font-size: 0.9em;">
+                                    ✓ Una sola línea<br>
+                                    ✓ Anónima<br>
+                                    ✓ Solo expresión<br>
+                                    ✓ Return implícito
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sintaxis Lambda -->
+                        <div style="background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 15px; text-align: center;">📐 Anatomía de Lambda</div>
+                            <div style="background: rgba(255,255,255,0.3); padding: 20px; border-radius: 6px; font-family: monospace; font-size: 1.1em; text-align: center;">
+                                <span style="background: #e74c3c; padding: 5px 10px; border-radius: 4px;">lambda</span>
+                                <span style="margin: 0 10px;">x, y</span>
+                                <span style="background: #f39c12; padding: 5px 10px; border-radius: 4px;">:</span>
+                                <span style="margin: 0 10px;">x + y</span>
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; font-size: 0.9em;">
+                                <div style="text-align: center;">
+                                    <div style="background: #e74c3c; padding: 8px; border-radius: 4px; margin-bottom: 5px;">lambda</div>
+                                    Palabra clave
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="background: rgba(255,255,255,0.2); padding: 8px; border-radius: 4px; margin-bottom: 5px;">x, y</div>
+                                    Parámetros
+                                </div>
+                                <div style="text-align: center;">
+                                    <div style="background: #2ecc71; padding: 8px; border-radius: 4px; margin-bottom: 5px;">x + y</div>
+                                    Expresión (return)
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Casos de uso -->
+                        <div style="background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; padding: 20px; border-radius: 8px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 10px; text-align: center;">🎯 Casos de Uso Comunes</div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 0.9em;">
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px;">
+                                    <strong>sorted() con key</strong>
+                                    <div style="font-family: monospace; margin-top: 8px; background: rgba(255,255,255,0.2); padding: 8px; border-radius: 4px;">
+                                        sorted(lista,<br>
+                                        &nbsp;&nbsp;key=lambda x: x[1])
+                                    </div>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px;">
+                                    <strong>map() y filter()</strong>
+                                    <div style="font-family: monospace; margin-top: 8px; background: rgba(255,255,255,0.2); padding: 8px; border-radius: 4px;">
+                                        map(lambda x: x*2,<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;[1,2,3])
+                                    </div>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px;">
+                                    <strong>Condicional ternario</strong>
+                                    <div style="font-family: monospace; margin-top: 8px; background: rgba(255,255,255,0.2); padding: 8px; border-radius: 4px;">
+                                        lambda x: "par"<br>
+                                        if x%2==0 else "impar"
+                                    </div>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px;">
+                                    <strong>Callbacks</strong>
+                                    <div style="font-family: monospace; margin-top: 8px; background: rgba(255,255,255,0.2); padding: 8px; border-radius: 4px;">
+                                        boton.click(<br>
+                                        &nbsp;&nbsp;lambda: print("OK"))
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="funciones-integradas" data-tags="built-in integradas print input len">
+                        <span class="tag">📋 Funciones Integradas</span>
+                        <p class="significado">Funciones disponibles sin importar</p>
+                        <div class="ejemplo"># Entrada/Salida
+print("Hola")
+nombre = input("Tu nombre: ")
+
+# Matemáticas
+abs(-5)           # 5
+round(3.7)        # 4
+round(3.14159, 2) # 3.14
+pow(2, 3)         # 8 (2³)
+divmod(17, 5)     # (3, 2) - (cociente, resto)
+sum([1, 2, 3])    # 6
+min(5, 2, 9)      # 2
+max(5, 2, 9)      # 9
+
+# Conversión de tipos
+int("42")         # 42
+float("3.14")     # 3.14
+str(42)           # "42"
+bool(1)           # True
+list("abc")       # ['a', 'b', 'c']
+tuple([1, 2])     # (1, 2)
+set([1, 2, 2])    # {1, 2}
+dict(a=1, b=2)    # {'a': 1, 'b': 2}
+
+# Información
+type(42)          # <class 'int'>
+len("Python")     # 6
+id(objeto)        # Identificador único
+help(print)       # Ayuda de la función
+
+# Iteración
+range(5)          # 0, 1, 2, 3, 4
+enumerate(lista)  # índice y valor
+zip(lista1, lista2)  # combina listas</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Funciones Integradas</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="text-align: center; font-size: 1.3em; margin-bottom: 25px; color: #2c3e50;"><strong>🔧 Funciones Built-in de Python</strong></div>
+
+                        <!-- Categorías -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <!-- I/O -->
+                            <div style="background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 18px; border-radius: 8px;">
+                                <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 10px; text-align: center;">📥📤 Entrada/Salida</div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 6px; font-family: monospace; font-size: 0.85em;">
+                                    print("Hola")<br>
+                                    input("Nombre: ")
+                                </div>
+                            </div>
+
+                            <!-- Matemáticas -->
+                            <div style="background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; padding: 18px; border-radius: 8px;">
+                                <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 10px; text-align: center;">🔢 Matemáticas</div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 6px; font-family: monospace; font-size: 0.85em;">
+                                    abs(-5) → 5<br>
+                                    round(3.7) → 4<br>
+                                    sum([1,2,3]) → 6<br>
+                                    min(5,2,9) → 2<br>
+                                    max(5,2,9) → 9<br>
+                                    pow(2,3) → 8
+                                </div>
+                            </div>
+
+                            <!-- Conversión -->
+                            <div style="background: linear-gradient(135deg, #9b59b6, #8e44ad); color: white; padding: 18px; border-radius: 8px;">
+                                <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 10px; text-align: center;">🔄 Conversión de Tipos</div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 6px; font-family: monospace; font-size: 0.85em;">
+                                    int("42") → 42<br>
+                                    float("3.14") → 3.14<br>
+                                    str(42) → "42"<br>
+                                    bool(1) → True<br>
+                                    list("abc") → ['a','b','c']<br>
+                                    tuple([1,2]) → (1,2)
+                                </div>
+                            </div>
+
+                            <!-- Información -->
+                            <div style="background: linear-gradient(135deg, #f39c12, #e67e22); color: white; padding: 18px; border-radius: 8px;">
+                                <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 10px; text-align: center;">ℹ️ Información</div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 6px; font-family: monospace; font-size: 0.85em;">
+                                    type(42) → int<br>
+                                    len("Python") → 6<br>
+                                    id(obj) → ID único<br>
+                                    help(print) → Ayuda
+                                </div>
+                            </div>
+
+                            <!-- Iteración -->
+                            <div style="background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; padding: 18px; border-radius: 8px; grid-column: span 2;">
+                                <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 10px; text-align: center;">🔁 Iteración y Secuencias</div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; font-size: 0.85em;">
+                                    <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 6px; font-family: monospace;">
+                                        range(5)<br>
+                                        <span style="font-size: 0.8em;">→ 0,1,2,3,4</span>
+                                    </div>
+                                    <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 6px; font-family: monospace;">
+                                        enumerate(lista)<br>
+                                        <span style="font-size: 0.8em;">→ (índice, valor)</span>
+                                    </div>
+                                    <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 6px; font-family: monospace;">
+                                        zip(l1, l2)<br>
+                                        <span style="font-size: 0.8em;">→ combina listas</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Nota -->
+                        <div style="background: #34495e; color: white; padding: 15px; border-radius: 8px; margin-top: 15px; text-align: center; font-size: 0.95em;">
+                            💡 Siempre disponibles sin importar módulos
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="map-filter-reduce" data-tags="map filter reduce funcional">
+                        <span class="tag">📋 map, filter y reduce</span>
+                        <p class="significado">Programación funcional</p>
+                        <div class="ejemplo"># map() - Aplicar función a cada elemento
+numeros = [1, 2, 3, 4, 5]
+
+# Con función definida
+def cuadrado(x):
+    return x ** 2
+
+cuadrados = list(map(cuadrado, numeros))
+# [1, 4, 9, 16, 25]
+
+# Con lambda
+cuadrados = list(map(lambda x: x ** 2, numeros))
+
+# filter() - Filtrar elementos
+pares = list(filter(lambda x: x % 2 == 0, numeros))
+# [2, 4]
+
+# reduce() - Reducir a un solo valor
+from functools import reduce
+
+suma_total = reduce(lambda a, b: a + b, numeros)
+# 15 (1+2+3+4+5)
+
+producto = reduce(lambda a, b: a * b, numeros)
+# 120 (1*2*3*4*5)
+
+# Alternativas con comprehension (más Pythonic)
+cuadrados = [x ** 2 for x in numeros]
+pares = [x for x in numeros if x % 2 == 0]</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: map, filter y reduce</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="text-align: center; font-size: 1.3em; margin-bottom: 25px; color: #2c3e50;"><strong>🔁 Programación Funcional: map, filter, reduce</strong></div>
+
+                        <!-- map() -->
+                        <div style="background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 15px; text-align: center;">🗺️ map() - Transformar Todos</div>
+                            <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 6px; font-family: monospace; margin-bottom: 10px; text-align: center;">
+                                map(función, iterable)
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 15px; justify-content: center;">
+                                <div style="background: rgba(255,255,255,0.3); padding: 12px; border-radius: 6px; font-family: monospace;">
+                                    [1, 2, 3, 4, 5]
+                                </div>
+                                <div style="font-size: 1.5em;">→</div>
+                                <div style="background: #f39c12; padding: 12px; border-radius: 6px; font-family: monospace;">
+                                    lambda x: x²
+                                </div>
+                                <div style="font-size: 1.5em;">→</div>
+                                <div style="background: rgba(255,255,255,0.3); padding: 12px; border-radius: 6px; font-family: monospace;">
+                                    [1, 4, 9, 16, 25]
+                                </div>
+                            </div>
+                            <div style="margin-top: 10px; text-align: center; font-size: 0.9em;">
+                                ✓ Aplica función a CADA elemento
+                            </div>
+                        </div>
+
+                        <!-- filter() -->
+                        <div style="background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 15px; text-align: center;">🔍 filter() - Filtrar por Condición</div>
+                            <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 6px; font-family: monospace; margin-bottom: 10px; text-align: center;">
+                                filter(condición, iterable)
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 15px; justify-content: center;">
+                                <div style="background: rgba(255,255,255,0.3); padding: 12px; border-radius: 6px; font-family: monospace;">
+                                    [1, 2, 3, 4, 5]
+                                </div>
+                                <div style="font-size: 1.5em;">→</div>
+                                <div style="background: #f39c12; padding: 12px; border-radius: 6px; font-family: monospace;">
+                                    lambda x: x%2==0
+                                </div>
+                                <div style="font-size: 1.5em;">→</div>
+                                <div style="background: rgba(255,255,255,0.3); padding: 12px; border-radius: 6px; font-family: monospace;">
+                                    [2, 4]
+                                </div>
+                            </div>
+                            <div style="margin-top: 10px; text-align: center; font-size: 0.9em;">
+                                ✓ Mantiene solo los que cumplen la condición
+                            </div>
+                        </div>
+
+                        <!-- reduce() -->
+                        <div style="background: linear-gradient(135deg, #9b59b6, #8e44ad); color: white; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 15px; text-align: center;">📉 reduce() - Acumular a Uno Solo</div>
+                            <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 6px; font-family: monospace; margin-bottom: 10px; text-align: center;">
+                                reduce(función, iterable)
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="background: rgba(255,255,255,0.3); padding: 12px; border-radius: 6px; font-family: monospace; display: inline-block; margin-bottom: 10px;">
+                                    [1, 2, 3, 4, 5]
+                                </div>
+                                <div style="font-size: 1.2em; margin: 10px 0;">↓ lambda a,b: a+b</div>
+                                <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin: 15px 0;">
+                                    <div style="background: rgba(255,255,255,0.2); padding: 8px; border-radius: 6px; font-size: 0.85em;">1+2=3</div>
+                                    <div style="background: rgba(255,255,255,0.2); padding: 8px; border-radius: 6px; font-size: 0.85em;">3+3=6</div>
+                                    <div style="background: rgba(255,255,255,0.2); padding: 8px; border-radius: 6px; font-size: 0.85em;">6+4=10</div>
+                                    <div style="background: rgba(255,255,255,0.2); padding: 8px; border-radius: 6px; font-size: 0.85em;">10+5=15</div>
+                                    <div style="background: #e74c3c; padding: 8px; border-radius: 6px; font-size: 0.85em; font-weight: bold;">15</div>
+                                </div>
+                            </div>
+                            <div style="margin-top: 10px; text-align: center; font-size: 0.9em;">
+                                ✓ Reduce toda la lista a UN SOLO valor<br>
+                                ⚠️ Requiere: from functools import reduce
+                            </div>
+                        </div>
+
+                        <!-- Comparación con List Comprehension -->
+                        <div style="background: linear-gradient(135deg, #f39c12, #e67e22); color: white; padding: 15px; border-radius: 8px;">
+                            <div style="font-weight: bold; text-align: center; margin-bottom: 10px;">💡 Alternativa Pythonic: List Comprehension</div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 0.85em;">
+                                <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 6px; font-family: monospace;">
+                                    map(lambda x: x**2, nums)<br>
+                                    <span style="background: #2ecc71; padding: 2px 6px; border-radius: 3px; margin-top: 5px; display: inline-block;">[x**2 for x in nums]</span>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 10px; border-radius: 6px; font-family: monospace;">
+                                    filter(lambda x: x%2==0, nums)<br>
+                                    <span style="background: #2ecc71; padding: 2px 6px; border-radius: 3px; margin-top: 5px; display: inline-block;">[x for x in nums if x%2==0]</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="scope" data-tags="scope alcance global local variable">
+                        <span class="tag">📋 Scope (Alcance)</span>
+                        <p class="significado">Dónde las variables son accesibles</p>
+                        <div class="ejemplo"># Variable global
+mensaje = "Hola global"
+
+def mostrar():
+    # Puede leer variable global
+    print(mensaje)  # "Hola global"
+
+def modificar():
+    # Crea variable LOCAL con mismo nombre
+    mensaje = "Hola local"
+    print(mensaje)  # "Hola local"
+
+mostrar()
+modificar()
+print(mensaje)  # "Hola global" (no cambió)
+
+# Modificar global con 'global'
+contador = 0
+
+def incrementar():
+    global contador  # Declara que usará la global
+    contador += 1
+
+incrementar()
+print(contador)  # 1
+
+# Variable local
+def funcion():
+    local = "Solo existe aquí"
+    print(local)
+
+funcion()
+# print(local)  # Error! No existe fuera
+
+# LEGB: Local, Enclosing, Global, Built-in
+x = "global"
+
+def externa():
+    x = "enclosing"
+
+    def interna():
+        x = "local"
+        print(x)  # "local"
+
+    interna()
+    print(x)  # "enclosing"
+
+externa()
+print(x)  # "global"</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Scope (Alcance)</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="text-align: center; font-size: 1.3em; margin-bottom: 25px; color: #2c3e50;"><strong>🔭 Alcance de Variables: Regla LEGB</strong></div>
+
+                        <!-- Regla LEGB -->
+                        <div style="background: #34495e; color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                            <div style="font-weight: bold; font-size: 1.3em; margin-bottom: 15px; text-align: center;">Orden de Búsqueda: LEGB</div>
+                            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; text-align: center;">
+                                <div style="background: #e74c3c; padding: 15px; border-radius: 6px;">
+                                    <div style="font-size: 1.5em; margin-bottom: 5px;">L</div>
+                                    <div style="font-size: 0.9em;">Local</div>
+                                    <div style="font-size: 0.8em; margin-top: 5px; opacity: 0.9;">Dentro de función</div>
+                                </div>
+                                <div style="background: #f39c12; padding: 15px; border-radius: 6px;">
+                                    <div style="font-size: 1.5em; margin-bottom: 5px;">E</div>
+                                    <div style="font-size: 0.9em;">Enclosing</div>
+                                    <div style="font-size: 0.8em; margin-top: 5px; opacity: 0.9;">Función contenedora</div>
+                                </div>
+                                <div style="background: #3498db; padding: 15px; border-radius: 6px;">
+                                    <div style="font-size: 1.5em; margin-bottom: 5px;">G</div>
+                                    <div style="font-size: 0.9em;">Global</div>
+                                    <div style="font-size: 0.8em; margin-top: 5px; opacity: 0.9;">Nivel módulo</div>
+                                </div>
+                                <div style="background: #9b59b6; padding: 15px; border-radius: 6px;">
+                                    <div style="font-size: 1.5em; margin-bottom: 5px;">B</div>
+                                    <div style="font-size: 0.9em;">Built-in</div>
+                                    <div style="font-size: 0.8em; margin-top: 5px; opacity: 0.9;">Integradas Python</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Diagrama Visual -->
+                        <div style="position: relative; padding: 20px;">
+                            <!-- Built-in (más externo) -->
+                            <div style="background: linear-gradient(135deg, #9b59b6, #8e44ad); padding: 20px; border-radius: 8px; color: white;">
+                                <div style="font-weight: bold; margin-bottom: 10px;">🌐 Built-in Scope</div>
+                                <div style="font-family: monospace; font-size: 0.85em;">print(), len(), type()...</div>
+
+                                <!-- Global -->
+                                <div style="background: linear-gradient(135deg, #3498db, #2980b9); padding: 20px; border-radius: 8px; margin-top: 15px;">
+                                    <div style="font-weight: bold; margin-bottom: 10px;">🌍 Global Scope</div>
+                                    <div style="font-family: monospace; font-size: 0.85em;">x = "global"</div>
+
+                                    <!-- Enclosing -->
+                                    <div style="background: linear-gradient(135deg, #f39c12, #e67e22); padding: 20px; border-radius: 8px; margin-top: 15px;">
+                                        <div style="font-weight: bold; margin-bottom: 10px;">🏢 Enclosing Scope</div>
+                                        <div style="font-family: monospace; font-size: 0.85em;">def externa():<br>&nbsp;&nbsp;x = "enclosing"</div>
+
+                                        <!-- Local -->
+                                        <div style="background: linear-gradient(135deg, #e74c3c, #c0392b); padding: 20px; border-radius: 8px; margin-top: 15px;">
+                                            <div style="font-weight: bold; margin-bottom: 10px;">🏠 Local Scope</div>
+                                            <div style="font-family: monospace; font-size: 0.85em;">def interna():<br>&nbsp;&nbsp;x = "local"<br>&nbsp;&nbsp;print(x) # "local" ✓</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Keywords -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+                            <div style="background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 18px; border-radius: 8px;">
+                                <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 10px; text-align: center;">🔑 global</div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; font-family: monospace; font-size: 0.85em;">
+                                    x = 10<br>
+                                    def func():<br>
+                                    &nbsp;&nbsp;<span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">global x</span><br>
+                                    &nbsp;&nbsp;x = 20  # Modifica global
+                                </div>
+                                <div style="margin-top: 10px; font-size: 0.9em;">Modifica variable global</div>
+                            </div>
+
+                            <div style="background: linear-gradient(135deg, #f39c12, #e67e22); color: white; padding: 18px; border-radius: 8px;">
+                                <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 10px; text-align: center;">🔑 nonlocal</div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; font-family: monospace; font-size: 0.85em;">
+                                    def externa():<br>
+                                    &nbsp;&nbsp;x = 10<br>
+                                    &nbsp;&nbsp;def interna():<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">nonlocal x</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;x = 20  # Modifica enclosing
+                                </div>
+                                <div style="margin-top: 10px; font-size: 0.9em;">Modifica variable enclosing</div>
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="closures" data-tags="closure clausura enclosing funcion anidada">
+                        <span class="tag">📋 Closures</span>
+                        <p class="significado">Funciones que recuerdan su entorno</p>
+                        <div class="ejemplo"># Una closure es una función que recuerda
+# las variables del scope donde fue creada
+
+def crear_multiplicador(factor):
+    # factor queda "encerrado" en la closure
+    def multiplicar(numero):
+        return numero * factor
+    return multiplicar
+
+doble = crear_multiplicador(2)
+triple = crear_multiplicador(3)
+
+print(doble(5))   # 10
+print(triple(5))  # 15
+
+# Ejemplo: contador
+def crear_contador():
+    cuenta = 0
+
+    def incrementar():
+        nonlocal cuenta  # Accede a variable enclosing
+        cuenta += 1
+        return cuenta
+
+    return incrementar
+
+contador = crear_contador()
+print(contador())  # 1
+print(contador())  # 2
+print(contador())  # 3
+
+# Cada llamada a crear_contador crea un nuevo contador
+otro = crear_contador()
+print(otro())  # 1 (independiente)</div>
+                        <div class="nota">
+                            <strong>💡 nonlocal:</strong> Permite modificar variables del scope enclosing (no global).
+                        </div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Closures</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="text-align: center; font-size: 1.3em; margin-bottom: 25px; color: #2c3e50;"><strong>🔒 Closures: Funciones que Recuerdan su Entorno</strong></div>
+
+                        <!-- Concepto -->
+                        <div style="background: linear-gradient(135deg, #9b59b6, #8e44ad); color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 15px; text-align: center;">¿Qué es una Closure?</div>
+                            <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 6px; text-align: center; font-size: 1.05em;">
+                                Una función que <strong>"captura"</strong> y <strong>"recuerda"</strong> variables<br>
+                                del scope donde fue creada
+                            </div>
+                        </div>
+
+                        <!-- Ejemplo Visual: Multiplicador -->
+                        <div style="background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 15px; text-align: center;">🎯 Ejemplo: Multiplicador</div>
+
+                            <!-- Código -->
+                            <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 6px; font-family: monospace; font-size: 0.9em; margin-bottom: 15px;">
+                                def crear_multiplicador(factor):<br>
+                                &nbsp;&nbsp;def multiplicar(numero):<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;return numero * <span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">factor</span>  # Captura "factor"<br>
+                                &nbsp;&nbsp;return multiplicar
+                            </div>
+
+                            <!-- Flujo -->
+                            <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 15px; align-items: center;">
+                                <div style="background: rgba(255,255,255,0.3); padding: 15px; border-radius: 6px;">
+                                    <div style="font-family: monospace; margin-bottom: 10px;">doble = crear_multiplicador(2)</div>
+                                    <div style="background: #e74c3c; padding: 10px; border-radius: 4px; text-align: center;">
+                                        🔒 factor = 2<br>
+                                        <span style="font-size: 0.85em;">(capturado)</span>
+                                    </div>
+                                    <div style="font-family: monospace; margin-top: 10px; text-align: center;">
+                                        doble(5) → 10
+                                    </div>
+                                </div>
+
+                                <div style="font-size: 2em;">⚡</div>
+
+                                <div style="background: rgba(255,255,255,0.3); padding: 15px; border-radius: 6px;">
+                                    <div style="font-family: monospace; margin-bottom: 10px;">triple = crear_multiplicador(3)</div>
+                                    <div style="background: #2ecc71; padding: 10px; border-radius: 4px; text-align: center;">
+                                        🔒 factor = 3<br>
+                                        <span style="font-size: 0.85em;">(capturado)</span>
+                                    </div>
+                                    <div style="font-family: monospace; margin-top: 10px; text-align: center;">
+                                        triple(5) → 15
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ejemplo: Contador -->
+                        <div style="background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; padding: 20px; border-radius: 8px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 15px; text-align: center;">🔢 Ejemplo: Contador con Estado</div>
+
+                            <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 6px; font-family: monospace; font-size: 0.9em; margin-bottom: 15px;">
+                                def crear_contador():<br>
+                                &nbsp;&nbsp;cuenta = 0  # Variable capturada<br>
+                                &nbsp;&nbsp;def incrementar():<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span style="background: #f39c12; padding: 2px 6px; border-radius: 3px;">nonlocal cuenta</span><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;cuenta += 1<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;return cuenta<br>
+                                &nbsp;&nbsp;return incrementar
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; font-size: 0.9em;">
+                                <div style="background: rgba(255,255,255,0.3); padding: 12px; border-radius: 6px; text-align: center;">
+                                    contador()<br>
+                                    <strong style="font-size: 1.3em; display: block; margin-top: 5px;">1</strong>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.3); padding: 12px; border-radius: 6px; text-align: center;">
+                                    contador()<br>
+                                    <strong style="font-size: 1.3em; display: block; margin-top: 5px;">2</strong>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.3); padding: 12px; border-radius: 6px; text-align: center;">
+                                    contador()<br>
+                                    <strong style="font-size: 1.3em; display: block; margin-top: 5px;">3</strong>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: 15px; text-align: center; font-size: 0.95em;">
+                                ✓ Cada closure mantiene su PROPIO estado<br>
+                                ✓ La variable "cuenta" persiste entre llamadas
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="decoradores" data-tags="decorator decorador @">
+                        <span class="tag">📋 Decoradores</span>
+                        <p class="significado">Funciones que modifican otras funciones</p>
+                        <div class="ejemplo"># Un decorador es una función que recibe
+# una función y retorna otra función modificada
+
+def mi_decorador(func):
+    def wrapper():
+        print("Antes de la función")
+        func()
+        print("Después de la función")
+    return wrapper
+
+# Uso con @
+@mi_decorador
+def saludar():
+    print("¡Hola!")
+
+saludar()
+# Antes de la función
+# ¡Hola!
+# Después de la función
+
+# Decorador con argumentos
+def mi_decorador(func):
+    def wrapper(*args, **kwargs):
+        print(f"Llamando a {func.__name__}")
+        resultado = func(*args, **kwargs)
+        print(f"Resultado: {resultado}")
+        return resultado
+    return wrapper
+
+@mi_decorador
+def sumar(a, b):
+    return a + b
+
+sumar(3, 5)
+# Llamando a sumar
+# Resultado: 8
+
+# Ejemplo práctico: medir tiempo
+import time
+
+def medir_tiempo(func):
+    def wrapper(*args, **kwargs):
+        inicio = time.time()
+        resultado = func(*args, **kwargs)
+        fin = time.time()
+        print(f"{func.__name__} tardó {fin-inicio:.4f}s")
+        return resultado
+    return wrapper</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Decoradores</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="text-align: center; font-size: 1.3em; margin-bottom: 25px; color: #2c3e50;"><strong>🎁 Decoradores: Modificando Funciones</strong></div>
+
+                        <!-- Concepto -->
+                        <div style="background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 15px; text-align: center;">¿Qué es un Decorador?</div>
+                            <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 6px; text-align: center; font-size: 1.05em;">
+                                Una función que <strong>recibe una función</strong><br>
+                                y <strong>devuelve una función modificada</strong>
+                            </div>
+                        </div>
+
+                        <!-- Flujo Visual -->
+                        <div style="background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 15px; text-align: center;">📊 Flujo de un Decorador</div>
+
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
+                                <div style="background: rgba(255,255,255,0.3); padding: 15px; border-radius: 6px; text-align: center;">
+                                    <div style="font-size: 1.1em; margin-bottom: 8px;">📥 Entrada</div>
+                                    <div style="font-family: monospace; font-size: 0.9em;">
+                                        def saludar():<br>
+                                        &nbsp;&nbsp;print("Hola")
+                                    </div>
+                                </div>
+
+                                <div style="font-size: 2em;">→</div>
+
+                                <div style="background: #f39c12; padding: 15px; border-radius: 6px; text-align: center;">
+                                    <div style="font-size: 1.1em; margin-bottom: 8px;">🎁 Decorador</div>
+                                    <div style="font-family: monospace; font-size: 0.9em;">
+                                        @mi_decorador
+                                    </div>
+                                </div>
+
+                                <div style="font-size: 2em;">→</div>
+
+                                <div style="background: rgba(255,255,255,0.3); padding: 15px; border-radius: 6px; text-align: center;">
+                                    <div style="font-size: 1.1em; margin-bottom: 8px;">📤 Salida</div>
+                                    <div style="font-family: monospace; font-size: 0.85em;">
+                                        "Antes..."<br>
+                                        Hola<br>
+                                        "Después..."
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ejemplo Paso a Paso -->
+                        <div style="background: linear-gradient(135deg, #9b59b6, #8e44ad); color: white; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 15px; text-align: center;">🔨 Construcción de un Decorador</div>
+
+                            <div style="display: grid; grid-template-columns: 1fr; gap: 12px;">
+                                <!-- Paso 1 -->
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px;">
+                                    <div style="font-weight: bold; margin-bottom: 8px;">1️⃣ Crear el decorador</div>
+                                    <div style="font-family: monospace; font-size: 0.85em; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 4px;">
+                                        def mi_decorador(func):<br>
+                                        &nbsp;&nbsp;def wrapper():<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;# Código antes<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;func()<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;# Código después<br>
+                                        &nbsp;&nbsp;return wrapper
+                                    </div>
+                                </div>
+
+                                <!-- Paso 2 -->
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px;">
+                                    <div style="font-weight: bold; margin-bottom: 8px;">2️⃣ Aplicar con @</div>
+                                    <div style="font-family: monospace; font-size: 0.85em; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 4px;">
+                                        <span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">@mi_decorador</span><br>
+                                        def saludar():<br>
+                                        &nbsp;&nbsp;print("Hola")
+                                    </div>
+                                </div>
+
+                                <!-- Paso 3 -->
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px;">
+                                    <div style="font-weight: bold; margin-bottom: 8px;">3️⃣ Llamar función decorada</div>
+                                    <div style="font-family: monospace; font-size: 0.85em; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 4px;">
+                                        saludar()<br>
+                                        <span style="color: #2ecc71;"># Ejecuta wrapper() → código extra + función original</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Decorador con argumentos -->
+                        <div style="background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; padding: 20px; border-radius: 8px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 15px; text-align: center;">🔧 Decorador con Argumentos</div>
+
+                            <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 6px; font-family: monospace; font-size: 0.85em; margin-bottom: 10px;">
+                                def decorador(func):<br>
+                                &nbsp;&nbsp;def wrapper(<span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">*args, **kwargs</span>):<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;print("Antes")<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;resultado = func(<span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">*args, **kwargs</span>)<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;print("Después")<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;return resultado<br>
+                                &nbsp;&nbsp;return wrapper
+                            </div>
+
+                            <div style="text-align: center; font-size: 0.95em;">
+                                ✓ *args y **kwargs permiten decorar funciones con cualquier número de argumentos
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="type-hints" data-tags="type hints anotaciones tipos">
+                        <span class="tag">📋 Type Hints</span>
+                        <p class="significado">Anotaciones de tipo opcionales</p>
+                        <div class="ejemplo"># Type hints - Anotaciones de tipo (opcionales)
+# No afectan la ejecución, solo documentan
+
+def saludar(nombre: str) -> str:
+    return f"Hola {nombre}"
+
+def sumar(a: int, b: int) -> int:
+    return a + b
+
+def dividir(a: float, b: float) -> float:
+    return a / b
+
+# Con valores por defecto
+def crear_lista(tamaño: int = 10) -> list:
+    return [0] * tamaño
+
+# Tipos complejos (Python 3.9+)
+def procesar_nombres(nombres: list[str]) -> dict[str, int]:
+    return {n: len(n) for n in nombres}
+
+# Union (Python 3.10+)
+def procesar(dato: int | str) -> str:
+    return str(dato)
+
+# Optional (puede ser None)
+from typing import Optional
+
+def buscar(id: int) -> Optional[str]:
+    # Puede retornar str o None
+    if id > 0:
+        return "encontrado"
+    return None
+
+# Las anotaciones NO validan en runtime
+sumar("a", "b")  # No da error (solo concatena)</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Type Hints</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="text-align: center; font-size: 1.3em; margin-bottom: 25px; color: #2c3e50;"><strong>📝 Type Hints: Anotaciones de Tipo</strong></div>
+
+                        <!-- Advertencia -->
+                        <div style="background: #e74c3c; color: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; font-weight: bold;">
+                            ⚠️ Las anotaciones son OPCIONALES y NO se validan en tiempo de ejecución
+                        </div>
+
+                        <!-- Sintaxis Básica -->
+                        <div style="background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 15px; text-align: center;">📐 Sintaxis de Type Hints</div>
+
+                            <div style="background: rgba(255,255,255,0.3); padding: 20px; border-radius: 6px; font-family: monospace; font-size: 1.1em; text-align: center;">
+                                def <span style="background: rgba(255,255,255,0.2); padding: 4px 8px; border-radius: 4px;">funcion</span>(<span style="background: #f39c12; padding: 4px 8px; border-radius: 4px;">param: tipo</span>) <span style="background: #2ecc71; padding: 4px 8px; border-radius: 4px;">-&gt; tipo_retorno</span>:
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px; font-size: 0.9em;">
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; text-align: center;">
+                                    <div style="background: #f39c12; padding: 8px; border-radius: 4px; margin-bottom: 8px;">param: tipo</div>
+                                    Tipo de parámetros
+                                </div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; text-align: center;">
+                                    <div style="background: #2ecc71; padding: 8px; border-radius: 4px; margin-bottom: 8px;">-&gt; tipo</div>
+                                    Tipo de retorno
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tipos Básicos -->
+                        <div style="background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 15px; text-align: center;">🔤 Tipos Básicos</div>
+
+                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 0.85em;">
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; font-family: monospace;">
+                                    def suma(a: <span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">int</span>, b: <span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">int</span>) -&gt; <span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">int</span>:
+                                </div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; font-family: monospace;">
+                                    def nombre(n: <span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">str</span>) -&gt; <span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">str</span>:
+                                </div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; font-family: monospace;">
+                                    def precio(x: <span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">float</span>) -&gt; <span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">float</span>:
+                                </div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; font-family: monospace;">
+                                    def activo() -&gt; <span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">bool</span>:
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tipos Complejos -->
+                        <div style="background: linear-gradient(135deg, #9b59b6, #8e44ad); color: white; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 15px; text-align: center;">🗂️ Tipos Complejos (Python 3.9+)</div>
+
+                            <div style="display: grid; grid-template-columns: 1fr; gap: 10px; font-size: 0.85em;">
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px;">
+                                    <strong>Lista de strings:</strong>
+                                    <div style="font-family: monospace; margin-top: 5px; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px;">
+                                        def procesar(nombres: <span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">list[str]</span>) -&gt; <span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">dict[str, int]</span>:
+                                    </div>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px;">
+                                    <strong>Union types (Python 3.10+):</strong>
+                                    <div style="font-family: monospace; margin-top: 5px; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px;">
+                                        def valor(x: <span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">int | str</span>) -&gt; str:
+                                    </div>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px;">
+                                    <strong>Optional (puede ser None):</strong>
+                                    <div style="font-family: monospace; margin-top: 5px; background: rgba(0,0,0,0.2); padding: 8px; border-radius: 4px;">
+                                        def buscar(id: int) -&gt; <span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">Optional[str]</span>:
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Beneficios -->
+                        <div style="background: linear-gradient(135deg, #f39c12, #e67e22); color: white; padding: 18px; border-radius: 8px;">
+                            <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 10px; text-align: center;">✨ Beneficios</div>
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; font-size: 0.9em;">
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; text-align: center;">
+                                    📖<br>Mejor<br>Documentación
+                                </div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; text-align: center;">
+                                    🔍<br>Autocompletado<br>en IDEs
+                                </div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; text-align: center;">
+                                    🐛<br>Detectar<br>Errores
+                                </div>
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="docstrings" data-tags="docstring documentacion ayuda">
+                        <span class="tag">📋 Docstrings</span>
+                        <p class="significado">Documentación de funciones</p>
+                        <div class="ejemplo">def calcular_area(base: float, altura: float) -> float:
+    """
+    Calcula el área de un triángulo.
+
+    Args:
+        base: La base del triángulo
+        altura: La altura del triángulo
+
+    Returns:
+        El área calculada (base * altura / 2)
+
+    Raises:
+        ValueError: Si base o altura son negativos
+
+    Example:
+        >>> calcular_area(10, 5)
+        25.0
+    """
+    if base < 0 or altura < 0:
+        raise ValueError("Valores deben ser positivos")
+    return base * altura / 2
+
+# Acceder al docstring
+print(calcular_area.__doc__)
+help(calcular_area)
+
+# Docstring de una línea para funciones simples
+def cuadrado(n):
+    """Retorna el cuadrado de n."""
+    return n ** 2</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Docstrings</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="text-align: center; font-size: 1.3em; margin-bottom: 25px; color: #2c3e50;"><strong>📚 Docstrings: Documentando Funciones</strong></div>
+
+                        <!-- Qué es un Docstring -->
+                        <div style="background: linear-gradient(135deg, #3498db, #2980b9); color: white; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 15px; text-align: center;">¿Qué es un Docstring?</div>
+                            <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 6px; text-align: center; font-size: 1.05em;">
+                                String de documentación que describe qué hace una función,<br>
+                                sus parámetros, valores de retorno y excepciones.<br>
+                                <div style="margin-top: 10px; font-size: 0.9em;">
+                                    Se escribe entre <strong>"""triple comillas"""</strong> justo después de la definición
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Estructura Completa -->
+                        <div style="background: linear-gradient(135deg, #2ecc71, #27ae60); color: white; padding: 20px; border-radius: 8px; margin-bottom: 15px;">
+                            <div style="font-weight: bold; font-size: 1.2em; margin-bottom: 15px; text-align: center;">📋 Estructura Completa (Google Style)</div>
+
+                            <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 6px; font-family: monospace; font-size: 0.8em;">
+                                def calcular_area(base: float, altura: float) -&gt; float:<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">"""</span><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span style="background: #9b59b6; padding: 2px 6px; border-radius: 3px;">Calcula el área de un triángulo.</span><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span style="background: #f39c12; padding: 2px 6px; border-radius: 3px;">Args:</span><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;base: La base del triángulo<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;altura: La altura del triángulo<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span style="background: #3498db; padding: 2px 6px; border-radius: 3px;">Returns:</span><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;El área calculada (base * altura / 2)<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">Raises:</span><br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ValueError: Si valores son negativos<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span style="background: #e74c3c; padding: 2px 6px; border-radius: 3px;">"""</span>
+                            </div>
+
+                            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 15px; font-size: 0.9em;">
+                                <div style="background: #9b59b6; padding: 10px; border-radius: 6px; text-align: center;">
+                                    <strong>Descripción</strong><br>
+                                    <span style="font-size: 0.85em;">Qué hace</span>
+                                </div>
+                                <div style="background: #f39c12; padding: 10px; border-radius: 6px; text-align: center;">
+                                    <strong>Args</strong><br>
+                                    <span style="font-size: 0.85em;">Parámetros</span>
+                                </div>
+                                <div style="background: #3498db; padding: 10px; border-radius: 6px; text-align: center;">
+                                    <strong>Returns</strong><br>
+                                    <span style="font-size: 0.85em;">Qué devuelve</span>
+                                </div>
+                                <div style="background: #e74c3c; padding: 10px; border-radius: 6px; text-align: center;">
+                                    <strong>Raises</strong><br>
+                                    <span style="font-size: 0.85em;">Excepciones</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tipos de Docstrings -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <!-- Una línea -->
+                            <div style="background: linear-gradient(135deg, #9b59b6, #8e44ad); color: white; padding: 18px; border-radius: 8px;">
+                                <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 10px; text-align: center;">📝 Simple (1 línea)</div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; font-family: monospace; font-size: 0.8em;">
+                                    def cuadrado(n):<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;"""Retorna n²."""<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;return n ** 2
+                                </div>
+                                <div style="margin-top: 10px; font-size: 0.9em; text-align: center;">
+                                    ✓ Para funciones simples
+                                </div>
+                            </div>
+
+                            <!-- Múltiples líneas -->
+                            <div style="background: linear-gradient(135deg, #f39c12, #e67e22); color: white; padding: 18px; border-radius: 8px;">
+                                <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 10px; text-align: center;">📜 Completo (Multi-línea)</div>
+                                <div style="background: rgba(255,255,255,0.2); padding: 12px; border-radius: 6px; font-family: monospace; font-size: 0.8em;">
+                                    def dividir(a, b):<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;"""<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;Divide a entre b.<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;Args: ...<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;Returns: ...<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;"""
+                                </div>
+                                <div style="margin-top: 10px; font-size: 0.9em; text-align: center;">
+                                    ✓ Para funciones complejas
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Acceso al Docstring -->
+                        <div style="background: #34495e; color: white; padding: 18px; border-radius: 8px; margin-top: 15px;">
+                            <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 10px; text-align: center;">🔍 Acceder al Docstring</div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 0.9em;">
+                                <div style="background: rgba(255,255,255,0.1); padding: 12px; border-radius: 6px; font-family: monospace; text-align: center;">
+                                    print(funcion.<span style="background: #3498db; padding: 2px 6px; border-radius: 3px;">__doc__</span>)
+                                </div>
+                                <div style="background: rgba(255,255,255,0.1); padding: 12px; border-radius: 6px; font-family: monospace; text-align: center;">
+                                    <span style="background: #3498db; padding: 2px 6px; border-radius: 3px;">help</span>(funcion)
+                                </div>
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">🐍 Funciones</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#definicion" class="toc-link">Definición de Funciones</a></li>
+                    <li class="toc-item"><a href="#parametros" class="toc-link">Parámetros</a></li>
+                    <li class="toc-item"><a href="#args-kwargs" class="toc-link">*args y **kwargs</a></li>
+                    <li class="toc-item"><a href="#return" class="toc-link">return</a></li>
+                    <li class="toc-item"><a href="#lambda" class="toc-link">Funciones Lambda</a></li>
+                    <li class="toc-item"><a href="#funciones-integradas" class="toc-link">Funciones Integradas</a></li>
+                    <li class="toc-item"><a href="#map-filter-reduce" class="toc-link">map, filter, reduce</a></li>
+                    <li class="toc-item"><a href="#scope" class="toc-link">Scope</a></li>
+                    <li class="toc-item"><a href="#closures" class="toc-link">Closures</a></li>
+                    <li class="toc-item"><a href="#decoradores" class="toc-link">Decoradores</a></li>
+                    <li class="toc-item"><a href="#type-hints" class="toc-link">Type Hints</a></li>
+                    <li class="toc-item"><a href="#docstrings" class="toc-link">Docstrings</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>Python - Sistema de Aprendizaje | <a href="../index.html">Volver a Python</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script src="/assets/js/study-highlight.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) {
+                return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const tags = termino.getAttribute('data-tags') || '';
+                    const title = termino.querySelector('.tag')?.textContent || '';
+                    const desc = termino.querySelector('.descripcion')?.textContent || '';
+                    const ejemplo = termino.querySelector('.ejemplo')?.textContent || '';
+                    const searchText = normalizeText(tags + ' ' + title + ' ' + desc + ' ' + ejemplo);
+                    if (query === '' || searchText.includes(query)) {
+                        termino.style.display = 'block';
+                        found++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // Aplicar highlight.js solo a elementos .ejemplo que no tienen <br> (no son HTML)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.ejemplo').forEach(function(block) {
+                // Solo resaltar si no tiene elementos <br> (no es HTML con sintaxis manual)
+                if (block.querySelectorAll('br').length === 0) {
+                    block.classList.add('language-python');
+                    hljs.highlightElement(block);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

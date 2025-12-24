@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Depuración en JavaScript - Sistema de Aprendizaje</title>
-    <link rel="stylesheet" href="/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/assets/css/glosario.css">
-    <link rel="stylesheet" href="/assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
+    <!-- Highlight.js para resaltado de sintaxis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
 <body>
     <header>
@@ -553,7 +556,7 @@ const arr = new Array(-1); // RangeError: Invalid array length
         <p>Módulo 11: Depuración en JavaScript | <a href="../index.html">Volver a JavaScript</a></p>
     </footer>
 
-    <script src="/assets/js/sidebar-component.js"></script>
+    <script src="../../../assets/js/sidebar-component.js"></script>
     <script>
         // Funcionalidad de búsqueda
         document.addEventListener('DOMContentLoaded', function() {
@@ -596,6 +599,20 @@ const arr = new Array(-1); // RangeError: Invalid array length
                     progressBar.style.width = `${Math.min(progress, 100)}%`;
                 });
             }
+        });
+    </script>
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // Aplicar highlight.js solo a elementos .ejemplo que no tienen <br> (no son HTML)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.ejemplo').forEach(function(block) {
+                // Solo resaltar si no tiene elementos <br> (no es HTML con sintaxis manual)
+                if (block.querySelectorAll('br').length === 0) {
+                    block.classList.add('language-javascript');
+                    hljs.highlightElement(block);
+                }
+            });
         });
     </script>
 </body>

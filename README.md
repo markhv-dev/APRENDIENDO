@@ -1,147 +1,419 @@
-#  SISTEMA DE APRENDIZAJE DE PROGRAMACIÓN
+# SISTEMA APRENDIENDO
 
-Sistema personal organizado para aprender desarrollo web y programación de forma estructurada y progresiva.
-
----
-
-## ¿Qué es esto?
-
-Un sistema de aprendizaje local completo con glosarios detallados, ejercicios progresivos y búsqueda integrada para dominar tecnologías de desarrollo web. Sin dependencias externas, solo abre `index.html` en tu navegador y comienza a aprender.
-
-### Características Principales
-
-✅ Glosarios completos con ejemplos de código
-✅ Ejercicios progresivos (básico → intermedio → avanzado → experto)
-✅ Buscador global funcional
-✅ Diseño dark minimalista y responsive
-✅ 100% local, sin instalaciones necesarias
-✅ Estructura modular y escalable
+**Trabajo Final Individual - Desarrollo Web**
 
 ---
 
-## Estructura Actual
+## 📌 Información del Proyecto
+
+- **Nombre del Proyecto:** Sistema APRENDIENDO - Plataforma Educativa de Desarrollo Web
+- **Autor:** [Tu Nombre Completo]
+- **Universidad:** [Nombre de tu Universidad]
+- **Fecha:** Diciembre 2024
+
+---
+
+## 🔗 Enlaces
+
+- **Repositorio GitHub:** https://github.com/markhv-dev/APRENDIENDO
+- **URL del Proyecto:** `http://localhost:8000` (Ejecución local - Ver instrucciones de instalación)
+
+---
+
+## 📝 Descripción
+
+Sistema web completo para el aprendizaje de tecnologías de desarrollo web, que integra un frontend moderno con diseño dark theme, backend desarrollado en Python puro utilizando http.server, y base de datos MySQL con 3 tablas relacionadas. El sistema incluye autenticación de usuarios con gestión de sesiones seguras mediante tokens, formulario de contacto con almacenamiento en base de datos, panel de administración de mensajes protegido, y navegación dinámica con sidebar colapsable que organiza más de 100 páginas de contenido educativo sobre HTML, CSS, JavaScript y Python.
+
+---
+
+## 🛠️ Tecnologías Utilizadas
+
+- **HTML5:** Estructura semántica y formularios
+- **CSS3:** Diseño responsive con Flexbox y Grid, animaciones y transiciones
+- **JavaScript (ES6+):** Fetch API, manipulación del DOM, validación de formularios
+- **Python 3.x:** Backend con http.server, routing manual, autenticación
+- **SQL (MySQL/MariaDB):** Base de datos relacional con 3 tablas y operaciones CRUD
+
+---
+
+## 🚀 Características Principales
+
+### Frontend (HTML + CSS + JavaScript)
+- ✅ **5 páginas principales** con diseño dark theme profesional
+- ✅ **Navegación dinámica** con sidebar colapsable
+- ✅ **Layouts responsive** usando Flexbox y CSS Grid
+- ✅ **Validación de formularios** en tiempo real
+- ✅ **Componentes interactivos** (dropdown menus, modals)
+- ✅ **Fetch API** para comunicación asíncrona con backend
+
+### Backend (Python)
+- ✅ **Python puro** con `http.server` (sin frameworks)
+- ✅ **Routing manual** con manejo de GET y POST
+- ✅ **Sistema de autenticación** con sesiones
+- ✅ **API REST** para login, registro y contacto
+- ✅ **Gestión de cookies** HTTP-only para seguridad
+
+### Base de Datos (MySQL)
+- ✅ **3 tablas relacionadas**: usuarios, mensajes, sesiones
+- ✅ **Operaciones CRUD completas**
+- ✅ **Autenticación segura** con password hashing
+- ✅ **Página protegida** para administración de mensajes
+
+---
+
+## 🛠️ Requisitos Previos
+
+- **Python 3.8+** (verificar con `python3 --version`)
+- **MySQL/MariaDB** instalado y ejecutándose
+- **Git** (opcional, para clonar el repositorio)
+- **Navegador web moderno** (Chrome, Firefox, Edge)
+
+---
+
+## 📦 Instalación
+
+### 1. Clonar el repositorio
+
+```bash
+git clone https://github.com/[tu-usuario]/APRENDIENDO.git
+cd APRENDIENDO
+```
+
+### 2. Instalar dependencias de Python
+
+```bash
+pip install mysql-connector-python
+```
+
+### 3. Configurar la Base de Datos
+
+#### A) Crear la base de datos
+
+```bash
+# Iniciar sesión en MySQL
+mysql -u root -p
+
+# Ejecutar los siguientes comandos SQL:
+CREATE DATABASE aprendiendo_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER 'aprendiendo'@'localhost' IDENTIFIED BY 'aprendiendo123';
+GRANT ALL PRIVILEGES ON aprendiendo_db.* TO 'aprendiendo'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+```
+
+#### B) Crear las tablas
+
+```bash
+# Importar el schema
+mysql -u aprendiendo -p aprendiendo_db < backend/schema.sql
+```
+
+O ejecutar manualmente:
+
+```sql
+USE aprendiendo_db;
+
+-- Tabla de usuarios
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    nombre_completo VARCHAR(100),
+    rol VARCHAR(20) DEFAULT 'usuario',
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Tabla de mensajes de contacto
+CREATE TABLE mensajes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    asunto VARCHAR(200),
+    mensaje TEXT NOT NULL,
+    ip_address VARCHAR(45),
+    user_agent TEXT,
+    fecha_envio TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    leido BOOLEAN DEFAULT FALSE
+);
+
+-- Tabla de sesiones
+CREATE TABLE sesiones (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT NOT NULL,
+    token VARCHAR(255) UNIQUE NOT NULL,
+    ip_address VARCHAR(45),
+    user_agent TEXT,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_expiracion TIMESTAMP,
+    activa BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
+);
+```
+
+### 4. Verificar configuración
+
+Editar `backend/db_config.py` si es necesario:
+
+```python
+DB_CONFIG = {
+    'host': 'localhost',
+    'port': 3306,
+    'user': 'aprendiendo',
+    'password': 'aprendiendo123',
+    'database': 'aprendiendo_db',
+}
+```
+
+---
+
+## 🎯 Ejecución
+
+### 1. Verificar que MySQL está corriendo
+
+```bash
+# Linux/Mac
+sudo systemctl status mysql
+# o
+sudo systemctl status mariadb
+
+# Windows - abrir MySQL Workbench o verificar servicios
+```
+
+### 2. Iniciar el servidor
+
+```bash
+cd backend
+python3 server.py
+```
+
+Deberías ver:
+
+```
+======================================================================
+🚀 SERVIDOR HTTP - SISTEMA APRENDIENDO
+======================================================================
+📍 Dirección: http://localhost:8000
+🕐 Iniciado: 2024-12-XX XX:XX:XX
+✅ Base de datos conectada correctamente
+✅ Servidor escuchando en http://localhost:8000
+======================================================================
+```
+
+### 3. Acceder a la aplicación
+
+Abre tu navegador y visita:
+- **Página principal:** http://localhost:8000
+- **Login:** http://localhost:8000/login.html
+- **Registro:** http://localhost:8000/register.html
+
+---
+
+## 👤 Uso del Sistema
+
+### Crear una cuenta
+
+1. Ir a http://localhost:8000/register.html
+2. Completar el formulario:
+   - Nombre completo
+   - Usuario (3-20 caracteres)
+   - Email válido
+   - Contraseña (mínimo 6 caracteres)
+3. Click en "Crear Cuenta"
+4. Serás redirigido al login
+
+### Iniciar sesión
+
+1. Ir a http://localhost:8000/login.html
+2. Ingresar email y contraseña
+3. Click en "Iniciar Sesión"
+4. Serás redirigido a la página principal del sistema (home.html)
+
+### Enviar un mensaje de contacto
+
+1. En la página principal (index.html), ir a la sección de contacto
+2. Completar el formulario
+3. Los mensajes se guardan en la base de datos
+
+### Ver mensajes recibidos (requiere autenticación)
+
+1. Iniciar sesión
+2. Click en el icono de perfil → "Ver Mensajes"
+3. Ver todos los mensajes de contacto recibidos
+4. Marcar mensajes como leídos
+
+---
+
+## 📂 Estructura del Proyecto
 
 ```
 APRENDIENDO/
-├── Fundamentos/              ✅ Completo
-│   ├── Diseño/              (UI/UX Basics)
-│   ├── Frontend/            (HTML, CSS, JS)
-│   ├── Backend/             (Node.js, APIs)
-│   └── Base-de-Datos/       (SQL, MongoDB)
+├── index.html                  # Landing page
+├── login.html                  # Página de inicio de sesión
+├── register.html               # Página de registro
+├── home.html                   # Dashboard principal (protegido)
+├── mensajes.html               # Administración de mensajes (protegido)
 │
-├── Comandos/
-│   └── Git-GitHub/          ✅ Completo (45 comandos + 10 ejercicios)
+├── backend/                    # Backend Python
+│   ├── server.py              # Servidor HTTP principal
+│   ├── db_config.py           # Configuración y operaciones de BD
+│   └── schema.sql             # Schema de la base de datos
 │
-├── Lenguajes/
-│   ├── HTML/                ✅ Completo (62 términos + 12 ejercicios)
-│   ├── JavaScript/          ✅ Completo (60+ términos + 12 ejercicios + examen)
-│   ├── CSS/                 ✅ Completo (70+ términos + 12 ejercicios + examen)
-│   ├── Python/              ⏳ Pendiente
-│   ├── TypeScript/          ⏳ Pendiente
-│   └── SQL/                 ⏳ Pendiente
+├── assets/                     # Recursos estáticos
+│   ├── css/                   # Hojas de estilo
+│   │   ├── sidebar.css
+│   │   ├── glosario.css
+│   │   └── keyboard-navigation.css
+│   └── js/                    # JavaScript
+│       ├── sidebar-component.js
+│       └── keyboard-navigation.js
 │
-├── Frameworks/
-│   ├── React/               ⏳ Pendiente
-│   ├── Vue/                 ⏳ Pendiente
-│   └── Angular/             ⏳ Pendiente
+├── Lenguajes/                 # Contenido educativo
+│   ├── HTML/                  # 10 módulos de HTML
+│   ├── CSS/                   # 10 módulos de CSS
+│   ├── JavaScript/            # 11 módulos de JavaScript
+│   └── Python/                # 10 módulos de Python
 │
-├── Herramientas/
-│   ├── Docker/              ⏳ Pendiente
-│   └── Node.js/             ⏳ Pendiente
-│
-└── docs/                    📚 Documentación detallada
+├── Fundamentos/               # Fundamentos de desarrollo web
+├── Comandos/                  # Git & GitHub
+├── Frameworks/                # React, Vue, etc.
+└── Herramientas/              # Docker, Nginx, etc.
 ```
 
 ---
 
-## Inicio Rápido
+## 🔒 Seguridad Implementada
 
-### Para Usuarios
+- ✅ **Contraseñas hasheadas** con SHA-256
+- ✅ **Tokens de sesión** generados con `secrets.token_urlsafe()`
+- ✅ **Cookies HTTP-only** para prevenir XSS
+- ✅ **Validación server-side** de todos los formularios
+- ✅ **Protección de rutas** con autenticación
+- ✅ **Sanitización de inputs** en formularios
+- ✅ **Expiración automática** de sesiones (24 horas)
 
-1. **Abre `index.html`** en tu navegador
-2. **Navega** a la tecnología que quieres aprender
-3. **Estudia** el glosario con explicaciones y ejemplos
-4. **Practica** con los ejercicios progresivos
-5. **Busca** términos específicos usando el buscador global
+---
 
-### Progresión Recomendada
+## 🛠️ Tecnologías Utilizadas
 
+| Categoría | Tecnología |
+|-----------|-----------|
+| **Frontend** | HTML5, CSS3 (Flexbox/Grid), JavaScript ES6+ |
+| **Backend** | Python 3.x (http.server) |
+| **Base de Datos** | MySQL/MariaDB |
+| **Autenticación** | Sesiones con tokens, Password hashing |
+| **Librerías Python** | mysql-connector-python, hashlib, secrets |
+
+---
+
+## 📊 Funcionalidades Principales
+
+### 1. Sistema de Autenticación
+- Registro de usuarios con validación
+- Login con email y contraseña
+- Gestión de sesiones con tokens
+- Logout con invalidación de sesión
+- Rutas protegidas (home.html, mensajes.html)
+
+### 2. Formulario de Contacto
+- Validación de campos en frontend y backend
+- Almacenamiento en MySQL
+- Captura de metadata (IP, User-Agent)
+- Feedback visual al usuario
+
+### 3. Gestión de Mensajes
+- Página protegida para administradores
+- Listado de todos los mensajes recibidos
+- Marcar mensajes como leídos
+- Búsqueda y filtrado de mensajes
+
+### 4. Sistema Educativo
+- 100+ páginas de contenido
+- Navegación dinámica con sidebar
+- Más de 40 módulos de aprendizaje
+- Glosarios interactivos
+- Ejercicios prácticos
+
+---
+
+## 🐛 Solución de Problemas
+
+### Error: "Error al conectar a base de datos"
+```bash
+# Verificar que MySQL está corriendo
+sudo systemctl status mysql
+
+# Verificar credenciales en backend/db_config.py
+# Asegurarse de que la base de datos existe
+mysql -u aprendiendo -p -e "SHOW DATABASES;"
 ```
-1. Fundamentos → Aprende las 4 etapas del desarrollo web
-2. HTML → Estructura de páginas web
-3. Git/GitHub → Control de versiones (esencial)
-4. CSS → Diseño y estilos
-5. JavaScript → Interactividad
-6. Elige tu camino: Frontend (React/Vue) o Backend (Node.js/SQL)
+
+### Error: "Address already in use"
+```bash
+# Matar proceso en puerto 8000
+lsof -ti:8000 | xargs kill -9
+
+# O cambiar el puerto en server.py (línea 28)
+PORT = 8001  # Cambiar a otro puerto
+```
+
+### Error: "No module named 'mysql.connector'"
+```bash
+# Instalar el conector de MySQL
+pip install mysql-connector-python
 ```
 
 ---
 
-## 🤖 Para Claude Code
+## 📚 Documentación Adicional
 
-Este sistema está diseñado para ser fácilmente actualizable por asistentes AI. Sigue estos pasos:
+La documentación del trabajo final (PDF, PPT) está en una carpeta separada fuera del repositorio.
 
-### Al agregar contenido nuevo:
-
-1. **Lee primero** la documentación en `/docs/INSTRUCCIONES_CLAUDE.md`
-2. **Consulta** `/docs/ARQUITECTURA.md` para entender la estructura
-3. **Revisa** ejemplos existentes (especialmente HTML y Git-GitHub)
-4. **Mantén** la consistencia de diseño y estructura
-5. **Actualiza** `search.js` con nuevos términos
-
-### Principios básicos:
-
-- **Modular**: Cada tecnología es independiente
-- **Consistente**: Misma estructura en todas las secciones
-- **Dark Theme**: Mantén la paleta de colores establecida
-- **Vanilla JS**: No agregues frameworks externos
-- **Progresivo**: Contenido de básico a experto
+Para documentación técnica del sistema:
+- Ver secciones anteriores de este README
+- Código comentado en `backend/server.py` y `backend/db_config.py`
+- Schema de base de datos en `backend/schema.sql`
 
 ---
 
-## 📚 Documentación Completa
+## 🔮 Trabajo Futuro
 
-Para información detallada, consulta la carpeta `/docs/`:
-
-- **[GUIA_COMPLETA.md](/docs/GUIA_COMPLETA.md)** - Guía completa del sistema para usuarios
-- **[INSTRUCCIONES_CLAUDE.md](/docs/INSTRUCCIONES_CLAUDE.md)** - Instrucciones detalladas para Claude Code
-- **[ARQUITECTURA.md](/docs/ARQUITECTURA.md)** - Arquitectura técnica del sistema
-- **[ROADMAP.md](/docs/ROADMAP.md)** - Plan de desarrollo futuro
-
----
-
-## Estado del Proyecto
-
-**Versión:** 2.2.0
-**Última Actualización:** 2025-01-03
-**Progreso General:** 33% (4 secciones completadas: HTML, JavaScript, CSS, Git/GitHub) ✅
-
-### Completado ✅
-- **Sistema Base**: 100% completo y funcional
-- Fundamentos completos (Diseño, Frontend, Backend, Base de Datos)
-- Git/GitHub (45 comandos + 10 ejercicios)
-- HTML (62 términos + 12 ejercicios)
-- JavaScript (60+ términos + 12 ejercicios + examen de 20 preguntas)
-- CSS (70+ términos + 12 ejercicios + examen de 20 preguntas)
-- Estructura profesional reorganizada
-- Documentación técnica completa (4 archivos MD)
-- Búsqueda integrada en glosarios
-
-### Próximo Contenido ⏳
-- Python, TypeScript, SQL
-- React, Vue, Angular
-- Node.js, Docker
+- [ ] Implementar recuperación de contraseña por email
+- [ ] Sistema de roles avanzado (admin, moderador, usuario)
+- [ ] Dashboard con estadísticas y gráficos
+- [ ] API REST completa con endpoints documentados
+- [ ] Tests automatizados (unittest, pytest)
+- [ ] Deployment en servidor remoto
+- [ ] Integración con Redis para caché
+- [ ] Sistema de notificaciones en tiempo real (WebSockets)
 
 ---
 
-## Información
+## 📄 Licencia
 
-**Asistente AI:** Claude Code (Anthropic)
-**Propósito:** Aprendizaje personal estructurado
-**Licencia:** Uso educativo personal
+Este proyecto fue desarrollado como trabajo final para el curso de Desarrollo Web.
+Uso educativo personal.
 
 ---
 
-**¡Feliz aprendizaje! **
+## 👨‍💻 Autor
 
-Para preguntas técnicas o detalles de implementación, consulta `/docs/GUIA_COMPLETA.md`
+**[Tu Nombre]**
+- Email: [tu-email@ejemplo.com]
+- GitHub: [https://github.com/tu-usuario](https://github.com/tu-usuario)
+- Universidad: [Tu Universidad]
+
+---
+
+## 🙏 Agradecimientos
+
+- Curso de Desarrollo Web - [Nombre del Profesor]
+- Documentación de Python: https://docs.python.org/
+- MySQL Documentation: https://dev.mysql.com/doc/
+- MDN Web Docs: https://developer.mozilla.org/
+
+---
+
+**¡Gracias por revisar este proyecto!** 🚀
+
+Para cualquier consulta o sugerencia, no dudes en contactarme.

@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flexbox - Sistema de Aprendizaje</title>
-    <link rel="stylesheet" href="/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/assets/css/glosario.css">
-    <link rel="stylesheet" href="/assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
+    <!-- Highlight.js para resaltado de sintaxis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
 <body>
     <header>
@@ -59,10 +62,62 @@
 .inline-container {
     display: inline-flex;
 }</div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa de Flexbox:</strong>
+                            <div class="preview-content">
+                                <div style="display: flex; gap: 10px; padding: 10px; border: 2px dashed #3498db; background: #ecf0f1; border-radius: 4px;">
+                                    <div style="background: #e74c3c; color: white; padding: 20px; flex: 1; text-align: center;">Item 1</div>
+                                    <div style="background: #3498db; color: white; padding: 20px; flex: 1; text-align: center;">Item 2</div>
+                                    <div style="background: #2ecc71; color: white; padding: 20px; flex: 1; text-align: center;">Item 3</div>
+                                </div>
+                                <p style="margin-top: 10px; color: #666; font-size: 14px;">display: flex - Elementos distribuidos horizontalmente</p>
+                            </div>
+                        </div>
+
                         <div class="nota">
                             <strong>💡 Conceptos clave:</strong><br>
                             • Eje principal (main axis): dirección del flex<br>
                             • Eje cruzado (cross axis): perpendicular al principal
+                        </div>
+
+                        <!-- DIAGRAMA DE EJES -->
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>🧭 Vista previa de Ejes de Flexbox:</strong>
+                            <div class="preview-content">
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">flex-direction: row (default)</p>
+                                <div style="position: relative; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 15px;">
+                                    <div style="position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: #f1c40f; color: #1e1e1e; padding: 3px 12px; border-radius: 4px; font-size: 12px; font-weight: bold;">→ EJE PRINCIPAL (main axis) →</div>
+                                    <div style="position: absolute; left: -80px; top: 50%; transform: translateY(-50%) rotate(-90deg); background: #3498db; color: white; padding: 3px 12px; border-radius: 4px; font-size: 12px; font-weight: bold;">↓ EJE CRUZADO</div>
+                                    <div style="display: flex; flex-direction: row; gap: 5px;">
+                                        <div style="background: #e74c3c; color: white; padding: 20px; border-radius: 4px; font-weight: bold;">Item 1</div>
+                                        <div style="background: #3498db; color: white; padding: 20px; border-radius: 4px; font-weight: bold;">Item 2</div>
+                                        <div style="background: #2ecc71; color: white; padding: 20px; border-radius: 4px; font-weight: bold;">Item 3</div>
+                                    </div>
+                                </div>
+                                <p style="margin-top: -5px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">
+                                    ↑ <code style="background: #fff; padding: 2px 6px; border-radius: 3px; color: #d32f2f;">justify-content</code> controla el eje PRINCIPAL (→ horizontal) |
+                                    <code style="background: #fff; padding: 2px 6px; border-radius: 3px; color: #d32f2f;">align-items</code> controla el eje CRUZADO (↓ vertical)
+                                </p>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">flex-direction: column</p>
+                                <div style="position: relative; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 15px; display: inline-block;">
+                                    <div style="position: absolute; left: -75px; top: 50%; transform: translateY(-50%) rotate(-90deg); background: #f1c40f; color: #1e1e1e; padding: 3px 12px; border-radius: 4px; font-size: 12px; font-weight: bold;">↓ EJE PRINCIPAL</div>
+                                    <div style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); background: #3498db; color: white; padding: 3px 12px; border-radius: 4px; font-size: 12px; font-weight: bold;">← EJE CRUZADO →</div>
+                                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                                        <div style="background: #e74c3c; color: white; padding: 15px 30px; border-radius: 4px; font-weight: bold;">Item 1</div>
+                                        <div style="background: #3498db; color: white; padding: 15px 30px; border-radius: 4px; font-weight: bold;">Item 2</div>
+                                        <div style="background: #2ecc71; color: white; padding: 15px 30px; border-radius: 4px; font-weight: bold;">Item 3</div>
+                                    </div>
+                                </div>
+                                <p style="margin-top: 30px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">
+                                    ↑ <code style="background: #fff; padding: 2px 6px; border-radius: 3px; color: #d32f2f;">justify-content</code> controla el eje PRINCIPAL (↓ vertical) |
+                                    <code style="background: #fff; padding: 2px 6px; border-radius: 3px; color: #d32f2f;">align-items</code> controla el eje CRUZADO (← → horizontal)
+                                </p>
+
+                                <div style="background: #fff3cd; padding: 15px; border-radius: 4px; border-left: 4px solid #f1c40f; margin-top: 20px;">
+                                    <strong style="color: #856404;">⚠️ IMPORTANTE:</strong> Los ejes cambian según <code style="background: #fff; padding: 2px 6px; border-radius: 3px; color: #d32f2f;">flex-direction</code>!
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -120,6 +175,57 @@
     justify-content: center;
     align-items: center;
 }</div>
+
+                        <!-- VISUALIZACIÓN JUSTIFY-CONTENT -->
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa de justify-content:</strong>
+                            <div class="preview-content">
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">justify-content: flex-start (default)</p>
+                                <div style="display: flex; justify-content: flex-start; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 20px; border-radius: 4px; font-weight: bold;">1</div>
+                                    <div style="background: #3498db; color: white; padding: 20px; border-radius: 4px; font-weight: bold;">2</div>
+                                    <div style="background: #2ecc71; color: white; padding: 20px; border-radius: 4px; font-weight: bold;">3</div>
+                                </div>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">justify-content: flex-end</p>
+                                <div style="display: flex; justify-content: flex-end; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 20px; border-radius: 4px; font-weight: bold;">1</div>
+                                    <div style="background: #3498db; color: white; padding: 20px; border-radius: 4px; font-weight: bold;">2</div>
+                                    <div style="background: #2ecc71; color: white; padding: 20px; border-radius: 4px; font-weight: bold;">3</div>
+                                </div>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">justify-content: center</p>
+                                <div style="display: flex; justify-content: center; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 20px; border-radius: 4px; font-weight: bold;">1</div>
+                                    <div style="background: #3498db; color: white; padding: 20px; border-radius: 4px; font-weight: bold;">2</div>
+                                    <div style="background: #2ecc71; color: white; padding: 20px; border-radius: 4px; font-weight: bold;">3</div>
+                                </div>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">justify-content: space-between</p>
+                                <div style="display: flex; justify-content: space-between; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 20px; border-radius: 4px; font-weight: bold;">1</div>
+                                    <div style="background: #3498db; color: white; padding: 20px; border-radius: 4px; font-weight: bold;">2</div>
+                                    <div style="background: #2ecc71; color: white; padding: 20px; border-radius: 4px; font-weight: bold;">3</div>
+                                </div>
+                                <p style="margin-top: -10px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Espacio SOLO entre items, no en los bordes</p>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">justify-content: space-around</p>
+                                <div style="display: flex; justify-content: space-around; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 20px; border-radius: 4px; font-weight: bold;">1</div>
+                                    <div style="background: #3498db; color: white; padding: 20px; border-radius: 4px; font-weight: bold;">2</div>
+                                    <div style="background: #2ecc71; color: white; padding: 20px; border-radius: 4px; font-weight: bold;">3</div>
+                                </div>
+                                <p style="margin-top: -10px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Espacio alrededor (mitad en bordes)</p>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">justify-content: space-evenly</p>
+                                <div style="display: flex; justify-content: space-evenly; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px;">
+                                    <div style="background: #e74c3c; color: white; padding: 20px; border-radius: 4px; font-weight: bold;">1</div>
+                                    <div style="background: #3498db; color: white; padding: 20px; border-radius: 4px; font-weight: bold;">2</div>
+                                    <div style="background: #2ecc71; color: white; padding: 20px; border-radius: 4px; font-weight: bold;">3</div>
+                                </div>
+                                <p style="margin-top: 10px; color: #7f8c8d; font-size: 14px;">↑ Espacio uniforme en TODOS lados</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="align-items" data-tags="align-items alinear cruzado vertical">
@@ -146,6 +252,58 @@
     align-items: center;
     height: 100vh;
 }</div>
+
+                        <!-- VISUALIZACIÓN ALIGN-ITEMS -->
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa de align-items:</strong>
+                            <div class="preview-content">
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">align-items: stretch (default)</p>
+                                <div style="display: flex; align-items: stretch; height: 120px; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 10px 20px; border-radius: 4px; font-weight: bold; display: flex; align-items: center;">1</div>
+                                    <div style="background: #3498db; color: white; padding: 10px 20px; border-radius: 4px; font-weight: bold; display: flex; align-items: center;">2</div>
+                                    <div style="background: #2ecc71; color: white; padding: 10px 20px; border-radius: 4px; font-weight: bold; display: flex; align-items: center;">3</div>
+                                </div>
+                                <p style="margin-top: -10px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Items se estiran para llenar toda la altura</p>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">align-items: flex-start</p>
+                                <div style="display: flex; align-items: flex-start; height: 120px; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 10px 20px; border-radius: 4px; font-weight: bold;">1</div>
+                                    <div style="background: #3498db; color: white; padding: 10px 20px; border-radius: 4px; font-weight: bold;">2</div>
+                                    <div style="background: #2ecc71; color: white; padding: 10px 20px; border-radius: 4px; font-weight: bold;">3</div>
+                                </div>
+                                <p style="margin-top: -10px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Al inicio del eje cruzado</p>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">align-items: flex-end</p>
+                                <div style="display: flex; align-items: flex-end; height: 120px; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 10px 20px; border-radius: 4px; font-weight: bold;">1</div>
+                                    <div style="background: #3498db; color: white; padding: 10px 20px; border-radius: 4px; font-weight: bold;">2</div>
+                                    <div style="background: #2ecc71; color: white; padding: 10px 20px; border-radius: 4px; font-weight: bold;">3</div>
+                                </div>
+                                <p style="margin-top: -10px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Al final del eje cruzado</p>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">align-items: center</p>
+                                <div style="display: flex; align-items: center; height: 120px; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 10px 20px; border-radius: 4px; font-weight: bold;">1</div>
+                                    <div style="background: #3498db; color: white; padding: 10px 20px; border-radius: 4px; font-weight: bold;">2</div>
+                                    <div style="background: #2ecc71; color: white; padding: 10px 20px; border-radius: 4px; font-weight: bold;">3</div>
+                                </div>
+                                <p style="margin-top: -10px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Centrados verticalmente</p>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">align-items: baseline</p>
+                                <div style="display: flex; align-items: baseline; height: 120px; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 5px 20px; border-radius: 4px; font-weight: bold; font-size: 14px;">1</div>
+                                    <div style="background: #3498db; color: white; padding: 15px 20px; border-radius: 4px; font-weight: bold; font-size: 24px;">2</div>
+                                    <div style="background: #2ecc71; color: white; padding: 10px 20px; border-radius: 4px; font-weight: bold; font-size: 18px;">3</div>
+                                </div>
+                                <p style="margin-top: -10px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Alineados por la línea base del texto (nota los diferentes tamaños)</p>
+
+                                <div style="background: #e8f5e9; padding: 15px; border-radius: 4px; border-left: 4px solid #4caf50; margin-top: 20px;">
+                                    <strong style="color: #2e7d32;">💡 TIP:</strong> Para centrar perfectamente horizontal Y vertical:<br>
+                                    <code style="background: #fff; padding: 2px 6px; border-radius: 3px; color: #d32f2f;">justify-content: center;</code> (eje horizontal) +
+                                    <code style="background: #fff; padding: 2px 6px; border-radius: 3px; color: #d32f2f;">align-items: center;</code> (eje vertical)
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="flex-wrap" data-tags="flex-wrap envolver lineas wrap">
@@ -173,6 +331,49 @@
 .card {
     flex: 1 1 300px;  /* Crece, encoge, base 300px */
 }</div>
+
+                        <!-- VISUALIZACIÓN FLEX-WRAP -->
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa de flex-wrap:</strong>
+                            <div class="preview-content">
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">flex-wrap: nowrap (default)</p>
+                                <div style="display: flex; flex-wrap: nowrap; width: 400px; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 20px; min-width: 100px; border-radius: 4px; font-weight: bold; text-align: center;">1</div>
+                                    <div style="background: #3498db; color: white; padding: 20px; min-width: 100px; border-radius: 4px; font-weight: bold; text-align: center;">2</div>
+                                    <div style="background: #2ecc71; color: white; padding: 20px; min-width: 100px; border-radius: 4px; font-weight: bold; text-align: center;">3</div>
+                                    <div style="background: #f39c12; color: white; padding: 20px; min-width: 100px; border-radius: 4px; font-weight: bold; text-align: center;">4</div>
+                                    <div style="background: #9b59b6; color: white; padding: 20px; min-width: 100px; border-radius: 4px; font-weight: bold; text-align: center;">5</div>
+                                    <div style="background: #1abc9c; color: white; padding: 20px; min-width: 100px; border-radius: 4px; font-weight: bold; text-align: center;">6</div>
+                                </div>
+                                <p style="margin-top: -10px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Items se encogen para caber en una sola línea (contenedor de 400px)</p>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">flex-wrap: wrap</p>
+                                <div style="display: flex; flex-wrap: wrap; width: 400px; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 20px; flex: 0 0 100px; border-radius: 4px; font-weight: bold; text-align: center;">1</div>
+                                    <div style="background: #3498db; color: white; padding: 20px; flex: 0 0 100px; border-radius: 4px; font-weight: bold; text-align: center;">2</div>
+                                    <div style="background: #2ecc71; color: white; padding: 20px; flex: 0 0 100px; border-radius: 4px; font-weight: bold; text-align: center;">3</div>
+                                    <div style="background: #f39c12; color: white; padding: 20px; flex: 0 0 100px; border-radius: 4px; font-weight: bold; text-align: center;">4</div>
+                                    <div style="background: #9b59b6; color: white; padding: 20px; flex: 0 0 100px; border-radius: 4px; font-weight: bold; text-align: center;">5</div>
+                                    <div style="background: #1abc9c; color: white; padding: 20px; flex: 0 0 100px; border-radius: 4px; font-weight: bold; text-align: center;">6</div>
+                                </div>
+                                <p style="margin-top: -10px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Items mantienen su tamaño (100px) y pasan a múltiples líneas</p>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">flex-wrap: wrap-reverse</p>
+                                <div style="display: flex; flex-wrap: wrap-reverse; width: 400px; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 20px; flex: 0 0 100px; border-radius: 4px; font-weight: bold; text-align: center;">1</div>
+                                    <div style="background: #3498db; color: white; padding: 20px; flex: 0 0 100px; border-radius: 4px; font-weight: bold; text-align: center;">2</div>
+                                    <div style="background: #2ecc71; color: white; padding: 20px; flex: 0 0 100px; border-radius: 4px; font-weight: bold; text-align: center;">3</div>
+                                    <div style="background: #f39c12; color: white; padding: 20px; flex: 0 0 100px; border-radius: 4px; font-weight: bold; text-align: center;">4</div>
+                                    <div style="background: #9b59b6; color: white; padding: 20px; flex: 0 0 100px; border-radius: 4px; font-weight: bold; text-align: center;">5</div>
+                                    <div style="background: #1abc9c; color: white; padding: 20px; flex: 0 0 100px; border-radius: 4px; font-weight: bold; text-align: center;">6</div>
+                                </div>
+                                <p style="margin-top: -10px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Líneas en orden inverso - La segunda línea aparece arriba</p>
+
+                                <div style="background: #e8f5e9; padding: 15px; border-radius: 4px; border-left: 4px solid #4caf50; margin-top: 20px;">
+                                    <strong style="color: #2e7d32;">💡 USO COMÚN:</strong> Grid de tarjetas responsive con <code style="background: #fff; padding: 2px 6px; border-radius: 3px; color: #d32f2f;">flex: 1 1 300px;</code> - Mínimo 300px, wrap automático si no cabe
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="gap" data-tags="gap espacio separacion">
@@ -220,6 +421,50 @@
 .main-content {
     flex-grow: 1;    /* Toma el espacio restante */
 }</div>
+
+                        <!-- VISUALIZACIÓN FLEX-GROW -->
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa de flex-grow:</strong>
+                            <div class="preview-content">
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">flex-grow: 0 (todos) - No crecen</p>
+                                <div style="display: flex; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 20px; flex: 0 0 100px; border-radius: 4px; font-weight: bold; text-align: center;">Item 1<br><span style="font-size: 12px;">100px</span></div>
+                                    <div style="background: #3498db; color: white; padding: 20px; flex: 0 0 100px; border-radius: 4px; font-weight: bold; text-align: center;">Item 2<br><span style="font-size: 12px;">100px</span></div>
+                                    <div style="background: #2ecc71; color: white; padding: 20px; flex: 0 0 100px; border-radius: 4px; font-weight: bold; text-align: center;">Item 3<br><span style="font-size: 12px;">100px</span></div>
+                                </div>
+                                <p style="margin-top: -10px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Espacio sobrante queda vacío (no crecen)</p>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">flex-grow: 1 (todos) - Crecen igual</p>
+                                <div style="display: flex; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 20px; flex: 1 0 100px; border-radius: 4px; font-weight: bold; text-align: center;">Item 1<br><span style="font-size: 12px;">grow: 1</span></div>
+                                    <div style="background: #3498db; color: white; padding: 20px; flex: 1 0 100px; border-radius: 4px; font-weight: bold; text-align: center;">Item 2<br><span style="font-size: 12px;">grow: 1</span></div>
+                                    <div style="background: #2ecc71; color: white; padding: 20px; flex: 1 0 100px; border-radius: 4px; font-weight: bold; text-align: center;">Item 3<br><span style="font-size: 12px;">grow: 1</span></div>
+                                </div>
+                                <p style="margin-top: -10px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Todos crecen igual, se reparten el espacio disponible</p>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">flex-grow mixto (1, 2, 1) - Item2 crece el doble</p>
+                                <div style="display: flex; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 20px; flex: 1 0 100px; border-radius: 4px; font-weight: bold; text-align: center;">Item 1<br><span style="font-size: 12px;">grow: 1</span></div>
+                                    <div style="background: #3498db; color: white; padding: 20px; flex: 2 0 100px; border-radius: 4px; font-weight: bold; text-align: center;">Item 2<br><span style="font-size: 12px;">grow: 2 ⭐</span></div>
+                                    <div style="background: #2ecc71; color: white; padding: 20px; flex: 1 0 100px; border-radius: 4px; font-weight: bold; text-align: center;">Item 3<br><span style="font-size: 12px;">grow: 1</span></div>
+                                </div>
+                                <p style="margin-top: -10px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Item2 recibe el doble de espacio extra que Item1 e Item3</p>
+
+                                <div style="background: #fff3cd; padding: 15px; border-radius: 4px; border-left: 4px solid #f1c40f; margin-top: 20px; margin-bottom: 20px;">
+                                    <strong style="color: #856404;">📐 CÁLCULO:</strong><br>
+                                    Espacio disponible = Total - Suma de tamaños base<br>
+                                    Cada parte = Espacio disponible / Total de partes (suma de grow)<br>
+                                    Tamaño final = Tamaño base + (grow × tamaño_de_parte)
+                                </div>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">💡 Caso común: Sidebar fijo + Contenido flexible</p>
+                                <div style="display: flex; gap: 10px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px;">
+                                    <div style="background: #9b59b6; color: white; padding: 30px 20px; flex: 0 0 150px; border-radius: 4px; font-weight: bold; text-align: center;">Sidebar<br><span style="font-size: 12px;">grow: 0<br>150px fijo</span></div>
+                                    <div style="background: #3498db; color: white; padding: 30px 20px; flex: 1 0 0; border-radius: 4px; font-weight: bold; text-align: center;">Main Content<br><span style="font-size: 12px;">grow: 1<br>Toma el resto</span></div>
+                                </div>
+                                <p style="margin-top: 10px; color: #7f8c8d; font-size: 14px;">↑ Sidebar mantiene tamaño fijo, contenido principal ocupa todo el espacio restante</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="flex-shrink" data-tags="flex-shrink encoger reducir">
@@ -239,6 +484,52 @@
     flex-shrink: 0;
     width: 150px;
 }</div>
+
+                        <!-- VISUALIZACIÓN FLEX-SHRINK -->
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa de flex-shrink:</strong>
+                            <div class="preview-content">
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">flex-shrink: 1 (todos) - Se encogen igual</p>
+                                <div style="display: flex; gap: 5px; width: 400px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 20px 10px; flex: 1 1 200px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 14px;">Item 1<br><span style="font-size: 11px;">shrink: 1</span></div>
+                                    <div style="background: #3498db; color: white; padding: 20px 10px; flex: 1 1 200px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 14px;">Item 2<br><span style="font-size: 11px;">shrink: 1</span></div>
+                                    <div style="background: #2ecc71; color: white; padding: 20px 10px; flex: 1 1 200px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 14px;">Item 3<br><span style="font-size: 11px;">shrink: 1</span></div>
+                                </div>
+                                <p style="margin-top: -10px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Contenedor de 400px, items de 200px cada uno → Se encogen igual para caber</p>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">flex-shrink: 0 (Item1) | shrink: 1 (otros)</p>
+                                <div style="display: flex; gap: 5px; width: 400px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 20px 10px; flex: 0 0 200px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 14px;">Item 1<br><span style="font-size: 11px;">shrink: 0 🔒</span></div>
+                                    <div style="background: #3498db; color: white; padding: 20px 5px; flex: 1 1 200px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 13px;">Item 2<br><span style="font-size: 10px;">shrink: 1</span></div>
+                                    <div style="background: #2ecc71; color: white; padding: 20px 5px; flex: 1 1 200px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 13px;">Item 3<br><span style="font-size: 10px;">shrink: 1</span></div>
+                                </div>
+                                <p style="margin-top: -10px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Item1 NO se encoge (shrink: 0), Item2 e Item3 absorben el espacio faltante</p>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">flex-shrink mixto (1, 2, 1) - Item2 se encoge el doble</p>
+                                <div style="display: flex; gap: 5px; width: 400px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 20px 10px; flex: 1 1 200px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 14px;">Item 1<br><span style="font-size: 11px;">shrink: 1</span></div>
+                                    <div style="background: #3498db; color: white; padding: 20px 5px; flex: 2 1 200px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 13px;">Item 2<br><span style="font-size: 10px;">shrink: 2 ⚠️</span></div>
+                                    <div style="background: #2ecc71; color: white; padding: 20px 10px; flex: 1 1 200px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 14px;">Item 3<br><span style="font-size: 11px;">shrink: 1</span></div>
+                                </div>
+                                <p style="margin-top: -10px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Item2 se reduce el doble que Item1 e Item3</p>
+
+                                <div style="background: #fff3cd; padding: 15px; border-radius: 4px; border-left: 4px solid #f1c40f; margin-top: 20px; margin-bottom: 20px;">
+                                    <strong style="color: #856404;">📐 CÁLCULO:</strong><br>
+                                    Espacio faltante = Suma de tamaños - Tamaño del contenedor<br>
+                                    Cada parte = Espacio faltante / Total de partes (suma de shrink)<br>
+                                    Tamaño final = Tamaño base - (shrink × tamaño_de_parte)
+                                </div>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">💡 Caso común: Logo que NO se encoge + Navegación flexible</p>
+                                <div style="display: flex; gap: 10px; width: 500px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px;">
+                                    <div style="background: #e74c3c; color: white; padding: 20px 15px; flex: 0 0 120px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 14px;">Logo<br><span style="font-size: 11px;">shrink: 0<br>Fijo 🔒</span></div>
+                                    <div style="background: #3498db; color: white; padding: 20px 10px; flex: 1 1 100px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 13px;">Inicio</div>
+                                    <div style="background: #2ecc71; color: white; padding: 20px 10px; flex: 1 1 100px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 13px;">Servicios</div>
+                                    <div style="background: #f39c12; color: white; padding: 20px 10px; flex: 1 1 100px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 13px;">Contacto</div>
+                                </div>
+                                <p style="margin-top: 10px; color: #7f8c8d; font-size: 14px;">↑ Logo mantiene su tamaño (120px), navegación se ajusta según espacio disponible</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="flex-basis" data-tags="flex-basis base tamaño inicial">
@@ -253,6 +544,57 @@
     flex-basis: 0;       /* Para distribución uniforme */
     flex-basis: 25%;     /* Porcentaje del contenedor */
 }</div>
+
+                        <!-- VISUALIZACIÓN FLEX-BASIS -->
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa de flex-basis:</strong>
+                            <div class="preview-content">
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">flex-basis: auto (default) - Basado en contenido</p>
+                                <div style="display: flex; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 20px; flex: 0 0 auto; border-radius: 4px; font-weight: bold;">Hola</div>
+                                    <div style="background: #3498db; color: white; padding: 20px; flex: 0 0 auto; border-radius: 4px; font-weight: bold;">Contenido más largo</div>
+                                    <div style="background: #2ecc71; color: white; padding: 20px; flex: 0 0 auto; border-radius: 4px; font-weight: bold;">Bye</div>
+                                </div>
+                                <p style="margin-top: -10px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Cada item usa su ancho natural del contenido</p>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">flex-basis: 0 + flex-grow: 1 - Distribución uniforme</p>
+                                <div style="display: flex; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 20px; flex: 1 1 0; border-radius: 4px; font-weight: bold; text-align: center;">Hola</div>
+                                    <div style="background: #3498db; color: white; padding: 20px; flex: 1 1 0; border-radius: 4px; font-weight: bold; text-align: center;">Contenido más largo</div>
+                                    <div style="background: #2ecc71; color: white; padding: 20px; flex: 1 1 0; border-radius: 4px; font-weight: bold; text-align: center;">Bye</div>
+                                </div>
+                                <p style="margin-top: -10px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Todos IGUALES sin importar el contenido (basis: 0 ignora el ancho del contenido)</p>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">flex-basis: 200px - Tamaño inicial fijo</p>
+                                <div style="display: flex; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 20px; flex: 0 0 200px; border-radius: 4px; font-weight: bold; text-align: center;">Item 1<br><span style="font-size: 12px;">200px</span></div>
+                                    <div style="background: #3498db; color: white; padding: 20px; flex: 0 0 200px; border-radius: 4px; font-weight: bold; text-align: center;">Item 2<br><span style="font-size: 12px;">200px</span></div>
+                                </div>
+                                <p style="margin-top: -10px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Todos empiezan con 200px (luego grow/shrink puede modificar)</p>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">flex-basis: 25% - Porcentaje del contenedor</p>
+                                <div style="display: flex; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 20px;">
+                                    <div style="background: #e74c3c; color: white; padding: 20px; flex: 0 0 25%; border-radius: 4px; font-weight: bold; text-align: center;">25%</div>
+                                    <div style="background: #3498db; color: white; padding: 20px; flex: 0 0 25%; border-radius: 4px; font-weight: bold; text-align: center;">25%</div>
+                                    <div style="background: #2ecc71; color: white; padding: 20px; flex: 0 0 25%; border-radius: 4px; font-weight: bold; text-align: center;">25%</div>
+                                    <div style="background: #f39c12; color: white; padding: 20px; flex: 0 0 25%; border-radius: 4px; font-weight: bold; text-align: center;">25%</div>
+                                </div>
+                                <p style="margin-top: -10px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Cada item ocupa el 25% del contenedor</p>
+
+                                <div style="background: #e3f2fd; padding: 15px; border-radius: 4px; border-left: 4px solid #2196f3; margin-top: 20px; margin-bottom: 20px;">
+                                    <strong style="color: #1565c0;">🔄 flex-basis vs width:</strong><br>
+                                    • <code style="background: #fff; padding: 2px 6px; border-radius: 3px; color: #d32f2f;">width</code>: Tamaño fijo que puede romperse<br>
+                                    • <code style="background: #fff; padding: 2px 6px; border-radius: 3px; color: #d32f2f;">flex-basis</code>: Tamaño flexible que coopera con grow/shrink
+                                </div>
+
+                                <div style="background: #e8f5e9; padding: 15px; border-radius: 4px; border-left: 4px solid #4caf50;">
+                                    <strong style="color: #2e7d32;">💡 EJEMPLOS PRÁCTICOS:</strong><br>
+                                    • 3 columnas iguales: <code style="background: #fff; padding: 2px 6px; border-radius: 3px; color: #d32f2f;">flex: 1 1 0;</code> (basis: 0 = ignora contenido)<br>
+                                    • Grid responsive: <code style="background: #fff; padding: 2px 6px; border-radius: 3px; color: #d32f2f;">flex: 1 1 300px;</code> (mín 300px, crece si hay espacio)<br>
+                                    • Sidebar fijo: <code style="background: #fff; padding: 2px 6px; border-radius: 3px; color: #d32f2f;">flex: 0 0 250px;</code> (siempre 250px)
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="flex-shorthand" data-tags="flex shorthand abreviado">
@@ -331,6 +673,50 @@
         order: 1;
     }
 }</div>
+
+                        <!-- VISUALIZACIÓN ORDER -->
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa de order:</strong>
+                            <div class="preview-content">
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">Sin order (default: 0) - Orden del HTML</p>
+                                <div style="display: flex; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 15px;">
+                                    <div style="background: #e74c3c; color: white; padding: 30px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 24px;">A<br><span style="font-size: 12px;">order: 0</span></div>
+                                    <div style="background: #3498db; color: white; padding: 30px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 24px;">B<br><span style="font-size: 12px;">order: 0</span></div>
+                                    <div style="background: #2ecc71; color: white; padding: 30px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 24px;">C<br><span style="font-size: 12px;">order: 0</span></div>
+                                </div>
+                                <p style="margin-top: -5px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Orden natural del HTML: A → B → C</p>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">Con order (A: 3, B: 1, C: 2) - Reordenados visualmente</p>
+                                <div style="display: flex; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 15px;">
+                                    <div style="background: #3498db; color: white; padding: 30px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 24px; order: 1;">B<br><span style="font-size: 12px;">order: 1 ⭐</span></div>
+                                    <div style="background: #2ecc71; color: white; padding: 30px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 24px; order: 2;">C<br><span style="font-size: 12px;">order: 2</span></div>
+                                    <div style="background: #e74c3c; color: white; padding: 30px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 24px; order: 3;">A<br><span style="font-size: 12px;">order: 3</span></div>
+                                </div>
+                                <p style="margin-top: -5px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Orden visual: B → C → A (HTML no cambia, solo el orden visual)</p>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">Valores negativos (B: -1) - Aparece primero</p>
+                                <div style="display: flex; gap: 5px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 15px;">
+                                    <div style="background: #3498db; color: white; padding: 30px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 24px; order: -1;">B<br><span style="font-size: 12px;">order: -1</span></div>
+                                    <div style="background: #e74c3c; color: white; padding: 30px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 24px; order: 0;">A<br><span style="font-size: 12px;">order: 0</span></div>
+                                    <div style="background: #2ecc71; color: white; padding: 30px; border-radius: 4px; font-weight: bold; text-align: center; font-size: 24px; order: 0;">C<br><span style="font-size: 12px;">order: 0</span></div>
+                                </div>
+                                <p style="margin-top: -5px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ Los valores negativos aparecen ANTES que 0</p>
+
+                                <p style="margin-bottom: 10px; color: #dcdcaa; font-weight: bold;">💡 Caso común: Responsive Layout (Móvil)</p>
+                                <div style="display: flex; flex-direction: column; gap: 10px; width: 300px; padding: 15px; border: 2px dashed #9b59b6; background: #ecf0f1; border-radius: 4px; margin-bottom: 15px;">
+                                    <div style="background: #3498db; color: white; padding: 40px 20px; border-radius: 4px; font-weight: bold; text-align: center; order: 1;">Main Content<br><span style="font-size: 12px;">order: 1<br>Primero en móvil</span></div>
+                                    <div style="background: #9b59b6; color: white; padding: 30px 20px; border-radius: 4px; font-weight: bold; text-align: center; order: 2;">Sidebar<br><span style="font-size: 12px;">order: 2<br>Segundo en móvil</span></div>
+                                </div>
+                                <p style="margin-top: -5px; margin-bottom: 20px; color: #7f8c8d; font-size: 14px;">↑ En móvil: contenido primero, sidebar después (usando order)</p>
+
+                                <div style="background: #fff3cd; padding: 15px; border-radius: 4px; border-left: 4px solid #f1c40f; margin-top: 20px;">
+                                    <strong style="color: #856404;">⚠️ IMPORTANTE:</strong> <code style="background: #fff; padding: 2px 6px; border-radius: 3px; color: #d32f2f;">order</code> solo cambia el orden VISUAL<br>
+                                    • El HTML sigue en el orden original<br>
+                                    • Los lectores de pantalla usan el orden del HTML<br>
+                                    • La navegación por teclado (Tab) sigue el HTML
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div id="noResults" class="no-results" style="display: none;">
@@ -372,8 +758,8 @@
         <p>CSS - Sistema de Aprendizaje | <a href="../index.html">Volver a CSS</a></p>
     </footer>
 
-    <script src="/assets/js/sidebar-component.js"></script>
-    <script src="/assets/js/study-highlight.js"></script>
+    <script src="../../../assets/js/sidebar-component.js"></script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('searchInput');
@@ -421,6 +807,20 @@
                 const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
                 const scrolled = (winScroll / height) * 100;
                 document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // Aplicar highlight.js solo a elementos .ejemplo que no tienen <br> (no son HTML)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.ejemplo').forEach(function(block) {
+                // Solo resaltar si no tiene elementos <br> (no es HTML con sintaxis manual)
+                if (block.querySelectorAll('br').length === 0) {
+                    block.classList.add('language-css');
+                    hljs.highlightElement(block);
+                }
             });
         });
     </script>

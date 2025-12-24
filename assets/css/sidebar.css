@@ -172,45 +172,106 @@
 
 /* Footer del sidebar */
 .sidebar-footer {
-    padding: 20px;
+    padding: 15px;
     border-top: 1px solid #2a2a2a;
     background: #151515;
 }
 
-.progress-info {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+.user-profile {
+    position: relative;
 }
 
-.progress-label {
+.profile-trigger {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+    background: rgba(26, 26, 26, 0.8);
+    border-radius: 8px;
+    border: 1px solid #2a2a2a;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.profile-trigger:hover {
+    background: rgba(26, 26, 26, 1);
+    border-color: #4a90e2;
+}
+
+.profile-dropdown {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    right: 0;
+    margin-bottom: 10px;
+    background: #1a1a1a;
+    border: 1px solid #4a90e2;
+    border-radius: 8px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s;
+}
+
+.user-profile.active .profile-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    color: #e0e0e0;
+    text-decoration: none;
+    transition: all 0.2s;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:hover {
+    background: rgba(74, 144, 226, 0.1);
+    color: #4a90e2;
+}
+
+.profile-icon {
+    font-size: 2em;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.profile-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.profile-name {
+    font-size: 0.85em;
+    font-weight: 600;
+    color: #e0e0e0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profile-email {
     font-size: 0.75em;
     color: #888;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.progress-bar {
-    width: 100%;
-    height: 8px;
-    background: #2a2a2a;
-    border-radius: 4px;
+    white-space: nowrap;
     overflow: hidden;
-}
-
-.progress-fill {
-    height: 100%;
-    background: linear-gradient(90deg, #4a90e2 0%, #357abd 100%);
-    transition: width 0.5s ease;
-    border-radius: 4px;
-}
-
-.progress-text {
-    font-size: 0.75em;
-    color: #4a90e2;
-    text-align: right;
-    font-weight: 600;
+    text-overflow: ellipsis;
 }
 
 /* Ajuste automático del contenido principal */

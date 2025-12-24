@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tablas - Sistema de Aprendizaje</title>
-    <link rel="stylesheet" href="/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/assets/css/glosario.css">
-    <link rel="stylesheet" href="/assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
 </head>
 <body>
     <header>
@@ -44,6 +45,9 @@
 
                 <div id="terminosContainer">
                     <div class="termino" id="table" data-tags="table tabla datos estructura">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;table&gt;</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Tabla de datos</p>
                         <p class="descripcion">
@@ -52,258 +56,430 @@
                             SOLO para datos tabulares (horarios, inventarios, comparativas), NO para layout de página (usa CSS Grid o Flexbox para eso).
                         </p>
                         <div class="ejemplo">
-                            <strong>Ejemplo básico:</strong><br>
-                            &lt;table&gt;<br>
-                            &nbsp;&nbsp;&lt;tr&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Nombre&lt;/th&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Apellido&lt;/th&gt;<br>
-                            &nbsp;&nbsp;&lt;/tr&gt;<br>
-                            &nbsp;&nbsp;&lt;tr&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Juan&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Perez&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&lt;/tr&gt;<br>
-                            &nbsp;&nbsp;&lt;tr&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Carla&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Gomez&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&lt;/tr&gt;<br>
-                            &lt;/table&gt;
+<span class="hl-bracket">&lt;</span><span class="hl-tag">table</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><span class="hl-text">Nombre</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><span class="hl-text">Apellido</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;/</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-text">Juan</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-text">Perez</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;/</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-text">Carla</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-text">Gomez</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;/</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">table</span><span class="hl-bracket">&gt;</span>
                         </div>
-                        <div class="nota">
-                            <strong>Estructura básica de elementos:</strong><br>
-                            • &lt;table&gt; - Contenedor principal de la tabla<br>
-                            • &lt;tr&gt; - Table Row, define una fila<br>
-                            • &lt;td&gt; - Table Data, define una celda de datos<br>
-                            • &lt;th&gt; - Table Header, define una celda de encabezado<br><br>
-                            <strong>Atributos obsoletos (usar CSS en su lugar):</strong><br>
-                            • <code>border</code> - Define bordes (usar CSS border)<br>
-                            • <code>cellpadding</code>, <code>cellspacing</code> - Usar CSS padding y border-spacing
+
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%;">
+                                    <tr>
+                                        <th style="background: #f0f0f0;">Nombre</th>
+                                        <th style="background: #f0f0f0;">Apellido</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Juan</td>
+                                        <td>Perez</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Carla</td>
+                                        <td>Gomez</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="nota nota-info">
+                            <strong>Estructura básica de elementos:</strong>
+                            <ul class="nota-lista">
+                                <li class="importante"><span class="key-term">&lt;table&gt;</span> - Contenedor principal</li>
+                                <li class="importante"><span class="key-term">&lt;tr&gt;</span> - Table Row (fila)</li>
+                                <li class="hacer"><span class="key-term">&lt;td&gt;</span> - Table Data (celda)</li>
+                                <li class="hacer"><span class="key-term">&lt;th&gt;</span> - Table Header (encabezado)</li>
+                            </ul>
+                        </div>
+
+                        <div class="nota nota-warning">
+                            <strong>Atributos obsoletos (usar CSS):</strong>
+                            <ul class="nota-lista">
+                                <li class="evitar"><span class="key-term">border</span> → Usar CSS border</li>
+                                <li class="evitar"><span class="key-term">cellpadding/cellspacing</span> → Usar CSS</li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="termino" id="tr" data-tags="tr fila table row horizontal">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;tr&gt;</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Fila de tabla (Table Row)</p>
                         <p class="descripcion">
                             Define una fila horizontal en una tabla. Contiene celdas que pueden ser datos (&lt;td&gt;) o encabezados (&lt;th&gt;).
-                            Cada fila debe tener el mismo número de celdas para mantener la estructura rectangular de la tabla
-                            (a menos que uses colspan/rowspan para fusionar celdas).
                         </p>
                         <div class="ejemplo">
-                            &lt;tr&gt;<br>
-                            &nbsp;&nbsp;&lt;td&gt;Celda 1&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&lt;td&gt;Celda 2&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&lt;td&gt;Celda 3&lt;/td&gt;<br>
-                            &lt;/tr&gt;
+<span class="hl-bracket">&lt;</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-text">Celda 1</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-text">Celda 2</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-text">Celda 3</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span>
                         </div>
-                        <div class="nota">
-                            <strong>Importante:</strong> Las celdas (&lt;td&gt; o &lt;th&gt;) deben estar directamente
-                            dentro de &lt;tr&gt;. No puedes colocar otro contenido directamente en un &lt;tr&gt;.
+
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <table border="1" cellpadding="8" style="border-collapse: collapse;">
+                                    <tr>
+                                        <td>Celda 1</td>
+                                        <td>Celda 2</td>
+                                        <td>Celda 3</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="nota nota-danger">
+                            <strong>Regla importante:</strong>
+                            <ul class="nota-lista">
+                                <li class="importante">Las celdas (&lt;td&gt; o &lt;th&gt;) van DENTRO de <span class="key-term">&lt;tr&gt;</span></li>
+                                <li class="evitar">NO colocar otro contenido directamente en &lt;tr&gt;</li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="termino" id="th" data-tags="th encabezado tabla header celda">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;th&gt;</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Encabezado de tabla (Table Header)</p>
                         <p class="descripcion">
                             Define una celda de encabezado en una tabla. Por defecto se muestra en negrita y centrado.
-                            Tiene significado semántico importante para accesibilidad: los lectores de pantalla anuncian
-                            los encabezados al leer las celdas de datos, ayudando a usuarios a entender la estructura.
                         </p>
                         <div class="ejemplo">
-                            &lt;table&gt;<br>
-                            &nbsp;&nbsp;&lt;tr&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Producto&lt;/th&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Precio&lt;/th&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Stock&lt;/th&gt;<br>
-                            &nbsp;&nbsp;&lt;/tr&gt;<br>
-                            &nbsp;&nbsp;&lt;tr&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Laptop&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;$800&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;5&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&lt;/tr&gt;<br>
-                            &lt;/table&gt;
+<span class="hl-bracket">&lt;</span><span class="hl-tag">table</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><span class="hl-text">Producto</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><span class="hl-text">Precio</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><span class="hl-text">Stock</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;/</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-text">Laptop</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-text">$800</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-text">5</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;/</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">table</span><span class="hl-bracket">&gt;</span>
                         </div>
-                        <div class="nota">
-                            <strong>Atributos importantes:</strong><br>
-                            • <code>scope</code> - Define si el encabezado es para columna ("col"), fila ("row"),
-                            grupo de columnas ("colgroup") o grupo de filas ("rowgroup")<br>
-                            • <code>colspan</code> / <code>rowspan</code> - Fusionar celdas de encabezado<br><br>
-                            <strong>Ejemplo con scope:</strong><br>
-                            &lt;th scope="col"&gt;Nombre&lt;/th&gt; (encabezado de columna)
+
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%;">
+                                    <tr>
+                                        <th style="background: #f0f0f0; font-weight: bold;">Producto</th>
+                                        <th style="background: #f0f0f0; font-weight: bold;">Precio</th>
+                                        <th style="background: #f0f0f0; font-weight: bold;">Stock</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Laptop</td>
+                                        <td>$800</td>
+                                        <td>5</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="nota nota-info">
+                            <strong>Atributos importantes:</strong>
+                            <ul class="nota-lista">
+                                <li class="importante"><span class="key-term">scope</span> - "col" (columna) o "row" (fila)</li>
+                                <li class="hacer"><span class="key-term">colspan/rowspan</span> - Fusionar celdas</li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="termino" id="td" data-tags="td celda tabla data dato">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;td&gt;</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Celda de datos (Table Data)</p>
                         <p class="descripcion">
-                            Define una celda de datos estándar en una tabla. Contiene el contenido real de la tabla: números,
-                            texto, imágenes, enlaces, etc. Puede contener cualquier contenido HTML válido.
+                            Define una celda de datos estándar en una tabla. Puede contener cualquier contenido HTML válido.
                         </p>
                         <div class="ejemplo">
-                            &lt;tr&gt;<br>
-                            &nbsp;&nbsp;&lt;td&gt;Texto simple&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&lt;td&gt;&lt;strong&gt;Texto con formato&lt;/strong&gt;&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&lt;td&gt;&lt;a href="#"&gt;Enlace&lt;/a&gt;&lt;/td&gt;<br>
-                            &lt;/tr&gt;
+<span class="hl-bracket">&lt;</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-text">Texto simple</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-bracket">&lt;</span><span class="hl-tag">strong</span><span class="hl-bracket">&gt;</span><span class="hl-text">Con formato</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">strong</span><span class="hl-bracket">&gt;</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-bracket">&lt;</span><span class="hl-tag">a</span> <span class="hl-attr">href</span><span class="hl-bracket">=</span><span class="hl-value">"#"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Enlace</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">a</span><span class="hl-bracket">&gt;</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span>
                         </div>
-                        <div class="nota">
-                            <strong>Atributos útiles:</strong><br>
-                            • <code>colspan</code> - Número de columnas que abarca la celda<br>
-                            • <code>rowspan</code> - Número de filas que abarca la celda<br>
-                            • <code>headers</code> - IDs de los encabezados asociados (para accesibilidad avanzada)
+
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <table border="1" cellpadding="8" style="border-collapse: collapse;">
+                                    <tr>
+                                        <td>Texto simple</td>
+                                        <td><strong>Con formato</strong></td>
+                                        <td><a href="#">Enlace</a></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="nota nota-tip">
+                            <strong>Atributos útiles:</strong>
+                            <ul class="nota-lista">
+                                <li class="hacer"><span class="key-term">colspan</span> - Columnas que abarca</li>
+                                <li class="hacer"><span class="key-term">rowspan</span> - Filas que abarca</li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="termino" id="colspan-rowspan" data-tags="colspan rowspan fusion celdas merge">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Intermedio</span>
+                        </div>
                         <span class="tag">🔗 Colspan y Rowspan</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Fusión de celdas en tablas</p>
                         <p class="descripcion">
-                            Estos atributos permiten que una celda se expanda horizontal o verticalmente, fusionando
-                            múltiples celdas en una sola. <code>colspan</code> fusiona columnas (horizontal), <code>rowspan</code>
-                            fusiona filas (vertical). Útil para horarios, calendarios, reportes con categorías agrupadas.
+                            <code>colspan</code> fusiona columnas (horizontal), <code>rowspan</code> fusiona filas (vertical).
                         </p>
                         <div class="ejemplo">
-                            <strong>Ejemplo con rowspan y colspan:</strong><br>
-                            &lt;table&gt;<br>
-                            &nbsp;&nbsp;&lt;caption&gt;Horario de Clases&lt;/caption&gt;<br>
-                            &nbsp;&nbsp;&lt;tr&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Hora&lt;/th&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Lunes&lt;/th&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Martes&lt;/th&gt;<br>
-                            &nbsp;&nbsp;&lt;/tr&gt;<br>
-                            &nbsp;&nbsp;&lt;tr&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;8:00 - 9:00&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Matemática&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;td rowspan="2"&gt;Comunicación&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&lt;/tr&gt;<br>
-                            &nbsp;&nbsp;&lt;tr&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;9:00 - 10:00&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Ciencia&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Comunicación ocupa esta celda con rowspan --&gt;<br>
-                            &nbsp;&nbsp;&lt;/tr&gt;<br>
-                            &nbsp;&nbsp;&lt;tr&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;10:00 - 10:30&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;td colspan="2"&gt;Recreo&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&lt;/tr&gt;<br>
-                            &lt;/table&gt;
+<span class="hl-bracket">&lt;</span><span class="hl-tag">table</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><span class="hl-text">Hora</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><span class="hl-text">Lunes</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><span class="hl-text">Martes</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;/</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-text">8:00</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-text">Matemática</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span> <span class="hl-attr">rowspan</span><span class="hl-bracket">=</span><span class="hl-value">"2"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Comunicación</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;/</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-text">9:00</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-text">Ciencia</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;/</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-text">10:00</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span> <span class="hl-attr">colspan</span><span class="hl-bracket">=</span><span class="hl-value">"2"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Recreo</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;/</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">table</span><span class="hl-bracket">&gt;</span>
                         </div>
-                        <div class="nota">
-                            <strong>Puntos clave:</strong><br>
-                            • <code>colspan="N"</code> - La celda ocupará N columnas<br>
-                            • <code>rowspan="N"</code> - La celda ocupará N filas<br>
-                            • Cuando usas colspan/rowspan, las celdas fusionadas NO se declaran en las filas/columnas siguientes<br>
-                            • El valor por defecto es 1 (una sola celda)<br>
-                            • Cuidado: cálculos incorrectos pueden romper la estructura de la tabla
+
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <table border="1" cellpadding="8" style="border-collapse: collapse; text-align: center;">
+                                    <tr>
+                                        <th style="background: #f0f0f0;">Hora</th>
+                                        <th style="background: #f0f0f0;">Lunes</th>
+                                        <th style="background: #f0f0f0;">Martes</th>
+                                    </tr>
+                                    <tr>
+                                        <td>8:00</td>
+                                        <td>Matemática</td>
+                                        <td rowspan="2" style="background: #fff3cd;">Comunicación<br>(rowspan=2)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>9:00</td>
+                                        <td>Ciencia</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10:00</td>
+                                        <td colspan="2" style="background: #d4edda;">Recreo (colspan=2)</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="nota nota-warning">
+                            <strong>Puntos clave:</strong>
+                            <ul class="nota-lista">
+                                <li class="importante"><span class="key-term">colspan="N"</span> - Ocupa N columnas</li>
+                                <li class="importante"><span class="key-term">rowspan="N"</span> - Ocupa N filas</li>
+                                <li class="evitar">Las celdas fusionadas NO se declaran después</li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="termino" id="thead-tbody-tfoot" data-tags="thead tbody tfoot secciones tabla semantica">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Intermedio</span>
+                        </div>
                         <span class="tag">&lt;thead&gt;, &lt;tbody&gt;, &lt;tfoot&gt;</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Secciones semánticas de tabla</p>
                         <p class="descripcion">
-                            HTML5 introduce estos elementos para estructurar tablas en secciones lógicas. &lt;thead&gt; (Table Head)
-                            agrupa filas de encabezado, &lt;tbody&gt; (Table Body) agrupa filas de datos, &lt;tfoot&gt; (Table Foot)
-                            agrupa filas de pie con totales o resúmenes. Mejoran significativamente la accesibilidad y permiten mejor
-                            control con CSS (ej: fijar encabezado al hacer scroll).
+                            Estructuran tablas en secciones lógicas: encabezado, cuerpo y pie. Mejoran accesibilidad y control CSS.
                         </p>
                         <div class="ejemplo">
-                            <strong>Ejemplo de inventario:</strong><br>
-                            &lt;table&gt;<br>
-                            &nbsp;&nbsp;&lt;caption&gt;Inventario&lt;/caption&gt;<br>
-                            &nbsp;&nbsp;&lt;thead&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Producto&lt;/th&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Precio&lt;/th&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Cantidad&lt;/th&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
-                            &nbsp;&nbsp;&lt;/thead&gt;<br>
-                            &nbsp;&nbsp;&lt;tbody&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Manzanas&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;$2&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;10&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Peras&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;$3&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;5&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
-                            &nbsp;&nbsp;&lt;/tbody&gt;<br>
-                            &nbsp;&nbsp;&lt;tfoot&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td colspan="2"&gt;Total&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;15&lt;/td&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
-                            &nbsp;&nbsp;&lt;/tfoot&gt;<br>
-                            &lt;/table&gt;
+<span class="hl-bracket">&lt;</span><span class="hl-tag">table</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">thead</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><span class="hl-text">Producto</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><span class="hl-text">Precio</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;/</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;/</span><span class="hl-tag">thead</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">tbody</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-text">Manzanas</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-text">$2</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;/</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;/</span><span class="hl-tag">tbody</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">tfoot</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-text">Total</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><span class="hl-text">$2</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">td</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;/</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;/</span><span class="hl-tag">tfoot</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">table</span><span class="hl-bracket">&gt;</span>
                         </div>
-                        <div class="nota">
-                            <strong>Beneficios:</strong><br>
-                            • Semántica clara: separa encabezado, contenido y resumen<br>
-                            • Accesibilidad: lectores de pantalla pueden navegar mejor<br>
-                            • CSS avanzado: estilar secciones independientemente, fijar thead al hacer scroll<br>
-                            • Impresión: navegadores pueden repetir thead/tfoot en cada página<br>
-                            • &lt;tfoot&gt; puede ir antes o después de &lt;tbody&gt; en el código
+
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%;">
+                                    <thead>
+                                        <tr style="background: #e3f2fd;">
+                                            <th><strong>Producto</strong></th>
+                                            <th><strong>Precio</strong></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Manzanas</td>
+                                            <td>$2</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Peras</td>
+                                            <td>$3</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr style="background: #fff3cd; font-weight: bold;">
+                                            <td>Total</td>
+                                            <td>$5</td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="nota nota-info">
+                            <strong>Beneficios:</strong>
+                            <ul class="nota-lista">
+                                <li class="importante">Semántica clara: encabezado, contenido, resumen</li>
+                                <li class="hacer">Mejor accesibilidad para lectores de pantalla</li>
+                                <li class="info">CSS avanzado: fijar thead al hacer scroll</li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="termino" id="caption" data-tags="caption título tabla descripcion">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;caption&gt;</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Título descriptivo de tabla</p>
                         <p class="descripcion">
-                            Define un título o descripción para la tabla. Debe ser el primer hijo del elemento &lt;table&gt;
-                            (justo después de la etiqueta de apertura &lt;table&gt;). Es crucial para accesibilidad:
-                            ayuda a usuarios de lectores de pantalla a entender el propósito de la tabla antes de explorarla.
+                            Define un título o descripción para la tabla. Debe ser el primer hijo de &lt;table&gt;. Crucial para accesibilidad.
                         </p>
                         <div class="ejemplo">
-                            &lt;table&gt;<br>
-                            &nbsp;&nbsp;&lt;caption&gt;Ventas Mensuales 2024&lt;/caption&gt;<br>
-                            &nbsp;&nbsp;&lt;thead&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Mes&lt;/th&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Ventas&lt;/th&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
-                            &nbsp;&nbsp;&lt;/thead&gt;<br>
-                            &nbsp;&nbsp;...<br>
-                            &lt;/table&gt;
+<span class="hl-bracket">&lt;</span><span class="hl-tag">table</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">caption</span><span class="hl-bracket">&gt;</span><span class="hl-text">Ventas Mensuales 2024</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">caption</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">thead</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><span class="hl-text">Mes</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><span class="hl-text">Ventas</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">th</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;/</span><span class="hl-tag">tr</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;/</span><span class="hl-tag">thead</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-comment">&lt;!-- ... --&gt;</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">table</span><span class="hl-bracket">&gt;</span>
                         </div>
-                        <div class="nota">
-                            <strong>Buenas prácticas:</strong><br>
-                            • Siempre incluir &lt;caption&gt; para describir el contenido de la tabla<br>
-                            • Usar descripciones concisas pero informativas<br>
-                            • Por defecto se muestra centrado arriba de la tabla<br>
-                            • Puede estilizarse con CSS (caption-side: bottom para mover abajo)
+
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%;">
+                                    <caption style="caption-side: top; font-weight: bold; padding: 8px; background: #f8f9fa;">Ventas Mensuales 2024</caption>
+                                    <thead>
+                                        <tr style="background: #f0f0f0;">
+                                            <th>Mes</th>
+                                            <th>Ventas</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Enero</td>
+                                            <td>$1,200</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Febrero</td>
+                                            <td>$1,500</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="nota nota-tip">
+                            <strong>Buenas prácticas:</strong>
+                            <ul class="nota-lista">
+                                <li class="importante">Siempre incluir <span class="key-term">&lt;caption&gt;</span></li>
+                                <li class="hacer">Descripciones concisas pero informativas</li>
+                                <li class="info">Por defecto se muestra arriba (centrado)</li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="termino" id="buenas-practicas" data-tags="practicas accesibilidad semantica responsive">
+                        <div class="badge-container">
+                            <span class="badge badge-frecuente">Buenas prácticas</span>
+                        </div>
                         <span class="tag">✓ Buenas Prácticas</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Recomendaciones para tablas HTML</p>
                         <p class="descripcion">
-                            Seguir buenas prácticas al crear tablas mejora la accesibilidad, semántica, mantenibilidad
-                            y experiencia del usuario. Las tablas bien estructuradas son más fáciles de leer, entender y estilizar.
+                            Mejoran accesibilidad, semántica y mantenibilidad de tablas.
                         </p>
-                        <div class="nota">
-                            <strong>✓ HACER:</strong><br>
-                            • Usar tablas SOLO para datos tabulares, NO para maquetación de página<br>
-                            • Incluir &lt;caption&gt; para describir el propósito de la tabla<br>
-                            • Usar &lt;thead&gt;, &lt;tbody&gt; y &lt;tfoot&gt; para mejor semántica y estructura<br>
-                            • Usar &lt;th&gt; para encabezados, &lt;td&gt; para datos<br>
-                            • Agregar atributo <code>scope</code> a &lt;th&gt; para indicar si es encabezado de columna o fila<br>
-                            • Estilizar con CSS en lugar de atributos HTML obsoletos<br>
-                            • Hacer tablas responsive con CSS (overflow-x: auto, o transformar en lista en móviles)<br>
-                            • Mantener estructura simple y clara<br>
-                            • Usar bordes y padding para mejorar legibilidad<br><br>
-                            <strong>✗ EVITAR:</strong><br>
-                            • Usar tablas para diseño de páginas (usar CSS Grid o Flexbox para layout)<br>
-                            • Tablas sin encabezados (&lt;th&gt;)<br>
-                            • Abusar de colspan/rowspan innecesariamente (complica la estructura)<br>
-                            • Tablas muy anchas que no son responsive en móviles<br>
-                            • Atributos obsoletos como <code>border</code>, <code>cellpadding</code>, <code>cellspacing</code><br>
-                            • Tablas anidadas (tabla dentro de otra tabla)<br>
-                            • Omitir &lt;caption&gt; o descripciones accesibles<br>
-                            • Tablas sin thead/tbody que dificultan el estilizado
+
+                        <div class="comparacion-grid">
+                            <div class="comparacion-card opcion-a">
+                                <h4>✅ HACER</h4>
+                                <ul>
+                                    <li>Tablas SOLO para datos tabulares</li>
+                                    <li>Incluir &lt;caption&gt;</li>
+                                    <li>Usar &lt;thead&gt;, &lt;tbody&gt;, &lt;tfoot&gt;</li>
+                                    <li>&lt;th&gt; para encabezados</li>
+                                    <li>Agregar scope a &lt;th&gt;</li>
+                                    <li>Estilizar con CSS</li>
+                                    <li>Hacerlas responsive</li>
+                                </ul>
+                            </div>
+                            <div class="comparacion-card opcion-b">
+                                <h4>❌ EVITAR</h4>
+                                <ul>
+                                    <li>Tablas para layout de páginas</li>
+                                    <li>Tablas sin encabezados</li>
+                                    <li>Abusar de colspan/rowspan</li>
+                                    <li>Tablas no responsive</li>
+                                    <li>Atributos obsoletos</li>
+                                    <li>Tablas anidadas</li>
+                                    <li>Omitir &lt;caption&gt;</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="nota nota-tip">
+                            <strong>Regla de oro:</strong>
+                            <ul class="nota-lista">
+                                <li class="importante">Tablas = Datos tabulares únicamente</li>
+                                <li class="evitar">CSS Grid/Flexbox = Layout de páginas</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -361,8 +537,8 @@
         <p>Módulo 6: Tablas | <a href="../index.html">Volver a HTML</a></p>
     </footer>
 
-    <script src="/assets/js/sidebar-component.js"></script>
-    <script src="/assets/js/study-highlight.js"></script>
+    <script src="../../../assets/js/sidebar-component.js"></script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
     <script>
         // Funcionalidad de búsqueda en el glosario con normalización y resaltado
         document.addEventListener('DOMContentLoaded', function() {

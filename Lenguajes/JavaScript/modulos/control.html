@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control de Flujo - Sistema de Aprendizaje</title>
-    <link rel="stylesheet" href="/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/assets/css/glosario.css">
-    <link rel="stylesheet" href="/assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
+    <!-- Highlight.js para resaltado de sintaxis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
 <body>
     <header>
@@ -67,6 +70,24 @@ if (usuario.edad >= 18 && usuario.activo) {
 if (usuario.edad < 13 || !usuario.activo) {
     console.log("Acceso denegado");
 }</div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa de Condicionales:</strong>
+                            <div class="preview-content">
+                                <p><strong>Código:</strong></p>
+                                <pre style="white-space: pre-wrap; background: #f8f9fa; padding: 10px; border-radius: 4px; border-left: 3px solid #3498db;">let edad = 18;
+
+if (edad >= 18) {
+    console.log("Eres mayor de edad");
+} else {
+    console.log("Eres menor de edad");
+}</pre>
+                                <p style="margin-top: 10px;"><strong>📤 Resultado:</strong></p>
+                                <div style="background: #2c3e50; color: #2ecc71; padding: 10px; border-radius: 4px; font-family: monospace;">
+                                    > Eres mayor de edad
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                     <div class="termino" id="ternario" data-tags="ternario operador condicional">
@@ -304,7 +325,7 @@ try {
         <p>JavaScript - Sistema de Aprendizaje | <a href="../index.html">Volver a JavaScript</a></p>
     </footer>
 
-    <script src="/assets/js/sidebar-component.js"></script>
+    <script src="../../../assets/js/sidebar-component.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('searchInput');
@@ -328,6 +349,20 @@ try {
                 sections.forEach(section => { if (scrollY >= section.offsetTop - 100) current = section.getAttribute('id'); });
                 tocLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === '#' + current) link.classList.add('active'); });
                 document.getElementById('tocProgressBar').style.width = ((document.body.scrollTop || document.documentElement.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100 + '%';
+            });
+        });
+    </script>
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // Aplicar highlight.js solo a elementos .ejemplo que no tienen <br> (no son HTML)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.ejemplo').forEach(function(block) {
+                // Solo resaltar si no tiene elementos <br> (no es HTML con sintaxis manual)
+                if (block.querySelectorAll('br').length === 0) {
+                    block.classList.add('language-javascript');
+                    hljs.highlightElement(block);
+                }
             });
         });
     </script>

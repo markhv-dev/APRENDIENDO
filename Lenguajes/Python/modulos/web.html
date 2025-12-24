@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Web - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
+    <!-- Highlight.js para resaltado de sintaxis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a Python</a>
+        <span class="icon">🐍</span>
+        <h1>Módulo 10: Python Web</h1>
+        <p class="subtitle">HTTP, requests y servidores web</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(55, 118, 171, 0.1) 0%, rgba(55, 118, 171, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #3776ab; margin-bottom: 40px;">
+                <h2 style="color: #3776ab; margin-bottom: 15px; font-size: 1.8em;">🌐 Python para Web</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    Python es ampliamente usado en desarrollo web backend.
+                    Aprende a hacer peticiones HTTP con requests y crear servidores con http.server.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="requests-intro" data-tags="requests http api peticiones">
+                        <span class="tag">📋 Librería requests</span>
+                        <p class="significado">"HTTP for Humans" - Peticiones HTTP sencillas</p>
+                        <div class="ejemplo"># Instalar: pip install requests
+import requests
+
+# La librería requests permite:
+# - Hacer peticiones HTTP (GET, POST, PUT, DELETE)
+# - Enviar y recibir JSON
+# - Manejar cabeceras, cookies, sesiones
+# - Subir archivos
+# - Autenticarse en APIs
+
+# GET básico
+respuesta = requests.get("https://api.example.com/datos")
+
+# Verificar estado
+print(respuesta.status_code)  # 200 = OK
+print(respuesta.ok)           # True si status < 400
+
+# Obtener contenido
+print(respuesta.text)         # Como string
+print(respuesta.json())       # Como dict (si es JSON)
+print(respuesta.content)      # Como bytes
+
+# Cabeceras de respuesta
+print(respuesta.headers)
+print(respuesta.headers['Content-Type'])</div>
+                    <div class="vista-previa">
+                        <strong>👁️ Vista previa de desarrollo web con Python:</strong>
+                        <div class="preview-content">
+                            <p><strong>Código Python (Flask):</strong></p>
+                            <pre style="white-space: pre-wrap; background: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 6px; font-family: 'Courier New', monospace;">from flask import Flask
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return "¡Hola desde Flask!"
+
+@app.route('/api/datos')
+def datos():
+    return {"mensaje": "Datos desde API", "status": "success"}
+
+# Para ejecutar: flask run</pre>
+                            <p><strong>📤 Salida en terminal:</strong></p>
+                            <div style="background: #1e1e1e; color: #4ec9b0; font-family: 'Courier New', monospace; padding: 12px; border-radius: 6px; border-left: 3px solid #3776ab;">
+                                <span style="color: #569cd6;">$ flask run</span><br>
+                                <span style="color: #dcdcaa;"> * Running on http://127.0.0.1:5000</span><br>
+                                <span style="color: #4ec9b0;"> * Debug mode: off</span><br><br>
+                                <span style="color: #ce9178;">Cuando visitas http://127.0.0.1:5000/:</span><br>
+                                <span style="color: #dcdcaa;">¡Hola desde Flask!</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+
+                    <div class="termino" id="requests-get" data-tags="requests get parametros query">
+                        <span class="tag">📋 GET con Parámetros</span>
+                        <p class="significado">Enviar parámetros en la URL</p>
+                        <div class="ejemplo">import requests
+
+# Parámetros en URL
+url = "https://pokeapi.co/api/v2/pokemon"
+params = {
+    "limit": 5,
+    "offset": 10
+}
+
+respuesta = requests.get(url, params=params)
+# URL resultante: .../pokemon?limit=5&offset=10
+
+datos = respuesta.json()
+print(datos)
+
+# Ejemplo con API real
+def obtener_pokemon(nombre):
+    url = f"https://pokeapi.co/api/v2/pokemon/{nombre}"
+    respuesta = requests.get(url)
+
+    if respuesta.status_code == 200:
+        data = respuesta.json()
+        return {
+            "nombre": data["name"],
+            "altura": data["height"],
+            "peso": data["weight"],
+            "tipos": [t["type"]["name"] for t in data["types"]]
+        }
+    else:
+        return None
+
+pokemon = obtener_pokemon("pikachu")
+print(pokemon)
+# {'nombre': 'pikachu', 'altura': 4, 'peso': 60, 'tipos': ['electric']}</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Petición GET con Parámetros</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="background: #3498db; color: white; padding: 12px; border-radius: 6px; margin-bottom: 15px;">
+                            <strong>📤 REQUEST GET</strong>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 6px; margin-bottom: 15px; font-family: monospace;">
+                            <div style="color: #3498db; font-weight: bold;">GET https://pokeapi.co/api/v2/pokemon/pikachu</div>
+                        </div>
+                        <div style="background: #2ecc71; color: white; padding: 12px; border-radius: 6px; margin-bottom: 15px;">
+                            <strong>📥 RESPONSE 200 OK</strong>
+                        </div>
+                        <div style="background: white; padding: 15px; border-radius: 6px; font-family: monospace; font-size: 0.9em;">
+                            <pre style="margin: 0; color: #2c3e50;">{
+  "nombre": "pikachu",
+  "altura": 4,
+  "peso": 60,
+  "tipos": ["electric"]
+}</pre>
+                        </div>
+                        <div style="margin-top: 15px; padding: 12px; background: #f39c12; color: white; border-radius: 6px;">
+                            <strong>URL con parámetros:</strong> /pokemon?limit=5&offset=10
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="requests-post" data-tags="requests post json enviar">
+                        <span class="tag">📋 POST - Enviar Datos</span>
+                        <p class="significado">Enviar datos al servidor</p>
+                        <div class="ejemplo">import requests
+
+# POST con JSON
+url = "https://api.example.com/usuarios"
+datos = {
+    "nombre": "Ana",
+    "email": "ana@example.com",
+    "edad": 25
+}
+
+respuesta = requests.post(url, json=datos)
+print(respuesta.status_code)  # 201 = Created
+print(respuesta.json())
+
+# POST con form data
+datos_form = {
+    "username": "ana",
+    "password": "secreta"
+}
+respuesta = requests.post(url, data=datos_form)
+
+# Subir archivo
+archivo = {"file": open("imagen.jpg", "rb")}
+respuesta = requests.post(url, files=archivo)
+
+# Cabeceras personalizadas
+headers = {
+    "Authorization": "Bearer mi_token_jwt",
+    "Content-Type": "application/json"
+}
+respuesta = requests.post(url, json=datos, headers=headers)
+
+# PUT (actualizar)
+respuesta = requests.put(f"{url}/123", json={"edad": 26})
+
+# DELETE (eliminar)
+respuesta = requests.delete(f"{url}/123")</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Métodos HTTP</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div style="background: #3498db; color: white; padding: 15px; border-radius: 6px;">
+                                <strong>POST</strong> - Crear recurso
+                                <div style="margin-top: 10px; background: rgba(255,255,255,0.2); padding: 10px; border-radius: 4px; font-family: monospace; font-size: 0.85em;">
+                                    POST /api/usuarios<br>
+                                    {"nombre": "Ana", "edad": 25}
+                                    <div style="margin-top: 8px; color: #f1c40f;">→ 201 Created</div>
+                                </div>
+                            </div>
+                            <div style="background: #9b59b6; color: white; padding: 15px; border-radius: 6px;">
+                                <strong>PUT</strong> - Actualizar recurso
+                                <div style="margin-top: 10px; background: rgba(255,255,255,0.2); padding: 10px; border-radius: 4px; font-family: monospace; font-size: 0.85em;">
+                                    PUT /api/usuarios/123<br>
+                                    {"edad": 26}
+                                    <div style="margin-top: 8px; color: #f1c40f;">→ 200 OK</div>
+                                </div>
+                            </div>
+                            <div style="background: #e74c3c; color: white; padding: 15px; border-radius: 6px;">
+                                <strong>DELETE</strong> - Eliminar recurso
+                                <div style="margin-top: 10px; background: rgba(255,255,255,0.2); padding: 10px; border-radius: 4px; font-family: monospace; font-size: 0.85em;">
+                                    DELETE /api/usuarios/123
+                                    <div style="margin-top: 8px; color: #f1c40f;">→ 204 No Content</div>
+                                </div>
+                            </div>
+                            <div style="background: #f39c12; color: white; padding: 15px; border-radius: 6px;">
+                                <strong>Subir Archivo</strong>
+                                <div style="margin-top: 10px; background: rgba(255,255,255,0.2); padding: 10px; border-radius: 4px; font-family: monospace; font-size: 0.85em;">
+                                    POST /api/upload<br>
+                                    files={"file": open(...)}
+                                    <div style="margin-top: 8px; color: #f1c40f;">→ 200 OK</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="requests-errores" data-tags="requests errores timeout excepciones">
+                        <span class="tag">📋 Manejo de Errores</span>
+                        <p class="significado">Timeout y excepciones en requests</p>
+                        <div class="ejemplo">import requests
+from requests.exceptions import (
+    RequestException,
+    Timeout,
+    ConnectionError
+)
+
+# Timeout (máximo tiempo de espera)
+try:
+    respuesta = requests.get(
+        "https://api.example.com/datos",
+        timeout=5  # 5 segundos máximo
+    )
+except Timeout:
+    print("La petición tardó demasiado")
+
+# Manejo completo de errores
+def hacer_peticion(url):
+    try:
+        respuesta = requests.get(url, timeout=10)
+        respuesta.raise_for_status()  # Lanza error si status >= 400
+        return respuesta.json()
+
+    except Timeout:
+        print("Timeout: el servidor no respondió a tiempo")
+    except ConnectionError:
+        print("Error de conexión: no se pudo conectar")
+    except requests.exceptions.HTTPError as e:
+        print(f"Error HTTP: {e}")
+    except RequestException as e:
+        print(f"Error en la petición: {e}")
+
+    return None
+
+# Reintentos
+from time import sleep
+
+def peticion_con_reintentos(url, max_intentos=3):
+    for intento in range(max_intentos):
+        try:
+            respuesta = requests.get(url, timeout=5)
+            return respuesta.json()
+        except (Timeout, ConnectionError):
+            if intento < max_intentos - 1:
+                sleep(2 ** intento)  # Espera exponencial
+            else:
+                raise</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Manejo de Errores HTTP</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="background: white; padding: 20px; border-radius: 6px;">
+                            <div style="margin-bottom: 20px;">
+                                <div style="background: #2ecc71; color: white; padding: 10px; border-radius: 4px; margin-bottom: 8px;">
+                                    ✓ Intento 1: Éxito (200 OK)
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 20px;">
+                                <div style="background: #e74c3c; color: white; padding: 10px; border-radius: 4px; margin-bottom: 8px;">
+                                    ✗ Intento 1: Timeout
+                                </div>
+                                <div style="background: #f39c12; color: white; padding: 10px; border-radius: 4px; margin-bottom: 8px;">
+                                    ⏳ Esperando 2 segundos...
+                                </div>
+                                <div style="background: #e74c3c; color: white; padding: 10px; border-radius: 4px; margin-bottom: 8px;">
+                                    ✗ Intento 2: Timeout
+                                </div>
+                                <div style="background: #f39c12; color: white; padding: 10px; border-radius: 4px; margin-bottom: 8px;">
+                                    ⏳ Esperando 4 segundos...
+                                </div>
+                                <div style="background: #2ecc71; color: white; padding: 10px; border-radius: 4px;">
+                                    ✓ Intento 3: Éxito (200 OK)
+                                </div>
+                            </div>
+                            <div style="background: #3498db; color: white; padding: 15px; border-radius: 6px; font-family: monospace; font-size: 0.9em;">
+                                <strong>Excepciones comunes:</strong><br>
+                                • Timeout - Tiempo de espera agotado<br>
+                                • ConnectionError - Error de conexión<br>
+                                • HTTPError - Códigos 4xx y 5xx<br>
+                                • RequestException - Error genérico
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="requests-sesiones" data-tags="requests session cookies">
+                        <span class="tag">📋 Sesiones y Cookies</span>
+                        <p class="significado">Mantener estado entre peticiones</p>
+                        <div class="ejemplo">import requests
+
+# Session mantiene cookies y conexiones
+session = requests.Session()
+
+# Login (guarda cookie de sesión)
+login_data = {
+    "username": "usuario",
+    "password": "contraseña"
+}
+session.post("https://api.example.com/login", data=login_data)
+
+# Las siguientes peticiones mantienen la sesión
+respuesta = session.get("https://api.example.com/perfil")
+respuesta = session.get("https://api.example.com/datos")
+
+# Cabeceras persistentes
+session.headers.update({
+    "Authorization": "Bearer token123",
+    "User-Agent": "MiApp/1.0"
+})
+
+# Enviar cookies manualmente
+cookies = {"session_id": "abc123"}
+requests.get(url, cookies=cookies)
+
+# Ver cookies recibidas
+respuesta = requests.get(url)
+print(respuesta.cookies)
+
+# Cerrar sesión
+session.close()
+
+# O usar con with
+with requests.Session() as s:
+    s.post("https://api.example.com/login", data=login_data)
+    datos = s.get("https://api.example.com/datos").json()</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Sesiones y Cookies</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="background: white; padding: 20px; border-radius: 6px;">
+                            <div style="background: #3498db; color: white; padding: 12px; border-radius: 6px; margin-bottom: 15px;">
+                                <strong>Petición 1: Login</strong>
+                            </div>
+                            <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 15px; border-left: 4px solid #3498db;">
+                                <div style="font-family: monospace; color: #2c3e50;">
+                                    POST /login<br>
+                                    {"username": "usuario", "password": "***"}
+                                </div>
+                            </div>
+                            <div style="background: #2ecc71; color: white; padding: 10px; border-radius: 6px; margin-bottom: 20px;">
+                                ← Set-Cookie: session_id=abc123xyz
+                            </div>
+
+                            <div style="background: #9b59b6; color: white; padding: 12px; border-radius: 6px; margin-bottom: 15px;">
+                                <strong>Petición 2: Datos (con cookie)</strong>
+                            </div>
+                            <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 15px; border-left: 4px solid #9b59b6;">
+                                <div style="font-family: monospace; color: #2c3e50;">
+                                    GET /perfil<br>
+                                    Cookie: session_id=abc123xyz
+                                </div>
+                            </div>
+                            <div style="background: #2ecc71; color: white; padding: 10px; border-radius: 6px;">
+                                ← 200 OK {"nombre": "usuario", "email": "..."}
+                            </div>
+
+                            <div style="margin-top: 20px; padding: 15px; background: #f39c12; color: white; border-radius: 6px;">
+                                <strong>💡 Ventaja:</strong> Session mantiene automáticamente cookies y headers entre peticiones
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="http-server" data-tags="http server servidor basico">
+                        <span class="tag">📋 Módulo http.server</span>
+                        <p class="significado">Servidor web básico integrado</p>
+                        <div class="ejemplo"># http.server viene con Python (sin instalar nada)
+# Permite crear servidores web básicos
+
+from http.server import HTTPServer, SimpleHTTPRequestHandler
+
+# Servidor simple de archivos estáticos
+# Desde terminal:
+# python -m http.server 8000
+
+# Sirve archivos de la carpeta actual en localhost:8000
+
+# Tres clases principales:
+# 1. HTTPServer - El servidor como tal
+#    - Abre un puerto (ej. 8000)
+#    - Acepta conexiones
+#    - Recibe peticiones
+
+# 2. BaseHTTPRequestHandler - Procesa peticiones
+#    - Analiza el método (GET, POST, etc.)
+#    - Analiza la URL
+#    - Envía respuestas
+
+# 3. SimpleHTTPRequestHandler - Listo para usar
+#    - Sirve archivos estáticos
+#    - index.html automáticamente
+#    - Códigos 404, 200 automáticos
+
+# Servidor básico de archivos
+def servidor_simple():
+    puerto = 8000
+    servidor = HTTPServer(
+        ("localhost", puerto),
+        SimpleHTTPRequestHandler
+    )
+    print(f"Servidor en http://localhost:{puerto}")
+    servidor.serve_forever()</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Servidor HTTP Básico</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="background: #2c3e50; color: white; padding: 15px; border-radius: 6px; margin-bottom: 15px; font-family: monospace;">
+                            $ python -m http.server 8000<br>
+                            <span style="color: #2ecc71;">Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/) ...</span>
+                        </div>
+
+                        <div style="background: white; padding: 20px; border-radius: 6px;">
+                            <div style="background: #3498db; color: white; padding: 12px; border-radius: 6px; margin-bottom: 15px;">
+                                <strong>Estructura del Directorio</strong>
+                            </div>
+                            <div style="font-family: monospace; background: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+                                📁 mi_proyecto/<br>
+                                ├── 📄 index.html<br>
+                                ├── 📄 estilos.css<br>
+                                ├── 📄 script.js<br>
+                                └── 📁 imagenes/<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;└── 🖼️ logo.png
+                            </div>
+
+                            <div style="background: #2ecc71; color: white; padding: 12px; border-radius: 6px; margin-bottom: 10px;">
+                                <strong>Acceso desde el navegador:</strong>
+                            </div>
+                            <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; font-family: monospace;">
+                                http://localhost:8000/ → index.html<br>
+                                http://localhost:8000/estilos.css → estilos.css<br>
+                                http://localhost:8000/imagenes/logo.png → logo.png
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="http-handler" data-tags="http handler personalizado get post">
+                        <span class="tag">📋 Handler Personalizado</span>
+                        <p class="significado">Crear respuestas HTTP personalizadas</p>
+                        <div class="ejemplo">from http.server import HTTPServer, BaseHTTPRequestHandler
+import json
+
+class MiHandler(BaseHTTPRequestHandler):
+
+    def do_GET(self):
+        # Manejar rutas
+        if self.path == "/":
+            self.responder_html("<h1>Inicio</h1>")
+
+        elif self.path == "/api/usuarios":
+            usuarios = [
+                {"id": 1, "nombre": "Ana"},
+                {"id": 2, "nombre": "Juan"}
+            ]
+            self.responder_json(usuarios)
+
+        elif self.path.startswith("/api/usuario/"):
+            id_usuario = self.path.split("/")[-1]
+            self.responder_json({"id": id_usuario})
+
+        else:
+            self.send_error(404, "No encontrado")
+
+    def do_POST(self):
+        # Leer body
+        content_length = int(self.headers['Content-Length'])
+        body = self.rfile.read(content_length)
+        datos = json.loads(body)
+
+        # Procesar y responder
+        self.responder_json({"recibido": datos, "status": "ok"})
+
+    def responder_html(self, html):
+        self.send_response(200)
+        self.send_header("Content-Type", "text/html; charset=utf-8")
+        self.end_headers()
+        self.wfile.write(html.encode("utf-8"))
+
+    def responder_json(self, datos):
+        self.send_response(200)
+        self.send_header("Content-Type", "application/json")
+        self.end_headers()
+        self.wfile.write(json.dumps(datos).encode("utf-8"))
+
+# Iniciar servidor
+servidor = HTTPServer(("localhost", 8000), MiHandler)
+print("Servidor en http://localhost:8000")
+servidor.serve_forever()</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Handler Personalizado - Rutas</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="background: white; padding: 20px; border-radius: 6px;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                                <div>
+                                    <div style="background: #3498db; color: white; padding: 10px; border-radius: 6px; margin-bottom: 8px; font-family: monospace; font-size: 0.9em;">
+                                        GET /
+                                    </div>
+                                    <div style="background: #f8f9fa; padding: 10px; border-radius: 6px; border-left: 4px solid #3498db;">
+                                        → &lt;h1&gt;Inicio&lt;/h1&gt;
+                                    </div>
+                                </div>
+                                <div>
+                                    <div style="background: #9b59b6; color: white; padding: 10px; border-radius: 6px; margin-bottom: 8px; font-family: monospace; font-size: 0.9em;">
+                                        GET /api/usuarios
+                                    </div>
+                                    <div style="background: #f8f9fa; padding: 10px; border-radius: 6px; border-left: 4px solid #9b59b6; font-family: monospace; font-size: 0.85em;">
+                                        → [{"id":1,"nombre":"Ana"},<br>&nbsp;&nbsp;{"id":2,"nombre":"Juan"}]
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style="background: #2ecc71; color: white; padding: 12px; border-radius: 6px; margin-bottom: 10px;">
+                                <strong>POST /api/usuarios</strong>
+                            </div>
+                            <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 10px;">
+                                <div style="margin-bottom: 10px; color: #7f8c8d;">Request Body:</div>
+                                <div style="font-family: monospace; background: white; padding: 10px; border-radius: 4px; border-left: 4px solid #2ecc71;">
+                                    {"nombre": "Pedro", "edad": 28}
+                                </div>
+                            </div>
+                            <div style="background: #f8f9fa; padding: 15px; border-radius: 6px;">
+                                <div style="margin-bottom: 10px; color: #7f8c8d;">Response:</div>
+                                <div style="font-family: monospace; background: white; padding: 10px; border-radius: 4px; border-left: 4px solid #2ecc71;">
+                                    {"recibido": {...}, "status": "ok"}
+                                </div>
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="api-ejemplo" data-tags="api rest ejemplo completo">
+                        <span class="tag">📋 API REST Simple</span>
+                        <p class="significado">Ejemplo completo de API</p>
+                        <div class="ejemplo">from http.server import HTTPServer, BaseHTTPRequestHandler
+import json
+
+# Base de datos en memoria
+usuarios = [
+    {"id": 1, "nombre": "Ana", "edad": 25},
+    {"id": 2, "nombre": "Juan", "edad": 30}
+]
+
+class APIHandler(BaseHTTPRequestHandler):
+
+    def do_GET(self):
+        if self.path == "/api/usuarios":
+            self.responder(200, usuarios)
+
+        elif self.path.startswith("/api/usuarios/"):
+            id_usuario = int(self.path.split("/")[-1])
+            usuario = next((u for u in usuarios if u["id"] == id_usuario), None)
+            if usuario:
+                self.responder(200, usuario)
+            else:
+                self.responder(404, {"error": "No encontrado"})
+        else:
+            self.responder(404, {"error": "Ruta no existe"})
+
+    def do_POST(self):
+        if self.path == "/api/usuarios":
+            datos = self.leer_body()
+            nuevo_id = max(u["id"] for u in usuarios) + 1
+            nuevo = {"id": nuevo_id, **datos}
+            usuarios.append(nuevo)
+            self.responder(201, nuevo)
+
+    def leer_body(self):
+        length = int(self.headers.get('Content-Length', 0))
+        body = self.rfile.read(length)
+        return json.loads(body) if body else {}
+
+    def responder(self, codigo, datos):
+        self.send_response(codigo)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.end_headers()
+        self.wfile.write(json.dumps(datos).encode())
+
+if __name__ == "__main__":
+    servidor = HTTPServer(("", 8000), APIHandler)
+    print("API en http://localhost:8000/api/usuarios")
+    servidor.serve_forever()</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: API REST Completa</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="background: white; padding: 20px; border-radius: 6px;">
+                            <div style="background: #3498db; color: white; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+                                <strong>Endpoints Disponibles</strong>
+                            </div>
+
+                            <div style="margin-bottom: 15px;">
+                                <div style="background: #2ecc71; color: white; padding: 10px; border-radius: 6px; margin-bottom: 8px; font-family: monospace;">
+                                    GET /api/usuarios
+                                </div>
+                                <div style="background: #f8f9fa; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 0.85em;">
+                                    [<br>
+                                    &nbsp;&nbsp;{"id": 1, "nombre": "Ana", "edad": 25},<br>
+                                    &nbsp;&nbsp;{"id": 2, "nombre": "Juan", "edad": 30}<br>
+                                    ]
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 15px;">
+                                <div style="background: #9b59b6; color: white; padding: 10px; border-radius: 6px; margin-bottom: 8px; font-family: monospace;">
+                                    GET /api/usuarios/1
+                                </div>
+                                <div style="background: #f8f9fa; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 0.85em;">
+                                    {"id": 1, "nombre": "Ana", "edad": 25}
+                                </div>
+                            </div>
+
+                            <div style="margin-bottom: 15px;">
+                                <div style="background: #f39c12; color: white; padding: 10px; border-radius: 6px; margin-bottom: 8px; font-family: monospace;">
+                                    POST /api/usuarios
+                                </div>
+                                <div style="background: #f8f9fa; padding: 12px; border-radius: 6px; margin-bottom: 8px;">
+                                    <div style="color: #7f8c8d; margin-bottom: 5px;">Body:</div>
+                                    <div style="font-family: monospace; font-size: 0.85em;">{"nombre": "Pedro", "edad": 28}</div>
+                                </div>
+                                <div style="background: #f8f9fa; padding: 12px; border-radius: 6px;">
+                                    <div style="color: #7f8c8d; margin-bottom: 5px;">Response (201 Created):</div>
+                                    <div style="font-family: monospace; font-size: 0.85em;">{"id": 3, "nombre": "Pedro", "edad": 28}</div>
+                                </div>
+                            </div>
+
+                            <div style="background: #e74c3c; color: white; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 0.9em;">
+                                GET /api/usuarios/999 → 404 {"error": "No encontrado"}
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="frameworks" data-tags="frameworks flask django fastapi">
+                        <span class="tag">📋 Frameworks Web</span>
+                        <p class="significado">Herramientas profesionales para web</p>
+                        <div class="ejemplo"># Para proyectos reales, usa un framework:
+
+# 1. FLASK - Microframework simple
+# pip install flask
+
+from flask import Flask, jsonify, request
+
+app = Flask(__name__)
+
+@app.route("/")
+def inicio():
+    return "Hola mundo"
+
+@app.route("/api/usuarios")
+def usuarios():
+    return jsonify([{"id": 1, "nombre": "Ana"}])
+
+@app.route("/api/usuarios", methods=["POST"])
+def crear_usuario():
+    datos = request.json
+    return jsonify(datos), 201
+
+# app.run(debug=True)
+
+# 2. FASTAPI - Moderno, async, tipado
+# pip install fastapi uvicorn
+
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+app = FastAPI()
+
+class Usuario(BaseModel):
+    nombre: str
+    edad: int
+
+@app.get("/usuarios")
+async def listar():
+    return [{"id": 1, "nombre": "Ana"}]
+
+@app.post("/usuarios")
+async def crear(usuario: Usuario):
+    return {"creado": usuario.dict()}
+
+# uvicorn main:app --reload
+
+# 3. DJANGO - Framework completo
+# pip install django
+# Incluye ORM, admin, auth, templates, etc.</div>
+                        <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Comparación de Frameworks</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+                            <div style="background: white; padding: 15px; border-radius: 6px; border-top: 4px solid #3498db;">
+                                <div style="background: #3498db; color: white; padding: 10px; border-radius: 6px; margin-bottom: 12px; text-align: center;">
+                                    <strong>Flask</strong>
+                                </div>
+                                <div style="font-family: monospace; background: #f8f9fa; padding: 12px; border-radius: 6px; font-size: 0.8em; margin-bottom: 10px;">
+@app.route('/api/users')<br>
+def get_users():<br>
+&nbsp;&nbsp;return jsonify(users)
+                                </div>
+                                <div style="color: #2c3e50; font-size: 0.85em;">
+                                    ✓ Microframework<br>
+                                    ✓ Simple y flexible<br>
+                                    ✓ Ideal para empezar<br>
+                                    ✓ Muchas extensiones
+                                </div>
+                            </div>
+
+                            <div style="background: white; padding: 15px; border-radius: 6px; border-top: 4px solid #2ecc71;">
+                                <div style="background: #2ecc71; color: white; padding: 10px; border-radius: 6px; margin-bottom: 12px; text-align: center;">
+                                    <strong>FastAPI</strong>
+                                </div>
+                                <div style="font-family: monospace; background: #f8f9fa; padding: 12px; border-radius: 6px; font-size: 0.8em; margin-bottom: 10px;">
+@app.get('/api/users')<br>
+async def get_users():<br>
+&nbsp;&nbsp;return users
+                                </div>
+                                <div style="color: #2c3e50; font-size: 0.85em;">
+                                    ✓ Moderno y rápido<br>
+                                    ✓ Async/await<br>
+                                    ✓ Tipado automático<br>
+                                    ✓ Docs automáticas
+                                </div>
+                            </div>
+
+                            <div style="background: white; padding: 15px; border-radius: 6px; border-top: 4px solid #9b59b6;">
+                                <div style="background: #9b59b6; color: white; padding: 10px; border-radius: 6px; margin-bottom: 12px; text-align: center;">
+                                    <strong>Django</strong>
+                                </div>
+                                <div style="font-family: monospace; background: #f8f9fa; padding: 12px; border-radius: 6px; font-size: 0.8em; margin-bottom: 10px;">
+def user_list(request):<br>
+&nbsp;&nbsp;users = User.objects.all()<br>
+&nbsp;&nbsp;return JsonResponse(...)
+                                </div>
+                                <div style="color: #2c3e50; font-size: 0.85em;">
+                                    ✓ Framework completo<br>
+                                    ✓ ORM integrado<br>
+                                    ✓ Panel admin<br>
+                                    ✓ Autenticación
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 20px; background: #f39c12; color: white; padding: 15px; border-radius: 6px; text-align: center;">
+                            <strong>🎯 Recomendación:</strong> Flask (empezar) | FastAPI (APIs modernas) | Django (apps completas)
+                        </div>
+                    </div></div></div>
+                        <div class="nota">
+                            <strong>💡 Recomendación:</strong> Flask para empezar, FastAPI para APIs modernas, Django para apps completas.
+                        </div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">🐍 Python Web</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#requests-intro" class="toc-link">Librería requests</a></li>
+                    <li class="toc-item"><a href="#requests-get" class="toc-link">GET con Parámetros</a></li>
+                    <li class="toc-item"><a href="#requests-post" class="toc-link">POST - Enviar Datos</a></li>
+                    <li class="toc-item"><a href="#requests-errores" class="toc-link">Manejo de Errores</a></li>
+                    <li class="toc-item"><a href="#requests-sesiones" class="toc-link">Sesiones y Cookies</a></li>
+                    <li class="toc-item"><a href="#http-server" class="toc-link">http.server</a></li>
+                    <li class="toc-item"><a href="#http-handler" class="toc-link">Handler Personalizado</a></li>
+                    <li class="toc-item"><a href="#api-ejemplo" class="toc-link">API REST Simple</a></li>
+                    <li class="toc-item"><a href="#frameworks" class="toc-link">Frameworks Web</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>Python - Sistema de Aprendizaje | <a href="../index.html">Volver a Python</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script src="/assets/js/study-highlight.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) {
+                return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const tags = termino.getAttribute('data-tags') || '';
+                    const title = termino.querySelector('.tag')?.textContent || '';
+                    const desc = termino.querySelector('.descripcion')?.textContent || '';
+                    const ejemplo = termino.querySelector('.ejemplo')?.textContent || '';
+                    const searchText = normalizeText(tags + ' ' + title + ' ' + desc + ' ' + ejemplo);
+                    if (query === '' || searchText.includes(query)) {
+                        termino.style.display = 'block';
+                        found++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // Aplicar highlight.js solo a elementos .ejemplo que no tienen <br> (no son HTML)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.ejemplo').forEach(function(block) {
+                // Solo resaltar si no tiene elementos <br> (no es HTML con sintaxis manual)
+                if (block.querySelectorAll('br').length === 0) {
+                    block.classList.add('language-python');
+                    hljs.highlightElement(block);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

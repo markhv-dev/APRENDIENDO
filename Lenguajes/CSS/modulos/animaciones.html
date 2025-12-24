@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animaciones y Transiciones - Sistema de Aprendizaje</title>
-    <link rel="stylesheet" href="/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/assets/css/glosario.css">
-    <link rel="stylesheet" href="/assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
+    <!-- Highlight.js para resaltado de sintaxis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
 <body>
     <header>
@@ -53,8 +56,190 @@ transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }</div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa de animación:</strong>
+                            <div class="preview-content">
+                                <style>
+                                    @keyframes ejemplo-slide {
+                                        0%, 100% { transform: translateX(0); }
+                                        50% { transform: translateX(150px); }
+                                    }
+                                    .caja-animacion { animation: ejemplo-slide 3s infinite; }
+                                </style>
+                                <div class="caja-animacion" style="background: #3498db; color: white; padding: 20px; border-radius: 4px; width: 120px; text-align: center;">
+                                    <strong>🎬 Animado</strong>
+                                </div>
+                                <p style="margin-top: 10px; color: #666; font-size: 14px;">Animación continua con @keyframes</p>
+                            </div>
+                        </div>
+
                         <div class="nota">
                             <strong>💡 Timing functions:</strong> ease, linear, ease-in, ease-out, ease-in-out, cubic-bezier()
+                        </div>
+
+                        <!-- VISTA PREVIA TIMING FUNCTIONS -->
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Curvas de Timing (Easing Functions)</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <strong style="color: #2c3e50; font-size: 15px; display: block; margin-bottom: 20px;">📈 Comparación de Funciones de Tiempo</strong>
+
+                                    <!-- Curvas visuales -->
+                                    <div style="background: white; padding: 25px; border-radius: 8px; border: 2px solid #9b59b6; margin-bottom: 25px;">
+                                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px;">
+                                            <!-- Linear -->
+                                            <div style="text-align: center;">
+                                                <div style="background: #ecf0f1; padding: 15px; border-radius: 4px; height: 120px; position: relative; overflow: hidden;">
+                                                    <svg viewBox="0 0 100 100" style="width: 100%; height: 100%;">
+                                                        <path d="M 10 90 L 90 10" stroke="#95a5a6" stroke-width="3" fill="none"/>
+                                                        <circle cx="10" cy="90" r="4" fill="#e74c3c"/>
+                                                        <circle cx="90" cy="10" r="4" fill="#2ecc71"/>
+                                                    </svg>
+                                                </div>
+                                                <strong style="font-size: 13px; color: #2c3e50; display: block; margin-top: 10px;">linear</strong>
+                                                <span style="font-size: 11px; color: #7f8c8d;">Velocidad constante</span>
+                                            </div>
+
+                                            <!-- Ease -->
+                                            <div style="text-align: center;">
+                                                <div style="background: #ecf0f1; padding: 15px; border-radius: 4px; height: 120px; position: relative;">
+                                                    <svg viewBox="0 0 100 100" style="width: 100%; height: 100%;">
+                                                        <path d="M 10 90 Q 30 70, 50 40 T 90 10" stroke="#3498db" stroke-width="3" fill="none"/>
+                                                        <circle cx="10" cy="90" r="4" fill="#e74c3c"/>
+                                                        <circle cx="90" cy="10" r="4" fill="#2ecc71"/>
+                                                    </svg>
+                                                </div>
+                                                <strong style="font-size: 13px; color: #2c3e50; display: block; margin-top: 10px;">ease</strong>
+                                                <span style="font-size: 11px; color: #7f8c8d;">Lento-rápido-lento</span>
+                                            </div>
+
+                                            <!-- Ease-in -->
+                                            <div style="text-align: center;">
+                                                <div style="background: #ecf0f1; padding: 15px; border-radius: 4px; height: 120px; position: relative;">
+                                                    <svg viewBox="0 0 100 100" style="width: 100%; height: 100%;">
+                                                        <path d="M 10 90 Q 10 60, 50 30 T 90 10" stroke="#e74c3c" stroke-width="3" fill="none"/>
+                                                        <circle cx="10" cy="90" r="4" fill="#e74c3c"/>
+                                                        <circle cx="90" cy="10" r="4" fill="#2ecc71"/>
+                                                    </svg>
+                                                </div>
+                                                <strong style="font-size: 13px; color: #2c3e50; display: block; margin-top: 10px;">ease-in</strong>
+                                                <span style="font-size: 11px; color: #7f8c8d;">Empieza lento</span>
+                                            </div>
+
+                                            <!-- Ease-out -->
+                                            <div style="text-align: center;">
+                                                <div style="background: #ecf0f1; padding: 15px; border-radius: 4px; height: 120px; position: relative;">
+                                                    <svg viewBox="0 0 100 100" style="width: 100%; height: 100%;">
+                                                        <path d="M 10 90 Q 50 70, 90 40 T 90 10" stroke="#2ecc71" stroke-width="3" fill="none"/>
+                                                        <circle cx="10" cy="90" r="4" fill="#e74c3c"/>
+                                                        <circle cx="90" cy="10" r="4" fill="#2ecc71"/>
+                                                    </svg>
+                                                </div>
+                                                <strong style="font-size: 13px; color: #2c3e50; display: block; margin-top: 10px;">ease-out</strong>
+                                                <span style="font-size: 11px; color: #7f8c8d;">Termina lento</span>
+                                            </div>
+
+                                            <!-- Ease-in-out -->
+                                            <div style="text-align: center;">
+                                                <div style="background: #ecf0f1; padding: 15px; border-radius: 4px; height: 120px; position: relative;">
+                                                    <svg viewBox="0 0 100 100" style="width: 100%; height: 100%;">
+                                                        <path d="M 10 90 Q 20 80, 50 50 T 90 10" stroke="#9b59b6" stroke-width="3" fill="none"/>
+                                                        <circle cx="10" cy="90" r="4" fill="#e74c3c"/>
+                                                        <circle cx="90" cy="10" r="4" fill="#2ecc71"/>
+                                                    </svg>
+                                                </div>
+                                                <strong style="font-size: 13px; color: #2c3e50; display: block; margin-top: 10px;">ease-in-out</strong>
+                                                <span style="font-size: 11px; color: #7f8c8d;">Suave inicio y fin</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Animaciones interactivas comparativas -->
+                                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 25px; border-radius: 8px; color: white; margin-bottom: 20px;">
+                                        <strong style="font-size: 15px; display: block; margin-bottom: 20px;">🏃 VISUALIZACIÓN EN MOVIMIENTO:</strong>
+
+                                        <div style="background: rgba(0,0,0,0.2); padding: 20px; border-radius: 6px;">
+                                            <style>
+                                                @keyframes move-right {
+                                                    0% { transform: translateX(0); }
+                                                    100% { transform: translateX(calc(100% - 60px)); }
+                                                }
+                                                .box-linear { animation: move-right 2s linear infinite alternate; }
+                                                .box-ease { animation: move-right 2s ease infinite alternate; }
+                                                .box-ease-in { animation: move-right 2s ease-in infinite alternate; }
+                                                .box-ease-out { animation: move-right 2s ease-out infinite alternate; }
+                                                .box-ease-in-out { animation: move-right 2s ease-in-out infinite alternate; }
+                                            </style>
+
+                                            <!-- Linear -->
+                                            <div style="margin-bottom: 15px;">
+                                                <div style="font-size: 12px; margin-bottom: 5px; font-weight: bold;">linear</div>
+                                                <div style="background: rgba(255,255,255,0.1); height: 50px; border-radius: 4px; position: relative;">
+                                                    <div class="box-linear" style="position: absolute; width: 50px; height: 40px; background: #95a5a6; border-radius: 4px; top: 5px; left: 5px; display: flex; align-items: center; justify-content: center; font-size: 20px;">
+                                                        →
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Ease -->
+                                            <div style="margin-bottom: 15px;">
+                                                <div style="font-size: 12px; margin-bottom: 5px; font-weight: bold;">ease</div>
+                                                <div style="background: rgba(255,255,255,0.1); height: 50px; border-radius: 4px; position: relative;">
+                                                    <div class="box-ease" style="position: absolute; width: 50px; height: 40px; background: #3498db; border-radius: 4px; top: 5px; left: 5px; display: flex; align-items: center; justify-content: center; font-size: 20px;">
+                                                        →
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Ease-in -->
+                                            <div style="margin-bottom: 15px;">
+                                                <div style="font-size: 12px; margin-bottom: 5px; font-weight: bold;">ease-in</div>
+                                                <div style="background: rgba(255,255,255,0.1); height: 50px; border-radius: 4px; position: relative;">
+                                                    <div class="box-ease-in" style="position: absolute; width: 50px; height: 40px; background: #e74c3c; border-radius: 4px; top: 5px; left: 5px; display: flex; align-items: center; justify-content: center; font-size: 20px;">
+                                                        →
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Ease-out -->
+                                            <div style="margin-bottom: 15px;">
+                                                <div style="font-size: 12px; margin-bottom: 5px; font-weight: bold;">ease-out</div>
+                                                <div style="background: rgba(255,255,255,0.1); height: 50px; border-radius: 4px; position: relative;">
+                                                    <div class="box-ease-out" style="position: absolute; width: 50px; height: 40px; background: #2ecc71; border-radius: 4px; top: 5px; left: 5px; display: flex; align-items: center; justify-content: center; font-size: 20px;">
+                                                        →
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Ease-in-out -->
+                                            <div>
+                                                <div style="font-size: 12px; margin-bottom: 5px; font-weight: bold;">ease-in-out</div>
+                                                <div style="background: rgba(255,255,255,0.1); height: 50px; border-radius: 4px; position: relative;">
+                                                    <div class="box-ease-in-out" style="position: absolute; width: 50px; height: 40px; background: #9b59b6; border-radius: 4px; top: 5px; left: 5px; display: flex; align-items: center; justify-content: center; font-size: 20px;">
+                                                        →
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div style="margin-top: 15px; background: rgba(0,0,0,0.2); padding: 12px; border-radius: 4px; font-size: 12px;">
+                                            💡 Observa cómo cada función afecta la velocidad del movimiento
+                                        </div>
+                                    </div>
+
+                                    <!-- Guía de uso -->
+                                    <div style="background: #fff3cd; padding: 20px; border-radius: 6px; border-left: 4px solid #f1c40f;">
+                                        <strong style="color: #856404; font-size: 14px;">📝 ¿CUÁNDO USAR CADA UNA?</strong>
+                                        <div style="margin-top: 15px; font-size: 13px; color: #2c3e50; line-height: 2;">
+                                            <div><strong style="color: #95a5a6;">linear</strong> → Rotaciones continuas (spinners), progreso constante</div>
+                                            <div><strong style="color: #3498db;">ease</strong> → DEFAULT - Mayoría de interacciones generales</div>
+                                            <div><strong style="color: #e74c3c;">ease-in</strong> → Elementos que salen de la pantalla</div>
+                                            <div><strong style="color: #2ecc71;">ease-out</strong> → Elementos que entran a la pantalla (recomendado)</div>
+                                            <div><strong style="color: #9b59b6;">ease-in-out</strong> → Movimientos que van y vienen</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -86,6 +271,61 @@ transform: translate(50px, 100px) rotate(45deg) scale(1.2);
 transform-origin: center;     /* default */
 transform-origin: top left;
 transform-origin: 50% 50%;</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Transformaciones 2D</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <strong style="color: #2c3e50; font-size: 15px; display: block; margin-bottom: 20px;">🔄 Transform: Mover, Rotar, Escalar, Inclinar</strong>
+
+                                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                                        <!-- Translate -->
+                                        <div style="background: white; padding: 25px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="text-align: center; margin-bottom: 15px; font-weight: bold; color: #3498db;">translate(100px, 50px)</div>
+                                            <div style="position: relative; height: 150px; background: #ecf0f1; border-radius: 4px;">
+                                                <div style="position: absolute; top: 20px; left: 20px; width: 60px; height: 60px; background: rgba(149, 165, 166, 0.3); border: 2px dashed #95a5a6; border-radius: 4px;"></div>
+                                                <div style="position: absolute; top: 20px; left: 20px; width: 60px; height: 60px; background: #3498db; border-radius: 4px; transform: translate(100px, 50px); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">📦</div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Rotate -->
+                                        <div style="background: white; padding: 25px; border-radius: 8px; border: 2px solid #e74c3c;">
+                                            <div style="text-align: center; margin-bottom: 15px; font-weight: bold; color: #e74c3c;">rotate(45deg)</div>
+                                            <div style="position: relative; height: 150px; background: #ecf0f1; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+                                                <div style="width: 80px; height: 80px; background: #e74c3c; border-radius: 4px; transform: rotate(45deg); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 24px;">🔄</div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Scale -->
+                                        <div style="background: white; padding: 25px; border-radius: 8px; border: 2px solid #2ecc71;">
+                                            <div style="text-align: center; margin-bottom: 15px; font-weight: bold; color: #2ecc71;">scale(1.5)</div>
+                                            <div style="position: relative; height: 150px; background: #ecf0f1; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+                                                <div style="width: 60px; height: 60px; background: rgba(149, 165, 166, 0.3); border: 2px dashed #95a5a6; border-radius: 4px; position: absolute;"></div>
+                                                <div style="width: 60px; height: 60px; background: #2ecc71; border-radius: 4px; transform: scale(1.5); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 24px;">📏</div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Skew -->
+                                        <div style="background: white; padding: 25px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                            <div style="text-align: center; margin-bottom: 15px; font-weight: bold; color: #9b59b6;">skewX(20deg)</div>
+                                            <div style="position: relative; height: 150px; background: #ecf0f1; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+                                                <div style="width: 80px; height: 80px; background: #9b59b6; border-radius: 4px; transform: skewX(20deg); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 24px;">⚡</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-top: 20px; background: #fff3cd; padding: 15px; border-radius: 6px; border-left: 4px solid #f1c40f;">
+                                        <strong style="color: #856404; font-size: 13px;">💡 Importante:</strong>
+                                        <div style="margin-top: 8px; font-size: 12px; color: #2c3e50; line-height: 1.7;">
+                                            • <strong>translate</strong> mueve el elemento sin afectar el flujo<br>
+                                            • <strong>rotate</strong> gira alrededor del transform-origin<br>
+                                            • <strong>scale</strong> agranda/reduce sin afectar espacio original<br>
+                                            • Puedes combinar: transform: translate(50px) rotate(45deg) scale(1.2)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="keyframes" data-tags="keyframes animacion fotogramas">
@@ -125,6 +365,94 @@ transform-origin: 50% 50%;</div>
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Animaciones con @keyframes</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <strong style="color: #2c3e50; font-size: 15px; display: block; margin-bottom: 20px;">🎬 Animaciones en Acción</strong>
+
+                                    <style>
+                                        @keyframes fadeInDemo {
+                                            from {
+                                                opacity: 0;
+                                                transform: translateY(20px);
+                                            }
+                                            to {
+                                                opacity: 1;
+                                                transform: translateY(0);
+                                            }
+                                        }
+                                        @keyframes bounceDemo {
+                                            0%, 100% {
+                                                transform: translateY(0);
+                                            }
+                                            50% {
+                                                transform: translateY(-30px);
+                                            }
+                                        }
+                                        @keyframes pulseDemo {
+                                            0%, 100% { transform: scale(1); }
+                                            50% { transform: scale(1.15); }
+                                        }
+                                        @keyframes spinDemo {
+                                            from { transform: rotate(0deg); }
+                                            to { transform: rotate(360deg); }
+                                        }
+                                        .fade-demo { animation: fadeInDemo 2s ease-out infinite; }
+                                        .bounce-demo { animation: bounceDemo 1s ease-in-out infinite; }
+                                        .pulse-demo { animation: pulseDemo 1.5s ease-in-out infinite; }
+                                        .spin-demo { animation: spinDemo 2s linear infinite; }
+                                    </style>
+
+                                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                                        <!-- FadeIn -->
+                                        <div style="background: white; padding: 25px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="text-align: center; margin-bottom: 15px; font-weight: bold; color: #3498db;">fadeIn</div>
+                                            <div style="height: 120px; display: flex; align-items: center; justify-content: center; background: #ecf0f1; border-radius: 4px;">
+                                                <div class="fade-demo" style="background: #3498db; color: white; padding: 15px 25px; border-radius: 6px; font-weight: bold;">
+                                                    Fade In
+                                                </div>
+                                            </div>
+                                            <div style="margin-top: 10px; font-size: 11px; color: #7f8c8d; text-align: center;">Aparece gradualmente desde abajo</div>
+                                        </div>
+
+                                        <!-- Bounce -->
+                                        <div style="background: white; padding: 25px; border-radius: 8px; border: 2px solid #2ecc71;">
+                                            <div style="text-align: center; margin-bottom: 15px; font-weight: bold; color: #2ecc71;">bounce</div>
+                                            <div style="height: 120px; display: flex; align-items: flex-end; justify-content: center; background: #ecf0f1; border-radius: 4px; position: relative;">
+                                                <div class="bounce-demo" style="background: #2ecc71; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 24px;">
+                                                    ⚽
+                                                </div>
+                                            </div>
+                                            <div style="margin-top: 10px; font-size: 11px; color: #7f8c8d; text-align: center;">Rebota arriba y abajo</div>
+                                        </div>
+
+                                        <!-- Pulse -->
+                                        <div style="background: white; padding: 25px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                            <div style="text-align: center; margin-bottom: 15px; font-weight: bold; color: #9b59b6;">pulse</div>
+                                            <div style="height: 120px; display: flex; align-items: center; justify-content: center; background: #ecf0f1; border-radius: 4px;">
+                                                <div class="pulse-demo" style="background: #9b59b6; color: white; width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 28px;">
+                                                    💓
+                                                </div>
+                                            </div>
+                                            <div style="margin-top: 10px; font-size: 11px; color: #7f8c8d; text-align: center;">Pulsa creciendo y encogiendo</div>
+                                        </div>
+
+                                        <!-- Spin -->
+                                        <div style="background: white; padding: 25px; border-radius: 8px; border: 2px solid #e74c3c;">
+                                            <div style="text-align: center; margin-bottom: 15px; font-weight: bold; color: #e74c3c;">spin</div>
+                                            <div style="height: 120px; display: flex; align-items: center; justify-content: center; background: #ecf0f1; border-radius: 4px;">
+                                                <div class="spin-demo" style="background: #e74c3c; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 24px; border: 4px solid white; box-shadow: 0 0 0 2px #e74c3c;">
+                                                    ⚙️
+                                                </div>
+                                            </div>
+                                            <div style="margin-top: 10px; font-size: 11px; color: #7f8c8d; text-align: center;">Gira 360° continuamente</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="animation" data-tags="animation animacion aplicar">
@@ -280,7 +608,7 @@ animation-play-state: running;      /* paused */
         <p>CSS - Sistema de Aprendizaje | <a href="../index.html">Volver a CSS</a></p>
     </footer>
 
-    <script src="/assets/js/sidebar-component.js"></script>
+    <script src="../../../assets/js/sidebar-component.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('searchInput');
@@ -328,6 +656,21 @@ animation-play-state: running;      /* paused */
                 const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
                 const scrolled = (winScroll / height) * 100;
                 document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // Aplicar highlight.js solo a elementos .ejemplo que no tienen <br> (no son HTML)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.ejemplo').forEach(function(block) {
+                // Solo resaltar si no tiene elementos <br> (no es HTML con sintaxis manual)
+                if (block.querySelectorAll('br').length === 0) {
+                    block.classList.add('language-css');
+                    hljs.highlightElement(block);
+                }
             });
         });
     </script>

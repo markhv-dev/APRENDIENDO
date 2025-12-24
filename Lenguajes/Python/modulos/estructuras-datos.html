@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estructuras de Datos - Python</title>
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
+    <!-- Highlight.js para resaltado de sintaxis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a Python</a>
+        <span class="icon">🐍</span>
+        <h1>Módulo 5: Estructuras de Datos</h1>
+        <p class="subtitle">Listas, tuplas, conjuntos y diccionarios</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(55, 118, 171, 0.1) 0%, rgba(55, 118, 171, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #3776ab; margin-bottom: 40px;">
+                <h2 style="color: #3776ab; margin-bottom: 15px; font-size: 1.8em;">📦 Estructuras de Datos</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    Python tiene 4 estructuras de datos principales: listas (mutables, ordenadas),
+                    tuplas (inmutables, ordenadas), conjuntos (sin duplicados), y diccionarios (clave-valor).
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="listas" data-tags="list lista coleccion mutable ordenada">
+                        <span class="tag">📋 Listas</span>
+                        <p class="significado">Colección ordenada, mutable y heterogénea</p>
+                        <div class="ejemplo"># Crear listas
+vacia = []
+numeros = [1, 2, 3, 4, 5]
+mixta = [1, "texto", True, 3.14]
+anidada = [[1, 2], [3, 4], [5, 6]]
+
+# Acceso por índice (empieza en 0)
+print(numeros[0])   # 1 (primero)
+print(numeros[-1])  # 5 (último)
+print(numeros[1:3]) # [2, 3] (slicing)
+
+# Modificar elementos
+numeros[0] = 10     # [10, 2, 3, 4, 5]
+numeros[1:3] = [20, 30]  # [10, 20, 30, 4, 5]
+
+# Longitud
+len(numeros)  # 5
+
+# Verificar pertenencia
+3 in numeros  # True
+
+# Lista por comprensión
+cuadrados = [x**2 for x in range(5)]  # [0, 1, 4, 9, 16]</div>
+                    <div class="vista-previa">
+                        <strong>👁️ Vista previa de estructuras de datos:</strong>
+                        <div class="preview-content">
+                            <p><strong>Código Python:</strong></p>
+                            <pre style="white-space: pre-wrap; background: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 6px; font-family: 'Courier New', monospace;"># Lista
+frutas = ["manzana", "banana", "naranja"]
+print("Lista:", frutas)
+
+# Tupla
+coordenadas = (10, 20)
+print("Tupla:", coordenadas)
+
+# Diccionario
+persona = {"nombre": "Juan", "edad": 25}
+print("Diccionario:", persona)
+
+# Set
+numeros = {1, 2, 3, 3, 4}
+print("Set:", numeros)</pre>
+                            <p><strong>📤 Salida en terminal:</strong></p>
+                            <div style="background: #1e1e1e; color: #4ec9b0; font-family: 'Courier New', monospace; padding: 12px; border-radius: 6px; border-left: 3px solid #3776ab;">
+                                <span style="color: #dcdcaa;">Lista: ['manzana', 'banana', 'naranja']</span><br>
+                                <span style="color: #dcdcaa;">Tupla: (10, 20)</span><br>
+                                <span style="color: #dcdcaa;">Diccionario: {'nombre': 'Juan', 'edad': 25}</span><br>
+                                <span style="color: #dcdcaa;">Set: {1, 2, 3, 4}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+
+                    <div class="termino" id="listas-metodos" data-tags="lista metodos append insert remove pop">
+                        <span class="tag">📋 Métodos de Listas</span>
+                        <p class="significado">Funciones para manipular listas</p>
+                        <div class="ejemplo">frutas = ["manzana", "pera"]
+
+# Agregar elementos
+frutas.append("uva")        # Al final: ["manzana", "pera", "uva"]
+frutas.insert(1, "naranja") # En posición: ["manzana", "naranja", "pera", "uva"]
+frutas.extend(["kiwi", "mango"])  # Añade varios
+
+# Eliminar elementos
+frutas.remove("pera")  # Por valor
+ultimo = frutas.pop()  # Elimina y retorna último
+primero = frutas.pop(0)  # Por índice
+frutas.clear()  # Vacía la lista
+
+# Búsqueda
+nums = [3, 1, 4, 1, 5, 9, 2]
+nums.index(4)    # 2 (posición)
+nums.count(1)    # 2 (ocurrencias)
+
+# Ordenar
+nums.sort()              # Modifica original: [1, 1, 2, 3, 4, 5, 9]
+nums.sort(reverse=True)  # Descendente
+nums.reverse()           # Invierte orden
+
+# sorted() retorna nueva lista (no modifica)
+nueva = sorted(nums)
+
+# Copiar lista
+copia = frutas.copy()
+copia = frutas[:]
+copia = list(frutas)</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Métodos de Listas</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 Agregar elementos:</strong>
+                                        <div style="margin-top: 10px; display: flex; gap: 15px; align-items: center;">
+                                            <div style="background: white; padding: 15px; border-radius: 6px; border: 2px solid #3498db;">
+                                                <div style="color: #7f8c8d; font-size: 12px; margin-bottom: 5px;">Lista inicial</div>
+                                                <div style="display: flex; gap: 5px;">
+                                                    <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px;">🍎</div>
+                                                    <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px;">🍐</div>
+                                                </div>
+                                            </div>
+                                            <div style="font-size: 20px;">➡️</div>
+                                            <div style="background: white; padding: 15px; border-radius: 6px; border: 2px solid #2ecc71;">
+                                                <div style="color: #7f8c8d; font-size: 12px; margin-bottom: 5px;">.append("🍇")</div>
+                                                <div style="display: flex; gap: 5px;">
+                                                    <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px;">🍎</div>
+                                                    <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px;">🍐</div>
+                                                    <div style="background: #2ecc71; color: white; padding: 8px 12px; border-radius: 4px;">🍇</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="margin-top: 15px; display: flex; gap: 15px; align-items: center;">
+                                            <div style="background: white; padding: 15px; border-radius: 6px; border: 2px solid #3498db;">
+                                                <div style="color: #7f8c8d; font-size: 12px; margin-bottom: 5px;">Lista inicial</div>
+                                                <div style="display: flex; gap: 5px;">
+                                                    <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px;">🍎</div>
+                                                    <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px;">🍐</div>
+                                                </div>
+                                            </div>
+                                            <div style="font-size: 20px;">➡️</div>
+                                            <div style="background: white; padding: 15px; border-radius: 6px; border: 2px solid #f39c12;">
+                                                <div style="color: #7f8c8d; font-size: 12px; margin-bottom: 5px;">.insert(1, "🍊")</div>
+                                                <div style="display: flex; gap: 5px;">
+                                                    <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px;">🍎</div>
+                                                    <div style="background: #f39c12; color: white; padding: 8px 12px; border-radius: 4px;">🍊</div>
+                                                    <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px;">🍐</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 Eliminar elementos:</strong>
+                                        <div style="margin-top: 10px; display: flex; gap: 15px; align-items: center;">
+                                            <div style="background: white; padding: 15px; border-radius: 6px; border: 2px solid #3498db;">
+                                                <div style="color: #7f8c8d; font-size: 12px; margin-bottom: 5px;">Lista inicial</div>
+                                                <div style="display: flex; gap: 5px;">
+                                                    <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px;">🍎</div>
+                                                    <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px;">🍐</div>
+                                                    <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px;">🍇</div>
+                                                </div>
+                                            </div>
+                                            <div style="font-size: 20px;">➡️</div>
+                                            <div style="background: white; padding: 15px; border-radius: 6px; border: 2px solid #e74c3c;">
+                                                <div style="color: #7f8c8d; font-size: 12px; margin-bottom: 5px;">.pop() → retorna 🍇</div>
+                                                <div style="display: flex; gap: 5px;">
+                                                    <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px;">🍎</div>
+                                                    <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px;">🍐</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <strong style="color: #2c3e50;">🔹 Ordenar:</strong>
+                                        <div style="margin-top: 10px; display: flex; gap: 15px; align-items: center;">
+                                            <div style="background: white; padding: 15px; border-radius: 6px; border: 2px solid #3498db;">
+                                                <div style="color: #7f8c8d; font-size: 12px; margin-bottom: 5px;">Desordenada</div>
+                                                <div style="display: flex; gap: 5px;">
+                                                    <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px;">5</div>
+                                                    <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px;">2</div>
+                                                    <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px;">8</div>
+                                                    <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px;">1</div>
+                                                </div>
+                                            </div>
+                                            <div style="font-size: 20px;">➡️</div>
+                                            <div style="background: white; padding: 15px; border-radius: 6px; border: 2px solid #9b59b6;">
+                                                <div style="color: #7f8c8d; font-size: 12px; margin-bottom: 5px;">.sort()</div>
+                                                <div style="display: flex; gap: 5px;">
+                                                    <div style="background: #9b59b6; color: white; padding: 8px 12px; border-radius: 4px;">1</div>
+                                                    <div style="background: #9b59b6; color: white; padding: 8px 12px; border-radius: 4px;">2</div>
+                                                    <div style="background: #9b59b6; color: white; padding: 8px 12px; border-radius: 4px;">5</div>
+                                                    <div style="background: #9b59b6; color: white; padding: 8px 12px; border-radius: 4px;">8</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="listas-multidimensionales" data-tags="matriz matriz bidimensional anidada">
+                        <span class="tag">📋 Listas Multidimensionales</span>
+                        <p class="significado">Listas que contienen otras listas</p>
+                        <div class="ejemplo"># Matriz 3x3
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+# Acceso a elementos
+print(matriz[0])      # [1, 2, 3] (primera fila)
+print(matriz[0][1])   # 2 (fila 0, columna 1)
+print(matriz[2][2])   # 9 (fila 2, columna 2)
+
+# Recorrer matriz
+for fila in matriz:
+    for elemento in fila:
+        print(elemento, end=" ")
+    print()
+
+# Con índices
+for i in range(len(matriz)):
+    for j in range(len(matriz[i])):
+        print(f"[{i}][{j}] = {matriz[i][j]}")
+
+# Crear matriz con comprensión
+matriz_ceros = [[0 for j in range(3)] for i in range(3)]
+# [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+
+# Tabla de multiplicar
+tabla = [[i*j for j in range(1, 6)] for i in range(1, 6)]</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Listas Multidimensionales</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 Matriz 3x3 visualizada:</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px; display: inline-block;">
+                                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;">
+                                                <div style="background: #3498db; color: white; padding: 15px; border-radius: 6px; text-align: center; font-weight: bold;">1</div>
+                                                <div style="background: #3498db; color: white; padding: 15px; border-radius: 6px; text-align: center; font-weight: bold;">2</div>
+                                                <div style="background: #3498db; color: white; padding: 15px; border-radius: 6px; text-align: center; font-weight: bold;">3</div>
+                                                <div style="background: #2ecc71; color: white; padding: 15px; border-radius: 6px; text-align: center; font-weight: bold;">4</div>
+                                                <div style="background: #2ecc71; color: white; padding: 15px; border-radius: 6px; text-align: center; font-weight: bold;">5</div>
+                                                <div style="background: #2ecc71; color: white; padding: 15px; border-radius: 6px; text-align: center; font-weight: bold;">6</div>
+                                                <div style="background: #9b59b6; color: white; padding: 15px; border-radius: 6px; text-align: center; font-weight: bold;">7</div>
+                                                <div style="background: #9b59b6; color: white; padding: 15px; border-radius: 6px; text-align: center; font-weight: bold;">8</div>
+                                                <div style="background: #9b59b6; color: white; padding: 15px; border-radius: 6px; text-align: center; font-weight: bold;">9</div>
+                                            </div>
+                                            <div style="margin-top: 15px; font-size: 14px; color: #7f8c8d;">
+                                                <div>Fila 0: <code>[1, 2, 3]</code></div>
+                                                <div>Fila 1: <code>[4, 5, 6]</code></div>
+                                                <div>Fila 2: <code>[7, 8, 9]</code></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <strong style="color: #2c3e50;">🔹 Acceso a elementos:</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px;">
+                                            <div style="display: flex; gap: 20px; align-items: center; margin-bottom: 15px;">
+                                                <code style="background: #f39c12; color: white; padding: 8px 12px; border-radius: 4px;">matriz[0][1]</code>
+                                                <span style="font-size: 20px;">→</span>
+                                                <div style="background: #3498db; color: white; padding: 12px 20px; border-radius: 6px; font-weight: bold;">2</div>
+                                                <span style="color: #7f8c8d; font-size: 14px;">(fila 0, columna 1)</span>
+                                            </div>
+                                            <div style="display: flex; gap: 20px; align-items: center;">
+                                                <code style="background: #f39c12; color: white; padding: 8px 12px; border-radius: 4px;">matriz[2][2]</code>
+                                                <span style="font-size: 20px;">→</span>
+                                                <div style="background: #9b59b6; color: white; padding: 12px 20px; border-radius: 6px; font-weight: bold;">9</div>
+                                                <span style="color: #7f8c8d; font-size: 14px;">(fila 2, columna 2)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="tuplas" data-tags="tuple tupla inmutable ordenada">
+                        <span class="tag">📋 Tuplas</span>
+                        <p class="significado">Colección ordenada e inmutable</p>
+                        <div class="ejemplo"># Crear tuplas
+vacia = ()
+un_elemento = (1,)  # La coma es necesaria
+coordenadas = (10, 20)
+persona = ("Ana", 25, "Madrid")
+
+# También sin paréntesis
+punto = 3, 4
+
+# Acceso por índice
+print(persona[0])   # "Ana"
+print(persona[-1])  # "Madrid"
+print(persona[0:2]) # ("Ana", 25)
+
+# Las tuplas son INMUTABLES
+# persona[0] = "Juan"  # Error!
+
+# Desempaquetado
+nombre, edad, ciudad = persona
+x, y = coordenadas
+
+# Intercambiar valores
+a, b = 10, 20
+a, b = b, a  # Ahora a=20, b=10
+
+# Métodos disponibles (solo 2)
+nums = (1, 2, 3, 1, 1)
+nums.count(1)  # 3
+nums.index(2)  # 1
+
+# Uso: retornar múltiples valores
+def dividir(a, b):
+    return a // b, a % b
+
+cociente, resto = dividir(17, 5)</div>
+                        <div class="nota">
+                            <strong>💡 Usar tuplas cuando:</strong> Los datos no deben cambiar, como coordenadas, fechas, o constantes.
+                        </div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Tuplas</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 Tupla vs Lista:</strong>
+                                        <div style="margin-top: 15px; display: flex; gap: 20px;">
+                                            <div style="background: white; padding: 20px; border-radius: 8px; flex: 1; border: 3px solid #3498db;">
+                                                <div style="color: #3498db; font-weight: bold; margin-bottom: 10px;">Lista (mutable)</div>
+                                                <div style="display: flex; gap: 5px; margin-bottom: 10px;">
+                                                    <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px;">10</div>
+                                                    <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px;">20</div>
+                                                    <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px;">30</div>
+                                                </div>
+                                                <div style="font-size: 12px; color: #2ecc71;">✓ Puedes modificar</div>
+                                                <code style="font-size: 12px;">lista[0] = 99</code>
+                                            </div>
+                                            <div style="background: white; padding: 20px; border-radius: 8px; flex: 1; border: 3px solid #9b59b6;">
+                                                <div style="color: #9b59b6; font-weight: bold; margin-bottom: 10px;">Tupla (inmutable)</div>
+                                                <div style="display: flex; gap: 5px; margin-bottom: 10px;">
+                                                    <div style="background: #9b59b6; color: white; padding: 10px; border-radius: 4px;">10</div>
+                                                    <div style="background: #9b59b6; color: white; padding: 10px; border-radius: 4px;">20</div>
+                                                    <div style="background: #9b59b6; color: white; padding: 10px; border-radius: 4px;">30</div>
+                                                </div>
+                                                <div style="font-size: 12px; color: #e74c3c;">✗ No puedes modificar</div>
+                                                <code style="font-size: 12px;">tupla[0] = 99 # Error!</code>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 Desempaquetado de tuplas:</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px;">
+                                            <div style="display: flex; gap: 15px; align-items: center;">
+                                                <div style="background: #9b59b6; color: white; padding: 15px; border-radius: 6px;">
+                                                    <div style="font-size: 12px; margin-bottom: 5px;">persona</div>
+                                                    <div>("Ana", 25, "Madrid")</div>
+                                                </div>
+                                                <span style="font-size: 20px;">→</span>
+                                                <div style="display: flex; gap: 10px;">
+                                                    <div style="background: #2ecc71; color: white; padding: 12px; border-radius: 6px;">
+                                                        <div style="font-size: 12px;">nombre</div>
+                                                        <div>"Ana"</div>
+                                                    </div>
+                                                    <div style="background: #3498db; color: white; padding: 12px; border-radius: 6px;">
+                                                        <div style="font-size: 12px;">edad</div>
+                                                        <div>25</div>
+                                                    </div>
+                                                    <div style="background: #f39c12; color: white; padding: 12px; border-radius: 6px;">
+                                                        <div style="font-size: 12px;">ciudad</div>
+                                                        <div>"Madrid"</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <strong style="color: #2c3e50;">🔹 Intercambio de valores:</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px;">
+                                            <div style="display: flex; gap: 20px; align-items: center;">
+                                                <div style="display: flex; gap: 10px;">
+                                                    <div style="background: #e74c3c; color: white; padding: 12px 20px; border-radius: 6px;">
+                                                        <div style="font-size: 12px;">a</div>
+                                                        <div style="font-size: 20px; font-weight: bold;">10</div>
+                                                    </div>
+                                                    <div style="background: #3498db; color: white; padding: 12px 20px; border-radius: 6px;">
+                                                        <div style="font-size: 12px;">b</div>
+                                                        <div style="font-size: 20px; font-weight: bold;">20</div>
+                                                    </div>
+                                                </div>
+                                                <div style="background: #2c3e50; color: white; padding: 10px 15px; border-radius: 4px;">
+                                                    <code style="color: white;">a, b = b, a</code>
+                                                </div>
+                                                <span style="font-size: 20px;">→</span>
+                                                <div style="display: flex; gap: 10px;">
+                                                    <div style="background: #3498db; color: white; padding: 12px 20px; border-radius: 6px;">
+                                                        <div style="font-size: 12px;">a</div>
+                                                        <div style="font-size: 20px; font-weight: bold;">20</div>
+                                                    </div>
+                                                    <div style="background: #e74c3c; color: white; padding: 12px 20px; border-radius: 6px;">
+                                                        <div style="font-size: 12px;">b</div>
+                                                        <div style="font-size: 20px; font-weight: bold;">10</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="conjuntos" data-tags="set conjunto unico sin duplicados">
+                        <span class="tag">📋 Conjuntos (Sets)</span>
+                        <p class="significado">Colección desordenada sin duplicados</p>
+                        <div class="ejemplo"># Crear conjuntos
+vacio = set()  # {} crea diccionario vacío
+numeros = {1, 2, 3, 4, 5}
+letras = set("hello")  # {'h', 'e', 'l', 'o'}
+
+# Sin duplicados automáticamente
+nums = {1, 2, 2, 3, 3, 3}  # {1, 2, 3}
+
+# Agregar elementos
+numeros.add(6)
+numeros.update([7, 8, 9])  # Añade varios
+
+# Eliminar elementos
+numeros.remove(1)    # Error si no existe
+numeros.discard(1)   # No error si no existe
+numeros.pop()        # Elimina uno aleatorio
+numeros.clear()      # Vacía el conjunto
+
+# Verificar pertenencia (muy rápido)
+3 in numeros  # True
+
+# No soporta índices
+# numeros[0]  # Error!
+
+# Los sets no aceptan elementos mutables
+# {[1, 2], [3, 4]}  # Error! Listas no permitidas
+{(1, 2), (3, 4)}   # OK, tuplas sí</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Conjuntos (Sets)</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 Sin duplicados automáticamente:</strong>
+                                        <div style="margin-top: 15px; display: flex; gap: 20px; align-items: center;">
+                                            <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #e74c3c;">
+                                                <div style="color: #7f8c8d; font-size: 12px; margin-bottom: 10px;">Lista con duplicados</div>
+                                                <div style="display: flex; gap: 5px; flex-wrap: wrap; max-width: 200px;">
+                                                    <div style="background: #e74c3c; color: white; padding: 10px; border-radius: 4px;">1</div>
+                                                    <div style="background: #e74c3c; color: white; padding: 10px; border-radius: 4px;">2</div>
+                                                    <div style="background: #e74c3c; color: white; padding: 10px; border-radius: 4px;">2</div>
+                                                    <div style="background: #e74c3c; color: white; padding: 10px; border-radius: 4px;">3</div>
+                                                    <div style="background: #e74c3c; color: white; padding: 10px; border-radius: 4px;">3</div>
+                                                    <div style="background: #e74c3c; color: white; padding: 10px; border-radius: 4px;">3</div>
+                                                </div>
+                                            </div>
+                                            <div style="font-size: 24px;">→</div>
+                                            <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #2ecc71;">
+                                                <div style="color: #7f8c8d; font-size: 12px; margin-bottom: 10px;">Set (sin duplicados)</div>
+                                                <div style="display: flex; gap: 5px;">
+                                                    <div style="background: #2ecc71; color: white; padding: 10px; border-radius: 4px;">1</div>
+                                                    <div style="background: #2ecc71; color: white; padding: 10px; border-radius: 4px;">2</div>
+                                                    <div style="background: #2ecc71; color: white; padding: 10px; border-radius: 4px;">3</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 Agregar elementos:</strong>
+                                        <div style="margin-top: 15px; display: flex; gap: 20px; align-items: center;">
+                                            <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                                <div style="color: #7f8c8d; font-size: 12px; margin-bottom: 10px;">Set inicial</div>
+                                                <div style="display: flex; gap: 5px;">
+                                                    <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px;">1</div>
+                                                    <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px;">2</div>
+                                                    <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px;">3</div>
+                                                </div>
+                                            </div>
+                                            <div style="background: #f39c12; color: white; padding: 10px 15px; border-radius: 4px;">
+                                                <code style="color: white;">.add(4)</code>
+                                            </div>
+                                            <div style="font-size: 20px;">→</div>
+                                            <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #2ecc71;">
+                                                <div style="color: #7f8c8d; font-size: 12px; margin-bottom: 10px;">Set después de add</div>
+                                                <div style="display: flex; gap: 5px;">
+                                                    <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px;">1</div>
+                                                    <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px;">2</div>
+                                                    <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px;">3</div>
+                                                    <div style="background: #2ecc71; color: white; padding: 10px; border-radius: 4px;">4</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <strong style="color: #2c3e50;">🔹 Características clave:</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px;">
+                                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                                                <div style="background: #e8f8f5; padding: 15px; border-radius: 6px; border-left: 4px solid #2ecc71;">
+                                                    <div style="font-weight: bold; color: #2ecc71; margin-bottom: 5px;">✓ Sin duplicados</div>
+                                                    <div style="font-size: 13px; color: #555;">{1, 2, 2, 3} → {1, 2, 3}</div>
+                                                </div>
+                                                <div style="background: #fef5e7; padding: 15px; border-radius: 6px; border-left: 4px solid #f39c12;">
+                                                    <div style="font-weight: bold; color: #f39c12; margin-bottom: 5px;">⚡ Búsqueda rápida</div>
+                                                    <div style="font-size: 13px; color: #555;">O(1) para "in"</div>
+                                                </div>
+                                                <div style="background: #fdeaea; padding: 15px; border-radius: 6px; border-left: 4px solid #e74c3c;">
+                                                    <div style="font-weight: bold; color: #e74c3c; margin-bottom: 5px;">✗ No ordenado</div>
+                                                    <div style="font-size: 13px; color: #555;">No hay índices</div>
+                                                </div>
+                                                <div style="background: #ebf5fb; padding: 15px; border-radius: 6px; border-left: 4px solid #3498db;">
+                                                    <div style="font-weight: bold; color: #3498db; margin-bottom: 5px;">✓ Mutable</div>
+                                                    <div style="font-size: 13px; color: #555;">Puedes agregar/eliminar</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="conjuntos-operaciones" data-tags="set operaciones union interseccion diferencia">
+                        <span class="tag">📋 Operaciones de Conjuntos</span>
+                        <p class="significado">Unión, intersección, diferencia</p>
+                        <div class="ejemplo">A = {1, 2, 3, 4, 5}
+B = {4, 5, 6, 7, 8}
+
+# Unión (todos los elementos)
+A | B           # {1, 2, 3, 4, 5, 6, 7, 8}
+A.union(B)
+
+# Intersección (elementos comunes)
+A & B           # {4, 5}
+A.intersection(B)
+
+# Diferencia (en A pero no en B)
+A - B           # {1, 2, 3}
+A.difference(B)
+
+# Diferencia simétrica (en uno u otro, no ambos)
+A ^ B           # {1, 2, 3, 6, 7, 8}
+A.symmetric_difference(B)
+
+# Subconjunto y superconjunto
+{1, 2}.issubset({1, 2, 3})     # True
+{1, 2, 3}.issuperset({1, 2})   # True
+
+# Conjuntos disjuntos (sin elementos comunes)
+{1, 2}.isdisjoint({3, 4})      # True
+
+# Uso práctico: eliminar duplicados
+lista = [1, 2, 2, 3, 3, 3]
+sin_duplicados = list(set(lista))  # [1, 2, 3]</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Operaciones de Conjuntos</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 Conjuntos base:</strong>
+                                        <div style="margin-top: 15px; display: flex; gap: 20px;">
+                                            <div style="background: white; padding: 20px; border-radius: 8px; border: 3px solid #3498db;">
+                                                <div style="color: #3498db; font-weight: bold; margin-bottom: 10px;">Conjunto A</div>
+                                                <div style="display: flex; gap: 5px; flex-wrap: wrap;">
+                                                    <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px;">1</div>
+                                                    <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px;">2</div>
+                                                    <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px;">3</div>
+                                                    <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px;">4</div>
+                                                    <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px;">5</div>
+                                                </div>
+                                            </div>
+                                            <div style="background: white; padding: 20px; border-radius: 8px; border: 3px solid #e74c3c;">
+                                                <div style="color: #e74c3c; font-weight: bold; margin-bottom: 10px;">Conjunto B</div>
+                                                <div style="display: flex; gap: 5px; flex-wrap: wrap;">
+                                                    <div style="background: #e74c3c; color: white; padding: 10px; border-radius: 4px;">4</div>
+                                                    <div style="background: #e74c3c; color: white; padding: 10px; border-radius: 4px;">5</div>
+                                                    <div style="background: #e74c3c; color: white; padding: 10px; border-radius: 4px;">6</div>
+                                                    <div style="background: #e74c3c; color: white; padding: 10px; border-radius: 4px;">7</div>
+                                                    <div style="background: #e74c3c; color: white; padding: 10px; border-radius: 4px;">8</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 Unión (A | B) - Todos los elementos:</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px; border: 3px solid #9b59b6;">
+                                            <div style="display: flex; gap: 5px; flex-wrap: wrap;">
+                                                <div style="background: #9b59b6; color: white; padding: 10px; border-radius: 4px;">1</div>
+                                                <div style="background: #9b59b6; color: white; padding: 10px; border-radius: 4px;">2</div>
+                                                <div style="background: #9b59b6; color: white; padding: 10px; border-radius: 4px;">3</div>
+                                                <div style="background: #9b59b6; color: white; padding: 10px; border-radius: 4px;">4</div>
+                                                <div style="background: #9b59b6; color: white; padding: 10px; border-radius: 4px;">5</div>
+                                                <div style="background: #9b59b6; color: white; padding: 10px; border-radius: 4px;">6</div>
+                                                <div style="background: #9b59b6; color: white; padding: 10px; border-radius: 4px;">7</div>
+                                                <div style="background: #9b59b6; color: white; padding: 10px; border-radius: 4px;">8</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 Intersección (A & B) - Elementos comunes:</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px; border: 3px solid #2ecc71;">
+                                            <div style="display: flex; gap: 5px;">
+                                                <div style="background: #2ecc71; color: white; padding: 10px; border-radius: 4px;">4</div>
+                                                <div style="background: #2ecc71; color: white; padding: 10px; border-radius: 4px;">5</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 Diferencia (A - B) - Solo en A:</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px; border: 3px solid #3498db;">
+                                            <div style="display: flex; gap: 5px;">
+                                                <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px;">1</div>
+                                                <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px;">2</div>
+                                                <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px;">3</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <strong style="color: #2c3e50;">🔹 Diferencia simétrica (A ^ B) - En uno u otro, no ambos:</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px; border: 3px solid #f39c12;">
+                                            <div style="display: flex; gap: 5px; flex-wrap: wrap;">
+                                                <div style="background: #f39c12; color: white; padding: 10px; border-radius: 4px;">1</div>
+                                                <div style="background: #f39c12; color: white; padding: 10px; border-radius: 4px;">2</div>
+                                                <div style="background: #f39c12; color: white; padding: 10px; border-radius: 4px;">3</div>
+                                                <div style="background: #f39c12; color: white; padding: 10px; border-radius: 4px;">6</div>
+                                                <div style="background: #f39c12; color: white; padding: 10px; border-radius: 4px;">7</div>
+                                                <div style="background: #f39c12; color: white; padding: 10px; border-radius: 4px;">8</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="diccionarios" data-tags="dict diccionario clave valor mapa">
+                        <span class="tag">📋 Diccionarios</span>
+                        <p class="significado">Colección de pares clave-valor</p>
+                        <div class="ejemplo"># Crear diccionarios
+vacio = {}
+persona = {
+    "nombre": "Ana",
+    "edad": 30,
+    "ciudad": "Madrid"
+}
+
+# También con dict()
+d = dict(nombre="Juan", edad=25)
+
+# Acceso a valores
+print(persona["nombre"])  # "Ana"
+print(persona.get("edad"))  # 30
+print(persona.get("peso", 70))  # 70 (default si no existe)
+
+# Agregar/modificar
+persona["email"] = "ana@mail.com"  # Agregar
+persona["edad"] = 31               # Modificar
+
+# Eliminar
+del persona["ciudad"]
+edad = persona.pop("edad")  # Elimina y retorna
+ultimo = persona.popitem()  # Elimina último par
+persona.clear()  # Vacía el diccionario
+
+# Verificar clave
+"nombre" in persona  # True
+"peso" in persona    # False
+
+# Longitud
+len(persona)  # Número de pares</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Diccionarios</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 Estructura clave-valor:</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px;">
+                                            <div style="display: flex; flex-direction: column; gap: 12px;">
+                                                <div style="display: flex; gap: 15px; align-items: center;">
+                                                    <div style="background: #3498db; color: white; padding: 12px 20px; border-radius: 6px; font-weight: bold; min-width: 120px; text-align: center;">
+                                                        "nombre"
+                                                    </div>
+                                                    <span style="font-size: 20px;">:</span>
+                                                    <div style="background: #2ecc71; color: white; padding: 12px 20px; border-radius: 6px; flex: 1;">
+                                                        "Ana"
+                                                    </div>
+                                                </div>
+                                                <div style="display: flex; gap: 15px; align-items: center;">
+                                                    <div style="background: #3498db; color: white; padding: 12px 20px; border-radius: 6px; font-weight: bold; min-width: 120px; text-align: center;">
+                                                        "edad"
+                                                    </div>
+                                                    <span style="font-size: 20px;">:</span>
+                                                    <div style="background: #2ecc71; color: white; padding: 12px 20px; border-radius: 6px; flex: 1;">
+                                                        30
+                                                    </div>
+                                                </div>
+                                                <div style="display: flex; gap: 15px; align-items: center;">
+                                                    <div style="background: #3498db; color: white; padding: 12px 20px; border-radius: 6px; font-weight: bold; min-width: 120px; text-align: center;">
+                                                        "ciudad"
+                                                    </div>
+                                                    <span style="font-size: 20px;">:</span>
+                                                    <div style="background: #2ecc71; color: white; padding: 12px 20px; border-radius: 6px; flex: 1;">
+                                                        "Madrid"
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div style="margin-top: 15px; padding: 10px; background: #e8f8f5; border-radius: 6px; font-size: 13px; color: #555;">
+                                                <strong>Clave (azul)</strong> → <strong>Valor (verde)</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 Acceso a valores:</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px;">
+                                            <div style="display: flex; gap: 15px; align-items: center; margin-bottom: 12px;">
+                                                <code style="background: #f39c12; color: white; padding: 8px 12px; border-radius: 4px;">persona["nombre"]</code>
+                                                <span style="font-size: 20px;">→</span>
+                                                <div style="background: #2ecc71; color: white; padding: 10px 20px; border-radius: 6px; font-weight: bold;">
+                                                    "Ana"
+                                                </div>
+                                            </div>
+                                            <div style="display: flex; gap: 15px; align-items: center;">
+                                                <code style="background: #f39c12; color: white; padding: 8px 12px; border-radius: 4px;">persona.get("edad")</code>
+                                                <span style="font-size: 20px;">→</span>
+                                                <div style="background: #2ecc71; color: white; padding: 10px 20px; border-radius: 6px; font-weight: bold;">
+                                                    30
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <strong style="color: #2c3e50;">🔹 Agregar/Modificar:</strong>
+                                        <div style="margin-top: 15px; display: flex; gap: 20px; align-items: center;">
+                                            <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #3498db; flex: 1;">
+                                                <div style="color: #7f8c8d; font-size: 12px; margin-bottom: 10px;">Original</div>
+                                                <div style="font-size: 13px;">
+                                                    <div>nombre: "Ana"</div>
+                                                    <div>edad: 30</div>
+                                                </div>
+                                            </div>
+                                            <div style="background: #9b59b6; color: white; padding: 10px 15px; border-radius: 4px;">
+                                                <code style="color: white; font-size: 12px;">persona["email"] = "ana@mail.com"</code>
+                                            </div>
+                                            <span style="font-size: 20px;">→</span>
+                                            <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #2ecc71; flex: 1;">
+                                                <div style="color: #7f8c8d; font-size: 12px; margin-bottom: 10px;">Modificado</div>
+                                                <div style="font-size: 13px;">
+                                                    <div>nombre: "Ana"</div>
+                                                    <div>edad: 30</div>
+                                                    <div style="color: #2ecc71; font-weight: bold;">email: "ana@mail.com"</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="diccionarios-metodos" data-tags="dict metodos keys values items">
+                        <span class="tag">📋 Métodos de Diccionarios</span>
+                        <p class="significado">Funciones para manipular diccionarios</p>
+                        <div class="ejemplo">persona = {
+    "nombre": "Ana",
+    "edad": 30,
+    "ciudad": "Madrid"
+}
+
+# Obtener claves, valores, pares
+persona.keys()    # dict_keys(['nombre', 'edad', 'ciudad'])
+persona.values()  # dict_values(['Ana', 30, 'Madrid'])
+persona.items()   # dict_items([('nombre', 'Ana'), ...])
+
+# Iterar
+for clave in persona:
+    print(clave)
+
+for clave, valor in persona.items():
+    print(f"{clave}: {valor}")
+
+# Actualizar con otro diccionario
+persona.update({"peso": 65, "altura": 1.70})
+
+# setdefault: obtiene o establece valor default
+persona.setdefault("pais", "España")
+# Si "pais" no existe, lo crea con "España"
+
+# Copiar diccionario
+copia = persona.copy()
+
+# Diccionario por comprensión
+cuadrados = {x: x**2 for x in range(5)}
+# {0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+
+# Filtrar
+mayores = {k: v for k, v in persona.items() if v != 30}</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Métodos de Diccionarios</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 Diccionario de ejemplo:</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px; border: 3px solid #9b59b6;">
+                                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                                <div style="display: flex; gap: 10px;">
+                                                    <span style="background: #3498db; color: white; padding: 8px 15px; border-radius: 4px;">"nombre"</span>
+                                                    <span>:</span>
+                                                    <span style="background: #2ecc71; color: white; padding: 8px 15px; border-radius: 4px;">"Ana"</span>
+                                                </div>
+                                                <div style="display: flex; gap: 10px;">
+                                                    <span style="background: #3498db; color: white; padding: 8px 15px; border-radius: 4px;">"edad"</span>
+                                                    <span>:</span>
+                                                    <span style="background: #2ecc71; color: white; padding: 8px 15px; border-radius: 4px;">30</span>
+                                                </div>
+                                                <div style="display: flex; gap: 10px;">
+                                                    <span style="background: #3498db; color: white; padding: 8px 15px; border-radius: 4px;">"ciudad"</span>
+                                                    <span>:</span>
+                                                    <span style="background: #2ecc71; color: white; padding: 8px 15px; border-radius: 4px;">"Madrid"</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 .keys() - Obtener claves:</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px;">
+                                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                                <div style="background: #3498db; color: white; padding: 10px 15px; border-radius: 4px;">"nombre"</div>
+                                                <div style="background: #3498db; color: white; padding: 10px 15px; border-radius: 4px;">"edad"</div>
+                                                <div style="background: #3498db; color: white; padding: 10px 15px; border-radius: 4px;">"ciudad"</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 .values() - Obtener valores:</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px;">
+                                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                                <div style="background: #2ecc71; color: white; padding: 10px 15px; border-radius: 4px;">"Ana"</div>
+                                                <div style="background: #2ecc71; color: white; padding: 10px 15px; border-radius: 4px;">30</div>
+                                                <div style="background: #2ecc71; color: white; padding: 10px 15px; border-radius: 4px;">"Madrid"</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 .items() - Obtener pares clave-valor:</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px;">
+                                            <div style="display: flex; flex-direction: column; gap: 10px;">
+                                                <div style="display: flex; gap: 10px; align-items: center;">
+                                                    <span>(</span>
+                                                    <div style="background: #3498db; color: white; padding: 8px 15px; border-radius: 4px;">"nombre"</div>
+                                                    <span>,</span>
+                                                    <div style="background: #2ecc71; color: white; padding: 8px 15px; border-radius: 4px;">"Ana"</div>
+                                                    <span>)</span>
+                                                </div>
+                                                <div style="display: flex; gap: 10px; align-items: center;">
+                                                    <span>(</span>
+                                                    <div style="background: #3498db; color: white; padding: 8px 15px; border-radius: 4px;">"edad"</div>
+                                                    <span>,</span>
+                                                    <div style="background: #2ecc71; color: white; padding: 8px 15px; border-radius: 4px;">30</div>
+                                                    <span>)</span>
+                                                </div>
+                                                <div style="display: flex; gap: 10px; align-items: center;">
+                                                    <span>(</span>
+                                                    <div style="background: #3498db; color: white; padding: 8px 15px; border-radius: 4px;">"ciudad"</div>
+                                                    <span>,</span>
+                                                    <div style="background: #2ecc71; color: white; padding: 8px 15px; border-radius: 4px;">"Madrid"</div>
+                                                    <span>)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <strong style="color: #2c3e50;">🔹 Diccionario por comprensión:</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px;">
+                                            <div style="margin-bottom: 10px; background: #2c3e50; color: white; padding: 10px; border-radius: 4px; font-family: monospace;">
+                                                {x: x**2 for x in range(5)}
+                                            </div>
+                                            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                                <div style="background: #f39c12; color: white; padding: 8px 12px; border-radius: 4px;">0: 0</div>
+                                                <div style="background: #f39c12; color: white; padding: 8px 12px; border-radius: 4px;">1: 1</div>
+                                                <div style="background: #f39c12; color: white; padding: 8px 12px; border-radius: 4px;">2: 4</div>
+                                                <div style="background: #f39c12; color: white; padding: 8px 12px; border-radius: 4px;">3: 9</div>
+                                                <div style="background: #f39c12; color: white; padding: 8px 12px; border-radius: 4px;">4: 16</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="diccionarios-anidados" data-tags="diccionario anidado nested json">
+                        <span class="tag">📋 Diccionarios Anidados</span>
+                        <p class="significado">Diccionarios dentro de diccionarios</p>
+                        <div class="ejemplo"># Estructura tipo JSON
+usuarios = {
+    "user1": {
+        "nombre": "Ana",
+        "edad": 30,
+        "direccion": {
+            "ciudad": "Madrid",
+            "pais": "España"
+        }
+    },
+    "user2": {
+        "nombre": "Juan",
+        "edad": 25,
+        "direccion": {
+            "ciudad": "Lima",
+            "pais": "Perú"
+        }
+    }
+}
+
+# Acceso anidado
+print(usuarios["user1"]["nombre"])  # "Ana"
+print(usuarios["user1"]["direccion"]["ciudad"])  # "Madrid"
+
+# Modificar valor anidado
+usuarios["user1"]["edad"] = 31
+
+# Agregar nuevo usuario
+usuarios["user3"] = {
+    "nombre": "María",
+    "edad": 28,
+    "direccion": {"ciudad": "Bogotá", "pais": "Colombia"}
+}
+
+# Recorrer
+for user_id, datos in usuarios.items():
+    print(f"{user_id}: {datos['nombre']}")
+
+# Acceso seguro con get
+ciudad = usuarios.get("user1", {}).get("direccion", {}).get("ciudad", "N/A")</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Diccionarios Anidados</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 Estructura anidada (tipo JSON):</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px; border: 3px solid #9b59b6;">
+                                            <div style="display: flex; flex-direction: column; gap: 15px;">
+                                                <div style="border: 2px solid #3498db; border-radius: 8px; padding: 15px; background: #ebf5fb;">
+                                                    <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px; margin-bottom: 10px; display: inline-block;">
+                                                        "user1"
+                                                    </div>
+                                                    <div style="margin-left: 20px; background: white; padding: 15px; border-radius: 6px;">
+                                                        <div style="margin-bottom: 8px;">
+                                                            <span style="background: #2ecc71; color: white; padding: 6px 10px; border-radius: 4px; font-size: 14px;">"nombre"</span>
+                                                            <span style="margin: 0 8px;">:</span>
+                                                            <span>"Ana"</span>
+                                                        </div>
+                                                        <div style="margin-bottom: 8px;">
+                                                            <span style="background: #2ecc71; color: white; padding: 6px 10px; border-radius: 4px; font-size: 14px;">"edad"</span>
+                                                            <span style="margin: 0 8px;">:</span>
+                                                            <span>30</span>
+                                                        </div>
+                                                        <div style="border: 2px solid #f39c12; border-radius: 6px; padding: 10px; background: #fef5e7;">
+                                                            <span style="background: #f39c12; color: white; padding: 6px 10px; border-radius: 4px; font-size: 14px; margin-bottom: 8px; display: inline-block;">"direccion"</span>
+                                                            <div style="margin-left: 15px; font-size: 14px;">
+                                                                <div>"ciudad": "Madrid"</div>
+                                                                <div>"pais": "España"</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="border: 2px solid #e74c3c; border-radius: 8px; padding: 15px; background: #fadbd8;">
+                                                    <div style="background: #e74c3c; color: white; padding: 8px 12px; border-radius: 4px; margin-bottom: 10px; display: inline-block;">
+                                                        "user2"
+                                                    </div>
+                                                    <div style="margin-left: 20px; background: white; padding: 15px; border-radius: 6px;">
+                                                        <div style="margin-bottom: 8px;">
+                                                            <span style="background: #2ecc71; color: white; padding: 6px 10px; border-radius: 4px; font-size: 14px;">"nombre"</span>
+                                                            <span style="margin: 0 8px;">:</span>
+                                                            <span>"Juan"</span>
+                                                        </div>
+                                                        <div style="margin-bottom: 8px;">
+                                                            <span style="background: #2ecc71; color: white; padding: 6px 10px; border-radius: 4px; font-size: 14px;">"edad"</span>
+                                                            <span style="margin: 0 8px;">:</span>
+                                                            <span>25</span>
+                                                        </div>
+                                                        <div style="border: 2px solid #f39c12; border-radius: 6px; padding: 10px; background: #fef5e7;">
+                                                            <span style="background: #f39c12; color: white; padding: 6px 10px; border-radius: 4px; font-size: 14px; margin-bottom: 8px; display: inline-block;">"direccion"</span>
+                                                            <div style="margin-left: 15px; font-size: 14px;">
+                                                                <div>"ciudad": "Lima"</div>
+                                                                <div>"pais": "Perú"</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <strong style="color: #2c3e50;">🔹 Acceso anidado:</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px;">
+                                            <div style="display: flex; flex-direction: column; gap: 12px;">
+                                                <div style="display: flex; align-items: center; gap: 15px;">
+                                                    <code style="background: #2c3e50; color: white; padding: 8px 12px; border-radius: 4px; font-size: 13px;">
+                                                        usuarios["user1"]["nombre"]
+                                                    </code>
+                                                    <span style="font-size: 20px;">→</span>
+                                                    <div style="background: #2ecc71; color: white; padding: 10px 20px; border-radius: 6px;">
+                                                        "Ana"
+                                                    </div>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 15px;">
+                                                    <code style="background: #2c3e50; color: white; padding: 8px 12px; border-radius: 4px; font-size: 13px;">
+                                                        usuarios["user1"]["direccion"]["ciudad"]
+                                                    </code>
+                                                    <span style="font-size: 20px;">→</span>
+                                                    <div style="background: #f39c12; color: white; padding: 10px 20px; border-radius: 6px;">
+                                                        "Madrid"
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="array-module" data-tags="array modulo homogeneo eficiente">
+                        <span class="tag">📋 Módulo array</span>
+                        <p class="significado">Arrays homogéneos más eficientes</p>
+                        <div class="ejemplo">import array
+
+# Crear array (tipo + secuencia)
+# 'i' = enteros, 'f' = float, 'd' = double
+a = array.array('i', [1, 2, 3, 4])
+b = array.array('f', [1.0, 2.0, 3.0])
+
+print(a)  # array('i', [1, 2, 3, 4])
+
+# Operaciones similares a listas
+a[0]           # 1
+a.append(5)
+a.insert(0, 0)
+a.remove(3)
+a.pop()
+
+# Recorrer
+for x in a:
+    print(x)
+
+# Convertir
+lista = list(a)
+a = array.array('i', lista)
+
+# Códigos de tipo comunes:
+# 'b' = signed char (1 byte)
+# 'B' = unsigned char (1 byte)
+# 'i' = signed int (4 bytes)
+# 'f' = float (4 bytes)
+# 'd' = double (8 bytes)
+
+# Ventajas: más eficiente en memoria para números
+# Limitaciones: solo un tipo, sin operaciones vectorizadas</div>
+                        <div class="nota">
+                            <strong>💡 Para cálculos numéricos:</strong> Usa NumPy en lugar de array.array.
+                        </div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Módulo array</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 Lista vs Array:</strong>
+                                        <div style="margin-top: 15px; display: flex; gap: 20px;">
+                                            <div style="background: white; padding: 20px; border-radius: 8px; flex: 1; border: 3px solid #3498db;">
+                                                <div style="color: #3498db; font-weight: bold; margin-bottom: 15px;">Lista (heterogénea)</div>
+                                                <div style="display: flex; flex-direction: column; gap: 8px;">
+                                                    <div style="display: flex; gap: 5px;">
+                                                        <div style="background: #e74c3c; color: white; padding: 10px; border-radius: 4px; font-size: 13px;">1</div>
+                                                        <div style="background: #2ecc71; color: white; padding: 10px; border-radius: 4px; font-size: 13px;">"texto"</div>
+                                                        <div style="background: #f39c12; color: white; padding: 10px; border-radius: 4px; font-size: 13px;">3.14</div>
+                                                        <div style="background: #9b59b6; color: white; padding: 10px; border-radius: 4px; font-size: 13px;">True</div>
+                                                    </div>
+                                                    <div style="font-size: 12px; color: #7f8c8d;">✓ Diferentes tipos</div>
+                                                    <div style="font-size: 12px; color: #7f8c8d;">✗ Más memoria</div>
+                                                </div>
+                                            </div>
+                                            <div style="background: white; padding: 20px; border-radius: 8px; flex: 1; border: 3px solid #9b59b6;">
+                                                <div style="color: #9b59b6; font-weight: bold; margin-bottom: 15px;">Array (homogéneo)</div>
+                                                <div style="display: flex; flex-direction: column; gap: 8px;">
+                                                    <div style="display: flex; gap: 5px;">
+                                                        <div style="background: #9b59b6; color: white; padding: 10px; border-radius: 4px; font-size: 13px;">1</div>
+                                                        <div style="background: #9b59b6; color: white; padding: 10px; border-radius: 4px; font-size: 13px;">2</div>
+                                                        <div style="background: #9b59b6; color: white; padding: 10px; border-radius: 4px; font-size: 13px;">3</div>
+                                                        <div style="background: #9b59b6; color: white; padding: 10px; border-radius: 4px; font-size: 13px;">4</div>
+                                                    </div>
+                                                    <div style="font-size: 12px; color: #7f8c8d;">✗ Solo un tipo</div>
+                                                    <div style="font-size: 12px; color: #2ecc71;">✓ Menos memoria</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 Códigos de tipo:</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px;">
+                                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+                                                <div style="background: #e8f8f5; padding: 12px; border-radius: 6px; border-left: 4px solid #3498db;">
+                                                    <code style="background: #3498db; color: white; padding: 4px 8px; border-radius: 4px;">'i'</code>
+                                                    <span style="margin-left: 8px; font-size: 14px;">signed int (4 bytes)</span>
+                                                </div>
+                                                <div style="background: #fef5e7; padding: 12px; border-radius: 6px; border-left: 4px solid #f39c12;">
+                                                    <code style="background: #f39c12; color: white; padding: 4px 8px; border-radius: 4px;">'f'</code>
+                                                    <span style="margin-left: 8px; font-size: 14px;">float (4 bytes)</span>
+                                                </div>
+                                                <div style="background: #f4ecf7; padding: 12px; border-radius: 6px; border-left: 4px solid #9b59b6;">
+                                                    <code style="background: #9b59b6; color: white; padding: 4px 8px; border-radius: 4px;">'d'</code>
+                                                    <span style="margin-left: 8px; font-size: 14px;">double (8 bytes)</span>
+                                                </div>
+                                                <div style="background: #e8f6f3; padding: 12px; border-radius: 6px; border-left: 4px solid #2ecc71;">
+                                                    <code style="background: #2ecc71; color: white; padding: 4px 8px; border-radius: 4px;">'b'</code>
+                                                    <span style="margin-left: 8px; font-size: 14px;">signed char (1 byte)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <strong style="color: #2c3e50;">🔹 Creación y uso:</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px;">
+                                            <div style="background: #2c3e50; color: white; padding: 12px; border-radius: 6px; font-family: monospace; margin-bottom: 15px;">
+                                                import array<br>
+                                                a = array.array('i', [1, 2, 3, 4])
+                                            </div>
+                                            <div style="display: flex; gap: 8px; align-items: center;">
+                                                <div style="background: #9b59b6; color: white; padding: 12px; border-radius: 6px; font-size: 14px;">array('i',</div>
+                                                <div style="display: flex; gap: 5px;">
+                                                    <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px;">1</div>
+                                                    <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px;">2</div>
+                                                    <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px;">3</div>
+                                                    <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px;">4</div>
+                                                </div>
+                                                <div style="background: #9b59b6; color: white; padding: 12px; border-radius: 6px; font-size: 14px;">)</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="comparacion" data-tags="comparacion diferencias resumen">
+                        <span class="tag">📋 Comparación de Estructuras</span>
+                        <p class="significado">Cuándo usar cada estructura</p>
+                        <div class="ejemplo"># Tabla comparativa:
+# Estructura | Ordenada | Mutable | Duplicados | Uso principal
+# -----------------------------------------------------------------
+# list       | Sí       | Sí      | Sí         | Colección modificable
+# tuple      | Sí       | No      | Sí         | Datos constantes
+# set        | No       | Sí      | No         | Elementos únicos
+# dict       | Sí(3.7+) | Sí      | Claves no  | Mapeo clave-valor
+
+# Ejemplos de uso apropiado:
+
+# Lista: cuando necesitas modificar
+carrito = ["manzana", "pera", "uva"]
+carrito.append("naranja")
+
+# Tupla: datos que no cambian
+coordenadas = (10, 20)
+fecha_nacimiento = (1990, 5, 15)
+
+# Set: eliminar duplicados, pertenencia rápida
+visitados = {"pagina1", "pagina2"}
+if "pagina3" not in visitados:
+    visitados.add("pagina3")
+
+# Dict: asociar datos
+estudiante = {
+    "nombre": "Ana",
+    "nota": 9.5,
+    "aprobado": True
+}
+
+# Conversiones
+list((1, 2, 3))    # [1, 2, 3]
+tuple([1, 2, 3])   # (1, 2, 3)
+set([1, 2, 2, 3])  # {1, 2, 3}
+dict([("a", 1), ("b", 2)])  # {'a': 1, 'b': 2}</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Comparación de Estructuras</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 Tabla comparativa:</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px; overflow-x: auto;">
+                                            <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                                                <thead>
+                                                    <tr style="background: #34495e; color: white;">
+                                                        <th style="padding: 12px; text-align: left; border: 1px solid #bdc3c7;">Estructura</th>
+                                                        <th style="padding: 12px; text-align: center; border: 1px solid #bdc3c7;">Ordenada</th>
+                                                        <th style="padding: 12px; text-align: center; border: 1px solid #bdc3c7;">Mutable</th>
+                                                        <th style="padding: 12px; text-align: center; border: 1px solid #bdc3c7;">Duplicados</th>
+                                                        <th style="padding: 12px; text-align: left; border: 1px solid #bdc3c7;">Uso principal</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr style="background: #ebf5fb;">
+                                                        <td style="padding: 12px; border: 1px solid #bdc3c7; font-weight: bold; color: #3498db;">list</td>
+                                                        <td style="padding: 12px; border: 1px solid #bdc3c7; text-align: center;">✓</td>
+                                                        <td style="padding: 12px; border: 1px solid #bdc3c7; text-align: center;">✓</td>
+                                                        <td style="padding: 12px; border: 1px solid #bdc3c7; text-align: center;">✓</td>
+                                                        <td style="padding: 12px; border: 1px solid #bdc3c7;">Colección modificable</td>
+                                                    </tr>
+                                                    <tr style="background: #f4ecf7;">
+                                                        <td style="padding: 12px; border: 1px solid #bdc3c7; font-weight: bold; color: #9b59b6;">tuple</td>
+                                                        <td style="padding: 12px; border: 1px solid #bdc3c7; text-align: center;">✓</td>
+                                                        <td style="padding: 12px; border: 1px solid #bdc3c7; text-align: center;">✗</td>
+                                                        <td style="padding: 12px; border: 1px solid #bdc3c7; text-align: center;">✓</td>
+                                                        <td style="padding: 12px; border: 1px solid #bdc3c7;">Datos constantes</td>
+                                                    </tr>
+                                                    <tr style="background: #e8f6f3;">
+                                                        <td style="padding: 12px; border: 1px solid #bdc3c7; font-weight: bold; color: #2ecc71;">set</td>
+                                                        <td style="padding: 12px; border: 1px solid #bdc3c7; text-align: center;">✗</td>
+                                                        <td style="padding: 12px; border: 1px solid #bdc3c7; text-align: center;">✓</td>
+                                                        <td style="padding: 12px; border: 1px solid #bdc3c7; text-align: center;">✗</td>
+                                                        <td style="padding: 12px; border: 1px solid #bdc3c7;">Elementos únicos</td>
+                                                    </tr>
+                                                    <tr style="background: #fef5e7;">
+                                                        <td style="padding: 12px; border: 1px solid #bdc3c7; font-weight: bold; color: #f39c12;">dict</td>
+                                                        <td style="padding: 12px; border: 1px solid #bdc3c7; text-align: center;">✓ (3.7+)</td>
+                                                        <td style="padding: 12px; border: 1px solid #bdc3c7; text-align: center;">✓</td>
+                                                        <td style="padding: 12px; border: 1px solid #bdc3c7; text-align: center;">Claves no</td>
+                                                        <td style="padding: 12px; border: 1px solid #bdc3c7;">Mapeo clave-valor</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div style="margin-bottom: 20px;">
+                                        <strong style="color: #2c3e50;">🔹 Ejemplos visuales por caso de uso:</strong>
+                                        <div style="margin-top: 15px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                                            <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #3498db;">
+                                                <div style="color: #3498db; font-weight: bold; margin-bottom: 10px;">Lista - Colección modificable</div>
+                                                <div style="background: #ecf0f1; padding: 10px; border-radius: 4px; font-family: monospace; font-size: 13px;">
+                                                    carrito = ["🍎", "🍐", "🍇"]<br>
+                                                    carrito.append("🍊")
+                                                </div>
+                                                <div style="margin-top: 10px; display: flex; gap: 5px;">
+                                                    <div style="background: #3498db; color: white; padding: 8px; border-radius: 4px;">🍎</div>
+                                                    <div style="background: #3498db; color: white; padding: 8px; border-radius: 4px;">🍐</div>
+                                                    <div style="background: #3498db; color: white; padding: 8px; border-radius: 4px;">🍇</div>
+                                                    <div style="background: #2ecc71; color: white; padding: 8px; border-radius: 4px;">🍊</div>
+                                                </div>
+                                            </div>
+                                            <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #9b59b6;">
+                                                <div style="color: #9b59b6; font-weight: bold; margin-bottom: 10px;">Tupla - Datos constantes</div>
+                                                <div style="background: #ecf0f1; padding: 10px; border-radius: 4px; font-family: monospace; font-size: 13px;">
+                                                    coord = (10, 20)<br>
+                                                    fecha = (1990, 5, 15)
+                                                </div>
+                                                <div style="margin-top: 10px; display: flex; gap: 5px;">
+                                                    <div style="background: #9b59b6; color: white; padding: 8px; border-radius: 4px;">10</div>
+                                                    <div style="background: #9b59b6; color: white; padding: 8px; border-radius: 4px;">20</div>
+                                                </div>
+                                            </div>
+                                            <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #2ecc71;">
+                                                <div style="color: #2ecc71; font-weight: bold; margin-bottom: 10px;">Set - Elementos únicos</div>
+                                                <div style="background: #ecf0f1; padding: 10px; border-radius: 4px; font-family: monospace; font-size: 13px;">
+                                                    visitados = {"p1", "p2"}<br>
+                                                    if "p3" not in visitados:
+                                                </div>
+                                                <div style="margin-top: 10px; display: flex; gap: 5px;">
+                                                    <div style="background: #2ecc71; color: white; padding: 8px; border-radius: 4px; font-size: 12px;">p1</div>
+                                                    <div style="background: #2ecc71; color: white; padding: 8px; border-radius: 4px; font-size: 12px;">p2</div>
+                                                </div>
+                                            </div>
+                                            <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #f39c12;">
+                                                <div style="color: #f39c12; font-weight: bold; margin-bottom: 10px;">Dict - Asociar datos</div>
+                                                <div style="background: #ecf0f1; padding: 10px; border-radius: 4px; font-family: monospace; font-size: 13px;">
+                                                    estudiante = {<br>
+                                                    &nbsp;&nbsp;"nombre": "Ana",<br>
+                                                    &nbsp;&nbsp;"nota": 9.5<br>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <strong style="color: #2c3e50;">🔹 Conversiones entre estructuras:</strong>
+                                        <div style="margin-top: 15px; background: white; padding: 20px; border-radius: 8px;">
+                                            <div style="display: flex; flex-direction: column; gap: 12px;">
+                                                <div style="display: flex; align-items: center; gap: 15px;">
+                                                    <div style="background: #9b59b6; color: white; padding: 10px 15px; border-radius: 6px; min-width: 100px; text-align: center;">
+                                                        (1, 2, 3)
+                                                    </div>
+                                                    <code style="background: #2c3e50; color: white; padding: 6px 10px; border-radius: 4px; font-size: 12px;">list()</code>
+                                                    <span>→</span>
+                                                    <div style="background: #3498db; color: white; padding: 10px 15px; border-radius: 6px;">
+                                                        [1, 2, 3]
+                                                    </div>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 15px;">
+                                                    <div style="background: #3498db; color: white; padding: 10px 15px; border-radius: 6px; min-width: 100px; text-align: center;">
+                                                        [1, 2, 2, 3]
+                                                    </div>
+                                                    <code style="background: #2c3e50; color: white; padding: 6px 10px; border-radius: 4px; font-size: 12px;">set()</code>
+                                                    <span>→</span>
+                                                    <div style="background: #2ecc71; color: white; padding: 10px 15px; border-radius: 6px;">
+                                                        {1, 2, 3}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">🐍 Estructuras de Datos</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#listas" class="toc-link">Listas</a></li>
+                    <li class="toc-item"><a href="#listas-metodos" class="toc-link">Métodos de Listas</a></li>
+                    <li class="toc-item"><a href="#listas-multidimensionales" class="toc-link">Listas Multidimensionales</a></li>
+                    <li class="toc-item"><a href="#tuplas" class="toc-link">Tuplas</a></li>
+                    <li class="toc-item"><a href="#conjuntos" class="toc-link">Conjuntos (Sets)</a></li>
+                    <li class="toc-item"><a href="#conjuntos-operaciones" class="toc-link">Operaciones de Conjuntos</a></li>
+                    <li class="toc-item"><a href="#diccionarios" class="toc-link">Diccionarios</a></li>
+                    <li class="toc-item"><a href="#diccionarios-metodos" class="toc-link">Métodos de Diccionarios</a></li>
+                    <li class="toc-item"><a href="#diccionarios-anidados" class="toc-link">Diccionarios Anidados</a></li>
+                    <li class="toc-item"><a href="#array-module" class="toc-link">Módulo array</a></li>
+                    <li class="toc-item"><a href="#comparacion" class="toc-link">Comparación</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>Python - Sistema de Aprendizaje | <a href="../index.html">Volver a Python</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script src="/assets/js/study-highlight.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) {
+                return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const tags = termino.getAttribute('data-tags') || '';
+                    const title = termino.querySelector('.tag')?.textContent || '';
+                    const desc = termino.querySelector('.descripcion')?.textContent || '';
+                    const ejemplo = termino.querySelector('.ejemplo')?.textContent || '';
+                    const searchText = normalizeText(tags + ' ' + title + ' ' + desc + ' ' + ejemplo);
+                    if (query === '' || searchText.includes(query)) {
+                        termino.style.display = 'block';
+                        found++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // Aplicar highlight.js solo a elementos .ejemplo que no tienen <br> (no son HTML)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.ejemplo').forEach(function(block) {
+                // Solo resaltar si no tiene elementos <br> (no es HTML con sintaxis manual)
+                if (block.querySelectorAll('br').length === 0) {
+                    block.classList.add('language-python');
+                    hljs.highlightElement(block);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

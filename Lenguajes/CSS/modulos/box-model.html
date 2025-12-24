@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Box Model - Sistema de Aprendizaje</title>
-    <link rel="stylesheet" href="/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/assets/css/glosario.css">
-    <link rel="stylesheet" href="/assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
+    <!-- Highlight.js para resaltado de sintaxis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
 <body>
     <header>
@@ -64,8 +67,57 @@
    Ancho = 200 + 20*2 + 5*2 = 250px
    Alto = 100 + 20*2 + 5*2 = 150px
    (margin no cuenta en el tamaño) */</div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 20px; border-radius: 4px;">
+                                    <div style="border: 4px solid #e74c3c; background: #3498db; padding: 20px; margin: 20px; display: inline-block; color: white;">
+                                        <strong>CONTENIDO</strong>
+                                        <p style="margin: 5px 0; font-size: 12px;">padding: 20px (azul)</p>
+                                        <p style="margin: 5px 0; font-size: 12px;">border: 4px (rojo)</p>
+                                        <p style="margin: 5px 0; font-size: 12px;">margin: 20px (gris)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="nota">
                             <strong>💡 De adentro hacia afuera:</strong> Content → Padding → Border → Margin
+                        </div>
+
+                        <!-- DIAGRAMA ANATÓMICO DETALLADO -->
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa anatómica del Box Model:</strong>
+                            <div class="preview-content">
+                                <div style="background: rgba(189,195,199,0.3); padding: 30px; border-radius: 4px; display: inline-block;">
+                                    <div style="background: rgba(189,195,199,0.6); padding: 5px; border-radius: 4px;">
+                                        <p style="margin: 0 0 5px 0; color: #95a5a6; font-weight: bold; font-size: 12px;">MARGIN (30px) - espacio externo transparente</p>
+                                        <div style="border: 5px solid #e74c3c; border-radius: 4px;">
+                                            <p style="margin: 5px; color: #e74c3c; font-weight: bold; font-size: 12px; background: rgba(231, 76, 60, 0.2); padding: 3px; border-radius: 2px;">BORDER (5px) - visible, puede tener color</p>
+                                            <div style="background: #3498db; padding: 20px; border-radius: 2px;">
+                                                <p style="margin: 0 0 5px 0; color: white; font-weight: bold; font-size: 12px;">PADDING (20px) - fondo se extiende aquí</p>
+                                                <div style="background: #2ecc71; padding: 20px; border-radius: 2px; width: 200px; height: 100px; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                                                    <p style="margin: 0; color: white; font-weight: bold;">CONTENT</p>
+                                                    <p style="margin: 5px 0 0 0; color: white; font-size: 12px;">200px × 100px</p>
+                                                    <p style="margin: 2px 0 0 0; color: white; font-size: 11px;">(texto, imágenes, etc.)</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="margin-top: 20px; background: #fff3cd; padding: 15px; border-radius: 4px; border-left: 4px solid #f1c40f;">
+                                    <strong style="color: #856404;">📊 CÁLCULO DEL TAMAÑO TOTAL (content-box):</strong><br>
+                                    Ancho total = 200 (content) + 20×2 (padding) + 5×2 (border) = <strong>250px</strong><br>
+                                    Alto total = 100 (content) + 20×2 (padding) + 5×2 (border) = <strong>150px</strong><br><br>
+                                    <span style="color: #d63031;">⚠️ El margin NO cuenta en el tamaño total</span> - solo crea espacio entre elementos
+                                </div>
+
+                                <div style="margin-top: 15px; background: #e8f5e9; padding: 15px; border-radius: 4px; border-left: 4px solid #4caf50;">
+                                    <strong style="color: #2e7d32;">📝 Orden de adentro hacia afuera:</strong><br>
+                                    Content (verde) → Padding (azul) → Border (rojo) → Margin (gris)
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -134,6 +186,63 @@ padding-left: 25px;
                         <div class="nota">
                             <strong>💡 Tip:</strong> Recuerda el orden con las agujas del reloj: Top, Right, Bottom, Left (TRBL).
                         </div>
+
+                        <!-- DIAGRAMA ORDEN TRBL -->
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa del orden TRBL (como un reloj):</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 30px; border-radius: 4px; display: inline-block;">
+                                    <!-- Ejemplo visual con padding diferente en cada lado -->
+                                    <div style="position: relative; display: inline-block;">
+                                        <!-- Flecha y label TOP -->
+                                        <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); color: #f1c40f; font-weight: bold; font-size: 13px; white-space: nowrap;">
+                                            ↓ TOP (10px)
+                                        </div>
+                                        <!-- Flecha y label RIGHT -->
+                                        <div style="position: absolute; right: -80px; top: 50%; transform: translateY(-50%); color: #3498db; font-weight: bold; font-size: 13px; white-space: nowrap;">
+                                            → RIGHT (15px)
+                                        </div>
+                                        <!-- Flecha y label BOTTOM -->
+                                        <div style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); color: #9b59b6; font-weight: bold; font-size: 13px; white-space: nowrap;">
+                                            ↑ BOTTOM (20px)
+                                        </div>
+                                        <!-- Flecha y label LEFT -->
+                                        <div style="position: absolute; left: -80px; top: 50%; transform: translateY(-50%); color: #e74c3c; font-weight: bold; font-size: 13px; white-space: nowrap;">
+                                            LEFT (25px) ←
+                                        </div>
+
+                                        <!-- Caja con padding diferente en cada lado -->
+                                        <div style="background: #3498db; padding: 10px 15px 20px 25px; border: 2px dashed #2c3e50;">
+                                            <div style="background: #2ecc71; padding: 20px; color: white; font-weight: bold; text-align: center;">
+                                                CONTENT<br>
+                                                <span style="font-size: 12px; font-weight: normal;">padding: 10px 15px 20px 25px;</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Explicación de los atajos -->
+                                <div style="margin-top: 30px; background: #fff3cd; padding: 20px; border-radius: 4px; border-left: 4px solid #f1c40f;">
+                                    <strong style="color: #856404; font-size: 15px;">📝 ATAJOS DE SINTAXIS:</strong>
+                                    <div style="margin-top: 15px; font-family: 'Courier New', monospace; font-size: 13px; line-height: 2.2;">
+                                        <div style="background: rgba(0,0,0,0.05); padding: 10px; border-radius: 4px; margin-bottom: 10px;">
+                                            <span style="color: #d63031; font-weight: bold;">padding: 20px;</span><br>
+                                            → Todos los lados = 20px
+                                        </div>
+                                        <div style="background: rgba(0,0,0,0.05); padding: 10px; border-radius: 4px; margin-bottom: 10px;">
+                                            <span style="color: #d63031; font-weight: bold;">padding: 10px 20px;</span><br>
+                                            → Vertical (arriba/abajo) = 10px<br>
+                                            → Horizontal (izq/der) = 20px
+                                        </div>
+                                        <div style="background: rgba(0,0,0,0.05); padding: 10px; border-radius: 4px;">
+                                            <span style="color: #d63031; font-weight: bold;">padding: 10px 15px 20px 25px;</span><br>
+                                            → <span style="color: #f1c40f;">T</span>op = 10px, <span style="color: #3498db;">R</span>ight = 15px, <span style="color: #9b59b6;">B</span>ottom = 20px, <span style="color: #e74c3c;">L</span>eft = 25px<br>
+                                            → <strong>Como las agujas del reloj: ⟳ T → R → B → L</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="margin" data-tags="margin margen externo espacio separacion">
@@ -171,6 +280,93 @@ margin-bottom: 30px;
 /* Entre dos párrafos: 30px (el mayor), NO 50px */</div>
                         <div class="nota">
                             <strong>⚠️ Margin Collapsing:</strong> Los márgenes verticales adyacentes se fusionan, quedando el mayor.
+                        </div>
+
+                        <!-- DIAGRAMA MARGIN COLLAPSING -->
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa de Margin Collapsing:</strong>
+                            <div class="preview-content">
+                                <!-- Comparación visual lado a lado -->
+                                <div style="display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap;">
+                                    <!-- LO QUE ESPERARÍAS (INCORRECTO) -->
+                                    <div style="background: #ffe5e5; padding: 20px; border-radius: 4px; border: 2px solid #e74c3c; flex: 1; min-width: 250px;">
+                                        <div style="text-align: center; color: #d63031; font-weight: bold; margin-bottom: 15px;">
+                                            ❌ LO QUE ESPERARÍAS<br>
+                                            <span style="font-size: 12px; font-weight: normal;">(pero NO pasa)</span>
+                                        </div>
+
+                                        <div style="background: #3498db; color: white; padding: 15px; border-radius: 4px; text-align: center; margin-bottom: 5px;">
+                                            Párrafo 1<br>
+                                            <span style="font-size: 11px;">margin-bottom: 30px</span>
+                                        </div>
+
+                                        <!-- Espacio de 30px -->
+                                        <div style="background: repeating-linear-gradient(0deg, #ffcccc 0px, #ffcccc 5px, transparent 5px, transparent 10px); height: 30px; position: relative;">
+                                            <span style="position: absolute; right: -35px; top: 50%; transform: translateY(-50%); color: #e74c3c; font-weight: bold; font-size: 12px; white-space: nowrap;">30px</span>
+                                        </div>
+
+                                        <!-- Espacio de 20px -->
+                                        <div style="background: repeating-linear-gradient(0deg, #ffd4d4 0px, #ffd4d4 5px, transparent 5px, transparent 10px); height: 20px; position: relative;">
+                                            <span style="position: absolute; right: -35px; top: 50%; transform: translateY(-50%); color: #e74c3c; font-weight: bold; font-size: 12px; white-space: nowrap;">20px</span>
+                                        </div>
+
+                                        <div style="background: #2ecc71; color: white; padding: 15px; border-radius: 4px; text-align: center; margin-top: 5px;">
+                                            Párrafo 2<br>
+                                            <span style="font-size: 11px;">margin-top: 20px</span>
+                                        </div>
+
+                                        <div style="margin-top: 15px; text-align: center; color: #d63031; font-weight: bold;">
+                                            Total: 50px ❌
+                                        </div>
+                                    </div>
+
+                                    <!-- LO QUE REALMENTE PASA (CORRECTO) -->
+                                    <div style="background: #e8f5e9; padding: 20px; border-radius: 4px; border: 2px solid #4caf50; flex: 1; min-width: 250px;">
+                                        <div style="text-align: center; color: #2e7d32; font-weight: bold; margin-bottom: 15px;">
+                                            ✅ LO QUE REALMENTE PASA<br>
+                                            <span style="font-size: 12px; font-weight: normal;">(collapse)</span>
+                                        </div>
+
+                                        <div style="background: #3498db; color: white; padding: 15px; border-radius: 4px; text-align: center; margin-bottom: 5px;">
+                                            Párrafo 1<br>
+                                            <span style="font-size: 11px;">margin-bottom: 30px</span>
+                                        </div>
+
+                                        <!-- Solo el espacio mayor (30px) -->
+                                        <div style="background: repeating-linear-gradient(0deg, #c8e6c9 0px, #c8e6c9 5px, transparent 5px, transparent 10px); height: 30px; position: relative;">
+                                            <span style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: #2e7d32; font-weight: bold; font-size: 12px; background: rgba(255,255,255,0.9); padding: 2px 8px; border-radius: 3px; white-space: nowrap;">solo 30px (el mayor)</span>
+                                        </div>
+
+                                        <div style="background: #2ecc71; color: white; padding: 15px; border-radius: 4px; text-align: center; margin-top: 5px;">
+                                            Párrafo 2<br>
+                                            <span style="font-size: 11px;">margin-top: 20px</span>
+                                        </div>
+
+                                        <div style="margin-top: 15px; text-align: center; color: #2e7d32; font-weight: bold;">
+                                            Total: 30px ✅
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tabla de ejemplos -->
+                                <div style="margin-top: 25px; background: #fff3cd; padding: 20px; border-radius: 4px; border-left: 4px solid #f1c40f;">
+                                    <strong style="color: #856404; font-size: 15px;">📊 EJEMPLOS DE MARGIN COLLAPSING:</strong>
+                                    <div style="margin-top: 15px; font-family: 'Courier New', monospace; font-size: 13px;">
+                                        <div style="background: rgba(0,0,0,0.05); padding: 12px; border-radius: 4px; margin-bottom: 8px;">
+                                            <span style="color: #d63031;">margin-bottom: 20px</span> + <span style="color: #d63031;">margin-top: 30px</span> = <strong style="color: #27ae60;">30px</strong> (el mayor)
+                                        </div>
+                                        <div style="background: rgba(0,0,0,0.05); padding: 12px; border-radius: 4px; margin-bottom: 8px;">
+                                            <span style="color: #d63031;">margin-bottom: 40px</span> + <span style="color: #d63031;">margin-top: 20px</span> = <strong style="color: #27ae60;">40px</strong> (el mayor)
+                                        </div>
+                                        <div style="background: rgba(0,0,0,0.05); padding: 12px; border-radius: 4px;">
+                                            <span style="color: #d63031;">margin-bottom: 25px</span> + <span style="color: #d63031;">margin-top: 25px</span> = <strong style="color: #27ae60;">25px</strong> (no 50px)
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 15px; padding: 12px; background: rgba(230, 126, 34, 0.15); border-radius: 4px; border-left: 3px solid #e67e22;">
+                                        <strong style="color: #d35400;">⚠️ Regla clave:</strong> Los márgenes verticales adyacentes se <strong>FUSIONAN</strong>, quedando solo el mayor. NO se suman.
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -272,6 +468,115 @@ border-bottom-left-radius: 20px;</div>
                         <div class="nota">
                             <strong>✅ Best Practice:</strong> Siempre usa border-box. Hace los cálculos mucho más intuitivos.
                         </div>
+
+                        <!-- COMPARACIÓN CONTENT-BOX VS BORDER-BOX -->
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: content-box vs border-box</strong>
+                            <div class="preview-content">
+                                <!-- Comparación visual lado a lado -->
+                                <div style="display: flex; gap: 30px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 25px;">
+                                    <!-- CONTENT-BOX (DEFAULT) -->
+                                    <div style="flex: 1; min-width: 280px;">
+                                        <div style="background: #ffe5e5; padding: 20px; border-radius: 4px; border: 2px solid #e74c3c;">
+                                            <div style="text-align: center; color: #d63031; font-weight: bold; margin-bottom: 15px;">
+                                                content-box<br>
+                                                <span style="font-size: 11px; font-weight: normal;">(DEFAULT - por defecto)</span>
+                                            </div>
+
+                                            <div style="background: #ecf0f1; padding: 10px; border-radius: 4px; margin-bottom: 15px; font-family: 'Courier New', monospace; font-size: 12px;">
+                                                width: 200px;<br>
+                                                padding: 20px;<br>
+                                                border: 5px solid;
+                                            </div>
+
+                                            <!-- Visualización del box con content-box -->
+                                            <div style="background: #95a5a6; padding: 5px; border-radius: 4px; display: inline-block;">
+                                                <div style="border: 5px solid #e74c3c; border-radius: 2px;">
+                                                    <div style="background: #3498db; padding: 20px; border-radius: 1px;">
+                                                        <div style="background: #2ecc71; width: 200px; height: 80px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 13px;">
+                                                            200px
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div style="margin-top: 15px; background: rgba(0,0,0,0.05); padding: 12px; border-radius: 4px; font-size: 13px; line-height: 1.8;">
+                                                <strong style="color: #d63031;">📊 Cálculo:</strong><br>
+                                                Content: 200px<br>
+                                                + Padding: 20×2 = 40px<br>
+                                                + Border: 5×2 = 10px<br>
+                                                ─────────────<br>
+                                                <strong style="color: #e74c3c;">Total: 250px ❌</strong>
+                                            </div>
+
+                                            <div style="margin-top: 12px; padding: 10px; background: rgba(230, 126, 34, 0.15); border-radius: 4px; font-size: 12px;">
+                                                width se refiere SOLO al contenido, padding y border se SUMAN
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- BORDER-BOX (RECOMENDADO) -->
+                                    <div style="flex: 1; min-width: 280px;">
+                                        <div style="background: #e8f5e9; padding: 20px; border-radius: 4px; border: 2px solid #4caf50;">
+                                            <div style="text-align: center; color: #2e7d32; font-weight: bold; margin-bottom: 15px;">
+                                                border-box<br>
+                                                <span style="font-size: 11px; font-weight: normal;">(RECOMENDADO ✅)</span>
+                                            </div>
+
+                                            <div style="background: #ecf0f1; padding: 10px; border-radius: 4px; margin-bottom: 15px; font-family: 'Courier New', monospace; font-size: 12px;">
+                                                width: 200px;<br>
+                                                padding: 20px;<br>
+                                                border: 5px solid;
+                                            </div>
+
+                                            <!-- Visualización del box con border-box -->
+                                            <div style="background: #95a5a6; padding: 5px; border-radius: 4px; display: inline-block;">
+                                                <div style="border: 5px solid #4caf50; border-radius: 2px; width: 200px; box-sizing: border-box;">
+                                                    <div style="background: #3498db; padding: 20px; border-radius: 1px;">
+                                                        <div style="background: #2ecc71; width: 100%; height: 80px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 13px;">
+                                                            150px<br>
+                                                            <span style="font-size: 10px;">(ajustado)</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div style="margin-top: 15px; background: rgba(0,0,0,0.05); padding: 12px; border-radius: 4px; font-size: 13px; line-height: 1.8;">
+                                                <strong style="color: #2e7d32;">📊 Cálculo:</strong><br>
+                                                Total: 200px<br>
+                                                - Padding: 20×2 = 40px<br>
+                                                - Border: 5×2 = 10px<br>
+                                                ─────────────<br>
+                                                <strong style="color: #27ae60;">Content: 150px ✅</strong>
+                                            </div>
+
+                                            <div style="margin-top: 12px; padding: 10px; background: rgba(46, 213, 115, 0.15); border-radius: 4px; font-size: 12px;">
+                                                width incluye TODO (content + padding + border). Contenido se ajusta automáticamente
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Explicación de por qué border-box es mejor -->
+                                <div style="background: #fff3cd; padding: 20px; border-radius: 4px; border-left: 4px solid #f1c40f;">
+                                    <strong style="color: #856404; font-size: 15px;">💡 ¿Por qué border-box es mejor?</strong>
+                                    <div style="margin-top: 15px; font-size: 13px; line-height: 2;">
+                                        <div style="margin-bottom: 8px;">
+                                            <strong style="color: #27ae60;">✓</strong> Cuando dices <code style="background: rgba(0,0,0,0.1); padding: 2px 6px; border-radius: 3px;">width: 200px</code>, el elemento mide <strong>exactamente 200px</strong>
+                                        </div>
+                                        <div style="margin-bottom: 8px;">
+                                            <strong style="color: #27ae60;">✓</strong> Más intuitivo para diseñar layouts
+                                        </div>
+                                        <div>
+                                            <strong style="color: #27ae60;">✓</strong> No tienes que hacer matemáticas mentales
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 15px; padding: 12px; background: rgba(52, 152, 219, 0.15); border-radius: 4px; border-left: 3px solid #3498db;">
+                                        <strong style="color: #2980b9;">🎯 Best Practice:</strong> Siempre usa <code style="background: rgba(0,0,0,0.1); padding: 2px 6px; border-radius: 3px;">box-sizing: border-box;</code> en tus proyectos
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="overflow" data-tags="overflow desbordamiento scroll hidden">
@@ -339,8 +644,8 @@ overflow-y: auto;       /* Solo vertical */
         <p>CSS - Sistema de Aprendizaje | <a href="../index.html">Volver a CSS</a></p>
     </footer>
 
-    <script src="/assets/js/sidebar-component.js"></script>
-    <script src="/assets/js/study-highlight.js"></script>
+    <script src="../../../assets/js/sidebar-component.js"></script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('searchInput');
@@ -391,6 +696,20 @@ overflow-y: auto;       /* Solo vertical */
                 const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
                 const scrolled = (winScroll / height) * 100;
                 document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // Aplicar highlight.js solo a elementos .ejemplo que no tienen <br> (no son HTML)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.ejemplo').forEach(function(block) {
+                // Solo resaltar si no tiene elementos <br> (no es HTML con sintaxis manual)
+                if (block.querySelectorAll('br').length === 0) {
+                    block.classList.add('language-css');
+                    hljs.highlightElement(block);
+                }
             });
         });
     </script>

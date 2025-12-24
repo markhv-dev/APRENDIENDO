@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tipos de Datos y Operadores - Python</title>
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
+    <!-- Highlight.js para resaltado de sintaxis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a Python</a>
+        <span class="icon">🐍</span>
+        <h1>Módulo 2: Tipos de Datos</h1>
+        <p class="subtitle">Tipos primitivos, strings y operadores</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(55, 118, 171, 0.1) 0%, rgba(55, 118, 171, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #3776ab; margin-bottom: 40px;">
+                <h2 style="color: #3776ab; margin-bottom: 15px; font-size: 1.8em;">📊 Tipos de Datos en Python</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    En Python todo es un objeto, incluso los tipos que en otros lenguajes son primitivos.
+                    Python tiene tipos numéricos, texto, booleanos, secuencias, conjuntos y diccionarios.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="tipos-numericos" data-tags="int float complex numero entero decimal">
+                        <span class="tag">📋 Tipos Numéricos</span>
+                        <p class="significado">int, float y complex para números</p>
+                        <div class="ejemplo"># int - Números enteros (sin límite de tamaño)
+x = 42
+y = -10
+grande = 123456789012345678901234567890
+
+# float - Números decimales (punto flotante)
+pi = 3.14159
+temperatura = -5.5
+cientifico = 1.5e10  # Notación científica
+
+# complex - Números complejos (parte real e imaginaria)
+z = 2 + 3j
+w = complex(4, 5)  # 4 + 5j
+print(z.real)  # 2.0
+print(z.imag)  # 3.0
+
+# Verificar tipo
+print(type(x))   # <class 'int'>
+print(type(pi))  # <class 'float'>
+print(type(z))   # <class 'complex'></div>
+                    <div class="vista-previa">
+                        <strong>👁️ Vista previa de tipos de datos:</strong>
+                        <div class="preview-content">
+                            <p><strong>Código Python:</strong></p>
+                            <pre style="white-space: pre-wrap; background: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 6px; font-family: 'Courier New', monospace;">numero = 42
+texto = "Hola Python"
+booleano = True
+flotante = 3.14
+
+print(type(numero))    # &lt;class 'int'&gt;
+print(type(texto))     # &lt;class 'str'&gt;
+print(type(booleano))  # &lt;class 'bool'&gt;
+print(type(flotante))  # &lt;class 'float'&gt;</pre>
+                            <p><strong>📤 Salida en terminal:</strong></p>
+                            <div style="background: #1e1e1e; color: #4ec9b0; font-family: 'Courier New', monospace; padding: 12px; border-radius: 6px; border-left: 3px solid #3776ab;">
+                                <span style="color: #dcdcaa;">&lt;class 'int'&gt;</span><br>
+                                <span style="color: #dcdcaa;">&lt;class 'str'&gt;</span><br>
+                                <span style="color: #dcdcaa;">&lt;class 'bool'&gt;</span><br>
+                                <span style="color: #dcdcaa;">&lt;class 'float'&gt;</span>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="nota">
+                            <strong>💡 Diferencia con Java:</strong> En Python int no tiene límite de tamaño, crece dinámicamente.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="tipo-string" data-tags="str string texto cadena caracteres">
+                        <span class="tag">📋 Tipo String (str)</span>
+                        <p class="significado">Secuencia inmutable de caracteres Unicode</p>
+                        <div class="ejemplo"># Formas de crear strings
+simple = 'Hola mundo'
+doble = "Hola mundo"
+triple = """Texto
+multilínea"""
+
+# Strings son inmutables
+texto = "Python"
+# texto[0] = "p"  # Error! No se puede modificar
+
+# Acceso por índice (empieza en 0)
+print(texto[0])   # P
+print(texto[-1])  # n (desde el final)
+
+# Slicing (rebanado)
+print(texto[0:2])   # Py
+print(texto[2:])    # thon
+print(texto[:3])    # Pyt
+print(texto[::2])   # Pto (cada 2)
+print(texto[::-1])  # nohtyP (invertir)
+
+# Longitud
+print(len(texto))  # 6</div>
+                        <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Indexación y Slicing de Strings</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                            <div style="text-align: center; margin-bottom: 20px;">
+                                <div style="background: #3498db; color: white; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 1.3em; display: inline-block;">
+                                    <div style="display: flex; gap: 5px;">
+                                        <div style="display: flex; flex-direction: column; align-items: center;">
+                                            <div style="background: #2c3e50; padding: 8px 12px; border-radius: 4px;">P</div>
+                                            <div style="font-size: 0.8em; margin-top: 5px; color: #f39c12;">0</div>
+                                            <div style="font-size: 0.7em; color: #e74c3c;">-6</div>
+                                        </div>
+                                        <div style="display: flex; flex-direction: column; align-items: center;">
+                                            <div style="background: #2c3e50; padding: 8px 12px; border-radius: 4px;">y</div>
+                                            <div style="font-size: 0.8em; margin-top: 5px; color: #f39c12;">1</div>
+                                            <div style="font-size: 0.7em; color: #e74c3c;">-5</div>
+                                        </div>
+                                        <div style="display: flex; flex-direction: column; align-items: center;">
+                                            <div style="background: #2c3e50; padding: 8px 12px; border-radius: 4px;">t</div>
+                                            <div style="font-size: 0.8em; margin-top: 5px; color: #f39c12;">2</div>
+                                            <div style="font-size: 0.7em; color: #e74c3c;">-4</div>
+                                        </div>
+                                        <div style="display: flex; flex-direction: column; align-items: center;">
+                                            <div style="background: #2c3e50; padding: 8px 12px; border-radius: 4px;">h</div>
+                                            <div style="font-size: 0.8em; margin-top: 5px; color: #f39c12;">3</div>
+                                            <div style="font-size: 0.7em; color: #e74c3c;">-3</div>
+                                        </div>
+                                        <div style="display: flex; flex-direction: column; align-items: center;">
+                                            <div style="background: #2c3e50; padding: 8px 12px; border-radius: 4px;">o</div>
+                                            <div style="font-size: 0.8em; margin-top: 5px; color: #f39c12;">4</div>
+                                            <div style="font-size: 0.7em; color: #e74c3c;">-2</div>
+                                        </div>
+                                        <div style="display: flex; flex-direction: column; align-items: center;">
+                                            <div style="background: #2c3e50; padding: 8px 12px; border-radius: 4px;">n</div>
+                                            <div style="font-size: 0.8em; margin-top: 5px; color: #f39c12;">5</div>
+                                            <div style="font-size: 0.7em; color: #e74c3c;">-1</div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 10px; font-size: 0.7em; color: #ecf0f1;">texto = "Python"</div>
+                                </div>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+                                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #2ecc71;">
+                                    <div style="font-weight: bold; color: #2c3e50; margin-bottom: 10px;">📍 Indexación</div>
+                                    <div style="font-family: monospace; color: #555;">
+                                        <div style="margin: 5px 0;">texto[0] → <span style="color: #2ecc71; font-weight: bold;">'P'</span></div>
+                                        <div style="margin: 5px 0;">texto[-1] → <span style="color: #2ecc71; font-weight: bold;">'n'</span></div>
+                                        <div style="margin: 5px 0;">texto[2] → <span style="color: #2ecc71; font-weight: bold;">'t'</span></div>
+                                    </div>
+                                </div>
+                                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #9b59b6;">
+                                    <div style="font-weight: bold; color: #2c3e50; margin-bottom: 10px;">✂️ Slicing</div>
+                                    <div style="font-family: monospace; color: #555;">
+                                        <div style="margin: 5px 0;">texto[0:2] → <span style="color: #9b59b6; font-weight: bold;">'Py'</span></div>
+                                        <div style="margin: 5px 0;">texto[2:] → <span style="color: #9b59b6; font-weight: bold;">'thon'</span></div>
+                                        <div style="margin: 5px 0;">texto[::-1] → <span style="color: #9b59b6; font-weight: bold;">'nohtyP'</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div></div></div>
+                    </div>
+
+                    <div class="termino" id="string-operaciones" data-tags="concatenacion repeticion string operaciones">
+                        <span class="tag">📋 Operaciones con Strings</span>
+                        <p class="significado">Concatenación, repetición y formateo</p>
+                        <div class="ejemplo"># Concatenación
+saludo = "Hola" + " " + "Mundo"  # "Hola Mundo"
+
+# Repetición
+linea = "-" * 20  # "--------------------"
+
+# f-strings (formateo moderno - Python 3.6+)
+nombre = "Ana"
+edad = 25
+mensaje = f"Hola {nombre}, tienes {edad} años"
+
+# Expresiones en f-strings
+precio = 100
+total = f"Total: ${precio * 1.18:.2f}"  # "Total: $118.00"
+
+# format() - método tradicional
+texto = "Hola {}, tienes {} años".format(nombre, edad)
+
+# % - estilo antiguo (no recomendado)
+texto = "Hola %s, tienes %d años" % (nombre, edad)</div>
+                        <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Métodos de Formateo de Strings</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                            <div style="text-align: center; margin-bottom: 20px; background: #3498db; color: white; padding: 15px; border-radius: 8px;">
+                                <div style="font-size: 1.2em; margin-bottom: 5px;">Variables de entrada</div>
+                                <div style="font-family: monospace; font-size: 1.1em;">nombre = "Ana" | edad = 25 | precio = 100</div>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr; gap: 15px;">
+                                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #2ecc71;">
+                                    <div style="font-weight: bold; color: #2c3e50; margin-bottom: 10px;">✨ f-strings (Recomendado - Python 3.6+)</div>
+                                    <div style="font-family: monospace; color: #555; background: #f8f9fa; padding: 10px; border-radius: 4px; margin-bottom: 8px;">
+                                        f"Hola {nombre}, tienes {edad} años"
+                                    </div>
+                                    <div style="background: #2ecc71; color: white; padding: 10px; border-radius: 4px; font-family: monospace;">
+                                        → "Hola Ana, tienes 25 años"
+                                    </div>
+                                    <div style="margin-top: 10px; color: #666; font-size: 0.9em;">💡 Soporta expresiones: f"Total: ${precio * 1.18:.2f}"</div>
+                                </div>
+                                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #f39c12;">
+                                    <div style="font-weight: bold; color: #2c3e50; margin-bottom: 10px;">🔧 .format() (Tradicional)</div>
+                                    <div style="font-family: monospace; color: #555; background: #f8f9fa; padding: 10px; border-radius: 4px; margin-bottom: 8px;">
+                                        "Hola {}, tienes {} años".format(nombre, edad)
+                                    </div>
+                                    <div style="background: #f39c12; color: white; padding: 10px; border-radius: 4px; font-family: monospace;">
+                                        → "Hola Ana, tienes 25 años"
+                                    </div>
+                                </div>
+                                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #95a5a6;">
+                                    <div style="font-weight: bold; color: #2c3e50; margin-bottom: 10px;">🔗 Concatenación (+)</div>
+                                    <div style="font-family: monospace; color: #555; background: #f8f9fa; padding: 10px; border-radius: 4px; margin-bottom: 8px;">
+                                        "Hola " + nombre + ", tienes " + str(edad) + " años"
+                                    </div>
+                                    <div style="background: #95a5a6; color: white; padding: 10px; border-radius: 4px; font-family: monospace;">
+                                        → "Hola Ana, tienes 25 años"
+                                    </div>
+                                    <div style="margin-top: 10px; color: #666; font-size: 0.9em;">⚠️ Menos eficiente y menos legible</div>
+                                </div>
+                            </div>
+                        </div></div></div>
+                    </div>
+
+                    <div class="termino" id="string-metodos" data-tags="metodos string upper lower split join">
+                        <span class="tag">📋 Métodos de String</span>
+                        <p class="significado">Funciones integradas para manipular texto</p>
+                        <div class="ejemplo">texto = "  Hola Mundo  "
+
+# Mayúsculas/minúsculas
+texto.upper()       # "  HOLA MUNDO  "
+texto.lower()       # "  hola mundo  "
+texto.capitalize()  # "  hola mundo  "
+texto.title()       # "  Hola Mundo  "
+texto.swapcase()    # "  hOLA mUNDO  "
+
+# Eliminar espacios
+texto.strip()       # "Hola Mundo"
+texto.lstrip()      # "Hola Mundo  "
+texto.rstrip()      # "  Hola Mundo"
+
+# Buscar y reemplazar
+texto.find("Mundo")     # 7 (índice)
+texto.replace("Mundo", "Python")
+texto.count("o")        # 2
+
+# Dividir y unir
+"a,b,c".split(",")      # ['a', 'b', 'c']
+"-".join(['a', 'b'])    # "a-b"
+
+# Verificaciones
+"hola".isalpha()    # True
+"123".isdigit()     # True
+"hola".startswith("ho")  # True
+"hola".endswith("la")    # True</div>
+                        <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Métodos de String más Usados</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                            <div style="text-align: center; margin-bottom: 20px; background: #3498db; color: white; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 1.2em;">
+                                texto = "  Hola Mundo  "
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 20px;">
+                                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #9b59b6;">
+                                    <div style="font-weight: bold; color: #2c3e50; margin-bottom: 10px;">🔠 Transformación de Mayúsculas</div>
+                                    <div style="font-family: monospace; color: #555; font-size: 0.9em;">
+                                        <div style="margin: 5px 0;">.upper() → <span style="color: #9b59b6; font-weight: bold;">"  HOLA MUNDO  "</span></div>
+                                        <div style="margin: 5px 0;">.lower() → <span style="color: #9b59b6; font-weight: bold;">"  hola mundo  "</span></div>
+                                        <div style="margin: 5px 0;">.title() → <span style="color: #9b59b6; font-weight: bold;">"  Hola Mundo  "</span></div>
+                                    </div>
+                                </div>
+                                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #2ecc71;">
+                                    <div style="font-weight: bold; color: #2c3e50; margin-bottom: 10px;">✂️ Eliminación de Espacios</div>
+                                    <div style="font-family: monospace; color: #555; font-size: 0.9em;">
+                                        <div style="margin: 5px 0;">.strip() → <span style="color: #2ecc71; font-weight: bold;">"Hola Mundo"</span></div>
+                                        <div style="margin: 5px 0;">.lstrip() → <span style="color: #2ecc71; font-weight: bold;">"Hola Mundo  "</span></div>
+                                        <div style="margin: 5px 0;">.rstrip() → <span style="color: #2ecc71; font-weight: bold;">"  Hola Mundo"</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr; gap: 15px;">
+                                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #e74c3c;">
+                                    <div style="font-weight: bold; color: #2c3e50; margin-bottom: 10px;">🔍 Dividir y Unir</div>
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                        <div style="font-family: monospace; color: #555; font-size: 0.9em;">
+                                            <div style="background: #f8f9fa; padding: 8px; border-radius: 4px; margin-bottom: 5px;">"a,b,c".split(",")</div>
+                                            <div style="color: #e74c3c; font-weight: bold;">→ ['a', 'b', 'c']</div>
+                                        </div>
+                                        <div style="font-family: monospace; color: #555; font-size: 0.9em;">
+                                            <div style="background: #f8f9fa; padding: 8px; border-radius: 4px; margin-bottom: 5px;">"-".join(['a', 'b'])</div>
+                                            <div style="color: #e74c3c; font-weight: bold;">→ "a-b"</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #f39c12;">
+                                    <div style="font-weight: bold; color: #2c3e50; margin-bottom: 10px;">🔎 Buscar y Reemplazar</div>
+                                    <div style="font-family: monospace; color: #555; font-size: 0.9em;">
+                                        <div style="margin: 5px 0;">.find("Mundo") → <span style="color: #f39c12; font-weight: bold;">7</span> (índice donde empieza)</div>
+                                        <div style="margin: 5px 0;">.replace("Mundo", "Python") → <span style="color: #f39c12; font-weight: bold;">"  Hola Python  "</span></div>
+                                        <div style="margin: 5px 0;">.count("o") → <span style="color: #f39c12; font-weight: bold;">2</span> (apariciones)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div></div></div>
+                    </div>
+
+                    <div class="termino" id="secuencias-escape" data-tags="escape secuencias especiales">
+                        <span class="tag">📋 Secuencias de Escape</span>
+                        <p class="significado">Caracteres especiales en strings</p>
+                        <div class="ejemplo"># Secuencias de escape comunes
+print("Hola\\nMundo")   # Salto de línea
+print("Tab:\\tAquí")    # Tabulación
+print("Comilla: \\"")   # Comilla doble
+print('Comilla: \\'')   # Comilla simple
+print("Barra: \\\\")    # Barra invertida
+
+# Resultado:
+# Hola
+# Mundo
+# Tab:    Aquí
+# Comilla: "
+# Comilla: '
+# Barra: \
+
+# Raw strings (ignora escapes)
+ruta = r"C:\\Users\\nombre"
+print(ruta)  # C:\Users\nombre
+
+# Útil para regex
+import re
+patron = r"\\d+"  # Dígitos</div>
+                        <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Secuencias de Escape</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #3498db;">
+                                    <div style="font-weight: bold; color: #2c3e50; margin-bottom: 10px;">📝 String Normal</div>
+                                    <div style="font-family: monospace; color: #555; background: #f8f9fa; padding: 10px; border-radius: 4px; margin-bottom: 10px; font-size: 0.9em;">
+                                        print("Hola\\nMundo")
+                                    </div>
+                                    <div style="background: #2c3e50; color: #2ecc71; padding: 10px; border-radius: 4px; font-family: monospace; font-size: 0.9em;">
+                                        Hola<br>Mundo
+                                    </div>
+                                    <div style="margin-top: 10px; color: #666; font-size: 0.85em;">✓ Interpreta \\n como salto de línea</div>
+                                </div>
+                                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #e74c3c;">
+                                    <div style="font-weight: bold; color: #2c3e50; margin-bottom: 10px;">🔤 Raw String (r"")</div>
+                                    <div style="font-family: monospace; color: #555; background: #f8f9fa; padding: 10px; border-radius: 4px; margin-bottom: 10px; font-size: 0.9em;">
+                                        print(r"Hola\\nMundo")
+                                    </div>
+                                    <div style="background: #2c3e50; color: #2ecc71; padding: 10px; border-radius: 4px; font-family: monospace; font-size: 0.9em;">
+                                        Hola\\nMundo
+                                    </div>
+                                    <div style="margin-top: 10px; color: #666; font-size: 0.85em;">✓ Muestra \\n literalmente</div>
+                                </div>
+                            </div>
+                            <div style="background: white; padding: 20px; border-radius: 6px; margin-top: 15px; border-left: 4px solid #9b59b6;">
+                                <div style="font-weight: bold; color: #2c3e50; margin-bottom: 15px; font-size: 1.1em;">🎯 Secuencias de Escape Comunes</div>
+                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+                                    <div style="background: #f8f9fa; padding: 10px; border-radius: 4px; text-align: center;">
+                                        <div style="font-family: monospace; color: #9b59b6; font-weight: bold; margin-bottom: 5px;">\\n</div>
+                                        <div style="font-size: 0.85em; color: #666;">Salto de línea</div>
+                                    </div>
+                                    <div style="background: #f8f9fa; padding: 10px; border-radius: 4px; text-align: center;">
+                                        <div style="font-family: monospace; color: #9b59b6; font-weight: bold; margin-bottom: 5px;">\\t</div>
+                                        <div style="font-size: 0.85em; color: #666;">Tabulación</div>
+                                    </div>
+                                    <div style="background: #f8f9fa; padding: 10px; border-radius: 4px; text-align: center;">
+                                        <div style="font-family: monospace; color: #9b59b6; font-weight: bold; margin-bottom: 5px;">\\\\</div>
+                                        <div style="font-size: 0.85em; color: #666;">Barra invertida</div>
+                                    </div>
+                                    <div style="background: #f8f9fa; padding: 10px; border-radius: 4px; text-align: center;">
+                                        <div style="font-family: monospace; color: #9b59b6; font-weight: bold; margin-bottom: 5px;">\\'</div>
+                                        <div style="font-size: 0.85em; color: #666;">Comilla simple</div>
+                                    </div>
+                                    <div style="background: #f8f9fa; padding: 10px; border-radius: 4px; text-align: center;">
+                                        <div style="font-family: monospace; color: #9b59b6; font-weight: bold; margin-bottom: 5px;">\\"</div>
+                                        <div style="font-size: 0.85em; color: #666;">Comilla doble</div>
+                                    </div>
+                                    <div style="background: #f8f9fa; padding: 10px; border-radius: 4px; text-align: center;">
+                                        <div style="font-family: monospace; color: #9b59b6; font-weight: bold; margin-bottom: 5px;">\\r</div>
+                                        <div style="font-size: 0.85em; color: #666;">Retorno de carro</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="background: #fff3cd; padding: 12px; border-radius: 6px; margin-top: 15px; border-left: 4px solid #f39c12;">
+                                <div style="color: #856404; font-size: 0.9em;">
+                                    <strong>💡 Tip:</strong> Usa raw strings (r"") para rutas de archivos y expresiones regulares
+                                </div>
+                            </div>
+                        </div></div></div>
+                    </div>
+
+                    <div class="termino" id="tipo-boolean" data-tags="bool boolean true false">
+                        <span class="tag">📋 Tipo Boolean (bool)</span>
+                        <p class="significado">Valores True y False</p>
+                        <div class="ejemplo"># Valores booleanos
+activo = True
+eliminado = False
+
+# bool es subclase de int
+print(True == 1)   # True
+print(False == 0)  # True
+print(True + True) # 2
+
+# Valores "falsy" (se evalúan como False)
+bool(0)        # False
+bool(0.0)      # False
+bool("")       # False
+bool([])       # False (lista vacía)
+bool({})       # False (dict vacío)
+bool(None)     # False
+
+# Valores "truthy" (se evalúan como True)
+bool(1)        # True
+bool(-1)       # True
+bool("texto")  # True
+bool([1,2])    # True
+
+# Uso en condicionales
+if lista:  # Equivale a: if len(lista) > 0
+    print("Lista no vacía")</div>
+                        <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Valores Truthy y Falsy</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                                <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #e74c3c;">
+                                    <div style="text-align: center; background: #e74c3c; color: white; padding: 12px; border-radius: 6px; margin-bottom: 15px; font-weight: bold; font-size: 1.1em;">
+                                        ❌ FALSY (bool = False)
+                                    </div>
+                                    <div style="font-family: monospace; color: #555; font-size: 0.95em;">
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px; border-left: 3px solid #e74c3c;">
+                                            <span style="color: #e74c3c; font-weight: bold;">False</span> → bool(False)
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px; border-left: 3px solid #e74c3c;">
+                                            <span style="color: #e74c3c; font-weight: bold;">0</span> → bool(0)
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px; border-left: 3px solid #e74c3c;">
+                                            <span style="color: #e74c3c; font-weight: bold;">0.0</span> → bool(0.0)
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px; border-left: 3px solid #e74c3c;">
+                                            <span style="color: #e74c3c; font-weight: bold;">""</span> → bool("")
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px; border-left: 3px solid #e74c3c;">
+                                            <span style="color: #e74c3c; font-weight: bold;">[]</span> → bool([])
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px; border-left: 3px solid #e74c3c;">
+                                            <span style="color: #e74c3c; font-weight: bold;">{}</span> → bool({})
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px; border-left: 3px solid #e74c3c;">
+                                            <span style="color: #e74c3c; font-weight: bold;">None</span> → bool(None)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #2ecc71;">
+                                    <div style="text-align: center; background: #2ecc71; color: white; padding: 12px; border-radius: 6px; margin-bottom: 15px; font-weight: bold; font-size: 1.1em;">
+                                        ✓ TRUTHY (bool = True)
+                                    </div>
+                                    <div style="font-family: monospace; color: #555; font-size: 0.95em;">
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px; border-left: 3px solid #2ecc71;">
+                                            <span style="color: #2ecc71; font-weight: bold;">True</span> → bool(True)
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px; border-left: 3px solid #2ecc71;">
+                                            <span style="color: #2ecc71; font-weight: bold;">1</span> → bool(1)
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px; border-left: 3px solid #2ecc71;">
+                                            <span style="color: #2ecc71; font-weight: bold;">-1</span> → bool(-1)
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px; border-left: 3px solid #2ecc71;">
+                                            <span style="color: #2ecc71; font-weight: bold;">"texto"</span> → bool("texto")
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px; border-left: 3px solid #2ecc71;">
+                                            <span style="color: #2ecc71; font-weight: bold;">[1,2]</span> → bool([1,2])
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px; border-left: 3px solid #2ecc71;">
+                                            <span style="color: #2ecc71; font-weight: bold;">{"a":1}</span> → bool({"a":1})
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px; border-left: 3px solid #2ecc71;">
+                                            <span style="color: #2ecc71; font-weight: bold;">3.14</span> → bool(3.14)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="background: #3498db; color: white; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                                <div style="font-weight: bold; margin-bottom: 10px; font-size: 1.05em;">📌 Dato Interesante: bool es subclase de int</div>
+                                <div style="font-family: monospace; background: rgba(255,255,255,0.1); padding: 10px; border-radius: 4px;">
+                                    True == 1  →  <span style="color: #2ecc71; font-weight: bold;">True</span><br>
+                                    False == 0  →  <span style="color: #2ecc71; font-weight: bold;">True</span><br>
+                                    True + True  →  <span style="color: #f39c12; font-weight: bold;">2</span>
+                                </div>
+                            </div>
+                        </div></div></div>
+                    </div>
+
+                    <div class="termino" id="tipo-none" data-tags="none null nulo ausencia">
+                        <span class="tag">📋 Tipo None (NoneType)</span>
+                        <p class="significado">Representa la ausencia de valor</p>
+                        <div class="ejemplo"># None es el equivalente a null en otros lenguajes
+resultado = None
+
+# Verificar None con 'is' (no con ==)
+if resultado is None:
+    print("Sin valor")
+
+if resultado is not None:
+    print("Tiene valor")
+
+# Funciones sin return devuelven None
+def sin_retorno():
+    print("Hola")
+
+x = sin_retorno()
+print(x)  # None
+
+# Valor por defecto en parámetros
+def saludar(nombre=None):
+    if nombre is None:
+        nombre = "Anónimo"
+    print(f"Hola {nombre}")</div>
+                        <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: None - Ausencia de Valor</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                            <div style="text-align: center; margin-bottom: 20px;">
+                                <div style="background: #95a5a6; color: white; padding: 20px; border-radius: 8px; display: inline-block; font-size: 1.3em; font-weight: bold;">
+                                    None = Ausencia de Valor
+                                </div>
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 20px;">
+                                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #2ecc71;">
+                                    <div style="font-weight: bold; color: #2c3e50; margin-bottom: 10px;">✓ Forma Correcta (is)</div>
+                                    <div style="font-family: monospace; color: #555; background: #f8f9fa; padding: 10px; border-radius: 4px; font-size: 0.9em;">
+                                        if resultado <span style="color: #2ecc71; font-weight: bold;">is None</span>:<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;print("Sin valor")
+                                    </div>
+                                    <div style="margin-top: 10px; color: #2ecc71; font-size: 0.85em;">✓ Compara identidad de objeto</div>
+                                </div>
+                                <div style="background: white; padding: 15px; border-radius: 6px; border-left: 4px solid #e74c3c;">
+                                    <div style="font-weight: bold; color: #2c3e50; margin-bottom: 10px;">⚠️ Funciona pero no recomendado (==)</div>
+                                    <div style="font-family: monospace; color: #555; background: #f8f9fa; padding: 10px; border-radius: 4px; font-size: 0.9em;">
+                                        if resultado <span style="color: #e74c3c; font-weight: bold;">== None</span>:<br>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;print("Sin valor")
+                                    </div>
+                                    <div style="margin-top: 10px; color: #e74c3c; font-size: 0.85em;">⚠️ Compara valores</div>
+                                </div>
+                            </div>
+                            <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #9b59b6;">
+                                <div style="font-weight: bold; color: #2c3e50; margin-bottom: 15px; font-size: 1.05em;">🔄 Casos de Uso Comunes</div>
+                                <div style="display: grid; grid-template-columns: 1fr; gap: 12px;">
+                                    <div style="background: #f8f9fa; padding: 12px; border-radius: 4px;">
+                                        <div style="color: #9b59b6; font-weight: bold; margin-bottom: 5px;">1. Funciones sin return</div>
+                                        <div style="font-family: monospace; color: #555; font-size: 0.9em;">
+                                            def saludo():<br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;print("Hola")<br>
+                                            <br>
+                                            x = saludo()  # x = <span style="color: #e74c3c;">None</span>
+                                        </div>
+                                    </div>
+                                    <div style="background: #f8f9fa; padding: 12px; border-radius: 4px;">
+                                        <div style="color: #9b59b6; font-weight: bold; margin-bottom: 5px;">2. Valores por defecto</div>
+                                        <div style="font-family: monospace; color: #555; font-size: 0.9em;">
+                                            def procesar(data=<span style="color: #e74c3c;">None</span>):<br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;if data is None:<br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data = []
+                                        </div>
+                                    </div>
+                                    <div style="background: #f8f9fa; padding: 12px; border-radius: 4px;">
+                                        <div style="color: #9b59b6; font-weight: bold; margin-bottom: 5px;">3. Inicialización de variables</div>
+                                        <div style="font-family: monospace; color: #555; font-size: 0.9em;">
+                                            resultado = <span style="color: #e74c3c;">None</span><br>
+                                            # ... procesamiento ...<br>
+                                            if resultado is not None:<br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;print(resultado)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div></div></div>
+                    </div>
+
+                    <div class="termino" id="operadores-aritmeticos" data-tags="operadores aritmeticos suma resta multiplicacion division">
+                        <span class="tag">📋 Operadores Aritméticos</span>
+                        <p class="significado">Operadores para cálculos matemáticos</p>
+                        <div class="ejemplo">a, b = 10, 3
+
+# Operadores básicos
+suma = a + b        # 13
+resta = a - b       # 7
+mult = a * b        # 30
+div = a / b         # 3.333... (siempre float)
+div_entera = a // b # 3 (solo parte entera)
+modulo = a % b      # 1 (resto)
+potencia = a ** b   # 1000 (10^3)
+
+# Operadores de asignación compuesta
+x = 5
+x += 3   # x = x + 3 → 8
+x -= 2   # x = x - 2 → 6
+x *= 2   # x = x * 2 → 12
+x /= 3   # x = x / 3 → 4.0
+x //= 2  # x = x // 2 → 2.0
+x %= 3   # x = x % 3 → 2.0
+x **= 2  # x = x ** 2 → 4.0
+
+# Negación
+n = -5
+print(-n)  # 5</div>
+                        <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Operadores Aritméticos</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                            <div style="text-align: center; margin-bottom: 20px; background: #3498db; color: white; padding: 15px; border-radius: 8px; font-family: monospace; font-size: 1.2em;">
+                                a = 10 | b = 3
+                            </div>
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px;">
+                                <div style="background: white; padding: 15px; border-radius: 6px; text-align: center; border-left: 4px solid #2ecc71;">
+                                    <div style="font-size: 2em; color: #2ecc71; margin-bottom: 5px;">+</div>
+                                    <div style="font-family: monospace; color: #555; margin-bottom: 5px;">a + b</div>
+                                    <div style="background: #2ecc71; color: white; padding: 8px; border-radius: 4px; font-weight: bold; font-size: 1.2em;">13</div>
+                                    <div style="margin-top: 5px; color: #666; font-size: 0.85em;">Suma</div>
+                                </div>
+                                <div style="background: white; padding: 15px; border-radius: 6px; text-align: center; border-left: 4px solid #e74c3c;">
+                                    <div style="font-size: 2em; color: #e74c3c; margin-bottom: 5px;">-</div>
+                                    <div style="font-family: monospace; color: #555; margin-bottom: 5px;">a - b</div>
+                                    <div style="background: #e74c3c; color: white; padding: 8px; border-radius: 4px; font-weight: bold; font-size: 1.2em;">7</div>
+                                    <div style="margin-top: 5px; color: #666; font-size: 0.85em;">Resta</div>
+                                </div>
+                                <div style="background: white; padding: 15px; border-radius: 6px; text-align: center; border-left: 4px solid #9b59b6;">
+                                    <div style="font-size: 2em; color: #9b59b6; margin-bottom: 5px;">*</div>
+                                    <div style="font-family: monospace; color: #555; margin-bottom: 5px;">a * b</div>
+                                    <div style="background: #9b59b6; color: white; padding: 8px; border-radius: 4px; font-weight: bold; font-size: 1.2em;">30</div>
+                                    <div style="margin-top: 5px; color: #666; font-size: 0.85em;">Multiplicación</div>
+                                </div>
+                                <div style="background: white; padding: 15px; border-radius: 6px; text-align: center; border-left: 4px solid #f39c12;">
+                                    <div style="font-size: 2em; color: #f39c12; margin-bottom: 5px;">/</div>
+                                    <div style="font-family: monospace; color: #555; margin-bottom: 5px;">a / b</div>
+                                    <div style="background: #f39c12; color: white; padding: 8px; border-radius: 4px; font-weight: bold; font-size: 1.2em;">3.333...</div>
+                                    <div style="margin-top: 5px; color: #666; font-size: 0.85em;">División (float)</div>
+                                </div>
+                                <div style="background: white; padding: 15px; border-radius: 6px; text-align: center; border-left: 4px solid #3498db;">
+                                    <div style="font-size: 2em; color: #3498db; margin-bottom: 5px;">//</div>
+                                    <div style="font-family: monospace; color: #555; margin-bottom: 5px;">a // b</div>
+                                    <div style="background: #3498db; color: white; padding: 8px; border-radius: 4px; font-weight: bold; font-size: 1.2em;">3</div>
+                                    <div style="margin-top: 5px; color: #666; font-size: 0.85em;">División entera</div>
+                                </div>
+                                <div style="background: white; padding: 15px; border-radius: 6px; text-align: center; border-left: 4px solid #1abc9c;">
+                                    <div style="font-size: 2em; color: #1abc9c; margin-bottom: 5px;">%</div>
+                                    <div style="font-family: monospace; color: #555; margin-bottom: 5px;">a % b</div>
+                                    <div style="background: #1abc9c; color: white; padding: 8px; border-radius: 4px; font-weight: bold; font-size: 1.2em;">1</div>
+                                    <div style="margin-top: 5px; color: #666; font-size: 0.85em;">Módulo (resto)</div>
+                                </div>
+                                <div style="background: white; padding: 15px; border-radius: 6px; text-align: center; border-left: 4px solid #e91e63; grid-column: span 3;">
+                                    <div style="font-size: 2em; color: #e91e63; margin-bottom: 5px;">**</div>
+                                    <div style="font-family: monospace; color: #555; margin-bottom: 5px;">a ** b</div>
+                                    <div style="background: #e91e63; color: white; padding: 8px; border-radius: 4px; font-weight: bold; font-size: 1.2em;">1000</div>
+                                    <div style="margin-top: 5px; color: #666; font-size: 0.85em;">Potencia (10³)</div>
+                                </div>
+                            </div>
+                            <div style="background: #fff3cd; padding: 15px; border-radius: 6px; border-left: 4px solid #f39c12;">
+                                <div style="font-weight: bold; color: #856404; margin-bottom: 10px;">⚡ Operadores de Asignación Compuesta</div>
+                                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; font-family: monospace; font-size: 0.9em; color: #555;">
+                                    <div style="background: white; padding: 8px; border-radius: 4px; text-align: center;">x += 3</div>
+                                    <div style="background: white; padding: 8px; border-radius: 4px; text-align: center;">x -= 2</div>
+                                    <div style="background: white; padding: 8px; border-radius: 4px; text-align: center;">x *= 2</div>
+                                    <div style="background: white; padding: 8px; border-radius: 4px; text-align: center;">x /= 3</div>
+                                    <div style="background: white; padding: 8px; border-radius: 4px; text-align: center;">x //= 2</div>
+                                    <div style="background: white; padding: 8px; border-radius: 4px; text-align: center;">x %= 3</div>
+                                    <div style="background: white; padding: 8px; border-radius: 4px; text-align: center;">x **= 2</div>
+                                    <div style="background: #f39c12; color: white; padding: 8px; border-radius: 4px; text-align: center;">etc...</div>
+                                </div>
+                            </div>
+                        </div></div></div>
+                    </div>
+
+                    <div class="termino" id="operadores-comparacion" data-tags="operadores comparacion igual diferente mayor menor">
+                        <span class="tag">📋 Operadores de Comparación</span>
+                        <p class="significado">Comparan valores y retornan boolean</p>
+                        <div class="ejemplo"># Igualdad y desigualdad
+5 == 5      # True
+5 == "5"    # False (tipos diferentes)
+5 != 3      # True
+
+# Comparación numérica
+5 > 3       # True
+5 < 3       # False
+5 >= 5      # True
+5 <= 4      # False
+
+# Comparación encadenada (exclusivo de Python)
+x = 5
+1 < x < 10        # True (1 < x AND x < 10)
+1 < x < 3         # False
+10 >= x >= 1      # True
+
+# Comparación de strings (orden lexicográfico)
+"apple" < "banana"  # True
+"Apple" < "apple"   # True (mayúsculas primero)</div>
+                        <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Operadores de Comparación</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 20px;">
+                                <div style="background: white; padding: 15px; border-radius: 6px; text-align: center; border-left: 4px solid #2ecc71;">
+                                    <div style="font-size: 2em; color: #2ecc71; margin-bottom: 5px;">==</div>
+                                    <div style="font-family: monospace; color: #555; margin-bottom: 8px;">5 == 5</div>
+                                    <div style="background: #2ecc71; color: white; padding: 8px; border-radius: 4px; font-weight: bold;">True</div>
+                                    <div style="margin-top: 8px; color: #666; font-size: 0.85em;">Igual a</div>
+                                </div>
+                                <div style="background: white; padding: 15px; border-radius: 6px; text-align: center; border-left: 4px solid #e74c3c;">
+                                    <div style="font-size: 2em; color: #e74c3c; margin-bottom: 5px;">!=</div>
+                                    <div style="font-family: monospace; color: #555; margin-bottom: 8px;">5 != 3</div>
+                                    <div style="background: #2ecc71; color: white; padding: 8px; border-radius: 4px; font-weight: bold;">True</div>
+                                    <div style="margin-top: 8px; color: #666; font-size: 0.85em;">Diferente de</div>
+                                </div>
+                                <div style="background: white; padding: 15px; border-radius: 6px; text-align: center; border-left: 4px solid #9b59b6;">
+                                    <div style="font-size: 2em; color: #9b59b6; margin-bottom: 5px;">></div>
+                                    <div style="font-family: monospace; color: #555; margin-bottom: 8px;">5 > 3</div>
+                                    <div style="background: #2ecc71; color: white; padding: 8px; border-radius: 4px; font-weight: bold;">True</div>
+                                    <div style="margin-top: 8px; color: #666; font-size: 0.85em;">Mayor que</div>
+                                </div>
+                                <div style="background: white; padding: 15px; border-radius: 6px; text-align: center; border-left: 4px solid #f39c12;">
+                                    <div style="font-size: 2em; color: #f39c12; margin-bottom: 5px;"><</div>
+                                    <div style="font-family: monospace; color: #555; margin-bottom: 8px;">5 < 3</div>
+                                    <div style="background: #e74c3c; color: white; padding: 8px; border-radius: 4px; font-weight: bold;">False</div>
+                                    <div style="margin-top: 8px; color: #666; font-size: 0.85em;">Menor que</div>
+                                </div>
+                                <div style="background: white; padding: 15px; border-radius: 6px; text-align: center; border-left: 4px solid #3498db;">
+                                    <div style="font-size: 2em; color: #3498db; margin-bottom: 5px;">>=</div>
+                                    <div style="font-family: monospace; color: #555; margin-bottom: 8px;">5 >= 5</div>
+                                    <div style="background: #2ecc71; color: white; padding: 8px; border-radius: 4px; font-weight: bold;">True</div>
+                                    <div style="margin-top: 8px; color: #666; font-size: 0.85em;">Mayor o igual</div>
+                                </div>
+                                <div style="background: white; padding: 15px; border-radius: 6px; text-align: center; border-left: 4px solid #1abc9c;">
+                                    <div style="font-size: 2em; color: #1abc9c; margin-bottom: 5px;"><=</div>
+                                    <div style="font-family: monospace; color: #555; margin-bottom: 8px;">5 <= 4</div>
+                                    <div style="background: #e74c3c; color: white; padding: 8px; border-radius: 4px; font-weight: bold;">False</div>
+                                    <div style="margin-top: 8px; color: #666; font-size: 0.85em;">Menor o igual</div>
+                                </div>
+                            </div>
+                            <div style="background: #3498db; color: white; padding: 20px; border-radius: 8px; margin-top: 15px;">
+                                <div style="font-weight: bold; margin-bottom: 15px; font-size: 1.1em; text-align: center;">⭐ Característica Exclusiva de Python: Comparación Encadenada</div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                                        <div style="font-family: monospace; margin-bottom: 8px; font-size: 1.05em;">x = 5</div>
+                                        <div style="font-family: monospace; margin-bottom: 8px; font-size: 1.05em;">1 < x < 10</div>
+                                        <div style="background: #2ecc71; color: white; padding: 8px; border-radius: 4px; text-align: center; font-weight: bold;">True</div>
+                                        <div style="margin-top: 8px; font-size: 0.85em; opacity: 0.9;">Equivale a: (1 < x) and (x < 10)</div>
+                                    </div>
+                                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px;">
+                                        <div style="font-family: monospace; margin-bottom: 8px; font-size: 1.05em;">x = 5</div>
+                                        <div style="font-family: monospace; margin-bottom: 8px; font-size: 1.05em;">1 < x < 3</div>
+                                        <div style="background: #e74c3c; color: white; padding: 8px; border-radius: 4px; text-align: center; font-weight: bold;">False</div>
+                                        <div style="margin-top: 8px; font-size: 0.85em; opacity: 0.9;">Más legible que otras opciones</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div></div></div>
+                    </div>
+
+                    <div class="termino" id="operadores-logicos" data-tags="operadores logicos and or not">
+                        <span class="tag">📋 Operadores Lógicos</span>
+                        <p class="significado">and, or, not para expresiones booleanas</p>
+                        <div class="ejemplo"># and - Ambos deben ser True
+True and True    # True
+True and False   # False
+False and True   # False
+
+# or - Al menos uno debe ser True
+True or False    # True
+False or True    # True
+False or False   # False
+
+# not - Invierte el valor
+not True         # False
+not False        # True
+
+# Ejemplo práctico
+edad = 25
+tiene_licencia = True
+
+if edad >= 18 and tiene_licencia:
+    print("Puede conducir")
+
+# Short-circuit evaluation
+# Python deja de evaluar cuando conoce el resultado
+nombre = None
+resultado = nombre and nombre.upper()  # None (no falla)
+
+# Valor por defecto con or
+usuario = ""
+nombre = usuario or "Anónimo"  # "Anónimo"</div>
+                        <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Operadores Lógicos</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 20px;">
+                                <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #3498db;">
+                                    <div style="text-align: center; background: #3498db; color: white; padding: 12px; border-radius: 6px; margin-bottom: 15px; font-weight: bold; font-size: 1.2em;">
+                                        AND
+                                    </div>
+                                    <div style="font-family: monospace; color: #555; font-size: 0.9em; text-align: center;">
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px;">
+                                            True <span style="color: #3498db; font-weight: bold;">and</span> True<br>
+                                            → <span style="color: #2ecc71; font-weight: bold;">True</span>
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px;">
+                                            True <span style="color: #3498db; font-weight: bold;">and</span> False<br>
+                                            → <span style="color: #e74c3c; font-weight: bold;">False</span>
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px;">
+                                            False <span style="color: #3498db; font-weight: bold;">and</span> False<br>
+                                            → <span style="color: #e74c3c; font-weight: bold;">False</span>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 12px; text-align: center; color: #666; font-size: 0.85em;">Ambos deben ser True</div>
+                                </div>
+                                <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #9b59b6;">
+                                    <div style="text-align: center; background: #9b59b6; color: white; padding: 12px; border-radius: 6px; margin-bottom: 15px; font-weight: bold; font-size: 1.2em;">
+                                        OR
+                                    </div>
+                                    <div style="font-family: monospace; color: #555; font-size: 0.9em; text-align: center;">
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px;">
+                                            True <span style="color: #9b59b6; font-weight: bold;">or</span> False<br>
+                                            → <span style="color: #2ecc71; font-weight: bold;">True</span>
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px;">
+                                            False <span style="color: #9b59b6; font-weight: bold;">or</span> True<br>
+                                            → <span style="color: #2ecc71; font-weight: bold;">True</span>
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px;">
+                                            False <span style="color: #9b59b6; font-weight: bold;">or</span> False<br>
+                                            → <span style="color: #e74c3c; font-weight: bold;">False</span>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 12px; text-align: center; color: #666; font-size: 0.85em;">Al menos uno True</div>
+                                </div>
+                                <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #e74c3c;">
+                                    <div style="text-align: center; background: #e74c3c; color: white; padding: 12px; border-radius: 6px; margin-bottom: 15px; font-weight: bold; font-size: 1.2em;">
+                                        NOT
+                                    </div>
+                                    <div style="font-family: monospace; color: #555; font-size: 0.9em; text-align: center;">
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px;">
+                                            <span style="color: #e74c3c; font-weight: bold;">not</span> True<br>
+                                            → <span style="color: #e74c3c; font-weight: bold;">False</span>
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px;">
+                                            <span style="color: #e74c3c; font-weight: bold;">not</span> False<br>
+                                            → <span style="color: #2ecc71; font-weight: bold;">True</span>
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 8px; margin: 8px 0; border-radius: 4px; opacity: 0.3;">
+                                            -
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 12px; text-align: center; color: #666; font-size: 0.85em;">Invierte el valor</div>
+                                </div>
+                            </div>
+                            <div style="background: #fff3cd; padding: 20px; border-radius: 8px; border-left: 4px solid #f39c12; margin-top: 15px;">
+                                <div style="font-weight: bold; color: #856404; margin-bottom: 15px; font-size: 1.05em;">⚡ Short-Circuit Evaluation (Evaluación en Cortocircuito)</div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                    <div style="background: white; padding: 12px; border-radius: 6px;">
+                                        <div style="font-family: monospace; color: #555; font-size: 0.9em; margin-bottom: 8px;">
+                                            nombre = None<br>
+                                            resultado = nombre <span style="color: #3498db; font-weight: bold;">and</span> nombre.upper()
+                                        </div>
+                                        <div style="background: #2ecc71; color: white; padding: 8px; border-radius: 4px; text-align: center; font-size: 0.9em;">
+                                            → None (no evalúa .upper())
+                                        </div>
+                                    </div>
+                                    <div style="background: white; padding: 12px; border-radius: 6px;">
+                                        <div style="font-family: monospace; color: #555; font-size: 0.9em; margin-bottom: 8px;">
+                                            usuario = ""<br>
+                                            nombre = usuario <span style="color: #9b59b6; font-weight: bold;">or</span> "Anónimo"
+                                        </div>
+                                        <div style="background: #2ecc71; color: white; padding: 8px; border-radius: 4px; text-align: center; font-size: 0.9em;">
+                                            → "Anónimo" (valor por defecto)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 12px; color: #856404; font-size: 0.9em;">
+                                    💡 Python deja de evaluar cuando ya conoce el resultado final
+                                </div>
+                            </div>
+                        </div></div></div>
+                    </div>
+
+                    <div class="termino" id="operadores-pertenencia" data-tags="in not in pertenencia">
+                        <span class="tag">📋 Operadores de Pertenencia</span>
+                        <p class="significado">in y not in para verificar membresía</p>
+                        <div class="ejemplo"># En strings
+"a" in "casa"       # True
+"z" in "casa"       # False
+"z" not in "casa"   # True
+
+# En listas
+3 in [1, 2, 3]      # True
+5 in [1, 2, 3]      # False
+
+# En tuplas
+"rojo" in ("rojo", "verde", "azul")  # True
+
+# En diccionarios (busca en claves)
+persona = {"nombre": "Ana", "edad": 30}
+"nombre" in persona      # True
+"Ana" in persona         # False (busca claves, no valores)
+"Ana" in persona.values()  # True
+
+# En conjuntos (sets)
+colores = {"rojo", "verde", "azul"}
+"rojo" in colores        # True</div>
+                        <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Operadores de Pertenencia</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                            <div style="text-align: center; margin-bottom: 20px;">
+                                <div style="background: #3498db; color: white; padding: 15px; border-radius: 8px; display: inline-block; font-size: 1.2em; font-weight: bold;">
+                                    Operadores: <span style="color: #2ecc71;">in</span> y <span style="color: #e74c3c;">not in</span>
+                                </div>
+                            </div>
+                            <div style="display: grid; grid-template-columns: 1fr; gap: 15px;">
+                                <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #2ecc71;">
+                                    <div style="font-weight: bold; color: #2c3e50; margin-bottom: 15px; font-size: 1.05em;">🔤 En Strings</div>
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                        <div style="font-family: monospace; background: #f8f9fa; padding: 12px; border-radius: 4px; color: #555;">
+                                            "a" <span style="color: #2ecc71; font-weight: bold;">in</span> "casa"<br>
+                                            → <span style="color: #2ecc71; font-weight: bold;">True</span>
+                                        </div>
+                                        <div style="font-family: monospace; background: #f8f9fa; padding: 12px; border-radius: 4px; color: #555;">
+                                            "z" <span style="color: #e74c3c; font-weight: bold;">not in</span> "casa"<br>
+                                            → <span style="color: #2ecc71; font-weight: bold;">True</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #9b59b6;">
+                                    <div style="font-weight: bold; color: #2c3e50; margin-bottom: 15px; font-size: 1.05em;">📋 En Listas y Tuplas</div>
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                        <div style="font-family: monospace; background: #f8f9fa; padding: 12px; border-radius: 4px; color: #555;">
+                                            3 <span style="color: #2ecc71; font-weight: bold;">in</span> [1, 2, 3]<br>
+                                            → <span style="color: #2ecc71; font-weight: bold;">True</span>
+                                        </div>
+                                        <div style="font-family: monospace; background: #f8f9fa; padding: 12px; border-radius: 4px; color: #555;">
+                                            5 <span style="color: #2ecc71; font-weight: bold;">in</span> [1, 2, 3]<br>
+                                            → <span style="color: #e74c3c; font-weight: bold;">False</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #f39c12;">
+                                    <div style="font-weight: bold; color: #2c3e50; margin-bottom: 15px; font-size: 1.05em;">🗂️ En Diccionarios</div>
+                                    <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 12px; font-family: monospace; color: #555; font-size: 0.95em;">
+                                        persona = {"nombre": "Ana", "edad": 30}
+                                    </div>
+                                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                                        <div style="font-family: monospace; background: #f8f9fa; padding: 10px; border-radius: 4px; color: #555; font-size: 0.9em;">
+                                            "nombre" <span style="color: #2ecc71; font-weight: bold;">in</span> persona<br>
+                                            → <span style="color: #2ecc71; font-weight: bold;">True</span><br>
+                                            <span style="font-size: 0.8em; color: #666;">(busca claves)</span>
+                                        </div>
+                                        <div style="font-family: monospace; background: #f8f9fa; padding: 10px; border-radius: 4px; color: #555; font-size: 0.9em;">
+                                            "Ana" <span style="color: #2ecc71; font-weight: bold;">in</span> persona<br>
+                                            → <span style="color: #e74c3c; font-weight: bold;">False</span><br>
+                                            <span style="font-size: 0.8em; color: #666;">(no busca valores)</span>
+                                        </div>
+                                        <div style="font-family: monospace; background: #f8f9fa; padding: 10px; border-radius: 4px; color: #555; font-size: 0.9em;">
+                                            "Ana" <span style="color: #2ecc71; font-weight: bold;">in</span> persona.values()<br>
+                                            → <span style="color: #2ecc71; font-weight: bold;">True</span><br>
+                                            <span style="font-size: 0.8em; color: #666;">(busca valores)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #e74c3c;">
+                                    <div style="font-weight: bold; color: #2c3e50; margin-bottom: 15px; font-size: 1.05em;">🎯 En Sets (Conjuntos)</div>
+                                    <div style="font-family: monospace; background: #f8f9fa; padding: 12px; border-radius: 4px; color: #555;">
+                                        colores = {"rojo", "verde", "azul"}<br>
+                                        "rojo" <span style="color: #2ecc71; font-weight: bold;">in</span> colores  → <span style="color: #2ecc71; font-weight: bold;">True</span>
+                                    </div>
+                                    <div style="margin-top: 10px; color: #666; font-size: 0.85em;">⚡ Búsqueda en sets es O(1) - muy eficiente</div>
+                                </div>
+                            </div>
+                        </div></div></div>
+                    </div>
+
+                    <div class="termino" id="operadores-identidad" data-tags="is is not identidad objeto">
+                        <span class="tag">📋 Operadores de Identidad</span>
+                        <p class="significado">is y is not comparan si son el mismo objeto</p>
+                        <div class="ejemplo"># is compara identidad (mismo objeto en memoria)
+# == compara valores
+
+a = [1, 2, 3]
+b = a        # b apunta al mismo objeto
+c = [1, 2, 3]  # c es otro objeto con mismo valor
+
+a == b    # True (mismo valor)
+a is b    # True (mismo objeto)
+a == c    # True (mismo valor)
+a is c    # False (objetos diferentes)
+
+# is se usa principalmente con None
+x = None
+if x is None:    # Correcto
+    pass
+if x == None:    # Funciona pero no recomendado
+    pass
+
+# Cuidado con enteros pequeños (Python los cachea)
+x = 5
+y = 5
+x is y    # True (Python optimiza enteros pequeños)
+
+x = 1000
+y = 1000
+x is y    # Puede ser False (no cacheados)</div>
+                        <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: is vs == (Identidad vs Igualdad)</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                                <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #3498db;">
+                                    <div style="text-align: center; background: #3498db; color: white; padding: 12px; border-radius: 6px; margin-bottom: 15px; font-weight: bold; font-size: 1.1em;">
+                                        == (Igualdad)
+                                    </div>
+                                    <div style="text-align: center; margin-bottom: 15px; color: #666; font-size: 0.9em;">Compara VALORES</div>
+                                    <div style="font-family: monospace; color: #555; font-size: 0.9em;">
+                                        <div style="background: #f8f9fa; padding: 10px; border-radius: 4px; margin-bottom: 8px;">
+                                            a = [1, 2, 3]<br>
+                                            c = [1, 2, 3]<br>
+                                            <br>
+                                            a <span style="color: #3498db; font-weight: bold;">==</span> c<br>
+                                            → <span style="color: #2ecc71; font-weight: bold;">True</span>
+                                        </div>
+                                        <div style="background: #d4edda; color: #155724; padding: 10px; border-radius: 4px; font-size: 0.85em;">
+                                            ✓ Mismo contenido<br>
+                                            ✓ Valores iguales
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #9b59b6;">
+                                    <div style="text-align: center; background: #9b59b6; color: white; padding: 12px; border-radius: 6px; margin-bottom: 15px; font-weight: bold; font-size: 1.1em;">
+                                        is (Identidad)
+                                    </div>
+                                    <div style="text-align: center; margin-bottom: 15px; color: #666; font-size: 0.9em;">Compara OBJETOS en memoria</div>
+                                    <div style="font-family: monospace; color: #555; font-size: 0.9em;">
+                                        <div style="background: #f8f9fa; padding: 10px; border-radius: 4px; margin-bottom: 8px;">
+                                            a = [1, 2, 3]<br>
+                                            c = [1, 2, 3]<br>
+                                            <br>
+                                            a <span style="color: #9b59b6; font-weight: bold;">is</span> c<br>
+                                            → <span style="color: #e74c3c; font-weight: bold;">False</span>
+                                        </div>
+                                        <div style="background: #f8d7da; color: #721c24; padding: 10px; border-radius: 4px; font-size: 0.85em;">
+                                            ✗ Objetos diferentes<br>
+                                            ✗ Distinta ubicación en RAM
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #2ecc71; margin-bottom: 15px;">
+                                <div style="font-weight: bold; color: #2c3e50; margin-bottom: 15px; font-size: 1.05em;">📊 Ejemplo Visual Completo</div>
+                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; font-family: monospace; font-size: 0.9em;">
+                                    <div style="background: #f8f9fa; padding: 12px; border-radius: 4px;">
+                                        <div style="color: #666; margin-bottom: 8px;">Caso 1:</div>
+                                        a = [1, 2, 3]<br>
+                                        b = a<br>
+                                        <div style="margin-top: 8px; padding: 8px; background: white; border-radius: 4px;">
+                                            a == b → <span style="color: #2ecc71;">True</span><br>
+                                            a is b → <span style="color: #2ecc71;">True</span>
+                                        </div>
+                                        <div style="margin-top: 5px; font-size: 0.8em; color: #666;">Mismo objeto</div>
+                                    </div>
+                                    <div style="background: #f8f9fa; padding: 12px; border-radius: 4px;">
+                                        <div style="color: #666; margin-bottom: 8px;">Caso 2:</div>
+                                        a = [1, 2, 3]<br>
+                                        c = [1, 2, 3]<br>
+                                        <div style="margin-top: 8px; padding: 8px; background: white; border-radius: 4px;">
+                                            a == c → <span style="color: #2ecc71;">True</span><br>
+                                            a is c → <span style="color: #e74c3c;">False</span>
+                                        </div>
+                                        <div style="margin-top: 5px; font-size: 0.8em; color: #666;">Objetos distintos</div>
+                                    </div>
+                                    <div style="background: #f8f9fa; padding: 12px; border-radius: 4px;">
+                                        <div style="color: #666; margin-bottom: 8px;">Caso 3:</div>
+                                        x = None<br>
+                                        <br>
+                                        <div style="margin-top: 8px; padding: 8px; background: white; border-radius: 4px;">
+                                            x is None → <span style="color: #2ecc71;">True</span><br>
+                                            <br>
+                                        </div>
+                                        <div style="margin-top: 5px; font-size: 0.8em; color: #666;">Uso correcto de is</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="background: #fff3cd; padding: 15px; border-radius: 6px; border-left: 4px solid #f39c12;">
+                                <div style="font-weight: bold; color: #856404; margin-bottom: 10px;">⚠️ Regla de Oro</div>
+                                <div style="color: #856404; font-size: 0.95em;">
+                                    • Usa <code style="background: white; padding: 2px 6px; border-radius: 3px; color: #9b59b6; font-weight: bold;">is</code> solo para comparar con <strong>None</strong><br>
+                                    • Usa <code style="background: white; padding: 2px 6px; border-radius: 3px; color: #3498db; font-weight: bold;">==</code> para comparar valores<br>
+                                    • Python cachea enteros pequeños (-5 a 256), por eso <code>x = 5; y = 5; x is y</code> puede ser True
+                                </div>
+                            </div>
+                        </div></div></div>
+                        <div class="nota">
+                            <strong>⚠️ Importante:</strong> Usa 'is' solo para None. Para comparar valores usa '=='.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="conversion-tipos" data-tags="conversion casting tipos int float str">
+                        <span class="tag">📋 Conversión de Tipos</span>
+                        <p class="significado">Funciones para convertir entre tipos</p>
+                        <div class="ejemplo"># A entero
+int("42")       # 42
+int(3.9)        # 3 (trunca, no redondea)
+int("3.9")      # Error! No convierte decimales
+
+# A flotante
+float("3.14")   # 3.14
+float(42)       # 42.0
+
+# A string
+str(42)         # "42"
+str(3.14)       # "3.14"
+str(True)       # "True"
+
+# A booleano
+bool(1)         # True
+bool(0)         # False
+bool("texto")   # True
+bool("")        # False
+
+# A lista/tupla/set
+list("abc")     # ['a', 'b', 'c']
+tuple([1,2,3])  # (1, 2, 3)
+set([1,2,2,3])  # {1, 2, 3}
+
+# Verificar tipo
+type(42)        # <class 'int'>
+isinstance(42, int)  # True
+isinstance(42, (int, float))  # True</div>
+                        <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Conversión entre Tipos</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 20px;">
+                                <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #3498db;">
+                                    <div style="text-align: center; background: #3498db; color: white; padding: 12px; border-radius: 6px; margin-bottom: 15px; font-weight: bold; font-size: 1.1em;">
+                                        → int()
+                                    </div>
+                                    <div style="font-family: monospace; color: #555; font-size: 0.9em;">
+                                        <div style="background: #f8f9fa; padding: 10px; margin: 8px 0; border-radius: 4px;">
+                                            int("42") → <span style="color: #3498db; font-weight: bold;">42</span>
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 10px; margin: 8px 0; border-radius: 4px;">
+                                            int(3.9) → <span style="color: #3498db; font-weight: bold;">3</span> <span style="color: #e74c3c; font-size: 0.8em;">(trunca)</span>
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 10px; margin: 8px 0; border-radius: 4px;">
+                                            int(True) → <span style="color: #3498db; font-weight: bold;">1</span>
+                                        </div>
+                                        <div style="background: #f8d7da; color: #721c24; padding: 10px; margin: 8px 0; border-radius: 4px; font-size: 0.85em;">
+                                            int("3.9") → <span style="color: #e74c3c; font-weight: bold;">Error!</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #2ecc71;">
+                                    <div style="text-align: center; background: #2ecc71; color: white; padding: 12px; border-radius: 6px; margin-bottom: 15px; font-weight: bold; font-size: 1.1em;">
+                                        → float()
+                                    </div>
+                                    <div style="font-family: monospace; color: #555; font-size: 0.9em;">
+                                        <div style="background: #f8f9fa; padding: 10px; margin: 8px 0; border-radius: 4px;">
+                                            float("3.14") → <span style="color: #2ecc71; font-weight: bold;">3.14</span>
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 10px; margin: 8px 0; border-radius: 4px;">
+                                            float(42) → <span style="color: #2ecc71; font-weight: bold;">42.0</span>
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 10px; margin: 8px 0; border-radius: 4px;">
+                                            float("inf") → <span style="color: #2ecc71; font-weight: bold;">inf</span>
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 10px; margin: 8px 0; border-radius: 4px;">
+                                            float(True) → <span style="color: #2ecc71; font-weight: bold;">1.0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #9b59b6;">
+                                    <div style="text-align: center; background: #9b59b6; color: white; padding: 12px; border-radius: 6px; margin-bottom: 15px; font-weight: bold; font-size: 1.1em;">
+                                        → str()
+                                    </div>
+                                    <div style="font-family: monospace; color: #555; font-size: 0.9em;">
+                                        <div style="background: #f8f9fa; padding: 10px; margin: 8px 0; border-radius: 4px;">
+                                            str(42) → <span style="color: #9b59b6; font-weight: bold;">"42"</span>
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 10px; margin: 8px 0; border-radius: 4px;">
+                                            str(3.14) → <span style="color: #9b59b6; font-weight: bold;">"3.14"</span>
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 10px; margin: 8px 0; border-radius: 4px;">
+                                            str(True) → <span style="color: #9b59b6; font-weight: bold;">"True"</span>
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 10px; margin: 8px 0; border-radius: 4px;">
+                                            str([1,2]) → <span style="color: #9b59b6; font-weight: bold;">"[1, 2]"</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #f39c12;">
+                                    <div style="text-align: center; background: #f39c12; color: white; padding: 12px; border-radius: 6px; margin-bottom: 15px; font-weight: bold; font-size: 1.1em;">
+                                        → bool()
+                                    </div>
+                                    <div style="font-family: monospace; color: #555; font-size: 0.9em;">
+                                        <div style="background: #f8f9fa; padding: 10px; margin: 8px 0; border-radius: 4px;">
+                                            bool(1) → <span style="color: #2ecc71; font-weight: bold;">True</span>
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 10px; margin: 8px 0; border-radius: 4px;">
+                                            bool(0) → <span style="color: #e74c3c; font-weight: bold;">False</span>
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 10px; margin: 8px 0; border-radius: 4px;">
+                                            bool("texto") → <span style="color: #2ecc71; font-weight: bold;">True</span>
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 10px; margin: 8px 0; border-radius: 4px;">
+                                            bool("") → <span style="color: #e74c3c; font-weight: bold;">False</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #e74c3c; margin-bottom: 15px;">
+                                <div style="font-weight: bold; color: #2c3e50; margin-bottom: 15px; font-size: 1.05em;">🔄 Conversiones entre Colecciones</div>
+                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; font-family: monospace; font-size: 0.9em;">
+                                    <div style="background: #f8f9fa; padding: 12px; border-radius: 4px; text-align: center;">
+                                        list("abc")<br>
+                                        <div style="margin-top: 8px; color: #e74c3c; font-weight: bold;">['a', 'b', 'c']</div>
+                                    </div>
+                                    <div style="background: #f8f9fa; padding: 12px; border-radius: 4px; text-align: center;">
+                                        tuple([1,2,3])<br>
+                                        <div style="margin-top: 8px; color: #e74c3c; font-weight: bold;">(1, 2, 3)</div>
+                                    </div>
+                                    <div style="background: #f8f9fa; padding: 12px; border-radius: 4px; text-align: center;">
+                                        set([1,2,2,3])<br>
+                                        <div style="margin-top: 8px; color: #e74c3c; font-weight: bold;">{1, 2, 3}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="background: #3498db; color: white; padding: 20px; border-radius: 8px;">
+                                <div style="font-weight: bold; margin-bottom: 15px; font-size: 1.05em;">🔍 Verificación de Tipos</div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-family: monospace;">
+                                    <div style="background: rgba(255,255,255,0.1); padding: 12px; border-radius: 4px;">
+                                        <div style="margin-bottom: 8px;">type(42)</div>
+                                        <div style="background: rgba(255,255,255,0.2); padding: 8px; border-radius: 4px; font-size: 0.9em;">
+                                            → &lt;class 'int'&gt;
+                                        </div>
+                                    </div>
+                                    <div style="background: rgba(255,255,255,0.1); padding: 12px; border-radius: 4px;">
+                                        <div style="margin-bottom: 8px;">isinstance(42, int)</div>
+                                        <div style="background: rgba(255,255,255,0.2); padding: 8px; border-radius: 4px; font-size: 0.9em;">
+                                            → True
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 12px; font-size: 0.9em; opacity: 0.9;">
+                                    💡 isinstance() permite verificar múltiples tipos: isinstance(42, (int, float))
+                                </div>
+                            </div>
+                        </div></div></div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">🐍 Tipos de Datos</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#tipos-numericos" class="toc-link">Tipos Numéricos</a></li>
+                    <li class="toc-item"><a href="#tipo-string" class="toc-link">Tipo String</a></li>
+                    <li class="toc-item"><a href="#string-operaciones" class="toc-link">Operaciones String</a></li>
+                    <li class="toc-item"><a href="#string-metodos" class="toc-link">Métodos de String</a></li>
+                    <li class="toc-item"><a href="#secuencias-escape" class="toc-link">Secuencias de Escape</a></li>
+                    <li class="toc-item"><a href="#tipo-boolean" class="toc-link">Tipo Boolean</a></li>
+                    <li class="toc-item"><a href="#tipo-none" class="toc-link">Tipo None</a></li>
+                    <li class="toc-item"><a href="#operadores-aritmeticos" class="toc-link">Op. Aritméticos</a></li>
+                    <li class="toc-item"><a href="#operadores-comparacion" class="toc-link">Op. Comparación</a></li>
+                    <li class="toc-item"><a href="#operadores-logicos" class="toc-link">Op. Lógicos</a></li>
+                    <li class="toc-item"><a href="#operadores-pertenencia" class="toc-link">Op. Pertenencia</a></li>
+                    <li class="toc-item"><a href="#operadores-identidad" class="toc-link">Op. Identidad</a></li>
+                    <li class="toc-item"><a href="#conversion-tipos" class="toc-link">Conversión Tipos</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>Python - Sistema de Aprendizaje | <a href="../index.html">Volver a Python</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script src="/assets/js/study-highlight.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) {
+                return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const tags = termino.getAttribute('data-tags') || '';
+                    const title = termino.querySelector('.tag')?.textContent || '';
+                    const desc = termino.querySelector('.descripcion')?.textContent || '';
+                    const ejemplo = termino.querySelector('.ejemplo')?.textContent || '';
+                    const searchText = normalizeText(tags + ' ' + title + ' ' + desc + ' ' + ejemplo);
+                    if (query === '' || searchText.includes(query)) {
+                        termino.style.display = 'block';
+                        found++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // Aplicar highlight.js solo a elementos .ejemplo que no tienen <br> (no son HTML)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.ejemplo').forEach(function(block) {
+                // Solo resaltar si no tiene elementos <br> (no es HTML con sintaxis manual)
+                if (block.querySelectorAll('br').length === 0) {
+                    block.classList.add('language-python');
+                    hljs.highlightElement(block);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

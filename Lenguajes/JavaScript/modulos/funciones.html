@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Funciones - Sistema de Aprendizaje</title>
-    <link rel="stylesheet" href="/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/assets/css/glosario.css">
-    <link rel="stylesheet" href="/assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
+    <!-- Highlight.js para resaltado de sintaxis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
 <body>
     <header>
@@ -48,6 +51,22 @@ function obtenerFecha() {
 function mostrarMensaje(texto) {
     console.log(texto);
 }</div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa de Funciones:</strong>
+                            <div class="preview-content">
+                                <p><strong>Código:</strong></p>
+                                <pre style="white-space: pre-wrap; background: #f8f9fa; padding: 10px; border-radius: 4px; border-left: 3px solid #3498db;">function saludar(nombre) {
+    return "Hola, " + nombre + "!";
+}
+
+console.log(saludar("María"));</pre>
+                                <p style="margin-top: 10px;"><strong>📤 Resultado:</strong></p>
+                                <div style="background: #2c3e50; color: #2ecc71; padding: 10px; border-radius: 4px; font-family: monospace;">
+                                    > Hola, María!
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
 
                     <div class="termino" id="expresion" data-tags="funcion expresion anonima">
@@ -64,6 +83,56 @@ console.log(sumar(5, 3));  // 8
 const factorial = function fact(n) {
     return n <= 1 ? 1 : n * fact(n - 1);
 };</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Declaración vs Expresión</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                        <!-- DECLARACIÓN -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <strong style="color: #3498db; display: block; margin-bottom: 15px;">Declaración de Función</strong>
+                                            <div style="background: #ecf0f1; padding: 12px; border-radius: 6px; margin-bottom: 15px; font-family: monospace; font-size: 12px;">
+                                                function sumar(a, b) {<br>
+                                                &nbsp;&nbsp;return a + b;<br>
+                                                }
+                                            </div>
+                                            <div style="background: #2ecc71; color: white; padding: 12px; border-radius: 6px; margin-bottom: 10px;">
+                                                ✓ Hoisting: Se eleva
+                                            </div>
+                                            <div style="background: #ecf0f1; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 12px;">
+                                                // Puedes llamarla ANTES<br>
+                                                sumar(2, 3); // ✓ Funciona
+                                            </div>
+                                        </div>
+
+                                        <!-- EXPRESIÓN -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                            <strong style="color: #9b59b6; display: block; margin-bottom: 15px;">Expresión de Función</strong>
+                                            <div style="background: #ecf0f1; padding: 12px; border-radius: 6px; margin-bottom: 15px; font-family: monospace; font-size: 12px;">
+                                                const sumar = function(a, b) {<br>
+                                                &nbsp;&nbsp;return a + b;<br>
+                                                };
+                                            </div>
+                                            <div style="background: #e74c3c; color: white; padding: 12px; border-radius: 6px; margin-bottom: 10px;">
+                                                ✗ NO Hoisting
+                                            </div>
+                                            <div style="background: #ecf0f1; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 12px;">
+                                                // NO puedes llamarla ANTES<br>
+                                                sumar(2, 3); // ✗ Error
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div style="background: #fff3cd; border-left: 4px solid #f39c12; padding: 15px; border-radius: 6px; margin-top: 15px;">
+                                        <strong style="color: #f39c12;">⚠️ Diferencia clave:</strong>
+                                        <div style="color: #856404; margin-top: 5px;">Las declaraciones se elevan (hoisting), las expresiones no.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="nota">
                             <strong>⚠️ Diferencia:</strong> Las expresiones no se elevan (hoisting), las declaraciones sí.
                         </div>
@@ -96,6 +165,73 @@ const crearUsuario = (nombre, edad) => ({
 // En métodos de array
 const numeros = [1, 2, 3, 4, 5];
 const dobles = numeros.map(n => n * 2);</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Arrow Functions - Sintaxis Simplificada</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+
+                                    <!-- SINTAXIS TRADICIONAL VS ARROW -->
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db; margin-bottom: 15px;">
+                                        <strong style="color: #3498db; display: block; margin-bottom: 15px;">Tradicional → Arrow</strong>
+                                        <div style="display: grid; gap: 12px;">
+                                            <div style="background: #ecf0f1; padding: 12px; border-radius: 6px;">
+                                                <div style="font-family: monospace; font-size: 12px; opacity: 0.6; margin-bottom: 5px;">// Tradicional</div>
+                                                <div style="font-family: monospace; font-size: 13px; margin-bottom: 8px;">function(a, b) { return a + b; }</div>
+                                                <div style="font-size: 20px; color: #3498db; text-align: center; margin: 10px 0;">↓</div>
+                                                <div style="font-family: monospace; font-size: 12px; opacity: 0.6; margin-bottom: 5px;">// Arrow</div>
+                                                <div style="font-family: monospace; font-size: 13px; background: #3498db; color: white; padding: 8px; border-radius: 4px;">(a, b) => a + b</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- VARIACIONES DE SINTAXIS -->
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #2ecc71; margin-bottom: 15px;">
+                                        <strong style="color: #2ecc71; display: block; margin-bottom: 15px;">Variaciones de Sintaxis</strong>
+                                        <div style="display: grid; gap: 10px;">
+                                            <div style="background: #ecf0f1; padding: 12px; border-radius: 6px;">
+                                                <div style="font-size: 11px; color: #7f8c8d; margin-bottom: 5px;">SIN parámetros</div>
+                                                <div style="font-family: monospace; font-size: 13px;">() => 42</div>
+                                            </div>
+                                            <div style="background: #ecf0f1; padding: 12px; border-radius: 6px;">
+                                                <div style="font-size: 11px; color: #7f8c8d; margin-bottom: 5px;">UN parámetro (sin paréntesis)</div>
+                                                <div style="font-family: monospace; font-size: 13px;">n => n * 2</div>
+                                            </div>
+                                            <div style="background: #ecf0f1; padding: 12px; border-radius: 6px;">
+                                                <div style="font-size: 11px; color: #7f8c8d; margin-bottom: 5px;">DOS+ parámetros</div>
+                                                <div style="font-family: monospace; font-size: 13px;">(a, b) => a + b</div>
+                                            </div>
+                                            <div style="background: #ecf0f1; padding: 12px; border-radius: 6px;">
+                                                <div style="font-size: 11px; color: #7f8c8d; margin-bottom: 5px;">Retornar OBJETO (con paréntesis)</div>
+                                                <div style="font-family: monospace; font-size: 13px;">(x, y) => ({ x, y })</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- EJEMPLO PRÁCTICO -->
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                        <strong style="color: #9b59b6; display: block; margin-bottom: 15px;">Uso con Arrays</strong>
+                                        <div style="background: #ecf0f1; padding: 15px; border-radius: 6px; margin-bottom: 15px; font-family: monospace; font-size: 13px;">
+                                            [1, 2, 3].map(n => n * 2)
+                                        </div>
+                                        <div style="display: flex; align-items: center; gap: 15px;">
+                                            <div style="display: flex; gap: 5px;">
+                                                <div style="background: #ecf0f1; padding: 12px; border-radius: 4px; font-weight: bold;">1</div>
+                                                <div style="background: #ecf0f1; padding: 12px; border-radius: 4px; font-weight: bold;">2</div>
+                                                <div style="background: #ecf0f1; padding: 12px; border-radius: 4px; font-weight: bold;">3</div>
+                                            </div>
+                                            <div style="font-size: 24px; color: #9b59b6;">→</div>
+                                            <div style="display: flex; gap: 5px;">
+                                                <div style="background: #9b59b6; color: white; padding: 12px; border-radius: 4px; font-weight: bold;">2</div>
+                                                <div style="background: #9b59b6; color: white; padding: 12px; border-radius: 4px; font-weight: bold;">4</div>
+                                                <div style="background: #9b59b6; color: white; padding: 12px; border-radius: 4px; font-weight: bold;">6</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="nota">
                             <strong>⚠️ Importante:</strong> Arrow functions no tienen su propio <code>this</code>, heredan del contexto padre.
                         </div>
@@ -123,6 +259,86 @@ function mostrarUsuario({ nombre, edad, ciudad = "N/A" }) {
 }
 
 mostrarUsuario({ nombre: "Ana", edad: 25 });</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Parámetros Avanzados</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+
+                                    <!-- PARÁMETROS POR DEFECTO -->
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db; margin-bottom: 15px;">
+                                        <strong style="color: #3498db; display: block; margin-bottom: 15px;">Parámetros por Defecto</strong>
+                                        <div style="background: #ecf0f1; padding: 12px; border-radius: 6px; margin-bottom: 15px; font-family: monospace; font-size: 13px;">
+                                            function saludar(nombre = "Invitado") {<br>
+                                            &nbsp;&nbsp;return `Hola, ${nombre}!`;<br>
+                                            }
+                                        </div>
+                                        <div style="display: grid; gap: 10px;">
+                                            <div style="display: flex; align-items: center; gap: 10px; background: #ecf0f1; padding: 12px; border-radius: 6px;">
+                                                <div style="font-family: monospace; background: white; padding: 8px 12px; border-radius: 4px; border: 2px solid #3498db;">saludar()</div>
+                                                <div style="font-size: 20px; color: #3498db;">→</div>
+                                                <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px;">"Hola, Invitado!"</div>
+                                            </div>
+                                            <div style="display: flex; align-items: center; gap: 10px; background: #ecf0f1; padding: 12px; border-radius: 6px;">
+                                                <div style="font-family: monospace; background: white; padding: 8px 12px; border-radius: 4px; border: 2px solid #3498db;">saludar("Ana")</div>
+                                                <div style="font-size: 20px; color: #3498db;">→</div>
+                                                <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px;">"Hola, Ana!"</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- REST PARAMETERS -->
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #2ecc71; margin-bottom: 15px;">
+                                        <strong style="color: #2ecc71; display: block; margin-bottom: 15px;">Rest Parameters (...)</strong>
+                                        <div style="background: #ecf0f1; padding: 12px; border-radius: 6px; margin-bottom: 15px; font-family: monospace; font-size: 13px;">
+                                            function sumarTodos(...numeros) {<br>
+                                            &nbsp;&nbsp;return numeros.reduce((a, n) => a + n);<br>
+                                            }
+                                        </div>
+                                        <div style="background: #ecf0f1; padding: 15px; border-radius: 6px;">
+                                            <div style="font-family: monospace; margin-bottom: 10px;">sumarTodos(1, 2, 3, 4, 5)</div>
+                                            <div style="display: flex; align-items: center; gap: 10px;">
+                                                <div style="border: 3px dashed #2ecc71; padding: 10px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #2ecc71; font-weight: bold; margin-bottom: 5px;">...numeros captura TODO</div>
+                                                    <div style="display: flex; gap: 5px;">
+                                                        <div style="background: #2ecc71; color: white; padding: 8px; border-radius: 4px; font-weight: bold;">1</div>
+                                                        <div style="background: #2ecc71; color: white; padding: 8px; border-radius: 4px; font-weight: bold;">2</div>
+                                                        <div style="background: #2ecc71; color: white; padding: 8px; border-radius: 4px; font-weight: bold;">3</div>
+                                                        <div style="background: #2ecc71; color: white; padding: 8px; border-radius: 4px; font-weight: bold;">4</div>
+                                                        <div style="background: #2ecc71; color: white; padding: 8px; border-radius: 4px; font-weight: bold;">5</div>
+                                                    </div>
+                                                </div>
+                                                <div style="font-size: 20px; color: #2ecc71;">→</div>
+                                                <div style="background: #2ecc71; color: white; padding: 15px 20px; border-radius: 4px; font-weight: bold; font-size: 18px;">15</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- DESTRUCTURING -->
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                        <strong style="color: #9b59b6; display: block; margin-bottom: 15px;">Destructuring en Parámetros</strong>
+                                        <div style="background: #ecf0f1; padding: 12px; border-radius: 6px; margin-bottom: 15px; font-family: monospace; font-size: 13px;">
+                                            function mostrar({ nombre, edad }) {<br>
+                                            &nbsp;&nbsp;console.log(nombre, edad);<br>
+                                            }
+                                        </div>
+                                        <div style="background: #ecf0f1; padding: 15px; border-radius: 6px;">
+                                            <div style="font-family: monospace; margin-bottom: 10px;">mostrar({ nombre: "Ana", edad: 25 })</div>
+                                            <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
+                                                <div style="background: white; padding: 12px; border-radius: 6px; border: 2px solid #9b59b6; font-family: monospace; font-size: 12px;">
+                                                    { nombre: "Ana", edad: 25 }
+                                                </div>
+                                                <div style="font-size: 20px; color: #9b59b6;">→</div>
+                                                <div style="display: flex; gap: 10px;">
+                                                    <div style="background: #9b59b6; color: white; padding: 10px; border-radius: 4px; font-weight: bold;">nombre = "Ana"</div>
+                                                    <div style="background: #9b59b6; color: white; padding: 10px; border-radius: 4px; font-weight: bold;">edad = 25</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="callback" data-tags="callback funcion argumento">
@@ -152,6 +368,76 @@ const pares = numeros.filter(n => n % 2 === 0);
 setTimeout(() => {
     console.log("Ejecutado después de 1 segundo");
 }, 1000);</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Callbacks - Funciones como Argumentos</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db; margin-bottom: 15px;">
+                                        <strong style="color: #3498db; display: block; margin-bottom: 15px;">Callback Básico</strong>
+                                        <div style="background: #ecf0f1; padding: 15px; border-radius: 6px; margin-bottom: 15px; font-family: monospace; font-size: 12px;">
+                                            function procesar(datos, callback) {<br>
+                                            &nbsp;&nbsp;const resultado = datos.toUpperCase();<br>
+                                            &nbsp;&nbsp;callback(resultado);<br>
+                                            }<br><br>
+                                            procesar("hola", res => console.log(res));
+                                        </div>
+                                        <div style="background: #ecf0f1; padding: 15px; border-radius: 6px;">
+                                            <div style="display: grid; gap: 12px;">
+                                                <div style="display: flex; align-items: center; gap: 10px;">
+                                                    <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px; font-weight: bold;">1. Entrada</div>
+                                                    <div style="background: white; padding: 8px 12px; border-radius: 4px; border: 2px solid #3498db; font-family: monospace;">"hola"</div>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 10px;">
+                                                    <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px; font-weight: bold;">2. Procesar</div>
+                                                    <div style="background: white; padding: 8px 12px; border-radius: 4px; border: 2px solid #2ecc71; font-family: monospace;">"HOLA"</div>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 10px;">
+                                                    <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px; font-weight: bold;">3. Callback</div>
+                                                    <div style="background: #2ecc71; color: white; padding: 8px 12px; border-radius: 4px; font-family: monospace;">console.log("HOLA")</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                        <strong style="color: #9b59b6; display: block; margin-bottom: 15px;">Callbacks en Arrays</strong>
+                                        <div style="background: #ecf0f1; padding: 15px; border-radius: 6px; margin-bottom: 15px; font-family: monospace; font-size: 13px;">
+                                            [1, 2, 3].map(n => n * 2)
+                                        </div>
+                                        <div style="display: grid; gap: 10px;">
+                                            <div style="background: #ecf0f1; padding: 12px; border-radius: 6px;">
+                                                <div style="font-size: 11px; color: #7f8c8d; margin-bottom: 8px;">La función callback (n => n * 2) se ejecuta para cada elemento:</div>
+                                                <div style="display: grid; gap: 8px;">
+                                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                                        <div style="background: white; padding: 6px 10px; border-radius: 4px; font-weight: bold;">1</div>
+                                                        <div style="font-size: 16px;">→</div>
+                                                        <div style="background: #9b59b6; color: white; padding: 6px 10px; border-radius: 4px; font-family: monospace; font-size: 12px;">callback(1)</div>
+                                                        <div style="font-size: 16px;">→</div>
+                                                        <div style="background: #9b59b6; color: white; padding: 6px 10px; border-radius: 4px; font-weight: bold;">2</div>
+                                                    </div>
+                                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                                        <div style="background: white; padding: 6px 10px; border-radius: 4px; font-weight: bold;">2</div>
+                                                        <div style="font-size: 16px;">→</div>
+                                                        <div style="background: #9b59b6; color: white; padding: 6px 10px; border-radius: 4px; font-family: monospace; font-size: 12px;">callback(2)</div>
+                                                        <div style="font-size: 16px;">→</div>
+                                                        <div style="background: #9b59b6; color: white; padding: 6px 10px; border-radius: 4px; font-weight: bold;">4</div>
+                                                    </div>
+                                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                                        <div style="background: white; padding: 6px 10px; border-radius: 4px; font-weight: bold;">3</div>
+                                                        <div style="font-size: 16px;">→</div>
+                                                        <div style="background: #9b59b6; color: white; padding: 6px 10px; border-radius: 4px; font-family: monospace; font-size: 12px;">callback(3)</div>
+                                                        <div style="font-size: 16px;">→</div>
+                                                        <div style="background: #9b59b6; color: white; padding: 6px 10px; border-radius: 4px; font-weight: bold;">6</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="closure" data-tags="closure clausura scope">
@@ -184,6 +470,87 @@ const triple = multiplicador(3);
 
 console.log(doble(5));   // 10
 console.log(triple(5));  // 15</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Closures - Memoria Persistente</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db; margin-bottom: 15px;">
+                                        <strong style="color: #3498db; display: block; margin-bottom: 15px;">Contador con Closure</strong>
+                                        <div style="background: #ecf0f1; padding: 15px; border-radius: 6px; margin-bottom: 15px; font-family: monospace; font-size: 12px;">
+                                            function crearContador() {<br>
+                                            &nbsp;&nbsp;let count = 0; // Variable privada<br>
+                                            &nbsp;&nbsp;return function() {<br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;count++;<br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;return count;<br>
+                                            &nbsp;&nbsp;};<br>
+                                            }<br><br>
+                                            const contador = crearContador();
+                                        </div>
+                                        <div style="background: #fff3cd; border-left: 4px solid #f39c12; padding: 12px; border-radius: 6px; margin-bottom: 15px;">
+                                            <strong style="color: #f39c12; font-size: 12px;">🔒 count está "encapsulada"</strong>
+                                            <div style="font-size: 11px; color: #856404; margin-top: 5px;">La función interna recuerda su scope</div>
+                                        </div>
+                                        <div style="display: grid; gap: 10px;">
+                                            <div style="background: #ecf0f1; padding: 12px; border-radius: 6px; display: flex; align-items: center; gap: 10px;">
+                                                <div style="font-family: monospace; background: white; padding: 8px; border-radius: 4px; border: 2px solid #3498db;">contador()</div>
+                                                <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px; font-weight: bold;">count = 1</div>
+                                                <div style="font-size: 16px;">→</div>
+                                                <div style="background: #2ecc71; color: white; padding: 8px 12px; border-radius: 4px; font-weight: bold;">1</div>
+                                            </div>
+                                            <div style="background: #ecf0f1; padding: 12px; border-radius: 6px; display: flex; align-items: center; gap: 10px;">
+                                                <div style="font-family: monospace; background: white; padding: 8px; border-radius: 4px; border: 2px solid #3498db;">contador()</div>
+                                                <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px; font-weight: bold;">count = 2</div>
+                                                <div style="font-size: 16px;">→</div>
+                                                <div style="background: #2ecc71; color: white; padding: 8px 12px; border-radius: 4px; font-weight: bold;">2</div>
+                                            </div>
+                                            <div style="background: #ecf0f1; padding: 12px; border-radius: 6px; display: flex; align-items: center; gap: 10px;">
+                                                <div style="font-family: monospace; background: white; padding: 8px; border-radius: 4px; border: 2px solid #3498db;">contador()</div>
+                                                <div style="background: #3498db; color: white; padding: 8px 12px; border-radius: 4px; font-weight: bold;">count = 3</div>
+                                                <div style="font-size: 16px;">→</div>
+                                                <div style="background: #2ecc71; color: white; padding: 8px 12px; border-radius: 4px; font-weight: bold;">3</div>
+                                            </div>
+                                        </div>
+                                        <div style="font-size: 12px; color: #7f8c8d; margin-top: 15px;">✨ La variable count persiste entre llamadas</div>
+                                    </div>
+
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                        <strong style="color: #9b59b6; display: block; margin-bottom: 15px;">Factory con Closure</strong>
+                                        <div style="background: #ecf0f1; padding: 15px; border-radius: 6px; margin-bottom: 15px; font-family: monospace; font-size: 12px;">
+                                            function multiplicador(factor) {<br>
+                                            &nbsp;&nbsp;return n => n * factor;<br>
+                                            }<br><br>
+                                            const doble = multiplicador(2);<br>
+                                            const triple = multiplicador(3);
+                                        </div>
+                                        <div style="display: grid; gap: 10px;">
+                                            <div style="background: #ecf0f1; padding: 12px; border-radius: 6px;">
+                                                <div style="font-size: 11px; color: #9b59b6; font-weight: bold; margin-bottom: 8px;">doble recuerda factor = 2</div>
+                                                <div style="display: flex; align-items: center; gap: 8px;">
+                                                    <div style="font-family: monospace;">doble(5)</div>
+                                                    <div style="font-size: 16px;">→</div>
+                                                    <div style="font-family: monospace;">5 * 2</div>
+                                                    <div style="font-size: 16px;">→</div>
+                                                    <div style="background: #9b59b6; color: white; padding: 6px 10px; border-radius: 4px; font-weight: bold;">10</div>
+                                                </div>
+                                            </div>
+                                            <div style="background: #ecf0f1; padding: 12px; border-radius: 6px;">
+                                                <div style="font-size: 11px; color: #9b59b6; font-weight: bold; margin-bottom: 8px;">triple recuerda factor = 3</div>
+                                                <div style="display: flex; align-items: center; gap: 8px;">
+                                                    <div style="font-family: monospace;">triple(5)</div>
+                                                    <div style="font-size: 16px;">→</div>
+                                                    <div style="font-family: monospace;">5 * 3</div>
+                                                    <div style="font-size: 16px;">→</div>
+                                                    <div style="background: #9b59b6; color: white; padding: 6px 10px; border-radius: 4px; font-weight: bold;">15</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="nota">
                             <strong>💡 Uso común:</strong> Encapsular datos privados, crear factories, memoization.
                         </div>
@@ -217,6 +584,65 @@ const modulo = (function() {
         obtener: () => privado
     };
 })();</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: IIFE - Ejecución Inmediata</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db; margin-bottom: 15px;">
+                                        <strong style="color: #3498db; display: block; margin-bottom: 15px;">Anatomía de una IIFE</strong>
+                                        <div style="background: #ecf0f1; padding: 15px; border-radius: 6px; margin-bottom: 15px;">
+                                            <div style="display: grid; gap: 12px;">
+                                                <div style="display: flex; align-items: center; gap: 10px;">
+                                                    <div style="background: #3498db; color: white; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: bold;">1. Paréntesis</div>
+                                                    <div style="font-family: monospace; font-size: 14px;"><strong style="color: #3498db;">(</strong>function() { ... }<strong style="color: #3498db;">)</strong></div>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 10px;">
+                                                    <div style="background: #2ecc71; color: white; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: bold;">2. Invocación</div>
+                                                    <div style="font-family: monospace; font-size: 14px;">(...)<strong style="color: #2ecc71;">()</strong>;</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="background: #ecf0f1; padding: 15px; border-radius: 6px; font-family: monospace; font-size: 13px;">
+                                            (function() {<br>
+                                            &nbsp;&nbsp;console.log("¡Ejecutada!");<br>
+                                            })();<br><br>
+                                            <div style="background: #2ecc71; color: white; padding: 8px; border-radius: 4px; margin-top: 10px;">
+                                                → Se ejecuta inmediatamente
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                        <strong style="color: #9b59b6; display: block; margin-bottom: 15px;">Módulo Pattern con IIFE</strong>
+                                        <div style="background: #ecf0f1; padding: 15px; border-radius: 6px; margin-bottom: 15px; font-family: monospace; font-size: 12px;">
+                                            const modulo = (function() {<br>
+                                            &nbsp;&nbsp;let privado = 0; // 🔒 Privado<br>
+                                            &nbsp;&nbsp;return {<br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;incrementar: () => ++privado,<br>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;obtener: () => privado<br>
+                                            &nbsp;&nbsp;};<br>
+                                            })();
+                                        </div>
+                                        <div style="display: grid; gap: 10px;">
+                                            <div style="background: #ecf0f1; padding: 12px; border-radius: 6px;">
+                                                <div style="font-family: monospace; margin-bottom: 8px;">modulo.incrementar()</div>
+                                                <div style="background: #9b59b6; color: white; padding: 8px; border-radius: 4px; font-weight: bold;">→ 1</div>
+                                            </div>
+                                            <div style="background: #ecf0f1; padding: 12px; border-radius: 6px;">
+                                                <div style="font-family: monospace; margin-bottom: 8px;">modulo.obtener()</div>
+                                                <div style="background: #9b59b6; color: white; padding: 8px; border-radius: 4px; font-weight: bold;">→ 1</div>
+                                            </div>
+                                            <div style="background: #ecf0f1; padding: 12px; border-radius: 6px;">
+                                                <div style="font-family: monospace; margin-bottom: 8px;">modulo.privado</div>
+                                                <div style="background: #e74c3c; color: white; padding: 8px; border-radius: 4px; font-weight: bold;">→ undefined 🔒</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="recursion" data-tags="recursion recursiva">
@@ -242,6 +668,56 @@ function recorrerArbol(nodo) {
         nodo.hijos.forEach(hijo => recorrerArbol(hijo));
     }
 }</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Recursión - Llamadas Sucesivas</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                        <strong style="color: #3498db; display: block; margin-bottom: 15px;">factorial(4) - Árbol de Llamadas</strong>
+                                        <div style="background: #ecf0f1; padding: 15px; border-radius: 6px; margin-bottom: 15px; font-family: monospace; font-size: 12px;">
+                                            function factorial(n) {<br>
+                                            &nbsp;&nbsp;if (n <= 1) return 1; // Caso base<br>
+                                            &nbsp;&nbsp;return n * factorial(n - 1);<br>
+                                            }
+                                        </div>
+                                        <div style="background: #ecf0f1; padding: 20px; border-radius: 6px;">
+                                            <div style="display: grid; gap: 12px;">
+                                                <div style="background: white; padding: 12px; border-radius: 6px; border-left: 4px solid #3498db;">
+                                                    <div style="font-family: monospace; font-weight: bold; color: #3498db;">factorial(4)</div>
+                                                    <div style="font-size: 12px; color: #7f8c8d; margin-top: 5px;">= 4 * factorial(3)</div>
+                                                </div>
+                                                <div style="background: white; padding: 12px; border-radius: 6px; border-left: 4px solid #2ecc71; margin-left: 20px;">
+                                                    <div style="font-family: monospace; font-weight: bold; color: #2ecc71;">factorial(3)</div>
+                                                    <div style="font-size: 12px; color: #7f8c8d; margin-top: 5px;">= 3 * factorial(2)</div>
+                                                </div>
+                                                <div style="background: white; padding: 12px; border-radius: 6px; border-left: 4px solid #9b59b6; margin-left: 40px;">
+                                                    <div style="font-family: monospace; font-weight: bold; color: #9b59b6;">factorial(2)</div>
+                                                    <div style="font-size: 12px; color: #7f8c8d; margin-top: 5px;">= 2 * factorial(1)</div>
+                                                </div>
+                                                <div style="background: white; padding: 12px; border-radius: 6px; border-left: 4px solid #f39c12; margin-left: 60px;">
+                                                    <div style="font-family: monospace; font-weight: bold; color: #f39c12;">factorial(1)</div>
+                                                    <div style="font-size: 12px; color: #2ecc71; margin-top: 5px; font-weight: bold;">= 1 (caso base ✓)</div>
+                                                </div>
+                                            </div>
+                                            <div style="margin-top: 20px; padding-top: 15px; border-top: 2px dashed #95a5a6;">
+                                                <div style="font-size: 12px; color: #7f8c8d; font-weight: bold; margin-bottom: 10px;">Retorno (de abajo hacia arriba):</div>
+                                                <div style="font-family: monospace; font-size: 13px; line-height: 1.8;">
+                                                    2 * <strong style="color: #f39c12;">1</strong> = <strong style="color: #9b59b6;">2</strong><br>
+                                                    3 * <strong style="color: #9b59b6;">2</strong> = <strong style="color: #2ecc71;">6</strong><br>
+                                                    4 * <strong style="color: #2ecc71;">6</strong> = <strong style="color: #3498db;">24</strong>
+                                                </div>
+                                            </div>
+                                            <div style="background: #3498db; color: white; padding: 15px; border-radius: 6px; margin-top: 15px; text-align: center; font-weight: bold; font-size: 18px;">
+                                                Resultado final: 24
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="nota">
                             <strong>⚠️ Cuidado:</strong> Siempre define un caso base para evitar stack overflow.
                         </div>
@@ -282,8 +758,8 @@ function recorrerArbol(nodo) {
         <p>JavaScript - Sistema de Aprendizaje | <a href="../index.html">Volver a JavaScript</a></p>
     </footer>
 
-    <script src="/assets/js/sidebar-component.js"></script>
-    <script src="/assets/js/study-highlight.js"></script>
+    <script src="../../../assets/js/sidebar-component.js"></script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('searchInput');
@@ -308,6 +784,20 @@ function recorrerArbol(nodo) {
                 tocLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === '#' + current) link.classList.add('active'); });
                 const scrolled = ((document.body.scrollTop || document.documentElement.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100;
                 document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // Aplicar highlight.js solo a elementos .ejemplo que no tienen <br> (no son HTML)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.ejemplo').forEach(function(block) {
+                // Solo resaltar si no tiene elementos <br> (no es HTML con sintaxis manual)
+                if (block.querySelectorAll('br').length === 0) {
+                    block.classList.add('language-javascript');
+                    hljs.highlightElement(block);
+                }
             });
         });
     </script>

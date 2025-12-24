@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fundamentos de JavaScript - Sistema de Aprendizaje</title>
-    <link rel="stylesheet" href="/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/assets/css/glosario.css">
-    <link rel="stylesheet" href="/assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
+    <!-- Highlight.js para resaltado de sintaxis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
 <body>
     <header>
@@ -44,6 +47,20 @@ edad = 26;  // OK
 
 // var - evitar (scope de función)
 var antiguo = "no usar";</div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <p><strong>Código:</strong></p>
+                                <pre style="white-space: pre-wrap; background: #f8f9fa; padding: 10px; border-radius: 4px; border-left: 3px solid #3498db;">let nombre = "Juan";
+let edad = 25;
+console.log(nombre + " tiene " + edad + " años");</pre>
+                                <p style="margin-top: 10px;"><strong>📤 Salida en consola:</strong></p>
+                                <div style="background: #2c3e50; color: #2ecc71; padding: 10px; border-radius: 4px; font-family: monospace;">
+                                    > Juan tiene 25 años
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="nota">
                             <strong>💡 Best Practice:</strong> Usa <code>const</code> por defecto. Solo usa <code>let</code> si necesitas reasignar.
                         </div>
@@ -78,6 +95,61 @@ const id = Symbol('id');
 
 // BigInt - números muy grandes
 const grande = 9007199254740991n;</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Tipos de Datos en Acción</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="display: grid; gap: 15px;">
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #3498db;">
+                                            <strong style="color: #3498db;">String</strong>
+                                            <div style="margin-top: 10px; font-family: monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;">
+                                                <div>let nombre = "Juan";</div>
+                                                <div style="color: #2ecc71; margin-top: 5px;">→ "Juan" (tipo: string)</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #9b59b6;">
+                                            <strong style="color: #9b59b6;">Number</strong>
+                                            <div style="margin-top: 10px; font-family: monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;">
+                                                <div>let edad = 25;</div>
+                                                <div>let precio = 19.99;</div>
+                                                <div style="color: #2ecc71; margin-top: 5px;">→ 25 y 19.99 (tipo: number)</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #e74c3c;">
+                                            <strong style="color: #e74c3c;">Boolean</strong>
+                                            <div style="margin-top: 10px; font-family: monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;">
+                                                <div>let activo = true;</div>
+                                                <div>let eliminado = false;</div>
+                                                <div style="color: #2ecc71; margin-top: 5px;">→ true y false (tipo: boolean)</div>
+                                            </div>
+                                        </div>
+
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border-left: 4px solid #95a5a6;">
+                                            <strong style="color: #95a5a6;">Null vs Undefined</strong>
+                                            <div style="margin-top: 10px; font-family: monospace; background: #f8f9fa; padding: 10px; border-radius: 4px;">
+                                                <div>let vacio = null;</div>
+                                                <div>let sinDefinir;</div>
+                                                <div style="color: #2ecc71; margin-top: 5px;">→ null (intencional) vs undefined (sin valor)</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-top: 20px; background: #fff3cd; padding: 15px; border-radius: 6px; border-left: 4px solid #f1c40f;">
+                                        <strong style="color: #856404; font-size: 13px;">💡 typeof:</strong>
+                                        <div style="margin-top: 8px; font-family: monospace; font-size: 12px;">
+                                            <div>typeof "hola" → "string"</div>
+                                            <div>typeof 42 → "number"</div>
+                                            <div>typeof true → "boolean"</div>
+                                            <div>typeof undefined → "undefined"</div>
+                                            <div style="color: #e74c3c;">typeof null → "object" ⚠️ (bug histórico de JS)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="operadores-aritmeticos" data-tags="operadores aritmeticos suma resta multiplicacion">
@@ -98,6 +170,63 @@ x++;    // 6
 x--;    // 5
 x += 3; // 8
 x *= 2; // 16</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Calculadora con Operadores Aritméticos</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="background: white; padding: 25px; border-radius: 8px; border: 2px solid #3498db;">
+                                        <strong style="color: #2c3e50; font-size: 16px; display: block; margin-bottom: 20px;">📊 Operaciones con a = 10, b = 3</strong>
+
+                                        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                                            <div style="background: #e8f4f8; padding: 15px; border-radius: 6px; border-left: 4px solid #3498db;">
+                                                <div style="font-family: monospace; font-size: 14px;">
+                                                    <div style="color: #7f8c8d;">a + b</div>
+                                                    <div style="font-size: 24px; font-weight: bold; color: #3498db; margin-top: 5px;">13</div>
+                                                </div>
+                                            </div>
+
+                                            <div style="background: #f3e5f5; padding: 15px; border-radius: 6px; border-left: 4px solid #9b59b6;">
+                                                <div style="font-family: monospace; font-size: 14px;">
+                                                    <div style="color: #7f8c8d;">a - b</div>
+                                                    <div style="font-size: 24px; font-weight: bold; color: #9b59b6; margin-top: 5px;">7</div>
+                                                </div>
+                                            </div>
+
+                                            <div style="background: #e8f5e9; padding: 15px; border-radius: 6px; border-left: 4px solid #2ecc71;">
+                                                <div style="font-family: monospace; font-size: 14px;">
+                                                    <div style="color: #7f8c8d;">a * b</div>
+                                                    <div style="font-size: 24px; font-weight: bold; color: #2ecc71; margin-top: 5px;">30</div>
+                                                </div>
+                                            </div>
+
+                                            <div style="background: #fff3cd; padding: 15px; border-radius: 6px; border-left: 4px solid #f1c40f;">
+                                                <div style="font-family: monospace; font-size: 14px;">
+                                                    <div style="color: #7f8c8d;">a / b</div>
+                                                    <div style="font-size: 24px; font-weight: bold; color: #f39c12; margin-top: 5px;">3.33...</div>
+                                                </div>
+                                            </div>
+
+                                            <div style="background: #ffe5e5; padding: 15px; border-radius: 6px; border-left: 4px solid #e74c3c;">
+                                                <div style="font-family: monospace; font-size: 14px;">
+                                                    <div style="color: #7f8c8d;">a % b</div>
+                                                    <div style="font-size: 24px; font-weight: bold; color: #e74c3c; margin-top: 5px;">1</div>
+                                                    <div style="font-size: 11px; color: #7f8c8d; margin-top: 3px;">resto</div>
+                                                </div>
+                                            </div>
+
+                                            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 15px; border-radius: 6px; color: white;">
+                                                <div style="font-family: monospace; font-size: 14px;">
+                                                    <div style="opacity: 0.9;">a ** b</div>
+                                                    <div style="font-size: 24px; font-weight: bold; margin-top: 5px;">1000</div>
+                                                    <div style="font-size: 11px; opacity: 0.8; margin-top: 3px;">potencia</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="operadores-comparacion" data-tags="operadores comparacion igual diferente mayor menor">
@@ -119,6 +248,39 @@ x *= 2; // 16</div>
 5 < 3        // false
 5 >= 5       // true
 5 <= 4       // false</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Tabla de Comparaciones</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                        <strong style="color: #2c3e50; margin-bottom: 15px; display: block;">=== (estricto) vs == (débil)</strong>
+
+                                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                                            <div style="background: #e8f5e9; padding: 15px; border-radius: 6px; border-left: 4px solid #2ecc71;">
+                                                <div style="font-family: monospace; margin-bottom: 10px;">5 === 5</div>
+                                                <div style="font-size: 20px; font-weight: bold; color: #2ecc71;">✓ true</div>
+                                            </div>
+                                            <div style="background: #ffe5e5; padding: 15px; border-radius: 6px; border-left: 4px solid #e74c3c;">
+                                                <div style="font-family: monospace; margin-bottom: 10px;">5 === "5"</div>
+                                                <div style="font-size: 20px; font-weight: bold; color: #e74c3c;">✗ false</div>
+                                                <div style="font-size: 11px; color: #7f8c8d;">diferente tipo</div>
+                                            </div>
+                                            <div style="background: #fff3cd; padding: 15px; border-radius: 6px; border-left: 4px solid #f39c12;">
+                                                <div style="font-family: monospace; margin-bottom: 10px;">5 == "5"</div>
+                                                <div style="font-size: 20px; font-weight: bold; color: #f39c12;">⚠️ true</div>
+                                                <div style="font-size: 11px; color: #856404;">convierte tipo (evitar)</div>
+                                            </div>
+                                            <div style="background: #e8f4f8; padding: 15px; border-radius: 6px; border-left: 4px solid #3498db;">
+                                                <div style="font-family: monospace; margin-bottom: 10px;">10 > 5</div>
+                                                <div style="font-size: 20px; font-weight: bold; color: #3498db;">✓ true</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="nota">
                             <strong>⚠️ Importante:</strong> Siempre usa === y !== para evitar errores de coerción de tipos.
                         </div>
@@ -150,6 +312,70 @@ if (edad >= 18 && tieneLicencia) {
 // Short-circuit evaluation
 const nombre = usuario || "Anónimo";
 const config = opciones && opciones.tema;</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Tablas de Verdad (AND, OR, NOT)</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                                        <!-- AND -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <strong style="color: #3498db; display: block; margin-bottom: 15px; text-align: center;">&&</strong> (AND)
+                                            <div style="display: grid; gap: 8px; font-family: monospace; font-size: 13px;">
+                                                <div style="background: #e8f5e9; padding: 8px; border-radius: 4px;">
+                                                    <span>true && true</span> → <strong style="color: #2ecc71;">true</strong>
+                                                </div>
+                                                <div style="background: #ffe5e5; padding: 8px; border-radius: 4px;">
+                                                    <span>true && false</span> → <strong style="color: #e74c3c;">false</strong>
+                                                </div>
+                                                <div style="background: #ffe5e5; padding: 8px; border-radius: 4px;">
+                                                    <span>false && true</span> → <strong style="color: #e74c3c;">false</strong>
+                                                </div>
+                                                <div style="background: #ffe5e5; padding: 8px; border-radius: 4px;">
+                                                    <span>false && false</span> → <strong style="color: #e74c3c;">false</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- OR -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                            <strong style="color: #9b59b6; display: block; margin-bottom: 15px; text-align: center;">||</strong> (OR)
+                                            <div style="display: grid; gap: 8px; font-family: monospace; font-size: 13px;">
+                                                <div style="background: #e8f5e9; padding: 8px; border-radius: 4px;">
+                                                    <span>true || true</span> → <strong style="color: #2ecc71;">true</strong>
+                                                </div>
+                                                <div style="background: #e8f5e9; padding: 8px; border-radius: 4px;">
+                                                    <span>true || false</span> → <strong style="color: #2ecc71;">true</strong>
+                                                </div>
+                                                <div style="background: #e8f5e9; padding: 8px; border-radius: 4px;">
+                                                    <span>false || true</span> → <strong style="color: #2ecc71;">true</strong>
+                                                </div>
+                                                <div style="background: #ffe5e5; padding: 8px; border-radius: 4px;">
+                                                    <span>false || false</span> → <strong style="color: #e74c3c;">false</strong>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- NOT -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #e74c3c;">
+                                            <strong style="color: #e74c3c; display: block; margin-bottom: 15px; text-align: center;">!</strong> (NOT)
+                                            <div style="display: grid; gap: 8px; font-family: monospace; font-size: 13px;">
+                                                <div style="background: #ffe5e5; padding: 8px; border-radius: 4px;">
+                                                    <span>!true</span> → <strong style="color: #e74c3c;">false</strong>
+                                                </div>
+                                                <div style="background: #e8f5e9; padding: 8px; border-radius: 4px;">
+                                                    <span>!false</span> → <strong style="color: #2ecc71;">true</strong>
+                                                </div>
+                                                <div style="background: #ecf0f1; padding: 8px; border-radius: 4px; margin-top: 10px;">
+                                                    <div style="margin-bottom: 4px;"><span>!!</span>true → true</div>
+                                                    <div style="font-size: 11px; color: #7f8c8d;">doble negación</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="typeof" data-tags="typeof tipo verificar">
@@ -285,8 +511,8 @@ const despedir = function() {
         <p>JavaScript - Sistema de Aprendizaje | <a href="../index.html">Volver a JavaScript</a></p>
     </footer>
 
-    <script src="/assets/js/sidebar-component.js"></script>
-    <script src="/assets/js/study-highlight.js"></script>
+    <script src="../../../assets/js/sidebar-component.js"></script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('searchInput');
@@ -334,6 +560,20 @@ const despedir = function() {
                 const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
                 const scrolled = (winScroll / height) * 100;
                 document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // Aplicar highlight.js solo a elementos .ejemplo que no tienen <br> (no son HTML)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.ejemplo').forEach(function(block) {
+                // Solo resaltar si no tiene elementos <br> (no es HTML con sintaxis manual)
+                if (block.querySelectorAll('br').length === 0) {
+                    block.classList.add('language-javascript');
+                    hljs.highlightElement(block);
+                }
             });
         });
     </script>

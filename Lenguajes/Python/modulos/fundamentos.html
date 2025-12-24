@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos de Python - Sistema de Aprendizaje</title>
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
+    <!-- Highlight.js para resaltado de sintaxis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a Python</a>
+        <span class="icon">🐍</span>
+        <h1>Módulo 1: Fundamentos</h1>
+        <p class="subtitle">Introducción, sintaxis y variables</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(55, 118, 171, 0.1) 0%, rgba(55, 118, 171, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #3776ab; margin-bottom: 40px;">
+                <h2 style="color: #3776ab; margin-bottom: 15px; font-size: 1.8em;">🐍 Fundamentos de Python</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    Python es un lenguaje de programación de alto nivel, interpretado y de propósito general.
+                    Se caracteriza por su sintaxis clara y legible, tipado dinámico y soporte multiparadigma.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="que-es-python" data-tags="python lenguaje interpretado">
+                        <span class="tag">📋 ¿Qué es Python?</span>
+                        <p class="significado">Lenguaje de alto nivel, interpretado y de propósito general</p>
+                        <p class="descripcion">
+                            Python es sencillo de aprender gracias a su sintaxis clara. No necesita compilar,
+                            el código se ejecuta directamente. Soporta programación orientada a objetos, funcional y procedimental.
+                        </p>
+                        <div class="ejemplo"># Características principales:
+# - Tipado dinámico: no se declara el tipo
+# - Tipado fuerte: no convierte automáticamente tipos incompatibles
+# - Type hints opcionales (anotaciones de tipo)
+
+nombre = "Python"  # El tipo se infiere
+edad = 30          # También se infiere
+print(f"Lenguaje: {nombre}, años: {edad}")</div>
+                    <div class="vista-previa">
+                        <strong>👁️ Vista previa:</strong>
+                        <div class="preview-content">
+                            <p><strong>Código Python:</strong></p>
+                            <pre style="white-space: pre-wrap; background: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 6px; font-family: 'Courier New', monospace;">nombre = "Python"
+edad = 30
+print(f"Lenguaje: {nombre}, años: {edad}")</pre>
+                            <p><strong>📤 Salida en terminal:</strong></p>
+                            <div style="background: #1e1e1e; color: #4ec9b0; font-family: 'Courier New', monospace; padding: 12px; border-radius: 6px; border-left: 3px solid #3776ab;">
+                                <code>$ python script.py</code><br>
+                                <span style="color: #dcdcaa;">Lenguaje: Python, años: 30</span>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div class="nota">
+                            <strong>💡 Usos:</strong> Desarrollo web, IA, ciencia de datos, automatización, ciberseguridad.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="por-que-python" data-tags="ventajas python comunidad">
+                        <span class="tag">📋 ¿Por qué aprender Python?</span>
+                        <p class="significado">Razones para elegir Python como lenguaje</p>
+                        <div class="ejemplo"># 1. Sintaxis simple y clara
+#    - Se parece al lenguaje natural
+#    - Menos código que Java o C++
+#    - Te concentras en la lógica
+
+# 2. Comunidad enorme y activa
+#    - Miles de foros, tutoriales, cursos
+#    - Gran cantidad de librerías y frameworks
+
+# 3. Versatilidad
+#    - Web: Django, Flask, FastAPI
+#    - Data Science: NumPy, Pandas, TensorFlow
+#    - Automatización y scripting
+#    - Ciberseguridad, robótica, videojuegos
+
+# 4. Alta demanda laboral
+#    - Top en rankings TIOBE y Stack Overflow</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Ventajas de Python</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="display: grid; gap: 15px;">
+                                        <!-- Sintaxis Simple -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #2ecc71;">
+                                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                                                <div style="background: #2ecc71; color: white; padding: 8px 16px; border-radius: 6px; font-weight: bold; font-size: 14px;">✓ Sintaxis Clara</div>
+                                            </div>
+                                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                                                <div style="background: #f8f9fa; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #666; margin-bottom: 6px;">Python:</div>
+                                                    <div style="font-family: monospace; font-size: 12px; color: #2ecc71;">
+                                                        print("Hola mundo")
+                                                    </div>
+                                                </div>
+                                                <div style="background: #ffebee; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #666; margin-bottom: 6px;">Java:</div>
+                                                    <div style="font-family: monospace; font-size: 11px; color: #e74c3c;">
+                                                        System.out.println("Hola mundo");
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Versatilidad -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🎯 Áreas de Aplicación
+                                            </div>
+                                            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+                                                <div style="background: #e3f2fd; padding: 12px; border-radius: 6px; border-left: 3px solid #3498db;">
+                                                    <div style="font-weight: bold; font-size: 12px; color: #1976d2; margin-bottom: 4px;">🌐 Web</div>
+                                                    <div style="font-size: 11px; color: #666;">Django, Flask, FastAPI</div>
+                                                </div>
+                                                <div style="background: #f3e5f5; padding: 12px; border-radius: 6px; border-left: 3px solid #9b59b6;">
+                                                    <div style="font-weight: bold; font-size: 12px; color: #6a1b9a; margin-bottom: 4px;">📊 Data Science</div>
+                                                    <div style="font-size: 11px; color: #666;">Pandas, NumPy, Matplotlib</div>
+                                                </div>
+                                                <div style="background: #fff3e0; padding: 12px; border-radius: 6px; border-left: 3px solid #f39c12;">
+                                                    <div style="font-weight: bold; font-size: 12px; color: #f57c00; margin-bottom: 4px;">🤖 IA/ML</div>
+                                                    <div style="font-size: 11px; color: #666;">TensorFlow, PyTorch, Keras</div>
+                                                </div>
+                                                <div style="background: #e8f5e9; padding: 12px; border-radius: 6px; border-left: 3px solid #2ecc71;">
+                                                    <div style="font-weight: bold; font-size: 12px; color: #2e7d32; margin-bottom: 4px;">⚙️ Automatización</div>
+                                                    <div style="font-size: 11px; color: #666;">Scripts, bots, testing</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Comunidad -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                👥 Comunidad y Recursos
+                                            </div>
+                                            <div style="display: grid; gap: 8px;">
+                                                <div style="display: flex; align-items: center; gap: 10px; background: #f3e5f5; padding: 10px; border-radius: 6px;">
+                                                    <div style="background: #9b59b6; color: white; padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: bold;">PyPI</div>
+                                                    <div style="font-size: 13px;">+400,000 paquetes disponibles</div>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 10px; background: #f3e5f5; padding: 10px; border-radius: 6px;">
+                                                    <div style="background: #9b59b6; color: white; padding: 6px 12px; border-radius: 4px; font-size: 12px; font-weight: bold;">GitHub</div>
+                                                    <div style="font-size: 13px;">Millones de proyectos open source</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Demanda Laboral -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #f39c12;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                💼 Alta Demanda Laboral
+                                            </div>
+                                            <div style="background: #fff3e0; padding: 15px; border-radius: 6px; text-align: center;">
+                                                <div style="font-size: 24px; font-weight: bold; color: #f39c12; margin-bottom: 6px;">
+                                                    Top 3
+                                                </div>
+                                                <div style="font-size: 13px; color: #666;">
+                                                    Lenguajes más demandados según TIOBE y Stack Overflow
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="sintaxis-basica" data-tags="sintaxis indentacion bloques">
+                        <span class="tag">📋 Sintaxis Básica</span>
+                        <p class="significado">Reglas fundamentales de escritura en Python</p>
+                        <div class="ejemplo"># Python es case-sensitive
+nombre = "Ana"
+Nombre = "Juan"  # Son diferentes variables
+
+# No usa punto y coma al final
+print("Hola mundo")
+
+# Indentación OBLIGATORIA (4 espacios por nivel)
+if True:
+    print("Indentado")  # Correcto
+    print("También")    # Correcto
+
+# Dos puntos (:) para abrir bloques
+def saludar():
+    print("Hola")
+
+# Espacios alrededor de operadores (recomendado)
+resultado = 5 + 3  # Correcto
+resultado=5+3      # Funciona pero no recomendado</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Sintaxis Python vs JavaScript</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="display: grid; gap: 15px;">
+                                        <!-- Indentación -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                📐 Indentación OBLIGATORIA
+                                            </div>
+                                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                                                <div style="background: #e8f5e9; padding: 15px; border-radius: 6px; border-left: 3px solid #2ecc71;">
+                                                    <div style="font-size: 11px; color: #2e7d32; margin-bottom: 8px; font-weight: bold;">✓ Python (Correcto)</div>
+                                                    <div style="font-family: monospace; font-size: 12px; color: #2c3e50;">
+                                                        if True:<br>
+                                                        <span style="margin-left: 20px;">print("Hola")</span><br>
+                                                        <span style="margin-left: 20px;">print("Mundo")</span>
+                                                    </div>
+                                                    <div style="font-size: 10px; color: #2e7d32; margin-top: 6px;">4 espacios por nivel</div>
+                                                </div>
+                                                <div style="background: #ffebee; padding: 15px; border-radius: 6px; border-left: 3px solid #e74c3c;">
+                                                    <div style="font-size: 11px; color: #c62828; margin-bottom: 8px; font-weight: bold;">✗ JavaScript (llaves)</div>
+                                                    <div style="font-family: monospace; font-size: 12px; color: #2c3e50;">
+                                                        if (true) {<br>
+                                                        &nbsp;&nbsp;console.log("Hola");<br>
+                                                        &nbsp;&nbsp;console.log("Mundo");<br>
+                                                        }
+                                                    </div>
+                                                    <div style="font-size: 10px; color: #c62828; margin-top: 6px;">Usa llaves { }</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Dos puntos -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                : Dos Puntos para Abrir Bloques
+                                            </div>
+                                            <div style="display: grid; gap: 10px;">
+                                                <div style="background: #f3e5f5; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #6a1b9a; margin-bottom: 6px;">Condicionales</div>
+                                                    <div style="font-family: monospace; font-size: 12px; color: #9b59b6;">
+                                                        if condicion<span style="color: #e74c3c; font-weight: bold;">:</span>
+                                                    </div>
+                                                </div>
+                                                <div style="background: #f3e5f5; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #6a1b9a; margin-bottom: 6px;">Funciones</div>
+                                                    <div style="font-family: monospace; font-size: 12px; color: #9b59b6;">
+                                                        def funcion()<span style="color: #e74c3c; font-weight: bold;">:</span>
+                                                    </div>
+                                                </div>
+                                                <div style="background: #f3e5f5; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #6a1b9a; margin-bottom: 6px;">Bucles</div>
+                                                    <div style="font-family: monospace; font-size: 12px; color: #9b59b6;">
+                                                        for i in range(5)<span style="color: #e74c3c; font-weight: bold;">:</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Case Sensitive -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #f39c12;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🔤 Case Sensitive (Mayúsculas ≠ Minúsculas)
+                                            </div>
+                                            <div style="display: grid; gap: 10px;">
+                                                <div style="background: #fff3e0; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 13px; margin-bottom: 8px;">
+                                                        <span style="color: #3498db;">nombre</span> = "Ana"
+                                                    </div>
+                                                    <div style="font-family: monospace; font-size: 13px;">
+                                                        <span style="color: #9b59b6;">Nombre</span> = "Juan"
+                                                    </div>
+                                                    <div style="background: #ffd54f; padding: 8px; border-radius: 4px; margin-top: 8px; font-size: 12px; text-align: center;">
+                                                        Son variables DIFERENTES
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sin punto y coma -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #2ecc71;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                ✓ Sin Punto y Coma (;)
+                                            </div>
+                                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                                                <div style="background: #e8f5e9; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #2e7d32; margin-bottom: 6px;">Python</div>
+                                                    <div style="font-family: monospace; font-size: 12px; color: #2ecc71;">
+                                                        print("Hola")<br>
+                                                        x = 10<br>
+                                                        y = 20
+                                                    </div>
+                                                </div>
+                                                <div style="background: #f8f9fa; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #666; margin-bottom: 6px;">JavaScript</div>
+                                                    <div style="font-family: monospace; font-size: 12px; color: #666;">
+                                                        console.log("Hola")<span style="color: #e74c3c;">;</span><br>
+                                                        let x = 10<span style="color: #e74c3c;">;</span><br>
+                                                        let y = 20<span style="color: #e74c3c;">;</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nota">
+                            <strong>⚠️ Importante:</strong> A diferencia de JavaScript, los bloques se definen por indentación, no por llaves {}.
+                        </div>
+                    </div>
+
+                    <div class="termino" id="variables" data-tags="variables tipado dinamico asignacion">
+                        <span class="tag">📋 Variables y Constantes</span>
+                        <p class="significado">Contenedores para almacenar valores</p>
+                        <p class="descripcion">
+                            Las variables se crean automáticamente al asignarles un valor (tipado dinámico).
+                            El tipo puede cambiar en tiempo de ejecución.
+                        </p>
+                        <div class="ejemplo"># Creación automática de variables
+nombre = "Python"    # str
+edad = 30            # int
+precio = 19.99       # float
+activo = True        # bool
+
+# El tipo puede cambiar
+x = 10       # x es int
+x = "texto"  # ahora x es str
+
+# Python distingue mayúsculas/minúsculas
+nombre = "Ana"
+Nombre = "Juan"  # Son variables diferentes
+
+# CONSTANTES (por convención, en MAYÚSCULAS)
+PI = 3.14159
+MAX_INTENTOS = 5
+URL_BASE = "https://api.ejemplo.com"
+# No hay constantes reales, es solo convención</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Tipado Dinámico</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="display: grid; gap: 15px;">
+                                        <!-- Creación automática -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                ⚡ Creación Automática (Sin Declarar Tipo)
+                                            </div>
+                                            <div style="display: grid; gap: 10px;">
+                                                <div style="display: flex; align-items: center; gap: 12px; background: #e3f2fd; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 13px; color: #3498db; flex: 1;">nombre = "Python"</div>
+                                                    <div style="background: #3498db; color: white; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: bold;">str</div>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 12px; background: #e3f2fd; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 13px; color: #3498db; flex: 1;">edad = 30</div>
+                                                    <div style="background: #2ecc71; color: white; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: bold;">int</div>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 12px; background: #e3f2fd; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 13px; color: #3498db; flex: 1;">precio = 19.99</div>
+                                                    <div style="background: #9b59b6; color: white; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: bold;">float</div>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 12px; background: #e3f2fd; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 13px; color: #3498db; flex: 1;">activo = True</div>
+                                                    <div style="background: #f39c12; color: white; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: bold;">bool</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- El tipo puede cambiar -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #f39c12;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🔄 El Tipo Puede Cambiar (Dinámico)
+                                            </div>
+                                            <div style="display: grid; gap: 12px;">
+                                                <div style="background: #fff3e0; padding: 15px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #f57c00; margin-bottom: 8px;">Paso 1:</div>
+                                                    <div style="display: flex; align-items: center; gap: 12px;">
+                                                        <div style="font-family: monospace; font-size: 13px; flex: 1;">x = 10</div>
+                                                        <div style="background: #2ecc71; color: white; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: bold;">int</div>
+                                                    </div>
+                                                </div>
+                                                <div style="font-size: 24px; text-align: center; color: #f39c12;">↓</div>
+                                                <div style="background: #fff3e0; padding: 15px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #f57c00; margin-bottom: 8px;">Paso 2:</div>
+                                                    <div style="display: flex; align-items: center; gap: 12px;">
+                                                        <div style="font-family: monospace; font-size: 13px; flex: 1;">x = "texto"</div>
+                                                        <div style="background: #3498db; color: white; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: bold;">str</div>
+                                                    </div>
+                                                </div>
+                                                <div style="background: #ffd54f; padding: 10px; border-radius: 6px; text-align: center; font-size: 12px; font-weight: bold;">
+                                                    ✓ Válido! La variable cambió de tipo
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Case Sensitive -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #e74c3c;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                ⚠️ Distingue Mayúsculas/Minúsculas
+                                            </div>
+                                            <div style="background: #ffebee; padding: 15px; border-radius: 6px;">
+                                                <div style="display: grid; gap: 10px;">
+                                                    <div style="background: #fff; padding: 12px; border-radius: 6px; border-left: 3px solid #e74c3c;">
+                                                        <div style="font-family: monospace; font-size: 13px; color: #2c3e50;">
+                                                            <span style="color: #3498db;">nombre</span> = "Ana"
+                                                        </div>
+                                                    </div>
+                                                    <div style="background: #fff; padding: 12px; border-radius: 6px; border-left: 3px solid #9b59b6;">
+                                                        <div style="font-family: monospace; font-size: 13px; color: #2c3e50;">
+                                                            <span style="color: #9b59b6;">Nombre</span> = "Juan"
+                                                        </div>
+                                                    </div>
+                                                    <div style="text-align: center; font-size: 13px; color: #c62828; font-weight: bold; padding-top: 8px;">
+                                                        Son 2 variables DIFERENTES
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Constantes -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #2ecc71;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🔒 CONSTANTES (Convención)
+                                            </div>
+                                            <div style="background: #e8f5e9; padding: 15px; border-radius: 6px;">
+                                                <div style="display: grid; gap: 8px;">
+                                                    <div style="font-family: monospace; font-size: 13px; color: #2e7d32;">
+                                                        PI = 3.14159
+                                                    </div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #2e7d32;">
+                                                        MAX_INTENTOS = 5
+                                                    </div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #2e7d32;">
+                                                        URL_BASE = "https://api.ejemplo.com"
+                                                    </div>
+                                                </div>
+                                                <div style="background: #fff3cd; padding: 10px; border-radius: 6px; margin-top: 10px; font-size: 12px; color: #856404;">
+                                                    <strong>Nota:</strong> Python no tiene constantes reales. MAYÚSCULAS es solo una convención para indicar que no deberían modificarse.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="identificadores" data-tags="nombres reglas convenciones snake_case">
+                        <span class="tag">📋 Reglas para Identificadores</span>
+                        <p class="significado">Normas para nombrar variables, funciones y clases</p>
+                        <div class="ejemplo"># REGLAS (obligatorias):
+# ✓ Deben comenzar con letra o guion bajo _
+# ✓ No pueden comenzar con número
+# ✓ No espacios ni caracteres especiales (excepto _)
+# ✓ No pueden ser palabras reservadas
+
+# Válidos
+nombre = "Ana"
+_privado = 10
+contador_1 = 0
+
+# Inválidos
+# 1variable = 10  # Error: empieza con número
+# mi-variable = 5 # Error: guion no permitido
+# for = "x"       # Error: palabra reservada
+
+# CONVENCIONES (recomendadas):
+# Variables y funciones: snake_case
+nombre_usuario = "juan"
+calcular_promedio = lambda x: sum(x)/len(x)
+
+# Constantes: MAYUSCULAS_CON_GUIONES
+MAX_CONEXIONES = 100
+
+# Clases: PascalCase
+class MiClase:
+    pass</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Convenciones de Nombres</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="display: grid; gap: 15px;">
+                                        <!-- Reglas obligatorias -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #e74c3c;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🚫 Reglas OBLIGATORIAS
+                                            </div>
+                                            <div style="display: grid; gap: 10px;">
+                                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                                    <div style="background: #e8f5e9; padding: 12px; border-radius: 6px; border-left: 3px solid #2ecc71;">
+                                                        <div style="font-size: 11px; color: #2e7d32; margin-bottom: 6px; font-weight: bold;">✓ Válidos</div>
+                                                        <div style="font-family: monospace; font-size: 12px; color: #2c3e50;">
+                                                            nombre<br>
+                                                            _privado<br>
+                                                            contador_1<br>
+                                                            miVar123
+                                                        </div>
+                                                    </div>
+                                                    <div style="background: #ffebee; padding: 12px; border-radius: 6px; border-left: 3px solid #e74c3c;">
+                                                        <div style="font-size: 11px; color: #c62828; margin-bottom: 6px; font-weight: bold;">✗ Inválidos</div>
+                                                        <div style="font-family: monospace; font-size: 12px; color: #2c3e50;">
+                                                            1variable<br>
+                                                            mi-variable<br>
+                                                            for<br>
+                                                            mi variable
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="background: #fff3e0; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-size: 12px; color: #856404;">
+                                                        <strong>Reglas:</strong><br>
+                                                        • Empezar con letra (a-z, A-Z) o guion bajo (_)<br>
+                                                        • Continuar con letras, números o guion bajo<br>
+                                                        • No usar palabras reservadas (if, for, class, etc.)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- snake_case -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🐍 snake_case - Variables y Funciones
+                                            </div>
+                                            <div style="background: #e3f2fd; padding: 15px; border-radius: 6px;">
+                                                <div style="display: grid; gap: 8px;">
+                                                    <div style="font-family: monospace; font-size: 13px; color: #3498db;">
+                                                        nombre_usuario = "juan"
+                                                    </div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #3498db;">
+                                                        calcular_promedio()
+                                                    </div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #3498db;">
+                                                        numero_de_intentos = 3
+                                                    </div>
+                                                </div>
+                                                <div style="background: #fff; padding: 10px; border-radius: 6px; margin-top: 10px; font-size: 12px; color: #1976d2;">
+                                                    <strong>Patrón:</strong> todas_minúsculas_con_guion_bajo
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- MAYUSCULAS_CON_GUIONES -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #2ecc71;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🔒 MAYÚSCULAS - Constantes
+                                            </div>
+                                            <div style="background: #e8f5e9; padding: 15px; border-radius: 6px;">
+                                                <div style="display: grid; gap: 8px;">
+                                                    <div style="font-family: monospace; font-size: 13px; color: #2ecc71;">
+                                                        MAX_CONEXIONES = 100
+                                                    </div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #2ecc71;">
+                                                        PI = 3.14159
+                                                    </div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #2ecc71;">
+                                                        URL_BASE = "https://api.com"
+                                                    </div>
+                                                </div>
+                                                <div style="background: #fff; padding: 10px; border-radius: 6px; margin-top: 10px; font-size: 12px; color: #2e7d32;">
+                                                    <strong>Patrón:</strong> TODAS_MAYÚSCULAS_CON_GUION_BAJO
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- PascalCase -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                📦 PascalCase - Clases
+                                            </div>
+                                            <div style="background: #f3e5f5; padding: 15px; border-radius: 6px;">
+                                                <div style="display: grid; gap: 8px;">
+                                                    <div style="font-family: monospace; font-size: 13px; color: #9b59b6;">
+                                                        class MiClase:
+                                                    </div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #9b59b6;">
+                                                        class UsuarioAdmin:
+                                                    </div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #9b59b6;">
+                                                        class ConexionBaseDatos:
+                                                    </div>
+                                                </div>
+                                                <div style="background: #fff; padding: 10px; border-radius: 6px; margin-top: 10px; font-size: 12px; color: #6a1b9a;">
+                                                    <strong>Patrón:</strong> CadaPalabraEmpiezaConMayúscula
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Guion bajo -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #f39c12;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🔐 _guion_bajo - Interno/Privado
+                                            </div>
+                                            <div style="display: grid; gap: 10px;">
+                                                <div style="background: #fff3e0; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 12px; color: #f57c00; margin-bottom: 6px;">
+                                                        _variable_interna
+                                                    </div>
+                                                    <div style="font-size: 11px; color: #666;">
+                                                        Un guion: "Uso interno, no tocar"
+                                                    </div>
+                                                </div>
+                                                <div style="background: #fff3e0; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 12px; color: #f57c00; margin-bottom: 6px;">
+                                                        __variable_privada
+                                                    </div>
+                                                    <div style="font-size: 11px; color: #666;">
+                                                        Dos guiones: "Privado (name mangling)"
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Resumen -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #95a5a6;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50; text-align: center;">
+                                                📊 Resumen Visual
+                                            </div>
+                                            <div style="display: grid; gap: 8px;">
+                                                <div style="display: flex; align-items: center; gap: 10px; background: #ecf0f1; padding: 10px; border-radius: 6px;">
+                                                    <div style="background: #3498db; color: white; padding: 6px 12px; border-radius: 4px; font-size: 11px; min-width: 120px; text-align: center; font-weight: bold;">Variables</div>
+                                                    <div style="font-family: monospace; font-size: 12px;">mi_variable</div>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 10px; background: #ecf0f1; padding: 10px; border-radius: 6px;">
+                                                    <div style="background: #2ecc71; color: white; padding: 6px 12px; border-radius: 4px; font-size: 11px; min-width: 120px; text-align: center; font-weight: bold;">Constantes</div>
+                                                    <div style="font-family: monospace; font-size: 12px;">MI_CONSTANTE</div>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 10px; background: #ecf0f1; padding: 10px; border-radius: 6px;">
+                                                    <div style="background: #9b59b6; color: white; padding: 6px 12px; border-radius: 4px; font-size: 11px; min-width: 120px; text-align: center; font-weight: bold;">Clases</div>
+                                                    <div style="font-family: monospace; font-size: 12px;">MiClase</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="comentarios" data-tags="comentarios docstrings documentacion">
+                        <span class="tag">📋 Comentarios</span>
+                        <p class="significado">Anotaciones para explicar el código</p>
+                        <div class="ejemplo"># Comentario de una línea
+x = 10  # Comentario al final de línea
+
+"""
+Comentario multilínea
+usando comillas triples.
+También llamado docstring cuando
+documenta funciones o clases.
+"""
+
+'''
+También funciona con
+comillas simples triples.
+'''
+
+def calcular_area(radio):
+    """
+    Calcula el área de un círculo.
+
+    Args:
+        radio: El radio del círculo
+
+    Returns:
+        El área calculada
+    """
+    return 3.14159 * radio ** 2</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Tipos de Comentarios</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="display: grid; gap: 15px;">
+                                        <!-- Comentario simple -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                # Comentario de Una Línea
+                                            </div>
+                                            <div style="background: #e3f2fd; padding: 15px; border-radius: 6px;">
+                                                <div style="font-family: monospace; font-size: 13px; color: #2c3e50;">
+                                                    <span style="color: #95a5a6;"># Este es un comentario</span><br>
+                                                    x = 10<br>
+                                                    y = 20  <span style="color: #95a5a6;"># Comentario al final</span>
+                                                </div>
+                                                <div style="background: #fff; padding: 10px; border-radius: 6px; margin-top: 10px; font-size: 12px; color: #1976d2;">
+                                                    <strong>Uso:</strong> Explicaciones breves, notas rápidas
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Comentario multilínea -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #2ecc71;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                """ Comentario Multilínea """
+                                            </div>
+                                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                                                <div style="background: #e8f5e9; padding: 15px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #2e7d32; margin-bottom: 8px; font-weight: bold;">Comillas dobles triples</div>
+                                                    <div style="font-family: monospace; font-size: 12px; color: #2c3e50;">
+                                                        <span style="color: #2ecc71;">"""</span><br>
+                                                        <span style="color: #95a5a6;">Comentario de</span><br>
+                                                        <span style="color: #95a5a6;">varias líneas</span><br>
+                                                        <span style="color: #2ecc71;">"""</span>
+                                                    </div>
+                                                </div>
+                                                <div style="background: #e8f5e9; padding: 15px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #2e7d32; margin-bottom: 8px; font-weight: bold;">Comillas simples triples</div>
+                                                    <div style="font-family: monospace; font-size: 12px; color: #2c3e50;">
+                                                        <span style="color: #2ecc71;">'''</span><br>
+                                                        <span style="color: #95a5a6;">También funciona</span><br>
+                                                        <span style="color: #95a5a6;">con simples</span><br>
+                                                        <span style="color: #2ecc71;">'''</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Docstring -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                📚 Docstring - Documentación
+                                            </div>
+                                            <div style="background: #f3e5f5; padding: 15px; border-radius: 6px;">
+                                                <div style="font-family: monospace; font-size: 12px; color: #2c3e50; margin-bottom: 10px;">
+                                                    <span style="color: #e74c3c;">def</span> <span style="color: #9b59b6;">calcular_area</span>(radio):<br>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #2ecc71;">"""</span><br>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #95a5a6;">Calcula el área de un círculo.</span><br>
+                                                    <br>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #95a5a6;">Args:</span><br>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #95a5a6;">radio: El radio del círculo</span><br>
+                                                    <br>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #95a5a6;">Returns:</span><br>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #95a5a6;">El área calculada</span><br>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #2ecc71;">"""</span><br>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e74c3c;">return</span> 3.14159 * radio ** 2
+                                                </div>
+                                                <div style="background: #fff; padding: 10px; border-radius: 6px; font-size: 12px; color: #6a1b9a;">
+                                                    <strong>💡 Ventaja:</strong> Accesible con <code style="background: #e1bee7; padding: 2px 6px; border-radius: 3px;">help(calcular_area)</code>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Comparación -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #f39c12;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🔍 Diferencia: Comentario vs Docstring
+                                            </div>
+                                            <div style="display: grid; gap: 10px;">
+                                                <div style="display: flex; align-items: center; gap: 10px; background: #fff3e0; padding: 12px; border-radius: 6px;">
+                                                    <div style="background: #95a5a6; color: white; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: bold; min-width: 100px; text-align: center;">#</div>
+                                                    <div style="font-size: 13px;">Ignorado por Python, solo para humanos</div>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 10px; background: #fff3e0; padding: 12px; border-radius: 6px;">
+                                                    <div style="background: #9b59b6; color: white; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: bold; min-width: 100px; text-align: center;">"""</div>
+                                                    <div style="font-size: 13px;">Documentación oficial, accesible programáticamente</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nota">
+                            <strong>💡 Tip:</strong> Los docstrings se usan para documentar funciones y son accesibles con help(funcion).
+                        </div>
+                    </div>
+
+                    <div class="termino" id="bloques" data-tags="bloques indentacion estructura">
+                        <span class="tag">📋 Bloques de Código</span>
+                        <p class="significado">Conjunto de sentencias que se ejecutan juntas</p>
+                        <div class="ejemplo"># Los bloques se definen con:
+# 1. Dos puntos (:) al final de la línea
+# 2. Indentación (4 espacios es lo estándar)
+
+# Bloque en condicional
+if edad >= 18:
+    print("Es mayor de edad")
+    print("Puede votar")
+    # Todo esto está en el mismo bloque
+
+# Bloque en función
+def saludar(nombre):
+    mensaje = f"Hola {nombre}"
+    print(mensaje)
+    return mensaje
+
+# Bloque en bucle
+for i in range(5):
+    print(i)
+    if i == 3:
+        print("Es tres")
+        # Bloque anidado
+
+# Bloques vacíos usan pass
+def funcion_vacia():
+    pass  # Placeholder</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Bloques e Indentación</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="display: grid; gap: 15px;">
+                                        <!-- Estructura de bloques -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                📐 Estructura: Dos Puntos + Indentación
+                                            </div>
+                                            <div style="background: #e3f2fd; padding: 15px; border-radius: 6px;">
+                                                <div style="display: flex; gap: 15px; align-items: start;">
+                                                    <div style="flex: 1;">
+                                                        <div style="font-family: monospace; font-size: 13px; color: #2c3e50;">
+                                                            <span style="color: #e74c3c;">if</span> edad >= 18<span style="color: #e74c3c; font-weight: bold;">:</span><br>
+                                                            <span style="margin-left: 20px; background: #ffd54f; padding: 2px;">print("Mayor")</span><br>
+                                                            <span style="margin-left: 20px; background: #ffd54f; padding: 2px;">print("Puede votar")</span>
+                                                        </div>
+                                                    </div>
+                                                    <div style="flex: 1; background: #fff; padding: 12px; border-radius: 6px; border-left: 3px solid #3498db;">
+                                                        <div style="font-size: 11px; margin-bottom: 6px; color: #666;">Elementos clave:</div>
+                                                        <div style="font-size: 12px;">
+                                                            <div style="margin-bottom: 6px;">
+                                                                <span style="background: #e74c3c; color: white; padding: 2px 6px; border-radius: 3px; font-size: 10px;">:</span> Abre bloque
+                                                            </div>
+                                                            <div>
+                                                                <span style="background: #ffd54f; color: #2c3e50; padding: 2px 6px; border-radius: 3px; font-size: 10px;">4 espacios</span> Indentación
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Niveles de indentación -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #2ecc71;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🎯 Niveles de Indentación (Bloques Anidados)
+                                            </div>
+                                            <div style="background: #e8f5e9; padding: 15px; border-radius: 6px;">
+                                                <div style="font-family: monospace; font-size: 12px; color: #2c3e50; position: relative;">
+                                                    <div style="position: absolute; left: -10px; top: 0; bottom: 0; display: flex; flex-direction: column; gap: 1px;">
+                                                        <div style="background: #2ecc71; width: 4px; height: 20px;" title="Nivel 0"></div>
+                                                        <div style="background: #3498db; width: 4px; height: 40px; margin-left: 15px;" title="Nivel 1"></div>
+                                                        <div style="background: #9b59b6; width: 4px; height: 40px; margin-left: 30px;" title="Nivel 2"></div>
+                                                    </div>
+                                                    <span style="color: #e74c3c;">for</span> i <span style="color: #e74c3c;">in</span> range(5)<span style="color: #e74c3c;">:</span><br>
+                                                    <span style="margin-left: 20px; background: #bbdefb; padding: 2px;">print(i)</span><br>
+                                                    <span style="margin-left: 20px;"><span style="color: #e74c3c;">if</span> i == 3<span style="color: #e74c3c;">:</span></span><br>
+                                                    <span style="margin-left: 40px; background: #ce93d8; padding: 2px;">print("Es tres")</span><br>
+                                                    <span style="margin-left: 40px; background: #ce93d8; padding: 2px;">print("Encontrado!")</span>
+                                                </div>
+                                                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 12px;">
+                                                    <div style="background: #c8e6c9; padding: 8px; border-radius: 4px; text-align: center; font-size: 11px;">
+                                                        <div style="font-weight: bold; color: #2e7d32;">Nivel 0</div>
+                                                        <div style="color: #666;">Sin indent</div>
+                                                    </div>
+                                                    <div style="background: #bbdefb; padding: 8px; border-radius: 4px; text-align: center; font-size: 11px;">
+                                                        <div style="font-weight: bold; color: #1976d2;">Nivel 1</div>
+                                                        <div style="color: #666;">4 espacios</div>
+                                                    </div>
+                                                    <div style="background: #ce93d8; padding: 8px; border-radius: 4px; text-align: center; font-size: 11px;">
+                                                        <div style="font-weight: bold; color: #6a1b9a;">Nivel 2</div>
+                                                        <div style="color: #666;">8 espacios</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Tipos de bloques -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🔄 Tipos de Bloques Comunes
+                                            </div>
+                                            <div style="display: grid; gap: 10px;">
+                                                <div style="background: #f3e5f5; padding: 12px; border-radius: 6px; border-left: 3px solid #9b59b6;">
+                                                    <div style="font-size: 11px; color: #6a1b9a; margin-bottom: 6px; font-weight: bold;">Condicional</div>
+                                                    <div style="font-family: monospace; font-size: 12px; color: #2c3e50;">
+                                                        <span style="color: #e74c3c;">if</span> condicion<span style="color: #e74c3c;">:</span><br>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;hacer_algo()
+                                                    </div>
+                                                </div>
+                                                <div style="background: #e3f2fd; padding: 12px; border-radius: 6px; border-left: 3px solid #3498db;">
+                                                    <div style="font-size: 11px; color: #1976d2; margin-bottom: 6px; font-weight: bold;">Función</div>
+                                                    <div style="font-family: monospace; font-size: 12px; color: #2c3e50;">
+                                                        <span style="color: #e74c3c;">def</span> saludar(nombre)<span style="color: #e74c3c;">:</span><br>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e74c3c;">return</span> <span style="color: #2ecc71;">f"Hola {nombre}"</span>
+                                                    </div>
+                                                </div>
+                                                <div style="background: #e8f5e9; padding: 12px; border-radius: 6px; border-left: 3px solid #2ecc71;">
+                                                    <div style="font-size: 11px; color: #2e7d32; margin-bottom: 6px; font-weight: bold;">Bucle</div>
+                                                    <div style="font-family: monospace; font-size: 12px; color: #2c3e50;">
+                                                        <span style="color: #e74c3c;">for</span> i <span style="color: #e74c3c;">in</span> range(3)<span style="color: #e74c3c;">:</span><br>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;print(i)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- pass para bloques vacíos -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #f39c12;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                ⏸️ Bloques Vacíos: pass
+                                            </div>
+                                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                                                <div style="background: #ffebee; padding: 15px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #c62828; margin-bottom: 8px; font-weight: bold;">✗ Error</div>
+                                                    <div style="font-family: monospace; font-size: 12px; color: #2c3e50;">
+                                                        <span style="color: #e74c3c;">def</span> funcion()<span style="color: #e74c3c;">:</span><br>
+                                                        <span style="color: #e74c3c; margin-left: 20px;"># vacío = error</span>
+                                                    </div>
+                                                    <div style="background: #ffcdd2; padding: 8px; border-radius: 4px; margin-top: 8px; font-size: 11px;">
+                                                        IndentationError
+                                                    </div>
+                                                </div>
+                                                <div style="background: #e8f5e9; padding: 15px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #2e7d32; margin-bottom: 8px; font-weight: bold;">✓ Correcto</div>
+                                                    <div style="font-family: monospace; font-size: 12px; color: #2c3e50;">
+                                                        <span style="color: #e74c3c;">def</span> funcion()<span style="color: #e74c3c;">:</span><br>
+                                                        <span style="margin-left: 20px;"><span style="color: #9b59b6;">pass</span>  <span style="color: #95a5a6;"># OK</span></span>
+                                                    </div>
+                                                    <div style="background: #c8e6c9; padding: 8px; border-radius: 4px; margin-top: 8px; font-size: 11px;">
+                                                        Placeholder válido
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="expresiones" data-tags="expresiones valores operaciones">
+                        <span class="tag">📋 Expresiones</span>
+                        <p class="significado">Combinación de valores, variables y operadores que produce un resultado</p>
+                        <div class="ejemplo"># Expresiones simples (literales)
+42
+"Hola"
+True
+
+# Expresiones aritméticas
+3 + 5 * 2         # 13
+(10 - 4) / 2      # 3.0
+
+# Expresiones de comparación
+7 > 3             # True
+5 == "5"          # False
+
+# Expresiones booleanas
+(5 > 2) and (3 < 4)  # True
+
+# Expresiones de cadena
+"Hola " + "Mundo"    # "Hola Mundo"
+"Py" * 3             # "PyPyPy"
+
+# Expresiones de pertenencia
+"a" in "Python"      # False
+3 in [1, 2, 3]       # True
+
+# Expresión walrus (:=) - Python 3.8+
+if (n := len("Python")) > 5:
+    print(f"Tiene {n} caracteres")</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Tipos de Expresiones</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="display: grid; gap: 15px;">
+                                        <!-- Expresiones literales -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                📝 Expresiones Literales (Valores Simples)
+                                            </div>
+                                            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+                                                <div style="background: #e3f2fd; padding: 12px; border-radius: 6px; text-align: center;">
+                                                    <div style="font-family: monospace; font-size: 16px; color: #2ecc71; margin-bottom: 6px; font-weight: bold;">42</div>
+                                                    <div style="font-size: 11px; color: #1976d2;">int</div>
+                                                </div>
+                                                <div style="background: #e3f2fd; padding: 12px; border-radius: 6px; text-align: center;">
+                                                    <div style="font-family: monospace; font-size: 16px; color: #9b59b6; margin-bottom: 6px; font-weight: bold;">3.14</div>
+                                                    <div style="font-size: 11px; color: #1976d2;">float</div>
+                                                </div>
+                                                <div style="background: #e3f2fd; padding: 12px; border-radius: 6px; text-align: center;">
+                                                    <div style="font-family: monospace; font-size: 16px; color: #f39c12; margin-bottom: 6px; font-weight: bold;">"Hola"</div>
+                                                    <div style="font-size: 11px; color: #1976d2;">str</div>
+                                                </div>
+                                                <div style="background: #e3f2fd; padding: 12px; border-radius: 6px; text-align: center;">
+                                                    <div style="font-family: monospace; font-size: 16px; color: #e74c3c; margin-bottom: 6px; font-weight: bold;">True</div>
+                                                    <div style="font-size: 11px; color: #1976d2;">bool</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Expresiones aritméticas -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #2ecc71;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                ➕ Expresiones Aritméticas
+                                            </div>
+                                            <div style="display: grid; gap: 10px;">
+                                                <div style="background: #e8f5e9; padding: 12px; border-radius: 6px;">
+                                                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                                                        <div style="font-family: monospace; font-size: 14px; color: #2c3e50;">
+                                                            3 + 5 * 2
+                                                        </div>
+                                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                                            <div style="font-size: 18px; color: #2ecc71;">→</div>
+                                                            <div style="background: #2ecc71; color: white; padding: 6px 12px; border-radius: 4px; font-family: monospace; font-weight: bold;">13</div>
+                                                        </div>
+                                                    </div>
+                                                    <div style="font-size: 11px; color: #666; margin-top: 6px;">Primero multiplica (5*2=10), luego suma (3+10=13)</div>
+                                                </div>
+                                                <div style="background: #e8f5e9; padding: 12px; border-radius: 6px;">
+                                                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                                                        <div style="font-family: monospace; font-size: 14px; color: #2c3e50;">
+                                                            (10 - 4) / 2
+                                                        </div>
+                                                        <div style="display: flex; align-items: center; gap: 8px;">
+                                                            <div style="font-size: 18px; color: #2ecc71;">→</div>
+                                                            <div style="background: #2ecc71; color: white; padding: 6px 12px; border-radius: 4px; font-family: monospace; font-weight: bold;">3.0</div>
+                                                        </div>
+                                                    </div>
+                                                    <div style="font-size: 11px; color: #666; margin-top: 6px;">Paréntesis primero (10-4=6), luego divide (6/2=3.0)</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Expresiones de comparación -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                ⚖️ Expresiones de Comparación
+                                            </div>
+                                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                                <div style="background: #e8f5e9; padding: 12px; border-radius: 6px; border-left: 3px solid #2ecc71;">
+                                                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                                                        <div style="font-family: monospace; font-size: 13px; color: #2c3e50;">7 > 3</div>
+                                                        <div style="background: #2ecc71; color: white; padding: 4px 10px; border-radius: 4px; font-family: monospace; font-size: 12px; font-weight: bold;">True</div>
+                                                    </div>
+                                                </div>
+                                                <div style="background: #ffebee; padding: 12px; border-radius: 6px; border-left: 3px solid #e74c3c;">
+                                                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                                                        <div style="font-family: monospace; font-size: 13px; color: #2c3e50;">5 == "5"</div>
+                                                        <div style="background: #e74c3c; color: white; padding: 4px 10px; border-radius: 4px; font-family: monospace; font-size: 12px; font-weight: bold;">False</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div style="background: #f3e5f5; padding: 10px; border-radius: 6px; margin-top: 10px; font-size: 12px; color: #6a1b9a;">
+                                                <strong>Nota:</strong> Tipos diferentes (int vs str) nunca son iguales con ==
+                                            </div>
+                                        </div>
+
+                                        <!-- Expresiones booleanas -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #f39c12;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🔗 Expresiones Booleanas (and, or, not)
+                                            </div>
+                                            <div style="background: #fff3e0; padding: 15px; border-radius: 6px;">
+                                                <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                                    <div style="font-family: monospace; font-size: 13px; color: #2c3e50; flex: 1;">
+                                                        (5 > 2) <span style="color: #e74c3c; font-weight: bold;">and</span> (3 < 4)
+                                                    </div>
+                                                    <div style="font-size: 18px; color: #f39c12;">→</div>
+                                                    <div style="background: #2ecc71; color: white; padding: 6px 12px; border-radius: 4px; font-family: monospace; font-weight: bold;">True</div>
+                                                </div>
+                                                <div style="display: grid; grid-template-columns: 1fr auto 1fr auto auto; gap: 8px; align-items: center; background: #fff; padding: 10px; border-radius: 6px;">
+                                                    <div style="text-align: center; background: #e8f5e9; padding: 8px; border-radius: 4px;">
+                                                        <div style="font-size: 11px; color: #666;">5 > 2</div>
+                                                        <div style="color: #2ecc71; font-weight: bold;">True</div>
+                                                    </div>
+                                                    <div style="color: #e74c3c; font-weight: bold;">and</div>
+                                                    <div style="text-align: center; background: #e8f5e9; padding: 8px; border-radius: 4px;">
+                                                        <div style="font-size: 11px; color: #666;">3 < 4</div>
+                                                        <div style="color: #2ecc71; font-weight: bold;">True</div>
+                                                    </div>
+                                                    <div style="font-size: 18px; color: #f39c12;">=</div>
+                                                    <div style="background: #2ecc71; color: white; padding: 8px 12px; border-radius: 4px; font-weight: bold;">True</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Expresiones de cadena -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #e74c3c;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🔤 Expresiones de Cadena
+                                            </div>
+                                            <div style="display: grid; gap: 10px;">
+                                                <div style="background: #ffebee; padding: 12px; border-radius: 6px;">
+                                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                                        <div style="font-family: monospace; font-size: 13px; color: #2c3e50; flex: 1;">
+                                                            "Hola " <span style="color: #e74c3c; font-weight: bold;">+</span> "Mundo"
+                                                        </div>
+                                                        <div style="font-size: 18px; color: #e74c3c;">→</div>
+                                                        <div style="background: #e74c3c; color: white; padding: 6px 12px; border-radius: 4px; font-family: monospace;">"Hola Mundo"</div>
+                                                    </div>
+                                                    <div style="font-size: 11px; color: #666; margin-top: 6px;">Concatenación</div>
+                                                </div>
+                                                <div style="background: #ffebee; padding: 12px; border-radius: 6px;">
+                                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                                        <div style="font-family: monospace; font-size: 13px; color: #2c3e50; flex: 1;">
+                                                            "Py" <span style="color: #e74c3c; font-weight: bold;">*</span> 3
+                                                        </div>
+                                                        <div style="font-size: 18px; color: #e74c3c;">→</div>
+                                                        <div style="background: #e74c3c; color: white; padding: 6px 12px; border-radius: 4px; font-family: monospace;">"PyPyPy"</div>
+                                                    </div>
+                                                    <div style="font-size: 11px; color: #666; margin-top: 6px;">Repetición</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Expresiones de pertenencia -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🔍 Expresiones de Pertenencia (in)
+                                            </div>
+                                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                                <div style="background: #ffebee; padding: 12px; border-radius: 6px;">
+                                                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                                                        <div style="font-family: monospace; font-size: 12px; color: #2c3e50;">"a" in "Python"</div>
+                                                        <div style="background: #e74c3c; color: white; padding: 4px 10px; border-radius: 4px; font-weight: bold; font-size: 11px;">False</div>
+                                                    </div>
+                                                </div>
+                                                <div style="background: #e8f5e9; padding: 12px; border-radius: 6px;">
+                                                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                                                        <div style="font-family: monospace; font-size: 12px; color: #2c3e50;">3 in [1,2,3]</div>
+                                                        <div style="background: #2ecc71; color: white; padding: 4px 10px; border-radius: 4px; font-weight: bold; font-size: 11px;">True</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="sentencias" data-tags="sentencias estructura instrucciones">
+                        <span class="tag">📋 Sentencias</span>
+                        <p class="significado">Instrucciones que Python ejecuta</p>
+                        <div class="ejemplo"># Sentencia de asignación
+suma = a + b
+
+# Sentencia condicional
+if condicion:
+    hacer_algo()
+
+# Sentencia de bucle
+for item in lista:
+    procesar(item)
+
+# Sentencia de función
+def mi_funcion():
+    return valor
+
+# Los espacios mejoran legibilidad pero
+# no afectan la ejecución (excepto indentación)
+x=1+2    # Funciona
+x = 1 + 2  # Mejor legibilidad
+
+# Múltiples sentencias en una línea (no recomendado)
+a = 1; b = 2; c = 3
+
+# Sentencia larga en múltiples líneas
+resultado = (valor1 + valor2 +
+             valor3 + valor4)</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Tipos de Sentencias</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="display: grid; gap: 15px;">
+                                        <!-- Diferencia entre expresión y sentencia -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🔍 Expresión vs Sentencia
+                                            </div>
+                                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                                                <div style="background: #e3f2fd; padding: 15px; border-radius: 6px; border-left: 3px solid #3498db;">
+                                                    <div style="font-size: 11px; color: #1976d2; margin-bottom: 8px; font-weight: bold;">Expresión</div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #2c3e50; margin-bottom: 8px;">
+                                                        3 + 5 * 2
+                                                    </div>
+                                                    <div style="background: #fff; padding: 8px; border-radius: 4px; font-size: 11px; color: #666;">
+                                                        Produce un <strong>valor</strong> (resultado: 13)
+                                                    </div>
+                                                </div>
+                                                <div style="background: #f3e5f5; padding: 15px; border-radius: 6px; border-left: 3px solid #9b59b6;">
+                                                    <div style="font-size: 11px; color: #6a1b9a; margin-bottom: 8px; font-weight: bold;">Sentencia</div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #2c3e50; margin-bottom: 8px;">
+                                                        x = 3 + 5 * 2
+                                                    </div>
+                                                    <div style="background: #fff; padding: 8px; border-radius: 4px; font-size: 11px; color: #666;">
+                                                        Realiza una <strong>acción</strong> (asigna valor)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Tipos de sentencias -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #2ecc71;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                📝 Tipos de Sentencias Comunes
+                                            </div>
+                                            <div style="display: grid; gap: 10px;">
+                                                <div style="background: #e8f5e9; padding: 12px; border-radius: 6px;">
+                                                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                                                        <div style="background: #2ecc71; color: white; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: bold; min-width: 100px; text-align: center;">Asignación</div>
+                                                    </div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #2c3e50;">
+                                                        suma = a + b
+                                                    </div>
+                                                </div>
+                                                <div style="background: #e3f2fd; padding: 12px; border-radius: 6px;">
+                                                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                                                        <div style="background: #3498db; color: white; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: bold; min-width: 100px; text-align: center;">Condicional</div>
+                                                    </div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #2c3e50;">
+                                                        <span style="color: #e74c3c;">if</span> condicion:<br>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;hacer_algo()
+                                                    </div>
+                                                </div>
+                                                <div style="background: #f3e5f5; padding: 12px; border-radius: 6px;">
+                                                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                                                        <div style="background: #9b59b6; color: white; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: bold; min-width: 100px; text-align: center;">Bucle</div>
+                                                    </div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #2c3e50;">
+                                                        <span style="color: #e74c3c;">for</span> item <span style="color: #e74c3c;">in</span> lista:<br>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;procesar(item)
+                                                    </div>
+                                                </div>
+                                                <div style="background: #fff3e0; padding: 12px; border-radius: 6px;">
+                                                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                                                        <div style="background: #f39c12; color: white; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: bold; min-width: 100px; text-align: center;">Función</div>
+                                                    </div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #2c3e50;">
+                                                        <span style="color: #e74c3c;">def</span> mi_funcion():<br>
+                                                        &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e74c3c;">return</span> valor
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Espacios y legibilidad -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #f39c12;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                📏 Espacios y Legibilidad (PEP 8)
+                                            </div>
+                                            <div style="display: grid; gap: 10px;">
+                                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                                    <div style="background: #ffebee; padding: 12px; border-radius: 6px;">
+                                                        <div style="font-size: 11px; color: #c62828; margin-bottom: 6px; font-weight: bold;">No recomendado</div>
+                                                        <div style="font-family: monospace; font-size: 13px; color: #2c3e50;">
+                                                            x=1+2
+                                                        </div>
+                                                    </div>
+                                                    <div style="background: #e8f5e9; padding: 12px; border-radius: 6px;">
+                                                        <div style="font-size: 11px; color: #2e7d32; margin-bottom: 6px; font-weight: bold;">✓ Recomendado (PEP 8)</div>
+                                                        <div style="font-family: monospace; font-size: 13px; color: #2c3e50;">
+                                                            x = 1 + 2
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="background: #fff3e0; padding: 10px; border-radius: 6px; font-size: 12px; color: #856404;">
+                                                    <strong>Regla:</strong> Espacio antes y después de operadores (=, +, -, *, etc.)
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Múltiples sentencias -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #e74c3c;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                ⚠️ Múltiples Sentencias (;)
+                                            </div>
+                                            <div style="display: grid; gap: 10px;">
+                                                <div style="background: #ffebee; padding: 15px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #c62828; margin-bottom: 8px; font-weight: bold;">No recomendado</div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #2c3e50;">
+                                                        a = 1<span style="color: #e74c3c; font-weight: bold;">;</span> b = 2<span style="color: #e74c3c; font-weight: bold;">;</span> c = 3
+                                                    </div>
+                                                    <div style="background: #ffcdd2; padding: 8px; border-radius: 4px; margin-top: 8px; font-size: 11px;">
+                                                        Difícil de leer, va contra PEP 8
+                                                    </div>
+                                                </div>
+                                                <div style="background: #e8f5e9; padding: 15px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #2e7d32; margin-bottom: 8px; font-weight: bold;">✓ Recomendado</div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #2c3e50;">
+                                                        a = 1<br>
+                                                        b = 2<br>
+                                                        c = 3
+                                                    </div>
+                                                    <div style="background: #c8e6c9; padding: 8px; border-radius: 4px; margin-top: 8px; font-size: 11px;">
+                                                        Una sentencia por línea = más claro
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sentencias multilínea -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                📐 Sentencias Largas en Múltiples Líneas
+                                            </div>
+                                            <div style="background: #f3e5f5; padding: 15px; border-radius: 6px;">
+                                                <div style="font-size: 11px; color: #6a1b9a; margin-bottom: 8px; font-weight: bold;">Usar paréntesis para continuación</div>
+                                                <div style="font-family: monospace; font-size: 13px; color: #2c3e50; margin-bottom: 10px;">
+                                                    resultado = <span style="color: #9b59b6;">(</span>valor1 + valor2 +<br>
+                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;valor3 + valor4<span style="color: #9b59b6;">)</span>
+                                                </div>
+                                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                                    <div style="background: #fff; padding: 10px; border-radius: 6px; font-size: 11px;">
+                                                        <strong>También funciona:</strong><br>
+                                                        • Listas: [ ]<br>
+                                                        • Diccionarios: { }<br>
+                                                        • Tuplas: ( )
+                                                    </div>
+                                                    <div style="background: #fff; padding: 10px; border-radius: 6px; font-size: 11px;">
+                                                        <strong>Ventaja:</strong><br>
+                                                        Mejora legibilidad en<br>
+                                                        expresiones complejas
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Resumen -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #95a5a6;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50; text-align: center;">
+                                                💡 Resumen: Buenas Prácticas
+                                            </div>
+                                            <div style="display: grid; gap: 8px;">
+                                                <div style="display: flex; align-items: center; gap: 10px; background: #ecf0f1; padding: 10px; border-radius: 6px;">
+                                                    <div style="color: #2ecc71; font-size: 18px; min-width: 30px; text-align: center;">✓</div>
+                                                    <div style="font-size: 13px;">Una sentencia por línea</div>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 10px; background: #ecf0f1; padding: 10px; border-radius: 6px;">
+                                                    <div style="color: #2ecc71; font-size: 18px; min-width: 30px; text-align: center;">✓</div>
+                                                    <div style="font-size: 13px;">Espacios alrededor de operadores</div>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 10px; background: #ecf0f1; padding: 10px; border-radius: 6px;">
+                                                    <div style="color: #2ecc71; font-size: 18px; min-width: 30px; text-align: center;">✓</div>
+                                                    <div style="font-size: 13px;">Usar paréntesis para líneas largas</div>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 10px; background: #ecf0f1; padding: 10px; border-radius: 6px;">
+                                                    <div style="color: #e74c3c; font-size: 18px; min-width: 30px; text-align: center;">✗</div>
+                                                    <div style="font-size: 13px;">Evitar punto y coma (;) para separar sentencias</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">🐍 Fundamentos Python</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#que-es-python" class="toc-link">¿Qué es Python?</a></li>
+                    <li class="toc-item"><a href="#por-que-python" class="toc-link">¿Por qué Python?</a></li>
+                    <li class="toc-item"><a href="#sintaxis-basica" class="toc-link">Sintaxis Básica</a></li>
+                    <li class="toc-item"><a href="#variables" class="toc-link">Variables y Constantes</a></li>
+                    <li class="toc-item"><a href="#identificadores" class="toc-link">Identificadores</a></li>
+                    <li class="toc-item"><a href="#comentarios" class="toc-link">Comentarios</a></li>
+                    <li class="toc-item"><a href="#bloques" class="toc-link">Bloques de Código</a></li>
+                    <li class="toc-item"><a href="#expresiones" class="toc-link">Expresiones</a></li>
+                    <li class="toc-item"><a href="#sentencias" class="toc-link">Sentencias</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>Python - Sistema de Aprendizaje | <a href="../index.html">Volver a Python</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script src="/assets/js/study-highlight.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) {
+                return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const tags = termino.getAttribute('data-tags') || '';
+                    const title = termino.querySelector('.tag')?.textContent || '';
+                    const desc = termino.querySelector('.descripcion')?.textContent || '';
+                    const ejemplo = termino.querySelector('.ejemplo')?.textContent || '';
+                    const searchText = normalizeText(tags + ' ' + title + ' ' + desc + ' ' + ejemplo);
+                    if (query === '' || searchText.includes(query)) {
+                        termino.style.display = 'block';
+                        found++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // Aplicar highlight.js solo a elementos .ejemplo que no tienen <br> (no son HTML)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.ejemplo').forEach(function(block) {
+                // Solo resaltar si no tiene elementos <br> (no es HTML con sintaxis manual)
+                if (block.querySelectorAll('br').length === 0) {
+                    block.classList.add('language-python');
+                    hljs.highlightElement(block);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

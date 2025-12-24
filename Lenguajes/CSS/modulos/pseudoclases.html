@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pseudoclases y Pseudoelementos - Sistema de Aprendizaje</title>
-    <link rel="stylesheet" href="/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/assets/css/glosario.css">
-    <link rel="stylesheet" href="/assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
+    <!-- Highlight.js para resaltado de sintaxis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
 <body>
     <header>
@@ -44,6 +47,18 @@
 .card:hover {
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }</div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa de pseudoclases:</strong>
+                            <div class="preview-content">
+                                <style scoped>
+                                    .btn-hover:hover { background: #2ecc71; transform: scale(1.05); }
+                                </style>
+                                <button class="btn-hover" style="background: #3498db; color: white; border: none; padding: 15px 30px; border-radius: 4px; cursor: pointer; transition: all 0.3s;">
+                                    Pasa el mouse aquí (:hover)
+                                </button>
+                            </div>
+                        </div>
+
                     </div>
 
                     <div class="termino" id="focus" data-tags="focus foco input">
@@ -64,6 +79,59 @@ button:focus-visible {
 .form-group:focus-within {
     background: #f0f0f0;
 }</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Estados de Foco</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <strong style="color: #2c3e50; font-size: 15px; display: block; margin-bottom: 20px;">🎯 Diferentes tipos de foco</strong>
+
+                                    <!-- :focus normal -->
+                                    <div style="margin-bottom: 20px;">
+                                        <label style="display: block; margin-bottom: 8px; color: #2c3e50; font-weight: bold;">Input con :focus</label>
+                                        <input type="text" placeholder="Haz click o presiona Tab" style="width: 100%; padding: 12px; border: 2px solid #bdc3c7; border-radius: 4px; font-size: 14px; transition: all 0.3s;">
+                                        <style>
+                                            input[type="text"]:focus {
+                                                border-color: #3498db;
+                                                outline: none;
+                                                box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.3);
+                                            }
+                                        </style>
+                                        <div style="margin-top: 8px; font-size: 12px; color: #7f8c8d;">
+                                            ✨ Borde azul y sombra aparecen al hacer click o Tab
+                                        </div>
+                                    </div>
+
+                                    <!-- :focus-within -->
+                                    <div style="margin-bottom: 20px;">
+                                        <label style="display: block; margin-bottom: 8px; color: #2c3e50; font-weight: bold;">Contenedor con :focus-within</label>
+                                        <div class="form-group-demo" style="background: white; padding: 20px; border: 2px solid #bdc3c7; border-radius: 4px; transition: all 0.3s;">
+                                            <input type="email" placeholder="Email" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 10px;">
+                                            <input type="password" placeholder="Contraseña" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+                                        </div>
+                                        <style>
+                                            .form-group-demo:focus-within {
+                                                background: #e8f4f8;
+                                                border-color: #3498db;
+                                                box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+                                            }
+                                        </style>
+                                        <div style="margin-top: 8px; font-size: 12px; color: #7f8c8d;">
+                                            ✨ Todo el contenedor se resalta cuando CUALQUIER input hijo tiene foco
+                                        </div>
+                                    </div>
+
+                                    <div style="background: #fff3cd; padding: 15px; border-radius: 6px; border-left: 4px solid #f1c40f;">
+                                        <strong style="color: #856404; font-size: 13px;">💡 Diferencias:</strong>
+                                        <div style="margin-top: 10px; font-size: 12px; color: #2c3e50; line-height: 1.8;">
+                                            <div><strong>:focus</strong> → Se aplica al elemento que tiene el foco</div>
+                                            <div><strong>:focus-within</strong> → Se aplica al contenedor cuando algún hijo tiene foco</div>
+                                            <div><strong>:focus-visible</strong> → Solo con teclado (Tab), no con mouse</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="active" data-tags="active activo click">
@@ -76,6 +144,138 @@ button:focus-visible {
 .link:active {
     color: darkred;
 }</div>
+
+                        <!-- VISTA PREVIA TIMELINE DE ESTADOS -->
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Timeline de Estados Interactivos</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <strong style="color: #2c3e50; font-size: 15px; display: block; margin-bottom: 20px;">⏱️ Flujo de Estados de un Botón</strong>
+
+                                    <!-- Timeline horizontal -->
+                                    <div style="background: white; padding: 30px 20px; border-radius: 8px; border: 2px solid #9b59b6; margin-bottom: 25px;">
+                                        <div style="display: flex; align-items: center; justify-content: space-between; position: relative; margin-bottom: 40px;">
+                                            <!-- Línea conectora -->
+                                            <div style="position: absolute; top: 35px; left: 10%; right: 10%; height: 3px; background: linear-gradient(to right, #95a5a6, #3498db, #f39c12, #e74c3c); z-index: 0;"></div>
+
+                                            <!-- Estado 1: Default -->
+                                            <div style="flex: 1; text-align: center; position: relative; z-index: 1;">
+                                                <div style="background: #95a5a6; color: white; padding: 20px 30px; border-radius: 6px; margin: 0 auto; max-width: 150px; box-shadow: 0 2px 8px rgba(0,0,0,0.2);">
+                                                    Default
+                                                </div>
+                                                <div style="margin-top: 15px; font-size: 12px; color: #2c3e50;">
+                                                    <strong>Estado normal</strong><br>
+                                                    <code style="background: rgba(0,0,0,0.05); padding: 2px 6px; border-radius: 3px;">button { }</code>
+                                                </div>
+                                            </div>
+
+                                            <!-- Flecha -->
+                                            <div style="color: #7f8c8d; font-size: 24px; margin: 0 10px;">→</div>
+
+                                            <!-- Estado 2: Hover -->
+                                            <div style="flex: 1; text-align: center; position: relative; z-index: 1;">
+                                                <div style="background: #3498db; color: white; padding: 20px 30px; border-radius: 6px; margin: 0 auto; max-width: 150px; box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4); transform: translateY(-3px);">
+                                                    Hover
+                                                </div>
+                                                <div style="margin-top: 15px; font-size: 12px; color: #2c3e50;">
+                                                    <strong>Mouse encima</strong><br>
+                                                    <code style="background: rgba(0,0,0,0.05); padding: 2px 6px; border-radius: 3px;">:hover</code>
+                                                </div>
+                                            </div>
+
+                                            <!-- Flecha -->
+                                            <div style="color: #7f8c8d; font-size: 24px; margin: 0 10px;">→</div>
+
+                                            <!-- Estado 3: Focus -->
+                                            <div style="flex: 1; text-align: center; position: relative; z-index: 1;">
+                                                <div style="background: #f39c12; color: white; padding: 20px 30px; border-radius: 6px; margin: 0 auto; max-width: 150px; box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.3); outline: 2px solid #f39c12;">
+                                                    Focus
+                                                </div>
+                                                <div style="margin-top: 15px; font-size: 12px; color: #2c3e50;">
+                                                    <strong>Con foco (Tab)</strong><br>
+                                                    <code style="background: rgba(0,0,0,0.05); padding: 2px 6px; border-radius: 3px;">:focus</code>
+                                                </div>
+                                            </div>
+
+                                            <!-- Flecha -->
+                                            <div style="color: #7f8c8d; font-size: 24px; margin: 0 10px;">→</div>
+
+                                            <!-- Estado 4: Active -->
+                                            <div style="flex: 1; text-align: center; position: relative; z-index: 1;">
+                                                <div style="background: #e74c3c; color: white; padding: 20px 30px; border-radius: 6px; margin: 0 auto; max-width: 150px; box-shadow: 0 1px 4px rgba(0,0,0,0.3); transform: scale(0.95);">
+                                                    Active
+                                                </div>
+                                                <div style="margin-top: 15px; font-size: 12px; color: #2c3e50;">
+                                                    <strong>Al hacer click</strong><br>
+                                                    <code style="background: rgba(0,0,0,0.05); padding: 2px 6px; border-radius: 3px;">:active</code>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Ejemplo interactivo -->
+                                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 25px; border-radius: 8px; color: white; margin-bottom: 20px;">
+                                        <strong style="font-size: 15px; display: block; margin-bottom: 20px;">🖱️ PRUEBA LOS ESTADOS (interactúa con el botón):</strong>
+
+                                        <div style="text-align: center;">
+                                            <style>
+                                                .demo-button {
+                                                    background: #95a5a6;
+                                                    color: white;
+                                                    border: none;
+                                                    padding: 20px 40px;
+                                                    border-radius: 6px;
+                                                    font-size: 16px;
+                                                    font-weight: bold;
+                                                    cursor: pointer;
+                                                    transition: all 0.2s ease;
+                                                    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+                                                }
+                                                .demo-button:hover {
+                                                    background: #3498db;
+                                                    transform: translateY(-3px);
+                                                    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+                                                }
+                                                .demo-button:focus {
+                                                    background: #f39c12;
+                                                    outline: 2px solid #f39c12;
+                                                    box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.3);
+                                                }
+                                                .demo-button:active {
+                                                    background: #e74c3c;
+                                                    transform: scale(0.95);
+                                                    box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+                                                }
+                                            </style>
+                                            <button class="demo-button">
+                                                Interactúa conmigo
+                                            </button>
+                                        </div>
+
+                                        <div style="margin-top: 20px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 6px; font-size: 13px;">
+                                            <strong>Instrucciones:</strong><br>
+                                            • Pasa el mouse → estado <strong>:hover</strong> (azul)<br>
+                                            • Presiona Tab → estado <strong>:focus</strong> (naranja)<br>
+                                            • Haz click → estado <strong>:active</strong> (rojo)
+                                        </div>
+                                    </div>
+
+                                    <!-- Orden de especificidad -->
+                                    <div style="background: #fff3cd; padding: 20px; border-radius: 6px; border-left: 4px solid #f1c40f;">
+                                        <strong style="color: #856404; font-size: 14px;">⚡ ORDEN CORRECTO en CSS (LVHA):</strong>
+                                        <div style="margin-top: 15px; font-family: 'Courier New', monospace; font-size: 13px; color: #2c3e50; background: rgba(0,0,0,0.05); padding: 15px; border-radius: 4px;">
+                                            a:link { }      <span style="color: #7f8c8d;">/* 1. Link sin visitar */</span><br>
+                                            a:visited { }   <span style="color: #7f8c8d;">/* 2. Visitado */</span><br>
+                                            a:hover { }     <span style="color: #7f8c8d;">/* 3. Mouse encima */</span><br>
+                                            a:active { }    <span style="color: #7f8c8d;">/* 4. Al hacer click */</span>
+                                        </div>
+                                        <div style="margin-top: 10px; font-size: 12px; color: #856404;">
+                                            <strong>⚠️ Si cambias el orden, algunos estados no funcionarán correctamente debido a la especificidad.</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="first-last-child" data-tags="first-child last-child primero ultimo">
@@ -93,6 +293,54 @@ li:last-child {
 :only-child     /* Único hijo */
 :first-of-type  /* Primero de su tipo */
 :last-of-type   /* Último de su tipo */</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Selectores de Posición</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <strong style="color: #2c3e50; font-size: 15px; display: block; margin-bottom: 20px;">📍 Primer y Último Hijo</strong>
+
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                        <style>
+                                            .demo-list-first-last li {
+                                                padding: 12px 15px;
+                                                border-bottom: 1px solid #ecf0f1;
+                                                transition: all 0.3s;
+                                            }
+                                            .demo-list-first-last li:first-child {
+                                                background: #2ecc71;
+                                                color: white;
+                                                font-weight: bold;
+                                                border-radius: 4px 4px 0 0;
+                                            }
+                                            .demo-list-first-last li:last-child {
+                                                background: #e74c3c;
+                                                color: white;
+                                                font-weight: bold;
+                                                border-bottom: none;
+                                                border-radius: 0 0 4px 4px;
+                                            }
+                                        </style>
+                                        <ul class="demo-list-first-last" style="list-style: none; margin: 0; padding: 0;">
+                                            <li>🥇 Primer elemento (first-child)</li>
+                                            <li>Elemento normal 2</li>
+                                            <li>Elemento normal 3</li>
+                                            <li>Elemento normal 4</li>
+                                            <li>🏁 Último elemento (last-child)</li>
+                                        </ul>
+                                    </div>
+
+                                    <div style="background: #fff3cd; padding: 15px; border-radius: 6px; border-left: 4px solid #f1c40f; margin-top: 20px;">
+                                        <strong style="color: #856404; font-size: 13px;">💡 Variantes útiles:</strong>
+                                        <div style="margin-top: 10px; font-size: 12px; color: #2c3e50; line-height: 1.8;">
+                                            <div><strong>:only-child</strong> → Elemento que es hijo único</div>
+                                            <div><strong>:first-of-type</strong> → Primer elemento de ese tipo específico</div>
+                                            <div><strong>:last-of-type</strong> → Último elemento de ese tipo específico</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="nth-child" data-tags="nth-child enesimo par impar">
@@ -114,6 +362,114 @@ li:nth-child(-n+3) { }    /* Primeros 3 */
 
 /* :nth-last-child() - desde el final */
 li:nth-last-child(2) { }  /* Penúltimo */</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Patrones con nth-child</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <strong style="color: #2c3e50; font-size: 15px; display: block; margin-bottom: 20px;">🔢 Filas Alternas (odd/even)</strong>
+
+                                    <div style="background: white; padding: 15px; border-radius: 8px; border: 2px solid #9b59b6; margin-bottom: 25px;">
+                                        <style>
+                                            .demo-table-nth {
+                                                width: 100%;
+                                                border-collapse: collapse;
+                                            }
+                                            .demo-table-nth tr:nth-child(odd) {
+                                                background: #3498db;
+                                                color: white;
+                                            }
+                                            .demo-table-nth tr:nth-child(even) {
+                                                background: #ecf0f1;
+                                                color: #2c3e50;
+                                            }
+                                            .demo-table-nth td {
+                                                padding: 12px;
+                                                border: none;
+                                            }
+                                        </style>
+                                        <table class="demo-table-nth">
+                                            <tr><td>Fila 1 (odd) - Azul</td></tr>
+                                            <tr><td>Fila 2 (even) - Gris</td></tr>
+                                            <tr><td>Fila 3 (odd) - Azul</td></tr>
+                                            <tr><td>Fila 4 (even) - Gris</td></tr>
+                                            <tr><td>Fila 5 (odd) - Azul</td></tr>
+                                        </table>
+                                    </div>
+
+                                    <strong style="color: #2c3e50; font-size: 15px; display: block; margin-bottom: 15px;">🎯 Cada 3 elementos (3n)</strong>
+
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6; margin-bottom: 25px;">
+                                        <style>
+                                            .demo-grid-nth {
+                                                display: grid;
+                                                grid-template-columns: repeat(6, 1fr);
+                                                gap: 10px;
+                                            }
+                                            .demo-grid-nth div {
+                                                background: #bdc3c7;
+                                                padding: 15px;
+                                                text-align: center;
+                                                border-radius: 4px;
+                                                font-weight: bold;
+                                            }
+                                            .demo-grid-nth div:nth-child(3n) {
+                                                background: #e74c3c;
+                                                color: white;
+                                                transform: scale(1.1);
+                                            }
+                                        </style>
+                                        <div class="demo-grid-nth">
+                                            <div>1</div>
+                                            <div>2</div>
+                                            <div>3</div>
+                                            <div>4</div>
+                                            <div>5</div>
+                                            <div>6</div>
+                                            <div>7</div>
+                                            <div>8</div>
+                                            <div>9</div>
+                                            <div>10</div>
+                                            <div>11</div>
+                                            <div>12</div>
+                                        </div>
+                                        <div style="margin-top: 10px; font-size: 12px; color: #7f8c8d; text-align: center;">
+                                            ✨ Elementos 3, 6, 9, 12... están resaltados en rojo
+                                        </div>
+                                    </div>
+
+                                    <strong style="color: #2c3e50; font-size: 15px; display: block; margin-bottom: 15px;">🎪 Primeros 3 elementos (-n+3)</strong>
+
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                        <style>
+                                            .demo-list-nth li {
+                                                padding: 10px 15px;
+                                                margin-bottom: 8px;
+                                                background: #ecf0f1;
+                                                border-radius: 4px;
+                                                list-style-position: inside;
+                                            }
+                                            .demo-list-nth li:nth-child(-n+3) {
+                                                background: #2ecc71;
+                                                color: white;
+                                                font-weight: bold;
+                                            }
+                                        </style>
+                                        <ul class="demo-list-nth" style="padding: 0;">
+                                            <li>Elemento 1 ✅</li>
+                                            <li>Elemento 2 ✅</li>
+                                            <li>Elemento 3 ✅</li>
+                                            <li>Elemento 4</li>
+                                            <li>Elemento 5</li>
+                                            <li>Elemento 6</li>
+                                        </ul>
+                                        <div style="margin-top: 10px; font-size: 12px; color: #7f8c8d; text-align: center;">
+                                            ✨ Solo los primeros 3 están resaltados
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="not" data-tags="not negacion excluir">
@@ -133,6 +489,81 @@ a:not([href^="#"]) {
 input:not([type="submit"]):not([type="button"]) {
     border: 1px solid #ccc;
 }</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Negación con :not()</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <strong style="color: #2c3e50; font-size: 15px; display: block; margin-bottom: 20px;">🚫 Excluir Elementos Específicos</strong>
+
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6; margin-bottom: 25px;">
+                                        <strong style="font-size: 14px; color: #2c3e50; display: block; margin-bottom: 15px;">
+                                            Seleccionar todos los párrafos EXCEPTO .especial
+                                        </strong>
+                                        <style>
+                                            .demo-not p {
+                                                padding: 12px;
+                                                margin: 8px 0;
+                                                border-radius: 4px;
+                                            }
+                                            .demo-not p:not(.especial) {
+                                                background: #95a5a6;
+                                                color: white;
+                                            }
+                                            .demo-not p.especial {
+                                                background: #f1c40f;
+                                                color: #2c3e50;
+                                                font-weight: bold;
+                                                border: 2px dashed #f39c12;
+                                            }
+                                        </style>
+                                        <div class="demo-not">
+                                            <p>Párrafo normal 1 - Gris (aplicado)</p>
+                                            <p>Párrafo normal 2 - Gris (aplicado)</p>
+                                            <p class="especial">Párrafo ESPECIAL - Amarillo (excluido del :not)</p>
+                                            <p>Párrafo normal 3 - Gris (aplicado)</p>
+                                        </div>
+                                        <div style="margin-top: 10px; font-size: 12px; color: #7f8c8d; text-align: center;">
+                                            ✨ p:not(.especial) selecciona todos MENOS el amarillo
+                                        </div>
+                                    </div>
+
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                        <strong style="font-size: 14px; color: #2c3e50; display: block; margin-bottom: 15px;">
+                                            Links externos (que no empiezan con #)
+                                        </strong>
+                                        <style>
+                                            .demo-not-links a {
+                                                display: inline-block;
+                                                padding: 10px 15px;
+                                                margin: 5px;
+                                                text-decoration: none;
+                                                border-radius: 4px;
+                                                font-weight: bold;
+                                            }
+                                            .demo-not-links a:not([href^="#"]) {
+                                                background: #3498db;
+                                                color: white;
+                                            }
+                                            .demo-not-links a[href^="#"] {
+                                                background: #ecf0f1;
+                                                color: #2c3e50;
+                                                border: 2px solid #bdc3c7;
+                                            }
+                                        </style>
+                                        <div class="demo-not-links">
+                                            <a href="https://ejemplo.com">Link Externo 1 🌐</a>
+                                            <a href="#seccion">Link Interno #</a>
+                                            <a href="https://otro.com">Link Externo 2 🌐</a>
+                                            <a href="#top">Link Interno #</a>
+                                        </div>
+                                        <div style="margin-top: 10px; font-size: 12px; color: #7f8c8d; text-align: center;">
+                                            ✨ a:not([href^="#"]) selecciona solo los externos (azul)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="checked-disabled" data-tags="checked disabled enabled estados">
@@ -158,6 +589,93 @@ input:required { }
 
 /* Placeholder visible */
 input:placeholder-shown { }</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Estados de Formulario</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <strong style="color: #2c3e50; font-size: 15px; display: block; margin-bottom: 20px;">✅ Estados Interactivos de Inputs</strong>
+
+                                    <div style="background: white; padding: 25px; border-radius: 8px; border: 2px solid #9b59b6; margin-bottom: 20px;">
+                                        <style>
+                                            .demo-form-states input[type="checkbox"]:checked + label {
+                                                background: #2ecc71;
+                                                color: white;
+                                                font-weight: bold;
+                                            }
+                                            .demo-form-states label {
+                                                display: inline-block;
+                                                padding: 10px 15px;
+                                                background: #ecf0f1;
+                                                border-radius: 4px;
+                                                margin-left: 5px;
+                                                transition: all 0.3s;
+                                                cursor: pointer;
+                                            }
+                                            .demo-form-states input:disabled + label {
+                                                opacity: 0.5;
+                                                cursor: not-allowed;
+                                                background: #95a5a6;
+                                            }
+                                            .demo-form-states .valid-input:valid {
+                                                border: 2px solid #2ecc71;
+                                                background: rgba(46, 204, 113, 0.1);
+                                            }
+                                            .demo-form-states .valid-input:invalid {
+                                                border: 2px solid #e74c3c;
+                                                background: rgba(231, 76, 60, 0.1);
+                                            }
+                                        </style>
+
+                                        <div class="demo-form-states">
+                                            <!-- Checkbox checked -->
+                                            <div style="margin-bottom: 20px;">
+                                                <strong style="display: block; margin-bottom: 10px; color: #2c3e50;">:checked - Marca los checkboxes:</strong>
+                                                <div>
+                                                    <input type="checkbox" id="check1" checked>
+                                                    <label for="check1">Opción Marcada</label>
+                                                </div>
+                                                <div style="margin-top: 8px;">
+                                                    <input type="checkbox" id="check2">
+                                                    <label for="check2">Opción Sin Marcar</label>
+                                                </div>
+                                            </div>
+
+                                            <!-- Disabled -->
+                                            <div style="margin-bottom: 20px; border-top: 1px solid #ecf0f1; padding-top: 20px;">
+                                                <strong style="display: block; margin-bottom: 10px; color: #2c3e50;">:disabled - Intenta interactuar:</strong>
+                                                <div>
+                                                    <input type="checkbox" id="check3" disabled>
+                                                    <label for="check3">Opción Deshabilitada</label>
+                                                </div>
+                                            </div>
+
+                                            <!-- Valid / Invalid -->
+                                            <div style="border-top: 1px solid #ecf0f1; padding-top: 20px;">
+                                                <strong style="display: block; margin-bottom: 10px; color: #2c3e50;">:valid / :invalid - Escribe un email:</strong>
+                                                <input type="email" class="valid-input" placeholder="ejemplo@correo.com" style="width: 100%; padding: 12px; border-radius: 4px; font-size: 14px; transition: all 0.3s;" required>
+                                                <div style="margin-top: 8px; font-size: 12px; color: #7f8c8d;">
+                                                    ✨ Verde si es válido, rojo si es inválido
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div style="background: #fff3cd; padding: 15px; border-radius: 6px; border-left: 4px solid #f1c40f;">
+                                        <strong style="color: #856404; font-size: 13px;">💡 Estados disponibles:</strong>
+                                        <div style="margin-top: 10px; font-size: 12px; color: #2c3e50; line-height: 1.8;">
+                                            <div><strong>:checked</strong> → Checkbox/radio marcado</div>
+                                            <div><strong>:disabled</strong> → Input deshabilitado</div>
+                                            <div><strong>:enabled</strong> → Input habilitado</div>
+                                            <div><strong>:valid</strong> → Input con valor válido</div>
+                                            <div><strong>:invalid</strong> → Input con valor inválido</div>
+                                            <div><strong>:required</strong> → Input requerido</div>
+                                            <div><strong>:optional</strong> → Input opcional</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="before-after" data-tags="before after antes despues contenido">
@@ -201,6 +719,110 @@ input:placeholder-shown { }</div>
                         <div class="nota">
                             <strong>⚠️ Importante:</strong> content es obligatorio, aunque sea vacío ("").
                         </div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Contenido Generado con ::before y ::after</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <strong style="color: #2c3e50; font-size: 15px; display: block; margin-bottom: 20px;">🎨 Pseudo-elementos Decorativos</strong>
+
+                                    <div style="background: white; padding: 25px; border-radius: 8px; border: 2px solid #9b59b6; margin-bottom: 20px;">
+                                        <style>
+                                            .demo-link-external::after {
+                                                content: " ↗";
+                                                font-size: 0.8em;
+                                                color: #3498db;
+                                                font-weight: bold;
+                                            }
+                                            .demo-title::before {
+                                                content: "";
+                                                display: inline-block;
+                                                width: 4px;
+                                                height: 24px;
+                                                background: #f1c40f;
+                                                margin-right: 10px;
+                                                vertical-align: middle;
+                                            }
+                                            .demo-badge::after {
+                                                content: "NUEVO";
+                                                background: #e74c3c;
+                                                color: white;
+                                                padding: 2px 8px;
+                                                border-radius: 3px;
+                                                font-size: 10px;
+                                                font-weight: bold;
+                                                margin-left: 10px;
+                                                vertical-align: middle;
+                                            }
+                                            .demo-quote {
+                                                position: relative;
+                                                padding: 20px 30px;
+                                                background: #ecf0f1;
+                                                border-radius: 4px;
+                                                font-style: italic;
+                                            }
+                                            .demo-quote::before {
+                                                content: """;
+                                                position: absolute;
+                                                top: 10px;
+                                                left: 10px;
+                                                font-size: 60px;
+                                                color: #3498db;
+                                                opacity: 0.3;
+                                                line-height: 1;
+                                            }
+                                            .demo-quote::after {
+                                                content: """;
+                                                position: absolute;
+                                                bottom: -10px;
+                                                right: 10px;
+                                                font-size: 60px;
+                                                color: #3498db;
+                                                opacity: 0.3;
+                                                line-height: 1;
+                                            }
+                                        </style>
+
+                                        <!-- Link externo con icono -->
+                                        <div style="margin-bottom: 25px;">
+                                            <strong style="display: block; margin-bottom: 10px; color: #2c3e50;">::after - Agregar icono:</strong>
+                                            <a href="#" class="demo-link-external" style="color: #3498db; font-size: 16px;">Visitar sitio externo</a>
+                                        </div>
+
+                                        <!-- Título con barra -->
+                                        <div style="margin-bottom: 25px; border-top: 1px solid #ecf0f1; padding-top: 20px;">
+                                            <strong style="display: block; margin-bottom: 10px; color: #2c3e50;">::before - Barra decorativa:</strong>
+                                            <h3 class="demo-title" style="font-size: 20px; margin: 0; color: #2c3e50;">Título con Decoración</h3>
+                                        </div>
+
+                                        <!-- Badge -->
+                                        <div style="margin-bottom: 25px; border-top: 1px solid #ecf0f1; padding-top: 20px;">
+                                            <strong style="display: block; margin-bottom: 10px; color: #2c3e50;">::after - Badge:</strong>
+                                            <span class="demo-badge" style="font-size: 16px; color: #2c3e50;">Producto Premium</span>
+                                        </div>
+
+                                        <!-- Quote con comillas -->
+                                        <div style="border-top: 1px solid #ecf0f1; padding-top: 20px;">
+                                            <strong style="display: block; margin-bottom: 10px; color: #2c3e50;">::before y ::after - Comillas decorativas:</strong>
+                                            <div class="demo-quote">
+                                                Los pseudo-elementos permiten agregar contenido decorativo sin modificar el HTML.
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div style="background: #fff3cd; padding: 15px; border-radius: 6px; border-left: 4px solid #f1c40f;">
+                                        <strong style="color: #856404; font-size: 13px;">⚡ Reglas importantes:</strong>
+                                        <div style="margin-top: 10px; font-size: 12px; color: #2c3e50; line-height: 1.8;">
+                                            <div>• La propiedad <strong>content</strong> es OBLIGATORIA (aunque sea vacía: content: "")</div>
+                                            <div>• Se usa para contenido decorativo, NO para contenido importante</div>
+                                            <div>• Usa <strong>attr()</strong> para mostrar valores de atributos</div>
+                                            <div>• <strong>::before</strong> se inserta ANTES del contenido</div>
+                                            <div>• <strong>::after</strong> se inserta DESPUÉS del contenido</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="first-letter-line" data-tags="first-letter first-line primera">
@@ -218,6 +840,79 @@ p::first-letter {
 p::first-line {
     font-weight: bold;
 }</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Primera Letra y Primera Línea</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <strong style="color: #2c3e50; font-size: 15px; display: block; margin-bottom: 20px;">📖 Efectos Tipográficos Editoriales</strong>
+
+                                    <div style="background: white; padding: 30px; border-radius: 8px; border: 2px solid #9b59b6; margin-bottom: 20px;">
+                                        <style>
+                                            .demo-drop-cap::first-letter {
+                                                font-size: 4em;
+                                                float: left;
+                                                line-height: 0.85;
+                                                margin: 5px 10px 0 0;
+                                                color: #e74c3c;
+                                                font-weight: bold;
+                                            }
+                                            .demo-first-line::first-line {
+                                                font-weight: bold;
+                                                color: #3498db;
+                                                font-size: 1.2em;
+                                                text-transform: uppercase;
+                                                letter-spacing: 1px;
+                                            }
+                                            .demo-magazine::first-letter {
+                                                font-size: 3.5em;
+                                                float: left;
+                                                line-height: 1;
+                                                margin: 0 8px 0 0;
+                                                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                                color: white;
+                                                padding: 10px 15px;
+                                                border-radius: 4px;
+                                            }
+                                        </style>
+
+                                        <!-- Drop cap clásico -->
+                                        <div style="margin-bottom: 30px;">
+                                            <strong style="display: block; margin-bottom: 15px; color: #2c3e50;">::first-letter - Letra Capital Clásica:</strong>
+                                            <p class="demo-drop-cap" style="margin: 0; line-height: 1.7; text-align: justify; max-width: 500px;">
+                                                En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor.
+                                            </p>
+                                        </div>
+
+                                        <!-- Primera línea -->
+                                        <div style="margin-bottom: 30px; border-top: 1px solid #ecf0f1; padding-top: 25px;">
+                                            <strong style="display: block; margin-bottom: 15px; color: #2c3e50;">::first-line - Primera Línea Destacada:</strong>
+                                            <p class="demo-first-line" style="margin: 0; line-height: 1.7; max-width: 500px;">
+                                                Esta es la primera línea que será estilizada de forma diferente al resto del párrafo.
+                                                El resto del contenido mantiene el estilo normal y no se ve afectado por el pseudo-elemento.
+                                            </p>
+                                        </div>
+
+                                        <!-- Drop cap moderno -->
+                                        <div style="border-top: 1px solid #ecf0f1; padding-top: 25px;">
+                                            <strong style="display: block; margin-bottom: 15px; color: #2c3e50;">::first-letter - Estilo Revista Moderna:</strong>
+                                            <p class="demo-magazine" style="margin: 0; line-height: 1.7; max-width: 500px;">
+                                                Los pseudo-elementos permiten crear efectos tipográficos elegantes sin necesidad de agregar elementos HTML adicionales. Esta técnica es común en diseño editorial y publicaciones digitales.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="background: #fff3cd; padding: 15px; border-radius: 6px; border-left: 4px solid #f1c40f;">
+                                        <strong style="color: #856404; font-size: 13px;">💡 Limitaciones:</strong>
+                                        <div style="margin-top: 10px; font-size: 12px; color: #2c3e50; line-height: 1.8;">
+                                            <div><strong>::first-letter</strong> solo funciona en elementos de bloque</div>
+                                            <div><strong>::first-line</strong> solo puede estilizar propiedades de fuente y color</div>
+                                            <div>No puedes usar margin/padding en ::first-line</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="selection" data-tags="selection seleccion resaltado">
@@ -232,6 +927,60 @@ p::selection {
     background: #3498db;
     color: white;
 }</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Texto Seleccionado Personalizado</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <strong style="color: #2c3e50; font-size: 15px; display: block; margin-bottom: 20px;">✨ Personalizar Selección de Texto</strong>
+
+                                    <div style="background: white; padding: 25px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                        <style>
+                                            .demo-selection-1::selection {
+                                                background: #f1c40f;
+                                                color: #2c3e50;
+                                            }
+                                            .demo-selection-2::selection {
+                                                background: #e74c3c;
+                                                color: white;
+                                            }
+                                            .demo-selection-3::selection {
+                                                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                                                color: white;
+                                            }
+                                        </style>
+
+                                        <div style="margin-bottom: 20px;">
+                                            <strong style="display: block; margin-bottom: 10px; color: #2c3e50;">Selección Amarilla:</strong>
+                                            <p class="demo-selection-1" style="padding: 15px; background: #ecf0f1; border-radius: 4px; margin: 0; user-select: all;">
+                                                Selecciona este texto para ver el fondo amarillo con texto oscuro
+                                            </p>
+                                        </div>
+
+                                        <div style="margin-bottom: 20px;">
+                                            <strong style="display: block; margin-bottom: 10px; color: #2c3e50;">Selección Roja:</strong>
+                                            <p class="demo-selection-2" style="padding: 15px; background: #ecf0f1; border-radius: 4px; margin: 0; user-select: all;">
+                                                Selecciona este texto para ver el fondo rojo con texto blanco
+                                            </p>
+                                        </div>
+
+                                        <div>
+                                            <strong style="display: block; margin-bottom: 10px; color: #2c3e50;">Selección con Gradiente:</strong>
+                                            <p class="demo-selection-3" style="padding: 15px; background: #ecf0f1; border-radius: 4px; margin: 0; user-select: all;">
+                                                Selecciona este texto para ver el fondo con gradiente morado
+                                            </p>
+                                        </div>
+
+                                        <div style="margin-top: 20px; padding: 15px; background: #e8f4f8; border-radius: 4px; border-left: 4px solid #3498db;">
+                                            <strong style="color: #2c3e50; font-size: 13px;">💡 Instrucciones:</strong>
+                                            <div style="margin-top: 8px; font-size: 12px; color: #2c3e50;">
+                                                Haz clic y arrastra sobre cada párrafo para ver los diferentes estilos de selección
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="placeholder" data-tags="placeholder input">
@@ -241,6 +990,57 @@ p::selection {
     color: #999;
     font-style: italic;
 }</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Placeholders Estilizados</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <strong style="color: #2c3e50; font-size: 15px; display: block; margin-bottom: 20px;">📝 Personalizar Texto Placeholder</strong>
+
+                                    <div style="background: white; padding: 25px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                        <style>
+                                            .demo-placeholder-1::placeholder {
+                                                color: #999;
+                                                font-style: italic;
+                                            }
+                                            .demo-placeholder-2::placeholder {
+                                                color: #3498db;
+                                                font-weight: bold;
+                                                text-transform: uppercase;
+                                                font-size: 12px;
+                                            }
+                                            .demo-placeholder-3::placeholder {
+                                                color: #e74c3c;
+                                                opacity: 0.7;
+                                                letter-spacing: 1px;
+                                            }
+                                        </style>
+
+                                        <div style="margin-bottom: 20px;">
+                                            <strong style="display: block; margin-bottom: 10px; color: #2c3e50;">Placeholder Clásico (gris itálica):</strong>
+                                            <input type="text" class="demo-placeholder-1" placeholder="Ingresa tu nombre..." style="width: 100%; padding: 12px; border: 2px solid #bdc3c7; border-radius: 4px; font-size: 14px;">
+                                        </div>
+
+                                        <div style="margin-bottom: 20px;">
+                                            <strong style="display: block; margin-bottom: 10px; color: #2c3e50;">Placeholder Bold Azul:</strong>
+                                            <input type="email" class="demo-placeholder-2" placeholder="Email requerido" style="width: 100%; padding: 12px; border: 2px solid #bdc3c7; border-radius: 4px; font-size: 14px;">
+                                        </div>
+
+                                        <div>
+                                            <strong style="display: block; margin-bottom: 10px; color: #2c3e50;">Placeholder Rojo con Espaciado:</strong>
+                                            <input type="password" class="demo-placeholder-3" placeholder="Contraseña segura" style="width: 100%; padding: 12px; border: 2px solid #bdc3c7; border-radius: 4px; font-size: 14px;">
+                                        </div>
+
+                                        <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-radius: 4px; border-left: 4px solid #f1c40f;">
+                                            <strong style="color: #856404; font-size: 13px;">⚠️ Nota sobre ::placeholder:</strong>
+                                            <div style="margin-top: 8px; font-size: 12px; color: #2c3e50; line-height: 1.6;">
+                                                El texto placeholder desaparece cuando empiezas a escribir. Solo puede estilizar propiedades de fuente y color (no layout).
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div id="noResults" class="no-results" style="display: none;">
@@ -281,7 +1081,7 @@ p::selection {
         <p>CSS - Sistema de Aprendizaje | <a href="../index.html">Volver a CSS</a></p>
     </footer>
 
-    <script src="/assets/js/sidebar-component.js"></script>
+    <script src="../../../assets/js/sidebar-component.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('searchInput');
@@ -329,6 +1129,21 @@ p::selection {
                 const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
                 const scrolled = (winScroll / height) * 100;
                 document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // Aplicar highlight.js solo a elementos .ejemplo que no tienen <br> (no son HTML)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.ejemplo').forEach(function(block) {
+                // Solo resaltar si no tiene elementos <br> (no es HTML con sintaxis manual)
+                if (block.querySelectorAll('br').length === 0) {
+                    block.classList.add('language-css');
+                    hljs.highlightElement(block);
+                }
             });
         });
     </script>

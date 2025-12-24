@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POO - Python</title>
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
+    <!-- Highlight.js para resaltado de sintaxis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a Python</a>
+        <span class="icon">🐍</span>
+        <h1>Módulo 6: POO</h1>
+        <p class="subtitle">Clases, objetos, herencia y polimorfismo</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(55, 118, 171, 0.1) 0%, rgba(55, 118, 171, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #3776ab; margin-bottom: 40px;">
+                <h2 style="color: #3776ab; margin-bottom: 15px; font-size: 1.8em;">🏗️ Programación Orientada a Objetos</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    La POO permite modelar conceptos del mundo real usando clases y objetos.
+                    Incluye herencia, polimorfismo, encapsulamiento y abstracción.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="clases-objetos" data-tags="clase objeto instancia molde">
+                        <span class="tag">📋 Clases y Objetos</span>
+                        <p class="significado">Clase: molde/plantilla. Objeto: instancia de la clase</p>
+                        <div class="ejemplo"># Definir una clase
+class Persona:
+    # Constructor: se ejecuta al crear el objeto
+    def __init__(self, nombre, edad):
+        self.nombre = nombre  # Atributo de instancia
+        self.edad = edad
+
+    # Método de instancia
+    def saludar(self):
+        print(f"Hola, soy {self.nombre}")
+
+    def presentarse(self):
+        return f"Me llamo {self.nombre} y tengo {self.edad} años"
+
+# Crear objetos (instancias)
+persona1 = Persona("Ana", 25)
+persona2 = Persona("Juan", 30)
+
+# Acceder a atributos
+print(persona1.nombre)  # "Ana"
+print(persona2.edad)    # 30
+
+# Llamar métodos
+persona1.saludar()      # "Hola, soy Ana"
+print(persona2.presentarse())  # "Me llamo Juan y tengo 30 años"
+
+# Modificar atributos
+persona1.edad = 26</div>
+                    <div class="vista-previa">
+                        <strong>👁️ Vista previa de POO:</strong>
+                        <div class="preview-content">
+                            <p><strong>Código Python:</strong></p>
+                            <pre style="white-space: pre-wrap; background: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 6px; font-family: 'Courier New', monospace;">class Persona:
+    def __init__(self, nombre, edad):
+        self.nombre = nombre
+        self.edad = edad
+
+    def saludar(self):
+        return f"Hola, soy {self.nombre} y tengo {self.edad} años"
+
+# Crear objeto
+persona1 = Persona("Ana", 28)
+print(persona1.saludar())</pre>
+                            <p><strong>📤 Salida en terminal:</strong></p>
+                            <div style="background: #1e1e1e; color: #4ec9b0; font-family: 'Courier New', monospace; padding: 12px; border-radius: 6px; border-left: 3px solid #3776ab;">
+                                <span style="color: #dcdcaa;">Hola, soy Ana y tengo 28 años</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+
+                    <div class="termino" id="init" data-tags="init constructor inicializador self">
+                        <span class="tag">📋 __init__ y self</span>
+                        <p class="significado">Constructor e instancia actual</p>
+                        <div class="ejemplo"># __init__ es el "constructor" o inicializador
+# Se ejecuta automáticamente al crear un objeto
+
+class Rectangulo:
+    def __init__(self, base, altura):
+        # self representa la instancia actual
+        self.base = base
+        self.altura = altura
+
+    def area(self):
+        # self permite acceder a los atributos
+        return self.base * self.altura
+
+    def perimetro(self):
+        return 2 * (self.base + self.altura)
+
+# Al crear el objeto, __init__ recibe los argumentos
+rect = Rectangulo(10, 5)  # __init__(self, 10, 5)
+
+print(rect.area())      # 50
+print(rect.perimetro()) # 30
+
+# Valores por defecto en __init__
+class Circulo:
+    def __init__(self, radio=1):
+        self.radio = radio
+
+c1 = Circulo()       # radio = 1
+c2 = Circulo(5)      # radio = 5</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Constructor e Instancia</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="text-align: center; margin-bottom: 20px;">
+                                        <div style="background: #3498db; color: white; padding: 15px; border-radius: 6px; display: inline-block; font-weight: bold;">
+                                            class Rectangulo
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; gap: 20px; justify-content: center; align-items: center;">
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 3px solid #2ecc71; flex: 1; max-width: 300px;">
+                                            <div style="color: #2ecc71; font-weight: bold; margin-bottom: 10px; text-align: center;">🏗️ __init__(self, base, altura)</div>
+                                            <div style="color: #555; line-height: 1.8;">
+                                                <div style="margin: 8px 0;">📥 Recibe: base=10, altura=5</div>
+                                                <div style="margin: 8px 0;">📝 self.base = 10</div>
+                                                <div style="margin: 8px 0;">📝 self.altura = 5</div>
+                                            </div>
+                                        </div>
+                                        <div style="font-size: 40px;">→</div>
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 3px solid #9b59b6; flex: 1; max-width: 300px;">
+                                            <div style="color: #9b59b6; font-weight: bold; margin-bottom: 10px; text-align: center;">📦 Objeto: rect</div>
+                                            <div style="color: #555; line-height: 1.8;">
+                                                <div style="margin: 8px 0;">🔹 base: 10</div>
+                                                <div style="margin: 8px 0;">🔹 altura: 5</div>
+                                                <div style="margin: 8px 0; color: #2ecc71;">✅ area() → 50</div>
+                                                <div style="margin: 8px 0; color: #2ecc71;">✅ perimetro() → 30</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-left: 4px solid #f39c12; border-radius: 4px;">
+                                        <strong style="color: #f39c12;">💡 self:</strong> Representa la instancia actual del objeto. Permite acceder a sus atributos y métodos.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="atributos" data-tags="atributos instancia clase estatico">
+                        <span class="tag">📋 Tipos de Atributos</span>
+                        <p class="significado">Atributos de instancia y de clase</p>
+                        <div class="ejemplo">class Empleado:
+    # Atributo de CLASE (compartido por todas las instancias)
+    empresa = "TechCorp"
+    total_empleados = 0
+
+    def __init__(self, nombre, salario):
+        # Atributos de INSTANCIA (únicos para cada objeto)
+        self.nombre = nombre
+        self.salario = salario
+        # Modificar atributo de clase
+        Empleado.total_empleados += 1
+
+# Crear empleados
+e1 = Empleado("Ana", 50000)
+e2 = Empleado("Juan", 60000)
+
+# Atributos de instancia (diferentes)
+print(e1.nombre)  # "Ana"
+print(e2.nombre)  # "Juan"
+
+# Atributo de clase (compartido)
+print(e1.empresa)  # "TechCorp"
+print(e2.empresa)  # "TechCorp"
+print(Empleado.total_empleados)  # 2
+
+# Modificar atributo de clase afecta a todos
+Empleado.empresa = "NewCorp"
+print(e1.empresa)  # "NewCorp"
+print(e2.empresa)  # "NewCorp"</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Atributos de Clase vs Instancia</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="text-align: center; margin-bottom: 25px;">
+                                        <div style="background: #3498db; color: white; padding: 15px; border-radius: 6px; display: inline-block; font-weight: bold; width: 400px;">
+                                            class Empleado
+                                        </div>
+                                        <div style="background: #f39c12; color: white; padding: 10px; margin-top: 10px; border-radius: 4px; width: 400px; margin-left: auto; margin-right: auto;">
+                                            <strong>🌐 Atributos de CLASE (compartidos)</strong>
+                                            <div style="margin-top: 8px;">empresa = "TechCorp"</div>
+                                            <div>total_empleados = 2</div>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; gap: 20px; justify-content: center;">
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 3px solid #2ecc71; flex: 1; max-width: 280px;">
+                                            <div style="color: #2ecc71; font-weight: bold; margin-bottom: 12px; text-align: center;">📦 Objeto: e1</div>
+                                            <div style="background: #d5f4e6; padding: 10px; border-radius: 4px; margin-bottom: 10px;">
+                                                <div style="color: #555; font-weight: bold; margin-bottom: 5px;">👤 Atributos de INSTANCIA:</div>
+                                                <div style="margin: 5px 0;">• nombre: "Ana"</div>
+                                                <div style="margin: 5px 0;">• salario: 50000</div>
+                                            </div>
+                                            <div style="background: #fff3cd; padding: 10px; border-radius: 4px;">
+                                                <div style="color: #555; font-weight: bold; margin-bottom: 5px;">🌐 Acceso a clase:</div>
+                                                <div style="margin: 5px 0;">• empresa: "TechCorp"</div>
+                                            </div>
+                                        </div>
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 3px solid #9b59b6; flex: 1; max-width: 280px;">
+                                            <div style="color: #9b59b6; font-weight: bold; margin-bottom: 12px; text-align: center;">📦 Objeto: e2</div>
+                                            <div style="background: #e8d5f4; padding: 10px; border-radius: 4px; margin-bottom: 10px;">
+                                                <div style="color: #555; font-weight: bold; margin-bottom: 5px;">👤 Atributos de INSTANCIA:</div>
+                                                <div style="margin: 5px 0;">• nombre: "Juan"</div>
+                                                <div style="margin: 5px 0;">• salario: 60000</div>
+                                            </div>
+                                            <div style="background: #fff3cd; padding: 10px; border-radius: 4px;">
+                                                <div style="color: #555; font-weight: bold; margin-bottom: 5px;">🌐 Acceso a clase:</div>
+                                                <div style="margin: 5px 0;">• empresa: "TechCorp"</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-left: 4px solid #f39c12; border-radius: 4px;">
+                                        <strong style="color: #f39c12;">💡 Diferencia:</strong> Atributos de clase se comparten entre TODAS las instancias. Atributos de instancia son únicos para cada objeto.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="encapsulamiento" data-tags="encapsulamiento privado protegido public">
+                        <span class="tag">📋 Encapsulamiento</span>
+                        <p class="significado">Ocultar detalles internos de la clase</p>
+                        <div class="ejemplo"># Python usa convenciones (no hay privado real)
+
+class CuentaBancaria:
+    def __init__(self, titular, saldo):
+        self.titular = titular      # Público
+        self._saldo = saldo         # Protegido (convención)
+        self.__pin = "1234"         # Privado (name mangling)
+
+    def depositar(self, monto):
+        if monto > 0:
+            self._saldo += monto
+
+    def consultar_saldo(self):
+        return self._saldo
+
+    def __metodo_privado(self):
+        # Método privado
+        pass
+
+cuenta = CuentaBancaria("Ana", 1000)
+
+# Público: acceso normal
+print(cuenta.titular)  # "Ana"
+
+# Protegido: accesible pero "no deberías"
+print(cuenta._saldo)   # 1000 (funciona pero no recomendado)
+
+# Privado: name mangling
+# print(cuenta.__pin)  # Error! AttributeError
+print(cuenta._CuentaBancaria__pin)  # "1234" (acceso forzado)
+
+# Lo correcto: usar métodos públicos
+print(cuenta.consultar_saldo())  # 1000</div>
+                        <div class="nota">
+                            <strong>💡 Convención:</strong> _nombre = protegido, __nombre = privado (name mangling)
+                        </div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Niveles de Encapsulamiento</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="text-align: center; margin-bottom: 25px;">
+                                        <div style="background: #3498db; color: white; padding: 15px; border-radius: 6px; display: inline-block; font-weight: bold;">
+                                            class CuentaBancaria
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border-left: 5px solid #2ecc71;">
+                                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                                <div style="background: #2ecc71; color: white; padding: 8px 15px; border-radius: 4px; font-weight: bold;">🔓 PÚBLICO</div>
+                                                <div style="color: #555; font-weight: bold;">self.titular</div>
+                                            </div>
+                                            <div style="color: #666; padding-left: 20px;">
+                                                ✅ Acceso directo: <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">cuenta.titular</code><br>
+                                                ✅ Modificación libre: <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">cuenta.titular = "Juan"</code>
+                                            </div>
+                                        </div>
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border-left: 5px solid #f39c12;">
+                                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                                <div style="background: #f39c12; color: white; padding: 8px 15px; border-radius: 4px; font-weight: bold;">🔐 PROTEGIDO</div>
+                                                <div style="color: #555; font-weight: bold;">self._saldo</div>
+                                            </div>
+                                            <div style="color: #666; padding-left: 20px;">
+                                                ⚠️ Convención: "No uses fuera de la clase"<br>
+                                                ⚠️ Funciona pero NO recomendado: <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">cuenta._saldo</code><br>
+                                                ✅ Mejor usar métodos: <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">cuenta.consultar_saldo()</code>
+                                            </div>
+                                        </div>
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border-left: 5px solid #e74c3c;">
+                                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                                <div style="background: #e74c3c; color: white; padding: 8px 15px; border-radius: 4px; font-weight: bold;">🔒 PRIVADO</div>
+                                                <div style="color: #555; font-weight: bold;">self.__pin</div>
+                                            </div>
+                                            <div style="color: #666; padding-left: 20px;">
+                                                ❌ No accesible: <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">cuenta.__pin</code> → AttributeError<br>
+                                                🔧 Name mangling: <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">cuenta._CuentaBancaria__pin</code> (hack)<br>
+                                                ✅ Usar métodos públicos para acceder
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 20px; padding: 15px; background: #d5f4e6; border-left: 4px solid #2ecc71; border-radius: 4px;">
+                                        <strong style="color: #2ecc71;">💡 Buena práctica:</strong> Usa métodos públicos (getters/setters) para acceder a atributos protegidos/privados.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="properties" data-tags="property getter setter decorador">
+                        <span class="tag">📋 Properties (Getters/Setters)</span>
+                        <p class="significado">Acceso controlado a atributos</p>
+                        <div class="ejemplo">class Persona:
+    def __init__(self, nombre, edad):
+        self._nombre = nombre
+        self._edad = edad
+
+    # Getter: se ejecuta al LEER el atributo
+    @property
+    def edad(self):
+        return self._edad
+
+    # Setter: se ejecuta al ASIGNAR el atributo
+    @edad.setter
+    def edad(self, valor):
+        if valor < 0:
+            raise ValueError("Edad no puede ser negativa")
+        self._edad = valor
+
+    # Solo lectura (sin setter)
+    @property
+    def nombre(self):
+        return self._nombre
+
+    # Propiedad calculada
+    @property
+    def es_mayor(self):
+        return self._edad >= 18
+
+p = Persona("Ana", 25)
+
+# Usar como atributo normal
+print(p.edad)      # 25 (llama al getter)
+p.edad = 30        # Llama al setter
+print(p.edad)      # 30
+
+# Validación en setter
+# p.edad = -5      # Lanza ValueError
+
+# Propiedad calculada
+print(p.es_mayor)  # True
+
+# Solo lectura
+# p.nombre = "X"   # Error! No hay setter</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Properties (Getter/Setter)</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="text-align: center; margin-bottom: 25px;">
+                                        <div style="background: #3498db; color: white; padding: 15px; border-radius: 6px; display: inline-block; font-weight: bold;">
+                                            @property: Acceso controlado
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 25px;">
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 3px solid #2ecc71; flex: 1; max-width: 350px;">
+                                            <div style="color: #2ecc71; font-weight: bold; margin-bottom: 12px; text-align: center;">📖 LECTURA (Getter)</div>
+                                            <div style="background: #d5f4e6; padding: 15px; border-radius: 6px; font-family: monospace; font-size: 13px; margin-bottom: 10px;">
+                                                @property<br>
+                                                def edad(self):<br>
+                                                &nbsp;&nbsp;return self._edad
+                                            </div>
+                                            <div style="color: #555; line-height: 1.8;">
+                                                <strong>Uso:</strong><br>
+                                                <code style="background: #f0f0f0; padding: 3px 8px; border-radius: 3px;">print(p.edad)</code><br>
+                                                <div style="margin-top: 8px; color: #2ecc71;">✅ Parece un atributo pero ejecuta el método</div>
+                                            </div>
+                                        </div>
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 3px solid #e74c3c; flex: 1; max-width: 350px;">
+                                            <div style="color: #e74c3c; font-weight: bold; margin-bottom: 12px; text-align: center;">✏️ ESCRITURA (Setter)</div>
+                                            <div style="background: #f8d7da; padding: 15px; border-radius: 6px; font-family: monospace; font-size: 13px; margin-bottom: 10px;">
+                                                @edad.setter<br>
+                                                def edad(self, valor):<br>
+                                                &nbsp;&nbsp;if valor &lt; 0:<br>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;raise ValueError()<br>
+                                                &nbsp;&nbsp;self._edad = valor
+                                            </div>
+                                            <div style="color: #555; line-height: 1.8;">
+                                                <strong>Uso:</strong><br>
+                                                <code style="background: #f0f0f0; padding: 3px 8px; border-radius: 3px;">p.edad = 30</code><br>
+                                                <div style="margin-top: 8px; color: #e74c3c;">🔒 Validación antes de asignar</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 3px solid #9b59b6;">
+                                        <div style="color: #9b59b6; font-weight: bold; margin-bottom: 12px; text-align: center;">🧮 PROPIEDAD CALCULADA (Solo lectura)</div>
+                                        <div style="background: #e8d5f4; padding: 15px; border-radius: 6px; font-family: monospace; font-size: 13px; margin-bottom: 10px;">
+                                            @property<br>
+                                            def es_mayor(self):<br>
+                                            &nbsp;&nbsp;return self._edad >= 18
+                                        </div>
+                                        <div style="color: #555; line-height: 1.8;">
+                                            <code style="background: #f0f0f0; padding: 3px 8px; border-radius: 3px;">print(p.es_mayor)</code> → <strong>True</strong><br>
+                                            <div style="margin-top: 8px; color: #9b59b6;">🧮 Se calcula dinámicamente, no se almacena</div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-left: 4px solid #f39c12; border-radius: 4px;">
+                                        <strong style="color: #f39c12;">💡 Ventaja:</strong> Control total sobre cómo se accede y modifica un atributo, con sintaxis simple como atributo normal.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="str-repr" data-tags="str repr string representacion">
+                        <span class="tag">📋 __str__ y __repr__</span>
+                        <p class="significado">Representación del objeto como texto</p>
+                        <div class="ejemplo">class Producto:
+    def __init__(self, nombre, precio):
+        self.nombre = nombre
+        self.precio = precio
+
+    # __str__: representación para humanos (print)
+    def __str__(self):
+        return f"{self.nombre}: ${self.precio:.2f}"
+
+    # __repr__: representación para desarrolladores
+    def __repr__(self):
+        return f"Producto('{self.nombre}', {self.precio})"
+
+p = Producto("Laptop", 999.99)
+
+# print() usa __str__
+print(p)  # "Laptop: $999.99"
+
+# En consola interactiva usa __repr__
+p  # Producto('Laptop', 999.99)
+
+# str() y repr() explícitos
+str(p)   # "Laptop: $999.99"
+repr(p)  # "Producto('Laptop', 999.99)"
+
+# Si no hay __str__, usa __repr__
+# Si no hay ninguno, muestra <Producto object at 0x...></div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: __str__ vs __repr__</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="text-align: center; margin-bottom: 25px;">
+                                        <div style="background: #9b59b6; color: white; padding: 20px; border-radius: 8px; display: inline-block;">
+                                            <div style="font-weight: bold; font-size: 18px;">📦 Objeto: p = Producto("Laptop", 999.99)</div>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 25px;">
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 3px solid #2ecc71; flex: 1; max-width: 400px;">
+                                            <div style="color: #2ecc71; font-weight: bold; margin-bottom: 15px; text-align: center; font-size: 16px;">👥 __str__ (Para humanos)</div>
+                                            <div style="background: #d5f4e6; padding: 15px; border-radius: 6px; font-family: monospace; font-size: 13px; margin-bottom: 12px;">
+                                                def __str__(self):<br>
+                                                &nbsp;&nbsp;return f"{self.nombre}: ${self.precio:.2f}"
+                                            </div>
+                                            <div style="color: #555; line-height: 1.8;">
+                                                <strong>Cuándo se usa:</strong><br>
+                                                • <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">print(p)</code><br>
+                                                • <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">str(p)</code><br><br>
+                                                <strong>Salida:</strong><br>
+                                                <div style="background: #2ecc71; color: white; padding: 10px; border-radius: 4px; margin-top: 8px; font-family: monospace;">
+                                                    "Laptop: $999.99"
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 3px solid #3498db; flex: 1; max-width: 400px;">
+                                            <div style="color: #3498db; font-weight: bold; margin-bottom: 15px; text-align: center; font-size: 16px;">🔧 __repr__ (Para desarrolladores)</div>
+                                            <div style="background: #d6eaf8; padding: 15px; border-radius: 6px; font-family: monospace; font-size: 13px; margin-bottom: 12px;">
+                                                def __repr__(self):<br>
+                                                &nbsp;&nbsp;return f"Producto('{self.nombre}', {self.precio})"
+                                            </div>
+                                            <div style="color: #555; line-height: 1.8;">
+                                                <strong>Cuándo se usa:</strong><br>
+                                                • En consola interactiva: <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">p</code><br>
+                                                • <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">repr(p)</code><br><br>
+                                                <strong>Salida:</strong><br>
+                                                <div style="background: #3498db; color: white; padding: 10px; border-radius: 4px; margin-top: 8px; font-family: monospace;">
+                                                    Producto('Laptop', 999.99)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="padding: 15px; background: #fff3cd; border-left: 4px solid #f39c12; border-radius: 4px;">
+                                        <strong style="color: #f39c12;">💡 Regla:</strong> __str__ debe ser legible. __repr__ debe ser sin ambigüedad (idealmente código válido para recrear el objeto).
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="herencia" data-tags="herencia extends super padre hijo">
+                        <span class="tag">📋 Herencia</span>
+                        <p class="significado">Reutilizar código de una clase padre</p>
+                        <div class="ejemplo"># Clase base (padre)
+class Animal:
+    def __init__(self, nombre):
+        self.nombre = nombre
+
+    def hablar(self):
+        pass  # Método a sobrescribir
+
+    def presentarse(self):
+        return f"Soy {self.nombre}"
+
+# Clase derivada (hija)
+class Perro(Animal):
+    def __init__(self, nombre, raza):
+        super().__init__(nombre)  # Llamar al __init__ del padre
+        self.raza = raza
+
+    def hablar(self):
+        return "¡Guau!"
+
+class Gato(Animal):
+    def hablar(self):
+        return "¡Miau!"
+
+# Crear instancias
+perro = Perro("Rex", "Labrador")
+gato = Gato("Michi")
+
+# Métodos heredados
+print(perro.presentarse())  # "Soy Rex"
+print(gato.presentarse())   # "Soy Michi"
+
+# Métodos sobrescritos
+print(perro.hablar())  # "¡Guau!"
+print(gato.hablar())   # "¡Miau!"
+
+# Atributos propios de la subclase
+print(perro.raza)  # "Labrador"
+
+# Verificar herencia
+isinstance(perro, Animal)  # True
+isinstance(perro, Perro)   # True
+issubclass(Perro, Animal)  # True</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Jerarquía de Herencia</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="text-align: center; margin-bottom: 30px;">
+                                        <div style="background: #3498db; color: white; padding: 20px; border-radius: 8px; display: inline-block; max-width: 400px;">
+                                            <div style="font-weight: bold; font-size: 18px; margin-bottom: 10px;">🏛️ Clase Padre: Animal</div>
+                                            <div style="text-align: left; background: rgba(255,255,255,0.2); padding: 12px; border-radius: 4px; font-family: monospace; font-size: 13px;">
+                                                __init__(nombre)<br>
+                                                presentarse() ✅<br>
+                                                hablar() <span style="color: #f39c12;">⚠️ abstracto</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: center; margin-bottom: 20px; font-size: 30px; color: #7f8c8d;">↓ hereda ↓</div>
+                                    <div style="display: flex; gap: 20px; justify-content: center;">
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 3px solid #2ecc71; flex: 1; max-width: 300px;">
+                                            <div style="color: #2ecc71; font-weight: bold; margin-bottom: 12px; text-align: center; font-size: 16px;">🐕 Clase Hija: Perro</div>
+                                            <div style="background: #d5f4e6; padding: 15px; border-radius: 6px; margin-bottom: 10px;">
+                                                <div style="font-weight: bold; margin-bottom: 8px; color: #555;">📥 Heredado de Animal:</div>
+                                                <div style="font-family: monospace; font-size: 12px; line-height: 1.8;">
+                                                    • presentarse() ✅
+                                                </div>
+                                            </div>
+                                            <div style="background: #a8e6cf; padding: 15px; border-radius: 6px;">
+                                                <div style="font-weight: bold; margin-bottom: 8px; color: #555;">✨ Propio de Perro:</div>
+                                                <div style="font-family: monospace; font-size: 12px; line-height: 1.8;">
+                                                    • raza (atributo)<br>
+                                                    • hablar() → "¡Guau!"
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 3px solid #e74c3c; flex: 1; max-width: 300px;">
+                                            <div style="color: #e74c3c; font-weight: bold; margin-bottom: 12px; text-align: center; font-size: 16px;">🐱 Clase Hija: Gato</div>
+                                            <div style="background: #f8d7da; padding: 15px; border-radius: 6px; margin-bottom: 10px;">
+                                                <div style="font-weight: bold; margin-bottom: 8px; color: #555;">📥 Heredado de Animal:</div>
+                                                <div style="font-family: monospace; font-size: 12px; line-height: 1.8;">
+                                                    • presentarse() ✅
+                                                </div>
+                                            </div>
+                                            <div style="background: #ffb3ba; padding: 15px; border-radius: 6px;">
+                                                <div style="font-weight: bold; margin-bottom: 8px; color: #555;">✨ Propio de Gato:</div>
+                                                <div style="font-family: monospace; font-size: 12px; line-height: 1.8;">
+                                                    • hablar() → "¡Miau!"
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 25px; padding: 15px; background: #fff3cd; border-left: 4px solid #f39c12; border-radius: 4px;">
+                                        <strong style="color: #f39c12;">💡 super():</strong> Llama al método del padre. Útil para extender funcionalidad sin reescribir todo.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="herencia-multiple" data-tags="herencia multiple mixins">
+                        <span class="tag">📋 Herencia Múltiple</span>
+                        <p class="significado">Heredar de varias clases</p>
+                        <div class="ejemplo"># Python permite herencia múltiple
+
+class Volador:
+    def volar(self):
+        return "Estoy volando"
+
+class Nadador:
+    def nadar(self):
+        return "Estoy nadando"
+
+# Hereda de ambas clases
+class Pato(Volador, Nadador):
+    def __init__(self, nombre):
+        self.nombre = nombre
+
+    def presentarse(self):
+        return f"Soy {self.nombre} el pato"
+
+pato = Pato("Donald")
+print(pato.volar())  # "Estoy volando"
+print(pato.nadar())  # "Estoy nadando"
+
+# MRO: Method Resolution Order
+# Orden en que Python busca métodos
+print(Pato.__mro__)
+# (Pato, Volador, Nadador, object)
+
+# Ejemplo con conflicto
+class A:
+    def metodo(self):
+        return "A"
+
+class B(A):
+    def metodo(self):
+        return "B"
+
+class C(A):
+    def metodo(self):
+        return "C"
+
+class D(B, C):
+    pass
+
+d = D()
+print(d.metodo())  # "B" (MRO: D -> B -> C -> A)</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Herencia Múltiple y MRO</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="text-align: center; margin-bottom: 30px;">
+                                        <div style="font-weight: bold; font-size: 20px; color: #3498db; margin-bottom: 15px;">🦆 Ejemplo: Pato hereda de múltiples clases</div>
+                                    </div>
+                                    <div style="display: flex; gap: 20px; justify-content: center; margin-bottom: 25px;">
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 3px solid #3498db; flex: 1; max-width: 200px;">
+                                            <div style="color: #3498db; font-weight: bold; margin-bottom: 12px; text-align: center;">✈️ Volador</div>
+                                            <div style="background: #d6eaf8; padding: 10px; border-radius: 4px; font-family: monospace; font-size: 12px;">
+                                                volar()
+                                            </div>
+                                        </div>
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 3px solid #2ecc71; flex: 1; max-width: 200px;">
+                                            <div style="color: #2ecc71; font-weight: bold; margin-bottom: 12px; text-align: center;">🏊 Nadador</div>
+                                            <div style="background: #d5f4e6; padding: 10px; border-radius: 4px; font-family: monospace; font-size: 12px;">
+                                                nadar()
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: center; margin-bottom: 20px; font-size: 30px; color: #7f8c8d;">↓ hereda de ambas ↓</div>
+                                    <div style="text-align: center;">
+                                        <div style="background: white; padding: 25px; border-radius: 8px; border: 4px solid #9b59b6; display: inline-block; min-width: 400px;">
+                                            <div style="color: #9b59b6; font-weight: bold; margin-bottom: 15px; font-size: 18px;">🦆 Pato(Volador, Nadador)</div>
+                                            <div style="background: #e8d5f4; padding: 15px; border-radius: 6px; text-align: left;">
+                                                <div style="font-weight: bold; margin-bottom: 10px; color: #555;">✨ Tiene acceso a:</div>
+                                                <div style="font-family: monospace; font-size: 13px; line-height: 1.8;">
+                                                    ✅ volar() &nbsp;&nbsp;<span style="color: #3498db;">← de Volador</span><br>
+                                                    ✅ nadar() &nbsp;<span style="color: #2ecc71;">← de Nadador</span><br>
+                                                    ✅ presentarse() <span style="color: #9b59b6;">← propio</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 25px; background: white; padding: 20px; border-radius: 8px; border: 2px solid #f39c12;">
+                                        <div style="color: #f39c12; font-weight: bold; margin-bottom: 12px; text-align: center; font-size: 16px;">📊 MRO (Method Resolution Order)</div>
+                                        <div style="background: #fff3cd; padding: 15px; border-radius: 6px;">
+                                            <div style="color: #555; line-height: 1.8;">
+                                                <strong>Orden de búsqueda de métodos:</strong><br>
+                                                <div style="font-family: monospace; margin-top: 10px; font-size: 14px;">
+                                                    Pato → Volador → Nadador → object
+                                                </div>
+                                                <div style="margin-top: 12px; color: #666; font-size: 13px;">
+                                                    Python busca métodos en este orden. Si hay conflictos, usa el PRIMERO que encuentre (de izquierda a derecha).
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 20px; padding: 15px; background: #d5f4e6; border-left: 4px solid #2ecc71; border-radius: 4px;">
+                                        <strong style="color: #2ecc71;">💡 Ventaja:</strong> Combinar funcionalidades de múltiples clases (mixins). Útil para añadir capacidades modulares.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="polimorfismo" data-tags="polimorfismo duck typing">
+                        <span class="tag">📋 Polimorfismo</span>
+                        <p class="significado">Mismo método, comportamiento diferente</p>
+                        <div class="ejemplo"># Polimorfismo: diferentes clases, mismo método
+
+class Perro:
+    def sonido(self):
+        return "Guau"
+
+class Gato:
+    def sonido(self):
+        return "Miau"
+
+class Vaca:
+    def sonido(self):
+        return "Muu"
+
+# Función que trabaja con cualquier animal
+def hacer_sonido(animal):
+    print(animal.sonido())
+
+# Duck typing: "si camina como pato y hace cuac..."
+perro = Perro()
+gato = Gato()
+vaca = Vaca()
+
+hacer_sonido(perro)  # "Guau"
+hacer_sonido(gato)   # "Miau"
+hacer_sonido(vaca)   # "Muu"
+
+# Lista de animales diferentes
+animales = [Perro(), Gato(), Vaca()]
+for animal in animales:
+    print(animal.sonido())
+
+# No importa el tipo, solo que tenga el método
+class Robot:
+    def sonido(self):
+        return "Beep boop"
+
+hacer_sonido(Robot())  # "Beep boop" (funciona!)</div>
+                        <div class="nota">
+                            <strong>💡 Duck Typing:</strong> Python no verifica tipos, solo que el objeto tenga el método necesario.
+                        </div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Polimorfismo en Acción</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="text-align: center; margin-bottom: 25px;">
+                                        <div style="background: #9b59b6; color: white; padding: 18px; border-radius: 8px; display: inline-block;">
+                                            <div style="font-weight: bold; font-size: 18px;">🔄 Polimorfismo: Mismo método, comportamiento diferente</div>
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; gap: 15px; justify-content: center; margin-bottom: 25px;">
+                                        <div style="background: white; padding: 18px; border-radius: 8px; border: 3px solid #2ecc71; flex: 1; max-width: 220px;">
+                                            <div style="color: #2ecc71; font-weight: bold; margin-bottom: 10px; text-align: center; font-size: 15px;">🐕 Perro</div>
+                                            <div style="background: #d5f4e6; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 13px; text-align: center;">
+                                                sonido()<br>
+                                                ↓<br>
+                                                <strong>"Guau"</strong>
+                                            </div>
+                                        </div>
+                                        <div style="background: white; padding: 18px; border-radius: 8px; border: 3px solid #e74c3c; flex: 1; max-width: 220px;">
+                                            <div style="color: #e74c3c; font-weight: bold; margin-bottom: 10px; text-align: center; font-size: 15px;">🐱 Gato</div>
+                                            <div style="background: #f8d7da; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 13px; text-align: center;">
+                                                sonido()<br>
+                                                ↓<br>
+                                                <strong>"Miau"</strong>
+                                            </div>
+                                        </div>
+                                        <div style="background: white; padding: 18px; border-radius: 8px; border: 3px solid #f39c12; flex: 1; max-width: 220px;">
+                                            <div style="color: #f39c12; font-weight: bold; margin-bottom: 10px; text-align: center; font-size: 15px;">🐄 Vaca</div>
+                                            <div style="background: #fff3cd; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 13px; text-align: center;">
+                                                sonido()<br>
+                                                ↓<br>
+                                                <strong>"Muu"</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 3px solid #3498db; margin-bottom: 20px;">
+                                        <div style="color: #3498db; font-weight: bold; margin-bottom: 15px; text-align: center; font-size: 16px;">🔧 Función polimórfica</div>
+                                        <div style="background: #d6eaf8; padding: 15px; border-radius: 6px; font-family: monospace; font-size: 13px; margin-bottom: 12px;">
+                                            def hacer_sonido(animal):<br>
+                                            &nbsp;&nbsp;print(animal.sonido())
+                                        </div>
+                                        <div style="color: #555; line-height: 1.8; text-align: center;">
+                                            <div style="background: #ecf0f1; padding: 12px; border-radius: 6px; margin-top: 10px;">
+                                                <strong>💡 No importa el tipo, solo que tenga el método</strong><br>
+                                                <div style="margin-top: 8px; font-family: monospace; font-size: 12px; text-align: left; color: #666;">
+                                                    hacer_sonido(perro) &nbsp;→ "Guau"<br>
+                                                    hacer_sonido(gato) &nbsp;&nbsp;→ "Miau"<br>
+                                                    hacer_sonido(vaca) &nbsp;&nbsp;→ "Muu"<br>
+                                                    hacer_sonido(robot) &nbsp;→ "Beep boop"
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="padding: 15px; background: #fff3cd; border-left: 4px solid #f39c12; border-radius: 4px;">
+                                        <strong style="color: #f39c12;">🦆 Duck Typing:</strong> "Si camina como pato y hace cuac como pato, entonces ES un pato". Python no verifica tipos, solo que el objeto tenga el método necesario.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="metodos-estaticos" data-tags="staticmethod classmethod estatico clase">
+                        <span class="tag">📋 @staticmethod y @classmethod</span>
+                        <p class="significado">Métodos de clase y estáticos</p>
+                        <div class="ejemplo">class Calculadora:
+    valor_pi = 3.14159
+
+    def __init__(self, valor=0):
+        self.valor = valor
+
+    # Método normal: necesita self (instancia)
+    def sumar(self, x):
+        return self.valor + x
+
+    # @staticmethod: no necesita self ni cls
+    # Es como una función normal dentro de la clase
+    @staticmethod
+    def sumar_dos(a, b):
+        return a + b
+
+    # @classmethod: recibe cls (la clase)
+    # Útil para crear instancias alternativas
+    @classmethod
+    def desde_string(cls, texto):
+        valor = int(texto)
+        return cls(valor)  # Crea instancia
+
+    @classmethod
+    def obtener_pi(cls):
+        return cls.valor_pi
+
+# Método normal: necesita instancia
+calc = Calculadora(10)
+calc.sumar(5)  # 15
+
+# @staticmethod: no necesita instancia
+Calculadora.sumar_dos(3, 4)  # 7
+calc.sumar_dos(3, 4)         # También funciona
+
+# @classmethod: crea instancias
+calc2 = Calculadora.desde_string("20")
+print(calc2.valor)  # 20
+
+# @classmethod: accede a atributos de clase
+print(Calculadora.obtener_pi())  # 3.14159</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: @staticmethod vs @classmethod</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="text-align: center; margin-bottom: 25px;">
+                                        <div style="background: #3498db; color: white; padding: 15px; border-radius: 6px; display: inline-block; font-weight: bold; min-width: 400px;">
+                                            class Calculadora
+                                        </div>
+                                    </div>
+                                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 3px solid #2ecc71;">
+                                            <div style="color: #2ecc71; font-weight: bold; margin-bottom: 15px; font-size: 16px; text-align: center;">🔧 Método Normal</div>
+                                            <div style="background: #d5f4e6; padding: 15px; border-radius: 6px; font-family: monospace; font-size: 13px; margin-bottom: 12px;">
+                                                def sumar(self, x):<br>
+                                                &nbsp;&nbsp;return self.valor + x
+                                            </div>
+                                            <div style="color: #555; line-height: 1.8;">
+                                                <strong>Características:</strong><br>
+                                                ✅ Recibe <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">self</code> (instancia)<br>
+                                                ✅ Accede a atributos de instancia<br>
+                                                ❌ Necesita crear objeto primero<br><br>
+                                                <strong>Uso:</strong><br>
+                                                <code style="background: #f0f0f0; padding: 3px 8px; border-radius: 3px;">calc = Calculadora(10)</code><br>
+                                                <code style="background: #f0f0f0; padding: 3px 8px; border-radius: 3px;">calc.sumar(5)</code> → 15
+                                            </div>
+                                        </div>
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 3px solid #9b59b6;">
+                                            <div style="color: #9b59b6; font-weight: bold; margin-bottom: 15px; font-size: 16px; text-align: center;">⚡ @staticmethod</div>
+                                            <div style="background: #e8d5f4; padding: 15px; border-radius: 6px; font-family: monospace; font-size: 13px; margin-bottom: 12px;">
+                                                @staticmethod<br>
+                                                def sumar_dos(a, b):<br>
+                                                &nbsp;&nbsp;return a + b
+                                            </div>
+                                            <div style="color: #555; line-height: 1.8;">
+                                                <strong>Características:</strong><br>
+                                                ❌ NO recibe self ni cls<br>
+                                                ❌ NO accede a atributos de clase/instancia<br>
+                                                ✅ Es una función normal dentro de la clase<br><br>
+                                                <strong>Uso:</strong><br>
+                                                <code style="background: #f0f0f0; padding: 3px 8px; border-radius: 3px;">Calculadora.sumar_dos(3, 4)</code> → 7<br>
+                                                <span style="color: #9b59b6;">💡 No necesita instancia</span>
+                                            </div>
+                                        </div>
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 3px solid #e74c3c;">
+                                            <div style="color: #e74c3c; font-weight: bold; margin-bottom: 15px; font-size: 16px; text-align: center;">🏭 @classmethod</div>
+                                            <div style="background: #f8d7da; padding: 15px; border-radius: 6px; font-family: monospace; font-size: 13px; margin-bottom: 12px;">
+                                                @classmethod<br>
+                                                def desde_string(cls, texto):<br>
+                                                &nbsp;&nbsp;valor = int(texto)<br>
+                                                &nbsp;&nbsp;return cls(valor)
+                                            </div>
+                                            <div style="color: #555; line-height: 1.8;">
+                                                <strong>Características:</strong><br>
+                                                ✅ Recibe <code style="background: #f0f0f0; padding: 2px 6px; border-radius: 3px;">cls</code> (la clase)<br>
+                                                ✅ Accede a atributos de clase<br>
+                                                ✅ Puede crear instancias (factory methods)<br><br>
+                                                <strong>Uso:</strong><br>
+                                                <code style="background: #f0f0f0; padding: 3px 8px; border-radius: 3px;">calc = Calculadora.desde_string("20")</code><br>
+                                                <span style="color: #e74c3c;">💡 Constructores alternativos</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 20px; padding: 15px; background: #fff3cd; border-left: 4px solid #f39c12; border-radius: 4px;">
+                                        <strong style="color: #f39c12;">📌 Cuándo usar:</strong><br>
+                                        • @staticmethod: Funciones utilitarias que pertenecen lógicamente a la clase pero no necesitan acceso a datos<br>
+                                        • @classmethod: Constructores alternativos o métodos que necesitan acceder/modificar atributos de clase
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="termino" id="clases-abstractas" data-tags="abstracto abc interface">
+                        <span class="tag">📋 Clases Abstractas</span>
+                        <p class="significado">Clases base que no se pueden instanciar</p>
+                        <div class="ejemplo">from abc import ABC, abstractmethod
+
+# Clase abstracta
+class Figura(ABC):
+    @abstractmethod
+    def area(self):
+        pass
+
+    @abstractmethod
+    def perimetro(self):
+        pass
+
+    # Puede tener métodos concretos
+    def descripcion(self):
+        return f"Área: {self.area()}, Perímetro: {self.perimetro()}"
+
+# No se puede instanciar
+# fig = Figura()  # Error! Can't instantiate abstract class
+
+# Clase concreta: debe implementar todos los abstractos
+class Rectangulo(Figura):
+    def __init__(self, base, altura):
+        self.base = base
+        self.altura = altura
+
+    def area(self):
+        return self.base * self.altura
+
+    def perimetro(self):
+        return 2 * (self.base + self.altura)
+
+class Circulo(Figura):
+    def __init__(self, radio):
+        self.radio = radio
+
+    def area(self):
+        return 3.14159 * self.radio ** 2
+
+    def perimetro(self):
+        return 2 * 3.14159 * self.radio
+
+# Ahora sí se pueden instanciar
+rect = Rectangulo(10, 5)
+print(rect.area())       # 50
+print(rect.descripcion())  # "Área: 50, Perímetro: 30"</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Clases Abstractas (ABC)</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="text-align: center; margin-bottom: 25px;">
+                                        <div style="background: #e74c3c; color: white; padding: 20px; border-radius: 8px; display: inline-block; max-width: 500px;">
+                                            <div style="font-weight: bold; font-size: 18px; margin-bottom: 12px;">🚫 Clase ABSTRACTA: Figura</div>
+                                            <div style="text-align: left; background: rgba(255,255,255,0.2); padding: 15px; border-radius: 6px; font-family: monospace; font-size: 13px;">
+                                                <strong>from abc import ABC, abstractmethod</strong><br><br>
+                                                class Figura(ABC):<br>
+                                                &nbsp;&nbsp;@abstractmethod<br>
+                                                &nbsp;&nbsp;def area(self): pass<br><br>
+                                                &nbsp;&nbsp;@abstractmethod<br>
+                                                &nbsp;&nbsp;def perimetro(self): pass
+                                            </div>
+                                            <div style="margin-top: 12px; background: #c0392b; padding: 10px; border-radius: 4px;">
+                                                ❌ <strong>NO se puede instanciar</strong><br>
+                                                <code style="background: rgba(0,0,0,0.2); padding: 3px 6px; border-radius: 3px;">fig = Figura()</code> → Error!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: center; margin-bottom: 20px; font-size: 30px; color: #7f8c8d;">↓ hereda e implementa ↓</div>
+                                    <div style="display: flex; gap: 20px; justify-content: center;">
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 3px solid #2ecc71; flex: 1; max-width: 350px;">
+                                            <div style="color: #2ecc71; font-weight: bold; margin-bottom: 15px; text-align: center; font-size: 16px;">✅ Clase CONCRETA: Rectangulo</div>
+                                            <div style="background: #d5f4e6; padding: 15px; border-radius: 6px; margin-bottom: 12px; font-family: monospace; font-size: 12px;">
+                                                class Rectangulo(Figura):<br>
+                                                &nbsp;&nbsp;def __init__(self, b, a):<br>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;self.base = b<br>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;self.altura = a<br><br>
+                                                &nbsp;&nbsp;def area(self):<br>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;return self.base * self.altura<br><br>
+                                                &nbsp;&nbsp;def perimetro(self):<br>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;return 2*(self.base + self.altura)
+                                            </div>
+                                            <div style="background: #27ae60; color: white; padding: 10px; border-radius: 4px; text-align: center;">
+                                                ✅ <strong>IMPLEMENTA todos los métodos</strong><br>
+                                                <code style="background: rgba(255,255,255,0.3); padding: 3px 6px; border-radius: 3px;">rect = Rectangulo(10, 5)</code><br>
+                                                Funciona!
+                                            </div>
+                                        </div>
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 3px solid #3498db; flex: 1; max-width: 350px;">
+                                            <div style="color: #3498db; font-weight: bold; margin-bottom: 15px; text-align: center; font-size: 16px;">✅ Clase CONCRETA: Circulo</div>
+                                            <div style="background: #d6eaf8; padding: 15px; border-radius: 6px; margin-bottom: 12px; font-family: monospace; font-size: 12px;">
+                                                class Circulo(Figura):<br>
+                                                &nbsp;&nbsp;def __init__(self, radio):<br>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;self.radio = radio<br><br>
+                                                &nbsp;&nbsp;def area(self):<br>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;return 3.14159 * self.radio ** 2<br><br>
+                                                &nbsp;&nbsp;def perimetro(self):<br>
+                                                &nbsp;&nbsp;&nbsp;&nbsp;return 2 * 3.14159 * self.radio
+                                            </div>
+                                            <div style="background: #2980b9; color: white; padding: 10px; border-radius: 4px; text-align: center;">
+                                                ✅ <strong>IMPLEMENTA todos los métodos</strong><br>
+                                                <code style="background: rgba(255,255,255,0.3); padding: 3px 6px; border-radius: 3px;">circ = Circulo(5)</code><br>
+                                                Funciona!
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 25px; padding: 15px; background: #fff3cd; border-left: 4px solid #f39c12; border-radius: 4px;">
+                                        <strong style="color: #f39c12;">💡 Ventaja:</strong> Las clases abstractas definen un "contrato" que las clases hijas DEBEN cumplir. Garantiza que todas las figuras tengan area() y perimetro(). Útil para crear interfaces y APIs consistentes.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">🐍 POO</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#clases-objetos" class="toc-link">Clases y Objetos</a></li>
+                    <li class="toc-item"><a href="#init" class="toc-link">__init__ y self</a></li>
+                    <li class="toc-item"><a href="#atributos" class="toc-link">Tipos de Atributos</a></li>
+                    <li class="toc-item"><a href="#encapsulamiento" class="toc-link">Encapsulamiento</a></li>
+                    <li class="toc-item"><a href="#properties" class="toc-link">Properties</a></li>
+                    <li class="toc-item"><a href="#str-repr" class="toc-link">__str__ y __repr__</a></li>
+                    <li class="toc-item"><a href="#herencia" class="toc-link">Herencia</a></li>
+                    <li class="toc-item"><a href="#herencia-multiple" class="toc-link">Herencia Múltiple</a></li>
+                    <li class="toc-item"><a href="#polimorfismo" class="toc-link">Polimorfismo</a></li>
+                    <li class="toc-item"><a href="#metodos-estaticos" class="toc-link">@staticmethod/@classmethod</a></li>
+                    <li class="toc-item"><a href="#clases-abstractas" class="toc-link">Clases Abstractas</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>Python - Sistema de Aprendizaje | <a href="../index.html">Volver a Python</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script src="/assets/js/study-highlight.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) {
+                return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const tags = termino.getAttribute('data-tags') || '';
+                    const title = termino.querySelector('.tag')?.textContent || '';
+                    const desc = termino.querySelector('.descripcion')?.textContent || '';
+                    const ejemplo = termino.querySelector('.ejemplo')?.textContent || '';
+                    const searchText = normalizeText(tags + ' ' + title + ' ' + desc + ' ' + ejemplo);
+                    if (query === '' || searchText.includes(query)) {
+                        termino.style.display = 'block';
+                        found++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // Aplicar highlight.js solo a elementos .ejemplo que no tienen <br> (no son HTML)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.ejemplo').forEach(function(block) {
+                // Solo resaltar si no tiene elementos <br> (no es HTML con sintaxis manual)
+                if (block.querySelectorAll('br').length === 0) {
+                    block.classList.add('language-python');
+                    hljs.highlightElement(block);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

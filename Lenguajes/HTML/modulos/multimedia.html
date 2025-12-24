@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Multimedia HTML - Sistema de Aprendizaje</title>
-    <link rel="stylesheet" href="/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/assets/css/glosario.css">
-    <link rel="stylesheet" href="/assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
 </head>
 <body>
     <header>
@@ -40,11 +41,11 @@
             </section>
 
             <section id="terminos" class="topic-section">
-                <h2>📚 Glosario del Módulo</h2>
-                <p>Referencia de elementos multimedia HTML:</p>
-
                 <div id="terminosContainer">
-                    <div class="termino" data-tags="video reproducir mp4 webm">
+                    <div class="termino" id="video" data-tags="video reproducir mp4 webm">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;video&gt;</span>
                         <p class="significado">Significado: Video embebido</p>
                         <p class="descripcion">
@@ -52,7 +53,26 @@
                             Incluye controles nativos del navegador. Mucho mejor que usar plugins externos como Flash.
                             Proporciona funcionalidad de pausa, reproducción, volumen, pantalla completa.
                         </p>
-                        <div class="ejemplo">&lt;video width="640" height="360" controls poster="portada.jpg"&gt;<br>&nbsp;&nbsp;&lt;source src="video.mp4" type="video/mp4"&gt;<br>&nbsp;&nbsp;&lt;source src="video.webm" type="video/webm"&gt;<br>&nbsp;&nbsp;Tu navegador no soporta video HTML5.<br>&lt;/video&gt;</div>
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">video</span> <span class="hl-attr">width</span><span class="hl-bracket">=</span><span class="hl-value">"640"</span> <span class="hl-attr">height</span><span class="hl-bracket">=</span><span class="hl-value">"360"</span> <span class="hl-attr">controls</span> <span class="hl-attr">poster</span><span class="hl-bracket">=</span><span class="hl-value">"portada.jpg"</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">source</span> <span class="hl-attr">src</span><span class="hl-bracket">=</span><span class="hl-value">"video.mp4"</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"video/mp4"</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">source</span> <span class="hl-attr">src</span><span class="hl-bracket">=</span><span class="hl-value">"video.webm"</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"video/webm"</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-text">Tu navegador no soporta video HTML5.</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">video</span><span class="hl-bracket">&gt;</span>
+                        </div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <div style="background: #000; width: 300px; height: 180px; display: flex; align-items: center; justify-content: center; border-radius: 4px; position: relative;">
+                                    <div style="color: #fff; text-align: center;">
+                                        <div style="font-size: 48px;">▶️</div>
+                                        <p style="margin: 5px 0;">Player de Video</p>
+                                        <p style="font-size: 12px; opacity: 0.7;">Con controles nativos del navegador</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="nota">
                             <strong>Atributos importantes:</strong><br>
                             <span class="atributo">controls</span> - Muestra controles de reproducción<br>
@@ -63,17 +83,39 @@
                         </div>
                     </div>
 
-                    <div class="termino" data-tags="audio sonido música mp3">
+                    <div class="termino" id="audio" data-tags="audio sonido música mp3">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;audio&gt;</span>
                         <p class="significado">Significado: Audio embebido</p>
                         <p class="descripcion">
                             Inserta un reproductor de audio en la página. Funciona similar a video pero solo para audio.
                             Soporta MP3, WAV, Ogg. Proporciona controles de reproducción nativos.
                         </p>
-                        <div class="ejemplo">&lt;audio controls&gt;<br>&nbsp;&nbsp;&lt;source src="audio.mp3" type="audio/mpeg"&gt;<br>&nbsp;&nbsp;&lt;source src="audio.ogg" type="audio/ogg"&gt;<br>&nbsp;&nbsp;Tu navegador no soporta audio HTML5.<br>&lt;/audio&gt;</div>
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">audio</span> <span class="hl-attr">controls</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">source</span> <span class="hl-attr">src</span><span class="hl-bracket">=</span><span class="hl-value">"audio.mp3"</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"audio/mpeg"</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">source</span> <span class="hl-attr">src</span><span class="hl-bracket">=</span><span class="hl-value">"audio.ogg"</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"audio/ogg"</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-text">Tu navegador no soporta audio HTML5.</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">audio</span><span class="hl-bracket">&gt;</span>
+                        </div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <audio controls style="width: 100%; max-width: 400px;">
+                                    <source src="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAAABkYXRhAAAAAA==" type="audio/wav">
+                                    Tu navegador no soporta audio HTML5.
+                                </audio>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="termino" data-tags="iframe marco youtube maps embed">
+                    <div class="termino" id="iframe" data-tags="iframe marco youtube maps embed">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                            <span class="badge badge-frecuente">Uso diario</span>
+                        </div>
                         <span class="tag">&lt;iframe&gt;</span>
                         <p class="significado">Significado: Marco en línea (Inline Frame)</p>
                         <p class="descripcion">
@@ -81,14 +123,36 @@
                             Comúnmente usado para embeber videos de YouTube, mapas de Google, widgets externos, contenido de terceros.
                             Crea un contexto de navegación completamente separado.
                         </p>
-                        <div class="ejemplo">&lt;iframe src="https://www.youtube.com/embed/VIDEO_ID" <br>&nbsp;&nbsp;width="560" height="315"<br>&nbsp;&nbsp;title="Video de YouTube"<br>&nbsp;&nbsp;frameborder="0"<br>&nbsp;&nbsp;allow="accelerometer; autoplay; encrypted-media"<br>&nbsp;&nbsp;allowfullscreen&gt;<br>&lt;/iframe&gt;</div>
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">iframe</span> <span class="hl-attr">src</span><span class="hl-bracket">=</span><span class="hl-value">"https://www.youtube.com/embed/VIDEO_ID"</span><br>
+&nbsp;&nbsp;<span class="hl-attr">width</span><span class="hl-bracket">=</span><span class="hl-value">"560"</span> <span class="hl-attr">height</span><span class="hl-bracket">=</span><span class="hl-value">"315"</span><br>
+&nbsp;&nbsp;<span class="hl-attr">title</span><span class="hl-bracket">=</span><span class="hl-value">"Video de YouTube"</span><br>
+&nbsp;&nbsp;<span class="hl-attr">frameborder</span><span class="hl-bracket">=</span><span class="hl-value">"0"</span><br>
+&nbsp;&nbsp;<span class="hl-attr">allow</span><span class="hl-bracket">=</span><span class="hl-value">"accelerometer; autoplay; encrypted-media"</span><br>
+&nbsp;&nbsp;<span class="hl-attr">allowfullscreen</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">iframe</span><span class="hl-bracket">&gt;</span>
+                        </div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <div style="border: 2px solid #ddd; padding: 20px; background: #f5f5f5; text-align: center; border-radius: 4px;">
+                                    <div style="background: #000; color: #fff; padding: 40px; border-radius: 4px; width: 280px; margin: 0 auto;">
+                                        📺 Iframe de YouTube<br>
+                                        <span style="font-size: 0.9em; opacity: 0.8;">560x315 px</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="nota">
                             <strong>Consideraciones de seguridad:</strong> Usa el atributo <span class="atributo">sandbox</span> para restringir capacidades.
                             Ten cuidado con el contenido de terceros por seguridad.
                         </div>
                     </div>
 
-                    <div class="termino" data-tags="picture responsive imagen adaptativa">
+                    <div class="termino" id="picture" data-tags="picture responsive imagen adaptativa">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Intermedio</span>
+                        </div>
                         <span class="tag">&lt;picture&gt;</span>
                         <p class="significado">Significado: Imagen adaptativa</p>
                         <p class="descripcion">
@@ -99,7 +163,10 @@
                         <div class="ejemplo">&lt;picture&gt;<br>&nbsp;&nbsp;&lt;source media="(min-width: 800px)" srcset="imagen-grande.jpg"&gt;<br>&nbsp;&nbsp;&lt;source media="(min-width: 400px)" srcset="imagen-mediana.jpg"&gt;<br>&nbsp;&nbsp;&lt;img src="imagen-pequeña.jpg" alt="Descripción"&gt;<br>&lt;/picture&gt;</div>
                     </div>
 
-                    <div class="termino" data-tags="svg gráfico vectorial">
+                    <div class="termino" id="svg" data-tags="svg gráfico vectorial">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Intermedio</span>
+                        </div>
                         <span class="tag">&lt;svg&gt;</span>
                         <p class="significado">Significado: Gráficos vectoriales escalables</p>
                         <p class="descripcion">
@@ -109,7 +176,10 @@
                         <div class="ejemplo">&lt;svg width="100" height="100"&gt;<br>&nbsp;&nbsp;&lt;circle cx="50" cy="50" r="40" fill="red" /&gt;<br>&lt;/svg&gt;</div>
                     </div>
 
-                    <div class="termino" data-tags="canvas gráficos dibujo">
+                    <div class="termino" id="canvas" data-tags="canvas gráficos dibujo">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Intermedio</span>
+                        </div>
                         <span class="tag">&lt;canvas&gt;</span>
                         <p class="significado">Significado: Lienzo de gráficos</p>
                         <p class="descripcion">
@@ -120,7 +190,10 @@
                         <div class="ejemplo">&lt;canvas id="miCanvas" width="400" height="200"&gt;<br>&nbsp;&nbsp;Tu navegador no soporta canvas.<br>&lt;/canvas&gt;<br>&lt;script&gt;<br>&nbsp;&nbsp;const ctx = document.getElementById('miCanvas').getContext('2d');<br>&nbsp;&nbsp;ctx.fillStyle = 'blue';<br>&nbsp;&nbsp;ctx.fillRect(10, 10, 100, 100);<br>&lt;/script&gt;</div>
                     </div>
 
-                    <div class="termino" data-tags="source formato multimedia">
+                    <div class="termino" id="source" data-tags="source formato multimedia">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;source&gt;</span>
                         <p class="significado">Significado: Fuente multimedia</p>
                         <p class="descripcion">
@@ -131,7 +204,10 @@
                         <div class="ejemplo">&lt;video controls&gt;<br>&nbsp;&nbsp;&lt;source src="video.mp4" type="video/mp4"&gt;<br>&nbsp;&nbsp;&lt;source src="video.webm" type="video/webm"&gt;<br>&lt;/video&gt;</div>
                     </div>
 
-                    <div class="termino" data-tags="track subtítulos captions">
+                    <div class="termino" id="track" data-tags="track subtítulos captions">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;track&gt;</span>
                         <p class="significado">Significado: Pista de texto temporizado</p>
                         <p class="descripcion">
@@ -158,7 +234,30 @@
             <nav>
                 <ul class="toc-list">
                     <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
-                    <li class="toc-item"><a href="#terminos" class="toc-link">📚 Glosario del Módulo</a></li>
+                    <li class="toc-group">
+                        <div class="toc-group-header" onclick="toggleTOCGroup('multimedia')">
+                            <span class="toggle-icon">▼</span>
+                            🎬 Elementos Multimedia
+                        </div>
+                        <ul class="toc-group-items" id="toc-group-multimedia">
+                            <li class="toc-item level-2"><a href="#video" class="toc-link">&lt;video&gt; - Video</a></li>
+                            <li class="toc-item level-2"><a href="#audio" class="toc-link">&lt;audio&gt; - Audio</a></li>
+                            <li class="toc-item level-2"><a href="#iframe" class="toc-link">&lt;iframe&gt; - Marco inline</a></li>
+                            <li class="toc-item level-2"><a href="#picture" class="toc-link">&lt;picture&gt; - Imagen adaptativa</a></li>
+                        </ul>
+                    </li>
+                    <li class="toc-group">
+                        <div class="toc-group-header" onclick="toggleTOCGroup('graficos')">
+                            <span class="toggle-icon">▼</span>
+                            🎨 Gráficos
+                        </div>
+                        <ul class="toc-group-items" id="toc-group-graficos">
+                            <li class="toc-item level-2"><a href="#svg" class="toc-link">&lt;svg&gt; - Vectorial</a></li>
+                            <li class="toc-item level-2"><a href="#canvas" class="toc-link">&lt;canvas&gt; - Lienzo</a></li>
+                            <li class="toc-item level-2"><a href="#source" class="toc-link">&lt;source&gt; - Fuente</a></li>
+                            <li class="toc-item level-2"><a href="#track" class="toc-link">&lt;track&gt; - Subtítulos</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
 
@@ -172,7 +271,7 @@
         <p>Módulo 10: Multimedia HTML | <a href="../index.html">Volver a HTML</a></p>
     </footer>
 
-    <script src="/assets/js/sidebar-component.js"></script>
+    <script src="../../../assets/js/sidebar-component.js"></script>
     <script>
         // Funcionalidad de búsqueda en el glosario con normalización y resaltado
         document.addEventListener('DOMContentLoaded', function() {

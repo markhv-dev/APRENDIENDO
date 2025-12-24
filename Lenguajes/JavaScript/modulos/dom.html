@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOM - Sistema de Aprendizaje</title>
-    <link rel="stylesheet" href="/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/assets/css/glosario.css">
-    <link rel="stylesheet" href="/assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
+    <!-- Highlight.js para resaltado de sintaxis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
 <body>
     <header>
@@ -29,174 +32,545 @@
                 <div id="terminosContainer">
                     <div class="termino" id="seleccionar" data-tags="seleccionar selector querySelector getElementById">
                         <span class="tag">📋 Seleccionar Elementos</span>
-                        <p class="significado">Métodos para encontrar elementos</p>
-                        <div class="ejemplo">// Por ID (retorna 1 elemento)
+                        <p class="significado">Métodos para encontrar elementos en el DOM</p>
+                        <p class="descripcion">
+                            Para manipular elementos HTML con JavaScript, primero necesitas seleccionarlos.
+                            Existen varios métodos, pero los más importantes son <code>getElementById</code> (busca por ID único),
+                            <code>querySelector</code> (primer elemento que coincida) y <code>querySelectorAll</code> (todos los que coincidan).
+                        </p>
+                        <div class="ejemplo">// getElementById - Busca por ID único (retorna 1 elemento o null)
 const header = document.getElementById("header");
 
-// Por selector CSS (retorna 1 elemento)
+// querySelector - Primer elemento que coincida con selector CSS
 const btn = document.querySelector(".btn-primary");
-const first = document.querySelector("p");
+const firstP = document.querySelector("p");
 
-// Por selector CSS (retorna NodeList)
+// querySelectorAll - TODOS los que coincidan (retorna NodeList)
 const items = document.querySelectorAll(".item");
-const parrafos = document.querySelectorAll("p");
+const todosLosp = document.querySelectorAll("p");
 
-// Por clase (retorna HTMLCollection)
-const cards = document.getElementsByClassName("card");
-
-// Por tag (retorna HTMLCollection)
-const divs = document.getElementsByTagName("div");
-
-// Iterar NodeList
+// Iterar los resultados
 items.forEach(item => console.log(item));
 
-// Convertir a array
-const arr = Array.from(items);
-const arr2 = [...items];
-
-// Buscar dentro de elemento
+// Buscar dentro de un elemento específico
 const container = document.querySelector(".container");
 const child = container.querySelector(".child");</div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa: Métodos de Selección</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <!-- getElementById -->
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db; margin-bottom: 20px;">
+                                        <div style="font-weight: bold; color: #2c3e50; margin-bottom: 15px;">
+                                            🎯 getElementById("miID") - Busca por ID único
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 10px;">
+                                            <div style="font-family: monospace; font-size: 13px; color: #3498db;">
+                                                const titulo = document.getElementById("titulo");
+                                            </div>
+                                        </div>
+                                        <div style="background: #fff3cd; padding: 12px; border-radius: 6px; border-left: 3px solid #f1c40f;">
+                                            <div id="titulo" style="padding: 10px; background: #3498db; color: white; border-radius: 4px; text-align: center; font-weight: bold;">
+                                                ← Este elemento tiene id="titulo"
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- querySelector -->
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6; margin-bottom: 20px;">
+                                        <div style="font-weight: bold; color: #2c3e50; margin-bottom: 15px;">
+                                            🎯 querySelector(".clase") - Primer elemento con esa clase
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 10px;">
+                                            <div style="font-family: monospace; font-size: 13px; color: #9b59b6;">
+                                                const card = document.querySelector(".card");
+                                            </div>
+                                        </div>
+                                        <div style="background: #f3e5f5; padding: 12px; border-radius: 6px; border-left: 3px solid #9b59b6;">
+                                            <div class="card" style="padding: 10px; background: #9b59b6; color: white; border-radius: 4px; margin-bottom: 8px; font-weight: bold;">
+                                                ✓ Card 1 - Seleccionada (primera)
+                                            </div>
+                                            <div class="card" style="padding: 10px; background: #ecf0f1; color: #7f8c8d; border-radius: 4px; font-weight: bold;">
+                                                ✗ Card 2 - NO seleccionada
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- querySelectorAll -->
+                                    <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #2ecc71;">
+                                        <div style="font-weight: bold; color: #2c3e50; margin-bottom: 15px;">
+                                            🎯 querySelectorAll(".clase") - TODOS los elementos
+                                        </div>
+                                        <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 10px;">
+                                            <div style="font-family: monospace; font-size: 13px; color: #2ecc71;">
+                                                const items = document.querySelectorAll(".item");
+                                            </div>
+                                        </div>
+                                        <div style="background: #e8f5e9; padding: 12px; border-radius: 6px; border-left: 3px solid #2ecc71;">
+                                            <div class="item" style="padding: 10px; background: #2ecc71; color: white; border-radius: 4px; margin-bottom: 8px; font-weight: bold;">
+                                                ✓ Item 1 - Seleccionado
+                                            </div>
+                                            <div class="item" style="padding: 10px; background: #2ecc71; color: white; border-radius: 4px; margin-bottom: 8px; font-weight: bold;">
+                                                ✓ Item 2 - Seleccionado
+                                            </div>
+                                            <div class="item" style="padding: 10px; background: #2ecc71; color: white; border-radius: 4px; font-weight: bold;">
+                                                ✓ Item 3 - Seleccionado (TODOS)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="nota">
-                            <strong>💡 Tip:</strong> Usa querySelector/All para todo. Son más versátiles.
+                            <strong>💡 Tip:</strong> Usa <code>querySelector</code> y <code>querySelectorAll</code> porque aceptan cualquier selector CSS (.clase, #id, [atributo], etc.). Son más versátiles que getElementById.
                         </div>
                     </div>
 
                     <div class="termino" id="modificar-contenido" data-tags="textContent innerHTML innerText contenido">
                         <span class="tag">📋 Modificar Contenido</span>
-                        <p class="significado">Cambiar texto y HTML</p>
+                        <p class="significado">Cambiar el texto o HTML de elementos</p>
+                        <p class="descripcion">
+                            Una vez seleccionado un elemento, puedes cambiar su contenido.
+                            <code>textContent</code> inserta solo texto (escapa HTML, más seguro).
+                            <code>innerHTML</code> interpreta HTML (útil pero riesgoso con input de usuarios).
+                            <code>innerText</code> respeta el CSS (ignora elementos ocultos).
+                        </p>
                         <div class="ejemplo">const element = document.querySelector(".content");
 
-// textContent - solo texto (más seguro)
+// textContent - Solo texto (MÁS SEGURO, escapa HTML)
 element.textContent = "Nuevo texto";
-const texto = element.textContent;
+element.textContent = "<strong>Hola</strong>";  // Se ve literal: <strong>Hola</strong>
 
-// innerHTML - incluye HTML
-element.innerHTML = "<strong>Texto en negrita</strong>";
-const html = element.innerHTML;
+// innerHTML - Interpreta HTML (CUIDADO con input de usuarios)
+element.innerHTML = "<strong>Hola</strong>";  // Se ve: Hola (en negrita)
 
-// innerText - texto visible (respeta CSS)
+// innerText - Texto visible (respeta CSS display:none)
 element.innerText = "Solo texto visible";
 
-// outerHTML - incluye el elemento mismo
-element.outerHTML = "<div class='nuevo'>Reemplazado</div>";
+// Leer contenido
+const texto = element.textContent;  // Obtiene el texto
+const html = element.innerHTML;     // Obtiene el HTML</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: textContent vs innerHTML vs innerText</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="display: grid; gap: 15px;">
+                                        <!-- textContent -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                                <div style="background: #3498db; color: white; padding: 8px 16px; border-radius: 6px; font-family: monospace; font-weight: bold;">textContent</div>
+                                                <div style="color: #2ecc71; font-size: 13px;">✓ Solo texto (más seguro)</div>
+                                            </div>
+                                            <div style="background: #f8f9fa; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 13px; margin-bottom: 8px;">
+                                                element.textContent = "&lt;strong&gt;Hola&lt;/strong&gt;"
+                                            </div>
+                                            <div style="background: #e8f5e9; padding: 12px; border-radius: 6px; border-left: 3px solid #2ecc71;">
+                                                <strong>Resultado:</strong> &lt;strong&gt;Hola&lt;/strong&gt; <span style="color: #666; font-size: 11px;">(escapa HTML)</span>
+                                            </div>
+                                        </div>
 
-// Agregar texto
-element.textContent += " más texto";
+                                        <!-- innerHTML -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                                <div style="background: #9b59b6; color: white; padding: 8px 16px; border-radius: 6px; font-family: monospace; font-weight: bold;">innerHTML</div>
+                                                <div style="color: #f39c12; font-size: 13px;">⚠️ Interpreta HTML</div>
+                                            </div>
+                                            <div style="background: #f8f9fa; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 13px; margin-bottom: 8px;">
+                                                element.innerHTML = "&lt;strong&gt;Hola&lt;/strong&gt;"
+                                            </div>
+                                            <div style="background: #f3e5f5; padding: 12px; border-radius: 6px; border-left: 3px solid #9b59b6;">
+                                                <strong>Resultado:</strong> <strong style="color: #9b59b6;">Hola</strong> <span style="color: #666; font-size: 11px;">(renderiza HTML)</span>
+                                            </div>
+                                        </div>
 
-// ⚠️ Seguridad con innerHTML
-// NUNCA insertes input del usuario directamente
-const userInput = "<script>alert('xss')</script>";
-element.innerHTML = userInput;  // ¡PELIGROSO!
-element.textContent = userInput; // Seguro (escapa HTML)</div>
+                                        <!-- Comparación con texto oculto -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                📊 Diferencia con elementos ocultos
+                                            </div>
+                                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                                                <div style="background: #e3f2fd; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 12px; color: #1976d2; margin-bottom: 8px;">textContent</div>
+                                                    <div style="font-size: 13px;">Lee TODO el texto <span style="color: #666;">(incluso si display:none)</span></div>
+                                                </div>
+                                                <div style="background: #fff3e0; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 12px; color: #f57c00; margin-bottom: 8px;">innerText</div>
+                                                    <div style="font-size: 13px;">Solo texto VISIBLE <span style="color: #666;">(respeta CSS)</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="atributos" data-tags="atributos getAttribute setAttribute data">
                         <span class="tag">📋 Atributos</span>
-                        <p class="significado">Leer y modificar atributos</p>
+                        <p class="significado">Leer y modificar atributos HTML</p>
+                        <p class="descripcion">
+                            Los atributos son propiedades de los elementos HTML (src, href, class, id, etc.).
+                            Puedes leerlos y modificarlos con <code>getAttribute</code> y <code>setAttribute</code>,
+                            o acceder directamente (ej: <code>img.src</code>).
+                            Los <strong>data attributes</strong> (data-*) permiten guardar datos personalizados.
+                        </p>
                         <div class="ejemplo">const img = document.querySelector("img");
-const link = document.querySelector("a");
 
-// getAttribute / setAttribute
-img.getAttribute("src");
+// setAttribute - Cambiar un atributo
 img.setAttribute("src", "nueva-imagen.jpg");
 img.setAttribute("alt", "Descripción");
 
-// Acceso directo (atributos estándar)
+// getAttribute - Leer un atributo
+const source = img.getAttribute("src");  // "nueva-imagen.jpg"
+
+// Acceso directo (más común para atributos estándar)
 img.src = "imagen.jpg";
-link.href = "https://ejemplo.com";
+img.alt = "Mi imagen";
 
-// Verificar y eliminar
-img.hasAttribute("alt");      // true/false
-img.removeAttribute("title");
-
-// Data attributes (data-*)
-// <div data-user-id="123" data-active="true">
+// Data attributes - Datos personalizados
+// HTML: <div data-user-id="123" data-role="admin">
 const div = document.querySelector("[data-user-id]");
 
-// Leer
-div.dataset.userId;    // "123"
-div.dataset.active;    // "true"
+div.dataset.userId;     // "123" (data-user-id se convierte a userId)
+div.dataset.role;       // "admin"
+div.dataset.status = "active";  // Crea data-status="active"</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Atributos y Data Attributes</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="display: grid; gap: 15px;">
+                                        <!-- getAttribute/setAttribute -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🔧 setAttribute / getAttribute
+                                            </div>
+                                            <div style="display: grid; gap: 10px;">
+                                                <div style="background: #f8f9fa; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 13px; color: #3498db; margin-bottom: 6px;">img.setAttribute("src", "foto.jpg")</div>
+                                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                                        <div style="background: #e74c3c; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px;">Antes</div>
+                                                        <div style="font-family: monospace; font-size: 12px; color: #666;">&lt;img src="viejo.jpg"&gt;</div>
+                                                    </div>
+                                                    <div style="font-size: 20px; text-align: center; color: #3498db;">↓</div>
+                                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                                        <div style="background: #2ecc71; color: white; padding: 4px 8px; border-radius: 4px; font-size: 12px;">Después</div>
+                                                        <div style="font-family: monospace; font-size: 12px; color: #2ecc71;">&lt;img src="foto.jpg"&gt;</div>
+                                                    </div>
+                                                </div>
+                                                <div style="background: #e8f5e9; padding: 12px; border-radius: 6px; border-left: 3px solid #2ecc71;">
+                                                    <div style="font-family: monospace; font-size: 13px; margin-bottom: 4px;">img.getAttribute("src")</div>
+                                                    <div style="font-size: 13px; color: #2ecc71;">→ "foto.jpg"</div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-// Escribir
-div.dataset.role = "admin";
-// Crea: data-role="admin"
+                                        <!-- Data Attributes -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                📦 Data Attributes (dataset)
+                                            </div>
+                                            <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin-bottom: 10px;">
+                                                <div style="font-family: monospace; font-size: 12px; color: #666; margin-bottom: 8px;">
+                                                    &lt;div data-user-id="123" data-role="admin"&gt;
+                                                </div>
+                                            </div>
+                                            <div style="display: grid; gap: 8px;">
+                                                <div style="display: flex; align-items: center; gap: 10px;">
+                                                    <div style="background: #9b59b6; color: white; padding: 6px 12px; border-radius: 6px; font-family: monospace; font-size: 12px;">Leer</div>
+                                                    <div style="font-family: monospace; font-size: 13px;">div.dataset.userId</div>
+                                                    <div style="font-size: 16px;">→</div>
+                                                    <div style="background: #f3e5f5; padding: 6px 12px; border-radius: 6px; font-family: monospace; font-size: 12px;">"123"</div>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 10px;">
+                                                    <div style="background: #9b59b6; color: white; padding: 6px 12px; border-radius: 6px; font-family: monospace; font-size: 12px;">Escribir</div>
+                                                    <div style="font-family: monospace; font-size: 13px;">div.dataset.active = "true"</div>
+                                                </div>
+                                                <div style="background: #fff3e0; padding: 12px; border-radius: 6px; border-left: 3px solid #f39c12; margin-top: 6px;">
+                                                    <div style="font-size: 12px; color: #856404;">
+                                                        <strong>Conversión:</strong> data-user-id → dataset.userId (camelCase)
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-// Nombres se convierten a camelCase
-// data-user-id → dataset.userId</div>
+                                        <!-- Métodos de verificación -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                ✓ Verificar y Eliminar
+                                            </div>
+                                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                                                <div style="background: #e3f2fd; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 12px; color: #1976d2; margin-bottom: 6px;">hasAttribute("alt")</div>
+                                                    <div style="font-size: 13px;">✓ true <span style="color: #666;">/ ✗ false</span></div>
+                                                </div>
+                                                <div style="background: #ffebee; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 12px; color: #c62828; margin-bottom: 6px;">removeAttribute("title")</div>
+                                                    <div style="font-size: 13px;">Elimina el atributo</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="clases" data-tags="clases classList add remove toggle">
                         <span class="tag">📋 Clases CSS</span>
-                        <p class="significado">Manipular clases de elementos</p>
+                        <p class="significado">Agregar, quitar y manipular clases CSS</p>
+                        <p class="descripcion">
+                            Las clases CSS definen los estilos de los elementos. Con <code>classList</code> puedes
+                            agregar (<code>add</code>), quitar (<code>remove</code>), alternar (<code>toggle</code>),
+                            verificar (<code>contains</code>) o reemplazar (<code>replace</code>) clases fácilmente.
+                            Es la forma moderna y más limpia de manipular clases.
+                        </p>
                         <div class="ejemplo">const element = document.querySelector(".card");
 
-// classList - API moderna
+// add - Agregar una o más clases
 element.classList.add("active");
-element.classList.add("visible", "highlighted");
+element.classList.add("visible", "highlighted");  // Varias a la vez
 
+// remove - Quitar clases
 element.classList.remove("hidden");
-element.classList.remove("a", "b", "c");
 
-// toggle - agregar/quitar
+// toggle - Alternar (agregar si no existe, quitar si existe)
 element.classList.toggle("active");
-// Con condición
-element.classList.toggle("visible", isLoggedIn);
+element.classList.toggle("visible", true);  // Forzar agregar
+element.classList.toggle("hidden", false);  // Forzar quitar
 
-// contains - verificar
+// contains - Verificar si tiene una clase
 if (element.classList.contains("active")) {
-    // ...
+    console.log("El elemento está activo");
 }
 
-// replace
-element.classList.replace("old", "new");
-
-// className - string completo
-element.className = "card active visible";
-element.className += " extra";  // Agregar
-
-// Ejemplo práctico: tabs
+// Ejemplo práctico: Tabs activos
 tabs.forEach(tab => {
     tab.addEventListener("click", () => {
-        tabs.forEach(t => t.classList.remove("active"));
-        tab.classList.add("active");
+        tabs.forEach(t => t.classList.remove("active"));  // Quitar de todos
+        tab.classList.add("active");  // Agregar solo al clickeado
     });
 });</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: classList Operations</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="display: grid; gap: 15px;">
+                                        <!-- add -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #2ecc71;">
+                                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                                                <div style="background: #2ecc71; color: white; padding: 8px 16px; border-radius: 6px; font-family: monospace; font-weight: bold;">add</div>
+                                                <div style="font-size: 13px; color: #666;">Agregar clases</div>
+                                            </div>
+                                            <div style="background: #f8f9fa; padding: 12px; border-radius: 6px; margin-bottom: 8px;">
+                                                <div style="font-family: monospace; font-size: 13px; color: #2ecc71;">element.classList.add("active", "visible")</div>
+                                            </div>
+                                            <div style="display: flex; align-items: center; gap: 10px;">
+                                                <div style="background: #e74c3c; color: white; padding: 6px 12px; border-radius: 4px; font-size: 12px;">Antes</div>
+                                                <div style="background: #fff; border: 2px dashed #e74c3c; padding: 8px 12px; border-radius: 6px; font-family: monospace; font-size: 12px;">class="card"</div>
+                                            </div>
+                                            <div style="font-size: 20px; text-align: center; color: #2ecc71;">↓</div>
+                                            <div style="display: flex; align-items: center; gap: 10px;">
+                                                <div style="background: #2ecc71; color: white; padding: 6px 12px; border-radius: 4px; font-size: 12px;">Después</div>
+                                                <div style="background: #e8f5e9; border: 2px solid #2ecc71; padding: 8px 12px; border-radius: 6px; font-family: monospace; font-size: 12px;">class="card active visible"</div>
+                                            </div>
+                                        </div>
+
+                                        <!-- remove -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #e74c3c;">
+                                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                                                <div style="background: #e74c3c; color: white; padding: 8px 16px; border-radius: 6px; font-family: monospace; font-weight: bold;">remove</div>
+                                                <div style="font-size: 13px; color: #666;">Quitar clases</div>
+                                            </div>
+                                            <div style="background: #f8f9fa; padding: 12px; border-radius: 6px; margin-bottom: 8px;">
+                                                <div style="font-family: monospace; font-size: 13px; color: #e74c3c;">element.classList.remove("hidden")</div>
+                                            </div>
+                                            <div style="display: flex; align-items: center; gap: 10px;">
+                                                <div style="background: #666; color: white; padding: 6px 12px; border-radius: 4px; font-size: 12px;">Antes</div>
+                                                <div style="background: #fff; border: 2px dashed #666; padding: 8px 12px; border-radius: 6px; font-family: monospace; font-size: 12px;">class="card hidden"</div>
+                                            </div>
+                                            <div style="font-size: 20px; text-align: center; color: #e74c3c;">↓</div>
+                                            <div style="display: flex; align-items: center; gap: 10px;">
+                                                <div style="background: #2ecc71; color: white; padding: 6px 12px; border-radius: 4px; font-size: 12px;">Después</div>
+                                                <div style="background: #e8f5e9; border: 2px solid #2ecc71; padding: 8px 12px; border-radius: 6px; font-family: monospace; font-size: 12px;">class="card"</div>
+                                            </div>
+                                        </div>
+
+                                        <!-- toggle -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+                                                <div style="background: #9b59b6; color: white; padding: 8px 16px; border-radius: 6px; font-family: monospace; font-weight: bold;">toggle</div>
+                                                <div style="font-size: 13px; color: #666;">Alternar clase (agregar/quitar)</div>
+                                            </div>
+                                            <div style="background: #f8f9fa; padding: 12px; border-radius: 6px; margin-bottom: 8px;">
+                                                <div style="font-family: monospace; font-size: 13px; color: #9b59b6;">element.classList.toggle("active")</div>
+                                            </div>
+                                            <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 10px; align-items: center;">
+                                                <div style="text-align: center;">
+                                                    <div style="background: #f3e5f5; padding: 10px; border-radius: 6px; font-family: monospace; font-size: 12px; margin-bottom: 4px;">class="card"</div>
+                                                    <div style="font-size: 11px; color: #666;">Sin "active"</div>
+                                                </div>
+                                                <div style="font-size: 24px; color: #9b59b6;">⇄</div>
+                                                <div style="text-align: center;">
+                                                    <div style="background: #f3e5f5; padding: 10px; border-radius: 6px; font-family: monospace; font-size: 12px; margin-bottom: 4px;">class="card active"</div>
+                                                    <div style="font-size: 11px; color: #666;">Con "active"</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- contains y replace -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🔍 contains & replace
+                                            </div>
+                                            <div style="display: grid; gap: 10px;">
+                                                <div style="background: #e3f2fd; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 12px; color: #1976d2; margin-bottom: 6px;">classList.contains("active")</div>
+                                                    <div style="font-size: 13px;">→ true <span style="color: #666;">(si tiene la clase)</span> / false <span style="color: #666;">(si no tiene)</span></div>
+                                                </div>
+                                                <div style="background: #fff3e0; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 12px; color: #f57c00; margin-bottom: 6px;">classList.replace("old", "new")</div>
+                                                    <div style="display: flex; align-items: center; gap: 8px; font-size: 13px;">
+                                                        <span style="background: #ffccbc; padding: 4px 8px; border-radius: 4px;">old</span>
+                                                        <span>→</span>
+                                                        <span style="background: #c8e6c9; padding: 4px 8px; border-radius: 4px;">new</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="estilos" data-tags="estilos style CSS getComputedStyle">
                         <span class="tag">📋 Estilos</span>
-                        <p class="significado">Modificar CSS inline</p>
+                        <p class="significado">Modificar estilos CSS con JavaScript</p>
+                        <p class="descripcion">
+                            Puedes cambiar los estilos de un elemento usando <code>element.style</code>.
+                            Los estilos se aplican inline (directamente en el elemento).
+                            Las propiedades CSS con guión se escriben en <strong>camelCase</strong>
+                            (ej: background-color → backgroundColor).
+                        </p>
                         <div class="ejemplo">const element = document.querySelector(".box");
 
-// style - estilos inline
+// Modificar estilos individuales (camelCase)
 element.style.color = "red";
-element.style.backgroundColor = "blue";  // camelCase
-element.style.fontSize = "16px";
+element.style.backgroundColor = "blue";  // background-color
+element.style.fontSize = "20px";
 element.style.display = "none";
 
-// Múltiples estilos
+// Modificar múltiples estilos a la vez
 Object.assign(element.style, {
     color: "white",
     backgroundColor: "#333",
-    padding: "20px"
+    padding: "20px",
+    borderRadius: "8px"
 });
 
-// Leer estilos inline
-const color = element.style.color;
-
-// Leer estilos computados (incluye CSS)
+// Leer estilos computados (incluye CSS de hojas de estilo)
 const styles = getComputedStyle(element);
-styles.width;        // "200px"
-styles.display;      // "block"
+const width = styles.width;      // "200px"
+const color = styles.color;      // "rgb(255, 0, 0)"</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Modificar Estilos Inline</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="display: grid; gap: 15px;">
+                                        <!-- Estilos individuales -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🎨 Modificar Estilos Individuales
+                                            </div>
+                                            <div style="display: grid; gap: 10px;">
+                                                <div style="background: #f8f9fa; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 13px; color: #3498db; margin-bottom: 8px;">
+                                                        element.style.color = "red";<br>
+                                                        element.style.backgroundColor = "blue";
+                                                    </div>
+                                                </div>
+                                                <div style="display: flex; align-items: center; gap: 12px;">
+                                                    <div style="flex: 1; background: #f8f9fa; padding: 15px; border-radius: 6px; border: 2px dashed #95a5a6;">
+                                                        <div style="font-size: 11px; color: #666; margin-bottom: 6px;">Antes</div>
+                                                        <div style="background: white; padding: 10px; border-radius: 4px;">Texto normal</div>
+                                                    </div>
+                                                    <div style="font-size: 24px; color: #3498db;">→</div>
+                                                    <div style="flex: 1; background: #e3f2fd; padding: 15px; border-radius: 6px; border: 2px solid #3498db;">
+                                                        <div style="font-size: 11px; color: #1976d2; margin-bottom: 6px;">Después (style inline)</div>
+                                                        <div style="background: blue; color: red; padding: 10px; border-radius: 4px; font-weight: bold;">Texto estilizado</div>
+                                                    </div>
+                                                </div>
+                                                <div style="background: #fff3e0; padding: 10px; border-radius: 6px; border-left: 3px solid #f39c12;">
+                                                    <div style="font-size: 12px; color: #856404;">
+                                                        <strong>Nota:</strong> camelCase → <span style="font-family: monospace;">background-color</span> = <span style="font-family: monospace;">backgroundColor</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-// CSS custom properties
-element.style.setProperty("--main-color", "#f00");
-const value = element.style.getPropertyValue("--main-color");
+                                        <!-- Object.assign múltiples estilos -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                📦 Múltiples Estilos con Object.assign
+                                            </div>
+                                            <div style="background: #f8f9fa; padding: 12px; border-radius: 6px; margin-bottom: 10px;">
+                                                <div style="font-family: monospace; font-size: 12px; color: #9b59b6;">
+                                                    Object.assign(element.style, {<br>
+                                                    &nbsp;&nbsp;color: "white",<br>
+                                                    &nbsp;&nbsp;backgroundColor: "#333",<br>
+                                                    &nbsp;&nbsp;padding: "20px"<br>
+                                                    });
+                                                </div>
+                                            </div>
+                                            <div style="background: #333; color: white; padding: 20px; border-radius: 6px; text-align: center; font-weight: bold;">
+                                                ✨ Resultado: Múltiples estilos aplicados al mismo tiempo
+                                            </div>
+                                        </div>
 
-// Quitar estilo inline
-element.style.color = "";
-element.style.removeProperty("background-color");</div>
+                                        <!-- getComputedStyle -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #2ecc71;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🔍 Leer Estilos: style vs getComputedStyle
+                                            </div>
+                                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                                                <div style="background: #ffebee; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 12px; color: #c62828; margin-bottom: 8px;">element.style.color</div>
+                                                    <div style="font-size: 12px; margin-bottom: 4px;">✗ Solo lee estilos inline</div>
+                                                    <div style="font-size: 11px; color: #666;">Si no hay style="...", retorna ""</div>
+                                                </div>
+                                                <div style="background: #e8f5e9; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 12px; color: #2e7d32; margin-bottom: 8px;">getComputedStyle(element)</div>
+                                                    <div style="font-size: 12px; margin-bottom: 4px;">✓ Lee estilos finales</div>
+                                                    <div style="font-size: 11px; color: #666;">Incluye CSS, inline, y defaults</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- CSS Custom Properties -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #f39c12;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🎯 CSS Custom Properties (Variables)
+                                            </div>
+                                            <div style="display: grid; gap: 8px;">
+                                                <div style="background: #fff3e0; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 12px; color: #f57c00; margin-bottom: 6px;">
+                                                        element.style.setProperty("--main-color", "#f00")
+                                                    </div>
+                                                    <div style="font-size: 13px;">Define variable CSS</div>
+                                                </div>
+                                                <div style="background: #fff3e0; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 12px; color: #f57c00; margin-bottom: 6px;">
+                                                        element.style.getPropertyValue("--main-color")
+                                                    </div>
+                                                    <div style="font-size: 13px;">→ "#f00"</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="nota">
                             <strong>💡 Tip:</strong> Prefiere toggle de clases CSS sobre estilos inline para mantenibilidad.
                         </div>
@@ -204,113 +578,491 @@ element.style.removeProperty("background-color");</div>
 
                     <div class="termino" id="crear-elementos" data-tags="crear createElement appendChild append">
                         <span class="tag">📋 Crear Elementos</span>
-                        <p class="significado">Crear y agregar elementos al DOM</p>
-                        <div class="ejemplo">// Crear elemento
+                        <p class="significado">Crear nuevos elementos y agregarlos al DOM</p>
+                        <p class="descripcion">
+                            Para crear elementos HTML desde JavaScript: 1) crea el elemento con <code>createElement</code>,
+                            2) configúralo (texto, clases, atributos), 3) agrégalo al DOM con <code>appendChild</code> o <code>append</code>.
+                            También puedes insertar HTML directamente con <code>insertAdjacentHTML</code>.
+                        </p>
+                        <div class="ejemplo">// 1. Crear elemento
 const div = document.createElement("div");
-div.textContent = "Hola";
+
+// 2. Configurarlo
+div.textContent = "Hola Mundo";
 div.className = "card";
 div.id = "miCard";
 
-// Agregar al DOM
-document.body.appendChild(div);
-
-// append - múltiples nodos y texto
+// 3. Agregar al DOM
 const container = document.querySelector(".container");
+container.appendChild(div);  // Al final
+
+// append - Agregar al final (acepta múltiples elementos y texto)
 container.append(div, "texto", otroElemento);
 
-// prepend - al inicio
+// prepend - Agregar al inicio
 container.prepend(div);
 
-// before/after - hermanos
+// before/after - Como hermanos
 const ref = document.querySelector(".referencia");
-ref.before(div);   // antes
-ref.after(div);    // después
+ref.before(div);   // Antes del elemento
+ref.after(div);    // Después del elemento
 
-// insertAdjacentHTML
+// insertAdjacentHTML - Insertar HTML como string
 container.insertAdjacentHTML("beforeend", `
     <div class="card">
         <h2>Título</h2>
         <p>Contenido</p>
     </div>
-`);
-// Posiciones: beforebegin, afterbegin, beforeend, afterend
+`);</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Crear y Agregar Elementos</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="display: grid; gap: 15px;">
+                                        <!-- createElement + appendChild -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #2ecc71;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                ➕ createElement + appendChild
+                                            </div>
+                                            <div style="background: #f8f9fa; padding: 12px; border-radius: 6px; margin-bottom: 10px;">
+                                                <div style="font-family: monospace; font-size: 12px; color: #2ecc71;">
+                                                    const div = document.createElement("div");<br>
+                                                    div.textContent = "Hola";<br>
+                                                    div.className = "card";<br>
+                                                    document.body.appendChild(div);
+                                                </div>
+                                            </div>
+                                            <div style="display: grid; gap: 10px;">
+                                                <div style="background: #e8f5e9; padding: 12px; border-radius: 6px; border-left: 3px solid #2ecc71;">
+                                                    <div style="font-size: 11px; color: #2e7d32; margin-bottom: 6px;">Paso 1: Crear</div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #666;">createElement("div") → &lt;div&gt;&lt;/div&gt;</div>
+                                                </div>
+                                                <div style="background: #e8f5e9; padding: 12px; border-radius: 6px; border-left: 3px solid #2ecc71;">
+                                                    <div style="font-size: 11px; color: #2e7d32; margin-bottom: 6px;">Paso 2: Configurar</div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #666;">&lt;div class="card"&gt;Hola&lt;/div&gt;</div>
+                                                </div>
+                                                <div style="background: #c8e6c9; padding: 12px; border-radius: 6px; border-left: 3px solid #2e7d32;">
+                                                    <div style="font-size: 11px; color: #1b5e20; margin-bottom: 6px;">Paso 3: Agregar al DOM</div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #1b5e20;">appendChild() → elemento visible en la página</div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-// Clonar
-const clon = div.cloneNode(true);  // true = deep clone
+                                        <!-- append vs appendChild -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                📊 append vs appendChild
+                                            </div>
+                                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                                                <div style="background: #e3f2fd; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 12px; color: #1976d2; margin-bottom: 8px;">appendChild</div>
+                                                    <div style="font-size: 12px; margin-bottom: 6px;">✓ Solo 1 nodo</div>
+                                                    <div style="font-size: 12px; margin-bottom: 6px;">✓ Retorna el nodo</div>
+                                                    <div style="font-size: 12px;">✗ No acepta texto</div>
+                                                </div>
+                                                <div style="background: #c8e6c9; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 12px; color: #2e7d32; margin-bottom: 8px;">append</div>
+                                                    <div style="font-size: 12px; margin-bottom: 6px;">✓ Múltiples nodos</div>
+                                                    <div style="font-size: 12px; margin-bottom: 6px;">✓ Acepta texto</div>
+                                                    <div style="font-size: 12px;">✓ Más moderno</div>
+                                                </div>
+                                            </div>
+                                            <div style="background: #f8f9fa; padding: 10px; border-radius: 6px; margin-top: 10px;">
+                                                <div style="font-family: monospace; font-size: 12px; color: #2e7d32;">
+                                                    container.append(div, "texto", otroDiv);
+                                                </div>
+                                            </div>
+                                        </div>
 
-// Fragmento (mejor rendimiento)
-const fragment = document.createDocumentFragment();
-items.forEach(item => {
-    const li = document.createElement("li");
-    li.textContent = item;
-    fragment.appendChild(li);
-});
-lista.appendChild(fragment);</div>
+                                        <!-- Posiciones de inserción -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                📍 Posiciones de Inserción
+                                            </div>
+                                            <div style="background: #f8f9fa; padding: 20px; border-radius: 6px; position: relative;">
+                                                <div style="text-align: center; margin-bottom: 15px;">
+                                                    <div style="display: inline-block; background: #e1bee7; padding: 8px 12px; border-radius: 6px; font-family: monospace; font-size: 11px; margin-bottom: 8px;">
+                                                        prepend() - al inicio
+                                                    </div>
+                                                </div>
+                                                <div style="background: white; border: 2px solid #9b59b6; padding: 20px; border-radius: 6px; position: relative;">
+                                                    <div style="position: absolute; left: -80px; top: 50%; transform: translateY(-50%); background: #e1bee7; padding: 6px 10px; border-radius: 4px; font-size: 10px; font-family: monospace;">
+                                                        before()
+                                                    </div>
+                                                    <div style="text-align: center; font-weight: bold; color: #9b59b6;">
+                                                        &lt;container&gt;
+                                                    </div>
+                                                    <div style="position: absolute; right: -70px; top: 50%; transform: translateY(-50%); background: #e1bee7; padding: 6px 10px; border-radius: 4px; font-size: 10px; font-family: monospace;">
+                                                        after()
+                                                    </div>
+                                                </div>
+                                                <div style="text-align: center; margin-top: 15px;">
+                                                    <div style="display: inline-block; background: #e1bee7; padding: 8px 12px; border-radius: 6px; font-family: monospace; font-size: 11px;">
+                                                        append() - al final
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- insertAdjacentHTML -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #f39c12;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                ⚡ insertAdjacentHTML - Insertar HTML
+                                            </div>
+                                            <div style="background: #f8f9fa; padding: 12px; border-radius: 6px; margin-bottom: 10px;">
+                                                <div style="font-family: monospace; font-size: 12px; color: #f57c00;">
+                                                    container.insertAdjacentHTML("beforeend", `<br>
+                                                    &nbsp;&nbsp;&lt;div class="card"&gt;Contenido&lt;/div&gt;<br>
+                                                    `);
+                                                </div>
+                                            </div>
+                                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                                <div style="background: #fff3e0; padding: 8px; border-radius: 4px; font-size: 11px; text-align: center;">
+                                                    <span style="font-family: monospace; color: #f57c00;">beforebegin</span> - antes del elemento
+                                                </div>
+                                                <div style="background: #fff3e0; padding: 8px; border-radius: 4px; font-size: 11px; text-align: center;">
+                                                    <span style="font-family: monospace; color: #f57c00;">afterbegin</span> - primer hijo
+                                                </div>
+                                                <div style="background: #fff3e0; padding: 8px; border-radius: 4px; font-size: 11px; text-align: center;">
+                                                    <span style="font-family: monospace; color: #f57c00;">beforeend</span> - último hijo
+                                                </div>
+                                                <div style="background: #fff3e0; padding: 8px; border-radius: 4px; font-size: 11px; text-align: center;">
+                                                    <span style="font-family: monospace; color: #f57c00;">afterend</span> - después del elemento
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="eliminar-elementos" data-tags="eliminar remove removeChild">
                         <span class="tag">📋 Eliminar Elementos</span>
-                        <p class="significado">Quitar elementos del DOM</p>
+                        <p class="significado">Quitar o reemplazar elementos del DOM</p>
+                        <p class="descripcion">
+                            Para eliminar un elemento usa <code>remove()</code> (método moderno y simple).
+                            También puedes reemplazar un elemento por otro con <code>replaceWith()</code>.
+                            Para vaciar un contenedor, usa <code>innerHTML = ""</code> (rápido pero pierde eventos).
+                        </p>
                         <div class="ejemplo">const element = document.querySelector(".card");
 
-// remove() - moderno
+// remove() - Eliminar elemento (método moderno)
 element.remove();
 
-// removeChild - antiguo (necesita padre)
-const parent = element.parentNode;
-parent.removeChild(element);
-
-// replaceChild
+// replaceWith() - Reemplazar por otro elemento
 const nuevo = document.createElement("div");
-parent.replaceChild(nuevo, element);
-
-// replaceWith - moderno
+nuevo.textContent = "Nuevo contenido";
 element.replaceWith(nuevo);
 
-// Vaciar contenedor
-container.innerHTML = "";
-// O
-while (container.firstChild) {
-    container.removeChild(container.firstChild);
-}
+// Vaciar contenedor (eliminar todo su contenido)
+const container = document.querySelector(".container");
+container.innerHTML = "";  // Rápido, pero pierde event listeners
 
-// Eliminar varios
-document.querySelectorAll(".temp").forEach(el => el.remove());</div>
+// Eliminar múltiples elementos
+document.querySelectorAll(".temporal").forEach(el => el.remove());</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Eliminar y Reemplazar Elementos</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="display: grid; gap: 15px;">
+                                        <!-- remove() moderno -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #e74c3c;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🗑️ remove() - Método Moderno
+                                            </div>
+                                            <div style="background: #f8f9fa; padding: 12px; border-radius: 6px; margin-bottom: 10px;">
+                                                <div style="font-family: monospace; font-size: 13px; color: #e74c3c;">
+                                                    element.remove();
+                                                </div>
+                                            </div>
+                                            <div style="display: grid; gap: 10px;">
+                                                <div style="background: #fff; border: 2px solid #95a5a6; padding: 15px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #666; margin-bottom: 8px;">Antes:</div>
+                                                    <div style="display: flex; gap: 8px;">
+                                                        <div style="background: #e8f5e9; border: 2px solid #2ecc71; padding: 10px; border-radius: 4px; font-size: 12px;">Elemento 1</div>
+                                                        <div style="background: #ffebee; border: 2px solid #e74c3c; padding: 10px; border-radius: 4px; font-size: 12px;">Elemento 2 ✗</div>
+                                                        <div style="background: #e8f5e9; border: 2px solid #2ecc71; padding: 10px; border-radius: 4px; font-size: 12px;">Elemento 3</div>
+                                                    </div>
+                                                </div>
+                                                <div style="font-size: 24px; text-align: center; color: #e74c3c;">↓</div>
+                                                <div style="background: #e8f5e9; border: 2px solid #2ecc71; padding: 15px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #2e7d32; margin-bottom: 8px;">Después:</div>
+                                                    <div style="display: flex; gap: 8px;">
+                                                        <div style="background: #e8f5e9; border: 2px solid #2ecc71; padding: 10px; border-radius: 4px; font-size: 12px;">Elemento 1</div>
+                                                        <div style="background: #e8f5e9; border: 2px solid #2ecc71; padding: 10px; border-radius: 4px; font-size: 12px;">Elemento 3</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- removeChild() antiguo -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #95a5a6;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🔙 removeChild() - Método Antiguo
+                                            </div>
+                                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                                                <div style="background: #ffebee; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #c62828; margin-bottom: 8px;">❌ Complicado</div>
+                                                    <div style="font-family: monospace; font-size: 11px; color: #e74c3c;">
+                                                        const parent = element.parentNode;<br>
+                                                        parent.removeChild(element);
+                                                    </div>
+                                                    <div style="font-size: 10px; color: #666; margin-top: 6px;">Necesita acceso al padre</div>
+                                                </div>
+                                                <div style="background: #e8f5e9; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #2e7d32; margin-bottom: 8px;">✓ Simple</div>
+                                                    <div style="font-family: monospace; font-size: 11px; color: #2ecc71;">
+                                                        element.remove();
+                                                    </div>
+                                                    <div style="font-size: 10px; color: #666; margin-top: 6px;">Directo y claro</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- replaceWith() -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🔄 replaceWith() - Reemplazar
+                                            </div>
+                                            <div style="background: #f8f9fa; padding: 12px; border-radius: 6px; margin-bottom: 10px;">
+                                                <div style="font-family: monospace; font-size: 13px; color: #9b59b6;">
+                                                    const nuevo = document.createElement("div");<br>
+                                                    element.replaceWith(nuevo);
+                                                </div>
+                                            </div>
+                                            <div style="display: flex; align-items: center; gap: 12px;">
+                                                <div style="flex: 1; background: #ffebee; padding: 15px; border-radius: 6px; border: 2px solid #e74c3c; text-align: center;">
+                                                    <div style="font-size: 11px; color: #c62828; margin-bottom: 6px;">Elemento Viejo</div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #e74c3c;">&lt;div&gt;Antiguo&lt;/div&gt;</div>
+                                                </div>
+                                                <div style="font-size: 24px; color: #9b59b6;">→</div>
+                                                <div style="flex: 1; background: #f3e5f5; padding: 15px; border-radius: 6px; border: 2px solid #9b59b6; text-align: center;">
+                                                    <div style="font-size: 11px; color: #6a1b9a; margin-bottom: 6px;">Elemento Nuevo</div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #9b59b6;">&lt;div&gt;Nuevo&lt;/div&gt;</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Vaciar contenedor -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #f39c12;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🧹 Vaciar Contenedor
+                                            </div>
+                                            <div style="display: grid; gap: 10px;">
+                                                <div style="background: #fff3e0; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #f57c00; margin-bottom: 6px;">Método 1: innerHTML (rápido)</div>
+                                                    <div style="font-family: monospace; font-size: 12px; color: #f57c00;">
+                                                        container.innerHTML = "";
+                                                    </div>
+                                                </div>
+                                                <div style="background: #fff3e0; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #f57c00; margin-bottom: 6px;">Método 2: while loop (más seguro con eventos)</div>
+                                                    <div style="font-family: monospace; font-size: 11px; color: #f57c00;">
+                                                        while (container.firstChild) {<br>
+                                                        &nbsp;&nbsp;container.removeChild(container.firstChild);<br>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Eliminar múltiples -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🎯 Eliminar Múltiples Elementos
+                                            </div>
+                                            <div style="background: #f8f9fa; padding: 12px; border-radius: 6px; margin-bottom: 10px;">
+                                                <div style="font-family: monospace; font-size: 12px; color: #3498db;">
+                                                    document.querySelectorAll(".temp").forEach(el => el.remove());
+                                                </div>
+                                            </div>
+                                            <div style="display: flex; align-items: center; gap: 10px;">
+                                                <div style="background: #ffebee; padding: 10px; border-radius: 4px; font-size: 12px; border: 2px solid #e74c3c;">.temp</div>
+                                                <div style="background: #e8f5e9; padding: 10px; border-radius: 4px; font-size: 12px; border: 2px solid #2ecc71;">.keep</div>
+                                                <div style="background: #ffebee; padding: 10px; border-radius: 4px; font-size: 12px; border: 2px solid #e74c3c;">.temp</div>
+                                                <div style="font-size: 20px; color: #3498db;">→</div>
+                                                <div style="background: #e8f5e9; padding: 10px; border-radius: 4px; font-size: 12px; border: 2px solid #2ecc71;">.keep</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="navegacion" data-tags="navegacion parent children siblings">
                         <span class="tag">📋 Navegación DOM</span>
-                        <p class="significado">Moverse entre nodos</p>
+                        <p class="significado">Moverse entre elementos (padre, hijos, hermanos)</p>
+                        <p class="descripcion">
+                            El DOM es un árbol de elementos. Desde cualquier elemento puedes navegar a su
+                            <strong>padre</strong> (<code>parentElement</code>),
+                            <strong>hijos</strong> (<code>children</code>),
+                            <strong>hermanos</strong> (<code>nextElementSibling</code>, <code>previousElementSibling</code>),
+                            o buscar un ancestro con <code>closest()</code>.
+                        </p>
                         <div class="ejemplo">const element = document.querySelector(".item");
 
-// Padre
-element.parentNode;
-element.parentElement;
-element.closest(".container");  // Ancestro más cercano
+// Padre - ir hacia arriba
+element.parentElement;              // Elemento padre
+element.closest(".container");      // Ancestro más cercano con esa clase
 
-// Hijos
-element.children;           // HTMLCollection de elementos
-element.childNodes;         // NodeList incluye texto
-element.firstElementChild;
-element.lastElementChild;
-element.childElementCount;
+// Hijos - ir hacia abajo
+element.children;                   // Todos los hijos (HTMLCollection)
+element.firstElementChild;          // Primer hijo
+element.lastElementChild;           // Último hijo
 
-// Hermanos
-element.nextElementSibling;
-element.previousElementSibling;
+// Hermanos - moverse al mismo nivel
+element.nextElementSibling;         // Hermano siguiente
+element.previousElementSibling;     // Hermano anterior
 
-// Ejemplo: obtener todos los hermanos
-const siblings = [...element.parentElement.children]
-    .filter(child => child !== element);
+// Verificar
+element.contains(otroElement);      // ¿Contiene este elemento?
+element.matches(".clase");          // ¿Tiene esta clase/selector?</div>
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Navegación en el DOM</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="display: grid; gap: 15px;">
+                                        <!-- Árbol DOM Visual -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="margin-bottom: 15px; font-weight: bold; color: #2c3e50; text-align: center;">
+                                                🌳 Árbol DOM - Relaciones
+                                            </div>
+                                            <div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+                                                <!-- Padre -->
+                                                <div style="background: #e3f2fd; border: 2px solid #3498db; padding: 12px 20px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #1976d2; margin-bottom: 4px;">parentElement / parentNode</div>
+                                                    <div style="font-family: monospace; font-size: 13px; font-weight: bold; color: #3498db;">Padre</div>
+                                                </div>
+                                                <div style="font-size: 20px; color: #3498db;">↓</div>
+                                                <!-- Hermanos y elemento actual -->
+                                                <div style="display: flex; gap: 10px; align-items: center;">
+                                                    <div style="background: #f3e5f5; border: 2px dashed #9b59b6; padding: 10px; border-radius: 6px;">
+                                                        <div style="font-size: 10px; color: #6a1b9a; margin-bottom: 4px;">previousElementSibling</div>
+                                                        <div style="font-family: monospace; font-size: 12px; color: #9b59b6;">Hermano anterior</div>
+                                                    </div>
+                                                    <div style="background: #c8e6c9; border: 3px solid #2ecc71; padding: 12px; border-radius: 6px;">
+                                                        <div style="font-size: 10px; color: #2e7d32; margin-bottom: 4px;">ELEMENTO ACTUAL</div>
+                                                        <div style="font-family: monospace; font-size: 13px; font-weight: bold; color: #2ecc71;">element</div>
+                                                    </div>
+                                                    <div style="background: #f3e5f5; border: 2px dashed #9b59b6; padding: 10px; border-radius: 6px;">
+                                                        <div style="font-size: 10px; color: #6a1b9a; margin-bottom: 4px;">nextElementSibling</div>
+                                                        <div style="font-family: monospace; font-size: 12px; color: #9b59b6;">Hermano siguiente</div>
+                                                    </div>
+                                                </div>
+                                                <div style="font-size: 20px; color: #2ecc71;">↓</div>
+                                                <!-- Hijos -->
+                                                <div style="background: #fff3e0; border: 2px solid #f39c12; padding: 12px 20px; border-radius: 6px;">
+                                                    <div style="font-size: 11px; color: #f57c00; margin-bottom: 4px;">children / childNodes</div>
+                                                    <div style="font-family: monospace; font-size: 13px; color: #f39c12;">Hijo 1, Hijo 2, Hijo 3...</div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-// Verificar contenido
-element.contains(otroElement);  // true/false
-element.matches(".clase");      // true/false
+                                        <!-- Navegación hacia arriba -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                ⬆️ Navegación hacia Arriba (Padres)
+                                            </div>
+                                            <div style="display: grid; gap: 10px;">
+                                                <div style="background: #e3f2fd; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 12px; color: #1976d2; margin-bottom: 6px;">element.parentElement</div>
+                                                    <div style="font-size: 13px;">→ Padre directo (solo elementos)</div>
+                                                </div>
+                                                <div style="background: #e3f2fd; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 12px; color: #1976d2; margin-bottom: 6px;">element.closest(".container")</div>
+                                                    <div style="font-size: 13px;">→ Ancestro más cercano con esa clase <span style="color: #666;">(muy útil!)</span></div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-// Ejemplo práctico
-function getParentByClass(element, className) {
-    return element.closest(`.${className}`);
-}</div>
+                                        <!-- Navegación hacia abajo -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #f39c12;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                ⬇️ Navegación hacia Abajo (Hijos)
+                                            </div>
+                                            <div style="display: grid; gap: 10px;">
+                                                <div style="background: #fff3e0; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 12px; color: #f57c00; margin-bottom: 6px;">element.children</div>
+                                                    <div style="font-size: 13px;">→ HTMLCollection de elementos hijos <span style="color: #666;">(sin texto)</span></div>
+                                                </div>
+                                                <div style="background: #fff3e0; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 12px; color: #f57c00; margin-bottom: 6px;">element.childNodes</div>
+                                                    <div style="font-size: 13px;">→ NodeList de todos los nodos <span style="color: #666;">(incluye texto)</span></div>
+                                                </div>
+                                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                                                    <div style="background: #fff3e0; padding: 10px; border-radius: 6px;">
+                                                        <div style="font-family: monospace; font-size: 11px; color: #f57c00;">firstElementChild</div>
+                                                    </div>
+                                                    <div style="background: #fff3e0; padding: 10px; border-radius: 6px;">
+                                                        <div style="font-family: monospace; font-size: 11px; color: #f57c00;">lastElementChild</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Navegación lateral -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                ↔️ Navegación Lateral (Hermanos)
+                                            </div>
+                                            <div style="display: flex; align-items: center; gap: 12px;">
+                                                <div style="flex: 1; background: #f3e5f5; padding: 12px; border-radius: 6px; text-align: center;">
+                                                    <div style="font-family: monospace; font-size: 11px; color: #9b59b6; margin-bottom: 6px;">previousElementSibling</div>
+                                                    <div style="font-size: 13px;">← Hermano anterior</div>
+                                                </div>
+                                                <div style="background: #9b59b6; color: white; padding: 15px; border-radius: 6px; font-weight: bold;">
+                                                    elemento
+                                                </div>
+                                                <div style="flex: 1; background: #f3e5f5; padding: 12px; border-radius: 6px; text-align: center;">
+                                                    <div style="font-family: monospace; font-size: 11px; color: #9b59b6; margin-bottom: 6px;">nextElementSibling</div>
+                                                    <div style="font-size: 13px;">Hermano siguiente →</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Métodos útiles -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #2ecc71;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                🔧 Métodos de Verificación
+                                            </div>
+                                            <div style="display: grid; gap: 10px;">
+                                                <div style="background: #e8f5e9; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 12px; color: #2e7d32; margin-bottom: 6px;">element.contains(otroElemento)</div>
+                                                    <div style="font-size: 13px;">→ true si otroElemento está dentro de element</div>
+                                                </div>
+                                                <div style="background: #e8f5e9; padding: 12px; border-radius: 6px;">
+                                                    <div style="font-family: monospace; font-size: 12px; color: #2e7d32; margin-bottom: 6px;">element.matches(".clase")</div>
+                                                    <div style="font-size: 13px;">→ true si element tiene esa clase</div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Ejemplo práctico -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #e74c3c;">
+                                            <div style="margin-bottom: 12px; font-weight: bold; color: #2c3e50;">
+                                                💡 Ejemplo: Obtener todos los hermanos
+                                            </div>
+                                            <div style="background: #f8f9fa; padding: 12px; border-radius: 6px; margin-bottom: 10px;">
+                                                <div style="font-family: monospace; font-size: 11px; color: #e74c3c;">
+                                                    const siblings = [...element.parentElement.children]<br>
+                                                    &nbsp;&nbsp;.filter(child => child !== element);
+                                                </div>
+                                            </div>
+                                            <div style="background: #ffebee; padding: 12px; border-radius: 6px; border-left: 3px solid #e74c3c;">
+                                                <div style="font-size: 12px; color: #c62828;">
+                                                    <strong>Cómo funciona:</strong><br>
+                                                    1. Obtiene todos los hijos del padre<br>
+                                                    2. Filtra para excluir el elemento actual<br>
+                                                    3. Resultado: array con todos los hermanos
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div id="noResults" class="no-results" style="display: none;">
@@ -348,8 +1100,8 @@ function getParentByClass(element, className) {
         <p>JavaScript - Sistema de Aprendizaje | <a href="../index.html">Volver a JavaScript</a></p>
     </footer>
 
-    <script src="/assets/js/sidebar-component.js"></script>
-    <script src="/assets/js/study-highlight.js"></script>
+    <script src="../../../assets/js/sidebar-component.js"></script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('searchInput');
@@ -373,6 +1125,20 @@ function getParentByClass(element, className) {
                 sections.forEach(section => { if (scrollY >= section.offsetTop - 100) current = section.getAttribute('id'); });
                 tocLinks.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href') === '#' + current) link.classList.add('active'); });
                 document.getElementById('tocProgressBar').style.width = ((document.body.scrollTop || document.documentElement.scrollTop) / (document.documentElement.scrollHeight - document.documentElement.clientHeight)) * 100 + '%';
+            });
+        });
+    </script>
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // Aplicar highlight.js solo a elementos .ejemplo que no tienen <br> (no son HTML)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.ejemplo').forEach(function(block) {
+                // Solo resaltar si no tiene elementos <br> (no es HTML con sintaxis manual)
+                if (block.querySelectorAll('br').length === 0) {
+                    block.classList.add('language-javascript');
+                    hljs.highlightElement(block);
+                }
             });
         });
     </script>

@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formularios HTML - Sistema de Aprendizaje</title>
-    <link rel="stylesheet" href="/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/assets/css/glosario.css">
-    <link rel="stylesheet" href="/assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
 </head>
 <body>
     <header>
@@ -41,18 +42,35 @@
             </section>
 
             <section id="terminos" class="topic-section">
-                <h2>📚 Glosario del Módulo</h2>
-                <p>Referencia de elementos HTML para formularios:</p>
-
                 <div id="terminosContainer">
-                    <div class="termino" data-tags="form formulario input datos">
+                    <div class="termino" id="form" data-tags="form formulario input datos">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;form&gt;</span>
                         <p class="significado">Significado: Formulario</p>
                         <p class="descripcion">
                             Crea un formulario para recopilar datos del usuario. Puede contener inputs, textareas, selects, buttons, y otros elementos de formulario.
                             Los formularios son esenciales para la interacción del usuario: login, registro, búsquedas, comentarios, etc.
                         </p>
-                        <div class="ejemplo">&lt;form action="/enviar" method="post"&gt;<br>&nbsp;&nbsp;&lt;label for="nombre"&gt;Nombre:&lt;/label&gt;<br>&nbsp;&nbsp;&lt;input type="text" id="nombre" name="nombre"&gt;<br>&nbsp;&nbsp;&lt;button type="submit"&gt;Enviar&lt;/button&gt;<br>&lt;/form&gt;</div>
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">form</span> <span class="hl-attr">action</span><span class="hl-bracket">=</span><span class="hl-value">"/enviar"</span> <span class="hl-attr">method</span><span class="hl-bracket">=</span><span class="hl-value">"post"</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">label</span> <span class="hl-attr">for</span><span class="hl-bracket">=</span><span class="hl-value">"nombre"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Nombre:</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">label</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">input</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"text"</span> <span class="hl-attr">id</span><span class="hl-bracket">=</span><span class="hl-value">"nombre"</span> <span class="hl-attr">name</span><span class="hl-bracket">=</span><span class="hl-value">"nombre"</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">button</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"submit"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Enviar</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">button</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">form</span><span class="hl-bracket">&gt;</span>
+                        </div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <form style="border: 1px solid #ddd; padding: 15px; border-radius: 4px;">
+                                    <label for="nombre">Nombre:</label><br>
+                                    <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" style="margin: 5px 0; padding: 5px;"><br><br>
+                                    <button type="submit" style="padding: 8px 15px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">Enviar</button>
+                                </form>
+                            </div>
+                        </div>
+
                         <div class="nota">
                             <strong>Atributos importantes:</strong><br>
                             <span class="atributo">action</span> - URL donde se envían los datos del formulario<br>
@@ -62,7 +80,11 @@
                         </div>
                     </div>
 
-                    <div class="termino" data-tags="input campo entrada texto email password">
+                    <div class="termino" id="input" data-tags="input campo entrada texto email password">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                            <span class="badge badge-frecuente">Uso diario</span>
+                        </div>
                         <span class="tag">&lt;input&gt;</span>
                         <p class="significado">Significado: Campo de entrada</p>
                         <p class="descripcion">
@@ -70,7 +92,28 @@
                             Es el elemento más versátil de los formularios, con muchos tipos diferentes para distintos propósitos.
                             HTML5 agregó muchos tipos nuevos con validación incorporada.
                         </p>
-                        <div class="ejemplo">&lt;input type="text" name="nombre" placeholder="Tu nombre"&gt;<br>&lt;input type="email" name="correo" required&gt;<br>&lt;input type="password" name="clave" minlength="8"&gt;<br>&lt;input type="number" name="edad" min="18" max="99"&gt;<br>&lt;input type="date" name="fecha"&gt;<br>&lt;input type="checkbox" name="acepto" id="acepto"&gt;<br>&lt;input type="radio" name="genero" value="m"&gt;<br>&lt;input type="file" name="archivo" accept="image/*"&gt;</div>
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">input</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"text"</span> <span class="hl-attr">name</span><span class="hl-bracket">=</span><span class="hl-value">"nombre"</span> <span class="hl-attr">placeholder</span><span class="hl-bracket">=</span><span class="hl-value">"Tu nombre"</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;</span><span class="hl-tag">input</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"email"</span> <span class="hl-attr">name</span><span class="hl-bracket">=</span><span class="hl-value">"correo"</span> <span class="hl-attr">required</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;</span><span class="hl-tag">input</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"password"</span> <span class="hl-attr">name</span><span class="hl-bracket">=</span><span class="hl-value">"clave"</span> <span class="hl-attr">minlength</span><span class="hl-bracket">=</span><span class="hl-value">"8"</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;</span><span class="hl-tag">input</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"number"</span> <span class="hl-attr">name</span><span class="hl-bracket">=</span><span class="hl-value">"edad"</span> <span class="hl-attr">min</span><span class="hl-bracket">=</span><span class="hl-value">"18"</span> <span class="hl-attr">max</span><span class="hl-bracket">=</span><span class="hl-value">"99"</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;</span><span class="hl-tag">input</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"checkbox"</span> <span class="hl-attr">name</span><span class="hl-bracket">=</span><span class="hl-value">"acepto"</span> <span class="hl-attr">id</span><span class="hl-bracket">=</span><span class="hl-value">"acepto"</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;</span><span class="hl-tag">input</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"radio"</span> <span class="hl-attr">name</span><span class="hl-bracket">=</span><span class="hl-value">"genero"</span> <span class="hl-attr">value</span><span class="hl-bracket">=</span><span class="hl-value">"m"</span><span class="hl-bracket">&gt;</span>
+                        </div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <div style="font-family: Arial, sans-serif;">
+                                    <p><strong>text:</strong> <input type="text" placeholder="Tu nombre" style="padding: 5px; margin: 5px 0;"></p>
+                                    <p><strong>email:</strong> <input type="email" placeholder="tu@email.com" style="padding: 5px; margin: 5px 0;"></p>
+                                    <p><strong>password:</strong> <input type="password" placeholder="••••••••" style="padding: 5px; margin: 5px 0;"></p>
+                                    <p><strong>number:</strong> <input type="number" min="0" max="100" value="50" style="padding: 5px; margin: 5px 0;"></p>
+                                    <p><strong>checkbox:</strong> <input type="checkbox" id="check1"> <label for="check1">Acepto términos</label></p>
+                                    <p><strong>radio:</strong> <input type="radio" name="genero" id="m"> <label for="m">Masculino</label> <input type="radio" name="genero" id="f"> <label for="f">Femenino</label></p>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="nota">
                             <strong>Tipos comunes de input:</strong><br>
                             • text - Texto simple<br>
@@ -89,7 +132,11 @@
                         </div>
                     </div>
 
-                    <div class="termino" data-tags="label etiqueta input for">
+                    <div class="termino" id="label" data-tags="label etiqueta input for">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                            <span class="badge badge-frecuente">Uso diario</span>
+                        </div>
                         <span class="tag">&lt;label&gt;</span>
                         <p class="significado">Significado: Etiqueta de formulario</p>
                         <p class="descripcion">
@@ -97,10 +144,35 @@
                             Al hacer clic en el label, se activa el input asociado (muy útil para checkboxes y radios pequeños).
                             La asociación se hace con el atributo for que debe coincidir con el id del input.
                         </p>
-                        <div class="ejemplo">&lt;label for="nombre"&gt;Nombre completo:&lt;/label&gt;<br>&lt;input type="text" id="nombre" name="nombre"&gt;<br><br>&lt;!-- Forma alternativa: label envolvente --&gt;<br>&lt;label&gt;<br>&nbsp;&nbsp;&lt;input type="checkbox" name="acepto"&gt;<br>&nbsp;&nbsp;Acepto los términos<br>&lt;/label&gt;</div>
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">label</span> <span class="hl-attr">for</span><span class="hl-bracket">=</span><span class="hl-value">"nombre"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Nombre completo:</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">label</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;</span><span class="hl-tag">input</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"text"</span> <span class="hl-attr">id</span><span class="hl-bracket">=</span><span class="hl-value">"nombre"</span> <span class="hl-attr">name</span><span class="hl-bracket">=</span><span class="hl-value">"nombre"</span><span class="hl-bracket">&gt;</span><br><br>
+<span class="hl-comment">&lt;!-- Forma alternativa: label envolvente --&gt;</span><br>
+<span class="hl-bracket">&lt;</span><span class="hl-tag">label</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">input</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"checkbox"</span> <span class="hl-attr">name</span><span class="hl-bracket">=</span><span class="hl-value">"acepto"</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-text">Acepto los términos</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">label</span><span class="hl-bracket">&gt;</span>
+                        </div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 15px; border-radius: 4px;">
+                                    <label for="nombre-demo" style="display: block; margin-bottom: 5px; font-weight: bold; color: #2c3e50;">Nombre completo:</label>
+                                    <input type="text" id="nombre-demo" name="nombre" placeholder="Escribe tu nombre" style="padding: 8px; width: 100%; max-width: 300px; border: 1px solid #bdc3c7; border-radius: 4px;">
+                                    <br><br>
+                                    <label style="display: flex; align-items: center; cursor: pointer; color: #2c3e50;">
+                                        <input type="checkbox" name="acepto" style="margin-right: 8px;">
+                                        Acepto los términos
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="termino" data-tags="textarea área texto multilínea">
+                    <div class="termino" id="textarea" data-tags="textarea área texto multilínea">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;textarea&gt;</span>
                         <p class="significado">Significado: Área de texto multilínea</p>
                         <p class="descripcion">
@@ -108,7 +180,15 @@
                             A diferencia de input, textarea tiene etiqueta de cierre y el contenido va entre las etiquetas.
                             El usuario puede redimensionarla en la mayoría de los navegadores (controlable con CSS).
                         </p>
-                        <div class="ejemplo">&lt;textarea name="comentario" rows="5" cols="50" placeholder="Escribe tu comentario aquí..."&gt;&lt;/textarea&gt;</div>
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">textarea</span> <span class="hl-attr">name</span><span class="hl-bracket">=</span><span class="hl-value">"comentario"</span> <span class="hl-attr">rows</span><span class="hl-bracket">=</span><span class="hl-value">"5"</span> <span class="hl-attr">cols</span><span class="hl-bracket">=</span><span class="hl-value">"50"</span> <span class="hl-attr">placeholder</span><span class="hl-bracket">=</span><span class="hl-value">"Escribe tu comentario aquí..."</span><span class="hl-bracket">&gt;&lt;/</span><span class="hl-tag">textarea</span><span class="hl-bracket">&gt;</span>
+                        </div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <textarea name="comentario" rows="5" cols="50" placeholder="Escribe tu comentario aquí..." style="padding: 8px; width: 100%; max-width: 500px; border: 1px solid #bdc3c7; border-radius: 4px; font-family: Arial, sans-serif;"></textarea>
+                            </div>
+                        </div>
                         <div class="nota">
                             <strong>Atributos:</strong> <span class="atributo">rows</span> - Filas visibles,
                             <span class="atributo">cols</span> - Columnas (caracteres de ancho),
@@ -116,21 +196,45 @@
                         </div>
                     </div>
 
-                    <div class="termino" data-tags="select dropdown lista desplegable option">
+                    <div class="termino" id="select" data-tags="select dropdown lista desplegable option">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;select&gt;</span>
                         <p class="significado">Significado: Lista desplegable</p>
                         <p class="descripcion">
                             Crea un menú desplegable (dropdown). Contiene elementos option que son las opciones seleccionables.
                             Útil cuando tienes muchas opciones y quieres ahorrar espacio, o cuando quieres limitar las opciones disponibles.
                         </p>
-                        <div class="ejemplo">&lt;select name="pais" required&gt;<br>&nbsp;&nbsp;&lt;option value=""&gt;-- Selecciona un país --&lt;/option&gt;<br>&nbsp;&nbsp;&lt;option value="mx"&gt;México&lt;/option&gt;<br>&nbsp;&nbsp;&lt;option value="es" selected&gt;España&lt;/option&gt;<br>&nbsp;&nbsp;&lt;option value="ar"&gt;Argentina&lt;/option&gt;<br>&lt;/select&gt;</div>
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">select</span> <span class="hl-attr">name</span><span class="hl-bracket">=</span><span class="hl-value">"pais"</span> <span class="hl-attr">required</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">option</span> <span class="hl-attr">value</span><span class="hl-bracket">=</span><span class="hl-value">""</span><span class="hl-bracket">&gt;</span><span class="hl-text">-- Selecciona un país --</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">option</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">option</span> <span class="hl-attr">value</span><span class="hl-bracket">=</span><span class="hl-value">"mx"</span><span class="hl-bracket">&gt;</span><span class="hl-text">México</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">option</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">option</span> <span class="hl-attr">value</span><span class="hl-bracket">=</span><span class="hl-value">"es"</span> <span class="hl-attr">selected</span><span class="hl-bracket">&gt;</span><span class="hl-text">España</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">option</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">option</span> <span class="hl-attr">value</span><span class="hl-bracket">=</span><span class="hl-value">"ar"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Argentina</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">option</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">select</span><span class="hl-bracket">&gt;</span>
+                        </div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <select name="pais" style="padding: 5px; border-radius: 4px;">
+                                    <option value="">-- Selecciona un país --</option>
+                                    <option value="mx">México</option>
+                                    <option value="es" selected>España</option>
+                                    <option value="ar">Argentina</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="nota">
                             <strong>Atributos útiles:</strong> <span class="atributo">multiple</span> - Permite selección múltiple,
                             <span class="atributo">size</span> - Número de opciones visibles
                         </div>
                     </div>
 
-                    <div class="termino" data-tags="option opción select">
+                    <div class="termino" id="option" data-tags="option opción select">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;option&gt;</span>
                         <p class="significado">Significado: Opción de lista</p>
                         <p class="descripcion">
@@ -143,14 +247,32 @@
                         </div>
                     </div>
 
-                    <div class="termino" data-tags="button botón submit reset">
+                    <div class="termino" id="button" data-tags="button botón submit reset">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                            <span class="badge badge-frecuente">Uso diario</span>
+                        </div>
                         <span class="tag">&lt;button&gt;</span>
                         <p class="significado">Significado: Botón</p>
                         <p class="descripcion">
                             Crea un botón clicable. Más versátil que input type="button" porque puede contener HTML completo (texto, imágenes, iconos).
                             Puede tener diferentes comportamientos según el atributo type.
                         </p>
-                        <div class="ejemplo">&lt;button type="submit"&gt;Enviar Formulario&lt;/button&gt;<br>&lt;button type="reset"&gt;Limpiar Formulario&lt;/button&gt;<br>&lt;button type="button"&gt;Botón Personalizado&lt;/button&gt;</div>
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">button</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"submit"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Enviar Formulario</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">button</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;</span><span class="hl-tag">button</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"reset"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Limpiar Formulario</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">button</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;</span><span class="hl-tag">button</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"button"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Botón Personalizado</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">button</span><span class="hl-bracket">&gt;</span>
+                        </div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                    <button type="submit" style="padding: 10px 20px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">Enviar Formulario</button>
+                                    <button type="reset" style="padding: 10px 20px; background: #95a5a6; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">Limpiar Formulario</button>
+                                    <button type="button" style="padding: 10px 20px; background: #2ecc71; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">Botón Personalizado</button>
+                                </div>
+                            </div>
+                        </div>
                         <div class="nota">
                             <strong>Tipos de button:</strong><br>
                             • submit - Envía el formulario (por defecto)<br>
@@ -159,14 +281,37 @@
                         </div>
                     </div>
 
-                    <div class="termino" data-tags="fieldset legend grupo formulario">
+                    <div class="termino" id="fieldset" data-tags="fieldset legend grupo formulario">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;fieldset&gt; y &lt;legend&gt;</span>
                         <p class="significado">Significado: Agrupación de campos</p>
                         <p class="descripcion">
                             fieldset agrupa campos relacionados en un formulario. legend define el título del grupo.
                             Mejora la organización visual y la accesibilidad. Crea un borde visual alrededor del grupo.
                         </p>
-                        <div class="ejemplo">&lt;fieldset&gt;<br>&nbsp;&nbsp;&lt;legend&gt;Información Personal&lt;/legend&gt;<br>&nbsp;&nbsp;&lt;label for="nombre"&gt;Nombre:&lt;/label&gt;<br>&nbsp;&nbsp;&lt;input type="text" id="nombre"&gt;<br>&nbsp;&nbsp;&lt;label for="email"&gt;Email:&lt;/label&gt;<br>&nbsp;&nbsp;&lt;input type="email" id="email"&gt;<br>&lt;/fieldset&gt;</div>
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">fieldset</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">legend</span><span class="hl-bracket">&gt;</span><span class="hl-text">Información Personal</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">legend</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">label</span> <span class="hl-attr">for</span><span class="hl-bracket">=</span><span class="hl-value">"nombre"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Nombre:</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">label</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">input</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"text"</span> <span class="hl-attr">id</span><span class="hl-bracket">=</span><span class="hl-value">"nombre"</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">label</span> <span class="hl-attr">for</span><span class="hl-bracket">=</span><span class="hl-value">"email"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Email:</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">label</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">input</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"email"</span> <span class="hl-attr">id</span><span class="hl-bracket">=</span><span class="hl-value">"email"</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">fieldset</span><span class="hl-bracket">&gt;</span>
+                        </div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <fieldset style="border: 2px solid #bdc3c7; padding: 15px; border-radius: 4px;">
+                                    <legend style="padding: 0 10px; font-weight: bold; color: #2c3e50;">Información Personal</legend>
+                                    <label for="nombre-field" style="display: block; margin-bottom: 5px; color: #2c3e50;">Nombre:</label>
+                                    <input type="text" id="nombre-field" style="padding: 8px; width: 100%; max-width: 300px; margin-bottom: 15px; border: 1px solid #bdc3c7; border-radius: 4px;"><br>
+                                    <label for="email-field" style="display: block; margin-bottom: 5px; color: #2c3e50;">Email:</label>
+                                    <input type="email" id="email-field" style="padding: 8px; width: 100%; max-width: 300px; border: 1px solid #bdc3c7; border-radius: 4px;">
+                                </fieldset>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -184,12 +329,24 @@
                             Los datos son visibles en la barra de direcciones del navegador. Se usa para obtener información del servidor.
                         </p>
                         <div class="ejemplo">
-                            &lt;form action="/buscar" method="get"&gt;<br>
-                            &nbsp;&nbsp;&lt;input type="text" name="q" placeholder="Buscar..."&gt;<br>
-                            &nbsp;&nbsp;&lt;button type="submit"&gt;Buscar&lt;/button&gt;<br>
-                            &lt;/form&gt;<br><br>
-                            &lt;!-- URL resultante: --&gt;<br>
-                            https://ejemplo.com/buscar?q=html+css
+<span class="hl-bracket">&lt;</span><span class="hl-tag">form</span> <span class="hl-attr">action</span><span class="hl-bracket">=</span><span class="hl-value">"/buscar"</span> <span class="hl-attr">method</span><span class="hl-bracket">=</span><span class="hl-value">"get"</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">input</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"text"</span> <span class="hl-attr">name</span><span class="hl-bracket">=</span><span class="hl-value">"q"</span> <span class="hl-attr">placeholder</span><span class="hl-bracket">=</span><span class="hl-value">"Buscar..."</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">button</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"submit"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Buscar</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">button</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">form</span><span class="hl-bracket">&gt;</span><br><br>
+<span class="hl-comment">&lt;!-- URL resultante: --&gt;</span><br>
+<span class="hl-text">https://ejemplo.com/buscar?q=html+css</span>
+                        </div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <form style="border: 2px solid #3498db; padding: 15px; background: #ecf0f1; border-radius: 4px;">
+                                    <input type="text" name="q" placeholder="Buscar..." style="padding: 8px; border: 1px solid #bdc3c7; border-radius: 4px; width: 200px; margin-right: 10px;">
+                                    <button type="submit" style="padding: 8px 16px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">Buscar</button>
+                                </form>
+                                <div style="margin-top: 10px; padding: 10px; background: #34495e; color: #ecf0f1; border-radius: 4px; font-family: monospace; font-size: 0.9em;">
+                                    URL: https://ejemplo.com/buscar?q=html+css
+                                </div>
+                            </div>
                         </div>
                         <div class="nota">
                             <strong>✅ Cuándo usar GET:</strong><br>
@@ -217,14 +374,30 @@
                             Los datos NO son visibles en la URL. Se usa para enviar información al servidor que modifica o crea datos.
                         </p>
                         <div class="ejemplo">
-                            &lt;form action="/registro" method="post"&gt;<br>
-                            &nbsp;&nbsp;&lt;input type="email" name="email" required&gt;<br>
-                            &nbsp;&nbsp;&lt;input type="password" name="password" required&gt;<br>
-                            &nbsp;&nbsp;&lt;button type="submit"&gt;Registrarse&lt;/button&gt;<br>
-                            &lt;/form&gt;<br><br>
-                            &lt;!-- URL resultante: --&gt;<br>
-                            https://ejemplo.com/registro<br>
-                            &lt;!-- Los datos van ocultos en el cuerpo de la petición --&gt;
+<span class="hl-bracket">&lt;</span><span class="hl-tag">form</span> <span class="hl-attr">action</span><span class="hl-bracket">=</span><span class="hl-value">"/registro"</span> <span class="hl-attr">method</span><span class="hl-bracket">=</span><span class="hl-value">"post"</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">input</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"email"</span> <span class="hl-attr">name</span><span class="hl-bracket">=</span><span class="hl-value">"email"</span> <span class="hl-attr">required</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">input</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"password"</span> <span class="hl-attr">name</span><span class="hl-bracket">=</span><span class="hl-value">"password"</span> <span class="hl-attr">required</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">button</span> <span class="hl-attr">type</span><span class="hl-bracket">=</span><span class="hl-value">"submit"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Registrarse</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">button</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">form</span><span class="hl-bracket">&gt;</span><br><br>
+<span class="hl-comment">&lt;!-- URL resultante: --&gt;</span><br>
+<span class="hl-text">https://ejemplo.com/registro</span><br>
+<span class="hl-comment">&lt;!-- Los datos van ocultos en el cuerpo de la petición --&gt;</span>
+                        </div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <form style="border: 2px solid #2ecc71; padding: 15px; background: #ecf0f1; border-radius: 4px;">
+                                    <label style="display: block; margin-bottom: 5px; color: #2c3e50; font-weight: bold;">Email:</label>
+                                    <input type="email" name="email" required placeholder="tu@email.com" style="padding: 8px; border: 1px solid #bdc3c7; border-radius: 4px; width: 100%; max-width: 300px; margin-bottom: 15px;"><br>
+                                    <label style="display: block; margin-bottom: 5px; color: #2c3e50; font-weight: bold;">Password:</label>
+                                    <input type="password" name="password" required placeholder="••••••••" style="padding: 8px; border: 1px solid #bdc3c7; border-radius: 4px; width: 100%; max-width: 300px; margin-bottom: 15px;"><br>
+                                    <button type="submit" style="padding: 10px 20px; background: #2ecc71; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;">Registrarse</button>
+                                </form>
+                                <div style="margin-top: 10px; padding: 10px; background: #34495e; color: #ecf0f1; border-radius: 4px; font-family: monospace; font-size: 0.9em;">
+                                    URL: https://ejemplo.com/registro<br>
+                                    <span style="color: #95a5a6; font-size: 0.85em;">📦 Datos enviados en el cuerpo (body) - no visibles en URL</span>
+                                </div>
+                            </div>
                         </div>
                         <div class="nota">
                             <strong>✅ Cuándo usar POST:</strong><br>
@@ -409,7 +582,22 @@
             <nav>
                 <ul class="toc-list">
                     <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
-                    <li class="toc-item"><a href="#terminos" class="toc-link">📚 Glosario del Módulo</a></li>
+                    <li class="toc-group">
+                        <div class="toc-group-header" onclick="toggleTOCGroup('elementos')">
+                            <span class="toggle-icon">▼</span>
+                            📝 Elementos de Formulario
+                        </div>
+                        <ul class="toc-group-items" id="toc-group-elementos">
+                            <li class="toc-item level-2"><a href="#form" class="toc-link">&lt;form&gt; - Formulario</a></li>
+                            <li class="toc-item level-2"><a href="#input" class="toc-link">&lt;input&gt; - Campo de entrada</a></li>
+                            <li class="toc-item level-2"><a href="#label" class="toc-link">&lt;label&gt; - Etiqueta</a></li>
+                            <li class="toc-item level-2"><a href="#textarea" class="toc-link">&lt;textarea&gt; - Área de texto</a></li>
+                            <li class="toc-item level-2"><a href="#select" class="toc-link">&lt;select&gt; - Lista desplegable</a></li>
+                            <li class="toc-item level-2"><a href="#option" class="toc-link">&lt;option&gt; - Opción</a></li>
+                            <li class="toc-item level-2"><a href="#button" class="toc-link">&lt;button&gt; - Botón</a></li>
+                            <li class="toc-item level-2"><a href="#fieldset" class="toc-link">&lt;fieldset&gt; - Agrupación</a></li>
+                        </ul>
+                    </li>
                     <li class="toc-item"><a href="#get-post" class="toc-link">🔄 Métodos GET y POST</a></li>
                     <li class="toc-item"><a href="#validacion" class="toc-link">✅ Validación HTML5</a></li>
                 </ul>
@@ -425,8 +613,8 @@
         <p>Módulo 9: Formularios HTML | <a href="../index.html">Volver a HTML</a></p>
     </footer>
 
-    <script src="/assets/js/sidebar-component.js"></script>
-    <script src="/assets/js/study-highlight.js"></script>
+    <script src="../../../assets/js/sidebar-component.js"></script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
     <script>
         // Funcionalidad de búsqueda en el glosario con normalización y resaltado
         document.addEventListener('DOMContentLoaded', function() {

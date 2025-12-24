@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tipografía - Sistema de Aprendizaje</title>
-    <link rel="stylesheet" href="/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/assets/css/glosario.css">
-    <link rel="stylesheet" href="/assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
+    <!-- Highlight.js para resaltado de sintaxis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 </head>
 <body>
     <header>
@@ -45,6 +48,16 @@ font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, s
 body {
     font-family: 'Inter', sans-serif;
 }</div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa de tipografía:</strong>
+                            <div class="preview-content">
+                                <p style="font-size: 14px; margin: 5px 0;">14px - Texto pequeño</p>
+                                <p style="font-size: 18px; margin: 5px 0;">18px - Texto normal</p>
+                                <p style="font-size: 24px; margin: 5px 0; font-weight: bold;">24px bold - Texto grande</p>
+                                <p style="font-size: 32px; margin: 5px 0; font-weight: bold; color: #3498db;">32px - Título</p>
+                            </div>
+                        </div>
+
                         <div class="nota">
                             <strong>💡 Tipos genéricos:</strong> serif, sans-serif, monospace, cursive, fantasy
                         </div>
@@ -67,6 +80,68 @@ p { font-size: 1rem; }      /* 16px */
 
 /* Tipografía fluida con clamp */
 font-size: clamp(1rem, 2.5vw, 2rem);</div>
+
+                        <!-- VISTA PREVIA ESCALA TIPOGRÁFICA -->
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Escala Tipográfica</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <strong style="color: #2c3e50; font-size: 15px; display: block; margin-bottom: 20px;">📏 Jerarquía de Tamaños (base: 16px)</strong>
+
+                                    <div style="background: white; padding: 20px; border-radius: 6px; border: 2px solid #9b59b6;">
+                                        <div style="margin-bottom: 25px;">
+                                            <div style="display: flex; align-items: baseline; gap: 15px; padding: 15px; background: rgba(155, 89, 182, 0.05); border-left: 4px solid #9b59b6; border-radius: 4px; margin-bottom: 10px;">
+                                                <span style="color: #7f8c8d; font-size: 12px; min-width: 100px;">2.5rem (40px)</span>
+                                                <h1 style="font-size: 2.5rem; margin: 0; color: #2c3e50;">Heading 1</h1>
+                                            </div>
+
+                                            <div style="display: flex; align-items: baseline; gap: 15px; padding: 15px; background: rgba(52, 152, 219, 0.05); border-left: 4px solid #3498db; border-radius: 4px; margin-bottom: 10px;">
+                                                <span style="color: #7f8c8d; font-size: 12px; min-width: 100px;">2rem (32px)</span>
+                                                <h2 style="font-size: 2rem; margin: 0; color: #2c3e50;">Heading 2</h2>
+                                            </div>
+
+                                            <div style="display: flex; align-items: baseline; gap: 15px; padding: 15px; background: rgba(46, 204, 113, 0.05); border-left: 4px solid #2ecc71; border-radius: 4px; margin-bottom: 10px;">
+                                                <span style="color: #7f8c8d; font-size: 12px; min-width: 100px;">1.75rem (28px)</span>
+                                                <h3 style="font-size: 1.75rem; margin: 0; color: #2c3e50;">Heading 3</h3>
+                                            </div>
+
+                                            <div style="display: flex; align-items: baseline; gap: 15px; padding: 15px; background: rgba(241, 196, 15, 0.05); border-left: 4px solid #f1c40f; border-radius: 4px; margin-bottom: 10px;">
+                                                <span style="color: #7f8c8d; font-size: 12px; min-width: 100px;">1.5rem (24px)</span>
+                                                <h4 style="font-size: 1.5rem; margin: 0; color: #2c3e50;">Heading 4</h4>
+                                            </div>
+
+                                            <div style="display: flex; align-items: baseline; gap: 15px; padding: 15px; background: rgba(230, 126, 34, 0.05); border-left: 4px solid #e67e22; border-radius: 4px; margin-bottom: 10px;">
+                                                <span style="color: #7f8c8d; font-size: 12px; min-width: 100px;">1.25rem (20px)</span>
+                                                <h5 style="font-size: 1.25rem; margin: 0; color: #2c3e50;">Heading 5</h5>
+                                            </div>
+
+                                            <div style="display: flex; align-items: baseline; gap: 15px; padding: 15px; background: rgba(231, 76, 60, 0.05); border-left: 4px solid #e74c3c; border-radius: 4px; margin-bottom: 10px;">
+                                                <span style="color: #7f8c8d; font-size: 12px; min-width: 100px;">1rem (16px)</span>
+                                                <h6 style="font-size: 1rem; margin: 0; color: #2c3e50;">Heading 6</h6>
+                                            </div>
+
+                                            <div style="display: flex; align-items: baseline; gap: 15px; padding: 15px; background: rgba(149, 165, 166, 0.05); border-left: 4px solid #95a5a6; border-radius: 4px; margin-bottom: 10px;">
+                                                <span style="color: #7f8c8d; font-size: 12px; min-width: 100px;">1rem (16px)</span>
+                                                <p style="font-size: 1rem; margin: 0; color: #2c3e50;">Texto de párrafo normal</p>
+                                            </div>
+
+                                            <div style="display: flex; align-items: baseline; gap: 15px; padding: 15px; background: rgba(189, 195, 199, 0.05); border-left: 4px solid #bdc3c7; border-radius: 4px;">
+                                                <span style="color: #7f8c8d; font-size: 12px; min-width: 100px;">0.875rem (14px)</span>
+                                                <small style="font-size: 0.875rem; margin: 0; color: #7f8c8d;">Texto pequeño / caption</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-top: 25px; background: #fff3cd; padding: 20px; border-radius: 6px; border-left: 4px solid #f1c40f;">
+                                        <strong style="color: #856404; font-size: 14px;">💡 Escala Modular (ratio 1.25 - Major Third):</strong>
+                                        <div style="margin-top: 15px; font-family: 'Courier New', monospace; font-size: 12px; color: #2c3e50; line-height: 1.8;">
+                                            12px → 14px → 16px (base) → 20px → 24px → 32px → 40px<br>
+                                            <span style="color: #7f8c8d;">Cada tamaño es ~1.25× el anterior</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="font-weight" data-tags="font-weight negrita peso">
@@ -85,6 +160,77 @@ font-weight: 500;        /* Medium */
 font-weight: 600;        /* Semi-bold */
 font-weight: 700;        /* Bold */
 font-weight: 900;        /* Black */</div>
+
+                        <!-- VISTA PREVIA FONT-WEIGHT -->
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: Escala de Pesos (font-weight)</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <strong style="color: #2c3e50; font-size: 15px; display: block; margin-bottom: 20px;">⚖️ Variaciones de Grosor (100-900)</strong>
+
+                                    <div style="background: white; padding: 20px; border-radius: 6px; border: 2px solid #3498db;">
+                                        <div style="display: flex; align-items: center; gap: 20px; padding: 12px; border-bottom: 1px solid #ecf0f1;">
+                                            <span style="color: #7f8c8d; font-size: 12px; min-width: 80px; font-weight: bold;">100</span>
+                                            <span style="font-weight: 100; font-size: 24px; color: #2c3e50;">Thin - El más delgado</span>
+                                            <span style="color: #95a5a6; font-size: 11px; margin-left: auto;">Hairline</span>
+                                        </div>
+
+                                        <div style="display: flex; align-items: center; gap: 20px; padding: 12px; border-bottom: 1px solid #ecf0f1;">
+                                            <span style="color: #7f8c8d; font-size: 12px; min-width: 80px; font-weight: bold;">200</span>
+                                            <span style="font-weight: 200; font-size: 24px; color: #2c3e50;">Extra Light</span>
+                                            <span style="color: #95a5a6; font-size: 11px; margin-left: auto;">Ultra Light</span>
+                                        </div>
+
+                                        <div style="display: flex; align-items: center; gap: 20px; padding: 12px; border-bottom: 1px solid #ecf0f1; background: rgba(241, 196, 15, 0.05);">
+                                            <span style="color: #7f8c8d; font-size: 12px; min-width: 80px; font-weight: bold;">300</span>
+                                            <span style="font-weight: 300; font-size: 24px; color: #2c3e50;">Light</span>
+                                            <span style="color: #f39c12; font-size: 11px; margin-left: auto;">✓ Común en UI</span>
+                                        </div>
+
+                                        <div style="display: flex; align-items: center; gap: 20px; padding: 12px; border-bottom: 1px solid #ecf0f1; background: rgba(46, 204, 113, 0.08);">
+                                            <span style="color: #7f8c8d; font-size: 12px; min-width: 80px; font-weight: bold;">400</span>
+                                            <span style="font-weight: 400; font-size: 24px; color: #2c3e50;">Normal / Regular</span>
+                                            <span style="color: #27ae60; font-size: 11px; margin-left: auto;">✓ DEFAULT / Texto de párrafo</span>
+                                        </div>
+
+                                        <div style="display: flex; align-items: center; gap: 20px; padding: 12px; border-bottom: 1px solid #ecf0f1; background: rgba(52, 152, 219, 0.05);">
+                                            <span style="color: #7f8c8d; font-size: 12px; min-width: 80px; font-weight: bold;">500</span>
+                                            <span style="font-weight: 500; font-size: 24px; color: #2c3e50;">Medium</span>
+                                            <span style="color: #3498db; font-size: 11px; margin-left: auto;">✓ Botones, énfasis leve</span>
+                                        </div>
+
+                                        <div style="display: flex; align-items: center; gap: 20px; padding: 12px; border-bottom: 1px solid #ecf0f1;">
+                                            <span style="color: #7f8c8d; font-size: 12px; min-width: 80px; font-weight: bold;">600</span>
+                                            <span style="font-weight: 600; font-size: 24px; color: #2c3e50;">Semi Bold</span>
+                                            <span style="color: #95a5a6; font-size: 11px; margin-left: auto;">Demi Bold</span>
+                                        </div>
+
+                                        <div style="display: flex; align-items: center; gap: 20px; padding: 12px; border-bottom: 1px solid #ecf0f1; background: rgba(155, 89, 182, 0.08);">
+                                            <span style="color: #7f8c8d; font-size: 12px; min-width: 80px; font-weight: bold;">700</span>
+                                            <span style="font-weight: 700; font-size: 24px; color: #2c3e50;">Bold</span>
+                                            <span style="color: #9b59b6; font-size: 11px; margin-left: auto;">✓ DEFAULT para &lt;strong&gt; y &lt;b&gt;</span>
+                                        </div>
+
+                                        <div style="display: flex; align-items: center; gap: 20px; padding: 12px; border-bottom: 1px solid #ecf0f1;">
+                                            <span style="color: #7f8c8d; font-size: 12px; min-width: 80px; font-weight: bold;">800</span>
+                                            <span style="font-weight: 800; font-size: 24px; color: #2c3e50;">Extra Bold</span>
+                                            <span style="color: #95a5a6; font-size: 11px; margin-left: auto;">Ultra Bold</span>
+                                        </div>
+
+                                        <div style="display: flex; align-items: center; gap: 20px; padding: 12px;">
+                                            <span style="color: #7f8c8d; font-size: 12px; min-width: 80px; font-weight: bold;">900</span>
+                                            <span style="font-weight: 900; font-size: 24px; color: #2c3e50;">Black / Heavy</span>
+                                            <span style="color: #95a5a6; font-size: 11px; margin-left: auto;">El más grueso</span>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-top: 20px; background: #fff3cd; padding: 15px; border-radius: 6px; border-left: 4px solid #f1c40f;">
+                                        <strong style="color: #856404; font-size: 13px;">⚠️ Nota importante:</strong><br>
+                                        <span style="font-size: 12px; color: #856404;">No todas las fuentes tienen todos los pesos. Si el peso no existe, el navegador puede simular uno (faux bold) que se ve peor.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="line-height" data-tags="line-height interlineado altura linea">
@@ -103,6 +249,54 @@ body {
 h1, h2, h3 {
     line-height: 1.2;    /* Títulos más compactos */
 }</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: line-height (Interlineado)</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <strong style="color: #2c3e50; font-size: 15px; display: block; margin-bottom: 20px;">📏 Espacio Entre Líneas</strong>
+
+                                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+                                        <!-- line-height: 1 (compacto) -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #e74c3c;">
+                                            <div style="text-align: center; margin-bottom: 15px; font-weight: bold; color: #e74c3c;">line-height: 1</div>
+                                            <p style="line-height: 1; margin: 0; font-size: 14px; border: 1px dashed rgba(0,0,0,0.1);">
+                                                Este texto tiene un interlineado muy compacto (1). Las líneas están muy juntas, lo que dificulta la lectura de párrafos largos.
+                                            </p>
+                                            <div style="margin-top: 10px; font-size: 11px; color: #7f8c8d; text-align: center;">❌ Poco legible</div>
+                                        </div>
+
+                                        <!-- line-height: 1.6 (recomendado) -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #2ecc71;">
+                                            <div style="text-align: center; margin-bottom: 15px; font-weight: bold; color: #2ecc71;">line-height: 1.6</div>
+                                            <p style="line-height: 1.6; margin: 0; font-size: 14px; border: 1px dashed rgba(0,0,0,0.1);">
+                                                Este texto tiene un interlineado ideal (1.6). Las líneas tienen buen espacio entre sí, facilitando la lectura.
+                                            </p>
+                                            <div style="margin-top: 10px; font-size: 11px; color: #7f8c8d; text-align: center;">✅ Óptimo para párrafos</div>
+                                        </div>
+
+                                        <!-- line-height: 2.5 (muy espaciado) -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #f39c12;">
+                                            <div style="text-align: center; margin-bottom: 15px; font-weight: bold; color: #f39c12;">line-height: 2.5</div>
+                                            <p style="line-height: 2.5; margin: 0; font-size: 14px; border: 1px dashed rgba(0,0,0,0.1);">
+                                                Este texto tiene mucho espacio entre líneas (2.5). Demasiado espaciado rompe la continuidad visual.
+                                            </p>
+                                            <div style="margin-top: 10px; font-size: 11px; color: #7f8c8d; text-align: center;">⚠️ Demasiado espaciado</div>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-top: 20px; background: #fff3cd; padding: 15px; border-radius: 6px; border-left: 4px solid #f1c40f;">
+                                        <strong style="color: #856404; font-size: 13px;">💡 Recomendaciones:</strong>
+                                        <div style="margin-top: 8px; font-size: 12px; color: #2c3e50; line-height: 1.7;">
+                                            • Párrafos de texto: <strong>1.5 - 1.8</strong><br>
+                                            • Títulos: <strong>1.1 - 1.3</strong> (más compactos)<br>
+                                            • Usa valores sin unidad (1.6) en lugar de % o px
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="nota">
                             <strong>✅ Best Practice:</strong> Usa valores sin unidad (1.5) para mejor herencia.
                         </div>
@@ -115,6 +309,47 @@ h1, h2, h3 {
 text-align: right;       /* Derecha */
 text-align: center;      /* Centro */
 text-align: justify;     /* Justificado */</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: text-align (Alineación)</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                                        <!-- Left -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #3498db;">
+                                            <div style="text-align: center; margin-bottom: 15px; font-weight: bold; color: #3498db;">text-align: left</div>
+                                            <p style="text-align: left; margin: 0; font-size: 14px; line-height: 1.6;">
+                                                Este texto está alineado a la izquierda. Es la alineación por defecto en idiomas de izquierda a derecha.
+                                            </p>
+                                        </div>
+
+                                        <!-- Center -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                            <div style="text-align: center; margin-bottom: 15px; font-weight: bold; color: #9b59b6;">text-align: center</div>
+                                            <p style="text-align: center; margin: 0; font-size: 14px; line-height: 1.6;">
+                                                Este texto está centrado. Común para títulos y elementos destacados.
+                                            </p>
+                                        </div>
+
+                                        <!-- Right -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #e74c3c;">
+                                            <div style="text-align: center; margin-bottom: 15px; font-weight: bold; color: #e74c3c;">text-align: right</div>
+                                            <p style="text-align: right; margin: 0; font-size: 14px; line-height: 1.6;">
+                                                Este texto está alineado a la derecha. Útil para números y fechas en tablas.
+                                            </p>
+                                        </div>
+
+                                        <!-- Justify -->
+                                        <div style="background: white; padding: 20px; border-radius: 8px; border: 2px solid #2ecc71;">
+                                            <div style="text-align: center; margin-bottom: 15px; font-weight: bold; color: #2ecc71;">text-align: justify</div>
+                                            <p style="text-align: justify; margin: 0; font-size: 14px; line-height: 1.6;">
+                                                Este texto está justificado. Los bordes izquierdo y derecho están alineados, creando espaciado variable entre palabras.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="text-decoration" data-tags="text-decoration subrayado linea">
@@ -136,6 +371,38 @@ a:hover {
 
 /* Personalizar la línea */
 text-decoration: underline wavy red;</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: text-decoration</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="background: white; padding: 25px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                        <div style="display: grid; gap: 15px;">
+                                            <div style="padding: 15px; background: #ecf0f1; border-radius: 4px;">
+                                                <strong style="color: #2c3e50;">none:</strong>
+                                                <span style="text-decoration: none; font-size: 16px; margin-left: 10px;">Texto sin decoración</span>
+                                            </div>
+                                            <div style="padding: 15px; background: #ecf0f1; border-radius: 4px;">
+                                                <strong style="color: #3498db;">underline:</strong>
+                                                <span style="text-decoration: underline; font-size: 16px; margin-left: 10px; color: #3498db;">Texto subrayado</span>
+                                            </div>
+                                            <div style="padding: 15px; background: #ecf0f1; border-radius: 4px;">
+                                                <strong style="color: #9b59b6;">overline:</strong>
+                                                <span style="text-decoration: overline; font-size: 16px; margin-left: 10px; color: #9b59b6;">Línea superior</span>
+                                            </div>
+                                            <div style="padding: 15px; background: #ecf0f1; border-radius: 4px;">
+                                                <strong style="color: #e74c3c;">line-through:</strong>
+                                                <span style="text-decoration: line-through; font-size: 16px; margin-left: 10px; color: #e74c3c;">Texto tachado</span>
+                                            </div>
+                                            <div style="padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 4px; color: white;">
+                                                <strong>Personalizado:</strong>
+                                                <span style="text-decoration: underline wavy #f1c40f; font-size: 16px; margin-left: 10px;">Subrayado ondulado amarillo</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="text-transform" data-tags="text-transform mayusculas minusculas">
@@ -151,6 +418,43 @@ text-transform: capitalize;      /* Primera Letra */
     text-transform: uppercase;
     letter-spacing: 1px;
 }</div>
+
+                        <div class="vista-previa" style="margin-top: 30px;">
+                            <strong>👁️ Vista previa: text-transform</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                                    <div style="background: white; padding: 25px; border-radius: 8px; border: 2px solid #9b59b6;">
+                                        <div style="text-align: center; margin-bottom: 20px; font-weight: bold; color: #2c3e50;">
+                                            Texto Original: "Hola Mundo CSS"
+                                        </div>
+
+                                        <div style="display: grid; gap: 15px;">
+                                            <div style="padding: 20px; background: #ecf0f1; border-radius: 4px; border-left: 4px solid #95a5a6;">
+                                                <strong style="color: #95a5a6;">none:</strong>
+                                                <div style="text-transform: none; font-size: 18px; margin-top: 10px;">Hola Mundo CSS</div>
+                                            </div>
+
+                                            <div style="padding: 20px; background: #e8f4f8; border-radius: 4px; border-left: 4px solid #3498db;">
+                                                <strong style="color: #3498db;">uppercase:</strong>
+                                                <div style="text-transform: uppercase; font-size: 18px; margin-top: 10px; letter-spacing: 1px;">Hola Mundo CSS</div>
+                                                <div style="font-size: 11px; color: #7f8c8d; margin-top: 5px;">Común en botones y navegación</div>
+                                            </div>
+
+                                            <div style="padding: 20px; background: #f3e5f5; border-radius: 4px; border-left: 4px solid #9b59b6;">
+                                                <strong style="color: #9b59b6;">lowercase:</strong>
+                                                <div style="text-transform: lowercase; font-size: 18px; margin-top: 10px;">Hola Mundo CSS</div>
+                                            </div>
+
+                                            <div style="padding: 20px; background: #e8f5e9; border-radius: 4px; border-left: 4px solid #2ecc71;">
+                                                <strong style="color: #2ecc71;">capitalize:</strong>
+                                                <div style="text-transform: capitalize; font-size: 18px; margin-top: 10px;">hola mundo css</div>
+                                                <div style="font-size: 11px; color: #7f8c8d; margin-top: 5px;">Solo la primera letra de cada palabra</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="termino" id="letter-spacing" data-tags="letter-spacing espaciado letras">
@@ -225,7 +529,7 @@ font: menu;       /* Fuente de menús */</div>
         <p>CSS - Sistema de Aprendizaje | <a href="../index.html">Volver a CSS</a></p>
     </footer>
 
-    <script src="/assets/js/sidebar-component.js"></script>
+    <script src="../../../assets/js/sidebar-component.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('searchInput');
@@ -273,6 +577,21 @@ font: menu;       /* Fuente de menús */</div>
                 const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
                 const scrolled = (winScroll / height) * 100;
                 document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // Aplicar highlight.js solo a elementos .ejemplo que no tienen <br> (no son HTML)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.ejemplo').forEach(function(block) {
+                // Solo resaltar si no tiene elementos <br> (no es HTML con sintaxis manual)
+                if (block.querySelectorAll('br').length === 0) {
+                    block.classList.add('language-css');
+                    hljs.highlightElement(block);
+                }
             });
         });
     </script>

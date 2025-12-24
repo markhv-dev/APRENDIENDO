@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Elementos de Bloque y En Línea - Sistema de Aprendizaje</title>
-    <link rel="stylesheet" href="/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/assets/css/glosario.css">
-    <link rel="stylesheet" href="/assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
 </head>
 <body>
     <header>
@@ -39,11 +40,12 @@
             </section>
 
             <section id="terminos" class="topic-section">
-                <h2>📚 Glosario del Módulo</h2>
-                <p>Referencia de elementos HTML relacionados con bloque e inline:</p>
-
                 <div id="terminosContainer">
-                    <div class="termino" data-tags="div división contenedor bloque">
+                    <div class="termino" id="div" data-tags="div división contenedor bloque">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                            <span class="badge badge-frecuente">Uso diario</span>
+                        </div>
                         <span class="tag">&lt;div&gt;</span>
                         <p class="significado">Significado: División genérica</p>
                         <p class="descripcion">
@@ -52,14 +54,33 @@
                             Es uno de los elementos más usados en HTML. Crea un salto de línea antes y después.
                             Úsalo cuando no haya un elemento semántico más apropiado.
                         </p>
-                        <div class="ejemplo">&lt;div class="contenedor"&gt;<br>&nbsp;&nbsp;&lt;h2&gt;Título&lt;/h2&gt;<br>&nbsp;&nbsp;&lt;p&gt;Contenido agrupado...&lt;/p&gt;<br>&lt;/div&gt;</div>
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">div</span> <span class="hl-attr">class</span><span class="hl-bracket">=</span><span class="hl-value">"contenedor"</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">h2</span><span class="hl-bracket">&gt;</span><span class="hl-text">Título</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">h2</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">p</span><span class="hl-bracket">&gt;</span><span class="hl-text">Contenido agrupado...</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">p</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">div</span><span class="hl-bracket">&gt;</span>
+                        </div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <div style="border: 2px dashed #3498db; padding: 15px; background: #ecf0f1; margin: 10px 0;">
+                                    <h2 style="margin-top: 0; color: #2c3e50;">Título</h2>
+                                    <p style="color: #2c3e50;">Contenido agrupado...</p>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="nota">
                             <strong>Cuándo usar div:</strong> Cuando necesites agrupar elementos pero no hay un elemento semántico apropiado
                             (como section, article, aside). Prefiere elementos semánticos cuando sea posible.
                         </div>
                     </div>
 
-                    <div class="termino" data-tags="span contenedor inline línea">
+                    <div class="termino" id="span" data-tags="span contenedor inline línea">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                            <span class="badge badge-frecuente">Uso diario</span>
+                        </div>
                         <span class="tag">&lt;span&gt;</span>
                         <p class="significado">Significado: Contenedor en línea</p>
                         <p class="descripcion">
@@ -67,10 +88,24 @@
                             Se usa principalmente para aplicar estilos CSS o manipular con JavaScript a partes específicas del texto.
                             No crea saltos de línea.
                         </p>
-                        <div class="ejemplo">&lt;p&gt;Texto con &lt;span style="color: red;"&gt;color rojo&lt;/span&gt; en el medio.&lt;/p&gt;</div>
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">p</span><span class="hl-bracket">&gt;</span><span class="hl-text">Texto con </span><span class="hl-bracket">&lt;</span><span class="hl-tag">span</span> <span class="hl-attr">style</span><span class="hl-bracket">=</span><span class="hl-value">"color: red;"</span><span class="hl-bracket">&gt;</span><span class="hl-text">color rojo</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">span</span><span class="hl-bracket">&gt;</span><span class="hl-text"> en el medio.</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">p</span><span class="hl-bracket">&gt;</span>
+                        </div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <p style="background: #ecf0f1; padding: 10px; border-radius: 4px; color: #2c3e50;">
+                                    Texto con <span style="color: red;">color rojo</span> en el medio.
+                                </p>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div class="termino" data-tags="p párrafo paragraph texto bloque">
+                    <div class="termino" id="p" data-tags="p párrafo paragraph texto bloque">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;p&gt;</span>
                         <p class="significado">Significado: Párrafo (Paragraph)</p>
                         <p class="descripcion">
@@ -78,10 +113,23 @@
                             Es el elemento más común para contenido de texto. Separa conceptos o ideas diferentes en bloques lógicos.
                             Es un elemento de bloque.
                         </p>
-                        <div class="ejemplo">&lt;p&gt;Este es un párrafo de texto con información importante.&lt;/p&gt;<br>&lt;p&gt;Este es otro párrafo completamente diferente.&lt;/p&gt;</div>
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">p</span><span class="hl-bracket">&gt;</span><span class="hl-text">Este es un párrafo de texto con información importante.</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">p</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;</span><span class="hl-tag">p</span><span class="hl-bracket">&gt;</span><span class="hl-text">Este es otro párrafo completamente diferente.</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">p</span><span class="hl-bracket">&gt;</span>
+                        </div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <p style="background: #ecf0f1; padding: 10px; border-radius: 4px; margin: 10px 0; color: #2c3e50;">Este es un párrafo de texto con información importante.</p>
+                                <p style="background: #ecf0f1; padding: 10px; border-radius: 4px; margin: 10px 0; color: #2c3e50;">Este es otro párrafo completamente diferente.</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="termino" data-tags="h1 h2 h3 h4 h5 h6 encabezado título heading bloque">
+                    <div class="termino" id="headings" data-tags="h1 h2 h3 h4 h5 h6 encabezado título heading bloque">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;h1&gt; - &lt;h6&gt;</span>
                         <p class="significado">Significado: Encabezados (Headings)</p>
                         <p class="descripcion">
@@ -89,14 +137,30 @@
                             Solo debe haber un h1 por página. Los encabezados ayudan a estructurar el contenido de forma lógica y son cruciales para SEO
                             y accesibilidad. Los lectores de pantalla los usan para navegar por la página. Son elementos de bloque.
                         </p>
-                        <div class="ejemplo">&lt;h1&gt;Título Principal&lt;/h1&gt;<br>&lt;h2&gt;Subtítulo de Sección&lt;/h2&gt;<br>&lt;h3&gt;Sub-subtítulo&lt;/h3&gt;</div>
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">h1</span><span class="hl-bracket">&gt;</span><span class="hl-text">Título Principal</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">h1</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;</span><span class="hl-tag">h2</span><span class="hl-bracket">&gt;</span><span class="hl-text">Subtítulo de Sección</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">h2</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;</span><span class="hl-tag">h3</span><span class="hl-bracket">&gt;</span><span class="hl-text">Sub-subtítulo</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">h3</span><span class="hl-bracket">&gt;</span>
+                        </div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <h1 style="margin: 10px 0; color: #2c3e50;">Título Principal</h1>
+                                <h2 style="margin: 10px 0; color: #2c3e50;">Subtítulo de Sección</h2>
+                                <h3 style="margin: 10px 0; color: #2c3e50;">Sub-subtítulo</h3>
+                            </div>
+                        </div>
                         <div class="nota">
                             <strong>Buena práctica:</strong> No saltes niveles (ej: no uses h4 después de h2). Mantén una jerarquía lógica.
                             Los encabezados no deben usarse solo para hacer texto grande; usa CSS para eso.
                         </div>
                     </div>
 
-                    <div class="termino" data-tags="strong importante negrita bold inline">
+                    <div class="termino" id="strong" data-tags="strong importante negrita bold inline">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                            <span class="badge badge-frecuente">Uso diario</span>
+                        </div>
                         <span class="tag">&lt;strong&gt;</span>
                         <p class="significado">Significado: Texto importante/fuerte</p>
                         <p class="descripcion">
@@ -104,10 +168,22 @@
                             Tiene significado semántico (le dice a los navegadores, buscadores y lectores de pantalla que el texto es importante).
                             Diferente de &lt;b&gt; que solo hace el texto negrita sin significado semántico. Es un elemento inline.
                         </p>
-                        <div class="ejemplo">&lt;p&gt;Esto es &lt;strong&gt;muy importante&lt;/strong&gt; de recordar.&lt;/p&gt;</div>
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">p</span><span class="hl-bracket">&gt;</span><span class="hl-text">Esto es </span><span class="hl-bracket">&lt;</span><span class="hl-tag">strong</span><span class="hl-bracket">&gt;</span><span class="hl-text">muy importante</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">strong</span><span class="hl-bracket">&gt;</span><span class="hl-text"> de recordar.</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">p</span><span class="hl-bracket">&gt;</span>
+                        </div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <p style="background: #ecf0f1; padding: 10px; border-radius: 4px; color: #2c3e50;">Esto es <strong>muy importante</strong> de recordar.</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="termino" data-tags="em énfasis cursiva italic inline">
+                    <div class="termino" id="em" data-tags="em énfasis cursiva italic inline">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                            <span class="badge badge-frecuente">Uso diario</span>
+                        </div>
                         <span class="tag">&lt;em&gt;</span>
                         <p class="significado">Significado: Énfasis (Emphasis)</p>
                         <p class="descripcion">
@@ -115,10 +191,21 @@
                             También tiene significado semántico. Diferente de &lt;i&gt; que solo hace el texto cursiva sin significado.
                             Útil para enfatizar palabras clave o cambiar el tono de la oración. Es un elemento inline.
                         </p>
-                        <div class="ejemplo">&lt;p&gt;Esto es &lt;em&gt;realmente&lt;/em&gt; increíble.&lt;/p&gt;</div>
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">p</span><span class="hl-bracket">&gt;</span><span class="hl-text">Esto es </span><span class="hl-bracket">&lt;</span><span class="hl-tag">em</span><span class="hl-bracket">&gt;</span><span class="hl-text">realmente</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">em</span><span class="hl-bracket">&gt;</span><span class="hl-text"> increíble.</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">p</span><span class="hl-bracket">&gt;</span>
+                        </div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <p style="background: #ecf0f1; padding: 10px; border-radius: 4px; color: #2c3e50;">Esto es <em>realmente</em> increíble.</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="termino" data-tags="a anchor enlace link href inline">
+                    <div class="termino" id="a" data-tags="a anchor enlace link href inline">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;a&gt;</span>
                         <p class="significado">Significado: Ancla/Enlace (Anchor)</p>
                         <p class="descripcion">
@@ -126,7 +213,21 @@
                             Es el elemento fundamental de la web, permitiendo la navegación entre páginas y recursos.
                             Puede contener texto, imágenes, o casi cualquier otro contenido. Es un elemento inline.
                         </p>
-                        <div class="ejemplo">&lt;a href="https://www.ejemplo.com"&gt;Visitar Ejemplo&lt;/a&gt;<br>&lt;a href="contacto.html"&gt;Ir a Contacto&lt;/a&gt;<br>&lt;a href="#seccion1"&gt;Ir a Sección 1&lt;/a&gt;</div>
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">a</span> <span class="hl-attr">href</span><span class="hl-bracket">=</span><span class="hl-value">"https://www.ejemplo.com"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Visitar Ejemplo</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">a</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;</span><span class="hl-tag">a</span> <span class="hl-attr">href</span><span class="hl-bracket">=</span><span class="hl-value">"contacto.html"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Ir a Contacto</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">a</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;</span><span class="hl-tag">a</span> <span class="hl-attr">href</span><span class="hl-bracket">=</span><span class="hl-value">"#seccion1"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Ir a Sección 1</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">a</span><span class="hl-bracket">&gt;</span>
+                        </div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <p style="background: #ecf0f1; padding: 10px; border-radius: 4px;">
+                                    <a href="https://www.ejemplo.com" style="color: #3498db; text-decoration: underline;">Visitar Ejemplo</a><br>
+                                    <a href="contacto.html" style="color: #3498db; text-decoration: underline;">Ir a Contacto</a><br>
+                                    <a href="#seccion1" style="color: #3498db; text-decoration: underline;">Ir a Sección 1</a>
+                                </p>
+                            </div>
+                        </div>
                         <div class="nota">
                             <strong>Atributos importantes:</strong><br>
                             <span class="atributo">href</span> - URL de destino (obligatorio para enlaces funcionales)<br>
@@ -135,7 +236,10 @@
                         </div>
                     </div>
 
-                    <div class="termino" data-tags="img imagen image src alt inline">
+                    <div class="termino" id="img" data-tags="img imagen image src alt inline">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;img&gt;</span>
                         <p class="significado">Significado: Imagen (Image)</p>
                         <p class="descripcion">
@@ -143,7 +247,24 @@
                             Siempre debe incluir el atributo alt para accesibilidad (describe la imagen para usuarios con lectores de pantalla).
                             Soporta formatos: JPG, PNG, GIF, SVG, WebP, entre otros.
                         </p>
-                        <div class="ejemplo">&lt;img src="foto.jpg" alt="Descripción detallada de la foto"&gt;<br>&lt;img src="logo.png" alt="Logo de la empresa" width="200" height="100"&gt;</div>
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">img</span> <span class="hl-attr">src</span><span class="hl-bracket">=</span><span class="hl-value">"foto.jpg"</span> <span class="hl-attr">alt</span><span class="hl-bracket">=</span><span class="hl-value">"Descripción detallada de la foto"</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;</span><span class="hl-tag">img</span> <span class="hl-attr">src</span><span class="hl-bracket">=</span><span class="hl-value">"logo.png"</span> <span class="hl-attr">alt</span><span class="hl-bracket">=</span><span class="hl-value">"Logo de la empresa"</span> <span class="hl-attr">width</span><span class="hl-bracket">=</span><span class="hl-value">"200"</span> <span class="hl-attr">height</span><span class="hl-bracket">=</span><span class="hl-value">"100"</span><span class="hl-bracket">&gt;</span>
+                        </div>
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <div style="background: #ecf0f1; padding: 15px; border-radius: 4px;">
+                                    <div style="background: #ddd; border: 2px solid #999; padding: 40px 20px; text-align: center; margin: 10px 0; border-radius: 4px;">
+                                        📷 foto.jpg<br>
+                                        <span style="font-size: 0.8em; color: #666;">Imagen de ejemplo</span>
+                                    </div>
+                                    <div style="background: #ddd; border: 2px solid #999; padding: 20px; text-align: center; margin: 10px 0; width: 200px; height: 100px; display: inline-flex; align-items: center; justify-content: center; border-radius: 4px;">
+                                        🏢 logo.png (200x100)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="nota">
                             <strong>Atributos importantes:</strong><br>
                             <span class="atributo">src</span> - Ruta de la imagen (obligatorio)<br>
@@ -169,7 +290,38 @@
             <nav>
                 <ul class="toc-list">
                     <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
-                    <li class="toc-item"><a href="#terminos" class="toc-link">📚 Glosario del Módulo</a></li>
+                    <li class="toc-group">
+                        <div class="toc-group-header" onclick="toggleTOCGroup('contenedores')">
+                            <span class="toggle-icon">▼</span>
+                            📦 Elementos Contenedores
+                        </div>
+                        <ul class="toc-group-items" id="toc-group-contenedores">
+                            <li class="toc-item level-2"><a href="#div" class="toc-link">&lt;div&gt; - División (Bloque)</a></li>
+                            <li class="toc-item level-2"><a href="#span" class="toc-link">&lt;span&gt; - Contenedor (Inline)</a></li>
+                        </ul>
+                    </li>
+                    <li class="toc-group">
+                        <div class="toc-group-header" onclick="toggleTOCGroup('bloques')">
+                            <span class="toggle-icon">▼</span>
+                            📝 Elementos de Bloque
+                        </div>
+                        <ul class="toc-group-items" id="toc-group-bloques">
+                            <li class="toc-item level-2"><a href="#p" class="toc-link">&lt;p&gt; - Párrafo</a></li>
+                            <li class="toc-item level-2"><a href="#headings" class="toc-link">&lt;h1-h6&gt; - Encabezados</a></li>
+                        </ul>
+                    </li>
+                    <li class="toc-group">
+                        <div class="toc-group-header" onclick="toggleTOCGroup('inline')">
+                            <span class="toggle-icon">▼</span>
+                            ✨ Elementos Inline
+                        </div>
+                        <ul class="toc-group-items" id="toc-group-inline">
+                            <li class="toc-item level-2"><a href="#strong" class="toc-link">&lt;strong&gt; - Importante</a></li>
+                            <li class="toc-item level-2"><a href="#em" class="toc-link">&lt;em&gt; - Énfasis</a></li>
+                            <li class="toc-item level-2"><a href="#a" class="toc-link">&lt;a&gt; - Enlace</a></li>
+                            <li class="toc-item level-2"><a href="#img" class="toc-link">&lt;img&gt; - Imagen</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </nav>
 
@@ -183,7 +335,7 @@
         <p>Módulo 7: Elementos de Bloque y En Línea | <a href="../index.html">Volver a HTML</a></p>
     </footer>
 
-    <script src="/assets/js/sidebar-component.js"></script>
+    <script src="../../../assets/js/sidebar-component.js"></script>
     <script>
         // Funcionalidad de búsqueda en el glosario con normalización y resaltado
         document.addEventListener('DOMContentLoaded', function() {

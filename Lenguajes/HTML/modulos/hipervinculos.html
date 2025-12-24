@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hipervínculos - Sistema de Aprendizaje</title>
-    <link rel="stylesheet" href="/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/assets/css/glosario.css">
-    <link rel="stylesheet" href="/assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
 </head>
 <body>
     <header>
@@ -42,173 +43,251 @@
             <section id="terminos" class="topic-section">
                 <div id="terminosContainer">
                     <div class="termino" id="a-element" data-tags="a anchor enlace link href hipervinculo">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;a&gt;</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Ancla/Enlace (Anchor)</p>
                         <p class="descripcion">
-                            Crea hipervínculos a otras páginas, archivos, ubicaciones en la misma página, direcciones de correo, o cualquier URL.
-                            Es el elemento fundamental de la web, permitiendo la navegación entre páginas y recursos.
-                            Puede contener texto, imágenes, o casi cualquier otro contenido.
+                            Crea hipervínculos a páginas, archivos, ubicaciones, o correos. Elemento fundamental de la web.
                         </p>
-                        <div class="ejemplo">&lt;a href="https://www.ejemplo.com"&gt;Visitar Ejemplo&lt;/a&gt;<br>&lt;a href="contacto.html"&gt;Ir a Contacto&lt;/a&gt;<br>&lt;a href="#seccion1"&gt;Ir a Sección 1&lt;/a&gt;</div>
-                        <div class="nota">
-                            <strong>Atributos importantes:</strong><br>
-                            <span class="atributo">href</span> - URL de destino (obligatorio)<br>
-                            <span class="atributo">target</span> - Dónde abrir ("_blank" = nueva pestaña, "_self" = misma pestaña)<br>
-                            <span class="atributo">title</span> - Texto tooltip al pasar el mouse<br>
-                            <span class="atributo">rel</span> - Relación con el destino ("noopener", "nofollow", etc.)
+
+                        <!-- Anatomía visual -->
+                        <div class="anatomia-tag">
+                            <div class="codigo-central">
+                                <span class="simbolo">&lt;</span><span class="etiqueta">a</span> <span class="atributo">href</span><span class="simbolo">=</span><span class="simbolo">"</span><span class="valor">url</span><span class="simbolo">"</span><span class="simbolo">&gt;</span><span class="contenido">texto</span><span class="simbolo">&lt;/</span><span class="etiqueta">a</span><span class="simbolo">&gt;</span>
+                            </div>
+                            <div class="anatomia-flechas">
+                                <div class="anatomia-label label-etiqueta">
+                                    <span class="arrow">↑</span>
+                                    Etiqueta
+                                </div>
+                                <div class="anatomia-label label-atributo">
+                                    <span class="arrow">↑</span>
+                                    Destino
+                                </div>
+                                <div class="anatomia-label label-valor">
+                                    <span class="arrow">↑</span>
+                                    Texto visible
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">a</span> <span class="hl-attr">href</span><span class="hl-bracket">=</span><span class="hl-value">"https://google.com"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Ir a Google</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">a</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;</span><span class="hl-tag">a</span> <span class="hl-attr">href</span><span class="hl-bracket">=</span><span class="hl-value">"contacto.html"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Contacto</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">a</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;</span><span class="hl-tag">a</span> <span class="hl-attr">href</span><span class="hl-bracket">=</span><span class="hl-value">"#seccion1"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Ir a Sección</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">a</span><span class="hl-bracket">&gt;</span>
+                        </div>
+
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <p><a href="https://google.com">Ir a Google</a></p>
+                                <p><a href="#contacto">Contacto</a> (enlace relativo simulado)</p>
+                                <p><a href="#seccion1">Ir a Sección</a> (enlace interno)</p>
+                            </div>
+                        </div>
+
+                        <div class="nota nota-warning">
+                            <strong>Atributos importantes:</strong>
+                            <ul class="nota-lista">
+                                <li class="importante"><span class="key-term">href</span> - URL destino (obligatorio)</li>
+                                <li class="hacer"><span class="key-term">target</span> - "_blank" nueva pestaña</li>
+                                <li class="hacer"><span class="key-term">title</span> - Tooltip al hover</li>
+                                <li class="info"><span class="key-term">rel</span> - "noopener", "nofollow"</li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="termino" id="absolutos" data-tags="absolutos externos url completa protocolo dominio">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">🌐 Enlaces Absolutos</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Hipervínculos a recursos externos</p>
                         <p class="descripcion">
-                            Son aquellos cuyo destino apunta a un documento que está fuera del sitio, y debe ser especificado utilizando la URL completa.
-                            Incluyen el protocolo (http:// o https://), contienen el dominio completo, y funcionan sin importar la ubicación del archivo HTML.
+                            URL completa con protocolo y dominio. Para sitios externos.
                         </p>
-                        <div class="ejemplo">&lt;a href="https://www.google.com"&gt;Ir al buscador&lt;/a&gt;<br>&lt;a href="https://github.com"&gt;GitHub&lt;/a&gt;<br>&lt;a href="https://developer.mozilla.org"&gt;MDN Web Docs&lt;/a&gt;</div>
-                        <div class="nota">
-                            <strong>Características:</strong><br>
-                            • Incluyen el protocolo (http:// o https://)<br>
-                            • Contienen el dominio completo<br>
-                            • Apuntan a recursos externos<br>
-                            • Funcionan sin importar la ubicación del archivo HTML
+
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">a</span> <span class="hl-attr">href</span><span class="hl-bracket">=</span><span class="hl-value">"https://www.google.com"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Google</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">a</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;</span><span class="hl-tag">a</span> <span class="hl-attr">href</span><span class="hl-bracket">=</span><span class="hl-value">"https://github.com"</span><span class="hl-bracket">&gt;</span><span class="hl-text">GitHub</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">a</span><span class="hl-bracket">&gt;</span>
+                        </div>
+
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <p>Enlaces absolutos (externos):</p>
+                                <p><a href="https://www.google.com">Google</a> | <a href="https://github.com">GitHub</a> | <a href="https://wikipedia.org">Wikipedia</a></p>
+                            </div>
+                        </div>
+
+                        <div class="nota nota-info">
+                            <strong>Características:</strong>
+                            <ul class="nota-lista">
+                                <li class="importante">Incluyen <span class="key-term">https://</span></li>
+                                <li class="hacer">Dominio completo</li>
+                                <li class="info">Para recursos externos</li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="termino" id="relativos" data-tags="relativos internos ruta proyecto local">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">📂 Enlaces Relativos</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Hipervínculos dentro del mismo proyecto</p>
                         <p class="descripcion">
-                            Son aquellos que apuntan a páginas ubicadas dentro del mismo proyecto. La ruta se especifica en relación al archivo actual.
-                            Permiten navegar entre páginas del mismo sitio web sin necesidad de especificar la URL completa.
+                            Rutas relativas al archivo actual. Para navegación interna del sitio.
                         </p>
-                        <div class="ejemplo"><strong>Mismo directorio:</strong><br>&lt;a href="contacto.html"&gt;Contacto&lt;/a&gt;<br><br><strong>Subdirectorio:</strong><br>&lt;a href="paginas/about.html"&gt;Acerca de&lt;/a&gt;<br>&lt;a href="./cursos/html.html"&gt;Curso HTML&lt;/a&gt;<br><br><strong>Directorio padre:</strong><br>&lt;a href="../index.html"&gt;Volver al inicio&lt;/a&gt;<br>&lt;a href="../../recursos/guia.pdf"&gt;Descargar guía&lt;/a&gt;</div>
-                        <div class="nota">
-                            <strong>Notación de rutas:</strong><br>
-                            • <code>archivo.html</code> - Archivo en el mismo directorio<br>
-                            • <code>./archivo.html</code> - Explícitamente en el directorio actual<br>
-                            • <code>carpeta/archivo.html</code> - Dentro de una subcarpeta<br>
-                            • <code>../archivo.html</code> - Un nivel arriba<br>
-                            • <code>../../archivo.html</code> - Dos niveles arriba
+
+                        <!-- Comparación de rutas -->
+                        <div class="comparacion-grid">
+                            <div class="comparacion-card opcion-a">
+                                <h4>Mismo nivel / Abajo</h4>
+                                <div class="ejemplo" style="font-size: 0.9em;">
+<span class="hl-value">"archivo.html"</span><br>
+<span class="hl-value">"carpeta/archivo.html"</span><br>
+<span class="hl-value">"./archivo.html"</span>
+                                </div>
+                            </div>
+                            <div class="comparacion-card opcion-b">
+                                <h4>Subir niveles</h4>
+                                <div class="ejemplo" style="font-size: 0.9em;">
+<span class="hl-value">"../archivo.html"</span> <span class="hl-comment">← 1 arriba</span><br>
+<span class="hl-value">"../../archivo.html"</span> <span class="hl-comment">← 2 arriba</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="practice-exercise">
-                            <details>
-                                <summary>📁 Estructura de ejemplo</summary>
-                                <pre><code>proyecto/
-├── index.html
-├── contacto.html
-├── paginas/
-│   ├── about.html
-│   └── servicios.html
-└── recursos/
-    └── guia.pdf
 
-Desde index.html:
-- href="contacto.html" → contacto.html
-- href="paginas/about.html" → about.html
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <p>Enlaces relativos (misma carpeta):</p>
+                                <p><a href="#contacto">contacto.html</a> | <a href="#about">about.html</a></p>
+                                <p>Enlaces a subcarpetas:</p>
+                                <p><a href="#blog">blog/articulo.html</a> | <a href="#img">imagenes/foto.jpg</a></p>
+                                <p>Subir niveles:</p>
+                                <p><a href="#index">../index.html</a> (un nivel arriba)</p>
+                            </div>
+                        </div>
 
-Desde paginas/about.html:
-- href="../index.html" → index.html
-- href="servicios.html" → servicios.html</code></pre>
-                            </details>
+                        <div class="nota nota-warning">
+                            <strong>Notación de rutas:</strong>
+                            <ul class="nota-lista">
+                                <li class="hacer"><span class="key-term">./</span> = directorio actual</li>
+                                <li class="hacer"><span class="key-term">../</span> = un nivel arriba</li>
+                                <li class="importante"><span class="key-term">../../</span> = dos niveles arriba</li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="termino" id="internos" data-tags="internos anclas navegacion misma pagina hash">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">⚓ Enlaces Internos</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Navegación dentro del mismo documento</p>
                         <p class="descripcion">
-                            Permiten navegar dentro del mismo documento, saltar a una sección específica de la misma página web usando anclas.
-                            Combinan el elemento &lt;a&gt; con <code>href="#id"</code> que apunta a un identificador dentro del mismo documento.
+                            Saltan a secciones usando <code>href="#id"</code> que apunta a un elemento con ese ID.
                         </p>
-                        <div class="ejemplo"><strong>Índice con enlaces internos:</strong><br>&lt;h2&gt;Índice&lt;/h2&gt;<br>&lt;ul&gt;<br>&nbsp;&nbsp;&lt;li&gt;&lt;a href="#html"&gt;¿Qué es HTML?&lt;/a&gt;&lt;/li&gt;<br>&nbsp;&nbsp;&lt;li&gt;&lt;a href="#css"&gt;¿Qué es CSS?&lt;/a&gt;&lt;/li&gt;<br>&nbsp;&nbsp;&lt;li&gt;&lt;a href="#js"&gt;¿Qué es JavaScript?&lt;/a&gt;&lt;/li&gt;<br>&lt;/ul&gt;<br><br><strong>Contenido con IDs:</strong><br>&lt;h2 id="html"&gt;¿Qué es HTML?&lt;/h2&gt;<br>&lt;p&gt;HTML es un lenguaje de marcado...&lt;/p&gt;<br><br>&lt;h2 id="css"&gt;¿Qué es CSS?&lt;/h2&gt;<br>&lt;p&gt;CSS es un lenguaje para estilos...&lt;/p&gt;<br><br><strong>Enlace para volver arriba:</strong><br>&lt;p&gt;&lt;a href="#top"&gt;↑ Volver arriba&lt;/a&gt;&lt;/p&gt;</div>
-                        <div class="nota">
-                            <strong>Usos comunes:</strong><br>
-                            • Índices o tablas de contenido<br>
-                            • Botones de "ir arriba"<br>
-                            • Navegación fluida en páginas largas<br>
-                            • Sistemas de pestañas o acordeones
+
+                        <div class="ejemplo">
+<span class="hl-comment">&lt;!-- Enlace --&gt;</span><br>
+<span class="hl-bracket">&lt;</span><span class="hl-tag">a</span> <span class="hl-attr">href</span><span class="hl-bracket">=</span><span class="hl-value">"#seccion1"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Ir a Sección 1</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">a</span><span class="hl-bracket">&gt;</span><br><br>
+<span class="hl-comment">&lt;!-- Destino --&gt;</span><br>
+<span class="hl-bracket">&lt;</span><span class="hl-tag">h2</span> <span class="hl-attr">id</span><span class="hl-bracket">=</span><span class="hl-value">"seccion1"</span><span class="hl-bracket">&gt;</span><span class="hl-text">Sección 1</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">h2</span><span class="hl-bracket">&gt;</span>
+                        </div>
+
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <p>Índice de navegación:</p>
+                                <p>
+                                    <a href="#introduccion">Ir a Introducción</a> |
+                                    <a href="#terminos">Ir a Términos</a> |
+                                    <a href="#buenas-practicas">Ir a Buenas Prácticas</a>
+                                </p>
+                                <p><a href="#top">↑ Volver arriba</a></p>
+                            </div>
+                        </div>
+
+                        <div class="nota nota-info">
+                            <strong>Usos comunes:</strong>
+                            <ul class="nota-lista">
+                                <li class="hacer">Índices / Tablas de contenido</li>
+                                <li class="hacer">Botón "↑ Volver arriba"</li>
+                                <li class="info">Navegación en páginas largas</li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="termino" id="atributos-adicionales" data-tags="target blank title download atributos">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Intermedio</span>
+                        </div>
                         <span class="tag">⚙️ Atributos Adicionales</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Atributos complementarios de enlaces</p>
                         <p class="descripcion">
-                            Los enlaces tienen atributos adicionales que modifican su comportamiento, como target para controlar dónde se abre el enlace,
-                            title para mostrar información adicional, y download para forzar la descarga de archivos.
+                            Modifican el comportamiento: dónde abre, tooltip, forzar descarga.
                         </p>
-                        <div class="ejemplo">&lt;a href="https://google.com" target="_blank" title="Ir a Google"&gt;<br>&nbsp;&nbsp;Abrir Google en nueva pestaña<br>&lt;/a&gt;<br><br>&lt;a href="documento.pdf" download&gt;<br>&nbsp;&nbsp;Descargar documento<br>&lt;/a&gt;</div>
-                        <div class="nota">
-                            <strong>Atributos:</strong><br>
-                            • <code>target="_blank"</code> - Abre el enlace en una nueva pestaña<br>
-                            • <code>target="_self"</code> - Abre en la misma pestaña (por defecto)<br>
-                            • <code>title</code> - Tooltip al pasar el mouse<br>
-                            • <code>download</code> - Descarga el archivo en lugar de navegar
+
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">a</span> <span class="hl-attr">href</span><span class="hl-bracket">=</span><span class="hl-value">"https://google.com"</span> <span class="hl-attr">target</span><span class="hl-bracket">=</span><span class="hl-value">"_blank"</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-text">Nueva pestaña</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">a</span><span class="hl-bracket">&gt;</span><br><br>
+<span class="hl-bracket">&lt;</span><span class="hl-tag">a</span> <span class="hl-attr">href</span><span class="hl-bracket">=</span><span class="hl-value">"doc.pdf"</span> <span class="hl-attr">download</span><span class="hl-bracket">&gt;</span><span class="hl-text">Descargar</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">a</span><span class="hl-bracket">&gt;</span>
+                        </div>
+
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <p><a href="https://google.com" target="_blank" title="Abre en nueva pestaña">Abrir en nueva pestaña ↗</a></p>
+                                <p><a href="#documento" title="Documento de ejemplo">Enlace con tooltip (pasa el mouse)</a></p>
+                                <p><a href="#descarga" download>📥 Descargar archivo</a></p>
+                            </div>
+                        </div>
+
+                        <div class="nota nota-tip">
+                            <strong>Atributos:</strong>
+                            <ul class="nota-lista">
+                                <li class="importante"><span class="key-term">target="_blank"</span> - Nueva pestaña</li>
+                                <li class="hacer"><span class="key-term">title="..."</span> - Tooltip</li>
+                                <li class="hacer"><span class="key-term">download</span> - Forzar descarga</li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="termino" id="buenas-practicas" data-tags="buenas practicas accesibilidad usabilidad">
+                        <div class="badge-container">
+                            <span class="badge badge-frecuente">Buenas prácticas</span>
+                        </div>
                         <span class="tag">✓ Buenas Prácticas</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Recomendaciones para enlaces efectivos</p>
                         <p class="descripcion">
-                            Al crear enlaces, es importante seguir buenas prácticas que mejoren la experiencia del usuario y la accesibilidad.
-                            El texto del enlace debe ser descriptivo, se debe indicar si abre en nueva ventana, y usar rutas relativas para enlaces internos.
+                            Mejores prácticas para accesibilidad y usabilidad.
                         </p>
-                        <div class="nota">
-                            <strong>✓ Hacer:</strong><br>
-                            • Usar texto descriptivo: "Descargar guía de HTML" en lugar de "Click aquí"<br>
-                            • Indicar si el enlace abre en nueva ventana<br>
-                            • Usar rutas relativas para enlaces internos<br>
-                            • Añadir <code>title</code> para contexto adicional<br>
-                            <br>
-                            <strong>✗ Evitar:</strong><br>
-                            • Enlaces con texto "Click aquí" o "Leer más" sin contexto<br>
-                            • URLs absolutas para enlaces dentro del mismo sitio<br>
-                            • Abrir todas las páginas en nueva pestaña<br>
-                            • Enlaces que no funcionan (sin href o con "#")
-                        </div>
-                        <div class="practice-exercise">
-                            <details>
-                                <summary>🎯 Ejercicio: Crea una mini página con navegación</summary>
-                                <p><strong>Incluye:</strong></p>
+
+                        <div class="comparacion-grid">
+                            <div class="comparacion-card opcion-a">
+                                <h4>✅ HACER</h4>
                                 <ul>
-                                    <li>Un índice con 3 enlaces internos</li>
-                                    <li>3 secciones con IDs correspondientes</li>
-                                    <li>Un enlace externo a tu sitio favorito</li>
-                                    <li>Un botón "Volver arriba"</li>
+                                    <li>Texto descriptivo</li>
+                                    <li>Indicar si abre nueva ventana</li>
+                                    <li>Rutas relativas internas</li>
+                                    <li>Añadir title</li>
                                 </ul>
-                                <p><strong>Ejemplo de solución:</strong></p>
-                                <pre><code>&lt;h1 id="top"&gt;Mi Página&lt;/h1&gt;
-
-&lt;nav&gt;
-    &lt;h2&gt;Índice&lt;/h2&gt;
-    &lt;ul&gt;
-        &lt;li&gt;&lt;a href="#intro"&gt;Introducción&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#contenido"&gt;Contenido&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href="#recursos"&gt;Recursos&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-&lt;/nav&gt;
-
-&lt;section id="intro"&gt;
-    &lt;h2&gt;Introducción&lt;/h2&gt;
-    &lt;p&gt;Contenido de introducción...&lt;/p&gt;
-    &lt;a href="#top"&gt;↑ Volver arriba&lt;/a&gt;
-&lt;/section&gt;
-
-&lt;section id="contenido"&gt;
-    &lt;h2&gt;Contenido&lt;/h2&gt;
-    &lt;p&gt;Contenido principal...&lt;/p&gt;
-    &lt;a href="#top"&gt;↑ Volver arriba&lt;/a&gt;
-&lt;/section&gt;
-
-&lt;section id="recursos"&gt;
-    &lt;h2&gt;Recursos&lt;/h2&gt;
-    &lt;p&gt;Visita &lt;a href="https://developer.mozilla.org" target="_blank"&gt;MDN&lt;/a&gt;&lt;/p&gt;
-    &lt;a href="#top"&gt;↑ Volver arriba&lt;/a&gt;
-&lt;/section&gt;</code></pre>
-                            </details>
+                            </div>
+                            <div class="comparacion-card opcion-b">
+                                <h4>❌ EVITAR</h4>
+                                <ul>
+                                    <li>"Click aquí"</li>
+                                    <li>URLs absolutas internas</li>
+                                    <li>Todo en nueva pestaña</li>
+                                    <li>href="#" vacío</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -256,7 +335,8 @@ Desde paginas/about.html:
         <p>Módulo 4: Hipervínculos | <a href="../index.html">Volver a HTML</a></p>
     </footer>
 
-    <script src="/assets/js/sidebar-component.js"></script>
+    <script src="../../../assets/js/sidebar-component.js"></script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
     <script>
         // Funcionalidad de búsqueda en el glosario con normalización y resaltado
         document.addEventListener('DOMContentLoaded', function() {

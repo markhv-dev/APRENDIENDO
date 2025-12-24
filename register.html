@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Sistema APRENDIENDO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .register-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            max-width: 450px;
+            width: 100%;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .register-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .register-header h1 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .register-header p {
+            opacity: 0.9;
+            font-size: 0.95em;
+        }
+
+        .register-form {
+            padding: 40px 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 0.95em;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .password-strength {
+            height: 4px;
+            background: #e0e0e0;
+            border-radius: 2px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+
+        .password-strength-bar {
+            height: 100%;
+            width: 0%;
+            transition: all 0.3s;
+        }
+
+        .password-strength-bar.weak {
+            width: 33%;
+            background: #e74c3c;
+        }
+
+        .password-strength-bar.medium {
+            width: 66%;
+            background: #f39c12;
+        }
+
+        .password-strength-bar.strong {
+            width: 100%;
+            background: #27ae60;
+        }
+
+        .password-hint {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.05em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn.loading {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .message {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .message.error {
+            background: #fee;
+            color: #c00;
+            border: 1px solid #fcc;
+        }
+
+        .message.success {
+            background: #efe;
+            color: #060;
+            border: 1px solid #cfc;
+        }
+
+        .links {
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .links a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.95em;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+
+        .loader {
+            display: none;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .form-note {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .form-note ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+
+        .form-note li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-header">
+            <h1>📚 Crear Cuenta</h1>
+            <p>Únete al Sistema APRENDIENDO</p>
+        </div>
+
+        <div class="register-form">
+            <div id="message" class="message"></div>
+
+            <form id="registerForm" onsubmit="handleRegister(event)">
+                <div class="form-group">
+                    <label for="nombre_completo">
+                        Nombre Completo <span class="required">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="nombre_completo"
+                        name="nombre_completo"
+                        required
+                        autocomplete="name"
+                        placeholder="Ej: Juan Pérez">
+                </div>
+
+                <div class="form-group">
+                    <label for="username">
+                        Usuario <span class="required">*</span>
+                    </label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        required
+                        autocomplete="username"
+                        placeholder="Ej: juanperez"
+                        pattern="[a-zA-Z0-9_]{3,20}"
+                        title="3-20 caracteres, solo letras, números y guión bajo">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">
+                        Correo Electrónico <span class="required">*</span>
+                    </label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        required
+                        autocomplete="email"
+                        placeholder="Ej: juan@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">
+                        Contraseña <span class="required">*</span>
+                    </label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        required
+                        autocomplete="new-password"
+                        minlength="6"
+                        oninput="checkPasswordStrength()">
+                    <div class="password-strength">
+                        <div class="password-strength-bar" id="strengthBar"></div>
+                    </div>
+                    <div class="password-hint">Mínimo 6 caracteres</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password_confirm">
+                        Confirmar Contraseña <span class="required">*</span>
+                    </label>
+                    <input
+                        type="password"
+                        id="password_confirm"
+                        name="password_confirm"
+                        required
+                        autocomplete="new-password"
+                        minlength="6">
+                </div>
+
+                <div class="form-note">
+                    <strong>Requisitos:</strong>
+                    <ul>
+                        <li>Usuario: 3-20 caracteres (letras, números, guión bajo)</li>
+                        <li>Contraseña: Mínimo 6 caracteres</li>
+                        <li>Todos los campos son obligatorios</li>
+                    </ul>
+                </div>
+
+                <button type="submit" class="btn" id="registerBtn">
+                    Crear Cuenta
+                    <span class="loader" id="loader" style="display:none;"></span>
+                </button>
+            </form>
+
+            <div class="links">
+                ¿Ya tienes cuenta? <a href="/login.html">Iniciar Sesión</a><br>
+                <a href="/">← Volver a la portada</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = text;
+            messageDiv.className = 'message ' + type;
+            messageDiv.style.display = 'block';
+
+            if (type === 'success') {
+                setTimeout(() => {
+                    messageDiv.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        function checkPasswordStrength() {
+            const password = document.getElementById('password').value;
+            const strengthBar = document.getElementById('strengthBar');
+
+            if (password.length === 0) {
+                strengthBar.className = 'password-strength-bar';
+                return;
+            }
+
+            let strength = 0;
+            if (password.length >= 6) strength++;
+            if (password.length >= 10) strength++;
+            if (/[A-Z]/.test(password)) strength++;
+            if (/[0-9]/.test(password)) strength++;
+            if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+            if (strength <= 2) {
+                strengthBar.className = 'password-strength-bar weak';
+            } else if (strength <= 3) {
+                strengthBar.className = 'password-strength-bar medium';
+            } else {
+                strengthBar.className = 'password-strength-bar strong';
+            }
+        }
+
+        async function handleRegister(event) {
+            event.preventDefault();
+
+            const btn = document.getElementById('registerBtn');
+            const loader = document.getElementById('loader');
+            const form = event.target;
+            const formData = new FormData(form);
+
+            // Validar que las contraseñas coincidan
+            const password = formData.get('password');
+            const password_confirm = formData.get('password_confirm');
+
+            if (password !== password_confirm) {
+                showMessage('Las contraseñas no coinciden', 'error');
+                return;
+            }
+
+            // Validar username
+            const username = formData.get('username');
+            if (!/^[a-zA-Z0-9_]{3,20}$/.test(username)) {
+                showMessage('Usuario inválido. Usa 3-20 caracteres (letras, números, guión bajo)', 'error');
+                return;
+            }
+
+            // Mostrar loader
+            btn.classList.add('loading');
+            loader.style.display = 'inline-block';
+
+            try {
+                const response = await fetch('/api/register', {
+                    method: 'POST',
+                    body: new URLSearchParams(formData)
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    showMessage(data.message || 'Cuenta creada exitosamente', 'success');
+                    form.reset();
+
+                    // Redirigir al login después de 2 segundos
+                    setTimeout(() => {
+                        window.location.href = '/login.html';
+                    }, 2000);
+                } else {
+                    showMessage(data.error || 'Error al crear la cuenta', 'error');
+                }
+            } catch (error) {
+                showMessage('Error de conexión con el servidor', 'error');
+                console.error('Error:', error);
+            } finally {
+                btn.classList.remove('loading');
+                loader.style.display = 'none';
+            }
+        }
+
+        // Auto-focus en el primer campo
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('nombre_completo').focus();
+        });
+    </script>
+</body>
+</html>

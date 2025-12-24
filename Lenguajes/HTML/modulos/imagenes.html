@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imágenes - Sistema de Aprendizaje</title>
-    <link rel="stylesheet" href="/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/assets/css/glosario.css">
-    <link rel="stylesheet" href="/assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
 </head>
 <body>
     <header>
@@ -40,230 +41,299 @@
             </section>
 
             <section id="terminos" class="topic-section">
-                <h2>📚 Términos del Módulo</h2>
-                <p>Elementos y conceptos HTML relacionados con imágenes:</p>
-
                 <div id="terminosContainer">
                     <div class="termino" id="img" data-tags="img imagen image src alt picture element">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;img&gt;</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Imagen (Image)</p>
                         <p class="descripcion">
-                            Inserta una imagen en el documento HTML. Es una etiqueta de autocierre (vacía, no contiene contenido interno).
-                            Siempre debe incluir el atributo alt para accesibilidad, que describe la imagen para usuarios con lectores de pantalla.
-                            Soporta diversos formatos: JPG, PNG, GIF, SVG, WebP, entre otros.
+                            Inserta imagen. <strong>Elemento vacío</strong> (sin cierre). Requiere src y alt.
                         </p>
-                        <div class="ejemplo">
-                            <strong>Sintaxis básica:</strong><br>
-                            &lt;img src="ruta/imagen.jpg" alt="Descripción de la imagen"&gt;<br><br>
-                            <strong>Con atributos completos:</strong><br>
-                            &lt;img src="foto.jpg"<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alt="Foto de perfil"<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width="200"<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height="200"<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loading="lazy"<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title="Mi foto de perfil"&gt;
+
+                        <!-- Anatomía visual -->
+                        <div class="anatomia-tag">
+                            <div class="codigo-central">
+                                <span class="simbolo">&lt;</span><span class="etiqueta">img</span> <span class="atributo">src</span><span class="simbolo">=</span><span class="simbolo">"</span><span class="valor">ruta</span><span class="simbolo">"</span> <span class="atributo">alt</span><span class="simbolo">=</span><span class="simbolo">"</span><span class="valor">descripción</span><span class="simbolo">"</span><span class="simbolo">&gt;</span>
+                            </div>
+                            <div class="anatomia-flechas">
+                                <div class="anatomia-label label-etiqueta">
+                                    <span class="arrow">↑</span>
+                                    Etiqueta
+                                </div>
+                                <div class="anatomia-label label-atributo">
+                                    <span class="arrow">↑</span>
+                                    Ruta imagen
+                                </div>
+                                <div class="anatomia-label label-valor">
+                                    <span class="arrow">↑</span>
+                                    Texto alt
+                                </div>
+                            </div>
                         </div>
-                        <div class="nota">
-                            <strong>Atributos obligatorios:</strong><br>
-                            • <code>src</code> - Source (fuente), especifica la ruta de la imagen<br>
-                            • <code>alt</code> - Texto alternativo, descripción de la imagen<br><br>
-                            <strong>Atributos opcionales importantes:</strong><br>
-                            • <code>width</code> - Ancho en píxeles (ej: width="300")<br>
-                            • <code>height</code> - Alto en píxeles (ej: height="200")<br>
-                            • <code>loading</code> - Carga diferida: "lazy" (carga cuando es visible), "eager" (inmediato)<br>
-                            • <code>title</code> - Tooltip que aparece al pasar el mouse<br>
-                            • <code>srcset</code> - Múltiples fuentes para imágenes responsive<br>
-                            • <code>sizes</code> - Tamaños de imagen según viewport<br><br>
-                            <strong>¿Por qué es importante alt?</strong><br>
-                            • <strong>Accesibilidad:</strong> Lectores de pantalla lo leen para usuarios con discapacidad visual<br>
-                            • <strong>SEO:</strong> Motores de búsqueda lo usan para entender el contenido<br>
-                            • <strong>Fallback:</strong> Se muestra si la imagen no carga
+
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">img</span> <span class="hl-attr">src</span><span class="hl-bracket">=</span><span class="hl-value">"foto.jpg"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-attr">alt</span><span class="hl-bracket">=</span><span class="hl-value">"Foto de perfil"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-attr">width</span><span class="hl-bracket">=</span><span class="hl-value">"200"</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-attr">loading</span><span class="hl-bracket">=</span><span class="hl-value">"lazy"</span><span class="hl-bracket">&gt;</span>
+                        </div>
+
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <img src="https://via.placeholder.com/200x200/3498db/ffffff?text=Foto+de+perfil" alt="Foto de perfil" width="200">
+                                <p style="margin-top: 10px; color: #666; font-size: 0.9em;">Imagen de 200px de ancho con atributo alt</p>
+                            </div>
+                        </div>
+
+                        <div class="nota nota-warning">
+                            <strong>Atributos:</strong>
+                            <ul class="nota-lista">
+                                <li class="importante"><span class="key-term">src</span> - Ruta de imagen (obligatorio)</li>
+                                <li class="importante"><span class="key-term">alt</span> - Texto alternativo (obligatorio)</li>
+                                <li class="hacer"><span class="key-term">width/height</span> - Dimensiones</li>
+                                <li class="hacer"><span class="key-term">loading="lazy"</span> - Carga diferida</li>
+                            </ul>
+                        </div>
+
+                        <div class="nota nota-tip">
+                            <strong>¿Por qué alt es importante?</strong>
+                            <ul class="nota-lista">
+                                <li class="importante">Accesibilidad (lectores de pantalla)</li>
+                                <li class="hacer">SEO (buscadores)</li>
+                                <li class="info">Fallback si no carga</li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="termino" id="rutas" data-tags="rutas paths relativas absolutas urls directorios carpetas">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">📂 Rutas de Imágenes</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Cómo especificar ubicaciones de archivos</p>
                         <p class="descripcion">
-                            Las rutas definen dónde se encuentra un archivo de imagen. Pueden ser relativas (desde el archivo actual)
-                            o absolutas (URL completa). Entender las rutas es fundamental para cargar imágenes correctamente.
+                            Relativas (desde archivo actual) o absolutas (URL completa).
                         </p>
-                        <div class="ejemplo">
-                            <strong>Rutas Relativas:</strong><br>
-                            &lt;!-- Misma carpeta --&gt;<br>
-                            &lt;img src="logo.png" alt="Logo"&gt;<br><br>
-                            &lt;!-- Subcarpeta --&gt;<br>
-                            &lt;img src="imagenes/foto.jpg" alt="Foto"&gt;<br>
-                            &lt;img src="./assets/banner.png" alt="Banner"&gt;<br><br>
-                            &lt;!-- Carpeta padre --&gt;<br>
-                            &lt;img src="../imagen.jpg" alt="Imagen"&gt;<br><br>
-                            <strong>Rutas Absolutas (URLs externas):</strong><br>
-                            &lt;img src="https://ejemplo.com/imagen.jpg" alt="Imagen externa"&gt;
+
+                        <!-- Comparación de rutas -->
+                        <div class="comparacion-grid">
+                            <div class="comparacion-card opcion-a">
+                                <h4>Relativas</h4>
+                                <div class="ejemplo" style="font-size: 0.9em;">
+<span class="hl-value">"logo.png"</span> <span class="hl-comment">← misma carpeta</span><br>
+<span class="hl-value">"img/foto.jpg"</span> <span class="hl-comment">← subcarpeta</span><br>
+<span class="hl-value">"../img.jpg"</span> <span class="hl-comment">← arriba</span>
+                                </div>
+                            </div>
+                            <div class="comparacion-card opcion-b">
+                                <h4>Absolutas</h4>
+                                <div class="ejemplo" style="font-size: 0.9em;">
+<span class="hl-value">"https://..."</span><br>
+<span class="hl-comment">URL completa externa</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="nota">
-                            <strong>Ejemplo de estructura típica:</strong><br>
-                            proyecto/<br>
-                            ├── index.html<br>
-                            ├── images/<br>
-                            │&nbsp;&nbsp;&nbsp;├── logo.png<br>
-                            │&nbsp;&nbsp;&nbsp;└── banner.jpg<br>
-                            └── pages/<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;└── about.html<br><br>
-                            • Desde index.html: &lt;img src="images/logo.png"&gt;<br>
-                            • Desde pages/about.html: &lt;img src="../images/logo.png"&gt;<br><br>
-                            <strong>Símbolos de navegación:</strong><br>
-                            • <code>./</code> - Carpeta actual (opcional, es el default)<br>
-                            • <code>../</code> - Carpeta padre (sube un nivel)<br>
-                            • <code>/</code> - Raíz del sitio web
+
+                        <div class="diagrama-estructura">
+<span class="linea">proyecto/</span>
+<span class="linea">├── index.html</span>
+<span class="linea">├── images/</span>
+<span class="linea">│   └── logo.png</span>  <span class="flecha">← src="images/logo.png"</span>
+<span class="linea">└── pages/</span>
+<span class="linea">    └── about.html</span>  <span class="flecha">← src="../images/logo.png"</span>
+                        </div>
+
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <p><strong>Ruta relativa (misma carpeta):</strong></p>
+                                <img src="https://via.placeholder.com/150x80/2ecc71/ffffff?text=logo.png" alt="Logo" width="150">
+
+                                <p style="margin-top: 15px;"><strong>Ruta absoluta (URL externa):</strong></p>
+                                <img src="https://via.placeholder.com/150x80/e74c3c/ffffff?text=Imagen+externa" alt="Imagen externa" width="150">
+                            </div>
                         </div>
                     </div>
 
                     <div class="termino" id="figure" data-tags="figure figcaption imagen diagrama ilustracion semantica">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Intermedio</span>
+                        </div>
                         <span class="tag">&lt;figure&gt; y &lt;figcaption&gt;</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Figura con descripción semántica</p>
                         <p class="descripcion">
-                            HTML5 introduce estos elementos semánticos para agrupar imágenes con sus descripciones. &lt;figure&gt; especifica
-                            contenido auto-contenido como imágenes, diagramas, ilustraciones, código, citas. &lt;figcaption&gt; define la
-                            descripción o leyenda de la figura. Mejora significativamente la accesibilidad y semántica del documento.
+                            Agrupa imagen con su leyenda. Mejora accesibilidad y semántica.
                         </p>
+
                         <div class="ejemplo">
-                            &lt;figure&gt;<br>
-                            &nbsp;&nbsp;&lt;img src="grafico.png" alt="Gráfico de ventas 2024"&gt;<br>
-                            &nbsp;&nbsp;&lt;figcaption&gt;Figura 1: Ventas del primer trimestre 2024&lt;/figcaption&gt;<br>
-                            &lt;/figure&gt;
+<span class="hl-bracket">&lt;</span><span class="hl-tag">figure</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">img</span> <span class="hl-attr">src</span><span class="hl-bracket">=</span><span class="hl-value">"grafico.png"</span> <span class="hl-attr">alt</span><span class="hl-bracket">=</span><span class="hl-value">"Ventas 2024"</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">figcaption</span><span class="hl-bracket">&gt;</span><span class="hl-text">Figura 1: Ventas Q1</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">figcaption</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">figure</span><span class="hl-bracket">&gt;</span>
                         </div>
-                        <div class="nota">
-                            <strong>Beneficios de usar &lt;figure&gt;:</strong><br>
-                            • Semántica clara: indica que el contenido es una unidad ilustrativa independiente<br>
-                            • Mejor accesibilidad para lectores de pantalla<br>
-                            • Fácil de estilizar con CSS como grupo unificado<br>
-                            • Puede contener código, diagramas, fotos, videos, etc.<br>
-                            • &lt;figcaption&gt; puede ir antes o después del contenido<br>
-                            • Perfecto para publicaciones técnicas, artículos académicos, documentación
+
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <figure style="margin: 0; text-align: center;">
+                                    <img src="https://via.placeholder.com/300x180/9b59b6/ffffff?text=Grafico+de+Ventas" alt="Ventas 2024" width="300">
+                                    <figcaption style="margin-top: 8px; font-style: italic; color: #666;">Figura 1: Ventas del primer trimestre 2024</figcaption>
+                                </figure>
+                            </div>
+                        </div>
+
+                        <div class="nota nota-info">
+                            <strong>Beneficios:</strong>
+                            <ul class="nota-lista">
+                                <li class="importante">Semántica clara</li>
+                                <li class="hacer">Mejor accesibilidad</li>
+                                <li class="info">Puede contener: imágenes, código, videos</li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="termino" id="picture" data-tags="picture responsive imagen adaptativa source media">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Avanzado</span>
+                        </div>
                         <span class="tag">&lt;picture&gt;</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Imagen adaptativa (responsive)</p>
                         <p class="descripcion">
-                            Contenedor para múltiples fuentes de imagen, permitiendo imágenes responsive adaptativas avanzadas.
-                            El navegador elige automáticamente la imagen más apropiada según el tamaño de pantalla, resolución,
-                            o formato soportado. Siempre debe incluir un elemento &lt;img&gt; como fallback para compatibilidad.
+                            Múltiples fuentes según tamaño/formato. El navegador elige la mejor.
                         </p>
+
                         <div class="ejemplo">
-                            &lt;picture&gt;<br>
-                            &nbsp;&nbsp;&lt;source media="(min-width: 800px)" srcset="imagen-grande.jpg"&gt;<br>
-                            &nbsp;&nbsp;&lt;source media="(min-width: 400px)" srcset="imagen-media.jpg"&gt;<br>
-                            &nbsp;&nbsp;&lt;img src="imagen-pequeña.jpg" alt="Descripción"&gt;<br>
-                            &lt;/picture&gt;
+<span class="hl-bracket">&lt;</span><span class="hl-tag">picture</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">source</span> <span class="hl-attr">media</span><span class="hl-bracket">=</span><span class="hl-value">"(min-width: 800px)"</span> <span class="hl-attr">srcset</span><span class="hl-bracket">=</span><span class="hl-value">"grande.jpg"</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">source</span> <span class="hl-attr">media</span><span class="hl-bracket">=</span><span class="hl-value">"(min-width: 400px)"</span> <span class="hl-attr">srcset</span><span class="hl-bracket">=</span><span class="hl-value">"media.jpg"</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">img</span> <span class="hl-attr">src</span><span class="hl-bracket">=</span><span class="hl-value">"pequeña.jpg"</span> <span class="hl-attr">alt</span><span class="hl-bracket">=</span><span class="hl-value">"Descripción"</span><span class="hl-bracket">&gt;</span> <span class="hl-comment">&lt;!-- fallback --&gt;</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">picture</span><span class="hl-bracket">&gt;</span>
                         </div>
-                        <div class="nota">
-                            <strong>Casos de uso:</strong><br>
-                            • Art direction: diferentes imágenes según dispositivo (móvil vs desktop)<br>
-                            • Soporte de formatos modernos con fallback (WebP → JPEG)<br>
-                            • Optimización de rendimiento cargando tamaños apropiados<br>
-                            • Imágenes retina vs no-retina
+
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <p style="color: #666; font-size: 0.9em;">La imagen se adapta según el tamaño de pantalla:</p>
+                                <picture>
+                                    <img src="https://via.placeholder.com/250x150/f39c12/ffffff?text=Imagen+Responsive" alt="Imagen adaptativa" width="250" style="display: block; margin: 10px auto;">
+                                </picture>
+                                <p style="margin-top: 10px; color: #666; font-size: 0.85em; text-align: center;">
+                                    Desktop: grande.jpg | Tablet: media.jpg | Móvil: pequeña.jpg
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="nota nota-tip">
+                            <strong>Casos de uso:</strong>
+                            <ul class="nota-lista">
+                                <li class="hacer">Imágenes diferentes móvil/desktop</li>
+                                <li class="hacer">WebP con fallback JPEG</li>
+                                <li class="info">Optimización de rendimiento</li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="termino" id="formatos" data-tags="formatos jpeg png gif svg webp extensiones tipos">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">📊 Formatos de Imagen</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Tipos de archivo para imágenes web</p>
                         <p class="descripcion">
-                            Cada formato de imagen tiene características específicas que lo hacen más apropiado para ciertos usos.
-                            Elegir el formato correcto optimiza el rendimiento y la calidad visual de tu sitio web.
+                            Cada formato tiene usos específicos. Elegir bien optimiza rendimiento.
                         </p>
-                        <div class="nota">
-                            <strong>Formatos comunes y sus usos:</strong><br><br>
-                            <strong>• JPEG/JPG</strong> (.jpg, .jpeg)<br>
-                            &nbsp;&nbsp;- Uso: Fotografías, imágenes complejas con muchos colores<br>
-                            &nbsp;&nbsp;- Transparencia: No<br>
-                            &nbsp;&nbsp;- Características: Compresión con pérdida, tamaños pequeños<br><br>
-                            <strong>• PNG</strong> (.png)<br>
-                            &nbsp;&nbsp;- Uso: Logos, iconos, gráficos con áreas transparentes<br>
-                            &nbsp;&nbsp;- Transparencia: Sí<br>
-                            &nbsp;&nbsp;- Características: Sin pérdida, ideal para imágenes con texto<br><br>
-                            <strong>• GIF</strong> (.gif)<br>
-                            &nbsp;&nbsp;- Uso: Animaciones simples, imágenes con pocos colores<br>
-                            &nbsp;&nbsp;- Transparencia: Sí (1 bit, sin semi-transparencia)<br>
-                            &nbsp;&nbsp;- Características: Máximo 256 colores, soporta animación<br><br>
-                            <strong>• SVG</strong> (.svg)<br>
-                            &nbsp;&nbsp;- Uso: Gráficos vectoriales, iconos, logos escalables<br>
-                            &nbsp;&nbsp;- Transparencia: Sí<br>
-                            &nbsp;&nbsp;- Características: Escalable sin pérdida, editable con código<br><br>
-                            <strong>• WebP</strong> (.webp)<br>
-                            &nbsp;&nbsp;- Uso: Formato moderno para fotos y gráficos<br>
-                            &nbsp;&nbsp;- Transparencia: Sí<br>
-                            &nbsp;&nbsp;- Características: Mejor compresión que JPEG/PNG, soporte creciente
+
+                        <div class="comparacion-grid">
+                            <div class="comparacion-card opcion-a">
+                                <h4>Fotos</h4>
+                                <div class="ejemplo" style="font-size: 0.9em;">
+<strong>JPEG</strong> - Compresión, sin transparencia<br>
+<strong>WebP</strong> - Mejor compresión, moderno
+                                </div>
+                            </div>
+                            <div class="comparacion-card opcion-b">
+                                <h4>Logos/Iconos</h4>
+                                <div class="ejemplo" style="font-size: 0.9em;">
+<strong>PNG</strong> - Transparencia, sin pérdida<br>
+<strong>SVG</strong> - Vectorial, escalable
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="nota nota-info">
+                            <strong>Resumen rápido:</strong>
+                            <ul class="nota-lista">
+                                <li class="hacer"><span class="key-term">JPEG</span> → Fotos</li>
+                                <li class="hacer"><span class="key-term">PNG</span> → Transparencia</li>
+                                <li class="hacer"><span class="key-term">SVG</span> → Vectores/Iconos</li>
+                                <li class="importante"><span class="key-term">WebP</span> → Mejor compresión</li>
+                                <li class="info"><span class="key-term">GIF</span> → Animaciones simples</li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="termino" id="responsive" data-tags="responsive adaptativo srcset sizes css mobile desktop">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Intermedio</span>
+                        </div>
                         <span class="tag">📱 Imágenes Responsive</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Imágenes que se adaptan al dispositivo</p>
                         <p class="descripcion">
-                            Las imágenes responsive se ajustan automáticamente al tamaño de la pantalla del usuario, mejorando
-                            la experiencia en dispositivos móviles y optimizando el rendimiento al cargar tamaños apropiados.
+                            Se ajustan al tamaño de pantalla. Mejora UX y rendimiento.
                         </p>
-                        <div class="ejemplo">
-                            <strong>Método 1: CSS (más simple):</strong><br>
-                            &lt;style&gt;<br>
-                            &nbsp;&nbsp;img {<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;max-width: 100%;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;height: auto;<br>
-                            &nbsp;&nbsp;}<br>
-                            &lt;/style&gt;<br>
-                            &lt;img src="foto.jpg" alt="Foto responsive"&gt;<br><br>
-                            <strong>Método 2: srcset y sizes (más control):</strong><br>
-                            &lt;img src="imagen-small.jpg"<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;srcset="imagen-small.jpg 400w,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imagen-medium.jpg 800w,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;imagen-large.jpg 1200w"<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sizes="(max-width: 600px) 400px,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(max-width: 1000px) 800px,<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1200px"<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alt="Imagen responsive"&gt;
-                        </div>
-                        <div class="nota">
-                            <strong>Explicación de srcset y sizes:</strong><br>
-                            • <code>srcset</code>: Lista de imágenes disponibles con sus anchos (400w = 400 píxeles)<br>
-                            • <code>sizes</code>: Indica al navegador qué tamaño usar según condiciones de viewport<br>
-                            • El navegador elige automáticamente la imagen óptima<br>
-                            • <code>src</code> funciona como fallback para navegadores antiguos<br><br>
-                            <strong>Nota sobre dimensiones:</strong> Es recomendable especificar width y height en HTML
-                            para evitar el "salto" de contenido mientras carga la imagen.
+
+                        <div class="comparacion-grid">
+                            <div class="comparacion-card opcion-a">
+                                <h4>CSS (Simple)</h4>
+                                <div class="ejemplo" style="font-size: 0.85em;">
+img {<br>
+&nbsp;&nbsp;max-width: 100%;<br>
+&nbsp;&nbsp;height: auto;<br>
+}
+                                </div>
+                            </div>
+                            <div class="comparacion-card opcion-b">
+                                <h4>srcset (Avanzado)</h4>
+                                <div class="ejemplo" style="font-size: 0.85em;">
+srcset="sm.jpg 400w,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lg.jpg 800w"
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="termino" id="buenas-practicas" data-tags="practicas optimizacion accesibilidad performance seo">
+                        <div class="badge-container">
+                            <span class="badge badge-frecuente">Buenas prácticas</span>
+                        </div>
                         <span class="tag">✓ Buenas Prácticas</span>
-                        <p class="significado"><span class="unsa-tag">[U]</span> Recomendaciones para usar imágenes correctamente</p>
+                        <p class="significado"><span class="unsa-tag">[U]</span> Recomendaciones para imágenes</p>
                         <p class="descripcion">
-                            Seguir buenas prácticas al trabajar con imágenes mejora la accesibilidad, rendimiento, SEO y
-                            experiencia del usuario. Estas son las recomendaciones más importantes para imágenes web.
+                            Mejora accesibilidad, rendimiento y SEO.
                         </p>
-                        <div class="nota">
-                            <strong>✓ HACER:</strong><br>
-                            • Siempre incluir el atributo <code>alt</code> con descripción significativa<br>
-                            • Optimizar imágenes antes de subirlas (reducir tamaño de archivo)<br>
-                            • Usar formatos apropiados (JPEG para fotos, PNG para logos/transparencias)<br>
-                            • Nombrar archivos descriptivamente: <code>logo-empresa.png</code> en vez de <code>img001.png</code><br>
-                            • Usar <code>loading="lazy"</code> para imágenes fuera de la vista inicial<br>
-                            • Especificar width y height para evitar layout shifts<br>
-                            • Usar CSS para hacer imágenes responsive<br>
-                            • Comprimir imágenes con herramientas como TinyPNG, ImageOptim<br>
-                            • Considerar WebP para mejor compresión<br>
-                            • Usar CDN para imágenes grandes<br><br>
-                            <strong>✗ EVITAR:</strong><br>
-                            • Imágenes sin atributo <code>alt</code><br>
-                            • Imágenes demasiado grandes (varios MB sin comprimir)<br>
-                            • Redimensionar con HTML/CSS imágenes muy grandes (carga innecesaria)<br>
-                            • Hotlinking (usar imágenes de otros sitios sin permiso)<br>
-                            • Nombres de archivo genéricos (img1.jpg, image.png)<br>
-                            • Usar imágenes para texto (perjudica accesibilidad y SEO)<br>
-                            • Olvidar optimizar para dispositivos móviles<br>
-                            • Cargar todas las imágenes inmediatamente (usar lazy loading)
+
+                        <div class="comparacion-grid">
+                            <div class="comparacion-card opcion-a">
+                                <h4>✅ HACER</h4>
+                                <ul>
+                                    <li>Siempre usar alt</li>
+                                    <li>Optimizar/comprimir</li>
+                                    <li>loading="lazy"</li>
+                                    <li>Nombres descriptivos</li>
+                                </ul>
+                            </div>
+                            <div class="comparacion-card opcion-b">
+                                <h4>❌ EVITAR</h4>
+                                <ul>
+                                    <li>Sin alt</li>
+                                    <li>Imágenes sin comprimir</li>
+                                    <li>Hotlinking</li>
+                                    <li>img1.jpg, image.png</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -320,7 +390,8 @@
         <p>Módulo 5: Imágenes | <a href="../index.html">Volver a HTML</a></p>
     </footer>
 
-    <script src="/assets/js/sidebar-component.js"></script>
+    <script src="../../../assets/js/sidebar-component.js"></script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
     <script>
         // Funcionalidad de búsqueda en el glosario con normalización y resaltado
         document.addEventListener('DOMContentLoaded', function() {

@@ -1,0 +1,1023 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulos y Excepciones - Python</title>
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
+    <!-- Highlight.js para resaltado de sintaxis -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="back-link">← Volver a Python</a>
+        <span class="icon">🐍</span>
+        <h1>Módulo 8: Módulos y Excepciones</h1>
+        <p class="subtitle">Programación modular y manejo de errores</p>
+    </header>
+
+    <div class="content-with-toc">
+        <main class="main-content">
+            <section id="introduccion" style="background: linear-gradient(135deg, rgba(55, 118, 171, 0.1) 0%, rgba(55, 118, 171, 0.05) 100%); padding: 30px; border-radius: 12px; border-left: 4px solid #3776ab; margin-bottom: 40px;">
+                <h2 style="color: #3776ab; margin-bottom: 15px; font-size: 1.8em;">📦 Módulos y Excepciones</h2>
+                <p style="font-size: 1.1em; line-height: 1.8; color: #e0e0e0; margin-bottom: 20px;">
+                    La programación modular divide el código en unidades reutilizables.
+                    El manejo de excepciones permite controlar errores en tiempo de ejecución.
+                </p>
+            </section>
+
+            <section id="terminos" class="topic-section">
+                <div id="terminosContainer">
+                    <div class="termino" id="modulos" data-tags="modulo import py archivo">
+                        <span class="tag">📋 Módulos</span>
+                        <p class="significado">Archivos .py con código reutilizable</p>
+                        <div class="ejemplo"># Un módulo es un archivo .py con código Python
+# Ejemplo: matematicas.py
+# -------------------------
+def sumar(a, b):
+    return a + b
+
+def restar(a, b):
+    return a - b
+
+PI = 3.14159
+# -------------------------
+
+# Importar el módulo completo
+import matematicas
+print(matematicas.sumar(5, 3))  # 8
+print(matematicas.PI)           # 3.14159
+
+# Importar con alias
+import matematicas as mat
+print(mat.sumar(5, 3))
+
+# Importar funciones específicas
+from matematicas import sumar, PI
+print(sumar(5, 3))  # Sin prefijo
+
+# Importar todo (no recomendado)
+from matematicas import *
+
+# Módulo principal
+if __name__ == "__main__":
+    # Este código solo se ejecuta si el archivo
+    # se ejecuta directamente, no al importarlo
+    print("Ejecutando como programa principal")</div>
+                    <div class="vista-previa">
+                        <strong>👁️ Vista previa de módulos y excepciones:</strong>
+                        <div class="preview-content">
+                            <p><strong>Código Python:</strong></p>
+                            <pre style="white-space: pre-wrap; background: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 6px; font-family: 'Courier New', monospace;">import math
+from datetime import datetime
+
+# Usar módulos
+print(f"Raíz cuadrada de 16: {math.sqrt(16)}")
+print(f"Fecha actual: {datetime.now().strftime('%Y-%m-%d')}")
+
+# Manejo de excepciones
+try:
+    numero = int("abc")
+except ValueError:
+    print("Error: No se puede convertir a número")
+finally:
+    print("Proceso finalizado")</pre>
+                            <p><strong>📤 Salida en terminal:</strong></p>
+                            <div style="background: #1e1e1e; color: #4ec9b0; font-family: 'Courier New', monospace; padding: 12px; border-radius: 6px; border-left: 3px solid #3776ab;">
+                                <span style="color: #dcdcaa;">Raíz cuadrada de 16: 4.0</span><br>
+                                <span style="color: #dcdcaa;">Fecha actual: 2025-12-22</span><br>
+                                <span style="color: #ce9178;">Error: No se puede convertir a número</span><br>
+                                <span style="color: #dcdcaa;">Proceso finalizado</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+
+                    <div class="termino" id="paquetes" data-tags="paquete package init carpeta">
+                        <span class="tag">📋 Paquetes</span>
+                        <p class="significado">Carpetas con múltiples módulos</p>
+                        <div class="ejemplo"># Estructura de paquete:
+# mi_paquete/
+#     __init__.py       # Marca como paquete (puede estar vacío)
+#     operaciones.py
+#     utilidades.py
+
+# Importar desde paquete
+from mi_paquete import operaciones
+from mi_paquete.operaciones import sumar
+import mi_paquete.utilidades as utils
+
+# Paquetes anidados:
+# proyecto/
+#     __init__.py
+#     datos/
+#         __init__.py
+#         conexion.py
+#         consultas.py
+#     web/
+#         __init__.py
+#         rutas.py
+#         vistas.py
+
+# Importar desde paquetes anidados
+from proyecto.datos import conexion
+from proyecto.web.rutas import obtener_ruta
+
+# __init__.py puede inicializar el paquete
+# proyecto/__init__.py
+# -------------------------
+from .datos.conexion import conectar
+from .web.rutas import configurar_rutas
+# -------------------------
+
+# Ahora se puede hacer:
+from proyecto import conectar</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Estructura de Paquetes</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #3498db; margin-bottom: 15px;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>📁 Estructura del proyecto:</strong></div>
+                                <div style="margin-left: 20px; line-height: 1.8;">
+                                    <div style="color: #9b59b6;">📦 mi_paquete/</div>
+                                    <div style="margin-left: 30px; color: #3498db;">├── __init__.py</div>
+                                    <div style="margin-left: 30px; color: #3498db;">├── operaciones.py</div>
+                                    <div style="margin-left: 30px; color: #3498db;">└── utilidades.py</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #2ecc71; margin-bottom: 15px;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>💾 operaciones.py:</strong></div>
+                                <div style="background: #2c3e50; color: #ecf0f1; padding: 12px; border-radius: 4px; margin: 8px 0;">
+                                    <span style="color: #e74c3c;">def</span> <span style="color: #f39c12;">sumar</span>(a, b):<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e74c3c;">return</span> a + b
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #f39c12;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>📥 Formas de importar:</strong></div>
+                                <div style="background: #2c3e50; color: #ecf0f1; padding: 12px; border-radius: 4px; line-height: 1.8;">
+                                    <span style="color: #e74c3c;">from</span> mi_paquete <span style="color: #e74c3c;">import</span> operaciones<br>
+                                    <span style="color: #e74c3c;">from</span> mi_paquete.operaciones <span style="color: #e74c3c;">import</span> sumar<br>
+                                    <span style="color: #e74c3c;">import</span> mi_paquete.utilidades <span style="color: #e74c3c;">as</span> utils
+                                </div>
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="modulos-estandar" data-tags="modulos estandar libreria math random">
+                        <span class="tag">📋 Módulos Estándar</span>
+                        <p class="significado">Módulos incluidos con Python</p>
+                        <div class="ejemplo"># math - Funciones matemáticas
+import math
+math.sqrt(16)      # 4.0
+math.pow(2, 3)     # 8.0
+math.ceil(3.2)     # 4
+math.floor(3.8)    # 3
+math.pi            # 3.14159...
+
+# random - Números aleatorios
+import random
+random.random()         # Float entre 0 y 1
+random.randint(1, 10)   # Entero entre 1 y 10
+random.choice([1,2,3])  # Elemento aleatorio
+random.shuffle(lista)   # Mezcla la lista
+
+# datetime - Fechas y horas
+from datetime import datetime, date
+ahora = datetime.now()
+hoy = date.today()
+
+# os - Sistema operativo
+import os
+os.getcwd()       # Directorio actual
+os.listdir(".")   # Listar archivos
+
+# sys - Sistema Python
+import sys
+sys.argv          # Argumentos de línea de comandos
+sys.path          # Rutas de búsqueda de módulos
+
+# json - Manejo de JSON
+import json
+
+# re - Expresiones regulares
+import re</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Módulos Estándar en Acción</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #3498db; margin-bottom: 15px;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>🧮 math - Funciones matemáticas:</strong></div>
+                                <div style="background: #2c3e50; color: #ecf0f1; padding: 12px; border-radius: 4px; margin: 8px 0;">
+                                    <span style="color: #e74c3c;">import</span> math<br>
+                                    math.<span style="color: #f39c12;">sqrt</span>(<span style="color: #2ecc71;">16</span>) <span style="color: #95a5a6;"># → 4.0</span><br>
+                                    math.<span style="color: #f39c12;">pi</span> <span style="color: #95a5a6;"># → 3.14159...</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #2ecc71; margin-bottom: 15px;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>🎲 random - Números aleatorios:</strong></div>
+                                <div style="background: #2c3e50; color: #ecf0f1; padding: 12px; border-radius: 4px; margin: 8px 0;">
+                                    <span style="color: #e74c3c;">import</span> random<br>
+                                    random.<span style="color: #f39c12;">randint</span>(<span style="color: #2ecc71;">1</span>, <span style="color: #2ecc71;">10</span>) <span style="color: #95a5a6;"># → 7</span><br>
+                                    random.<span style="color: #f39c12;">choice</span>([<span style="color: #3498db;">'a'</span>, <span style="color: #3498db;">'b'</span>, <span style="color: #3498db;">'c'</span>]) <span style="color: #95a5a6;"># → 'b'</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #9b59b6;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>📅 datetime - Fechas y horas:</strong></div>
+                                <div style="background: #2c3e50; color: #ecf0f1; padding: 12px; border-radius: 4px; margin: 8px 0;">
+                                    <span style="color: #e74c3c;">from</span> datetime <span style="color: #e74c3c;">import</span> datetime<br>
+                                    ahora = datetime.<span style="color: #f39c12;">now</span>()<br>
+                                    <span style="color: #95a5a6;"># → 2025-12-22 14:30:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="pip" data-tags="pip install paquetes externos">
+                        <span class="tag">📋 pip - Instalar Paquetes</span>
+                        <p class="significado">Gestor de paquetes de Python</p>
+                        <div class="ejemplo"># pip es el gestor de paquetes de Python
+# Se usa en la terminal/consola
+
+# Instalar paquete
+pip install requests
+pip install numpy pandas
+
+# Instalar versión específica
+pip install requests==2.28.0
+pip install "requests>=2.25.0"
+
+# Desinstalar
+pip uninstall requests
+
+# Ver paquetes instalados
+pip list
+pip show requests
+
+# Guardar dependencias
+pip freeze > requirements.txt
+
+# Instalar desde requirements.txt
+pip install -r requirements.txt
+
+# Actualizar pip
+pip install --upgrade pip
+
+# Actualizar paquete
+pip install --upgrade requests
+
+# Contenido de requirements.txt:
+# requests==2.28.1
+# numpy>=1.21.0
+# pandas==1.4.3</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Flujo de trabajo con pip</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #3498db; margin-bottom: 15px;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>📥 Instalar paquetes:</strong></div>
+                                <div style="background: #1e1e1e; color: #4ec9b0; padding: 12px; border-radius: 4px; margin: 8px 0;">
+                                    $ pip install requests<br>
+                                    <span style="color: #95a5a6;">Collecting requests...</span><br>
+                                    <span style="color: #2ecc71;">Successfully installed requests-2.31.0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #2ecc71; margin-bottom: 15px;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>📋 Listar paquetes instalados:</strong></div>
+                                <div style="background: #1e1e1e; color: #4ec9b0; padding: 12px; border-radius: 4px; margin: 8px 0;">
+                                    $ pip list<br>
+                                    <span style="color: #dcdcaa;">requests</span> <span style="color: #95a5a6;">2.31.0</span><br>
+                                    <span style="color: #dcdcaa;">numpy</span> <span style="color: #95a5a6;">1.24.3</span><br>
+                                    <span style="color: #dcdcaa;">pandas</span> <span style="color: #95a5a6;">2.0.2</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #f39c12;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>💾 Guardar dependencias:</strong></div>
+                                <div style="background: #1e1e1e; color: #4ec9b0; padding: 12px; border-radius: 4px; margin: 8px 0;">
+                                    $ pip freeze > requirements.txt<br>
+                                    <span style="color: #2ecc71;">✓ Archivo requirements.txt creado</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="excepciones-intro" data-tags="excepciones errores runtime">
+                        <span class="tag">📋 Excepciones - Introducción</span>
+                        <p class="significado">Errores en tiempo de ejecución</p>
+                        <div class="ejemplo"># Las excepciones son errores que ocurren
+# durante la ejecución del programa
+
+# Tipos comunes de excepciones:
+
+# ZeroDivisionError - División por cero
+# resultado = 10 / 0
+
+# TypeError - Tipo incorrecto
+# "texto" + 5
+
+# ValueError - Valor incorrecto
+# int("abc")
+
+# IndexError - Índice fuera de rango
+# lista = [1, 2, 3]
+# lista[10]
+
+# KeyError - Clave no existe en diccionario
+# dicc = {"a": 1}
+# dicc["b"]
+
+# FileNotFoundError - Archivo no existe
+# open("no_existe.txt")
+
+# AttributeError - Atributo no existe
+# "texto".metodo_inexistente()
+
+# NameError - Variable no definida
+# print(variable_inexistente)
+
+# ImportError - Error al importar módulo
+# import modulo_inexistente</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Jerarquía de Excepciones</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #e74c3c; margin-bottom: 15px;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 12px;"><strong>⚠️ Tipos comunes de excepciones:</strong></div>
+                                <div style="margin-left: 20px; line-height: 2;">
+                                    <div style="margin-bottom: 8px;">
+                                        <span style="color: #e74c3c; font-weight: bold;">ZeroDivisionError</span><br>
+                                        <span style="color: #95a5a6; font-size: 0.9em; margin-left: 20px;">→ División por cero</span>
+                                    </div>
+                                    <div style="margin-bottom: 8px;">
+                                        <span style="color: #e74c3c; font-weight: bold;">ValueError</span><br>
+                                        <span style="color: #95a5a6; font-size: 0.9em; margin-left: 20px;">→ Valor incorrecto</span>
+                                    </div>
+                                    <div style="margin-bottom: 8px;">
+                                        <span style="color: #e74c3c; font-weight: bold;">TypeError</span><br>
+                                        <span style="color: #95a5a6; font-size: 0.9em; margin-left: 20px;">→ Tipo incorrecto</span>
+                                    </div>
+                                    <div style="margin-bottom: 8px;">
+                                        <span style="color: #e74c3c; font-weight: bold;">IndexError</span><br>
+                                        <span style="color: #95a5a6; font-size: 0.9em; margin-left: 20px;">→ Índice fuera de rango</span>
+                                    </div>
+                                    <div>
+                                        <span style="color: #e74c3c; font-weight: bold;">FileNotFoundError</span><br>
+                                        <span style="color: #95a5a6; font-size: 0.9em; margin-left: 20px;">→ Archivo no existe</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #f39c12;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>💥 Ejemplo de error:</strong></div>
+                                <div style="background: #2c3e50; color: #ecf0f1; padding: 12px; border-radius: 4px; margin: 8px 0;">
+                                    resultado = <span style="color: #2ecc71;">10</span> / <span style="color: #2ecc71;">0</span>
+                                </div>
+                                <div style="background: #1e1e1e; color: #e74c3c; padding: 12px; border-radius: 4px; margin-top: 8px; line-height: 1.6;">
+                                    Traceback (most recent call last):<br>
+                                    &nbsp;&nbsp;File "script.py", line 1<br>
+                                    <span style="color: #f39c12;">ZeroDivisionError</span>: division by zero
+                                </div>
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="try-except" data-tags="try except catch capturar">
+                        <span class="tag">📋 try-except</span>
+                        <p class="significado">Capturar y manejar excepciones</p>
+                        <div class="ejemplo"># Sintaxis básica
+try:
+    resultado = 10 / 0
+except ZeroDivisionError:
+    print("Error: No se puede dividir por cero")
+
+# Capturar cualquier excepción
+try:
+    resultado = int("abc")
+except:
+    print("Ocurrió un error")
+
+# Capturar excepción específica con mensaje
+try:
+    numero = int(input("Ingresa un número: "))
+except ValueError as e:
+    print(f"Error: {e}")
+
+# Múltiples excepciones
+try:
+    lista = [1, 2, 3]
+    print(lista[10])
+except IndexError:
+    print("Índice fuera de rango")
+except TypeError:
+    print("Error de tipo")
+
+# Múltiples excepciones en una línea
+try:
+    resultado = int("abc")
+except (ValueError, TypeError) as e:
+    print(f"Error de conversión: {e}")
+
+# Obtener información del error
+import traceback
+try:
+    resultado = 10 / 0
+except Exception as e:
+    print(f"Error: {type(e).__name__}: {e}")
+    traceback.print_exc()  # Muestra traceback completo</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Flujo de try-except</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #3498db; margin-bottom: 15px;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>📝 Código con try-except:</strong></div>
+                                <div style="background: #2c3e50; color: #ecf0f1; padding: 12px; border-radius: 4px; line-height: 1.8;">
+                                    <span style="color: #e74c3c;">try</span>:<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;numero = <span style="color: #f39c12;">int</span>(<span style="color: #3498db;">"abc"</span>)<br>
+                                    <span style="color: #e74c3c;">except</span> ValueError <span style="color: #e74c3c;">as</span> e:<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f39c12;">print</span>(<span style="color: #3498db;">f"Error: {e}"</span>)
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #2ecc71; margin-bottom: 15px;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>🔄 Flujo de ejecución:</strong></div>
+                                <div style="line-height: 2.2;">
+                                    <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <div style="background: #3498db; color: white; padding: 8px 15px; border-radius: 4px; margin-right: 10px;">1️⃣ try</div>
+                                        <span style="color: #2c3e50;">→ Se intenta ejecutar el código</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <div style="background: #e74c3c; color: white; padding: 8px 15px; border-radius: 4px; margin-right: 10px;">2️⃣ error</div>
+                                        <span style="color: #2c3e50;">→ Ocurre ValueError</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="background: #2ecc71; color: white; padding: 8px 15px; border-radius: 4px; margin-right: 10px;">3️⃣ except</div>
+                                        <span style="color: #2c3e50;">→ Se captura y maneja el error</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #f39c12;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>📤 Salida:</strong></div>
+                                <div style="background: #1e1e1e; color: #e74c3c; padding: 12px; border-radius: 4px;">
+                                    Error: invalid literal for int() with base 10: 'abc'
+                                </div>
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="try-else-finally" data-tags="try else finally siempre">
+                        <span class="tag">📋 try-else-finally</span>
+                        <p class="significado">Bloques adicionales para excepciones</p>
+                        <div class="ejemplo"># else: se ejecuta si NO hubo excepción
+# finally: se ejecuta SIEMPRE
+
+try:
+    numero = int(input("Número: "))
+except ValueError:
+    print("No es un número válido")
+else:
+    # Se ejecuta solo si no hubo error
+    print(f"El doble es: {numero * 2}")
+finally:
+    # Se ejecuta siempre (haya o no error)
+    print("Fin del programa")
+
+# Ejemplo con archivos
+def leer_archivo(ruta):
+    archivo = None
+    try:
+        archivo = open(ruta, "r")
+        contenido = archivo.read()
+        return contenido
+    except FileNotFoundError:
+        print(f"Archivo {ruta} no encontrado")
+        return None
+    except PermissionError:
+        print("Sin permisos para leer el archivo")
+        return None
+    finally:
+        # Siempre cerrar el archivo si está abierto
+        if archivo:
+            archivo.close()
+            print("Archivo cerrado")
+
+# Mejor con 'with' (cierra automáticamente)
+def leer_archivo_seguro(ruta):
+    try:
+        with open(ruta, "r") as f:
+            return f.read()
+    except FileNotFoundError:
+        return None</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: try-else-finally completo</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #3498db; margin-bottom: 15px;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>📝 Estructura completa:</strong></div>
+                                <div style="background: #2c3e50; color: #ecf0f1; padding: 12px; border-radius: 4px; line-height: 1.8;">
+                                    <span style="color: #e74c3c;">try</span>:<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;numero = <span style="color: #f39c12;">int</span>(<span style="color: #3498db;">"10"</span>)<br>
+                                    <span style="color: #e74c3c;">except</span> ValueError:<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f39c12;">print</span>(<span style="color: #3498db;">"Error"</span>)<br>
+                                    <span style="color: #e74c3c;">else</span>:<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f39c12;">print</span>(<span style="color: #3498db;">f"Doble: {numero * 2}"</span>)<br>
+                                    <span style="color: #e74c3c;">finally</span>:<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f39c12;">print</span>(<span style="color: #3498db;">"Fin"</span>)
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #2ecc71; margin-bottom: 15px;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>🔄 Orden de ejecución:</strong></div>
+                                <div style="line-height: 2.2;">
+                                    <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <div style="background: #3498db; color: white; padding: 8px 15px; border-radius: 4px; min-width: 90px; text-align: center;">1️⃣ try</div>
+                                        <span style="color: #2c3e50; margin-left: 15px;">→ Se ejecuta primero</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <div style="background: #e74c3c; color: white; padding: 8px 15px; border-radius: 4px; min-width: 90px; text-align: center;">2️⃣ except</div>
+                                        <span style="color: #2c3e50; margin-left: 15px;">→ Solo si hay error</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <div style="background: #2ecc71; color: white; padding: 8px 15px; border-radius: 4px; min-width: 90px; text-align: center;">3️⃣ else</div>
+                                        <span style="color: #2c3e50; margin-left: 15px;">→ Solo si NO hay error</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="background: #9b59b6; color: white; padding: 8px 15px; border-radius: 4px; min-width: 90px; text-align: center;">4️⃣ finally</div>
+                                        <span style="color: #2c3e50; margin-left: 15px;">→ Se ejecuta SIEMPRE</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #f39c12;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>📤 Salida (sin error):</strong></div>
+                                <div style="background: #1e1e1e; color: #2ecc71; padding: 12px; border-radius: 4px; line-height: 1.6;">
+                                    Doble: 20<br>
+                                    Fin
+                                </div>
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="raise" data-tags="raise lanzar excepcion">
+                        <span class="tag">📋 raise - Lanzar Excepciones</span>
+                        <p class="significado">Generar excepciones manualmente</p>
+                        <div class="ejemplo"># raise lanza una excepción
+def dividir(a, b):
+    if b == 0:
+        raise ValueError("El divisor no puede ser cero")
+    return a / b
+
+try:
+    resultado = dividir(10, 0)
+except ValueError as e:
+    print(f"Error: {e}")
+
+# Validar parámetros
+def establecer_edad(edad):
+    if not isinstance(edad, int):
+        raise TypeError("La edad debe ser un entero")
+    if edad < 0:
+        raise ValueError("La edad no puede ser negativa")
+    if edad > 150:
+        raise ValueError("Edad no realista")
+    return edad
+
+# Re-lanzar excepción (después de hacer algo)
+def procesar():
+    try:
+        resultado = operacion_riesgosa()
+    except Exception as e:
+        print(f"Log: Error en operacion: {e}")
+        raise  # Re-lanza la misma excepción
+
+# Lanzar con información adicional
+try:
+    # código
+    pass
+except Exception as e:
+    raise RuntimeError("Error en procesamiento") from e</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Lanzar excepciones con raise</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #3498db; margin-bottom: 15px;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>📝 Validación con raise:</strong></div>
+                                <div style="background: #2c3e50; color: #ecf0f1; padding: 12px; border-radius: 4px; line-height: 1.8;">
+                                    <span style="color: #e74c3c;">def</span> <span style="color: #f39c12;">dividir</span>(a, b):<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e74c3c;">if</span> b == <span style="color: #2ecc71;">0</span>:<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e74c3c;">raise</span> ValueError(<span style="color: #3498db;">"El divisor no puede ser cero"</span>)<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e74c3c;">return</span> a / b
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #e74c3c; margin-bottom: 15px;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>🔄 Flujo de ejecución:</strong></div>
+                                <div style="line-height: 2.2;">
+                                    <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <div style="background: #3498db; color: white; padding: 8px 15px; border-radius: 4px; min-width: 120px; text-align: center;">1️⃣ Llamada</div>
+                                        <span style="color: #2c3e50; margin-left: 15px;">dividir(10, 0)</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <div style="background: #f39c12; color: white; padding: 8px 15px; border-radius: 4px; min-width: 120px; text-align: center;">2️⃣ Validación</div>
+                                        <span style="color: #2c3e50; margin-left: 15px;">b == 0 es True</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <div style="background: #e74c3c; color: white; padding: 8px 15px; border-radius: 4px; min-width: 120px; text-align: center;">3️⃣ raise</div>
+                                        <span style="color: #2c3e50; margin-left: 15px;">Lanza ValueError</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="background: #9b59b6; color: white; padding: 8px 15px; border-radius: 4px; min-width: 120px; text-align: center;">4️⃣ except</div>
+                                        <span style="color: #2c3e50; margin-left: 15px;">Se captura en el except</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #2ecc71;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>💡 Uso en código:</strong></div>
+                                <div style="background: #2c3e50; color: #ecf0f1; padding: 12px; border-radius: 4px; line-height: 1.8;">
+                                    <span style="color: #e74c3c;">try</span>:<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;resultado = <span style="color: #f39c12;">dividir</span>(<span style="color: #2ecc71;">10</span>, <span style="color: #2ecc71;">0</span>)<br>
+                                    <span style="color: #e74c3c;">except</span> ValueError <span style="color: #e74c3c;">as</span> e:<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f39c12;">print</span>(<span style="color: #3498db;">f"Error: {e}"</span>)<br>
+                                    <span style="color: #95a5a6;"># Salida: Error: El divisor no puede ser cero</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="excepciones-personalizadas" data-tags="excepcion personalizada custom class">
+                        <span class="tag">📋 Excepciones Personalizadas</span>
+                        <p class="significado">Crear tus propias excepciones</p>
+                        <div class="ejemplo"># Crear excepción personalizada
+class MiError(Exception):
+    """Excepción base para mi aplicación."""
+    pass
+
+class SaldoInsuficiente(MiError):
+    """Se lanza cuando no hay saldo suficiente."""
+    def __init__(self, saldo, monto):
+        self.saldo = saldo
+        self.monto = monto
+        mensaje = f"Saldo {saldo} insuficiente para retirar {monto}"
+        super().__init__(mensaje)
+
+class CuentaNoEncontrada(MiError):
+    """Se lanza cuando la cuenta no existe."""
+    pass
+
+# Usar excepciones personalizadas
+class CuentaBancaria:
+    def __init__(self, saldo=0):
+        self.saldo = saldo
+
+    def retirar(self, monto):
+        if monto > self.saldo:
+            raise SaldoInsuficiente(self.saldo, monto)
+        self.saldo -= monto
+        return monto
+
+# Capturar
+cuenta = CuentaBancaria(100)
+try:
+    cuenta.retirar(150)
+except SaldoInsuficiente as e:
+    print(f"Error: {e}")
+    print(f"Saldo actual: {e.saldo}")
+    print(f"Monto solicitado: {e.monto}")</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Excepciones Personalizadas</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #9b59b6; margin-bottom: 15px;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>📦 Jerarquía de excepciones custom:</strong></div>
+                                <div style="margin-left: 20px; line-height: 2;">
+                                    <div style="color: #3498db; font-weight: bold;">Exception</div>
+                                    <div style="margin-left: 30px;">
+                                        <span style="color: #9b59b6;">└── MiError</span><br>
+                                        <span style="color: #95a5a6; margin-left: 50px;">├── SaldoInsuficiente</span><br>
+                                        <span style="color: #95a5a6; margin-left: 50px;">└── CuentaNoEncontrada</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #3498db; margin-bottom: 15px;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>📝 Definir excepción:</strong></div>
+                                <div style="background: #2c3e50; color: #ecf0f1; padding: 12px; border-radius: 4px; line-height: 1.8;">
+                                    <span style="color: #e74c3c;">class</span> <span style="color: #f39c12;">SaldoInsuficiente</span>(Exception):<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e74c3c;">def</span> <span style="color: #f39c12;">__init__</span>(self, saldo, monto):<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.saldo = saldo<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self.monto = monto<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mensaje = <span style="color: #3498db;">f"Saldo {saldo} insuficiente"</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #f39c12;">super</span>().__init__(mensaje)
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #e74c3c; margin-bottom: 15px;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>🚀 Usar excepción:</strong></div>
+                                <div style="background: #2c3e50; color: #ecf0f1; padding: 12px; border-radius: 4px; line-height: 1.8;">
+                                    <span style="color: #e74c3c;">if</span> monto > self.saldo:<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e74c3c;">raise</span> <span style="color: #f39c12;">SaldoInsuficiente</span>(self.saldo, monto)
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #2ecc71;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>📤 Salida:</strong></div>
+                                <div style="background: #1e1e1e; color: #e74c3c; padding: 12px; border-radius: 4px; line-height: 1.6;">
+                                    Error: Saldo 100 insuficiente para retirar 150<br>
+                                    <span style="color: #95a5a6;">Saldo actual: 100</span><br>
+                                    <span style="color: #95a5a6;">Monto solicitado: 150</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="assert" data-tags="assert afirmacion depuracion">
+                        <span class="tag">📋 assert - Afirmaciones</span>
+                        <p class="significado">Verificar condiciones en desarrollo</p>
+                        <div class="ejemplo"># assert lanza AssertionError si la condición es False
+# Se usa para depuración y testing
+
+def calcular_promedio(notas):
+    assert len(notas) > 0, "La lista no puede estar vacía"
+    assert all(0 <= n <= 20 for n in notas), "Notas deben estar entre 0 y 20"
+    return sum(notas) / len(notas)
+
+# Si falla la condición
+try:
+    promedio = calcular_promedio([])  # Lista vacía
+except AssertionError as e:
+    print(f"Error: {e}")  # "La lista no puede estar vacía"
+
+# Uso en testing
+def test_suma():
+    assert sumar(2, 3) == 5
+    assert sumar(-1, 1) == 0
+    assert sumar(0, 0) == 0
+    print("Todos los tests pasaron")
+
+# NOTA: assert puede desactivarse con -O (optimize)
+# python -O script.py  # Ignora asserts
+# No usar para validación de entrada del usuario</div>
+                        <div class="nota">
+                            <strong>⚠️ Importante:</strong> assert es para depuración, no para validar entrada del usuario.
+                        </div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: assert en acción</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #3498db; margin-bottom: 15px;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>📝 Uso de assert:</strong></div>
+                                <div style="background: #2c3e50; color: #ecf0f1; padding: 12px; border-radius: 4px; line-height: 1.8;">
+                                    <span style="color: #e74c3c;">def</span> <span style="color: #f39c12;">calcular_promedio</span>(notas):<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e74c3c;">assert</span> <span style="color: #f39c12;">len</span>(notas) > <span style="color: #2ecc71;">0</span>, <span style="color: #3498db;">"Lista vacía"</span><br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e74c3c;">assert</span> <span style="color: #f39c12;">all</span>(<span style="color: #2ecc71;">0</span> <= n <= <span style="color: #2ecc71;">20</span> <span style="color: #e74c3c;">for</span> n <span style="color: #e74c3c;">in</span> notas)<br>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #e74c3c;">return</span> <span style="color: #f39c12;">sum</span>(notas) / <span style="color: #f39c12;">len</span>(notas)
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #2ecc71; margin-bottom: 15px;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>✅ Caso exitoso:</strong></div>
+                                <div style="background: #2c3e50; color: #ecf0f1; padding: 12px; border-radius: 4px; margin-bottom: 8px;">
+                                    promedio = <span style="color: #f39c12;">calcular_promedio</span>([<span style="color: #2ecc71;">15</span>, <span style="color: #2ecc71;">18</span>, <span style="color: #2ecc71;">12</span>])
+                                </div>
+                                <div style="background: #1e1e1e; color: #2ecc71; padding: 12px; border-radius: 4px;">
+                                    → 15.0 (ejecución exitosa)
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #e74c3c;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>❌ Caso fallido:</strong></div>
+                                <div style="background: #2c3e50; color: #ecf0f1; padding: 12px; border-radius: 4px; margin-bottom: 8px;">
+                                    promedio = <span style="color: #f39c12;">calcular_promedio</span>([])
+                                </div>
+                                <div style="background: #1e1e1e; color: #e74c3c; padding: 12px; border-radius: 4px; line-height: 1.6;">
+                                    AssertionError: Lista vacía<br>
+                                    <span style="color: #95a5a6;">→ La condición del assert falló</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div class="termino" id="logging" data-tags="logging log registro errores">
+                        <span class="tag">📋 Logging</span>
+                        <p class="significado">Registrar eventos y errores</p>
+                        <div class="ejemplo">import logging
+
+# Configurar logging básico
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
+# Niveles de log (de menor a mayor severidad)
+logging.debug("Mensaje de depuración")    # Detalles
+logging.info("Información general")       # Operación normal
+logging.warning("Advertencia")            # Algo inesperado
+logging.error("Error")                    # Error grave
+logging.critical("Error crítico")         # Fallo total
+
+# Configurar para escribir en archivo
+logging.basicConfig(
+    filename='app.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+
+# Uso con excepciones
+try:
+    resultado = 10 / 0
+except ZeroDivisionError:
+    logging.error("División por cero", exc_info=True)
+
+# Logger personalizado
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+
+# Handler para consola
+console_handler = logging.StreamHandler()
+console_handler.setLevel(logging.INFO)
+
+# Formato
+formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
+console_handler.setFormatter(formatter)
+
+logger.addHandler(console_handler)
+logger.info("Aplicación iniciada")</div>
+                    <div class="vista-previa" style="margin-top: 30px;"><strong>👁️ Vista previa: Sistema de Logging</strong><div class="preview-content"><div style="background: #ecf0f1; padding: 25px; border-radius: 8px;">
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #3498db; margin-bottom: 15px;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>📝 Niveles de logging:</strong></div>
+                                <div style="line-height: 2.2;">
+                                    <div style="display: flex; align-items: center; margin-bottom: 6px;">
+                                        <div style="background: #95a5a6; color: white; padding: 6px 12px; border-radius: 4px; min-width: 100px; text-align: center; font-size: 0.9em;">DEBUG</div>
+                                        <span style="color: #2c3e50; margin-left: 15px; font-size: 0.9em;">→ Detalles de depuración</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; margin-bottom: 6px;">
+                                        <div style="background: #3498db; color: white; padding: 6px 12px; border-radius: 4px; min-width: 100px; text-align: center; font-size: 0.9em;">INFO</div>
+                                        <span style="color: #2c3e50; margin-left: 15px; font-size: 0.9em;">→ Información general</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; margin-bottom: 6px;">
+                                        <div style="background: #f39c12; color: white; padding: 6px 12px; border-radius: 4px; min-width: 100px; text-align: center; font-size: 0.9em;">WARNING</div>
+                                        <span style="color: #2c3e50; margin-left: 15px; font-size: 0.9em;">→ Advertencias</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; margin-bottom: 6px;">
+                                        <div style="background: #e74c3c; color: white; padding: 6px 12px; border-radius: 4px; min-width: 100px; text-align: center; font-size: 0.9em;">ERROR</div>
+                                        <span style="color: #2c3e50; margin-left: 15px; font-size: 0.9em;">→ Errores graves</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <div style="background: #c0392b; color: white; padding: 6px 12px; border-radius: 4px; min-width: 100px; text-align: center; font-size: 0.9em;">CRITICAL</div>
+                                        <span style="color: #2c3e50; margin-left: 15px; font-size: 0.9em;">→ Fallo crítico</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #2ecc71; margin-bottom: 15px;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>💻 Código:</strong></div>
+                                <div style="background: #2c3e50; color: #ecf0f1; padding: 12px; border-radius: 4px; line-height: 1.8;">
+                                    <span style="color: #e74c3c;">import</span> logging<br><br>
+                                    logging.<span style="color: #f39c12;">basicConfig</span>(level=logging.DEBUG)<br><br>
+                                    logging.<span style="color: #f39c12;">info</span>(<span style="color: #3498db;">"Servidor iniciado"</span>)<br>
+                                    logging.<span style="color: #f39c12;">warning</span>(<span style="color: #3498db;">"Conexión lenta"</span>)<br>
+                                    logging.<span style="color: #f39c12;">error</span>(<span style="color: #3498db;">"Error en la BD"</span>)
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: white; padding: 20px; border-radius: 6px; border-left: 4px solid #f39c12;">
+                            <div style="font-family: 'Courier New', monospace; font-size: 0.95em;">
+                                <div style="color: #2c3e50; margin-bottom: 8px;"><strong>📤 Salida en consola:</strong></div>
+                                <div style="background: #1e1e1e; padding: 12px; border-radius: 4px; line-height: 1.6; font-size: 0.9em;">
+                                    <span style="color: #3498db;">INFO:root:Servidor iniciado</span><br>
+                                    <span style="color: #f39c12;">WARNING:root:Conexión lenta</span><br>
+                                    <span style="color: #e74c3c;">ERROR:root:Error en la BD</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div></div></div>
+                    </div>
+
+                    <div id="noResults" class="no-results" style="display: none;">
+                        No se encontraron términos que coincidan con tu búsqueda.
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <aside class="toc-sidebar">
+            <div class="toc-header">🐍 Módulos y Excepciones</div>
+            <div class="toc-search-container">
+                <input type="text" id="searchInput" class="toc-search-box" placeholder="🔍 Buscar término...">
+            </div>
+            <nav>
+                <ul class="toc-list">
+                    <li class="toc-item"><a href="#introduccion" class="toc-link">📋 Introducción</a></li>
+                    <li class="toc-item"><a href="#modulos" class="toc-link">Módulos</a></li>
+                    <li class="toc-item"><a href="#paquetes" class="toc-link">Paquetes</a></li>
+                    <li class="toc-item"><a href="#modulos-estandar" class="toc-link">Módulos Estándar</a></li>
+                    <li class="toc-item"><a href="#pip" class="toc-link">pip</a></li>
+                    <li class="toc-item"><a href="#excepciones-intro" class="toc-link">Excepciones Intro</a></li>
+                    <li class="toc-item"><a href="#try-except" class="toc-link">try-except</a></li>
+                    <li class="toc-item"><a href="#try-else-finally" class="toc-link">else y finally</a></li>
+                    <li class="toc-item"><a href="#raise" class="toc-link">raise</a></li>
+                    <li class="toc-item"><a href="#excepciones-personalizadas" class="toc-link">Excepciones Custom</a></li>
+                    <li class="toc-item"><a href="#assert" class="toc-link">assert</a></li>
+                    <li class="toc-item"><a href="#logging" class="toc-link">Logging</a></li>
+                </ul>
+            </nav>
+            <div class="toc-progress">
+                <div class="toc-progress-bar" id="tocProgressBar"></div>
+            </div>
+        </aside>
+    </div>
+
+    <footer>
+        <p>Python - Sistema de Aprendizaje | <a href="../index.html">Volver a Python</a></p>
+    </footer>
+
+    <script src="/assets/js/sidebar-component.js"></script>
+    <script src="/assets/js/study-highlight.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchInput');
+            const terminosContainer = document.getElementById('terminosContainer');
+            const noResults = document.getElementById('noResults');
+            const terminos = terminosContainer.querySelectorAll('.termino');
+            function normalizeText(text) {
+                return text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+            }
+            searchInput.addEventListener('input', function() {
+                const query = normalizeText(this.value.trim());
+                let found = 0;
+                terminos.forEach(termino => {
+                    const tags = termino.getAttribute('data-tags') || '';
+                    const title = termino.querySelector('.tag')?.textContent || '';
+                    const desc = termino.querySelector('.descripcion')?.textContent || '';
+                    const ejemplo = termino.querySelector('.ejemplo')?.textContent || '';
+                    const searchText = normalizeText(tags + ' ' + title + ' ' + desc + ' ' + ejemplo);
+                    if (query === '' || searchText.includes(query)) {
+                        termino.style.display = 'block';
+                        found++;
+                    } else {
+                        termino.style.display = 'none';
+                    }
+                });
+                noResults.style.display = found === 0 && query !== '' ? 'block' : 'none';
+            });
+            const tocLinks = document.querySelectorAll('.toc-link');
+            const sections = document.querySelectorAll('.termino, #introduccion');
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    if (scrollY >= sectionTop - 100) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                document.getElementById('tocProgressBar').style.width = scrolled + '%';
+            });
+        });
+    </script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
+    <!-- Highlight.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // Aplicar highlight.js solo a elementos .ejemplo que no tienen <br> (no son HTML)
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.ejemplo').forEach(function(block) {
+                // Solo resaltar si no tiene elementos <br> (no es HTML con sintaxis manual)
+                if (block.querySelectorAll('br').length === 0) {
+                    block.classList.add('language-python');
+                    hljs.highlightElement(block);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

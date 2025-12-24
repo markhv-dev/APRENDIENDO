@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listas - Sistema de Aprendizaje</title>
-    <link rel="stylesheet" href="/assets/css/sidebar.css">
-    <link rel="stylesheet" href="/assets/css/glosario.css">
-    <link rel="stylesheet" href="/assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/sidebar.css">
+    <link rel="stylesheet" href="../../../assets/css/glosario.css">
+    <link rel="stylesheet" href="../../../assets/css/toc.css">
+    <link rel="stylesheet" href="../../../assets/css/keyboard-navigation.css">
 </head>
 <body>
     <header>
@@ -40,203 +41,385 @@
             </section>
 
             <section id="terminos" class="topic-section">
-                <h2>📚 Términos del Módulo</h2>
-                <p>Elementos HTML para crear diferentes tipos de listas:</p>
-
                 <div id="terminosContainer">
                     <div class="termino" id="ul" data-tags="ul lista desordenada viñetas bullets unordered">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                            <span class="badge badge-frecuente">Uso diario</span>
+                        </div>
                         <span class="tag">&lt;ul&gt;</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Lista no ordenada (Unordered List)</p>
                         <p class="descripcion">
-                            Crea una lista con viñetas (bullets). Se usa cuando el orden de los elementos no es relevante.
-                            Los elementos no tienen un orden específico o secuencial. Útil para listas donde el orden no importa:
-                            características, ingredientes, opciones de menú, colecciones de elementos relacionados.
+                            Crea una lista con viñetas (bullets). Se usa cuando el orden NO es relevante.
                         </p>
+
                         <div class="ejemplo">
-                            <strong>Sintaxis básica:</strong><br>
-                            &lt;ul&gt;<br>
-                            &nbsp;&nbsp;&lt;li&gt;HTML&lt;/li&gt;<br>
-                            &nbsp;&nbsp;&lt;li&gt;CSS&lt;/li&gt;<br>
-                            &nbsp;&nbsp;&lt;li&gt;JavaScript&lt;/li&gt;<br>
-                            &lt;/ul&gt;
+<span class="hl-bracket">&lt;</span><span class="hl-tag">ul</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><span class="hl-text">HTML</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><span class="hl-text">CSS</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><span class="hl-text">JavaScript</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">ul</span><span class="hl-bracket">&gt;</span>
                         </div>
-                        <div class="nota">
-                            <strong>Características:</strong><br>
-                            • &lt;ul&gt; es el elemento contenedor de la lista<br>
-                            • &lt;li&gt; representa cada elemento individual de la lista<br>
-                            • Se renderiza con viñetas por defecto<br>
-                            • Claramente identificadas como grupos de elementos relacionados<br>
-                            • El estilo de viñeta puede modificarse con CSS (disc, circle, square, none)
+
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <ul>
+                                    <li>HTML</li>
+                                    <li>CSS</li>
+                                    <li>JavaScript</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="nota nota-info">
+                            <strong>Características:</strong>
+                            <ul class="nota-lista">
+                                <li class="importante"><span class="key-term">&lt;ul&gt;</span> = Contenedor</li>
+                                <li class="importante"><span class="key-term">&lt;li&gt;</span> = Cada elemento</li>
+                                <li class="hacer">Se muestra con viñetas (•)</li>
+                                <li class="info">Viñetas modificables con CSS</li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="termino" id="ol" data-tags="ol lista ordenada numerada numbers ordered">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;ol&gt;</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Lista ordenada (Ordered List)</p>
                         <p class="descripcion">
-                            Crea una lista numerada. Se usa cuando el orden es importante o jerárquico. Los elementos se numeran
-                            automáticamente (1, 2, 3...) o pueden usar letras, números romanos, etc. Útil para pasos de instrucciones,
-                            rankings, secuencias temporales, procedimientos, o cualquier lista donde el orden importa.
+                            Crea una lista numerada. Se usa cuando el orden SÍ importa (pasos, rankings, secuencias).
                         </p>
+
                         <div class="ejemplo">
-                            <strong>Sintaxis básica:</strong><br>
-                            &lt;ol&gt;<br>
-                            &nbsp;&nbsp;&lt;li&gt;Entender el problema&lt;/li&gt;<br>
-                            &nbsp;&nbsp;&lt;li&gt;Plantear la lógica&lt;/li&gt;<br>
-                            &nbsp;&nbsp;&lt;li&gt;Escribir el programa&lt;/li&gt;<br>
-                            &lt;/ol&gt;<br><br>
-                            <strong>Con atributos:</strong><br>
-                            &lt;ol type="A"&gt;<br>
-                            &nbsp;&nbsp;&lt;li&gt;Primera opción&lt;/li&gt;<br>
-                            &nbsp;&nbsp;&lt;li&gt;Segunda opción&lt;/li&gt;<br>
-                            &lt;/ol&gt;<br><br>
-                            &lt;ol start="5"&gt;<br>
-                            &nbsp;&nbsp;&lt;li&gt;Inicia en 5&lt;/li&gt;<br>
-                            &nbsp;&nbsp;&lt;li&gt;Este es el 6&lt;/li&gt;<br>
-                            &lt;/ol&gt;
+<span class="hl-bracket">&lt;</span><span class="hl-tag">ol</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><span class="hl-text">Entender el problema</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><span class="hl-text">Plantear la lógica</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><span class="hl-text">Escribir el código</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">ol</span><span class="hl-bracket">&gt;</span>
                         </div>
-                        <div class="nota">
-                            <strong>Atributos útiles:</strong><br>
-                            • <code>type</code> - Define el tipo de numeración:<br>
-                            &nbsp;&nbsp;· "1" = números (por defecto): 1, 2, 3...<br>
-                            &nbsp;&nbsp;· "A" = letras mayúsculas: A, B, C...<br>
-                            &nbsp;&nbsp;· "a" = letras minúsculas: a, b, c...<br>
-                            &nbsp;&nbsp;· "I" = números romanos mayúsculas: I, II, III...<br>
-                            &nbsp;&nbsp;· "i" = números romanos minúsculas: i, ii, iii...<br>
-                            • <code>start</code> - Define el número inicial (ej: start="5")<br>
-                            • <code>reversed</code> - Invierte el orden de la numeración (de mayor a menor)
+
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <ol>
+                                    <li>Entender el problema</li>
+                                    <li>Plantear la lógica</li>
+                                    <li>Escribir el código</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <!-- Comparación de tipos -->
+                        <div class="comparacion-grid">
+                            <div class="comparacion-card opcion-a">
+                                <h4>Atributo type</h4>
+                                <div class="ejemplo" style="font-size: 0.9em;">
+<span class="hl-attr">type</span>=<span class="hl-value">"1"</span> → 1, 2, 3<br>
+<span class="hl-attr">type</span>=<span class="hl-value">"A"</span> → A, B, C<br>
+<span class="hl-attr">type</span>=<span class="hl-value">"a"</span> → a, b, c<br>
+<span class="hl-attr">type</span>=<span class="hl-value">"I"</span> → I, II, III<br>
+<span class="hl-attr">type</span>=<span class="hl-value">"i"</span> → i, ii, iii
+                                </div>
+                            </div>
+                            <div class="comparacion-card opcion-b">
+                                <h4>Otros atributos</h4>
+                                <div class="ejemplo" style="font-size: 0.9em;">
+<span class="hl-attr">start</span>=<span class="hl-value">"5"</span><br>
+<span class="hl-comment">← Inicia en 5</span><br><br>
+<span class="hl-attr">reversed</span><br>
+<span class="hl-comment">← Cuenta regresiva</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa de atributo type:</strong>
+                            <div class="preview-content">
+                                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                                    <div>
+                                        <p><strong>type="1"</strong> (por defecto):</p>
+                                        <ol type="1">
+                                            <li>Primero</li>
+                                            <li>Segundo</li>
+                                            <li>Tercero</li>
+                                        </ol>
+                                    </div>
+                                    <div>
+                                        <p><strong>type="A"</strong>:</p>
+                                        <ol type="A">
+                                            <li>Primero</li>
+                                            <li>Segundo</li>
+                                            <li>Tercero</li>
+                                        </ol>
+                                    </div>
+                                    <div>
+                                        <p><strong>type="a"</strong>:</p>
+                                        <ol type="a">
+                                            <li>Primero</li>
+                                            <li>Segundo</li>
+                                            <li>Tercero</li>
+                                        </ol>
+                                    </div>
+                                    <div>
+                                        <p><strong>type="I"</strong>:</p>
+                                        <ol type="I">
+                                            <li>Primero</li>
+                                            <li>Segundo</li>
+                                            <li>Tercero</li>
+                                        </ol>
+                                    </div>
+                                    <div>
+                                        <p><strong>start="5"</strong>:</p>
+                                        <ol start="5">
+                                            <li>Quinto</li>
+                                            <li>Sexto</li>
+                                            <li>Séptimo</li>
+                                        </ol>
+                                    </div>
+                                    <div>
+                                        <p><strong>reversed</strong>:</p>
+                                        <ol reversed>
+                                            <li>Primero</li>
+                                            <li>Segundo</li>
+                                            <li>Tercero</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="nota nota-warning">
+                            <strong>Atributos importantes:</strong>
+                            <ul class="nota-lista">
+                                <li class="importante"><span class="key-term">type</span> - Tipo de numeración</li>
+                                <li class="hacer"><span class="key-term">start</span> - Número inicial</li>
+                                <li class="hacer"><span class="key-term">reversed</span> - Orden inverso</li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="termino" id="li" data-tags="li elemento lista item list">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Básico</span>
+                        </div>
                         <span class="tag">&lt;li&gt;</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Elemento de lista (List Item)</p>
                         <p class="descripcion">
-                            Define un elemento individual dentro de una lista. Solo puede ser hijo directo de &lt;ul&gt;, &lt;ol&gt; o &lt;menu&gt;.
-                            Puede contener cualquier tipo de contenido: texto, imágenes, enlaces, e incluso otras listas para crear jerarquías anidadas.
+                            Define cada elemento individual de una lista. Solo puede estar dentro de &lt;ul&gt; o &lt;ol&gt;.
                         </p>
+
                         <div class="ejemplo">
-                            &lt;ul&gt;<br>
-                            &nbsp;&nbsp;&lt;li&gt;Este es un elemento de lista&lt;/li&gt;<br>
-                            &nbsp;&nbsp;&lt;li&gt;Otro elemento con &lt;a href="#"&gt;enlace&lt;/a&gt;&lt;/li&gt;<br>
-                            &nbsp;&nbsp;&lt;li&gt;Elemento con &lt;strong&gt;texto resaltado&lt;/strong&gt;&lt;/li&gt;<br>
-                            &lt;/ul&gt;
+<span class="hl-bracket">&lt;</span><span class="hl-tag">ul</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><span class="hl-text">Texto simple</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><span class="hl-text">Con </span><span class="hl-bracket">&lt;</span><span class="hl-tag">a</span> <span class="hl-attr">href</span><span class="hl-bracket">=</span><span class="hl-value">"#"</span><span class="hl-bracket">&gt;</span><span class="hl-text">enlace</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">a</span><span class="hl-bracket">&gt;</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><span class="hl-text">Con </span><span class="hl-bracket">&lt;</span><span class="hl-tag">strong</span><span class="hl-bracket">&gt;</span><span class="hl-text">negrita</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">strong</span><span class="hl-bracket">&gt;</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">ul</span><span class="hl-bracket">&gt;</span>
                         </div>
-                        <div class="nota">
-                            <strong>Importante:</strong> El elemento &lt;li&gt; es obligatorio para cada ítem en una lista.
-                            No puedes colocar contenido directamente dentro de &lt;ul&gt; o &lt;ol&gt; sin envolverlo en &lt;li&gt;.
+
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <ul>
+                                    <li>Texto simple</li>
+                                    <li>Con <a href="#">enlace</a></li>
+                                    <li>Con <strong>negrita</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="nota nota-danger">
+                            <strong>Regla obligatoria:</strong>
+                            <ul class="nota-lista">
+                                <li class="evitar">NO poner contenido directo en &lt;ul&gt;/&lt;ol&gt;</li>
+                                <li class="importante">SIEMPRE envolver en <span class="key-term">&lt;li&gt;</span></li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="termino" id="listas-anidadas" data-tags="listas anidadas jerarquia nested sublistas hierarchy">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Intermedio</span>
+                        </div>
                         <span class="tag">🔗 Listas Anidadas</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Listas dentro de otras listas</p>
                         <p class="descripcion">
-                            Las listas anidadas permiten crear jerarquías o estructuras más complejas. Puedes colocar una lista
-                            completa (&lt;ul&gt; o &lt;ol&gt;) dentro de un elemento &lt;li&gt; de otra lista. Esto es útil para
-                            representar estructuras jerárquicas, menús de navegación multinivel, índices con subniveles, o cualquier
-                            contenido que requiera múltiples niveles de organización.
+                            Permiten crear jerarquías colocando una lista dentro de un &lt;li&gt; de otra lista.
                         </p>
-                        <div class="ejemplo">
-                            <strong>Lista anidada mixta:</strong><br>
-                            &lt;ol&gt;<br>
-                            &nbsp;&nbsp;&lt;li&gt;Frontend<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;HTML&lt;/li&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;CSS&lt;/li&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;JavaScript&lt;/li&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>
-                            &nbsp;&nbsp;&lt;/li&gt;<br>
-                            &nbsp;&nbsp;&lt;li&gt;Backend<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Python&lt;/li&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Node.js&lt;/li&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Java&lt;/li&gt;<br>
-                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>
-                            &nbsp;&nbsp;&lt;/li&gt;<br>
-                            &lt;/ol&gt;
+
+                        <!-- Diagrama de anidación -->
+                        <div class="diagrama-estructura">
+<span class="linea">┌────────────────────────────────────────┐</span>
+<span class="linea">│</span> <span class="nivel-0">&lt;ol&gt;</span>
+<span class="linea">│</span>   <span class="linea">├──</span> <span class="nivel-1">&lt;li&gt;</span> Frontend
+<span class="linea">│</span>   <span class="linea">│</span>     <span class="linea">└──</span> <span class="nivel-2">&lt;ul&gt;</span>  <span class="flecha">← Anidada</span>
+<span class="linea">│</span>   <span class="linea">│</span>           <span class="linea">├──</span> <span class="nivel-2">&lt;li&gt;</span> HTML
+<span class="linea">│</span>   <span class="linea">│</span>           <span class="linea">└──</span> <span class="nivel-2">&lt;li&gt;</span> CSS
+<span class="linea">│</span>   <span class="linea">└──</span> <span class="nivel-1">&lt;li&gt;</span> Backend
+<span class="linea">└────────────────────────────────────────┘</span>
                         </div>
-                        <div class="nota">
-                            <strong>Regla importante:</strong><br>
-                            La lista anidada debe estar dentro de un elemento &lt;li&gt; de la lista padre, NO directamente
-                            dentro del &lt;ul&gt; o &lt;ol&gt;. Esto mantiene la estructura semántica correcta del HTML.<br><br>
-                            <strong>Correcto:</strong> &lt;li&gt;Elemento&lt;ul&gt;...&lt;/ul&gt;&lt;/li&gt;<br>
-                            <strong>Incorrecto:</strong> &lt;ul&gt;&lt;ul&gt;...&lt;/ul&gt;&lt;/ul&gt;
+
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">ol</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><span class="hl-text">Frontend</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">ul</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><span class="hl-text">HTML</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><span class="hl-text">CSS</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="hl-bracket">&lt;/</span><span class="hl-tag">ul</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;/</span><span class="hl-tag">li</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">ol</span><span class="hl-bracket">&gt;</span>
+                        </div>
+
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <ol>
+                                    <li>Frontend
+                                        <ul>
+                                            <li>HTML</li>
+                                            <li>CSS</li>
+                                        </ul>
+                                    </li>
+                                    <li>Backend
+                                        <ul>
+                                            <li>Node.js</li>
+                                            <li>Python</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <div class="nota nota-danger">
+                            <strong>Regla crítica:</strong>
+                            <ul class="nota-lista">
+                                <li class="importante">Lista anidada DENTRO de <span class="key-term">&lt;li&gt;</span></li>
+                                <li class="evitar">NO directamente en &lt;ul&gt;/&lt;ol&gt;</li>
+                            </ul>
+                        </div>
+
+                        <div class="practice-exercise">
+                            <details>
+                                <summary>🎯 Ejercicio: ¿Correcto o incorrecto?</summary>
+                                <pre>&lt;ul&gt;
+  &lt;ul&gt;  &lt;!-- ❌ INCORRECTO --&gt;
+    &lt;li&gt;Item&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/ul&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Item
+    &lt;ul&gt;  &lt;!-- ✅ CORRECTO --&gt;
+      &lt;li&gt;Sub-item&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</pre>
+                            </details>
                         </div>
                     </div>
 
                     <div class="termino" id="dl" data-tags="dl dt dd lista definición descripción description definition">
+                        <div class="badge-container">
+                            <span class="badge badge-basico-v2">Intermedio</span>
+                        </div>
                         <span class="tag">&lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Lista de descripciones (Description List)</p>
                         <p class="descripcion">
-                            Se usa para representar pares de término-descripción. &lt;dl&gt; (Description List) crea el contenedor,
-                            &lt;dt&gt; (Description Term) define el término, y &lt;dd&gt; (Description Details) define la descripción.
-                            Son perfectas para glosarios, fichas técnicas, FAQs, metadatos, pares clave-valor, o cualquier contenido
-                            que relacione términos con sus definiciones o descripciones.
+                            Para pares término-descripción. Perfecta para glosarios, FAQs, metadatos.
                         </p>
-                        <div class="ejemplo">
-                            <strong>Ejemplo de glosario técnico:</strong><br>
-                            &lt;dl&gt;<br>
-                            &nbsp;&nbsp;&lt;dt&gt;HTTP&lt;/dt&gt;<br>
-                            &nbsp;&nbsp;&lt;dd&gt;Protocolo de Transferencia de Hipertexto.&lt;/dd&gt;<br><br>
-                            &nbsp;&nbsp;&lt;dt&gt;API&lt;/dt&gt;<br>
-                            &nbsp;&nbsp;&lt;dd&gt;Interfaz de programación de aplicaciones.&lt;/dd&gt;<br><br>
-                            &nbsp;&nbsp;&lt;dt&gt;UI&lt;/dt&gt;<br>
-                            &nbsp;&nbsp;&lt;dd&gt;Interfaz de usuario.&lt;/dd&gt;<br>
-                            &lt;/dl&gt;
+
+                        <!-- Anatomía visual -->
+                        <div class="anatomia-tag">
+                            <div class="codigo-central">
+                                <span class="etiqueta">&lt;dl&gt;</span> → <span class="etiqueta">&lt;dt&gt;</span> + <span class="etiqueta">&lt;dd&gt;</span>
+                            </div>
+                            <div class="anatomia-flechas">
+                                <div class="anatomia-label label-etiqueta">
+                                    <span class="arrow">↑</span>
+                                    Contenedor
+                                </div>
+                                <div class="anatomia-label label-atributo">
+                                    <span class="arrow">↑</span>
+                                    Término
+                                </div>
+                                <div class="anatomia-label label-valor">
+                                    <span class="arrow">↑</span>
+                                    Descripción
+                                </div>
+                            </div>
                         </div>
-                        <div class="nota">
-                            <strong>Elementos:</strong><br>
-                            • &lt;dl&gt; - Contenedor de la lista de definiciones<br>
-                            • &lt;dt&gt; - Definition Term (término a definir)<br>
-                            • &lt;dd&gt; - Definition Description (descripción del término)<br><br>
-                            <strong>Características:</strong><br>
-                            • No se renderizan con viñetas ni números<br>
-                            • Formato semántico especial para pares término-descripción<br>
-                            • La descripción (&lt;dd&gt;) suele mostrarse con sangría<br>
-                            • Un término puede tener múltiples descripciones<br>
-                            • Una descripción puede tener múltiples términos asociados
+
+                        <div class="ejemplo">
+<span class="hl-bracket">&lt;</span><span class="hl-tag">dl</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">dt</span><span class="hl-bracket">&gt;</span><span class="hl-text">HTML</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">dt</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">dd</span><span class="hl-bracket">&gt;</span><span class="hl-text">Lenguaje de marcado</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">dd</span><span class="hl-bracket">&gt;</span><br><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">dt</span><span class="hl-bracket">&gt;</span><span class="hl-text">CSS</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">dt</span><span class="hl-bracket">&gt;</span><br>
+&nbsp;&nbsp;<span class="hl-bracket">&lt;</span><span class="hl-tag">dd</span><span class="hl-bracket">&gt;</span><span class="hl-text">Hojas de estilo</span><span class="hl-bracket">&lt;/</span><span class="hl-tag">dd</span><span class="hl-bracket">&gt;</span><br>
+<span class="hl-bracket">&lt;/</span><span class="hl-tag">dl</span><span class="hl-bracket">&gt;</span>
+                        </div>
+
+                        <div class="vista-previa">
+                            <strong>👁️ Vista previa:</strong>
+                            <div class="preview-content">
+                                <dl>
+                                    <dt><strong>HTML</strong></dt>
+                                    <dd>Lenguaje de marcado para estructurar contenido web</dd>
+
+                                    <dt><strong>CSS</strong></dt>
+                                    <dd>Hojas de estilo para diseñar la apariencia visual</dd>
+
+                                    <dt><strong>JavaScript</strong></dt>
+                                    <dd>Lenguaje de programación para interactividad</dd>
+                                </dl>
+                            </div>
+                        </div>
+
+                        <div class="nota nota-info">
+                            <strong>Elementos:</strong>
+                            <ul class="nota-lista">
+                                <li class="importante"><span class="key-term">&lt;dl&gt;</span> = Description List (contenedor)</li>
+                                <li class="hacer"><span class="key-term">&lt;dt&gt;</span> = Definition Term (término)</li>
+                                <li class="hacer"><span class="key-term">&lt;dd&gt;</span> = Definition Description</li>
+                            </ul>
                         </div>
                     </div>
 
                     <div class="termino" id="ejercicio-practico" data-tags="ejercicio practica rutina">
+                        <div class="badge-container">
+                            <span class="badge badge-frecuente">Práctica</span>
+                        </div>
                         <span class="tag">🎯 Ejercicio Práctico</span>
                         <p class="significado"><span class="unsa-tag">[U]</span> Práctica con listas anidadas</p>
                         <p class="descripcion">
-                            Ejercicio para practicar la creación de listas ordenadas y no ordenadas anidadas.
-                            Crea una lista de tu rutina matutina usando listas ordenadas para pasos secuenciales
-                            y listas no ordenadas para opciones dentro de cada paso.
+                            Crea una lista de tu rutina matutina: &lt;ol&gt; para pasos, &lt;ul&gt; para opciones.
                         </p>
-                        <div class="practice-exercise">
-                            <h4>Tarea: Crea una lista de tu rutina matutina</h4>
-                            <p>Usa &lt;ol&gt; para los pasos principales y &lt;ul&gt; para las opciones dentro de cada paso.</p>
 
+                        <div class="practice-exercise">
                             <details>
-                                <summary>Ver ejemplo de solución</summary>
-                                <div class="code-block">
-                                    <pre><code>&lt;h2&gt;Mi Rutina Matutina&lt;/h2&gt;
+                                <summary>🎯 Ver solución</summary>
+                                <pre>&lt;h2&gt;Mi Rutina Matutina&lt;/h2&gt;
 &lt;ol&gt;
-    &lt;li&gt;Despertarse
-        &lt;ul&gt;
-            &lt;li&gt;Apagar alarma&lt;/li&gt;
-            &lt;li&gt;Estiramientos&lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/li&gt;
-    &lt;li&gt;Desayunar
-        &lt;ul&gt;
-            &lt;li&gt;Café&lt;/li&gt;
-            &lt;li&gt;Pan tostado&lt;/li&gt;
-            &lt;li&gt;Fruta&lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/li&gt;
-    &lt;li&gt;Prepararse
-        &lt;ul&gt;
-            &lt;li&gt;Ducharse&lt;/li&gt;
-            &lt;li&gt;Vestirse&lt;/li&gt;
-        &lt;/ul&gt;
-    &lt;/li&gt;
-&lt;/ol&gt;</code></pre>
-                                </div>
+  &lt;li&gt;Despertarse
+    &lt;ul&gt;
+      &lt;li&gt;Apagar alarma&lt;/li&gt;
+      &lt;li&gt;Estiramientos&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Desayunar
+    &lt;ul&gt;
+      &lt;li&gt;Café&lt;/li&gt;
+      &lt;li&gt;Pan tostado&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Prepararse
+    &lt;ul&gt;
+      &lt;li&gt;Ducharse&lt;/li&gt;
+      &lt;li&gt;Vestirse&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</pre>
                             </details>
                         </div>
                     </div>
@@ -293,7 +476,8 @@
         <p>Módulo 3: Listas | <a href="../index.html">Volver a HTML</a></p>
     </footer>
 
-    <script src="/assets/js/sidebar-component.js"></script>
+    <script src="../../../assets/js/sidebar-component.js"></script>
+    <script src="../../../assets/js/keyboard-navigation.js"></script>
     <script>
         // Funcionalidad de búsqueda en el glosario con normalización y resaltado
         document.addEventListener('DOMContentLoaded', function() {

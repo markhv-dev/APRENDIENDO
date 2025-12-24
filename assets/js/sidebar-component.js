@@ -2,12 +2,25 @@
 // Uso: Incluir este script al final del body: <script src="/sidebar-component.js"></script>
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Cargar navegación por teclado automáticamente
+    if (!document.querySelector('link[href*="keyboard-navigation.css"]')) {
+        const kbNavCSS = document.createElement('link');
+        kbNavCSS.rel = 'stylesheet';
+        kbNavCSS.href = '/assets/css/keyboard-navigation.css';
+        document.head.appendChild(kbNavCSS);
+    }
+
+    if (!document.querySelector('script[src*="keyboard-navigation.js"]')) {
+        const kbNavJS = document.createElement('script');
+        kbNavJS.src = '/assets/js/keyboard-navigation.js';
+        document.body.appendChild(kbNavJS);
+    }
     // Crear el HTML del sidebar
     const sidebarHTML = `
         <!-- Sidebar Navigation -->
         <nav class="sidebar" id="globalSidebar">
             <div class="sidebar-header">
-                <a href="/index.html" class="sidebar-logo">
+                <a href="/home.html" class="sidebar-logo">
                     <span class="logo-icon">📚</span>
                     <span class="logo-text">Aprendizaje Web</span>
                 </a>
@@ -60,25 +73,66 @@ document.addEventListener('DOMContentLoaded', function() {
                         <a href="/Lenguajes/HTML/index.html" class="menu-item" data-section="html">
                             <span class="item-icon">📄</span>
                             <span class="item-text">HTML</span>
-                            <span class="badge-completed">✓</span>
-                        </a>
-                        <a href="/Lenguajes/JavaScript/index.html" class="menu-item" data-section="javascript">
-                            <span class="item-icon">⚡</span>
-                            <span class="item-text">JavaScript</span>
-                            <span class="badge-completed">✓</span>
+                            <span class="badge-completed">✓ 10</span>
                         </a>
                         <a href="/Lenguajes/CSS/index.html" class="menu-item" data-section="css">
                             <span class="item-icon">🎨</span>
                             <span class="item-text">CSS</span>
-                            <span class="badge-completed">✓</span>
+                            <span class="badge-completed">✓ 10</span>
+                        </a>
+                        <a href="/Lenguajes/JavaScript/index.html" class="menu-item" data-section="javascript">
+                            <span class="item-icon">⚡</span>
+                            <span class="item-text">JavaScript</span>
+                            <span class="badge-completed">✓ 11</span>
+                        </a>
+                        <a href="/Lenguajes/Python/index.html" class="menu-item" data-section="python">
+                            <span class="item-icon">🐍</span>
+                            <span class="item-text">Python</span>
+                            <span class="badge-completed">✓ 10</span>
+                        </a>
+                        <a href="/Lenguajes/TypeScript/index.html" class="menu-item" data-section="typescript">
+                            <span class="item-icon">📘</span>
+                            <span class="item-text">TypeScript</span>
+                        </a>
+                        <a href="/Lenguajes/SQL/index.html" class="menu-item" data-section="sql">
+                            <span class="item-icon">🗄️</span>
+                            <span class="item-text">SQL</span>
+                        </a>
+                        <a href="/Lenguajes/PHP/index.html" class="menu-item" data-section="php">
+                            <span class="item-icon">🐘</span>
+                            <span class="item-text">PHP</span>
+                        </a>
+                        <a href="/Lenguajes/Java/index.html" class="menu-item" data-section="java">
+                            <span class="item-icon">☕</span>
+                            <span class="item-text">Java</span>
                         </a>
                         <a href="/Lenguajes/C++/index.html" class="menu-item" data-section="cpp">
                             <span class="item-icon">⚙️</span>
                             <span class="item-text">C++</span>
                         </a>
-                        <a href="/Lenguajes/Java/index.html" class="menu-item" data-section="java">
-                            <span class="item-icon">☕</span>
-                            <span class="item-text">Java</span>
+                        <a href="/Lenguajes/CSharp/index.html" class="menu-item" data-section="csharp">
+                            <span class="item-icon">💜</span>
+                            <span class="item-text">C#</span>
+                        </a>
+                        <a href="/Lenguajes/Go/index.html" class="menu-item" data-section="go">
+                            <span class="item-icon">🔷</span>
+                            <span class="item-text">Go</span>
+                        </a>
+                        <a href="/Lenguajes/Rust/index.html" class="menu-item" data-section="rust">
+                            <span class="item-icon">🦀</span>
+                            <span class="item-text">Rust</span>
+                        </a>
+                        <a href="/Lenguajes/Ruby/index.html" class="menu-item" data-section="ruby">
+                            <span class="item-icon">💎</span>
+                            <span class="item-text">Ruby</span>
+                        </a>
+                        <a href="/Lenguajes/Swift/index.html" class="menu-item" data-section="swift">
+                            <span class="item-icon">🍎</span>
+                            <span class="item-text">Swift</span>
+                        </a>
+                        <a href="/Lenguajes/Kotlin/index.html" class="menu-item" data-section="kotlin">
+                            <span class="item-icon">🤖</span>
+                            <span class="item-text">Kotlin</span>
                         </a>
                     </div>
                 </div>
@@ -118,66 +172,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 </div>
 
-                <!-- Exámenes -->
-                <div class="menu-section" data-section="examenes">
-                    <div class="section-title" onclick="window.toggleSection('examenes')">
-                        <span class="toggle-icon">▼</span>
-                        EXÁMENES
-                    </div>
-                    <div class="section-items">
-                        <a href="/Examen/examen-parcial-1.html" class="menu-item">
-                            <span class="item-icon">📝</span>
-                            <span class="item-text">Examen Parcial 1</span>
-                        </a>
-                        <a href="/Examen/examen-parcial-2.html" class="menu-item">
-                            <span class="item-icon">💻</span>
-                            <span class="item-text">Examen Parcial 2</span>
-                        </a>
-                        <a href="/Examen/examen-sustitorio.html" class="menu-item">
-                            <span class="item-icon">🎓</span>
-                            <span class="item-text">Examen Sustitorio</span>
-                        </a>
-                        <a href="/docs/roadmap-estudio-examen.html" class="menu-item">
-                            <span class="item-icon">🗺️</span>
-                            <span class="item-text">Roadmap de Estudio</span>
-                        </a>
-                        <a href="/Examen/SOLUCIONES_COMPLETAS.html" class="menu-item">
-                            <span class="item-icon">✅</span>
-                            <span class="item-text">Soluciones Completas</span>
-                        </a>
-                        <a href="/Examen/ANALISIS_DIFICULTAD.html" class="menu-item">
-                            <span class="item-icon">📊</span>
-                            <span class="item-text">Análisis de Dificultad</span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Docs -->
-                <div class="menu-section collapsed" data-section="documentacion">
-                    <div class="section-title" onclick="window.toggleSection('documentacion')">
-                        <span class="toggle-icon">▶</span>
-                        DOCUMENTACIÓN
-                    </div>
-                    <div class="section-items">
-                        <a href="/docs/GUIA_COMPLETA.md" class="menu-item">
-                            <span class="item-icon">📖</span>
-                            <span class="item-text">Guía Completa</span>
-                        </a>
-                        <a href="/README.md" class="menu-item">
-                            <span class="item-icon">ℹ️</span>
-                            <span class="item-text">README</span>
-                        </a>
-                    </div>
-                </div>
             </div>
 
             <div class="sidebar-footer">
-                <div class="progress-info">
-                    <span class="progress-label">PROGRESO GENERAL</span>
-                    <div class="progress-bar">
-                        <div class="progress-fill" style="width: 45%"></div>
-                    </div>
-                    <span class="progress-text">45% Completado</span>
+                <div id="userProfileSection">
+                    <!-- Se carga dinámicamente -->
                 </div>
             </div>
         </nav>
@@ -198,7 +197,50 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Restore collapsed states from localStorage
     restoreCollapsedStates();
+
+    // Cargar perfil de usuario
+    loadUserProfile();
 });
+
+function loadUserProfile() {
+    const profileSection = document.getElementById('userProfileSection');
+    if (!profileSection) return;
+
+    profileSection.innerHTML = `
+        <div class="user-profile" id="userProfileMenu">
+            <div class="profile-dropdown">
+                <a href="/mensajes.html" class="dropdown-item">
+                    <span>📬</span>
+                    <span>Ver Mensajes</span>
+                </a>
+                <a href="/api/logout" class="dropdown-item">
+                    <span>🚪</span>
+                    <span>Cerrar Sesión</span>
+                </a>
+            </div>
+            <div class="profile-trigger">
+                <div class="profile-icon">👤</div>
+                <div class="profile-info">
+                    <div class="profile-name">Usuario</div>
+                    <div class="profile-email">Autenticado</div>
+                </div>
+            </div>
+        </div>
+    `;
+
+    // Toggle dropdown
+    const profileMenu = document.getElementById('userProfileMenu');
+    const trigger = profileMenu.querySelector('.profile-trigger');
+
+    trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        profileMenu.classList.toggle('active');
+    });
+
+    document.addEventListener('click', () => {
+        profileMenu.classList.remove('active');
+    });
+}
 
 function highlightActiveItem() {
     const currentPath = window.location.pathname.toLowerCase();
