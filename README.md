@@ -26,6 +26,7 @@ El sistema incluye las siguientes funcionalidades principales:
 
 **Repositorio:** https://github.com/markhv-dev/APRENDIENDO
 **Demo:** https://markhvdev.pythonanywhere.com
+**video demostrativo del sistema: ** https://drive.google.com/drive/folders/1K6gJOzZ-nrQAmjaNoPzhe8Lq2yqo-hVJ?usp=sharing  
 
 ## TECNOLOGÍAS
 
