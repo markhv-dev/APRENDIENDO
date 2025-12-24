@@ -9,7 +9,7 @@
 **Estudiante:** Mark Harry Hancco Vargas
 **Universidad:** Universidad Nacional de San Agustín
 **Docente:** Prof. Marco Wilfredo Aedo Lopez
-**Fecha de Presentación:** Diciembre 2024
+**Fecha de Presentación:** Diciembre 2025
 
 ---
 
